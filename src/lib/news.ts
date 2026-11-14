@@ -8,23 +8,33 @@ import { concreteDateInText, concreteDateInUrl } from "./dates";
 import { hostOf } from "./profile";
 
 export const NEWS_MARKETS = ["Finland", "Sweden", "Norway", "Denmark", "the Nordics"];
+/** The widened search: Nordic markets first, then Germany, the UK, the Netherlands and France. */
+export const WIDE_MARKETS: { market: string; adj: string }[] = [
+  { market: "Finland", adj: "Finnish" }, { market: "Sweden", adj: "Swedish" }, { market: "Norway", adj: "Norwegian" }, { market: "Denmark", adj: "Danish" },
+  { market: "Germany", adj: "German" }, { market: "United Kingdom", adj: "UK" }, { market: "Netherlands", adj: "Dutch" }, { market: "France", adj: "French" },
+];
 
 const NOT_ENTRY = /\b(forecast|market (size|is expected|will grow)|cagr|merg(e|er|ed)|acquir|acquisition|takeover|stake in|partner(ed|s|ship) with|joint venture|alliance|raised|funding round|ipo|layoffs?|exit(s|ed)? the|withdraw|leav(e|es|ing) the|job (posting|for)|posted a job|contracts? with)\b/i;
+/** Countries Faro reads market entry for: the Nordics first, then the big European markets. */
+const C = String.raw`(?:finland|sweden|norway|denmark|iceland|the nordics|scandinavia|germany|the uk|the united kingdom|britain|the netherlands|france|europe)`;
+const ADJ = String.raw`(?:finnish|swedish|norwegian|danish|nordic|icelandic|german|british|uk|dutch|french)`;
 const ENTRY = new RegExp(
   [
     String.raw`expand(s|ed|ing)? (further |its operations |operations )?(in)?to\b`,
     String.raw`expand(s|ed|ing)? (further )?(across|into|in)\b`,
     String.raw`expand(s|ed|ing)? its (european |nordic |international )?(footprint|presence)`,
-    String.raw`enter(s|ed|ing)? (the )?(finnish|swedish|norwegian|danish|nordic|icelandic)? ?market`,
-    String.raw`\benter(s|ed|ing)? (finland|sweden|norway|denmark|iceland|the nordics)`,
-    String.raw`launch(es|ed|ing)? .{0,60}\bin (finland|sweden|norway|denmark|iceland|the nordics|scandinavia)`,
-    String.raw`open(s|ed|ing)? (a |an |its )?(first |new )?(international |nordic |local )?(office|branch|base|store|hub|subsidiary|headquarters|data cent(er|re)|factory|plant)`,
+    String.raw`enter(s|ed|ing)? (the )?${ADJ}? ?market`,
+    String.raw`\benter(s|ed|ing)? ${C}`,
+    String.raw`launch(es|ed|ing)? .{0,60}\bin ${C}`,
+    String.raw`launch(es|ed|ing)? in ${C}`,
+    String.raw`open(s|ed|ing)? (a |an |its )?(first |new )?(international |nordic |local |european )?(office|branch|base|store|hub|subsidiary|headquarters|data cent(er|re)|factory|plant)`,
     String.raw`new (office|branch|subsidiary|base|hub) in`,
     String.raw`first (operational )?(presence|office|store|market|customers?) in`,
     String.raw`(set(s|ting)? up|establish(es|ed|ing)?) (a |an |its )?(local |nordic |new )?(office|branch|subsidiary|presence|entity|base)`,
+    String.raw`(hire[sd]?|hiring|appoint(s|ed)?|nam(es|ed)) (a |its |their )?(first )?(country manager|country director|general manager|managing director|head of)`,
     String.raw`arriv(es|ed|ing) in`,
     String.raw`debut(s|ed)? in`,
-    String.raw`roll(s|ed|ing)? out .{0,40}\bto (finland|sweden|norway|denmark|the nordics)`,
+    String.raw`roll(s|ed|ing)? out .{0,40}\bto ${C}`,
     String.raw`plans to (open|build|develop|launch|enter)`,
   ].join("|"),
   "i",
@@ -67,7 +77,7 @@ export function heuristic(c: Claim) {
   for (const re of LEADS) {
     const m = c.text.match(re);
     if (m) {
-      company = m[1].replace(/^(The|US|U\.S\.|German|Swedish|Chinese|French|British|American|Japanese|Portuguese|Danish|Finnish|Norwegian|Dutch|Irish|Italian|Spanish)\s+/, "").trim();
+      company = m[1].replace(/^(The|US|U\.S\.|UK|German|Swedish|Chinese|French|British|American|Japanese|Portuguese|Danish|Finnish|Norwegian|Dutch|Irish|Italian|Spanish|Israeli|Estonian|Polish|Swiss|Austrian|Belgian|Canadian|Indian|Korean)\s+/, "").trim();
       break;
     }
   }

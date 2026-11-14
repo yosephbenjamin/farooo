@@ -16,7 +16,11 @@
  *                recently founded Nordic company (from the search description), then confirm with
  *                a FILING founding date and a website / registry-parent match
  *
- * Flags: --stage=users,rounds,news,slush  --budget=N (max new API calls this run)
+ *   3b. wide     widened news searches (opens office in / launches in / expands to / enters the …
+ *                market / hires country manager; FI SE NO DK DE UK NL FR), --searches=N (default 150)
+ *   3c. investors investors of every entrant (profile INVESTED_IN + FundingRound participants)
+ *
+ * Flags: --stage=users,rounds,news,wide,investors,slush,entrants  --budget=N (max new API calls this run)
  */
 import { createHash } from "node:crypto";
 import { readdirSync, readFileSync } from "node:fs";
@@ -25,7 +29,7 @@ import { getEntity, knowledgeSearch, searchEntities, CalaError, calaStats } from
 import { relAll, fetchProfileRaw, PROFILE_QUERY } from "../src/lib/graph";
 import { readJson, writeJson, today, DATA_DIR } from "../src/lib/data";
 import { parseProfile, filingFounding, rankedSources, type Profile, type RankedSource } from "../src/lib/profile";
-import { claimsOf, heuristic, NEWS_MARKETS, type Claim } from "../src/lib/news";
+import { claimsOf, heuristic, NEWS_MARKETS, WIDE_MARKETS, type Claim } from "../src/lib/news";
 import { extractClaims, llmEnabled } from "../src/lib/llm";
 import { normalizeCompany } from "../src/lib/normalize";
 import { resolveByName, summarize } from "../src/lib/identity";
@@ -39,6 +43,8 @@ const log = (...a: unknown[]) => console.log("[ingest]", ...a);
 const MARKET_WORDS: Record<string, string[]> = {
   Finland: ["Finland", "Finnish", "Helsinki"], Sweden: ["Sweden", "Swedish", "Stockholm"], Norway: ["Norway", "Norwegian", "Oslo"],
   Denmark: ["Denmark", "Danish", "Copenhagen"], "the Nordics": [],
+  Germany: ["Germany", "German", "Berlin", "Munich"], "United Kingdom": ["United Kingdom", "British", "UK", "London", "England"],
+  Netherlands: ["Netherlands", "Dutch", "Amsterdam"], France: ["France", "French", "Paris"],
 };
 
 const arg = (k: string) => process.argv.find((a) => a.startsWith(`--${k}=`))?.split("=")[1];
@@ -204,6 +210,63 @@ function nearDemos(name: string, p: Profile | undefined): number {
   return NEAR_NAME.find(([re]) => re.test(name))?.[1] ?? 0;
 }
 
+// ---------- news claims -> market entries (shared by the news and wide stages) ----------
+type NewsStats = { claims: number; notEntry: number; noDate: number; old: number; unresolved: number; local: number; kept: number; keptNames: string[] };
+const newsStats = (): NewsStats => ({ claims: 0, notEntry: 0, noDate: 0, old: 0, unresolved: 0, local: 0, kept: 0, keptNames: [] });
+const newEntrants = new Set<string>();
+
+async function keepClaim(c: Claim, x: { company: string | null; date: string | null; isEntry: boolean; market?: string | null } | undefined, stats: NewsStats) {
+  const h = heuristic(c);
+  const company = x ? x.company : h.company;
+  const date = (x?.date && /^\d{4}-\d{2}-\d{2}$/.test(x.date) ? x.date : null) ?? h.date;
+  if (!(x ? x.isEntry : h.isEntry) || !company) { stats.notEntry++; return; }
+  if (!date) { stats.noDate++; return; }
+  if (date > now || dayDiff(date, now) > 180) { stats.old++; return; }
+  const p = await resolveByName(company, profiles);
+  if (!p) { stats.unresolved++; return; }
+  profiles[p.id] = p;
+  const market = x?.market ?? c.market;
+  if (p.country && market.toLowerCase().includes(p.country.toLowerCase())) { stats.local++; return; }
+  // a same-brand company based in that market means the "entrant" is local (Netcompany A/S vs NETCOMPANY UK LIMITED)
+  const words = MARKET_WORDS[market] ?? [];
+  const bkey = normalizeCompany(company);
+  const sameBrand = ((await spend(() => searchEntities(company, { types: ["Company"], limit: 10 }))) ?? []).filter((e) => normalizeCompany(e.name) === bkey || normalizeCompany(e.name).startsWith(bkey + " "));
+  if (sameBrand.some((e) => words.some((w) => new RegExp(`\\b${w}\\b`, "i").test(e.description ?? "")))) { stats.local++; return; }
+  const id = createHash("sha256").update(`news|${p.id}|${market}|${date}`).digest("hex").slice(0, 16);
+  if (!entries.has(id)) {
+    newEntrants.add(p.id);
+    stats.keptNames.push(`${p.name} -> ${market} (${date})`);
+  }
+  entries.set(id, { id, kind: "news", doorId: p.id, doorName: p.name, local: null, market, date, source: { name: c.sourceName, url: c.url, date, rank: null }, match: "news", claim: c.text });
+  stats.kept++;
+}
+
+/** The widened searches, in priority order: Nordic markets, the demo startups' industries, then DE/UK/NL/FR. */
+function wideQueries(year: string): { q: string; market: string }[] {
+  const say = (m: string) => (m === "United Kingdom" ? "the UK" : m === "Netherlands" ? "the Netherlands" : m);
+  const T = [
+    (i: string, m: string) => `Which ${i}companies opened an office in ${say(m)} in ${year}?`,
+    (i: string, m: string) => `Which ${i}companies launched in ${say(m)} in ${year}?`,
+    (i: string, m: string) => `Which ${i}companies expanded to ${say(m)} in ${year}?`,
+    (i: string, m: string, a: string) => `Which ${i}companies entered the ${a} market in ${year}?`,
+    (i: string, m: string) => `Which ${i}companies hired a country manager for ${say(m)} in ${year}?`,
+  ];
+  const nordic = WIDE_MARKETS.slice(0, 4);
+  const big = WIDE_MARKETS.slice(4);
+  const demoInd = ["health tech ", "medical device ", "AI ", "cloud and data centre ", "robotics ", "defence and drone "];
+  const out: { q: string; market: string }[] = [];
+  const add = (ms: typeof WIDE_MARKETS, inds: string[], ts: number[]) => {
+    for (const i of inds) for (const t of ts) for (const m of ms) out.push({ q: T[t](i, m.market, m.adj), market: m.market });
+  };
+  add(nordic, [""], [0, 1, 2, 3, 4]);
+  add(nordic, demoInd, [0, 2, 3]);
+  add(big, [""], [0, 1, 2, 3, 4]);
+  add(nordic, ["software ", "fintech ", "energy "], [0]);
+  add(big, ["health tech ", "AI ", "robotics "], [0]);
+  add(nordic, demoInd, [4]);
+  return out;
+}
+
 async function main() {
   const cached = loadCachedProfiles();
   log(`${cached} profiles already cached; now ${now}`);
@@ -282,32 +345,67 @@ async function main() {
     }
     const llm = llmEnabled() ? await extractClaims(claims.map((c) => ({ index: c.index, text: c.text, url: c.url }))) : null;
     const llmBy = new Map((llm ?? []).map((x) => [x.index, x]));
-    const stats = { claims: claims.length, notEntry: 0, noDate: 0, old: 0, unresolved: 0, local: 0, kept: 0 };
-    for (const c of claims) {
-      const x = llmBy.get(c.index);
-      const h = heuristic(c);
-      const company = x ? x.company : h.company;
-      const date = (x?.date && /^\d{4}-\d{2}-\d{2}$/.test(x.date) ? x.date : null) ?? h.date;
-      if (!(x ? x.isEntry : h.isEntry) || !company) { stats.notEntry++; continue; }
-      if (!date) { stats.noDate++; continue; }
-      if (date > now || dayDiff(date, now) > 180) { stats.old++; continue; }
-      const p = await resolveByName(company, profiles);
-      if (!p) { stats.unresolved++; continue; }
-      profiles[p.id] = p;
-      const market = x?.market ?? c.market;
-      if (p.country && market.toLowerCase().includes(p.country.toLowerCase())) { stats.local++; continue; }
-      // a same-brand company based in that market means the "entrant" is local (Netcompany A/S vs NETCOMPANY UK LIMITED)
-      const words = MARKET_WORDS[market] ?? [];
-      const bkey = normalizeCompany(company);
-      const sameBrand = ((await spend(() => searchEntities(company, { types: ["Company"], limit: 10 }))) ?? []).filter((e) => normalizeCompany(e.name) === bkey || normalizeCompany(e.name).startsWith(bkey + " "));
-      if (sameBrand.some((e) => words.some((w) => new RegExp(`\\b${w}\\b`, "i").test(e.description ?? "")))) { stats.local++; continue; }
-      const id = createHash("sha256").update(`news|${p.id}|${market}|${date}`).digest("hex").slice(0, 16);
-      entries.set(id, { id, kind: "news", doorId: p.id, doorName: p.name, local: null, market, date, source: { name: c.sourceName, url: c.url, date, rank: null }, match: "news", claim: c.text });
-      stats.kept++;
-    }
+    const stats = newsStats();
+    stats.claims = claims.length;
+    for (const c of claims) await keepClaim(c, llmBy.get(c.index), stats);
     writeJson("news-report.json", { ranAt: new Date().toISOString(), now, extraction: llm ? "llm" : "heuristic", stats });
     log("news", stats);
     save("news");
+  }
+
+  // ---------- 3b. widened news: more phrasings and markets, capped, yield every 50 ----------
+  if (STAGES.has("wide")) {
+    const cap = Number(arg("searches") ?? 150);
+    const qs = wideQueries(now.slice(0, 4)).slice(0, cap);
+    const stats = newsStats();
+    const sent0 = calaStats.sent;
+    let searches = 0;
+    const reports: unknown[] = [];
+    const report = () => {
+      const r = { searches, ...stats, keptNames: [...stats.keptNames], entityCalls: calaStats.sent - sent0 - searches, statuses: { ...calaStats.status } };
+      reports.push(r);
+      log(`wide yield after ${searches} searches: ${stats.claims} claims, ${stats.notEntry} not entries, ${stats.noDate} undated, ${stats.old} old, ${stats.unresolved} unresolved, ${stats.local} local, ${stats.kept} kept (${stats.keptNames.length} new); ${r.entityCalls} entity calls`);
+      for (const k of stats.keptNames) log(`   new entry: ${k}`);
+      writeJson("wide-report.json", { ranAt: new Date().toISOString(), now, planned: qs.length, reports, queries: qs.map((q) => q.q) });
+      save(`wide ${searches}`);
+    };
+    for (let i = 0; i < qs.length && !outOfCredit; i += 5) {
+      const batch = qs.slice(i, i + 5);
+      const answers = await Promise.all(batch.map((x) => spend(() => knowledgeSearch(x.q))));
+      for (let j = 0; j < batch.length; j++) {
+        searches++;
+        const ans = answers[j];
+        if (ans) {
+          const cs = claimsOf(ans, batch[j].market, 0);
+          stats.claims += cs.length;
+          for (const c of cs) await keepClaim(c, undefined, stats);
+        }
+        if (searches % 50 === 0) report();
+      }
+    }
+    if (searches % 50 !== 0) report();
+  }
+
+  // ---------- 3c. investors of every entrant, so warm paths can appear ----------
+  if (STAGES.has("investors")) {
+    const ids = [...new Set([...entries.values()].map((e) => e.doorId))];
+    const st = { entrants: ids.length, roundsFetched: 0, investors: 0 };
+    for (const id of ids) {
+      if (outOfCredit) break;
+      const p = await profile(id);
+      if (!p) continue;
+      for (const fr of p.fundingRounds.filter((f) => f.role === "ISSUER").slice(0, 8)) {
+        if (rounds.has(fr.id)) continue;
+        const r = await fundingRound(fr.id, p.id);
+        st.roundsFetched++;
+        if (r) rounds.set(r.id, r); // older rounds never make a round door (window); they carry investors for warm paths
+      }
+      const inv = new Set([...p.investors.map((i) => i.name), ...[...rounds.values()].filter((r) => r.companyId === id).flatMap((r) => r.investors.map((i) => i.name))]);
+      st.investors += inv.size;
+      log(`investors: ${p.name}: ${inv.size} (${[...inv].slice(0, 6).join(", ")})`);
+    }
+    log("investors", st);
+    save("investors");
   }
 
   // ---------- 4. Slush attendees -> new national companies of foreign firms ----------
