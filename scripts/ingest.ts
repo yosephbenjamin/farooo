@@ -21,7 +21,7 @@
 import { createHash } from "node:crypto";
 import { readdirSync, readFileSync } from "node:fs";
 import path from "node:path";
-import { getEntity, knowledgeSearch, searchEntities, CalaError } from "../src/lib/cala";
+import { getEntity, knowledgeSearch, searchEntities, CalaError, calaStats } from "../src/lib/cala";
 import { relAll, fetchProfileRaw, PROFILE_QUERY } from "../src/lib/graph";
 import { readJson, writeJson, today, DATA_DIR } from "../src/lib/data";
 import { parseProfile, filingFounding, rankedSources, type Profile, type RankedSource } from "../src/lib/profile";
@@ -176,6 +176,34 @@ async function foreignParent(local: Profile): Promise<{ parent: Profile; match: 
   return null;
 }
 
+/**
+ * How close a foreign attendee is to the demo startups' industries, so the entrants pass reaches
+ * them first: Oura (health, wearables, medical devices, hardware, software), Verda (AI, cloud,
+ * data centres) and RiACT (robotics, drones, defence, automation). Cached profile industries when
+ * we have them, else the attendee's name. Order only; it never decides a door.
+ */
+const NEAR_CODE: [RegExp, number][] = [
+  [/HEALTH|MEDICAL|PHARMA|BIOTECH/, 3], [/HARDWARE|AEROSPACE|DEFEN|ROBOT|MACHINERY|SEMICONDUCTOR/, 3],
+  [/INTERNET|TELECOM|CLOUD|DATA/, 2], [/SOFTWARE/, 1],
+];
+const NEAR_LABEL = /^(ai|robo|dualUseTech|deeptech|health|medtechPharma|consumerElectronics|cloud.*|Cloud.*)$/;
+const NEAR_NAME: [RegExp, number][] = [
+  [/health|medic|\bmed|care\b|clinic|cardio|neuro|pharma|therap|sleep|wearable|biosens|diagnos|\bbio/i, 3],
+  [/robot|drone|\baero|defen[cs]e|space|orbit|satell|autonom|uav|hardware|sensor|chip|semicon|photon|quantum|device/i, 3],
+  [/\bai\b|\.ai\b|ai$|cloud|\bdata|compute|gpu|datacent|infra/i, 2],
+];
+function nearDemos(name: string, p: Profile | undefined): number {
+  if (p?.industries.length) {
+    let s = 0;
+    for (const i of p.industries) {
+      s = Math.max(s, NEAR_CODE.find(([re]) => re.test(i.code))?.[1] ?? 0);
+      if (i.label && NEAR_LABEL.test(i.label)) s = Math.max(s, 2);
+    }
+    return s;
+  }
+  return NEAR_NAME.find(([re]) => re.test(name))?.[1] ?? 0;
+}
+
 async function main() {
   const cached = loadCachedProfiles();
   log(`${cached} profiles already cached; now ${now}`);
@@ -319,13 +347,21 @@ async function main() {
     const NORDIC_WORD = /\b(Finnish|Finland|Swedish|Sweden|Norwegian|Norway|Danish|Denmark|Icelandic|Iceland)\b/;
     const RECENT = new RegExp(`\\b(${Number(now.slice(0, 4)) - 1}|${now.slice(0, 4)})\\b`);
     const isNordicName = (n: string) => /\b(oy|oyj|ab|a\/s|as|aps|asa|ehf)\b\.?$/i.test(n.trim());
-    const foreign = att.filter((a) => {
-      const p = profiles[a.id];
-      return p ? !!p.country && !MARKETS.has(p.country) : !isNordicName(a.name);
-    });
-    const stats = { searched: 0, candidates: 0, entries: 0 };
+    const foreign = att
+      .filter((a) => {
+        const p = profiles[a.id];
+        return p ? !!p.country && !MARKETS.has(p.country) : !isNordicName(a.name);
+      })
+      .map((a, i) => ({ a, i, near: nearDemos(a.name, profiles[a.id]) }))
+      .sort((x, y) => y.near - x.near || x.i - y.i)
+      .map((x) => x.a);
+    log(`entrants: ${foreign.length} foreign attendees, ${foreign.filter((a) => nearDemos(a.name, profiles[a.id]) > 0).length} next to the demo startups' industries first`);
+    const stats = { visited: 0, searched: 0, candidates: 0, entries: 0, entryNames: [] as string[] };
+    const sent0 = calaStats.sent;
     for (const a of foreign) {
       if (outOfCredit || budget <= 0) break;
+      stats.visited++;
+      if (stats.visited % 25 === 0) log(`entrants ${stats.visited}/${foreign.length}: ${calaStats.sent - sent0} calls sent, ${calaStats.cacheHits} cache hits, statuses ${JSON.stringify(calaStats.status)}, ${stats.candidates} candidates, ${stats.entries} entries`);
       const brand = brandOf(a.name);
       if (brand.length < 3) continue;
       const res = (await spend(() => searchEntities(brand, { types: ["Company"], limit: 10 }))) ?? [];
@@ -346,11 +382,19 @@ async function main() {
         const id = createHash("sha256").update(`sub|${parent.id}|${local.id}`).digest("hex").slice(0, 16);
         entries.set(id, { id, kind: "subsidiary", doorId: parent.id, doorName: parent.name, local: { id: local.id, name: local.legalName ?? local.name }, market: local.country, date: f.date, source: f.source, match: byRegistry ? "registry-parent" : "website" });
         stats.entries++;
+        stats.entryNames.push(`${parent.name} -> ${local.legalName ?? local.name} (${local.country}, ${f.date}, ${byRegistry ? "registry-parent" : "website"})`);
         log(`entry: ${parent.name} (${parent.country}) -> ${local.legalName ?? local.name} (${local.country}) on ${f.date}`);
       }
       if (stats.searched % 100 === 0) save(`entrants ${stats.searched}/${foreign.length}`);
     }
     log("entrants", stats, `of ${foreign.length} foreign attendees`);
+    const sent = calaStats.sent - sent0;
+    const left = foreign.length - stats.visited;
+    writeJson("entrants-report.json", {
+      ranAt: new Date().toISOString(), now, foreign: foreign.length, ...stats, outOfCredit,
+      calls: { sent, ok: calaStats.ok, status: calaStats.status, cacheHits: calaStats.cacheHits },
+      remaining: { attendees: left, estimatedCalls: Math.round(left * (stats.visited ? Math.max(1, sent / stats.visited) : 1.05)) },
+    });
     save("entrants");
   }
 
