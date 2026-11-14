@@ -117,7 +117,7 @@ export function LogView({ report, slug, taps: initialTaps, booth = false, script
 
       <div className={`grid gap-12 ${booth ? "lg:grid-cols-[1fr_1.15fr] lg:gap-[4vw]" : "md:grid-cols-[1fr_1.1fr] md:gap-12"}`}>
         <section>
-          <h1 className={`font-light tracking-[-0.015em] text-ink-deep ${T.h1}`}>{headline(report, shownDoors)}</h1>
+          <h1 className={`font-light tracking-[-0.015em] text-ink-deep ${T.h1}`}>{headline(report, rankDoors(report.doors, taps))}</h1>
           {subline(report) && <p className={`mt-4 italic text-ink-500 ${T.why}`}>{subline(report)}</p>}
 
           <ol className={`${booth ? "mt-[5vh]" : "mt-12"} ${T.gap}`}>

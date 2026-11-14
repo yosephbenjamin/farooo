@@ -55,9 +55,11 @@ input::-webkit-calendar-picker-indicator { display: none !important; }
 @keyframes beam { 0%, 100% { opacity: .35; } 50% { opacity: 1; } }
 .beam { animation: beam 4s ease-in-out infinite; }
 @keyframes caret { 50% { opacity: 0; } }
+@keyframes sweep { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+.sweep { animation: sweep 5s linear infinite; }
 .caret::after { content: ""; display: inline-block; width: 0.06em; height: 0.9em; margin-left: 0.04em; background: currentColor; vertical-align: -0.08em; animation: caret 1s step-end infinite; }
 
 @media (prefers-reduced-motion: reduce) {
-  .beam, .caret::after { animation: none; }
+  .beam, .caret::after, .sweep { animation: none; }
   .window-lit-anim { animation-duration: 1ms; }
 }
