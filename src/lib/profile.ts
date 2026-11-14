@@ -183,3 +183,12 @@ export function filingFounding(pr: Profile): { date: string; source: RankedSourc
   const src = f.sources.find((s) => s.rank === "FILING");
   return src ? { date: f.date, source: src } : null;
 }
+
+/** "OURA HEALTH OY" -> "Oura Health", "Cerebras Systems Inc." -> "Cerebras Systems". Brand casing kept otherwise. */
+export function prettyName(name: string): string {
+  let n = name.replace(/\s*\((publ)\)$/i, "").trim();
+  n = n.replace(/[,\s]+(oy|oyj|ab|ky|ltd\.?|limited|inc\.?|a\/s|as|asa|aps|ehf|gmbh|llc|plc|s\.?a\.?|b\.?v\.?|ou|oü|uab|sia|holding ab|holdings?)$/i, "").trim();
+  n = n.replace(/\s+holding$/i, "").trim();
+  if (n && n === n.toUpperCase() && /[A-Z]{4,}/.test(n)) n = n.toLowerCase().replace(/\b([a-z])/g, (c) => c.toUpperCase()).replace(/\b(Ai|Io)\b/g, (w) => w.toUpperCase());
+  return n || name;
+}

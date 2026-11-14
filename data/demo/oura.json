@@ -124,6 +124,84 @@
   },
   "doors": [
     {
+      "id": "369e2dfb-44da-4676-b792-49a2cbd4688e",
+      "name": "atNorth",
+      "country": "Sweden",
+      "whyNow": {
+        "kind": "news",
+        "date": "2026-10-05",
+        "text": "is entering Finland",
+        "source": {
+          "name": "finance.yahoo.com",
+          "url": "https://finance.yahoo.com/technology/articles/atnorth-develop-data-center-salo-081800418.html",
+          "date": "2026-10-05",
+          "rank": null
+        }
+      },
+      "whyYou": [
+        {
+          "type": "customer",
+          "sentence": "Customer. A fintech company setting up in Finland will buy software, and you sell it there."
+        },
+        {
+          "type": "integration",
+          "sentence": "Integration. They build fintech, you build software: the two plug into the same stack."
+        }
+      ],
+      "slush": false,
+      "warm": [],
+      "people": [],
+      "xray": "https://www.google.com/search?q=site%3Alinkedin.com%2Fin%20%22atNorth%22%20(%22country%20manager%22%20OR%20%22head%20of%20operations%22%20OR%20procurement)%20Finland",
+      "entering": true
+    },
+    {
+      "id": "06bee415-d05a-47f3-8c14-8e6b779f8e1d",
+      "name": "Cerebras Systems",
+      "country": "United States",
+      "whyNow": {
+        "kind": "news",
+        "date": "2026-11-13",
+        "text": "is entering Finland",
+        "source": {
+          "name": "Stock Market News & Investing Research | The Motley Fool",
+          "url": "https://www.fool.com/earnings/call-transcripts/2026/11/13/cerebras-cbrs-q3-2026-earnings-call-transcript",
+          "date": "2026-11-13",
+          "rank": null
+        }
+      },
+      "whyYou": [
+        {
+          "type": "integration",
+          "sentence": "Integration. They build hardware, you build software: the two plug into the same stack."
+        },
+        {
+          "type": "distribution",
+          "sentence": "Distribution. They're new to Finland and sell hardware to the buyers you already reach."
+        }
+      ],
+      "slush": false,
+      "warm": [
+        {
+          "investor": "Atreides Management",
+          "led": false
+        }
+      ],
+      "people": [
+        {
+          "name": "Jean-Philippe Fricker",
+          "role": "CTO",
+          "since": null
+        },
+        {
+          "name": "Gary Lauterbach",
+          "role": "CTO",
+          "since": null
+        }
+      ],
+      "xray": "https://www.google.com/search?q=site%3Alinkedin.com%2Fin%20%22Cerebras%20Systems%22%20(partnerships%20OR%20%22head%20of%20product%22%20OR%20CTO)%20Finland",
+      "entering": true
+    },
+    {
       "id": "9fb29819-a62b-5d13-be35-67eeb5e534a1",
       "name": "Vensum",
       "country": "Finland",

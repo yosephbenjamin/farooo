@@ -5,6 +5,7 @@ import { buildReport, type DoorReport, type Pool } from "./doors";
 import { DATA_DIR, readJson, today } from "./data";
 import { normalizeCompany } from "./normalize";
 import { resolveByDomain, resolveByName, summarize } from "./identity";
+import { prettyName } from "./profile";
 import type { Dataset } from "./types";
 
 export function slugify(name: string) {
@@ -14,6 +15,8 @@ export function slugify(name: string) {
 export interface DemoStartup {
   name: string;
   slug: string;
+  /** Pinned Cala id: same-name companies exist ("Oura" in the US, "Verda" in the UK). */
+  calaId?: string;
   description: string;
 }
 
@@ -46,7 +49,8 @@ export async function getReport(name: string, opts: { forceLive?: boolean } = {}
   }
   const pool = loadPool();
   const ds = readJson<Dataset | null>("dataset.json", null);
-  const p = (await resolveByName(name, pool.profiles)) ?? (live() ? await resolveByName(name) : null);
+  const pinned = demoStartups().find((d) => d.slug === slug)?.calaId;
+  const p = (pinned ? pool.profiles[pinned] : null) ?? (await resolveByName(name, pool.profiles)) ?? (live() ? await resolveByName(name) : null);
   if (!p) return emptyReport(name.trim());
   const typed = name.trim();
   const display = normalizeCompany(typed) !== normalizeCompany(p.name) && typed.length < p.name.length ? typed : prettyName(p.name);
@@ -63,10 +67,4 @@ export async function getReportForEmail(email: string): Promise<DoorReport | nul
   return demo ?? buildReport(pool, summarize(p, ds, prettyName(p.name), "domain"), { now: today() });
 }
 
-/** "OURA HEALTH OY" -> "Oura Health"; brand casing kept otherwise. */
-export function prettyName(name: string): string {
-  let n = name.replace(/\s*\((publ)\)$/i, "").trim();
-  n = n.replace(/[,\s]+(oy|oyj|ab|ky|ltd\.?|limited|inc\.?|a\/s|as|asa|aps|gmbh|llc|plc|s\.?a\.?|b\.?v\.?|ou|oü|uab|sia)$/i, "").trim();
-  if (n && n === n.toUpperCase() && /[A-Z]{4,}/.test(n)) n = n.toLowerCase().replace(/\b([a-z])/g, (c) => c.toUpperCase()).replace(/\b(Ai|Io)\b/g, (w) => w.toUpperCase());
-  return n || name;
-}
+export { prettyName } from "./profile";

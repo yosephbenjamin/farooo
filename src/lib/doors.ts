@@ -15,7 +15,7 @@
 import { normalizeFund, normalizeCompany } from "./normalize";
 import { seedSlugForName } from "./seed";
 import { bestWhyYou, partnerTypes, PARTNER_TYPES, type PartnerType, type WhyYou } from "./partner";
-import type { Industry, Person, Profile, RankedSource } from "./profile";
+import { prettyName, type Industry, type Person, type Profile, type RankedSource } from "./profile";
 
 export const DAY = 86_400_000;
 /** A new national company counts as "entering" for this long after its registry founding date. */
@@ -238,7 +238,7 @@ export function buildReport(pool: Pool, startup: StartupSummary, opts: { now: st
     const people = [...(local?.people ?? []), ...(p?.people ?? [])].filter((x) => goodRole(x.role)).slice(0, 2);
     doors.set(e.doorId, {
       id: e.doorId,
-      name: p?.name ?? e.doorName,
+      name: prettyName(p?.name ?? e.doorName),
       country: p?.country ?? null,
       whyNow: {
         kind: e.kind === "subsidiary" ? "entry" : "news",
@@ -250,7 +250,7 @@ export function buildReport(pool: Pool, startup: StartupSummary, opts: { now: st
       slush: isSlush(p, e.doorId, e.local?.id) || isSlush(local),
       warm: warmOf(p, rs),
       people,
-      xray: xrayLink(p?.name ?? e.doorName, startup.country, whyYou[0].type),
+      xray: xrayLink(prettyName(p?.name ?? e.doorName), startup.country, whyYou[0].type),
       entering: true,
     });
   }
@@ -270,14 +270,14 @@ export function buildReport(pool: Pool, startup: StartupSummary, opts: { now: st
     if (!whyYou.length) continue;
     doors.set(r.companyId, {
       id: r.companyId,
-      name: p.name,
+      name: prettyName(p.name),
       country: p.country,
       whyNow: { kind: "round", date: r.date, text: roundText(r.label, r.amount, r.currency), source: src },
       whyYou,
       slush: isSlush(p, r.companyId),
       warm,
       people: p.people.filter((x) => goodRole(x.role)).slice(0, 2),
-      xray: xrayLink(p.name, p.country, whyYou[0].type),
+      xray: xrayLink(prettyName(p.name), p.country, whyYou[0].type),
       entering: false,
     });
   }

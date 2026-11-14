@@ -21,17 +21,29 @@ async function profilesFor(ids: string[]): Promise<Profile[]> {
   return out;
 }
 
-/** Profile from a name: exact (brand or legal) matches first, then the richest record. */
+/**
+ * Profile from a name. Exact names (brand, legal, alias) first; brand-prefixed legal names
+ * ("Oura" -> "OURA HEALTH OY") only when no exact record carries any data.
+ */
 export async function resolveByName(name: string, pool?: Record<string, Profile>): Promise<Profile | null> {
   const key = normalizeCompany(name);
+  const keysOf = (p: Profile) => [p.name, p.legalName ?? "", ...p.aliases].map(normalizeCompany);
+  const pick = (ps: Profile[]) => {
+    const exact = ps.filter((p) => keysOf(p).includes(key));
+    const useful = exact.filter((p) => p.industries.length || p.investors.length || p.website);
+    if (useful.length) return richest(useful);
+    const prefix = ps.filter((p) => keysOf(p).some((k) => k.startsWith(key + " ")));
+    return prefix.length ? richest(prefix) : exact.length ? richest(exact) : null;
+  };
   if (pool) {
-    const hit = Object.values(pool).filter((p) => [p.name, p.legalName ?? "", ...p.aliases].map(normalizeCompany).includes(key));
-    if (hit.length) return richest(hit);
+    const hit = pick(Object.values(pool));
+    if (hit) return hit;
   }
   const cands = await searchEntities(name, { types: ["Company"], limit: 10 }).catch(() => []);
-  const exact = cands.filter((c) => normalizeCompany(c.name) === key || normalizeCompany(c.name).startsWith(key + " "));
-  const profiles = await profilesFor(exact.slice(0, 3).map((c) => c.id));
-  return profiles.length ? richest(profiles) : null;
+  const exact = cands.filter((c) => normalizeCompany(c.name) === key);
+  const prefix = cands.filter((c) => normalizeCompany(c.name).startsWith(key + " "));
+  const profiles = await profilesFor([...exact, ...prefix].slice(0, 3).map((c) => c.id));
+  return pick(profiles);
 }
 
 /** Profile from an email domain: the company whose website or domains include it. */

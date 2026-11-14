@@ -1,5 +1,5 @@
 [
-  { "name": "Oura", "slug": "oura", "description": "Smart ring wearable that tracks sleep, activity and health." },
-  { "name": "Lovable", "slug": "lovable", "description": "AI app builder for developers and non-developers: describe software in plain words, get a working app." },
-  { "name": "Verda", "slug": "verda", "description": "AI cloud infrastructure on clean energy, built in Finland." }
+  { "name": "Oura", "slug": "oura", "calaId": "d7c6e39d-2577-418a-a1e4-cf38ff394543", "description": "Smart ring that tracks sleep, activity and health." },
+  { "name": "Lovable", "slug": "lovable", "calaId": "d6725096-d466-498d-9aa4-271f5983f4b8", "description": "AI app builder: describe software in plain words, get a working app." },
+  { "name": "Verda", "slug": "verda", "calaId": "3d3edba6-f4d7-432b-80d3-d07872e11def", "description": "AI cloud infrastructure on clean energy, built in Finland." }
 ]

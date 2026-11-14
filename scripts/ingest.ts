@@ -33,6 +33,10 @@ import type { Dataset } from "../src/lib/types";
 const SLUSH = "bc844d56-6ab4-452b-96bf-2661e86e592b";
 const MARKETS = new Set(["Finland", "Sweden", "Norway", "Denmark", "Iceland"]);
 const log = (...a: unknown[]) => console.log("[ingest]", ...a);
+const MARKET_WORDS: Record<string, string[]> = {
+  Finland: ["Finland", "Finnish", "Helsinki"], Sweden: ["Sweden", "Swedish", "Stockholm"], Norway: ["Norway", "Norwegian", "Oslo"],
+  Denmark: ["Denmark", "Danish", "Copenhagen"], "the Nordics": [],
+};
 
 const arg = (k: string) => process.argv.find((a) => a.startsWith(`--${k}=`))?.split("=")[1];
 const STAGES = new Set((arg("stage") ?? "users,rounds,news,slush").split(","));
@@ -94,7 +98,12 @@ const entries = new Map<string, MarketEntry>((prev?.entries ?? []).map((e) => [e
 const rounds = new Map<string, FreshRound>((prev?.rounds ?? []).map((r) => [r.id, r]));
 let slush: Pool["slush"] = prev?.slush ?? { ids: [], names: [] };
 
+/** Merge with what's on disk, so two stages running at once don't overwrite each other. */
 function save(stage: string) {
+  const disk = readJson<Pool | null>("pool.json", null);
+  for (const [id, p] of Object.entries(disk?.profiles ?? {})) if (!profiles[id]) profiles[id] = p;
+  for (const e of disk?.entries ?? []) if (!entries.has(e.id)) entries.set(e.id, e);
+  for (const r of disk?.rounds ?? []) if (!rounds.has(r.id)) rounds.set(r.id, r);
   const pool: Pool = { profiles, entries: [...entries.values()], rounds: [...rounds.values()], slush };
   writeJson("pool.json", pool);
   log(`saved after ${stage}: ${Object.keys(profiles).length} profiles, ${entries.size} entries, ${rounds.size} rounds${Number.isFinite(budget) ? `, budget left ${budget}` : ""}`);
@@ -179,7 +188,7 @@ async function main() {
   const users: Profile[] = [];
   if (STAGES.has("users")) {
     for (const d of demos) {
-      const p = await resolveByName(d.name);
+      const p = (d.calaId ? await profile(d.calaId) : null) ?? (await resolveByName(d.name));
       if (p) {
         profiles[p.id] = p;
         users.push(p);
@@ -256,6 +265,11 @@ async function main() {
       profiles[p.id] = p;
       const market = x?.market ?? c.market;
       if (p.country && market.toLowerCase().includes(p.country.toLowerCase())) { stats.local++; continue; }
+      // a same-brand company based in that market means the "entrant" is local (Netcompany A/S vs NETCOMPANY UK LIMITED)
+      const words = MARKET_WORDS[market] ?? [];
+      const bkey = normalizeCompany(company);
+      const sameBrand = ((await spend(() => searchEntities(company, { types: ["Company"], limit: 10 }))) ?? []).filter((e) => normalizeCompany(e.name) === bkey || normalizeCompany(e.name).startsWith(bkey + " "));
+      if (sameBrand.some((e) => words.some((w) => new RegExp(`\\b${w}\\b`, "i").test(e.description ?? "")))) { stats.local++; continue; }
       const id = createHash("sha256").update(`news|${p.id}|${market}|${date}`).digest("hex").slice(0, 16);
       entries.set(id, { id, kind: "news", doorId: p.id, doorName: p.name, local: null, market, date, source: { name: c.sourceName, url: c.url, date, rank: null }, match: "news" });
       stats.kept++;
@@ -299,7 +313,7 @@ async function main() {
 
   // summaries for the demo users, for a quick look
   for (const d of demos) {
-    const u = Object.values(profiles).find((p) => normalizeCompany(p.name) === normalizeCompany(d.name) || normalizeCompany(p.name).startsWith(normalizeCompany(d.name) + " "));
+    const u = (d.calaId && profiles[d.calaId]) || Object.values(profiles).find((p) => normalizeCompany(p.name) === normalizeCompany(d.name));
     if (u) log(`summary ${d.name}:`, JSON.stringify(summarize(u, ds, d.name)).slice(0, 300));
   }
   log(outOfCredit ? "stopped: out of credit" : "done");

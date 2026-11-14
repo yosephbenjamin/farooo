@@ -1,14 +1,14 @@
 {
-  "ranAt": "2026-11-14T08:13:17.031Z",
+  "ranAt": "2026-11-14T08:29:24.975Z",
   "now": "2026-11-14",
   "extraction": "heuristic",
   "stats": {
     "claims": 51,
-    "notEntry": 47,
-    "noDate": 4,
+    "notEntry": 41,
+    "noDate": 5,
     "old": 0,
     "unresolved": 0,
-    "local": 0,
-    "kept": 0
+    "local": 1,
+    "kept": 4
   }
 }
