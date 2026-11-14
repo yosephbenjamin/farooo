@@ -13,7 +13,11 @@ Built for Junction 2026, Cala challenge.
 1. **The question.** `/`: "Which startup are you?" One input, one hand-drawn lighthouse.
 2. **The log.** `/for/<startup>`: an editorial sentence ("Three doors opened for Pleo this month."), the doors as short prose with footnoted sources, a hand-drawn map of the startup, its investors and their doors as tiny windows (lit = opened), and a quiet Door Count line.
 
-Plus `/log`, which shows every alert exactly as it was emailed, and booth mode: `/for/<startup>?booth=1` (press space, or add `&auto=6000`, to watch a door open).
+Plus `/log`, which shows every alert exactly as it was emailed, and booth mode: `/for/<startup>?booth=1` (press space, or add `&auto=6000`, to watch a door open). `GET /api/doors/<startup>` returns the log as JSON; `gmail-addon/` shows it in the Gmail sidebar.
+
+## Data status
+
+The shipped data is real Cala data, but partial: Cala credit ran out (HTTP 402) during the first ingest. 29 of 30 seed funds resolved to 60 vehicles; 1,066 companies and 680 rounds are in. Company profiles weren't fetched, so most companies have no description or country. Every door shown still has a concrete date and a source URL. See `TODO.md` for the three commands that complete it once the balance is topped up.
 
 ## Run it
 

@@ -16,3 +16,11 @@ Choices made without stopping to ask. Newest last.
 12. **LLM is optional.** With `ANTHROPIC_API_KEY`, claim extraction and fit lines use Claude (`claude-opus-5-5`, low effort, server-side refusal fallback on). Without it, regex + a sector lexicon with complement pairs. No key was available while building, so the shipped data uses the heuristics.
 13. **Light only.** Cala's site has no dark theme; Faro matches it.
 14. **Single input on the question screen.** The short description the spec mentions comes from Cala (or the demo profile), not a second field: "one input" won.
+15. **Degrade, don't stop, on 402.** When Cala's balance ran out, the ingest switched to cache-only mode and builds minimal company records from what links and round descriptions already said. Nothing is invented; missing fields stay empty.
+16. **Sector evidence from source titles.** With most descriptions missing or boilerplate, the fit heuristic also reads the titles and URL slugs of round sources *about that company* (aggregators and roundups skipped). It's evidence for picking a sector, never shown as text.
+17. **A door's generic tags (AI, SaaS, data, consumer, marketing) never trigger a complement.** Too many companies mention AI; a complement needs a specific sector on the door's side.
+18. **Demo startups: Oura, Lovable, Verda.** Real Nordic companies backed by seed funds (Lifeline + Tesi; byFounders + Creandum + Balderton + Antler; Lifeline + byFounders + J12 + Tesi), with several dated, sourced doors each. Their reports are frozen at `FARO_NOW=2026-11-14`.
+19. **The scripted moment holds back the newest opened door** (Vensum for Verda and Oura) and reveals it on space, a click on "watch", or after `&auto=` ms.
+20. **The map: investors as buildings, doors as windows.** Easier to read than a force graph at booth distance, and it fits the lighthouse metaphor. Up to 25 windows per building, lit first.
+21. **Typed name wins for display.** "Oura" resolves to Cala's "OURA HEALTH OY" but reads as "Oura".
+22. **Gmail add-on is a thin card** over `/api/doors/<startup>`; not tested in a live Gmail account.

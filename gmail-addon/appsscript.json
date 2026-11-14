@@ -1,0 +1,18 @@
+{
+  "timeZone": "Europe/Helsinki",
+  "runtimeVersion": "V8",
+  "oauthScopes": [
+    "https://www.googleapis.com/auth/gmail.addons.execute",
+    "https://www.googleapis.com/auth/script.external_request",
+    "https://www.googleapis.com/auth/script.storage"
+  ],
+  "urlFetchWhitelist": ["https://"],
+  "addOns": {
+    "common": {
+      "name": "Faro",
+      "logoUrl": "https://raw.githubusercontent.com/yosephbenjamin/farooo/main/gmail-addon/lighthouse.png",
+      "homepageTrigger": { "runFunction": "onHomepage" }
+    },
+    "gmail": {}
+  }
+}

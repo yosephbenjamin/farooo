@@ -1,0 +1,164 @@
+[
+  {
+    "id": "oura-2026-11-14-9fb298b7226c75c3973d3edb49fb96",
+    "createdAt": "2026-11-14T00:58:24.919Z",
+    "startup": {
+      "name": "Oura",
+      "slug": "oura"
+    },
+    "to": null,
+    "subject": "The lighthouse saw something",
+    "headline": "Three doors opened for Oura this month.",
+    "entries": [
+      {
+        "companyId": "9fb29819-a62b-5d13-be35-67eeb5e534a1",
+        "name": "Vensum",
+        "lead": "Vensum raised a €9M Series A.",
+        "why": "Vensum works on power; your devices draw it. Through Lifeline Ventures.",
+        "date": "2026-11-06",
+        "sourceName": "tech.eu",
+        "sourceUrl": "https://tech.eu/2026/11/06/vensum-power-raises-eur9m-to-cut-power-losses-in-ai-data-centres-ev-charging-and-energy-storage//"
+      },
+      {
+        "companyId": "b7226c97-3a44-5176-8544-cb91246b2249",
+        "name": "Kova Labs",
+        "lead": "Kova Labs closed a pre-seed round.",
+        "why": "Through Lifeline Ventures.",
+        "date": "2026-11-04",
+        "sourceName": "resiliencemedia.co",
+        "sourceUrl": "https://resiliencemedia.co/kova-labs-bets-on-low-cost-autonomy-for-europes-forested-battlefields/"
+      },
+      {
+        "companyId": "75c397bb-0819-5178-b96b-630417e6bb9e",
+        "name": "Ambio",
+        "lead": "Ambio raised a €5.1M seed round.",
+        "why": "Ambio works in industry, where hardware like yours earns its keep. Through Lifeline Ventures.",
+        "date": "2026-10-14",
+        "sourceName": "eu-startups.com",
+        "sourceUrl": "https://www.eu-startups.com/2026/10/helsinkis-ambio-raises-e5-1-million-to-scale-its-ai-powered-recycled-plastics-procurement-platform/"
+      },
+      {
+        "companyId": "3d3edba6-f4d7-432b-80d3-d07872e11def",
+        "name": "Verda",
+        "lead": "Verda raised a $189M Series B.",
+        "why": "Verda works on power; your devices draw it. Through Lifeline Ventures and Tesi.",
+        "date": "2026-09-22",
+        "sourceName": "eu-startups.com",
+        "sourceUrl": "https://www.eu-startups.com/2026/09/helsinkis-verda-becomes-europes-latest-unicorn-after-raising-e164-8-million-to-scale-its-full-stack-ai-cloud/"
+      },
+      {
+        "companyId": "49fb961a-7281-5f17-94be-5e0c1720d2d5",
+        "name": "S-Transistors",
+        "lead": "S-Transistors raised a €2.6M pre-seed round.",
+        "why": "S-Transistors builds the kind of hardware that ends up in health devices. Through Lifeline Ventures.",
+        "date": "2026-08-31",
+        "sourceName": "eu-startups.com",
+        "sourceUrl": "https://www.eu-startups.com/2026/08/finlands-s-transistors-raises-e2-6-million-to-build-the-worlds-first-quantum-motherboard/"
+      }
+    ],
+    "doorCount": "Lifeline Ventures 14  ·  Tesi 4",
+    "delivery": "log-only"
+  },
+  {
+    "id": "lovable-2026-11-14-fc9b463d3edb942377",
+    "createdAt": "2026-11-14T00:58:24.919Z",
+    "startup": {
+      "name": "Lovable",
+      "slug": "lovable"
+    },
+    "to": null,
+    "subject": "The lighthouse saw something",
+    "headline": "Three doors opened for Lovable since August.",
+    "entries": [
+      {
+        "companyId": "fc9b463a-a6db-41e7-ba8c-b94e51a163e3",
+        "name": "Causa Prima",
+        "lead": "Causa Prima raised a $20M seed round.",
+        "why": "Causa Prima handles billing; the apps your users build will need it. Through Creandum.",
+        "date": "2026-10-13",
+        "sourceName": "fortune.com",
+        "sourceUrl": "https://fortune.com/2026/10/13/startup-causa-prima-20-million-billing-disputes-ai-agents/"
+      },
+      {
+        "companyId": "3d3edba6-f4d7-432b-80d3-d07872e11def",
+        "name": "Verda",
+        "lead": "Verda raised a $189M Series B.",
+        "why": "Verda builds the tools your engineers use. Through byFounders.",
+        "date": "2026-09-22",
+        "sourceName": "eu-startups.com",
+        "sourceUrl": "https://www.eu-startups.com/2026/09/helsinkis-verda-becomes-europes-latest-unicorn-after-raising-e164-8-million-to-scale-its-full-stack-ai-cloud/"
+      },
+      {
+        "companyId": "9423779d-819b-46ac-bf29-a5edb6b2553f",
+        "name": "Olix",
+        "lead": "Olix raised a $317M Series B.",
+        "why": "Through Creandum.",
+        "date": "2026-08-03",
+        "sourceName": "techcrunch.com",
+        "sourceUrl": "https://techcrunch.com/2026/08/09/this-former-notorious-red-light-district-is-now-one-of-the-worlds-top-ai-hubs"
+      }
+    ],
+    "doorCount": "Balderton Capital 18  ·  Creandum 11  ·  Antler 1  ·  byFounders 1",
+    "delivery": "log-only"
+  },
+  {
+    "id": "verda-2026-11-14-9fb298b7226c75c39749fb9689d3a4",
+    "createdAt": "2026-11-14T00:58:24.919Z",
+    "startup": {
+      "name": "Verda",
+      "slug": "verda"
+    },
+    "to": null,
+    "subject": "The lighthouse saw something",
+    "headline": "Three doors opened for Verda this month.",
+    "entries": [
+      {
+        "companyId": "9fb29819-a62b-5d13-be35-67eeb5e534a1",
+        "name": "Vensum",
+        "lead": "Vensum raised a €9M Series A.",
+        "why": "Vensum runs on electricity; you make or manage it. Through Lifeline Ventures.",
+        "date": "2026-11-06",
+        "sourceName": "tech.eu",
+        "sourceUrl": "https://tech.eu/2026/11/06/vensum-power-raises-eur9m-to-cut-power-losses-in-ai-data-centres-ev-charging-and-energy-storage//"
+      },
+      {
+        "companyId": "b7226c97-3a44-5176-8544-cb91246b2249",
+        "name": "Kova Labs",
+        "lead": "Kova Labs closed a pre-seed round.",
+        "why": "Through Lifeline Ventures.",
+        "date": "2026-11-04",
+        "sourceName": "resiliencemedia.co",
+        "sourceUrl": "https://resiliencemedia.co/kova-labs-bets-on-low-cost-autonomy-for-europes-forested-battlefields/"
+      },
+      {
+        "companyId": "75c397bb-0819-5178-b96b-630417e6bb9e",
+        "name": "Ambio",
+        "lead": "Ambio raised a €5.1M seed round.",
+        "why": "Ambio serves industry, and industry is hungry for cleaner power. Through Lifeline Ventures.",
+        "date": "2026-10-14",
+        "sourceName": "eu-startups.com",
+        "sourceUrl": "https://www.eu-startups.com/2026/10/helsinkis-ambio-raises-e5-1-million-to-scale-its-ai-powered-recycled-plastics-procurement-platform/"
+      },
+      {
+        "companyId": "49fb961a-7281-5f17-94be-5e0c1720d2d5",
+        "name": "S-Transistors",
+        "lead": "S-Transistors raised a €2.6M pre-seed round.",
+        "why": "S-Transistors builds hardware that lives on efficient power. Through Lifeline Ventures.",
+        "date": "2026-08-31",
+        "sourceName": "eu-startups.com",
+        "sourceUrl": "https://www.eu-startups.com/2026/08/finlands-s-transistors-raises-e2-6-million-to-build-the-worlds-first-quantum-motherboard/"
+      },
+      {
+        "companyId": "89d3a43c-fee4-4491-853e-a216cbef6c50",
+        "name": "Lovable",
+        "lead": "Lovable raised a $400M Series C.",
+        "why": "Lovable also builds in developer tools: shared customers, shared lessons. Through byFounders.",
+        "date": "2026-08-12",
+        "sourceName": "techcrunch.com",
+        "sourceUrl": "https://techcrunch.com/2026/08/12/lovable-confirms-new-13-3b-valuation-raises-another-400m"
+      }
+    ],
+    "doorCount": "Lifeline Ventures 17  ·  Tesi 9  ·  byFounders 3  ·  J12 Ventures 1",
+    "delivery": "log-only"
+  }
+]

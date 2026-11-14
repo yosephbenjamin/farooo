@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Lighthouse } from "@/components/Lighthouse";
 import { readJson } from "@/lib/data";
 import { renderAlertFragment, type Alert } from "@/lib/email";
+import { numWord } from "@/lib/prose";
 
 export const dynamic = "force-dynamic";
 export const metadata = { title: "Sent · Faro" };
@@ -17,7 +18,7 @@ export default function SentLog() {
         </Link>
       </header>
       <h1 className="text-[clamp(32px,4.5vw,52px)] font-light leading-[1.08] tracking-[-0.015em] text-ink-deep">
-        {alerts.length ? `${alerts.length === 1 ? "One signal" : `${alerts.length} signals`} sent.` : "Nothing sent yet."}
+        {alerts.length ? `${numWord(alerts.length)} ${alerts.length === 1 ? "signal" : "signals"} sent.` : "Nothing sent yet."}
       </h1>
       <p className="mt-3 italic text-ink-500 text-[18px]">Each one exactly as it reached the inbox.</p>
       <div className="mt-14 space-y-16">
