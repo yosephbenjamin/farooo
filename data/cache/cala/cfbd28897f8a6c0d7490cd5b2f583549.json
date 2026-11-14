@@ -1,0 +1,1 @@
+{"method":"GET","path":"/v1/entities?name=SWIFTROBOTICS&entity_types=Company&limit=10","body":null,"fetchedAt":"2026-11-14T10:02:12.142Z","response":{"entities":[{"id":"f792db7d-1e59-4436-bd2f-91f28b23288e","name":"SWIFTROBOTICS LIMITED","entity_type":"Company","description":"A physical and AI companionship for elderly"}]}}

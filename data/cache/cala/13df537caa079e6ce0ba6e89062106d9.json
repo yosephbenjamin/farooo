@@ -1,0 +1,1 @@
+{"method":"GET","path":"/v1/entities?name=M.ID&entity_types=Company&limit=10","body":null,"fetchedAt":"2026-11-14T10:27:48.632Z","response":{"entities":[{"id":"0bd462fb-f492-5517-b80d-ae68ac2eb6b6","name":"M.ID","entity_type":"Company","description":"Digital identity record for horses: identity, health, daily care and performance history"}]}}

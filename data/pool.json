@@ -16495,6 +16495,37 @@
       "slush": true,
       "people": [],
       "parents": []
+    },
+    "cbee48bc-9de4-4a3b-99dc-90baa9c8166c": {
+      "id": "cbee48bc-9de4-4a3b-99dc-90baa9c8166c",
+      "name": "Nanzen AB",
+      "legalName": "Nanzen AB",
+      "aliases": [],
+      "website": null,
+      "domains": [],
+      "description": "Swedish company headquartered in Solna, founded in 2025.",
+      "industries": [],
+      "country": "Sweden",
+      "hqAddress": "Gustafsvägen 3 Lgh 1204, SOLNA, 169 58, SE",
+      "founding": {
+        "date": "2025-03-20",
+        "precision": null,
+        "sources": [
+          {
+            "name": "GLEIF",
+            "url": "https://search.gleif.org/#/record/984500C4C707I9EB8708",
+            "date": "2026-07-14",
+            "rank": "FILING"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": null,
+      "investors": [],
+      "fundingRounds": [],
+      "slush": false,
+      "people": [],
+      "parents": []
     }
   },
   "entries": [

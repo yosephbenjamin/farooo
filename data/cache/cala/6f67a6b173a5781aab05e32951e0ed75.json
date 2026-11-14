@@ -1,0 +1,1 @@
+{"method":"GET","path":"/v1/entities?name=Workfluencer.ai&entity_types=Company&limit=10","body":null,"fetchedAt":"2026-11-14T10:20:16.897Z","response":{"entities":[{"id":"e2d7fc90-b39c-501f-a128-2e0874fb279d","name":"Workfluencer.ai","entity_type":"Company","description":"Plateforme IA + agent proactif + accompagnement pour transformer l"}]}}

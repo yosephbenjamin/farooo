@@ -1,0 +1,1 @@
+{"method":"GET","path":"/v1/entities?name=u012&entity_types=Company&limit=10","body":null,"fetchedAt":"2026-11-14T10:45:34.909Z","response":{"entities":[{"id":"1e192291-c310-5743-9fe3-f0efa5356a9f","name":"u012 Inc.","entity_type":"Company","description":"u012 Inc. engineers Web3-native fintech infrastructure with institutional-grade decentralized protocols."}]}}

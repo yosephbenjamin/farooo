@@ -1,0 +1,1 @@
+{"method":"GET","path":"/v1/entities?name=Photoncycle&entity_types=Company&limit=10","body":null,"fetchedAt":"2026-11-14T10:00:41.039Z","response":{"entities":[{"id":"d5f8974b-7765-44f7-afc6-6f1767b8bad0","name":"Photoncycle","entity_type":"Company","description":"The year-round solar energy system for heating and electricity"}]}}
