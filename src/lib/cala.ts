@@ -69,9 +69,12 @@ async function readCache(key: string): Promise<unknown | undefined> {
 }
 
 async function writeCache(key: string, method: string, p: string, body: unknown, response: unknown) {
-  await mkdir(CACHE_DIR, { recursive: true });
-  const record = { method, path: p, body: body ?? null, fetchedAt: new Date().toISOString(), response };
-  await writeFile(path.join(CACHE_DIR, `${key}.json`), JSON.stringify(record));
+  // best effort: a read-only filesystem (serverless) must not turn a good answer into an error
+  try {
+    await mkdir(CACHE_DIR, { recursive: true });
+    const record = { method, path: p, body: body ?? null, fetchedAt: new Date().toISOString(), response };
+    await writeFile(path.join(CACHE_DIR, `${key}.json`), JSON.stringify(record));
+  } catch {}
 }
 
 /** What this process actually sent to Cala (cache hits excluded): for credit reports. */
