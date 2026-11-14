@@ -63,9 +63,16 @@ assert.equal(r.doors.length, 2, "p3 has no industry: no real reason, dropped");
 const ranked = rankDoors(r.doors, parseTaps(null));
 assert.equal(ranked[0].id, "p1");
 assert.equal(tierOf(ranked[0]), 1);
-assert.equal(tierOf(ranked[1]), 3);
-assert.equal(tierOf({ ...ranked[0], slush: false }), 2, "entry + warm path beats entry + event");
-assert.equal(tierOf({ ...ranked[0], warm: [] }), 3, "entry + event alone is plain entry");
+assert.equal(tierOf(ranked[1]), 2);
+assert.equal(tierOf({ ...ranked[0], slush: false }), 1, "Slush is a boost, not a tier");
+assert.equal(tierOf({ ...ranked[0], warm: [] }), 2, "no warm path: tier 2, Slush or not");
+{
+  const base0 = { ...ranked[1], warm: [], giant: false };
+  const a = { ...base0, id: "a", slush: false, whyNow: { ...base0.whyNow, date: "2026-11-10" } };
+  const b = { ...base0, id: "b", slush: true, whyNow: { ...base0.whyNow, date: "2026-10-01" } };
+  assert.equal(rankDoors([a, b], NO_TAPS)[0].id, "b", "Slush boosts within a tier");
+  assert.equal(rankDoors([a, { ...b, warm: [] }, { ...a, id: "c", warm: [{ investor: "X", led: false }], slush: false }], NO_TAPS)[0].id, "c", "a warm path beats Slush");
+}
 const fl = firstLook(r.doors);
 assert.equal(new Set(fl.map((x) => x.type)).size, fl.length, "first look: different partnership types");
 const tapped = applyTap(parseTaps(null), "customer", "notnow", "p2");
@@ -152,7 +159,7 @@ const sr = buildReport(sigPool, { id: "me", name: "Me", country: "Finland", indu
 const sranked = rankDoors(sr.doors, NO_TAPS);
 assert.equal(sranked.length, 3);
 assert.equal(sranked[0].id, "m1", "no giants as headlines: the listed bank (newer) doesn't lead");
-assert.equal(tierOf(sranked.find((d) => d.id === "m1")!), 2, "a reason + warm path");
-assert.equal(tierOf(sranked.find((d) => d.id === "h1")!), 4, "a reason without a warm path");
+assert.equal(tierOf(sranked.find((d) => d.id === "m1")!), 1, "a reason + warm path");
+assert.equal(tierOf(sranked.find((d) => d.id === "h1")!), 2, "a reason without a warm path");
 assert.equal(sranked.find((d) => d.id === "h1")!.whyNow.text, "named Ada L CTO", "old executives are outside the window");
 console.log("selftest ok");

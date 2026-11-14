@@ -1,47 +1,31 @@
 {
   "now": "2026-11-14",
   "startup": {
-    "id": "c50873cf-a1e6-5c47-a1b8-aba71d38edbd",
-    "name": "Dalip",
-    "country": "Norway",
+    "id": "a2617168-a113-4849-8fdd-ca88fd98cb5e",
+    "name": "Measur",
+    "country": "Finland",
     "industries": [
       {
         "code": "SOFTWARE_AND_SERVICES",
-        "label": "ai"
+        "label": "somethingElse"
       }
     ],
     "investors": [
       {
-        "key": "kjetil-j-olsen",
-        "name": "Kjetil J. Olsen"
+        "key": "lifeline-ventures",
+        "name": "Lifeline Ventures"
       },
       {
-        "key": "christoffer-o-hern-s",
-        "name": "Christoffer O. Hernæs"
+        "key": "curus",
+        "name": "Curus AB"
       },
       {
-        "key": "israr-khan",
-        "name": "ISRAR KHAN LTD"
+        "key": "venturefriends",
+        "name": "VentureFriends"
       },
       {
-        "key": "eivind-skibenes",
-        "name": "Eivind Skibenes"
-      },
-      {
-        "key": "trond-riiber-knudsen",
-        "name": "Trond Riiber Knudsen"
-      },
-      {
-        "key": "fredrik-campbell-str-mme",
-        "name": "Fredrik Campbell Strømme"
-      },
-      {
-        "key": "tore-sagstuen",
-        "name": "Tore Sagstuen"
-      },
-      {
-        "key": "sophus-slaatta",
-        "name": "Sophus Slaatta"
+        "key": "tesi",
+        "name": "Tesi"
       }
     ],
     "resolvedFrom": "cala"
@@ -53,35 +37,79 @@
       "country": "Sweden",
       "whyNow": {
         "kind": "news",
-        "date": "2026-06-09",
-        "text": "is entering Norway",
+        "date": "2026-10-05",
+        "text": "is entering Finland",
         "source": {
           "name": "finance.yahoo.com",
-          "url": "https://finance.yahoo.com/sectors/technology/articles/atnorth-joins-norwegian-data-center-073000144.html",
-          "date": "2026-06-09",
+          "url": "https://finance.yahoo.com/technology/articles/atnorth-develop-data-center-salo-081800418.html",
+          "date": "2026-10-05",
           "rank": null
         }
       },
       "whyYou": [
         {
           "type": "integration",
-          "sentence": "Integration. They build data centres, you build AI software: the two plug into the same stack."
+          "sentence": "Integration. They build data centres, you build software: the two plug into the same stack."
         },
         {
           "type": "distribution",
-          "sentence": "Distribution. They're new to Norway and sell data centres to the buyers you already reach."
+          "sentence": "Distribution. They're new to Finland and sell data centres to the buyers you already reach."
         }
       ],
       "slush": false,
       "warm": [],
       "people": [],
-      "xray": "https://www.google.com/search?q=site%3Alinkedin.com%2Fin%20%22atNorth%22%20(partnerships%20OR%20%22head%20of%20product%22%20OR%20CTO)%20Norway",
+      "xray": "https://www.google.com/search?q=site%3Alinkedin.com%2Fin%20%22atNorth%22%20(partnerships%20OR%20%22head%20of%20product%22%20OR%20CTO)%20Finland",
       "entering": true,
       "industryNote": {
         "coded": "fintech",
         "read": "data centres"
       },
       "giant": false
+    },
+    {
+      "id": "06bee415-d05a-47f3-8c14-8e6b779f8e1d",
+      "name": "Cerebras Systems",
+      "country": "United States",
+      "whyNow": {
+        "kind": "news",
+        "date": "2026-11-13",
+        "text": "is entering Finland",
+        "source": {
+          "name": "Stock Market News & Investing Research | The Motley Fool",
+          "url": "https://www.fool.com/earnings/call-transcripts/2026/11/13/cerebras-cbrs-q3-2026-earnings-call-transcript",
+          "date": "2026-11-13",
+          "rank": null
+        }
+      },
+      "whyYou": [
+        {
+          "type": "integration",
+          "sentence": "Integration. You both build software: the products plug into the same stack."
+        },
+        {
+          "type": "distribution",
+          "sentence": "Distribution. They're new to Finland and sell software to the buyers you already reach."
+        }
+      ],
+      "slush": false,
+      "warm": [],
+      "people": [
+        {
+          "name": "Jean-Philippe Fricker",
+          "role": "CTO",
+          "since": null
+        },
+        {
+          "name": "Gary Lauterbach",
+          "role": "CTO",
+          "since": null
+        }
+      ],
+      "xray": "https://www.google.com/search?q=site%3Alinkedin.com%2Fin%20%22Cerebras%20Systems%22%20(partnerships%20OR%20%22head%20of%20product%22%20OR%20CTO)%20Finland",
+      "entering": true,
+      "industryNote": null,
+      "giant": true
     },
     {
       "id": "9fb29819-a62b-5d13-be35-67eeb5e534a1",
@@ -101,11 +129,16 @@
       "whyYou": [
         {
           "type": "customer",
-          "sentence": "Customer. An energy company with fresh money is a buyer of AI software."
+          "sentence": "Customer. An energy company with fresh money is a buyer of software."
         }
       ],
       "slush": true,
-      "warm": [],
+      "warm": [
+        {
+          "investor": "Lifeline Ventures",
+          "led": true
+        }
+      ],
       "people": [],
       "xray": "https://www.google.com/search?q=site%3Alinkedin.com%2Fin%20%22Vensum%22%20(%22country%20manager%22%20OR%20%22head%20of%20operations%22%20OR%20procurement)%20Finland",
       "entering": false,
@@ -130,7 +163,7 @@
       "whyYou": [
         {
           "type": "customer",
-          "sentence": "Customer. A food company with fresh money is a buyer of AI software."
+          "sentence": "Customer. A food company with fresh money is a buyer of software."
         }
       ],
       "slush": true,
@@ -170,11 +203,16 @@
       "whyYou": [
         {
           "type": "customer",
-          "sentence": "Customer. A manufacturing materials company with fresh money is a buyer of AI software."
+          "sentence": "Customer. A manufacturing materials company with fresh money is a buyer of software."
         }
       ],
       "slush": false,
-      "warm": [],
+      "warm": [
+        {
+          "investor": "Lifeline Ventures",
+          "led": false
+        }
+      ],
       "people": [
         {
           "name": "Tommi Bergström",
@@ -210,11 +248,11 @@
       "whyYou": [
         {
           "type": "customer",
-          "sentence": "Customer. A fintech company with fresh money is a buyer of AI software."
+          "sentence": "Customer. A fintech company with fresh money is a buyer of software."
         },
         {
           "type": "integration",
-          "sentence": "Integration. They build fintech, you build AI software: the two plug into the same stack."
+          "sentence": "Integration. They build fintech, you build software: the two plug into the same stack."
         }
       ],
       "slush": true,
@@ -254,11 +292,11 @@
       "whyYou": [
         {
           "type": "customer",
-          "sentence": "Customer. A consulting company with fresh money is a buyer of AI software."
+          "sentence": "Customer. A consulting company with fresh money is a buyer of software."
         },
         {
           "type": "integration",
-          "sentence": "Integration. They build software, you build AI software: the two plug into the same stack."
+          "sentence": "Integration. You both build software: the products plug into the same stack."
         }
       ],
       "slush": true,
@@ -298,11 +336,20 @@
       "whyYou": [
         {
           "type": "integration",
-          "sentence": "Integration. They build software, you build AI software: the two plug into the same stack."
+          "sentence": "Integration. You both build software: the products plug into the same stack."
         }
       ],
       "slush": true,
-      "warm": [],
+      "warm": [
+        {
+          "investor": "Lifeline Ventures",
+          "led": false
+        },
+        {
+          "investor": "Tesi",
+          "led": false
+        }
+      ],
       "people": [
         {
           "name": "Ruben Bryon",
@@ -338,42 +385,18 @@
       "whyYou": [
         {
           "type": "integration",
-          "sentence": "Integration. They build networks, you build AI software: the two plug into the same stack."
+          "sentence": "Integration. They build networks, you build software: the two plug into the same stack."
         }
       ],
       "slush": true,
-      "warm": [],
-      "people": [],
-      "xray": "https://www.google.com/search?q=site%3Alinkedin.com%2Fin%20%22S-Transistors%22%20(partnerships%20OR%20%22head%20of%20product%22%20OR%20CTO)%20Finland",
-      "entering": false,
-      "industryNote": null,
-      "giant": false
-    },
-    {
-      "id": "7485476c-8d4b-4921-9330-45f893b9b5ca",
-      "name": "Guideless",
-      "country": "Lithuania",
-      "whyNow": {
-        "kind": "round",
-        "date": "2026-08-20",
-        "text": "raised a $1.2M pre-seed round",
-        "source": {
-          "name": "tracxn.com",
-          "url": "https://tracxn.com/d/companies/guideless/__epV-RlmN-lBsarJQBnkiVpO8s_KmWqsJxe7oE4Xzbcs",
-          "date": "2026-08-25",
-          "rank": null
-        }
-      },
-      "whyYou": [
+      "warm": [
         {
-          "type": "integration",
-          "sentence": "Integration. They build software, you build AI software: the two plug into the same stack."
+          "investor": "Lifeline Ventures",
+          "led": true
         }
       ],
-      "slush": false,
-      "warm": [],
       "people": [],
-      "xray": "https://www.google.com/search?q=site%3Alinkedin.com%2Fin%20%22Guideless%22%20(partnerships%20OR%20%22head%20of%20product%22%20OR%20CTO)%20Lithuania",
+      "xray": "https://www.google.com/search?q=site%3Alinkedin.com%2Fin%20%22S-Transistors%22%20(partnerships%20OR%20%22head%20of%20product%22%20OR%20CTO)%20Finland",
       "entering": false,
       "industryNote": null,
       "giant": false
@@ -396,7 +419,7 @@
       "whyYou": [
         {
           "type": "integration",
-          "sentence": "Integration. They build software, you build AI software: the two plug into the same stack."
+          "sentence": "Integration. You both build software: the products plug into the same stack."
         }
       ],
       "slush": true,
@@ -436,7 +459,7 @@
       "whyYou": [
         {
           "type": "integration",
-          "sentence": "Integration. They build software, you build AI software: the two plug into the same stack."
+          "sentence": "Integration. You both build software: the products plug into the same stack."
         }
       ],
       "slush": false,
@@ -465,50 +488,17 @@
       "whyYou": [
         {
           "type": "customer",
-          "sentence": "Customer. A construction company with fresh money is a buyer of AI software."
+          "sentence": "Customer. A construction company with fresh money is a buyer of software."
         },
         {
           "type": "integration",
-          "sentence": "Integration. They build software, you build AI software: the two plug into the same stack."
+          "sentence": "Integration. You both build software: the products plug into the same stack."
         }
       ],
       "slush": false,
       "warm": [],
       "people": [],
       "xray": "https://www.google.com/search?q=site%3Alinkedin.com%2Fin%20%22Birdsview%22%20(%22country%20manager%22%20OR%20%22head%20of%20operations%22%20OR%20procurement)%20Norway",
-      "entering": false,
-      "industryNote": null,
-      "giant": false
-    },
-    {
-      "id": "557bf741-7119-4d18-a4b0-fe77cb30f351",
-      "name": "Sigvi",
-      "country": "Lithuania",
-      "whyNow": {
-        "kind": "round",
-        "date": "2026-07-29",
-        "text": "raised a $1.4M seed round",
-        "source": {
-          "name": "tracxn.com",
-          "url": "https://tracxn.com/d/venture-capital/superhero-capital/__0ojhXzhdsNMZ52CC2oC7DgYOy87dBNaBhc3wM7vIRus",
-          "date": "2026-08-25",
-          "rank": null
-        }
-      },
-      "whyYou": [
-        {
-          "type": "customer",
-          "sentence": "Customer. A transport and logistics company with fresh money is a buyer of AI software."
-        },
-        {
-          "type": "integration",
-          "sentence": "Integration. They build software, you build AI software: the two plug into the same stack."
-        }
-      ],
-      "slush": false,
-      "warm": [],
-      "people": [],
-      "xray": "https://www.google.com/search?q=site%3Alinkedin.com%2Fin%20%22Sigvi%22%20(%22country%20manager%22%20OR%20%22head%20of%20operations%22%20OR%20procurement)%20Lithuania",
       "entering": false,
       "industryNote": null,
       "giant": false
@@ -531,7 +521,7 @@
       "whyYou": [
         {
           "type": "integration",
-          "sentence": "Integration. They build software, you build AI software: the two plug into the same stack."
+          "sentence": "Integration. You both build software: the products plug into the same stack."
         }
       ],
       "slush": true,
@@ -571,7 +561,7 @@
       "whyYou": [
         {
           "type": "integration",
-          "sentence": "Integration. They build online marketplaces, you build AI software: the two plug into the same stack."
+          "sentence": "Integration. They build online marketplaces, you build software: the two plug into the same stack."
         }
       ],
       "slush": true,
@@ -611,11 +601,11 @@
       "whyYou": [
         {
           "type": "customer",
-          "sentence": "Customer. A sports company that's growing its team is a buyer of AI software."
+          "sentence": "Customer. A sports company that's growing its team is a buyer of software."
         },
         {
           "type": "integration",
-          "sentence": "Integration. They build software, you build AI software: the two plug into the same stack."
+          "sentence": "Integration. You both build software: the products plug into the same stack."
         }
       ],
       "slush": true,

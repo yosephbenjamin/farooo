@@ -141,7 +141,7 @@ export function partnerTypes(m: MatchInput): WhyYou[] {
         });
       }
       if (!has("integration") && INTEGRATES.some(([x, y]) => x === us && y === dsec)) {
-        out.push({ type: "integration", sentence: `Integration. They build ${dw}, you build ${uw}: the two plug into the same stack.` });
+        out.push({ type: "integration", sentence: dw === uw ? `Integration. You both build ${uw}: the products plug into the same stack.` : `Integration. They build ${dw}, you build ${uw}: the two plug into the same stack.` });
       }
       if (!has("distribution") && m.entering && us === dsec && m.you.country && m.door.country && m.door.country !== m.you.country) {
         out.push({ type: "distribution", sentence: `Distribution. They're new to ${where} and sell ${dw} to the buyers you already reach.` });

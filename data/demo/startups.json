@@ -1,5 +1,5 @@
 [
-  { "name": "Distance Technologies", "slug": "distance-technologies", "calaId": "88917971-7acd-5977-b108-0ef6fa5ce36e", "description": "Mixed-reality displays from Helsinki, seed stage." },
-  { "name": "Dalip", "slug": "dalip", "calaId": "c50873cf-a1e6-5c47-a1b8-aba71d38edbd", "description": "AI software from Oslo, pre-seed." },
-  { "name": "RiACT", "slug": "riact", "calaId": "17713367-624b-5b2d-a655-b616b48cf774", "description": "Software for robots: a real-time platform for building flexible robot applications, from Denmark." }
+  {"name": "Distance Technologies", "slug": "distance-technologies", "calaId": "88917971-7acd-5977-b108-0ef6fa5ce36e", "description": "Mixed-reality displays from Helsinki, seed stage."},
+  {"name": "Measur", "slug": "measur", "calaId": "a2617168-a113-4849-8fdd-ca88fd98cb5e", "description": "Materials and product testing as a service, from Finland, seed stage."},
+  {"name": "RiACT", "slug": "riact", "calaId": "17713367-624b-5b2d-a655-b616b48cf774", "description": "Software for robots: a real-time platform for building flexible robot applications, from Denmark."}
 ]

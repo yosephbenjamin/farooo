@@ -9,7 +9,7 @@
 | N3 Door engine v2 | done | five parts, tiers, taps, first look; codes that contradict the description → read from the description, marked † uncertain (atNorth); self-tested |
 | N4 Web log v2 | done | design unchanged; taps re-rank instantly (cookie) |
 | N5 Gmail contextual sidebar | done, ready to test | `gmail-addon/`, `/api/gmail`; name asked once on personal addresses; install steps in `GMAIL.md` (Vercel + script.google.com test deployment) |
-| N6 Booth | done | Distance Technologies, Dalip, RiACT (seed stage); each first look has three different reasons; warm paths for Distance (Maki.vc) and RiACT (Butterfly Ventures); no weapons makers, no giant headlines |
+| N6 Booth | done | Distance Technologies, Measur, RiACT (seed stage): each has warm-path doors (Maki.vc, Lifeline Ventures, Butterfly Ventures) and three different reasons in the first look; no weapons makers, no giant headlines |
 | N7 Rerun ingest | partial | new key (14 Nov): 150 widened news searches + 819 entity calls succeeded, no 402. Entrants pass at 1,350 of 2,777 foreign attendees (stopped externally), 2 candidates, no subsidiary yet. Resume: `npm run ingest -- --stage=entrants,investors` (~1,400 calls), then `--stage=recheck` and `npm run demo` |
 | N8 Docs | done | BUILD_SPEC, README, DECISIONS, DATA_NOTES, DEMO |
 

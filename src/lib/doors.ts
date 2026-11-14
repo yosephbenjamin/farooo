@@ -9,7 +9,7 @@
  *   4. warm path  a shared investor, and whether they led
  *   5. who        people with roles from Cala, else a Google X-ray link
  *
- * Tiers: 1 reason + warm path + shared event, 2 reason + warm path, 3 market entry, 4 other reason without a warm path.
+ * Tiers: 1 any reason + warm path, 2 any reason alone; Slush 2026 is a boost inside a tier.
  * Nothing else is shown.
  */
 import { normalizeFund, normalizeCompany } from "./normalize";
@@ -305,7 +305,10 @@ export function buildReport(pool: Pool, startup: StartupSummary, opts: { now: st
   const cands: Cand[] = [];
   for (const r of pool.rounds) {
     if (!isConcreteDate(r.date) || r.date > now || daysAgo(now, r.date) > ROUND_WINDOW_DAYS) continue;
-    cands.push({ companyId: r.companyId, date: r.date, kind: "round", text: roundText(r.label, r.amount, r.currency), source: pickSource(r.sources, r.date), investors: r.investors });
+    const src = pickSource(r.sources, r.date);
+    // new money needs more than an aggregator listing (its date is a crawl date)
+    if (src && (src.rank === "AGGREGATOR" || /tracxn|crunchbase|pitchbook|dealroom|cbinsights/.test(src.url))) continue;
+    cands.push({ companyId: r.companyId, date: r.date, kind: "round", text: roundText(r.label, r.amount, r.currency), source: src, investors: r.investors });
   }
   for (const ev of pool.events ?? []) {
     const kind: Reason["kind"] = ev.kind === "money" ? "round" : ev.kind === "acquisition" ? "acquisition" : "hire";
@@ -346,16 +349,12 @@ export function buildReport(pool: Pool, startup: StartupSummary, opts: { now: st
 
 // ---------- ranking (render time) ----------
 /**
- * 1 a reason + warm path + shared event (Slush 2026 is the event Cala has)
- * 2 a reason + warm path
- * 3 market entry (a timed door, no warm path needed)
- * 4 new money / new hires / new acquisition, no warm path yet ("Find the right person →")
+ * 1 any reason + warm path (a shared investor who can introduce you)
+ * 2 any reason alone ("Find the right person →")
+ * Slush 2026 (a shared event) is a boost inside a tier, not a tier.
  */
 export function tierOf(d: Door): number {
-  if (d.warm.length && d.slush) return 1;
-  if (d.warm.length) return 2;
-  if (d.entering) return 3;
-  return 4;
+  return d.warm.length ? 1 : 2;
 }
 
 /** The partnership to lead with for this user. */
@@ -370,7 +369,7 @@ export function rankDoors(doors: Door[], taps: Taps): Door[] {
   const ranked = doors
     .filter((d) => !hidden.has(d.id))
     .filter((d) => (taps.weights[leadWhyYou(d, taps).type] ?? 0) > -3) // three "not now"s mute a type
-    .sort((a, b) => tierOf(a) - tierOf(b) || w(b) - w(a) || b.whyNow.date.localeCompare(a.whyNow.date));
+    .sort((a, b) => tierOf(a) - tierOf(b) || w(b) - w(a) || Number(b.slush) - Number(a.slush) || b.whyNow.date.localeCompare(a.whyNow.date));
   // no giants as headlines: the first non-giant leads, the rest keep their order
   const lead = ranked.findIndex((d) => !d.giant);
   if (lead > 0) ranked.unshift(...ranked.splice(lead, 1));
@@ -391,11 +390,16 @@ export function firstLook(doors: Door[]): { door: Door; type: PartnerType }[] {
     const d = ranked.find((x) => free(x) && !out.some((o) => reason(o.door) === reason(x))) ?? ranked.find(free);
     if (d) out.push({ door: d, type: t });
   }
-  for (const d of ranked) {
-    if (out.length >= 3) break;
-    if (!out.some((o) => o.door.id === d.id)) out.push({ door: d, type: leadWhyYou(d, NO_TAPS).type });
+  // fill up, still preferring a reason not yet shown
+  for (const pass of [0, 1]) {
+    for (const d of ranked) {
+      if (out.length >= 3) break;
+      if (out.some((o) => o.door.id === d.id)) continue;
+      if (pass === 0 && out.some((o) => reason(o.door) === reason(d))) continue;
+      out.push({ door: d, type: leadWhyYou(d, NO_TAPS).type });
+    }
   }
-  const sorted = out.sort((a, b) => tierOf(a.door) - tierOf(b.door) || b.door.whyNow.date.localeCompare(a.door.whyNow.date)).slice(0, 3);
+  const sorted = out.sort((a, b) => tierOf(a.door) - tierOf(b.door) || Number(b.door.slush) - Number(a.door.slush) || b.door.whyNow.date.localeCompare(a.door.whyNow.date)).slice(0, 3);
   const lead = sorted.findIndex((x) => !x.door.giant);
   if (lead > 0) sorted.unshift(...sorted.splice(lead, 1));
   return sorted;

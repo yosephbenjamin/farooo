@@ -331,35 +331,6 @@
       "giant": false
     },
     {
-      "id": "7485476c-8d4b-4921-9330-45f893b9b5ca",
-      "name": "Guideless",
-      "country": "Lithuania",
-      "whyNow": {
-        "kind": "round",
-        "date": "2026-08-20",
-        "text": "raised a $1.2M pre-seed round",
-        "source": {
-          "name": "tracxn.com",
-          "url": "https://tracxn.com/d/companies/guideless/__epV-RlmN-lBsarJQBnkiVpO8s_KmWqsJxe7oE4Xzbcs",
-          "date": "2026-08-25",
-          "rank": null
-        }
-      },
-      "whyYou": [
-        {
-          "type": "integration",
-          "sentence": "Integration. They build software, you build robotics: the two plug into the same stack."
-        }
-      ],
-      "slush": false,
-      "warm": [],
-      "people": [],
-      "xray": "https://www.google.com/search?q=site%3Alinkedin.com%2Fin%20%22Guideless%22%20(partnerships%20OR%20%22head%20of%20product%22%20OR%20CTO)%20Lithuania",
-      "entering": false,
-      "industryNote": null,
-      "giant": false
-    },
-    {
       "id": "89d3a43c-fee4-4491-853e-a216cbef6c50",
       "name": "Lovable",
       "country": "United States",
@@ -462,39 +433,6 @@
       ],
       "people": [],
       "xray": "https://www.google.com/search?q=site%3Alinkedin.com%2Fin%20%22Birdsview%22%20(%22country%20manager%22%20OR%20%22head%20of%20operations%22%20OR%20procurement)%20Norway",
-      "entering": false,
-      "industryNote": null,
-      "giant": false
-    },
-    {
-      "id": "557bf741-7119-4d18-a4b0-fe77cb30f351",
-      "name": "Sigvi",
-      "country": "Lithuania",
-      "whyNow": {
-        "kind": "round",
-        "date": "2026-07-29",
-        "text": "raised a $1.4M seed round",
-        "source": {
-          "name": "tracxn.com",
-          "url": "https://tracxn.com/d/venture-capital/superhero-capital/__0ojhXzhdsNMZ52CC2oC7DgYOy87dBNaBhc3wM7vIRus",
-          "date": "2026-08-25",
-          "rank": null
-        }
-      },
-      "whyYou": [
-        {
-          "type": "customer",
-          "sentence": "Customer. A transport and logistics company with fresh money is a buyer of robotics."
-        },
-        {
-          "type": "integration",
-          "sentence": "Integration. They build software, you build robotics: the two plug into the same stack."
-        }
-      ],
-      "slush": false,
-      "warm": [],
-      "people": [],
-      "xray": "https://www.google.com/search?q=site%3Alinkedin.com%2Fin%20%22Sigvi%22%20(%22country%20manager%22%20OR%20%22head%20of%20operations%22%20OR%20procurement)%20Lithuania",
       "entering": false,
       "industryNote": null,
       "giant": false

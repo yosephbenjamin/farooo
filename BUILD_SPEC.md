@@ -15,7 +15,7 @@ Every decision is checked against that line (DECISIONS.md says how each one serv
 
 **Who can introduce you:** a shared investor (noting when they led), plus "Find the right person →".
 
-**Ranking:** 1 a reason + warm path + shared event (Slush 2026) · 2 a reason + warm path · 3 market entry (a timed door, no warm path needed) · 4 another reason without a warm path. A giant never leads the log.
+**Ranking:** any reason + warm path > any reason alone. Slush 2026 (a shared event) is a boost inside a tier, not a tier. A giant never leads the log.
 
 **Delivery, unchanged:** zero-input onboarding, "more like this · not now", the Gmail add-on, the quiet web log, same design.
 
