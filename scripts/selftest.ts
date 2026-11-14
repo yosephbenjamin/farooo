@@ -109,6 +109,8 @@ assert.equal(claimedCountry("Advantech, a Taiwanese industrial technology firm, 
 assert.equal(claimedCountry("Arondite announced it is opening its first international office in Oslo.", "Arondite"), null);
 assert.ok(claim("atNorth expanded into Norway on 9 June 2026 by acquiring land for the NOR01 data centre campus.").isEntry, "buying land for a site is an entry");
 assert.ok(!claim("Kry expanded in Sweden on 3 June 2026 by acquiring Medinord.").isEntry, "buying a company is not");
+assert.ok(!claim("Databricks announced on November 10, 2026 that it will invest over $500 million in the Netherlands, expanding its largest European R&D hub in Amsterdam.").isEntry, "an incumbent growing is not entering");
+assert.ok(claim("Avanza announced Christian Sillesen as Country Manager for Avanza in Denmark, starting 12 October 2026.", undefined, "He will lead efforts to build Avanza's presence and offering in the Danish market.").isEntry, "building a presence is new");
 assert.ok(!claim("SEB appointed Niina Äikäs as Country Manager of SEB in Finland, effective 1 September 2026.").isEntry, "a replacement country manager is not an entry");
 assert.ok(claim("Acme launched in Germany on 3 November 2026.").isEntry, "launches in DE");
 assert.ok(!claim("Euro Tech Holdings entered Norway through a 50/50 joint\u2011venture with Sea Clean AS.").isEntry, "non-breaking hyphen joint venture");

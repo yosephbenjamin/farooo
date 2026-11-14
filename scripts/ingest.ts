@@ -223,15 +223,10 @@ async function keepClaim(c: Claim, x: { company: string | null; date: string | n
   if (!date) { stats.noDate++; return; }
   if (date > now || dayDiff(date, now) > 180) { stats.old++; return; }
   const p = await resolveByName(company, profiles);
-  if (!p || !plausibleEntrant(company, p, c.text)) { stats.unresolved++; return; }
+  if (!p || !plausibleEntrant(company, p, c.text, c.url)) { stats.unresolved++; return; }
   profiles[p.id] = p;
   const market = x?.market ?? c.market;
-  if (p.country && market.toLowerCase().includes(p.country.toLowerCase())) { stats.local++; return; }
-  // a same-brand company based in that market means the "entrant" is local (Netcompany A/S vs NETCOMPANY UK LIMITED)
-  const words = MARKET_WORDS[market] ?? [];
-  const bkey = normalizeCompany(company);
-  const sameBrand = ((await spend(() => searchEntities(company, { types: ["Company"], limit: 10 }))) ?? []).filter((e) => normalizeCompany(e.name) === bkey || normalizeCompany(e.name).startsWith(bkey + " "));
-  if (sameBrand.some((e) => words.some((w) => new RegExp(`\\b${w}\\b`, "i").test(e.description ?? "")))) { stats.local++; return; }
+  if (await alreadyLocal(company, market, p)) { stats.local++; return; }
   const id = createHash("sha256").update(`news|${p.id}|${market}|${date}`).digest("hex").slice(0, 16);
   // one article, one door: the same source and market already gave another entity (OpenAI / OpenAI Group PBC)
   if ([...entries.values()].some((e) => e.id !== id && e.kind === "news" && e.market === market && e.source.url === c.url)) { stats.local++; return; }
@@ -249,8 +244,17 @@ async function keepClaim(c: Claim, x: { company: string | null; date: string | n
  * bank, or "Advantech" -> "ADVANTECH SURGICAL LTD"). And it must have a home country, or it can't
  * be "entering" anywhere.
  */
-function plausibleEntrant(company: string, p: Profile, text = ""): boolean {
-  if (!p.country) return false;
+/** Same-named strangers caught by eye in news resolution (like seed.ts's exclusions): id -> why. */
+const MISRESOLVED: Record<string, string> = {
+  "38b41366-98b3-5a23-9ed8-76d83f3be4da": "ATHLETICA, a French retailer in Loudéac, is not the Athletica in the Finland-office story",
+};
+
+function plausibleEntrant(company: string, p: Profile, text = "", url = ""): boolean {
+  if (!p.country || MISRESOLVED[p.id]) return false;
+  // the company's own press page (eip.com for "EIP"): the entity must own that domain
+  const host = (() => { try { return new URL(url).hostname.replace(/^www\./, ""); } catch { return ""; } })();
+  const squashed = normalizeCompany(company).replace(/[^a-z0-9]/g, "");
+  if (host && squashed.length >= 3 && host.split(".").some((x) => x.replace(/[^a-z0-9]/g, "") === squashed) && !p.domains.some((d) => host === d || host.endsWith(`.${d}`))) return false;
   const claimed = claimedCountry(text, company);
   if (claimed && claimed !== p.country) return false; // "Ukrainian defence firm Fire Point" is not FIRE POINT S.R.L. of Italy
   const key = normalizeCompany(company);
@@ -259,8 +263,21 @@ function plausibleEntrant(company: string, p: Profile, text = ""): boolean {
   return squash.length >= 3 && p.domains.some((d) => d.split(".")[0].replace(/[^a-z0-9]/g, "").includes(squash));
 }
 
+/**
+ * Already in that market: headquartered there, or a same-brand company described as based there
+ * (Netcompany A/S vs NETCOMPANY UK LIMITED; Google Sweden AB, so a Google data centre in Sweden is
+ * expansion, not entry). The search is cached after the first time.
+ */
+async function alreadyLocal(company: string, market: string, p: Profile): Promise<boolean> {
+  if (p.country && market.toLowerCase().includes(p.country.toLowerCase())) return true;
+  const words = MARKET_WORDS[market] ?? [];
+  const bkey = normalizeCompany(company);
+  const sameBrand = ((await spend(() => searchEntities(company, { types: ["Company"], limit: 10 }))) ?? []).filter((e) => normalizeCompany(e.name) === bkey || normalizeCompany(e.name).startsWith(bkey + " "));
+  return sameBrand.some((e) => e.id !== p.id && words.some((w) => new RegExp(`\\b${w}\\b`, "i").test(e.description ?? "")));
+}
+
 /** Re-check every stored news entry against the current rules (claim text, source, entity). */
-function recheckNews() {
+async function recheckNews() {
   let dropped = 0;
   const seen = new Set<string>();
   for (const [id, e] of [...entries].sort(([, a], [, b]) => Number(!!b.evidence) - Number(!!a.evidence))) {
@@ -278,7 +295,7 @@ function recheckNews() {
     const h = heuristic({ index: 0, market: e.market, text: e.claim, url: e.source.url, sourceName: e.source.name, knowbit: e.evidence ?? "" });
     const p = profiles[e.doorId];
     // the old entries' dates may come from the KnowBit, which isn't stored: judge entry-ness and the entity only
-    if (!h.isEntry || !h.company || !p || !plausibleEntrant(h.company, p, e.claim)) {
+    if (!h.isEntry || !h.company || !p || !plausibleEntrant(h.company, p, e.claim, e.source.url) || (await alreadyLocal(h.company, e.market, p))) {
       entries.delete(id);
       dropped++;
       log(`recheck: dropped ${e.doorName} -> ${e.market} (${e.date})`);
@@ -401,7 +418,7 @@ async function main() {
 
   // ---------- 3a. recheck stored news entries against the current rules ----------
   if (STAGES.has("recheck")) {
-    log(`recheck: ${recheckNews()} news entries dropped`);
+    log(`recheck: ${await recheckNews()} news entries dropped`);
     writeJson("pool.json", { profiles, entries: [...entries.values()], rounds: [...rounds.values()], slush }); // overwrite, no merge: drops must stick
   }
 

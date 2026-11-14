@@ -1,18 +1,20 @@
 {
-  "ranAt": "2026-11-14T12:35:14.035Z",
+  "ranAt": "2026-11-14T12:59:34.256Z",
   "now": "2026-11-14",
   "planned": 150,
   "reports": [
     {
       "searches": 50,
       "claims": 254,
-      "notEntry": 219,
-      "noDate": 23,
-      "old": 4,
-      "unresolved": 5,
-      "local": 1,
+      "notEntry": 202,
+      "noDate": 36,
+      "old": 5,
+      "unresolved": 7,
+      "local": 2,
       "kept": 2,
-      "keptNames": [],
+      "keptNames": [
+        "Avanza -> Denmark (2026-10-12)"
+      ],
       "searchCallsSent": 0,
       "entityCallsSent": 0,
       "statuses": {}
@@ -20,26 +22,35 @@
     {
       "searches": 100,
       "claims": 557,
-      "notEntry": 477,
-      "noDate": 53,
-      "old": 8,
-      "unresolved": 6,
-      "local": 6,
-      "kept": 7,
+      "notEntry": 447,
+      "noDate": 70,
+      "old": 11,
+      "unresolved": 16,
+      "local": 7,
+      "kept": 6,
       "keptNames": [
-        "Google -> Sweden (2026-06-02)",
-        "atNorth Holding AB -> Norway (2026-06-09)",
-        "Crusoe -> Norway (2026-10-21)",
-        "FIRE POINT S.R.L. -> Denmark (2026-07-13)",
-        "FIRE POINT S.R.L. -> Denmark (2026-09-08)"
+        "Avanza -> Denmark (2026-10-12)"
       ],
-      "searchCallsSent": 126,
-      "entityCallsSent": 28,
-      "statuses": {
-        "200": 70,
-        "429": 14,
-        "502": 70
-      }
+      "searchCallsSent": 0,
+      "entityCallsSent": 0,
+      "statuses": {}
+    },
+    {
+      "searches": 150,
+      "claims": 755,
+      "notEntry": 593,
+      "noDate": 104,
+      "old": 17,
+      "unresolved": 23,
+      "local": 10,
+      "kept": 8,
+      "keptNames": [
+        "Avanza -> Denmark (2026-10-12)",
+        "NORDNET -> Germany (2026-08-01)"
+      ],
+      "searchCallsSent": 0,
+      "entityCallsSent": 0,
+      "statuses": {}
     }
   ],
   "queries": [

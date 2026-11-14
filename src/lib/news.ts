@@ -42,10 +42,13 @@ const ENTRY = new RegExp(
 
 /** A country-manager hire: an entry only when the text says the presence is new (Avanza), never a replacement (SEB in Finland). */
 const HIRE = /\b(country (manager|director)|general manager for|managing director for|head of (sales|operations|business) for)\b/i;
-const NEW_PRESENCE = /\b(first|launch\w*|entr(y|ies)|enter(s|ed|ing)?|expan\w*|new market|establish\w*|set(s|ting)? up|build\w* (its |the |our )?presence|open(s|ed|ing)? (an? |its )?(office|branch))\b/i;
+const NEW_PRESENCE = /\b(first|launch\w*|entr(y|ies)|enter(s|ed|ing)?|expan\w*|new market|establish\w*|set(s|ting)? up|build\w* ([\w'’]+ )?presence|open(s|ed|ing)? (an? |its )?(office|branch))\b/i;
+
+/** Already there: growing an existing hub, moving offices, doubling a local team. */
+const INCUMBENT = /\b(expand\w* its (largest|existing|current|local)|mov(e|es|ing) (in)?to (a |its )?new (office|headquarters|premises)|doubl\w* its (local )?team|already (has|had|operates|present))\b/i;
 
 export function isEntryText(text: string, evidence = ""): boolean {
-  if (NOT_ENTRY.test(text)) return false;
+  if (NOT_ENTRY.test(text) || INCUMBENT.test(text)) return false;
   if (ENTRY.test(text)) return true;
   if (!HIRE.test(text)) return false;
   if (NEW_PRESENCE.test(text)) return true;
