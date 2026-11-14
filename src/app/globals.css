@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
-/* Cala's palette, exactly (see DESIGN.md). One accent: yellow, for light only. */
+/* Cala's world (see DESIGN.md): cream paper, ink line, a yellow sun, a mint sea, soft peach.
+   One accent: yellow, for light only. Mint and peach are washes in the drawings, never UI. */
 :root {
   --paper: #f6e8cd;          /* --color-beige */
   --paper-50: #fcf8f0;       /* --color-beige-50 */
@@ -10,6 +11,8 @@
   --ink-500: oklch(62.4% .028 52.01); /* --color-brown-500 */
   --ink-300: oklch(77.7% .033 50.31); /* --color-brown-300 */
   --light: #ffc234;          /* --color-yellow */
+  --sea: #d6dec9;            /* the mint sea of Cala's drawings */
+  --peach: #f6c3aa;          /* the soft peach of Cala's drawings */
   color-scheme: light;
 }
 
@@ -22,6 +25,8 @@
   --color-ink-500: var(--ink-500);
   --color-ink-300: var(--ink-300);
   --color-light: var(--light);
+  --color-sea: var(--sea);
+  --color-peach: var(--peach);
   --font-serif: "Newsreader", "Iowan Old Style", Georgia, serif;
   --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
 }
@@ -67,8 +72,31 @@ input::-webkit-calendar-picker-indicator { display: none !important; }
 .status-in { animation: statusin .6s ease-out both; }
 .caret::after { content: ""; display: inline-block; width: 0.06em; height: 0.9em; margin-left: 0.04em; background: currentColor; vertical-align: -0.08em; animation: caret 1s step-end infinite; }
 
+
+/* hand-drawn motion, kept small: lines that draw themselves once, a line that boils while the
+   lighthouse works, a swell that drifts */
+@keyframes draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+.draw path { stroke-dasharray: 1; stroke-dashoffset: 1; animation: draw .9s cubic-bezier(.6,.1,.3,1) forwards; }
+.draw path:nth-child(3n+2) { animation-delay: .18s; }
+.draw path:nth-child(3n) { animation-delay: .36s; }
+.draw path:nth-child(n+7) { animation-duration: .7s; }
+@keyframes washin { from { opacity: 0; } to { opacity: 1; } }
+.wash-in { animation: washin .9s ease-out 1s both; }
+@keyframes sunin { from { opacity: 0; transform: translateY(18%); } to { opacity: 1; transform: none; } }
+.sun-in { animation: sunin 1.6s cubic-bezier(.2,.7,.2,1) .5s both; }
+@keyframes boil { 0%, 49.9% { opacity: 1; } 50%, 100% { opacity: 0; } }
+.boil-a { animation: boil .9s steps(1) infinite; }
+.boil-b { animation: boil .9s steps(1) -.45s infinite; }
+@keyframes drift { from { transform: translateX(-9px); } to { transform: translateX(9px); } }
+.drift { animation: drift 7s ease-in-out infinite alternate; }
+.drift-back { animation: drift 9s ease-in-out infinite alternate-reverse; }
+@keyframes doorin { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+.door-in { animation: doorin .7s cubic-bezier(.2,.7,.2,1) both; }
+
 @media (prefers-reduced-motion: reduce) {
-  .beam, .caret::after, .sweep, .status-in { animation: none; }
+  .beam, .caret::after, .sweep, .status-in, .drift, .drift-back, .sun-in, .wash-in, .door-in { animation: none; }
+  .draw path { animation: none; stroke-dashoffset: 0; }
+  .boil-a { animation: none; } .boil-b { display: none; }
   .loader-step { animation: none !important; opacity: 0; }
   .loader-step:first-child { opacity: 1; }
   .window-lit-anim { animation-duration: 1ms; }

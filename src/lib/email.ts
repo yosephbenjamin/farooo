@@ -21,7 +21,7 @@ export function makeAlert(r: DoorReport, fresh: Door[], slug: string, to: string
     createdAt,
     startup: { name: r.startup.name, slug },
     to,
-    subject: emailSubject(),
+    subject: emailSubject(fresh),
     headline: headline(r, fresh),
     entries: fresh.map((d) => {
       const l = entryLead(d);
@@ -51,23 +51,33 @@ const C = {
   ink500: "#8f8178",
   ink300: "#b9aba1",
   light: "#ffc234",
+  sea: "#d6dec9",
+  peach: "#f6c3aa",
 };
 const SERIF = `'Newsreader', 'Iowan Old Style', Georgia, 'Times New Roman', serif`;
 const MONO = `Newsreader, 'Iowan Old Style', Georgia, serif`; // small text: the same serif as the site (no monospace)
 
 const esc = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 
+/** "Customer. A food company…" -> the partnership as a small label, then the sentence. */
+function whyHtml(why: string): string {
+  const cut = why.indexOf(". ");
+  if (cut <= 0 || cut > 13) return esc(why);
+  return `<span style="font-size:11px;letter-spacing:1.6px;text-transform:uppercase;color:${C.ink};">${esc(why.slice(0, cut))}</span>&nbsp;&nbsp;${esc(why.slice(cut + 2))}`;
+}
+
 /** The body, usable inside a page (the /log view) or wrapped as a full email document. */
 export function renderAlertFragment(a: Alert, baseUrl = ""): string {
+  const [opened, ...through] = a.headline.split(/(?<=\.) /);
   const items = a.entries
     .map(
       (e, i) => `
-      <tr><td style="padding:0 0 26px 0;">
-        <p style="margin:0;font-family:${SERIF};font-size:21px;line-height:1.35;color:${C.inkDeep};">
+      <tr><td style="padding:0 0 30px 0;">
+        <p style="margin:0;font-family:${SERIF};font-size:22px;line-height:1.3;color:${C.inkDeep};">
           <strong style="font-weight:500;">${esc(e.name)}</strong>${esc(e.lead.slice(e.name.length))}<sup style="font-family:${MONO};font-size:10px;color:${C.ink500};"><a href="${esc(e.sourceUrl)}" style="color:${C.ink500};text-decoration:none;">${i + 1}</a></sup>
         </p>
-        <p style="margin:6px 0 0 0;font-family:${SERIF};font-size:16px;line-height:1.55;color:${C.ink500};">${esc(e.why)}</p>
-        <p style="margin:4px 0 0 0;font-family:${SERIF};font-style:italic;font-size:16px;line-height:1.55;color:${C.ink500};">${esc(e.meta)}${e.meta ? ". " : ""}${e.xray ? `<a href="${esc(e.xray)}" style="color:${C.ink500};font-style:normal;">Find the right person →</a>` : ""}</p>
+        <p style="margin:8px 0 0 0;font-family:${SERIF};font-size:16px;line-height:1.5;color:${C.ink500};">${whyHtml(e.why)}</p>
+        <p style="margin:3px 0 0 0;font-family:${SERIF};font-style:italic;font-size:16px;line-height:1.5;color:${C.ink500};">${esc(e.meta)}${e.meta ? ". " : ""}${e.xray ? `<a href="${esc(e.xray)}" style="color:${C.ink500};font-style:normal;">Find the right person →</a>` : ""}</p>
       </td></tr>`,
     )
     .join("");
@@ -81,18 +91,21 @@ export function renderAlertFragment(a: Alert, baseUrl = ""): string {
   <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:${C.paper};">
     <tr><td align="center" style="padding:40px 16px;">
       <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;background:${C.paper50};">
-        <tr><td style="padding:40px 40px 8px 40px;">
-          <div style="font-family:${MONO};font-size:11px;letter-spacing:2px;text-transform:uppercase;color:${C.ink500};">
-            <span style="display:inline-block;width:8px;height:10px;background:${C.light};margin-right:8px;vertical-align:-1px;"></span>Faro
+        <tr><td style="padding:44px 44px 6px 44px;">
+          <div style="font-family:${MONO};font-size:12px;letter-spacing:2.6px;text-transform:uppercase;color:${C.ink};">
+            <span style="display:inline-block;width:9px;height:11px;background:${C.light};border:1px solid ${C.ink};margin-right:9px;vertical-align:-2px;"></span>Faro
           </div>
-          <h1 style="margin:28px 0 30px 0;font-family:${SERIF};font-weight:300;font-size:34px;line-height:1.12;letter-spacing:-0.3px;color:${C.inkDeep};">${esc(a.headline)}</h1>
+          <h1 style="margin:30px 0 0 0;font-family:${SERIF};font-weight:300;font-size:34px;line-height:1.14;letter-spacing:-0.4px;color:${C.inkDeep};">${esc(opened)}</h1>
+          ${through.length ? `<p style="margin:8px 0 0 0;font-family:${SERIF};font-weight:300;font-style:italic;font-size:25px;line-height:1.2;color:${C.ink500};">${esc(through.join(" "))}</p>` : ""}
+          <div style="height:34px;line-height:34px;font-size:0;">&nbsp;</div>
         </td></tr>
-        <tr><td style="padding:0 40px;"><table role="presentation" width="100%" cellpadding="0" cellspacing="0">${items}</table></td></tr>
-        <tr><td style="padding:6px 40px 0 40px;border-top:0;">${notes}</td></tr>
-        ${a.doorCount ? `<tr><td style="padding:22px 40px 0 40px;font-family:${MONO};font-size:13px;color:${C.ink500};"><span style="color:${C.ink300};">Doors per investor: </span>${esc(a.doorCount)}</td></tr>` : ""}
-        <tr><td style="padding:30px 40px 40px 40px;font-family:${SERIF};font-style:italic;font-size:14px;color:${C.ink500};">
-          The lighthouse stays quiet until a door opens.${baseUrl ? ` <a href="${esc(baseUrl)}/for/${esc(a.startup.slug)}" style="color:${C.ink500};">See the log.</a>` : ""}
+        <tr><td style="padding:0 44px;"><table role="presentation" width="100%" cellpadding="0" cellspacing="0">${items}</table></td></tr>
+        <tr><td style="padding:0 44px;"><div style="border-top:1px solid #f1dbb7;padding-top:18px;">${notes}</div></td></tr>
+        ${a.doorCount ? `<tr><td style="padding:16px 44px 0 44px;font-family:${MONO};font-style:italic;font-size:13px;color:${C.ink500};">${esc(a.doorCount)}</td></tr>` : ""}
+        <tr><td style="padding:34px 44px 30px 44px;font-family:${SERIF};font-size:14px;line-height:1.5;color:${C.ink500};">
+          The lighthouse stays quiet until a door opens.${baseUrl ? ` <a href="${esc(baseUrl)}/for/${esc(a.startup.slug)}" style="color:${C.ink};">Read the log.</a>` : ""}
         </td></tr>
+        <tr><td style="height:14px;line-height:14px;font-size:0;background:${C.sea};border-top:1.5px solid ${C.ink};">&nbsp;</td></tr>
       </table>
     </td></tr>
   </table>`;
@@ -109,6 +122,8 @@ export function renderAlertText(a: Alert): string {
     ...a.entries.flatMap((e, i) => [`${e.lead} [${i + 1}]`, e.why, e.meta, e.xray ?? "", ""]),
     ...a.entries.map((e, i) => `[${i + 1}] ${shortDate(e.date)}, ${e.sourceUrl}`),
     "",
-    a.doorCount ? `Doors per investor: ${a.doorCount}` : "",
+    a.doorCount ?? "",
+    "",
+    "The lighthouse stays quiet until a door opens.",
   ].join("\n");
 }

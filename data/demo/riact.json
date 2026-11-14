@@ -49,11 +49,11 @@
       "whyYou": [
         {
           "type": "customer",
-          "sentence": "Customer. A fintech company setting up in Denmark will buy robotics, and you sell it there."
+          "sentence": "Customer. A fintech company new to Denmark, and you sell robotics there."
         },
         {
           "type": "integration",
-          "sentence": "Integration. They build fintech, you build robotics: the two plug into the same stack."
+          "sentence": "Integration. They build fintech, you build robotics. The same stack, from two sides."
         }
       ],
       "slush": false,
@@ -82,11 +82,11 @@
       "whyYou": [
         {
           "type": "customer",
-          "sentence": "Customer. A construction company with fresh money is a buyer of robotics."
+          "sentence": "Customer. A construction company with money to spend, and you sell robotics."
         },
         {
           "type": "integration",
-          "sentence": "Integration. They build software, you build robotics: the two plug into the same stack."
+          "sentence": "Integration. They build software, you build robotics. The same stack, from two sides."
         }
       ],
       "slush": false,
@@ -120,11 +120,11 @@
       "whyYou": [
         {
           "type": "customer",
-          "sentence": "Customer. A sports company that's growing its team is a buyer of robotics."
+          "sentence": "Customer. A sports company with a growing team, and you sell robotics."
         },
         {
           "type": "integration",
-          "sentence": "Integration. They build software, you build robotics: the two plug into the same stack."
+          "sentence": "Integration. They build software, you build robotics. The same stack, from two sides."
         }
       ],
       "slush": true,

@@ -1,4 +1,5 @@
-import { ink, paths, seedOf, INK_FAINT, LIGHT } from "./ink";
+import type { ReactNode } from "react";
+import { ink, paths, seedOf, wash, INK_FAINT, LIGHT, PEACH, SEA } from "./ink";
 
 export interface MapDoor {
   id: string;
@@ -21,28 +22,29 @@ export interface MapProps {
   big?: boolean;
 }
 
-const W = 840;
-const H = 660;
-const CX = W / 2;
-const CY = H / 2;
+const SLOT = 205;
+const W = SLOT * 3;
 const COLS = 5;
-const WW = 13; // window width
-const WH = 17; // window height
-const GX = 7;
-const GY = 8;
+const WW = 15; // window width
+const WH = 20; // window height
+const GX = 8;
+const GY = 9;
+const PAD = 13;
+const BW = COLS * WW + (COLS - 1) * GX + PAD * 2;
+const ROOF = 24;
+const MAX_LABELS = 6;
 
 const r2 = (v: number) => Math.round(v * 10) / 10;
 
 /**
- * Hand-drawn map. The startup sits in the middle; each investor is a small building whose
- * windows are its doors (its keyring). Lit windows are doors that opened recently, labelled
- * on the building's outer side. Roads run from the startup to each building.
+ * Hand-drawn map: a small town on the cove. The startup's house stands on the first street,
+ * between its investors; each investor is a building whose windows are its doors (its keyring).
+ * A lit window is a door in the log, and its name hangs above the roof.
  */
 export function DoorMap({ startup, investors, doors, animateId, holdId, className, maxPerInvestor = 25, big = false }: MapProps) {
-  const sc = big ? 1.35 : 1;
+  const sc = big ? 1.12 : 1;
   const inv = investors.slice(0, 6);
-  const n = inv.length;
-  const spots = layout(n);
+  const LINE = 26 * sc; // label line height
 
   // each door lives in the building of its first investor
   const homes = new Map<string, MapDoor[]>();
@@ -51,116 +53,130 @@ export function DoorMap({ startup, investors, doors, animateId, holdId, classNam
     if (home) homes.set(home, [...(homes.get(home) ?? []), d]);
   }
 
-  return (
-    <svg viewBox={n <= 2 ? `-70 ${CY - 200} ${W + 140} 400` : `-70 0 ${W + 140} ${H}`} className={className} role="img" aria-label={`Map of ${startup}, its investors and their doors`}>
-      {inv.map((iv, i) => {
-        const { x, y } = spots[i];
-        const all = [...(homes.get(iv.id) ?? [])].sort(
-          (a, b) => Number(b.lit || b.id === holdId) - Number(a.lit || a.id === holdId),
-        );
-        const shown = all.slice(0, maxPerInvestor);
-        const rows = Math.max(3, Math.ceil(shown.length / COLS));
-        const bw = COLS * WW + (COLS - 1) * GX + 20;
-        const bh = rows * WH + (rows - 1) * GY + 20;
-        const bx = r2(x - bw / 2);
-        const by = r2(y - bh / 2);
-        const right = x >= CX; // labels go on the outer side
-        const seed = seedOf(iv.id);
-        const roadEnd = { x: right ? bx : bx + bw, y: r2(y) };
-        const lit = shown
-          .map((d, k) => ({ d, k }))
-          .filter(({ d }) => d.id === animateId || (d.lit && d.id !== holdId));
-        const labelX = right ? bx + bw + 22 : bx - 22;
-        const step = 27 * sc;
-        const labelTop = r2(y - ((lit.length - 1) * step) / 2);
-        return (
-          <g key={iv.id}>
-            {/* road */}
-            {paths(ink.line(CX + (right ? 26 : -26), CY, roadEnd.x, roadEnd.y, { seed, strokeWidth: 1.1, roughness: 1.3 }), `road-${iv.id}`)}
-            {/* building */}
-            {paths(ink.rect(bx, by, bw, bh, { seed: seed + 1, fill: "var(--paper)", fillStyle: "solid" }), `b-${iv.id}`)}
-            {paths(ink.poly([[bx - 4, by], [r2(bx + bw / 2), r2(by - 18)], [bx + bw + 4, by]], { seed: seed + 2, fill: "var(--paper)", fillStyle: "solid" }), `roof-${iv.id}`)}
-            {shown.map((d, k) => {
-              const wx = r2(bx + 10 + (k % COLS) * (WW + GX));
-              const wy = r2(by + 10 + Math.floor(k / COLS) * (WH + GY));
-              const isAnim = d.id === animateId;
-              const isLit = isAnim || (d.lit && d.id !== holdId);
-              const s = seedOf(d.id);
-              return (
-                <g key={d.id} data-door={d.id}>
-                  {isLit && (
-                    <rect x={wx} y={wy} width={WW} height={WH} fill={isAnim ? "transparent" : LIGHT} className={isAnim ? "window-lit-anim" : undefined} />
-                  )}
-                  {paths(ink.rect(wx, wy, WW, WH, { seed: s, strokeWidth: isLit ? 1.1 : 0.8, roughness: 0.8, stroke: isLit ? "var(--ink)" : INK_FAINT }), `w-${d.id}`)}
-                </g>
-              );
-            })}
-            {all.length > shown.length && (
-              <text x={r2(bx + bw / 2)} y={r2(by + bh + 42 * sc)} textAnchor="middle" fontFamily="var(--font-serif)" fontSize={13} fill="var(--ink-300)">
-                +{all.length - shown.length} more
+  const buildings = inv.map((iv) => {
+    const all = [...(homes.get(iv.id) ?? [])].sort((a, b) => Number(b.lit || b.id === holdId) - Number(a.lit || a.id === holdId));
+    const shown = all.slice(0, maxPerInvestor);
+    const rows = Math.max(3, Math.ceil(shown.length / COLS));
+    const lit = shown.map((d, k) => ({ d, k })).filter(({ d }) => d.id === animateId || (d.lit && d.id !== holdId));
+    // room is kept for a held window's name, so nothing moves when it lights
+    const labels = Math.min(MAX_LABELS, lit.length + (shown.some((d) => d.id === holdId) ? 1 : 0));
+    return { iv, all, shown, lit, labels, bh: rows * WH + (rows - 1) * GY + PAD * 2 };
+  });
+
+  // streets: the house between the first two investors, then three buildings to a street
+  type Item = { house: true } | { house?: false; b: (typeof buildings)[number] };
+  const first: Item[] = buildings.length === 0 ? [{ house: true }] : buildings.length === 1 ? [{ house: true }, { b: buildings[0] }] : [{ b: buildings[0] }, { house: true }, { b: buildings[1] }];
+  const streets: Item[][] = [first];
+  for (let i = 2; i < buildings.length; i += 3) streets.push(buildings.slice(i, i + 3).map((b) => ({ b })));
+
+  let y = 8;
+  const out: ReactNode[] = [];
+  streets.forEach((street, si) => {
+    const labelSpace = Math.max(0, ...street.map((it) => (it.house ? 0 : it.b.labels))) * LINE + 16;
+    const tallest = Math.max(64, ...street.map((it) => (it.house ? 0 : it.b.bh))) + ROOF;
+    const ground = r2(y + labelSpace + tallest);
+    const x0 = (W - street.length * SLOT) / 2;
+    // the street: one pen line, lifted once
+    out.push(paths(ink.line(x0 + 6, ground, x0 + street.length * SLOT * 0.62, ground, { seed: 300 + si, roughness: 0.6, bowing: 0.3, strokeWidth: 1.4 }), `g1-${si}`));
+    out.push(paths(ink.line(x0 + street.length * SLOT * 0.62 + 18, ground, x0 + street.length * SLOT - 6, ground, { seed: 320 + si, roughness: 0.6, bowing: 0.3, strokeWidth: 1.4 }), `g2-${si}`));
+    street.forEach((it, i) => {
+      const cx = r2(x0 + SLOT * (i + 0.5));
+      if (it.house) {
+        // the startup: a small house with one lit window
+        out.push(
+          <g key="house">
+            {wash([[cx - 30, ground - 40], [cx, ground - 68], [cx + 30, ground - 40]], PEACH, 14, "h-roofwash", [3, 1.5])}
+            {paths(ink.rect(cx - 24, ground - 40, 48, 40, { seed: 12, fill: "var(--paper)", fillStyle: "solid" }), "h-body")}
+            {paths(ink.poly([[cx - 30, ground - 40], [cx, ground - 68], [cx + 30, ground - 40]], { seed: 11 }), "h-roof")}
+            <rect x={cx - 8} y={ground - 29} width={16} height={18} fill={LIGHT} />
+            {paths(ink.rect(cx - 8, ground - 29, 16, 18, { seed: 13, strokeWidth: 1.1, roughness: 0.6 }), "h-win")}
+            <text x={cx} y={r2(ground - 80)} textAnchor="middle" fontFamily="var(--font-serif)" fontSize={r2(21 * sc)} fill="var(--ink-deep)">
+              {startup}
+            </text>
+            {buildings.length === 0 && (
+              <text x={cx} y={r2(ground + 26 * sc)} textAnchor="middle" fontFamily="var(--font-serif)" fontStyle="italic" fontSize={16} fill="var(--ink-500)">
+                no investors in view
               </text>
             )}
-            {/* investor name */}
-            <text x={r2(bx + bw / 2)} y={r2(by + bh + 24 * sc)} textAnchor="middle" fontFamily="var(--font-serif)" fontSize={14 * sc} letterSpacing={0.8} fill="var(--ink-500)">
-              {iv.name.toUpperCase()}
-            </text>
-            {/* labels for lit windows, with leader lines */}
-            {lit.map(({ d, k }, j) => {
-              const wx = bx + 10 + (k % COLS) * (WW + GX) + WW / 2;
-              const wy = by + 10 + Math.floor(k / COLS) * (WH + GY) + WH / 2;
-              const ly = r2(labelTop + j * step);
-              const edge = right ? bx + bw : bx;
-              return (
-                <g key={`lbl-${d.id}`} className={d.id === animateId ? "window-label-anim" : undefined}>
-                  {paths(ink.line(r2(wx), r2(wy), r2(edge + (right ? 6 : -6)), ly - 4, { seed: seedOf(d.id) + 2, strokeWidth: 0.6, roughness: 0.6, stroke: "var(--ink-500)" }), `ll-${d.id}`)}
-                  <text x={labelX} y={ly} textAnchor={right ? "start" : "end"} fontFamily="var(--font-serif)" fontStyle="italic" fontSize={22 * sc} fill="var(--ink)">
-                    {d.name}
-                  </text>
-                </g>
-              );
-            })}
-          </g>
+          </g>,
         );
-      })}
-      {/* the startup: a small house with one lit window */}
-      <g>
-        {paths(ink.poly([[CX - 21, CY - 5], [CX, CY - 27], [CX + 21, CY - 5]], { seed: 11, fill: "var(--paper)", fillStyle: "solid" }), "h-roof")}
-        {paths(ink.rect(CX - 17, CY - 5, 34, 26, { seed: 12, fill: "var(--paper)", fillStyle: "solid" }), "h-body")}
-        <rect x={CX - 5} y={CY + 2} width={10} height={12} fill={LIGHT} />
-        {paths(ink.rect(CX - 5, CY + 2, 10, 12, { seed: 13, strokeWidth: 0.9, roughness: 0.6 }), "h-win")}
-        <text x={CX} y={CY + 48 * sc} textAnchor="middle" fontFamily="var(--font-serif)" fontSize={27 * sc} fill="var(--ink)">
-          {startup}
-        </text>
+        return;
+      }
+      const { iv, all, shown, lit, bh } = it.b;
+      const bx = r2(cx - BW / 2);
+      const by = r2(ground - bh);
+      const seed = seedOf(iv.id);
+      const top = by - ROOF;
+      const roof: [number, number][] = [[bx - 6, by], [cx, top], [bx + BW + 6, by]];
+      const more = lit.length > MAX_LABELS ? lit.length - (MAX_LABELS - 1) : 0;
+      const named = more ? lit.slice(0, MAX_LABELS - 1) : lit;
+      out.push(
+        <g key={iv.id}>
+          {wash(roof, PEACH, seed + 3, `roofwash-${iv.id}`, [3, 1.5])}
+          {paths(ink.rect(bx, by, BW, bh, { seed: seed + 1, fill: "var(--paper)", fillStyle: "solid" }), `b-${iv.id}`)}
+          {paths(ink.poly(roof, { seed: seed + 2 }), `roof-${iv.id}`)}
+          {shown.map((d, k) => {
+            const wx = r2(bx + PAD + (k % COLS) * (WW + GX));
+            const wy = r2(by + PAD + Math.floor(k / COLS) * (WH + GY));
+            const isAnim = d.id === animateId;
+            const isLit = isAnim || (d.lit && d.id !== holdId);
+            return (
+              <g key={d.id} data-door={d.id}>
+                {isLit && <rect x={wx} y={wy} width={WW} height={WH} fill={isAnim ? "transparent" : LIGHT} className={isAnim ? "window-lit-anim" : undefined} />}
+                {paths(ink.rect(wx, wy, WW, WH, { seed: seedOf(d.id), strokeWidth: isLit ? 1.2 : 0.9, roughness: 0.7, stroke: isLit ? "var(--ink)" : INK_FAINT }), `w-${d.id}`)}
+              </g>
+            );
+          })}
+          {/* the investor, under the street */}
+          <text x={cx} y={r2(ground + 24 * sc)} textAnchor="middle" fontFamily="var(--font-serif)" fontSize={r2(13 * sc)} letterSpacing={1.3} fill="var(--ink-500)">
+            {iv.name.toUpperCase()}
+          </text>
+          {all.length > shown.length && (
+            <text x={cx} y={r2(ground + 43 * sc)} textAnchor="middle" fontFamily="var(--font-serif)" fontStyle="italic" fontSize={r2(14 * sc)} fill="var(--ink-500)">
+              and {all.length - shown.length} more
+            </text>
+          )}
+          {/* the lit windows' names, above the roof (the newest nearest it) */}
+          {named.map(({ d }, j) => (
+            <text
+              key={`lbl-${d.id}`}
+              x={cx}
+              y={r2(top - 12 - (named.length - 1 - j + (more ? 1 : 0)) * LINE)}
+              textAnchor="middle"
+              fontFamily="var(--font-serif)"
+              fontStyle="italic"
+              fontSize={r2(20 * sc)}
+              fill="var(--ink-deep)"
+              className={d.id === animateId ? "window-label-anim" : undefined}
+            >
+              {d.name}
+            </text>
+          ))}
+          {more > 0 && (
+            <text x={cx} y={r2(top - 12)} textAnchor="middle" fontFamily="var(--font-serif)" fontStyle="italic" fontSize={r2(17 * sc)} fill="var(--ink-500)">
+              and {more} more
+            </text>
+          )}
+        </g>,
+      );
+    });
+    y = ground + 56 * sc;
+  });
+
+  // the cove below the town
+  const seaTop = r2(y + 2);
+  const H = seaTop + 46;
+  return (
+    <svg viewBox={`0 0 ${W} ${r2(H)}`} className={className} role="img" aria-label={`Map of ${startup}, its investors and their doors`}>
+      {out}
+      {wash([[0, seaTop + 4], [W, seaTop + 2], [W, H], [0, H]], SEA, 400, "cove", [0, 0])}
+      {paths(ink.line(0, seaTop, W * 0.44, seaTop, { seed: 401, roughness: 0.6, bowing: 0.3, strokeWidth: 1.4 }), "cv1")}
+      {paths(ink.line(W * 0.44 + 22, seaTop, W, seaTop, { seed: 402, roughness: 0.6, bowing: 0.3, strokeWidth: 1.4 }), "cv2")}
+      <g className="drift">
+        {paths(ink.line(70, seaTop + 20, 118, seaTop + 20, { seed: 403, roughness: 0.5, strokeWidth: 1.1 }), "cs1")}
+        {paths(ink.line(128, seaTop + 21, 137, seaTop + 21, { seed: 404, roughness: 0.5, strokeWidth: 1.1 }), "cs2")}
+        {paths(ink.line(430, seaTop + 30, 490, seaTop + 30, { seed: 405, roughness: 0.5, strokeWidth: 1.1 }), "cs3")}
       </g>
-      {n === 0 && (
-        <text x={CX} y={CY + 70} textAnchor="middle" fontFamily="var(--font-serif)" fontStyle="italic" fontSize={16} fill="var(--ink-500)">
-          no investors in view
-        </text>
-      )}
     </svg>
   );
-}
-
-/** Building centres: left/right of the startup first, so labels have room on the outer sides. */
-function layout(n: number): { x: number; y: number }[] {
-  const L = CX - 215;
-  const R = CX + 215;
-  switch (n) {
-    case 0:
-      return [];
-    case 1:
-      return [{ x: R, y: CY }];
-    case 2:
-      return [{ x: L, y: CY }, { x: R, y: CY }];
-    case 3:
-      return [{ x: L, y: CY }, { x: R, y: CY - 150 }, { x: R, y: CY + 150 }];
-    case 4:
-      return [{ x: L, y: CY - 165 }, { x: R, y: CY - 165 }, { x: L, y: CY + 165 }, { x: R, y: CY + 165 }];
-    case 5:
-      return [{ x: L, y: CY - 175 }, { x: R, y: CY - 175 }, { x: L, y: CY + 30 }, { x: R, y: CY + 30 }, { x: CX, y: CY + 215 }];
-    default:
-      return [
-        { x: L, y: CY - 195 }, { x: R, y: CY - 195 }, { x: L, y: CY }, { x: R, y: CY }, { x: L, y: CY + 195 }, { x: R, y: CY + 195 },
-      ].slice(0, n);
-  }
 }

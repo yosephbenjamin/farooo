@@ -21,7 +21,7 @@ const daysAgo = (now: string, iso: string) => Math.round((Date.parse(now) - Date
 const list = (xs: string[]) => (xs.length <= 2 ? xs.join(" and ") : `${xs.slice(0, -1).join(", ")} and ${xs.at(-1)}`);
 
 /**
- * "Eleven doors opened for Measur since December 2025. Four through people you know."
+ * "Eleven doors opened for Measur since December. Four through people you know."
  * Counts every door (the log lists the best); the warm paths, Faro's edge, get the second sentence.
  */
 export function headline(r: DoorReport, doors: Door[]): string {
@@ -38,8 +38,10 @@ function opened(r: DoorReport, shown: Door[]): string {
   const month = shown.filter((d) => daysAgo(r.now, d.whyNow.date) <= 31).length;
   if (month === shown.length) return `${numWord(month)} ${door(month)} opened for ${name} this month.`;
   const oldest = [...shown].sort((a, b) => a.whyNow.date.localeCompare(b.whyNow.date))[0].whyNow.date;
-  const sameYear = oldest.slice(0, 4) === r.now.slice(0, 4);
-  return `${numWord(shown.length)} ${door(shown.length)} opened for ${name} since ${monthOf(oldest)}${sameYear ? "" : ` ${oldest.slice(0, 4)}`}.`;
+  // a month name alone is the most recent one: the year is only needed past eleven months back
+  const months = (iso: string) => Number(iso.slice(0, 4)) * 12 + Number(iso.slice(5, 7));
+  const bare = months(r.now) - months(oldest) < 12;
+  return `${numWord(shown.length)} ${door(shown.length)} opened for ${name} since ${monthOf(oldest)}${bare ? "" : ` ${oldest.slice(0, 4)}`}.`;
 }
 
 /** "Four through people you know." / "All through people you know." / "" */
@@ -62,9 +64,12 @@ export function subline(r: DoorReport): string | null {
   return inv.length ? `Watching ${s.country}, through ${list(inv)}.` : `Watching ${s.country}.`;
 }
 
-/** 1. Why now. */
+/** 1. Why now. The fact as Cala has it, said the way a person would. */
 export function entryLead(d: Door): { name: string; rest: string } {
-  return { name: d.name, rest: ` ${d.whyNow.text}` };
+  const text = d.whyNow.text
+    .replace(/^grew from (\d[\d,.]*) to (\d[\d,.]*) people$/, "grew from $1 people to $2")
+    .replace(/^raised a round$/, "raised new money");
+  return { name: d.name, rest: ` ${text}` };
 }
 
 /** 2. Why you. */
@@ -72,17 +77,21 @@ export function entryWhy(d: Door, taps: Taps = NO_TAPS): string {
   return leadWhyYou(d, taps).sentence;
 }
 
-/** 3–5. Where to meet, warm path, who. Returns parts; the view renders the X-ray link. */
+/**
+ * 3–5. Who can introduce you (the investor you share, and whether they led), where to meet, who
+ * to ask for. Sentences without their full stop; the view joins them and renders the X-ray link.
+ */
 export function entryMeta(d: Door): { parts: string[]; people: string | null } {
   const parts: string[] = [];
-  if (d.slush) parts.push("Meet them at Slush 2026");
   if (d.warm.length) {
     const led = d.warm.filter((w) => w.led).map((w) => w.investor);
     const rest = d.warm.filter((w) => !w.led).map((w) => w.investor);
-    if (led.length) parts.push(`Through ${list(led)}, who led their round${rest.length ? `; also ${list(rest)}` : ""}`);
-    else parts.push(`Through ${list(rest)}`);
+    if (led.length) parts.push(`${list(led)} led their round and ${led.length > 1 ? "back" : "backs"} you too`);
+    if (rest.length) parts.push(led.length ? `So ${rest.length > 1 ? "do" : "does"} ${list(rest)}` : `${list(rest)} ${rest.length > 1 ? "back" : "backs"} you both`);
   }
-  const people = d.people.length ? d.people.map((p) => `${p.name}, ${p.role}`).join("; ") : null;
+  if (d.slush) parts.push("They'll be at Slush 2026");
+  const names = d.people.map((p) => `${p.name}, ${p.role}`);
+  const people = names.length ? `Ask for ${names.length > 1 ? `${names.slice(0, -1).join("; ")}, or ${names.at(-1)}` : names[0]}` : null;
   return { parts, people };
 }
 
@@ -98,7 +107,7 @@ export function sourceLine(d: Door): string {
 export function industryNoteLine(d: Door): string | null {
   const n = d.industryNote;
   if (!n) return null;
-  return `${d.name}: Cala codes it ${n.coded}; why-you read from its description (${n.read}). Uncertain.`;
+  return `${d.name}: Cala files it under ${n.coded}, but its description says ${n.read}. We read the description. Uncertain.`;
 }
 
 function hostName(url: string) {
@@ -109,16 +118,21 @@ function hostName(url: string) {
   }
 }
 
-/** Door Count: doors each investor opens (warm paths), quietly. */
+/** Door Count: who the warm paths run through, quietly. "Four through Lifeline Ventures, one through Tesi." */
 export function doorCountLine(r: DoorReport): string | null {
   const counts = new Map<string, number>();
   for (const d of r.doors) for (const w of d.warm) counts.set(w.investor, (counts.get(w.investor) ?? 0) + 1);
   if (!counts.size) return null;
-  return [...counts.entries()].sort((a, b) => b[1] - a[1]).map(([n, c]) => `${n} ${c}`).join(", ");
+  const line = [...counts.entries()].sort((a, b) => b[1] - a[1]).map(([n, c]) => `${numWord(c).toLowerCase()} through ${n}`).join(", ");
+  return `${line[0].toUpperCase()}${line.slice(1)}.`;
 }
 
-export function emailSubject() {
-  return "The lighthouse saw something";
+/** The subject is the news itself: "Volare raised a €7.1M Series A. Four more doors opened." */
+export function emailSubject(fresh: Door[] = []) {
+  const top = fresh[0];
+  if (!top) return "A door opened";
+  const more = fresh.length - 1;
+  return `${top.name}${entryLead(top).rest}.${more ? ` ${numWord(more)} more ${more === 1 ? "door" : "doors"} opened.` : ""}`;
 }
 
 void dayMonth;

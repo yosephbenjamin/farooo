@@ -125,28 +125,33 @@ export function LogView({ report, slug, taps: initialTaps, booth = false, script
   );
 
   const T = booth
-    ? { h1: "text-[clamp(44px,4.4vw,88px)] leading-[1.03]", lead: "text-[clamp(24px,1.95vw,38px)]", why: "text-[clamp(18px,1.35vw,26px)]", small: "text-[clamp(15px,1vw,19px)]", gap: "space-y-8" }
-    : { h1: "text-[clamp(38px,5vw,64px)] leading-[1.05]", lead: "text-[22px] sm:text-[25px]", why: "text-[17px] sm:text-[19px]", small: "text-[14px]", gap: "space-y-9" };
+    ? { h1: "text-[clamp(44px,3.5vw,72px)] leading-[1.06]", lead: "text-[clamp(26px,2.05vw,40px)]", why: "text-[clamp(20px,1.5vw,30px)]", small: "text-[clamp(15px,1vw,20px)]", gap: "space-y-[3.4vh]" }
+    : { h1: "text-[clamp(34px,4.2vw,60px)] leading-[1.07]", lead: "text-[23px] sm:text-[27px]", why: "text-[17px] sm:text-[19px]", small: "text-[14px] sm:text-[15px]", gap: "space-y-11" };
+  // the headline's two sentences: what opened, then the warm paths on a line of their own
+  const [opened, ...through] = headline(report, rankDoors(report.doors, taps)).split(/(?<=\.) /);
 
   return (
-    <main className={`mx-auto w-full ${booth ? "max-w-[1800px] px-[4vw] py-[4vh] min-h-screen" : "max-w-6xl px-4 sm:px-8 py-10 sm:py-14"}`}>
-      <header className={`flex items-center justify-between ${booth ? "mb-[4vh]" : "mb-10 sm:mb-14"}`}>
-        <Link href="/" className="flex items-center gap-2 no-underline" aria-label="Faro, home">
-          <Lighthouse className={booth ? "h-12 w-12" : "h-8 w-8"} lit={revealed} />
-          <span className={`uppercase tracking-[0.18em] text-ink-500 ${booth ? "text-base" : "text-[13px]"}`}>Faro</span>
+    <main className={`mx-auto w-full ${booth ? "max-w-[1800px] px-[4vw] py-[4vh] min-h-screen" : "max-w-[76rem] px-5 sm:px-10 py-8 sm:py-12"}`}>
+      <header className={`flex items-center justify-between ${booth ? "mb-[5vh]" : "mb-10 sm:mb-16"}`}>
+        <Link href="/" className="flex items-end gap-2.5 no-underline" aria-label="Faro, home">
+          <Lighthouse mark className={booth ? "h-12 w-auto" : "h-9 w-auto"} lit={revealed} />
+          <span className={`pb-0.5 uppercase tracking-[0.22em] text-ink ${booth ? "text-lg" : "text-[14px]"}`}>Faro</span>
         </Link>
         {scripted && !revealed && (
-          <button onClick={reveal} className={`uppercase tracking-[0.18em] text-ink-500 underline decoration-ink-300 underline-offset-4 ${booth ? "text-base" : "text-[13px]"}`}>
-            watch
+          <button onClick={reveal} className={`uppercase tracking-[0.22em] text-ink-500 underline decoration-ink-300 underline-offset-[6px] ${booth ? "text-lg" : "text-[14px]"}`}>
+            Open the door
           </button>
         )}
       </header>
 
-      <div className={`grid gap-12 ${booth ? "lg:grid-cols-[1fr_1.15fr] lg:gap-[4vw]" : "md:grid-cols-[1fr_1.1fr] md:gap-12"}`}>
-        <section>
-          <h1 className={`font-light tracking-[-0.015em] text-ink-deep ${T.h1}`}>{headline(report, rankDoors(report.doors, taps))}</h1>
+      <h1 className={`font-light tracking-[-0.018em] text-ink-deep ${T.h1}`}>
+        <span className="block max-w-[30ch] [text-wrap:balance]">{opened}</span>
+        {through.length > 0 && <span className="mt-[0.3em] block text-[0.74em] italic text-ink-500">{through.join(" ")}</span>}
+      </h1>
 
-          <ol className={`${booth ? "mt-[5vh]" : "mt-12"} ${T.gap}`}>
+      <div className={`grid gap-12 ${booth ? "mt-[5vh] lg:grid-cols-[1fr_1fr] lg:gap-[5vw]" : "mt-12 sm:mt-16 md:grid-cols-[1.05fr_1fr] md:gap-16"}`}>
+        <section>
+          <ol className={T.gap}>
             {ordered.map((x, i) => {
               const isScripted = scripted && revealed && x.door.id === scripted.id;
               return (
@@ -168,7 +173,7 @@ export function LogView({ report, slug, taps: initialTaps, booth = false, script
           </ol>
 
           {shownDoors.length > 0 && (
-            <ol className={`mt-14 space-y-1 text-ink-500 ${T.small}`}>
+            <ol className={`mt-14 space-y-1.5 border-t border-paper-200 pt-6 text-ink-500 ${T.small}`}>
               {shownDoors.map((d, i) => (
                 <li key={`fn-${d.id}`} className="flex gap-3">
                   <span className="w-4 text-right text-ink-300">{i + 1}</span>
@@ -187,14 +192,13 @@ export function LogView({ report, slug, taps: initialTaps, booth = false, script
           )}
 
           {count && (
-            <p className={`mt-10 text-ink-500 ${T.small}`}>
-              <span className="text-ink-300">Doors per investor: </span>
+            <p className={`mt-6 italic text-ink-500 ${T.small}`}>
               {count}
             </p>
           )}
         </section>
 
-        <aside className={booth ? "lg:sticky lg:top-[5vh] self-start" : "md:sticky md:top-10 self-start"}>
+        <aside className={booth ? "lg:sticky lg:top-[6vh] self-start" : "md:sticky md:top-12 self-start"}>
           <DoorMap
             startup={report.startup.name}
             investors={mapInvestors}
@@ -238,12 +242,19 @@ function Entry({
 }) {
   const lead = entryLead(d);
   const why = d.whyYou.find((w) => w.type === type)?.sentence ?? entryWhy(d, taps);
+  // "Customer. A food company…": the partnership is a small label, the rest is the sentence
+  const cut = why.indexOf(". ");
+  const [kind, because] = cut > 0 && cut < 14 ? [why.slice(0, cut), why.slice(cut + 2)] : [null, why];
   const meta = entryMeta(d);
+  // who can introduce you is Faro's edge: those sentences sit a shade darker than the rest
+  const warmN = (d.warm.some((w) => w.led) ? 1 : 0) + (d.warm.some((w) => !w.led) ? 1 : 0);
+  const warm = meta.parts.slice(0, warmN);
+  const rest = [...meta.parts.slice(warmN), meta.people].filter(Boolean) as string[];
   const hide = fresh && leadOverride != null ? "opacity-0" : "opacity-100";
   return (
-    <li data-tier={tierOf(d)} className={added ? "status-in" : undefined}>
+    <li data-tier={tierOf(d)} className={added ? "door-in" : undefined}>
       {/* 1. why now */}
-      <p className={`${T.lead} max-w-[30ch] leading-snug text-ink-deep`}>
+      <p className={`${T.lead} max-w-[32ch] leading-[1.25] tracking-[-0.005em] text-ink-deep`}>
         {leadOverride != null ? (
           <span className="caret">{leadOverride}</span>
         ) : (
@@ -257,8 +268,9 @@ function Entry({
         )}
       </p>
       {/* 2. why you */}
-      <p className={`mt-1.5 ${T.why} max-w-[46ch] leading-relaxed text-ink-500 transition-opacity duration-700 ${hide}`}>
-        {why}
+      <p className={`mt-[0.55em] ${T.why} max-w-[44ch] leading-[1.45] text-ink-500 transition-opacity duration-700 ${hide}`}>
+        {kind && <span className="mr-[0.7em] text-[0.72em] uppercase tracking-[0.16em] text-ink">{kind}</span>}
+        {because}
         {d.industryNote && (
           <sup className="ml-0.5 text-[0.6em] text-ink-500" title={industryNoteLine(d) ?? undefined}>
             †
@@ -266,9 +278,9 @@ function Entry({
         )}
       </p>
       {/* 3–5. where to meet, warm path, who */}
-      <p className={`mt-1 ${T.why} max-w-[46ch] leading-relaxed text-ink-500 italic transition-opacity duration-700 ${hide}`}>
-        {[...meta.parts, meta.people].filter(Boolean).join(". ")}
-        {meta.parts.length || meta.people ? (meta.people ? ". " : ". ") : ""}
+      <p className={`mt-[0.2em] ${T.why} max-w-[44ch] leading-[1.45] text-ink-500 italic transition-opacity duration-700 ${hide}`}>
+        {warm.length > 0 && <span className="text-ink-deep">{warm.join(". ")}. </span>}
+        {rest.length > 0 && `${rest.join(". ")}. `}
         {!meta.people && (
           <a href={d.xray} target="_blank" rel="noreferrer" className="not-italic">
             Find the right person →
@@ -276,7 +288,7 @@ function Entry({
         )}
       </p>
       {onTap && (
-        <p className={`mt-3 flex gap-5 text-[15px] text-ink-500 transition-opacity duration-700 ${hide}`}>
+        <p className={`mt-3.5 flex gap-6 text-[15px] text-ink-500 transition-opacity duration-700 ${hide}`}>
           {moreShown === undefined ? (
             <button className="underline decoration-ink-300 underline-offset-4" onClick={() => onTap(d, type, "more")}>
               more like this

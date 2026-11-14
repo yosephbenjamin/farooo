@@ -20,7 +20,7 @@ export default function SentLog() {
       <h1 className="text-[clamp(32px,4.5vw,52px)] font-light leading-[1.08] tracking-[-0.015em] text-ink-deep">
         {alerts.length ? `${numWord(alerts.length)} ${alerts.length === 1 ? "signal" : "signals"} sent.` : "Nothing sent yet."}
       </h1>
-      <p className="mt-3 italic text-ink-500 text-[18px]">Each one exactly as it reached the inbox.</p>
+      <p className="mt-3 italic text-ink-500 text-[18px]">Each one as it reached the inbox.</p>
       <div className="mt-14 space-y-16">
         {alerts.map((a) => (
           <article key={a.id}>
@@ -34,7 +34,7 @@ export default function SentLog() {
               <dt className="text-ink-300">Sent</dt>
               <dd>
                 {new Date(a.createdAt).toUTCString().replace(" GMT", " UTC")}
-                {a.delivery === "log-only" ? ", kept here (no mail key)" : ", delivered"}
+                {a.delivery === "log-only" ? ", kept here, not mailed" : ", delivered"}
               </dd>
             </dl>
             <div className="border-t border-paper-200" dangerouslySetInnerHTML={{ __html: renderAlertFragment(a) }} />
