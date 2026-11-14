@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { firstLook, leadWhyYou, rankDoors, tierOf, type Door, type DoorReport, type Taps } from "@/lib/doors";
-import { doorCountLine, entryLead, entryMeta, entryWhy, headline, industryNoteLine, sourceLine, subline } from "@/lib/prose";
+import { doorCountLine, entryLead, entryMeta, entryWhy, headline, industryNoteLine, numWord, sourceLine } from "@/lib/prose";
 import { applyTap, serializeTaps, tapsCookie } from "@/lib/taps";
 import type { PartnerType } from "@/lib/partner";
 import { DoorMap } from "./DoorMap";
@@ -22,16 +22,32 @@ interface Props {
 
 const NEW = "__new";
 
+type Pick = { door: Door; type?: PartnerType; added?: boolean };
+const reasonOf = (d: Door) => (d.whyNow.kind === "news" || d.whyNow.kind === "entry" ? "entry" : d.whyNow.kind);
+
 export function LogView({ report, slug, taps: initialTaps, booth = false, scriptedId = null, autoMs = null }: Props) {
   const [taps, setTaps] = useState<Taps>(initialTaps);
   const [revealed, setRevealed] = useState(!scriptedId);
   const [typed, setTyped] = useState(0);
 
-  // The first look (no taps yet): three doors of different partnership types. After a tap: ranked.
-  const all = useMemo<{ door: Door; type?: PartnerType }[]>(
-    () => (taps.touched || booth ? rankDoors(report.doors, taps).map((door) => ({ door })) : firstLook(report.doors)),
-    [report, taps, booth],
+  // What the page opened with: the first look (three doors of different kinds), or, for someone who
+  // has tapped before, their ranked doors. It stays put while they tap: "more like this" adds doors
+  // like the tapped one right below it, "not now" removes a door. Nothing else moves.
+  const [initial] = useState<Pick[]>(() =>
+    booth || initialTaps.touched ? rankDoors(report.doors, initialTaps).slice(0, booth ? undefined : 6).map((door) => ({ door })) : firstLook(report.doors),
   );
+  const [more, setMore] = useState<Record<string, Pick[]>>({});
+  const all = useMemo<Pick[]>(() => {
+    const hidden = new Set(taps.hidden);
+    const out: Pick[] = [];
+    const add = (x: Pick) => {
+      if (hidden.has(x.door.id) || out.some((o) => o.door.id === x.door.id)) return;
+      out.push(x);
+      for (const y of more[x.door.id] ?? []) add(y);
+    };
+    initial.forEach(add);
+    return out;
+  }, [initial, more, taps]);
   const scripted = useMemo(() => all.find((x) => x.door.id === scriptedId)?.door ?? null, [all, scriptedId]);
   const reveal = useCallback(() => setRevealed(true), []);
 
@@ -60,7 +76,7 @@ export function LogView({ report, slug, taps: initialTaps, booth = false, script
     return () => window.clearTimeout(t);
   }, [revealed, scripted, typed, leadText]);
 
-  const max = booth ? 3 : taps.touched ? 6 : 3;
+  const max = booth ? 3 : all.length;
   const visible = (scripted && !revealed ? all.filter((x) => x.door.id !== scripted.id) : all).slice(0, max);
   const ordered = scripted && revealed ? [all.find((x) => x.door.id === scripted.id)!, ...visible.filter((x) => x.door.id !== scripted.id)].slice(0, max) : visible;
   const shownDoors = ordered.map((x) => x.door);
@@ -69,6 +85,17 @@ export function LogView({ report, slug, taps: initialTaps, booth = false, script
   const tap = (d: Door, type: PartnerType, kind: "more" | "notnow") => {
     const next = applyTap(taps, type, kind, d.id);
     setTaps(next);
+    if (kind === "more") {
+      // up to two doors like this one (same partnership, same reason first), right below it
+      const shown = new Set(all.map((x) => x.door.id));
+      const like = rankDoors(report.doors, next)
+        .filter((x) => !shown.has(x.id) && x.whyYou.some((w) => w.type === type))
+        .map((x, i) => ({ x, i, same: reasonOf(x) === reasonOf(d) ? 0 : 1 }))
+        .sort((a, b) => a.same - b.same || a.i - b.i)
+        .slice(0, 2)
+        .map(({ x }) => ({ door: x, type, added: true }));
+      setMore((m) => ({ ...m, [d.id]: like }));
+    }
     try {
       document.cookie = `${tapsCookie(slug)}=${serializeTaps(next)}; path=/; max-age=31536000; samesite=lax`;
     } catch {}
@@ -118,7 +145,6 @@ export function LogView({ report, slug, taps: initialTaps, booth = false, script
       <div className={`grid gap-12 ${booth ? "lg:grid-cols-[1fr_1.15fr] lg:gap-[4vw]" : "md:grid-cols-[1fr_1.1fr] md:gap-12"}`}>
         <section>
           <h1 className={`font-light tracking-[-0.015em] text-ink-deep ${T.h1}`}>{headline(report, rankDoors(report.doors, taps))}</h1>
-          {subline(report) && <p className={`mt-4 italic text-ink-500 ${T.why}`}>{subline(report)}</p>}
 
           <ol className={`${booth ? "mt-[5vh]" : "mt-12"} ${T.gap}`}>
             {ordered.map((x, i) => {
@@ -133,6 +159,8 @@ export function LogView({ report, slug, taps: initialTaps, booth = false, script
                   T={T}
                   leadOverride={isScripted && typed < leadText.length ? leadText.slice(0, typed) : null}
                   fresh={!!isScripted}
+                  added={!!x.added}
+                  moreShown={more[x.door.id]?.length}
                   onTap={booth ? null : tap}
                 />
               );
@@ -191,6 +219,8 @@ function Entry({
   T,
   leadOverride,
   fresh,
+  added,
+  moreShown,
   onTap,
 }: {
   d: Door;
@@ -200,6 +230,10 @@ function Entry({
   T: { lead: string; why: string; small: string };
   leadOverride?: string | null;
   fresh?: boolean;
+  /** Added by a "more like this" tap: fades in. */
+  added?: boolean;
+  /** How many doors a "more like this" tap on this door added (undefined: not tapped). */
+  moreShown?: number;
   onTap: ((d: Door, type: PartnerType, kind: "more" | "notnow") => void) | null;
 }) {
   const lead = entryLead(d);
@@ -207,7 +241,7 @@ function Entry({
   const meta = entryMeta(d);
   const hide = fresh && leadOverride != null ? "opacity-0" : "opacity-100";
   return (
-    <li data-tier={tierOf(d)}>
+    <li data-tier={tierOf(d)} className={added ? "status-in" : undefined}>
       {/* 1. why now */}
       <p className={`${T.lead} max-w-[30ch] leading-snug text-ink-deep`}>
         {leadOverride != null ? (
@@ -243,9 +277,13 @@ function Entry({
       </p>
       {onTap && (
         <p className={`mt-3 flex gap-5 text-[15px] text-ink-500 transition-opacity duration-700 ${hide}`}>
-          <button className="underline decoration-ink-300 underline-offset-4" onClick={() => onTap(d, type, "more")}>
-            more like this
-          </button>
+          {moreShown === undefined ? (
+            <button className="underline decoration-ink-300 underline-offset-4" onClick={() => onTap(d, type, "more")}>
+              more like this
+            </button>
+          ) : (
+            <span className="text-ink-deep">{moreShown ? `${numWord(moreShown)} more like this below` : "No more like this yet"}</span>
+          )}
           <button className="underline decoration-ink-300 underline-offset-4" onClick={() => onTap(d, type, "notnow")}>
             not now
           </button>
