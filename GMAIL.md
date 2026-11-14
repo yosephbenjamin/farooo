@@ -67,11 +67,11 @@ What it asks for, and why:
    - Personal address (`@gmail.com`): "A personal address doesn't say which startup is yours" with one field. Type a startup, e.g. **Distance Technologies**, **Measur** or **RiACT** (the demo startups in `DEMO.md`), and press **Show my doors**. It's remembered from then on.
    - A startup Faro hasn't stored yet: a static lighthouse with "Looking for X…" and **Show my doors**. Click it and wait (up to half a minute) while Faro reads Cala; Gmail's cards can't animate, so the thin progress bar at the top is the only motion.
 2. **Taps**: press **more like this** or **not now** on a door. A toast confirms it and the log re-ranks; "not now" hides that door. Taps are stored per startup in your user properties, in the same shape as the web's cookie.
-3. **Contextual door**: open an email from a company that is one of your doors. The card header becomes **A door, in your inbox** and shows that door in five parts. To try it without such an email:
+3. **Contextual door**: open an email from a company that is one of your doors. The card header becomes **One of your doors** and shows that door in five parts. To try it without such an email:
    - Project Settings → Script properties → add `FARO_TEST_SENDER` = `hello@volare.fi` (Volare is Distance Technologies' top door; for RiACT use `hello@zenniz.com`), then open **any** email. Use a sender from one of your startup's doors: the door's website is in its footnote link.
    - Delete `FARO_TEST_SENDER` afterwards: while it's set, every message is treated as coming from that address.
 4. **Change startup**: the "Not your startup? Change it" link at the bottom of a card, or the ⋮ menu in the sidebar → **Change startup**.
-5. **Open the full log →** opens the web log for the same startup.
+5. **Read the full log →** opens the web log for the same startup.
 
 Edits to `Code.gs` apply on the next Gmail reload. A test deployment always runs the latest saved code; there's nothing to redeploy.
 

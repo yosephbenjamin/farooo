@@ -76,6 +76,7 @@ const LABELS: Record<string, string> = {
   comms: "communications",
   edu: "education",
   dualUseTech: "dual-use tech",
+  deeptech: "deep tech",
   somethingElse: "",
 };
 
@@ -136,15 +137,15 @@ export function partnerTypes(m: MatchInput): WhyYou[] {
         out.push({
           type: "customer",
           sentence: m.entering
-            ? `Customer. ${an(dw)} company setting up in ${where} will buy ${uw}, and you sell it there.`
-            : `Customer. ${an(dw)} company ${m.reason === "hire" ? "that's growing its team" : m.reason === "acquisition" ? "that just made an acquisition" : "with fresh money"} is a buyer of ${uw}.`,
+            ? `Customer. ${an(dw)} company new to ${where}, and you sell ${uw} there.`
+            : `Customer. ${an(dw)} company ${m.reason === "hire" ? "with a growing team" : m.reason === "acquisition" ? "fresh from an acquisition" : "with money to spend"}, and you sell ${uw}.`,
         });
       }
       if (!has("integration") && INTEGRATES.some(([x, y]) => x === us && y === dsec)) {
-        out.push({ type: "integration", sentence: dw === uw ? `Integration. You both build ${uw}: the products plug into the same stack.` : `Integration. They build ${dw}, you build ${uw}: the two plug into the same stack.` });
+        out.push({ type: "integration", sentence: dw === uw ? `Integration. You both build ${uw}. The same stack, from two sides.` : `Integration. They build ${dw}, you build ${uw}. The same stack, from two sides.` });
       }
       if (!has("distribution") && m.entering && us === dsec && m.you.country && m.door.country && m.door.country !== m.you.country) {
-        out.push({ type: "distribution", sentence: `Distribution. They're new to ${where} and sell ${dw} to the buyers you already reach.` });
+        out.push({ type: "distribution", sentence: `Distribution. They sell ${dw} and they're new to ${where}. You already know the buyers.` });
       }
     }
   }

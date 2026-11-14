@@ -21,7 +21,7 @@ export function makeAlert(r: DoorReport, fresh: Door[], slug: string, to: string
     createdAt,
     startup: { name: r.startup.name, slug },
     to,
-    subject: emailSubject(),
+    subject: emailSubject(fresh),
     headline: headline(r, fresh),
     entries: fresh.map((d) => {
       const l = entryLead(d);
@@ -89,7 +89,7 @@ export function renderAlertFragment(a: Alert, baseUrl = ""): string {
         </td></tr>
         <tr><td style="padding:0 40px;"><table role="presentation" width="100%" cellpadding="0" cellspacing="0">${items}</table></td></tr>
         <tr><td style="padding:6px 40px 0 40px;border-top:0;">${notes}</td></tr>
-        ${a.doorCount ? `<tr><td style="padding:22px 40px 0 40px;font-family:${MONO};font-size:13px;color:${C.ink500};"><span style="color:${C.ink300};">Doors per investor: </span>${esc(a.doorCount)}</td></tr>` : ""}
+        ${a.doorCount ? `<tr><td style="padding:22px 40px 0 40px;font-family:${MONO};font-size:13px;color:${C.ink500};">${esc(a.doorCount)}</td></tr>` : ""}
         <tr><td style="padding:30px 40px 40px 40px;font-family:${SERIF};font-style:italic;font-size:14px;color:${C.ink500};">
           The lighthouse stays quiet until a door opens.${baseUrl ? ` <a href="${esc(baseUrl)}/for/${esc(a.startup.slug)}" style="color:${C.ink500};">See the log.</a>` : ""}
         </td></tr>
@@ -109,6 +109,8 @@ export function renderAlertText(a: Alert): string {
     ...a.entries.flatMap((e, i) => [`${e.lead} [${i + 1}]`, e.why, e.meta, e.xray ?? "", ""]),
     ...a.entries.map((e, i) => `[${i + 1}] ${shortDate(e.date)}, ${e.sourceUrl}`),
     "",
-    a.doorCount ? `Doors per investor: ${a.doorCount}` : "",
+    a.doorCount ?? "",
+    "",
+    "The lighthouse stays quiet until a door opens.",
   ].join("\n");
 }

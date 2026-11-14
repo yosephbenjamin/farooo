@@ -78,7 +78,7 @@ function note_(text) {
 function nameCard_(reason) {
   var s = CardService.newCardSection();
   if (reason) s.addWidget(CardService.newTextParagraph().setText('<i>' + esc_(reason) + '</i>'));
-  s.addWidget(CardService.newTextInput().setFieldName('startup').setTitle("Your startup's name").setValue(startup_()));
+  s.addWidget(CardService.newTextInput().setFieldName('startup').setTitle('Which startup are you?').setValue(startup_()));
   s.addWidget(CardService.newTextButton().setText('Show my doors')
     .setOnClickAction(CardService.newAction().setFunctionName('onSetStartup')));
   return CardService.newCardBuilder().setHeader(header_()).addSection(s).build();
@@ -109,7 +109,7 @@ function doorSection_(d, slug) {
 
 function footer_(card, slug) {
   var s = CardService.newCardSection();
-  if (slug) s.addWidget(CardService.newTextButton().setText('Open the full log →').setTextButtonStyle(CardService.TextButtonStyle.TEXT)
+  if (slug) s.addWidget(CardService.newTextButton().setText('Read the full log →').setTextButtonStyle(CardService.TextButtonStyle.TEXT)
     .setOpenLink(CardService.newOpenLink().setUrl(base_() + '/for/' + encodeURIComponent(slug))));
   if (startup_()) s.addWidget(CardService.newTextButton().setText('Not your startup? Change it').setTextButtonStyle(CardService.TextButtonStyle.TEXT)
     .setOnClickAction(CardService.newAction().setFunctionName('onChangeStartup')));
@@ -155,7 +155,7 @@ function answer_(r, extra, quick) {
   if (r.body.pending) return lookingCard_(r.body.name, extra);
   if (r.code !== 200 || r.body.error) return note_(r.body.error || 'The lighthouse is out of reach.');
   if (r.body.match) {
-    var card = CardService.newCardBuilder().setHeader(header_('A door, in your inbox'));
+    var card = CardService.newCardBuilder().setHeader(header_('One of your doors'));
     card.addSection(doorSection_(r.body.door, r.body.slug));
     footer_(card, r.body.slug);
     return card.build();
@@ -176,7 +176,7 @@ function lookingCard_(name, extra) {
   var s = CardService.newCardSection();
   s.addWidget(CardService.newImage().setImageUrl(LOGO).setAltText('A hand-drawn lighthouse'));
   s.addWidget(CardService.newTextParagraph().setText('<b>Looking for ' + esc_(name || 'your startup') + '…</b>'));
-  s.addWidget(CardService.newTextParagraph().setText('<i>Faro is reading Cala: who they are, who backed them, which doors opened. A new startup can take up to half a minute.</i>'));
+  s.addWidget(CardService.newTextParagraph().setText('<i>Reading the funding records. Checking who backed whom. Looking for doors. A new name can take half a minute.</i>'));
   s.addWidget(CardService.newTextButton().setText('Show my doors')
     .setOnClickAction(CardService.newAction().setFunctionName('onLook').setParameters({ sender: (extra && extra.sender) || '' })));
   var card = CardService.newCardBuilder().setHeader(header_()).addSection(s);
@@ -229,6 +229,6 @@ function onTap(e) {
   t.touched = true;
   user_().setProperty(key, encodeURIComponent(JSON.stringify(t)));
   return CardService.newActionResponseBuilder()
-    .setNotification(CardService.newNotification().setText(p.kind === 'more' ? 'More like this.' : 'Not now.'))
+    .setNotification(CardService.newNotification().setText(p.kind === 'more' ? 'More like this. Noted.' : 'Not now. Put away.'))
     .setNavigation(CardService.newNavigation().updateCard(onHomepage())).build();
 }

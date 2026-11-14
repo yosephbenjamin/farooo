@@ -137,7 +137,7 @@ export function LogView({ report, slug, taps: initialTaps, booth = false, script
         </Link>
         {scripted && !revealed && (
           <button onClick={reveal} className={`uppercase tracking-[0.18em] text-ink-500 underline decoration-ink-300 underline-offset-4 ${booth ? "text-base" : "text-[13px]"}`}>
-            watch
+            Open the door
           </button>
         )}
       </header>
@@ -188,7 +188,6 @@ export function LogView({ report, slug, taps: initialTaps, booth = false, script
 
           {count && (
             <p className={`mt-10 text-ink-500 ${T.small}`}>
-              <span className="text-ink-300">Doors per investor: </span>
               {count}
             </p>
           )}

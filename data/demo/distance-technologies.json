@@ -57,11 +57,11 @@
       "whyYou": [
         {
           "type": "integration",
-          "sentence": "Integration. They build data centres, you build deeptech: the two plug into the same stack."
+          "sentence": "Integration. They build data centres, you build deep tech. The same stack, from two sides."
         },
         {
           "type": "distribution",
-          "sentence": "Distribution. They're new to Finland and sell data centres to the buyers you already reach."
+          "sentence": "Distribution. They sell data centres and they're new to Finland. You already know the buyers."
         }
       ],
       "slush": false,
@@ -93,11 +93,11 @@
       "whyYou": [
         {
           "type": "integration",
-          "sentence": "Integration. They build software, you build deeptech: the two plug into the same stack."
+          "sentence": "Integration. They build software, you build deep tech. The same stack, from two sides."
         },
         {
           "type": "distribution",
-          "sentence": "Distribution. They're new to Finland and sell software to the buyers you already reach."
+          "sentence": "Distribution. They sell software and they're new to Finland. You already know the buyers."
         }
       ],
       "slush": false,
@@ -137,7 +137,7 @@
       "whyYou": [
         {
           "type": "customer",
-          "sentence": "Customer. An energy company with fresh money is a buyer of deeptech."
+          "sentence": "Customer. An energy company with money to spend, and you sell deep tech."
         }
       ],
       "slush": true,
@@ -166,7 +166,7 @@
       "whyYou": [
         {
           "type": "customer",
-          "sentence": "Customer. A food company with fresh money is a buyer of deeptech."
+          "sentence": "Customer. A food company with money to spend, and you sell deep tech."
         }
       ],
       "slush": true,
@@ -211,7 +211,7 @@
       "whyYou": [
         {
           "type": "customer",
-          "sentence": "Customer. A manufacturing materials company with fresh money is a buyer of deeptech."
+          "sentence": "Customer. A manufacturing materials company with money to spend, and you sell deep tech."
         }
       ],
       "slush": false,
@@ -251,11 +251,11 @@
       "whyYou": [
         {
           "type": "customer",
-          "sentence": "Customer. A consulting company with fresh money is a buyer of deeptech."
+          "sentence": "Customer. A consulting company with money to spend, and you sell deep tech."
         },
         {
           "type": "integration",
-          "sentence": "Integration. They build software, you build deeptech: the two plug into the same stack."
+          "sentence": "Integration. They build software, you build deep tech. The same stack, from two sides."
         }
       ],
       "slush": true,
@@ -295,7 +295,7 @@
       "whyYou": [
         {
           "type": "integration",
-          "sentence": "Integration. They build software, you build deeptech: the two plug into the same stack."
+          "sentence": "Integration. They build software, you build deep tech. The same stack, from two sides."
         }
       ],
       "slush": true,
@@ -335,7 +335,7 @@
       "whyYou": [
         {
           "type": "integration",
-          "sentence": "Integration. They build networks, you build deeptech: the two plug into the same stack."
+          "sentence": "Integration. They build networks, you build deep tech. The same stack, from two sides."
         }
       ],
       "slush": true,
@@ -364,7 +364,7 @@
       "whyYou": [
         {
           "type": "integration",
-          "sentence": "Integration. They build software, you build deeptech: the two plug into the same stack."
+          "sentence": "Integration. They build software, you build deep tech. The same stack, from two sides."
         }
       ],
       "slush": true,
@@ -409,7 +409,7 @@
       "whyYou": [
         {
           "type": "integration",
-          "sentence": "Integration. They build online marketplaces, you build deeptech: the two plug into the same stack."
+          "sentence": "Integration. They build online marketplaces, you build deep tech. The same stack, from two sides."
         }
       ],
       "slush": true,
@@ -454,11 +454,11 @@
       "whyYou": [
         {
           "type": "customer",
-          "sentence": "Customer. A sports company that's growing its team is a buyer of deeptech."
+          "sentence": "Customer. A sports company with a growing team, and you sell deep tech."
         },
         {
           "type": "integration",
-          "sentence": "Integration. They build software, you build deeptech: the two plug into the same stack."
+          "sentence": "Integration. They build software, you build deep tech. The same stack, from two sides."
         }
       ],
       "slush": true,

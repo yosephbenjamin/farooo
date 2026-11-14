@@ -21,6 +21,9 @@ export default function Home() {
             placeholder={demos[0]?.name ?? ""}
             className="mt-6 w-full max-w-md border-0 border-b border-ink-300 bg-transparent pb-2 text-[clamp(22px,2.4vw,30px)] font-light text-ink outline-none placeholder:text-ink-300 placeholder:italic focus:border-ink"
           />
+          <span className="mt-5 block max-w-md text-[17px] leading-relaxed text-ink-500">
+            New money, new hires, new acquisitions. Faro tells you who just got a reason to partner, and who can introduce you.
+          </span>
           <datalist id="demo-startups">
             {demos.map((d) => (
               <option key={d.slug} value={d.name} />
