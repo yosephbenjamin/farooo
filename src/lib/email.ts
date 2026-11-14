@@ -53,7 +53,7 @@ const C = {
   light: "#ffc234",
 };
 const SERIF = `'Newsreader', 'Iowan Old Style', Georgia, 'Times New Roman', serif`;
-const MONO = `'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace`;
+const MONO = `Newsreader, 'Iowan Old Style', Georgia, serif`; // small text: the same serif as the site (no monospace)
 
 const esc = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 
@@ -74,7 +74,7 @@ export function renderAlertFragment(a: Alert, baseUrl = ""): string {
   const notes = a.entries
     .map(
       (e, i) =>
-        `<div style="font-family:${MONO};font-size:11px;line-height:1.8;color:${C.ink500};"><span style="color:${C.ink300};">${i + 1}&nbsp;&nbsp;</span><a href="${esc(e.sourceUrl)}" style="color:${C.ink500};text-decoration:none;">${esc(shortDate(e.date))} · ${esc(e.sourceName)}${e.sourceRank ? ` · ${esc(e.sourceRank)}` : ""}</a></div>`,
+        `<div style="font-family:${MONO};font-size:13px;line-height:1.8;color:${C.ink500};"><span style="color:${C.ink300};">${i + 1}&nbsp;&nbsp;</span><a href="${esc(e.sourceUrl)}" style="color:${C.ink500};text-decoration:none;">${esc(shortDate(e.date))}, ${esc(e.sourceName)}${e.sourceRank ? `, ${esc(e.sourceRank.toLowerCase())}` : ""}</a></div>`,
     )
     .join("");
   return `
@@ -89,7 +89,7 @@ export function renderAlertFragment(a: Alert, baseUrl = ""): string {
         </td></tr>
         <tr><td style="padding:0 40px;"><table role="presentation" width="100%" cellpadding="0" cellspacing="0">${items}</table></td></tr>
         <tr><td style="padding:6px 40px 0 40px;border-top:0;">${notes}</td></tr>
-        ${a.doorCount ? `<tr><td style="padding:22px 40px 0 40px;font-family:${MONO};font-size:11px;color:${C.ink500};"><span style="color:${C.ink300};">Doors per investor&nbsp;&nbsp;</span>${esc(a.doorCount)}</td></tr>` : ""}
+        ${a.doorCount ? `<tr><td style="padding:22px 40px 0 40px;font-family:${MONO};font-size:13px;color:${C.ink500};"><span style="color:${C.ink300};">Doors per investor: </span>${esc(a.doorCount)}</td></tr>` : ""}
         <tr><td style="padding:30px 40px 40px 40px;font-family:${SERIF};font-style:italic;font-size:14px;color:${C.ink500};">
           The lighthouse stays quiet until a door opens.${baseUrl ? ` <a href="${esc(baseUrl)}/for/${esc(a.startup.slug)}" style="color:${C.ink500};">See the log.</a>` : ""}
         </td></tr>
@@ -107,7 +107,7 @@ export function renderAlertText(a: Alert): string {
     a.headline,
     "",
     ...a.entries.flatMap((e, i) => [`${e.lead} [${i + 1}]`, e.why, e.meta, e.xray ?? "", ""]),
-    ...a.entries.map((e, i) => `[${i + 1}] ${shortDate(e.date)} · ${e.sourceUrl}`),
+    ...a.entries.map((e, i) => `[${i + 1}] ${shortDate(e.date)}, ${e.sourceUrl}`),
     "",
     a.doorCount ? `Doors per investor: ${a.doorCount}` : "",
   ].join("\n");
