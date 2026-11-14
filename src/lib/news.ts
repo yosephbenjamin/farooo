@@ -14,7 +14,7 @@ export const WIDE_MARKETS: { market: string; adj: string }[] = [
   { market: "Germany", adj: "German" }, { market: "United Kingdom", adj: "UK" }, { market: "Netherlands", adj: "Dutch" }, { market: "France", adj: "French" },
 ];
 
-const NOT_ENTRY = /\b(forecast|market (size|is expected|will grow)|cagr|merg(e|er|ed)|acquir|acquisition|takeover|stake in|partner(ed|ing|s|ship) with|joint[- ]venture|alliance|raised|funding round|ipo|layoffs?|exit(s|ed)? the|withdraw|leav(e|es|ing) the|job (posting|for)|posted a job|contracts? with)\b/i;
+const NOT_ENTRY = /\b(forecast|market (size|is expected|will grow)|cagr|merg(e|er|ed)|acquir\w*(?!\s+(?:land|a site|the site|site|a plot|plot|property))|acquisition|takeover|stake in|partner(ed|ing|s|ship) with|joint[- ]venture|alliance|raised|funding round|ipo|layoffs?|exit(s|ed)? the|withdraw|leav(e|es|ing) the|job (posting|for)|posted a job|contracts? with)\b/i;
 /** Countries Faro reads market entry for: the Nordics first, then the big European markets. */
 const C = String.raw`(?:finland|sweden|norway|denmark|iceland|the nordics|scandinavia|germany|the uk|the united kingdom|britain|the netherlands|france|europe)`;
 const ADJ = String.raw`(?:finnish|swedish|norwegian|danish|nordic|icelandic|german|british|uk|dutch|french)`;
@@ -116,3 +116,20 @@ export function marketCountry(market: string): string[] {
   return market === "the Nordics" ? ["Finland", "Sweden", "Norway", "Denmark", "Iceland"] : [market];
 }
 
+const NATIONALITY: Record<string, string> = {
+  ukrainian: "Ukraine", taiwanese: "Taiwan", chinese: "China", american: "United States", us: "United States", "u.s.": "United States",
+  british: "United Kingdom", uk: "United Kingdom", german: "Germany", french: "France", dutch: "Netherlands", portuguese: "Portugal",
+  norwegian: "Norway", swedish: "Sweden", danish: "Denmark", finnish: "Finland", icelandic: "Iceland", estonian: "Estonia",
+  italian: "Italy", spanish: "Spain", israeli: "Israel", japanese: "Japan", korean: "South Korea", indian: "India", canadian: "Canada",
+  swiss: "Switzerland", polish: "Poland", irish: "Ireland", austrian: "Austria", belgian: "Belgium", lithuanian: "Lithuania", latvian: "Latvia",
+};
+
+/** The country a claim gives its company ("Ukrainian defence firm Fire Point", "Advantech, a Taiwanese … firm"), if any. */
+export function claimedCountry(text: string, company: string): string | null {
+  const t = plainText(text);
+  const i = t.indexOf(company);
+  if (i < 0) return null;
+  const around = `${t.slice(Math.max(0, i - 70), i)} ${t.slice(i + company.length, i + company.length + 70).split(/[,;]\s+(?![a-z])/).slice(0, 2).join(", ")}`;
+  const m = around.match(new RegExp(`\\b(${Object.keys(NATIONALITY).map((k) => k.replace(".", "\\.")).join("|")})\\b(?=\\s+[a-z\\-]+)`, "i"));
+  return m ? NATIONALITY[m[1].toLowerCase()] : null;
+}

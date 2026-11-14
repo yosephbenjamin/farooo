@@ -1,5 +1,5 @@
 {
-  "ranAt": "2026-11-14T12:10:27.797Z",
+  "ranAt": "2026-11-14T12:35:14.035Z",
   "now": "2026-11-14",
   "planned": 150,
   "reports": [
@@ -16,6 +16,30 @@
       "searchCallsSent": 0,
       "entityCallsSent": 0,
       "statuses": {}
+    },
+    {
+      "searches": 100,
+      "claims": 557,
+      "notEntry": 477,
+      "noDate": 53,
+      "old": 8,
+      "unresolved": 6,
+      "local": 6,
+      "kept": 7,
+      "keptNames": [
+        "Google -> Sweden (2026-06-02)",
+        "atNorth Holding AB -> Norway (2026-06-09)",
+        "Crusoe -> Norway (2026-10-21)",
+        "FIRE POINT S.R.L. -> Denmark (2026-07-13)",
+        "FIRE POINT S.R.L. -> Denmark (2026-09-08)"
+      ],
+      "searchCallsSent": 126,
+      "entityCallsSent": 28,
+      "statuses": {
+        "200": 70,
+        "429": 14,
+        "502": 70
+      }
     }
   ],
   "queries": [

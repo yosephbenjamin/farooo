@@ -1,0 +1,1 @@
+{"method":"GET","path":"/v1/entities?name=VNYX&entity_types=Company&limit=10","body":null,"fetchedAt":"2026-11-14T12:31:02.177Z","response":{"entities":[{"id":"418f2c9e-fb9b-5285-b58c-e07e9cab9fd1","name":"VNYX","entity_type":"Company","description":"A 2025-founded apparel and luxury goods company founded by Romy Goedhart and Vincent van der Holst."}]}}

@@ -29,7 +29,7 @@ import { getEntity, knowledgeSearch, searchEntities, CalaError, calaStats } from
 import { relAll, fetchProfileRaw, PROFILE_QUERY } from "../src/lib/graph";
 import { readJson, writeJson, today, DATA_DIR } from "../src/lib/data";
 import { parseProfile, filingFounding, rankedSources, type Profile, type RankedSource } from "../src/lib/profile";
-import { claimsOf, heuristic, NEWS_MARKETS, WIDE_MARKETS, type Claim } from "../src/lib/news";
+import { claimedCountry, claimsOf, heuristic, NEWS_MARKETS, WIDE_MARKETS, type Claim } from "../src/lib/news";
 import { extractClaims, llmEnabled } from "../src/lib/llm";
 import { normalizeCompany } from "../src/lib/normalize";
 import { resolveByName, summarize } from "../src/lib/identity";
@@ -223,7 +223,7 @@ async function keepClaim(c: Claim, x: { company: string | null; date: string | n
   if (!date) { stats.noDate++; return; }
   if (date > now || dayDiff(date, now) > 180) { stats.old++; return; }
   const p = await resolveByName(company, profiles);
-  if (!p || !plausibleEntrant(company, p)) { stats.unresolved++; return; }
+  if (!p || !plausibleEntrant(company, p, c.text)) { stats.unresolved++; return; }
   profiles[p.id] = p;
   const market = x?.market ?? c.market;
   if (p.country && market.toLowerCase().includes(p.country.toLowerCase())) { stats.local++; return; }
@@ -249,8 +249,10 @@ async function keepClaim(c: Claim, x: { company: string | null; date: string | n
  * bank, or "Advantech" -> "ADVANTECH SURGICAL LTD"). And it must have a home country, or it can't
  * be "entering" anywhere.
  */
-function plausibleEntrant(company: string, p: Profile): boolean {
+function plausibleEntrant(company: string, p: Profile, text = ""): boolean {
   if (!p.country) return false;
+  const claimed = claimedCountry(text, company);
+  if (claimed && claimed !== p.country) return false; // "Ukrainian defence firm Fire Point" is not FIRE POINT S.R.L. of Italy
   const key = normalizeCompany(company);
   if ([p.name, p.legalName ?? "", ...p.aliases].map(normalizeCompany).includes(key)) return true;
   const squash = key.replace(/[^a-z0-9]/g, "");
@@ -276,7 +278,7 @@ function recheckNews() {
     const h = heuristic({ index: 0, market: e.market, text: e.claim, url: e.source.url, sourceName: e.source.name, knowbit: e.evidence ?? "" });
     const p = profiles[e.doorId];
     // the old entries' dates may come from the KnowBit, which isn't stored: judge entry-ness and the entity only
-    if (!h.isEntry || !h.company || !p || !plausibleEntrant(h.company, p)) {
+    if (!h.isEntry || !h.company || !p || !plausibleEntrant(h.company, p, e.claim)) {
       entries.delete(id);
       dropped++;
       log(`recheck: dropped ${e.doorName} -> ${e.market} (${e.date})`);

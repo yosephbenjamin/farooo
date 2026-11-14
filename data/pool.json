@@ -4199,45 +4199,6 @@
       "people": [],
       "parents": []
     },
-    "f8ca2ae3-90d4-4d49-a3e1-f1d1828ca82d": {
-      "id": "f8ca2ae3-90d4-4d49-a3e1-f1d1828ca82d",
-      "name": "VATTENFALL GMBH",
-      "legalName": "VATTENFALL GMBH",
-      "aliases": [
-        "VATTENFALL (DEUTSCHLAND) GMBH"
-      ],
-      "website": null,
-      "domains": [],
-      "description": "German company headquartered in Berlin, founded in 1996.",
-      "industries": [],
-      "country": "Germany",
-      "hqAddress": "HILDEGARD-KNEF-PLATZ 2, BERLIN, DE-BE, 10829, DE",
-      "founding": {
-        "date": "1996-10-27",
-        "precision": null,
-        "sources": [
-          {
-            "name": "GLEIF",
-            "url": "https://search.gleif.org/#/record/549300JPPXLQ31157O17",
-            "date": "2026-04-08",
-            "rank": "FILING"
-          }
-        ]
-      },
-      "fundingStage": null,
-      "status": null,
-      "investors": [],
-      "fundingRounds": [],
-      "slush": false,
-      "people": [],
-      "parents": [
-        {
-          "id": "3d2f0fcb-96a6-4c37-ae5b-90b437064a64",
-          "name": "Vattenfall AB",
-          "since": "2018-03-03"
-        }
-      ]
-    },
     "53c81a9a-5125-599c-8073-9ad18c226d1b": {
       "id": "53c81a9a-5125-599c-8073-9ad18c226d1b",
       "name": "Enermiq Oy",
@@ -4702,71 +4663,6 @@
         {
           "name": "Juho Ojala",
           "role": "CTO",
-          "since": null
-        }
-      ],
-      "parents": []
-    },
-    "6ed00269-d85b-49ae-8615-57842a41865f": {
-      "id": "6ed00269-d85b-49ae-8615-57842a41865f",
-      "name": "Amazon",
-      "legalName": null,
-      "aliases": [],
-      "website": "amazon.com",
-      "domains": [
-        "amazon.com"
-      ],
-      "description": "Multinational technology company engaged in e-commerce, cloud computing, digital streaming, and artificial intelligence.",
-      "industries": [
-        {
-          "code": "RETAIL",
-          "label": null
-        },
-        {
-          "code": "SOFTWARE_AND_SERVICES",
-          "label": null
-        },
-        {
-          "code": "INTERNET_AND_WEB_SERVICES",
-          "label": null
-        },
-        {
-          "code": "VENTURE_CAPITAL",
-          "label": null
-        }
-      ],
-      "country": "United States",
-      "hqAddress": "410 Terry Ave N, Seattle, WA 98109, United States",
-      "founding": {
-        "date": "1994-07-05",
-        "precision": null,
-        "sources": [
-          {
-            "name": "Amazon is founded by Jeff Bezos | July 5, 1994 | HISTORY",
-            "url": "https://www.history.com/this-day-in-history/july-5/amazon-is-founded-by-jeff-bezos",
-            "date": "2024-06-26",
-            "rank": null
-          }
-        ]
-      },
-      "fundingStage": null,
-      "status": null,
-      "investors": [
-        {
-          "id": "08272ee5-0ee4-4ba4-a33b-7ccc8b772565",
-          "name": "BAILLIE GIFFORD & CO"
-        },
-        {
-          "id": "8ce12d7b-6dbf-4c94-b23a-57904ac25630",
-          "name": "Kleiner Perkins Caufield & Byers VIII, L.P."
-        }
-      ],
-      "fundingRounds": [],
-      "slush": false,
-      "people": [
-        {
-          "name": "Jeffrey P. Bezos",
-          "role": "CEO",
           "since": null
         }
       ],
@@ -6179,48 +6075,6 @@
         {
           "name": "Juha Iivari",
           "role": "Director, Business Development",
-          "since": null
-        }
-      ],
-      "parents": []
-    },
-    "ab60b5f8-ec94-5eb9-b5d1-068219c1f4d3": {
-      "id": "ab60b5f8-ec94-5eb9-b5d1-068219c1f4d3",
-      "name": "SEB",
-      "legalName": "SEB",
-      "aliases": [],
-      "website": null,
-      "domains": [],
-      "description": "A French retail company headquartered in La Courneuve, founded in 2020.",
-      "industries": [
-        {
-          "code": "RETAIL",
-          "label": "4674B"
-        }
-      ],
-      "country": "France",
-      "hqAddress": "75 RUE RATEAU, 93120 LA COURNEUVE, FRANCE",
-      "founding": {
-        "date": "2020-09-22",
-        "precision": null,
-        "sources": [
-          {
-            "name": "INPI",
-            "url": "https://data.inpi.fr/entreprises/889185575",
-            "date": "2025-11-28",
-            "rank": "FILING"
-          }
-        ]
-      },
-      "fundingStage": null,
-      "status": "ACTIVE",
-      "investors": [],
-      "fundingRounds": [],
-      "slush": false,
-      "people": [
-        {
-          "name": "Osman Borisov",
-          "role": "CEO",
           "since": null
         }
       ],
@@ -9873,42 +9727,6 @@
       ],
       "parents": []
     },
-    "6946170e-88fc-4335-abbc-a07d300865dd": {
-      "id": "6946170e-88fc-4335-abbc-a07d300865dd",
-      "name": "SEB-SEB LIMITED",
-      "legalName": "SEB-SEB LIMITED",
-      "aliases": [],
-      "website": null,
-      "domains": [],
-      "description": "A retail company based in Aylesbury, England, incorporated in 2024.",
-      "industries": [
-        {
-          "code": "RETAIL",
-          "label": null
-        }
-      ],
-      "country": "United Kingdom",
-      "hqAddress": null,
-      "founding": {
-        "date": "2024-04-24",
-        "precision": null,
-        "sources": [
-          {
-            "name": "Companies House UK",
-            "url": "https://find-and-update.company-information.service.gov.uk/company/15675842",
-            "date": "2026-10-01",
-            "rank": "FILING"
-          }
-        ]
-      },
-      "fundingStage": null,
-      "status": "ACTIVE",
-      "investors": [],
-      "fundingRounds": [],
-      "slush": false,
-      "people": [],
-      "parents": []
-    },
     "0040ced7-13d6-5082-ba33-6d81cd8a53bb": {
       "id": "0040ced7-13d6-5082-ba33-6d81cd8a53bb",
       "name": "AMOS.io",
@@ -9959,54 +9777,6 @@
           "since": null
         }
       ],
-      "parents": []
-    },
-    "1eb8e38c-c506-4be5-8208-b6e87fe90a7c": {
-      "id": "1eb8e38c-c506-4be5-8208-b6e87fe90a7c",
-      "name": "SEB SA",
-      "legalName": "SEB SA",
-      "aliases": [
-        "SEB S.A.",
-        "SEB"
-      ],
-      "website": null,
-      "domains": [],
-      "description": "A French company headquartered in Écully, founded in 1974, that manufactures small domestic appliances.",
-      "industries": [
-        {
-          "code": "CONSULTING",
-          "label": "741J"
-        },
-        {
-          "code": "BANKING",
-          "label": "6420Z"
-        }
-      ],
-      "country": "France",
-      "hqAddress": "112 CHEMIN DU MOULIN CARRON, CAMPUS SEB, ECULLY, FR-69, 69130, FR",
-      "founding": {
-        "date": "1974-01-01",
-        "precision": null,
-        "sources": [
-          {
-            "name": "GLEIF",
-            "url": "https://search.gleif.org/#/record/969500WP61NBK098AC47",
-            "date": "2026-09-18",
-            "rank": "FILING"
-          }
-        ]
-      },
-      "fundingStage": null,
-      "status": "ACTIVE",
-      "investors": [],
-      "fundingRounds": [
-        {
-          "id": "dd7ecca3-b279-54d7-bcc0-fd2e732de2ed",
-          "role": "LENDER"
-        }
-      ],
-      "slush": false,
-      "people": [],
       "parents": []
     },
     "70a4a389-9445-428c-98d0-92b3203444f6": {
@@ -10579,156 +10349,6 @@
         }
       ],
       "parents": []
-    },
-    "d4245a8e-6996-4663-b238-9c3e8d3742d7": {
-      "id": "d4245a8e-6996-4663-b238-9c3e8d3742d7",
-      "name": "AMAZON WEB SERVICES, INC.",
-      "legalName": "AMAZON WEB SERVICES, INC.",
-      "aliases": [
-        "Amazon Web Services",
-        "AWS",
-        "Amazon AWS",
-        "Amazon",
-        "Amazon (AWS)",
-        "Amazon Web Services (AWS)",
-        "Amazon/AWS",
-        "AMZN",
-        "Amazon.com (AWS)",
-        "Amazon (AMZN)",
-        "Amazon/AWS (AMZN)",
-        "Amazon / AWS",
-        "Amazon / AWS (AMZN)",
-        "Amazon.com / AWS",
-        "Amazon / AWS — AMZN",
-        "Amazon (Amazon Web Services / AWS)",
-        "Amazon (NASDAQ: AMZN)",
-        "Amazon.com",
-        "Amazon Neptune",
-        "Amazon Web Services LLC",
-        "AWS (Amazon Web Services)",
-        "Amazon Web Services"
-      ],
-      "website": "aws.amazon.com",
-      "domains": [
-        "aws.amazon.com"
-      ],
-      "description": "Amazon.com, Inc.",
-      "industries": [
-        {
-          "code": "RENEWABLE_ENERGY",
-          "label": null
-        },
-        {
-          "code": "RETAIL",
-          "label": null
-        },
-        {
-          "code": "TRANSPORTATION_AND_LOGISTICS",
-          "label": null
-        },
-        {
-          "code": "BIOTECHNOLOGY",
-          "label": null
-        },
-        {
-          "code": "HOSPITALITY_AND_TOURISM",
-          "label": null
-        }
-      ],
-      "country": "United States",
-      "hqAddress": "410 TERRY AVENUE NORTH, SEATTLE, US-WA, 98109, US",
-      "founding": {
-        "date": "2006-05-03",
-        "precision": null,
-        "sources": [
-          {
-            "name": "GLEIF",
-            "url": "https://search.gleif.org/#/record/2549000I2PRQGGIGCA75",
-            "date": "2026-09-18",
-            "rank": "FILING"
-          },
-          {
-            "name": "AMAZON WEB SERVICES, INC. - LEI: 2549000I2PRQGGIGCA75",
-            "url": "https://lei.bloomberg.com/leis/view/2549000I2PRQGGIGCA75",
-            "date": "2006-05-03",
-            "rank": null
-          }
-        ]
-      },
-      "fundingStage": null,
-      "status": null,
-      "investors": [
-        {
-          "id": "1cee6178-6248-4aec-b1f7-ce8324e1c90d",
-          "name": "Major Employment and Investment (MEI) Project Approval Commission"
-        }
-      ],
-      "fundingRounds": [
-        {
-          "id": "59db51c8-b3c6-5d2d-9536-4c962e9c2e35",
-          "role": "INVESTOR"
-        }
-      ],
-      "slush": false,
-      "people": [
-        {
-          "name": "Andrew Jassy",
-          "role": "CEO",
-          "since": null
-        },
-        {
-          "name": "Matt Garman",
-          "role": "CEO",
-          "since": null
-        },
-        {
-          "name": "Adam Selipsky",
-          "role": "CEO",
-          "since": null
-        },
-        {
-          "name": "Peter DeSantis",
-          "role": "VP",
-          "since": null
-        },
-        {
-          "name": "Dave Brown",
-          "role": "VP",
-          "since": null
-        },
-        {
-          "name": "Maximilian Schellhorn",
-          "role": "AWS Solutions Architect",
-          "since": null
-        },
-        {
-          "name": "Bratin Saha",
-          "role": "Vice President, Machine Learning Services",
-          "since": null
-        },
-        {
-          "name": "Jean-Baptiste Tristan",
-          "role": "Principal Applied Scientist, Automated Reasoning Group",
-          "since": null
-        },
-        {
-          "name": "Eron Kelly",
-          "role": "General Manager of World‑Wide Product Marketing",
-          "since": null
-        },
-        {
-          "name": "Javier Torres",
-          "role": "Director of Central Sales EMEA",
-          "since": null
-        }
-      ],
-      "parents": [
-        {
-          "id": "acb76581-d0d9-4cd1-a809-1fc66317b726",
-          "name": "AMAZON.COM, INC.",
-          "since": "2006-05-03"
-        }
-      ]
     },
     "f4f6c0a6-37c6-44ee-85d7-631c66121b3d": {
       "id": "f4f6c0a6-37c6-44ee-85d7-631c66121b3d",
@@ -12828,44 +12448,6 @@
           "since": null
         }
       ],
-      "parents": []
-    },
-    "d2b94f89-bdec-4953-98c4-e0b3ad8db7be": {
-      "id": "d2b94f89-bdec-4953-98c4-e0b3ad8db7be",
-      "name": "AMAZON MUSIC LIMITED",
-      "legalName": "AMAZON MUSIC LIMITED",
-      "aliases": [
-        "Amazon Music"
-      ],
-      "website": null,
-      "domains": [],
-      "description": "A London-based entertainment company operating under the name Amazon Music since 1999.",
-      "industries": [
-        {
-          "code": "ENTERTAINMENT",
-          "label": null
-        }
-      ],
-      "country": "United Kingdom",
-      "hqAddress": null,
-      "founding": {
-        "date": "1999-09-23",
-        "precision": null,
-        "sources": [
-          {
-            "name": "Companies House UK",
-            "url": "https://find-and-update.company-information.service.gov.uk/company/03847554",
-            "date": "2026-11-01",
-            "rank": "FILING"
-          }
-        ]
-      },
-      "fundingStage": null,
-      "status": "ACTIVE",
-      "investors": [],
-      "fundingRounds": [],
-      "slush": false,
-      "people": [],
       "parents": []
     },
     "cec3e672-4d44-5c1f-a868-e649fb1a4dbb": {
@@ -17636,53 +17218,6 @@
       ],
       "parents": []
     },
-    "3d2f0fcb-96a6-4c37-ae5b-90b437064a64": {
-      "id": "3d2f0fcb-96a6-4c37-ae5b-90b437064a64",
-      "name": "Vattenfall AB",
-      "legalName": "Vattenfall AB",
-      "aliases": [
-        "Vattenfall"
-      ],
-      "website": null,
-      "domains": [],
-      "description": "Swedish company based in Stockholm operating in renewable energy and utilities since 1937",
-      "industries": [
-        {
-          "code": "RENEWABLE_ENERGY",
-          "label": null
-        },
-        {
-          "code": "UTILITIES",
-          "label": null
-        }
-      ],
-      "country": "Sweden",
-      "hqAddress": "Evenemangsgatan 13, Stockholm, SE-AB, 169 92, SE",
-      "founding": {
-        "date": "1937-06-18",
-        "precision": null,
-        "sources": [
-          {
-            "name": "GLEIF",
-            "url": "https://search.gleif.org/#/record/549300T5RZ1HA5HZ3109",
-            "date": "2026-08-08",
-            "rank": "FILING"
-          }
-        ]
-      },
-      "fundingStage": null,
-      "status": null,
-      "investors": [
-        {
-          "id": "2d9933e1-c1ad-4a7a-a6e9-aa3c05161fda",
-          "name": "Energetický a průmyslový holding, a.s."
-        }
-      ],
-      "fundingRounds": [],
-      "slush": false,
-      "people": [],
-      "parents": []
-    },
     "5da24f2b-6241-5612-b30f-bec294775190": {
       "id": "5da24f2b-6241-5612-b30f-bec294775190",
       "name": "Bondie Oy",
@@ -17947,47 +17482,6 @@
         }
       ],
       "parents": []
-    },
-    "4b95681f-d12f-4c76-98ab-2b692e5edf81": {
-      "id": "4b95681f-d12f-4c76-98ab-2b692e5edf81",
-      "name": "Vattenfall Oy",
-      "legalName": "Vattenfall Oy",
-      "aliases": [
-        "Vattenfall Sähkönmyynti Oy",
-        "Vattenfall Sahkonmyynti Oy",
-        "Vattenfall"
-      ],
-      "website": null,
-      "domains": [],
-      "description": "A Finnish electricity and heat utility subsidiary of the Swedish energy group Vattenfall, founded in 2003 and headquartered in Helsinki.",
-      "industries": [],
-      "country": "Finland",
-      "hqAddress": "Konepajankuja 3 B, Helsinki, FI-18, 00510, FI",
-      "founding": {
-        "date": "2003-07-22",
-        "precision": null,
-        "sources": [
-          {
-            "name": "GLEIF",
-            "url": "https://search.gleif.org/#/record/549300F7CPGDOX2FAU13",
-            "date": "2026-09-28",
-            "rank": "FILING"
-          }
-        ]
-      },
-      "fundingStage": null,
-      "status": null,
-      "investors": [],
-      "fundingRounds": [],
-      "slush": false,
-      "people": [],
-      "parents": [
-        {
-          "id": "3d2f0fcb-96a6-4c37-ae5b-90b437064a64",
-          "name": "Vattenfall AB",
-          "since": "2017-10-30"
-        }
-      ]
     },
     "6a966907-4006-4a4b-8d11-2330f76cb3cd": {
       "id": "6a966907-4006-4a4b-8d11-2330f76cb3cd",
@@ -18475,6 +17969,970 @@
       "slush": true,
       "people": [],
       "parents": []
+    },
+    "f8ca2ae3-90d4-4d49-a3e1-f1d1828ca82d": {
+      "id": "f8ca2ae3-90d4-4d49-a3e1-f1d1828ca82d",
+      "name": "VATTENFALL GMBH",
+      "legalName": "VATTENFALL GMBH",
+      "aliases": [
+        "VATTENFALL (DEUTSCHLAND) GMBH"
+      ],
+      "website": null,
+      "domains": [],
+      "description": "German company headquartered in Berlin, founded in 1996.",
+      "industries": [],
+      "country": "Germany",
+      "hqAddress": "HILDEGARD-KNEF-PLATZ 2, BERLIN, DE-BE, 10829, DE",
+      "founding": {
+        "date": "1996-10-27",
+        "precision": null,
+        "sources": [
+          {
+            "name": "GLEIF",
+            "url": "https://search.gleif.org/#/record/549300JPPXLQ31157O17",
+            "date": "2026-04-08",
+            "rank": "FILING"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": null,
+      "investors": [],
+      "fundingRounds": [],
+      "slush": false,
+      "people": [],
+      "parents": [
+        {
+          "id": "3d2f0fcb-96a6-4c37-ae5b-90b437064a64",
+          "name": "Vattenfall AB",
+          "since": "2018-03-03"
+        }
+      ]
+    },
+    "6ed00269-d85b-49ae-8615-57842a41865f": {
+      "id": "6ed00269-d85b-49ae-8615-57842a41865f",
+      "name": "Amazon",
+      "legalName": null,
+      "aliases": [],
+      "website": "amazon.com",
+      "domains": [
+        "amazon.com"
+      ],
+      "description": "Multinational technology company engaged in e-commerce, cloud computing, digital streaming, and artificial intelligence.",
+      "industries": [
+        {
+          "code": "RETAIL",
+          "label": null
+        },
+        {
+          "code": "SOFTWARE_AND_SERVICES",
+          "label": null
+        },
+        {
+          "code": "INTERNET_AND_WEB_SERVICES",
+          "label": null
+        },
+        {
+          "code": "VENTURE_CAPITAL",
+          "label": null
+        }
+      ],
+      "country": "United States",
+      "hqAddress": "410 Terry Ave N, Seattle, WA 98109, United States",
+      "founding": {
+        "date": "1994-07-05",
+        "precision": null,
+        "sources": [
+          {
+            "name": "Amazon is founded by Jeff Bezos | July 5, 1994 | HISTORY",
+            "url": "https://www.history.com/this-day-in-history/july-5/amazon-is-founded-by-jeff-bezos",
+            "date": "2024-06-26",
+            "rank": null
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": null,
+      "investors": [
+        {
+          "id": "08272ee5-0ee4-4ba4-a33b-7ccc8b772565",
+          "name": "BAILLIE GIFFORD & CO"
+        },
+        {
+          "id": "8ce12d7b-6dbf-4c94-b23a-57904ac25630",
+          "name": "Kleiner Perkins Caufield & Byers VIII, L.P."
+        }
+      ],
+      "fundingRounds": [],
+      "slush": false,
+      "people": [
+        {
+          "name": "Jeffrey P. Bezos",
+          "role": "CEO",
+          "since": null
+        }
+      ],
+      "parents": []
+    },
+    "ab60b5f8-ec94-5eb9-b5d1-068219c1f4d3": {
+      "id": "ab60b5f8-ec94-5eb9-b5d1-068219c1f4d3",
+      "name": "SEB",
+      "legalName": "SEB",
+      "aliases": [],
+      "website": null,
+      "domains": [],
+      "description": "A French retail company headquartered in La Courneuve, founded in 2020.",
+      "industries": [
+        {
+          "code": "RETAIL",
+          "label": "4674B"
+        }
+      ],
+      "country": "France",
+      "hqAddress": "75 RUE RATEAU, 93120 LA COURNEUVE, FRANCE",
+      "founding": {
+        "date": "2020-09-22",
+        "precision": null,
+        "sources": [
+          {
+            "name": "INPI",
+            "url": "https://data.inpi.fr/entreprises/889185575",
+            "date": "2025-11-28",
+            "rank": "FILING"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": "ACTIVE",
+      "investors": [],
+      "fundingRounds": [],
+      "slush": false,
+      "people": [
+        {
+          "name": "Osman Borisov",
+          "role": "CEO",
+          "since": null
+        }
+      ],
+      "parents": []
+    },
+    "6946170e-88fc-4335-abbc-a07d300865dd": {
+      "id": "6946170e-88fc-4335-abbc-a07d300865dd",
+      "name": "SEB-SEB LIMITED",
+      "legalName": "SEB-SEB LIMITED",
+      "aliases": [],
+      "website": null,
+      "domains": [],
+      "description": "A retail company based in Aylesbury, England, incorporated in 2024.",
+      "industries": [
+        {
+          "code": "RETAIL",
+          "label": null
+        }
+      ],
+      "country": "United Kingdom",
+      "hqAddress": null,
+      "founding": {
+        "date": "2024-04-24",
+        "precision": null,
+        "sources": [
+          {
+            "name": "Companies House UK",
+            "url": "https://find-and-update.company-information.service.gov.uk/company/15675842",
+            "date": "2026-10-01",
+            "rank": "FILING"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": "ACTIVE",
+      "investors": [],
+      "fundingRounds": [],
+      "slush": false,
+      "people": [],
+      "parents": []
+    },
+    "1eb8e38c-c506-4be5-8208-b6e87fe90a7c": {
+      "id": "1eb8e38c-c506-4be5-8208-b6e87fe90a7c",
+      "name": "SEB SA",
+      "legalName": "SEB SA",
+      "aliases": [
+        "SEB S.A.",
+        "SEB"
+      ],
+      "website": null,
+      "domains": [],
+      "description": "A French company headquartered in Écully, founded in 1974, that manufactures small domestic appliances.",
+      "industries": [
+        {
+          "code": "CONSULTING",
+          "label": "741J"
+        },
+        {
+          "code": "BANKING",
+          "label": "6420Z"
+        }
+      ],
+      "country": "France",
+      "hqAddress": "112 CHEMIN DU MOULIN CARRON, CAMPUS SEB, ECULLY, FR-69, 69130, FR",
+      "founding": {
+        "date": "1974-01-01",
+        "precision": null,
+        "sources": [
+          {
+            "name": "GLEIF",
+            "url": "https://search.gleif.org/#/record/969500WP61NBK098AC47",
+            "date": "2026-09-18",
+            "rank": "FILING"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": "ACTIVE",
+      "investors": [],
+      "fundingRounds": [
+        {
+          "id": "dd7ecca3-b279-54d7-bcc0-fd2e732de2ed",
+          "role": "LENDER"
+        }
+      ],
+      "slush": false,
+      "people": [],
+      "parents": []
+    },
+    "d4245a8e-6996-4663-b238-9c3e8d3742d7": {
+      "id": "d4245a8e-6996-4663-b238-9c3e8d3742d7",
+      "name": "AMAZON WEB SERVICES, INC.",
+      "legalName": "AMAZON WEB SERVICES, INC.",
+      "aliases": [
+        "Amazon Web Services",
+        "AWS",
+        "Amazon AWS",
+        "Amazon",
+        "Amazon (AWS)",
+        "Amazon Web Services (AWS)",
+        "Amazon/AWS",
+        "AMZN",
+        "Amazon.com (AWS)",
+        "Amazon (AMZN)",
+        "Amazon/AWS (AMZN)",
+        "Amazon / AWS",
+        "Amazon / AWS (AMZN)",
+        "Amazon.com / AWS",
+        "Amazon / AWS — AMZN",
+        "Amazon (Amazon Web Services / AWS)",
+        "Amazon (NASDAQ: AMZN)",
+        "Amazon.com",
+        "Amazon Neptune",
+        "Amazon Web Services LLC",
+        "AWS (Amazon Web Services)",
+        "Amazon Web Services"
+      ],
+      "website": "aws.amazon.com",
+      "domains": [
+        "aws.amazon.com"
+      ],
+      "description": "Amazon.com, Inc.",
+      "industries": [
+        {
+          "code": "RENEWABLE_ENERGY",
+          "label": null
+        },
+        {
+          "code": "RETAIL",
+          "label": null
+        },
+        {
+          "code": "TRANSPORTATION_AND_LOGISTICS",
+          "label": null
+        },
+        {
+          "code": "BIOTECHNOLOGY",
+          "label": null
+        },
+        {
+          "code": "HOSPITALITY_AND_TOURISM",
+          "label": null
+        }
+      ],
+      "country": "United States",
+      "hqAddress": "410 TERRY AVENUE NORTH, SEATTLE, US-WA, 98109, US",
+      "founding": {
+        "date": "2006-05-03",
+        "precision": null,
+        "sources": [
+          {
+            "name": "GLEIF",
+            "url": "https://search.gleif.org/#/record/2549000I2PRQGGIGCA75",
+            "date": "2026-09-18",
+            "rank": "FILING"
+          },
+          {
+            "name": "AMAZON WEB SERVICES, INC. - LEI: 2549000I2PRQGGIGCA75",
+            "url": "https://lei.bloomberg.com/leis/view/2549000I2PRQGGIGCA75",
+            "date": "2006-05-03",
+            "rank": null
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": null,
+      "investors": [
+        {
+          "id": "1cee6178-6248-4aec-b1f7-ce8324e1c90d",
+          "name": "Major Employment and Investment (MEI) Project Approval Commission"
+        }
+      ],
+      "fundingRounds": [
+        {
+          "id": "59db51c8-b3c6-5d2d-9536-4c962e9c2e35",
+          "role": "INVESTOR"
+        }
+      ],
+      "slush": false,
+      "people": [
+        {
+          "name": "Andrew Jassy",
+          "role": "CEO",
+          "since": null
+        },
+        {
+          "name": "Matt Garman",
+          "role": "CEO",
+          "since": null
+        },
+        {
+          "name": "Adam Selipsky",
+          "role": "CEO",
+          "since": null
+        },
+        {
+          "name": "Peter DeSantis",
+          "role": "VP",
+          "since": null
+        },
+        {
+          "name": "Dave Brown",
+          "role": "VP",
+          "since": null
+        },
+        {
+          "name": "Maximilian Schellhorn",
+          "role": "AWS Solutions Architect",
+          "since": null
+        },
+        {
+          "name": "Bratin Saha",
+          "role": "Vice President, Machine Learning Services",
+          "since": null
+        },
+        {
+          "name": "Jean-Baptiste Tristan",
+          "role": "Principal Applied Scientist, Automated Reasoning Group",
+          "since": null
+        },
+        {
+          "name": "Eron Kelly",
+          "role": "General Manager of World‑Wide Product Marketing",
+          "since": null
+        },
+        {
+          "name": "Javier Torres",
+          "role": "Director of Central Sales EMEA",
+          "since": null
+        }
+      ],
+      "parents": [
+        {
+          "id": "acb76581-d0d9-4cd1-a809-1fc66317b726",
+          "name": "AMAZON.COM, INC.",
+          "since": "2006-05-03"
+        }
+      ]
+    },
+    "d2b94f89-bdec-4953-98c4-e0b3ad8db7be": {
+      "id": "d2b94f89-bdec-4953-98c4-e0b3ad8db7be",
+      "name": "AMAZON MUSIC LIMITED",
+      "legalName": "AMAZON MUSIC LIMITED",
+      "aliases": [
+        "Amazon Music"
+      ],
+      "website": null,
+      "domains": [],
+      "description": "A London-based entertainment company operating under the name Amazon Music since 1999.",
+      "industries": [
+        {
+          "code": "ENTERTAINMENT",
+          "label": null
+        }
+      ],
+      "country": "United Kingdom",
+      "hqAddress": null,
+      "founding": {
+        "date": "1999-09-23",
+        "precision": null,
+        "sources": [
+          {
+            "name": "Companies House UK",
+            "url": "https://find-and-update.company-information.service.gov.uk/company/03847554",
+            "date": "2026-11-01",
+            "rank": "FILING"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": "ACTIVE",
+      "investors": [],
+      "fundingRounds": [],
+      "slush": false,
+      "people": [],
+      "parents": []
+    },
+    "3d2f0fcb-96a6-4c37-ae5b-90b437064a64": {
+      "id": "3d2f0fcb-96a6-4c37-ae5b-90b437064a64",
+      "name": "Vattenfall AB",
+      "legalName": "Vattenfall AB",
+      "aliases": [
+        "Vattenfall"
+      ],
+      "website": null,
+      "domains": [],
+      "description": "Swedish company based in Stockholm operating in renewable energy and utilities since 1937",
+      "industries": [
+        {
+          "code": "RENEWABLE_ENERGY",
+          "label": null
+        },
+        {
+          "code": "UTILITIES",
+          "label": null
+        }
+      ],
+      "country": "Sweden",
+      "hqAddress": "Evenemangsgatan 13, Stockholm, SE-AB, 169 92, SE",
+      "founding": {
+        "date": "1937-06-18",
+        "precision": null,
+        "sources": [
+          {
+            "name": "GLEIF",
+            "url": "https://search.gleif.org/#/record/549300T5RZ1HA5HZ3109",
+            "date": "2026-08-08",
+            "rank": "FILING"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": null,
+      "investors": [
+        {
+          "id": "2d9933e1-c1ad-4a7a-a6e9-aa3c05161fda",
+          "name": "Energetický a průmyslový holding, a.s."
+        }
+      ],
+      "fundingRounds": [],
+      "slush": false,
+      "people": [],
+      "parents": []
+    },
+    "4b95681f-d12f-4c76-98ab-2b692e5edf81": {
+      "id": "4b95681f-d12f-4c76-98ab-2b692e5edf81",
+      "name": "Vattenfall Oy",
+      "legalName": "Vattenfall Oy",
+      "aliases": [
+        "Vattenfall Sähkönmyynti Oy",
+        "Vattenfall Sahkonmyynti Oy",
+        "Vattenfall"
+      ],
+      "website": null,
+      "domains": [],
+      "description": "A Finnish electricity and heat utility subsidiary of the Swedish energy group Vattenfall, founded in 2003 and headquartered in Helsinki.",
+      "industries": [],
+      "country": "Finland",
+      "hqAddress": "Konepajankuja 3 B, Helsinki, FI-18, 00510, FI",
+      "founding": {
+        "date": "2003-07-22",
+        "precision": null,
+        "sources": [
+          {
+            "name": "GLEIF",
+            "url": "https://search.gleif.org/#/record/549300F7CPGDOX2FAU13",
+            "date": "2026-09-28",
+            "rank": "FILING"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": null,
+      "investors": [],
+      "fundingRounds": [],
+      "slush": false,
+      "people": [],
+      "parents": [
+        {
+          "id": "3d2f0fcb-96a6-4c37-ae5b-90b437064a64",
+          "name": "Vattenfall AB",
+          "since": "2017-10-30"
+        }
+      ]
+    },
+    "e5bfaa6f-9c89-4f0b-9f09-357330724425": {
+      "id": "e5bfaa6f-9c89-4f0b-9f09-357330724425",
+      "name": "Beyond Digital Marketing AB",
+      "legalName": "Beyond Digital Marketing AB",
+      "aliases": [
+        "Beyond Digital Marketing"
+      ],
+      "website": null,
+      "domains": [],
+      "description": "A Swedish company founded in 2015 and headquartered in Sävedalen.",
+      "industries": [],
+      "country": "Sweden",
+      "hqAddress": "Skolvägen 37, SÄVEDALEN, 433 61, SE",
+      "founding": {
+        "date": "2015-03-30",
+        "precision": null,
+        "sources": [
+          {
+            "name": "GLEIF",
+            "url": "https://search.gleif.org/#/record/636700FV5WB4GCVL5L70",
+            "date": "2026-08-08",
+            "rank": "FILING"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": null,
+      "investors": [],
+      "fundingRounds": [],
+      "slush": false,
+      "people": [],
+      "parents": []
+    },
+    "bcabc7e2-7232-4902-9ba9-590b61e9f363": {
+      "id": "bcabc7e2-7232-4902-9ba9-590b61e9f363",
+      "name": "Crusoe",
+      "legalName": null,
+      "aliases": [],
+      "website": "crusoe.ai",
+      "domains": [
+        "crusoe.ai"
+      ],
+      "description": "AI infrastructure company that converts stranded energy into power for high-performance computing and AI data centers.",
+      "industries": [
+        {
+          "code": "RENEWABLE_ENERGY",
+          "label": null
+        },
+        {
+          "code": "SOFTWARE_AND_SERVICES",
+          "label": null
+        },
+        {
+          "code": "INTERNET_AND_WEB_SERVICES",
+          "label": null
+        },
+        {
+          "code": "HARDWARE_AND_EQUIPMENT",
+          "label": null
+        }
+      ],
+      "country": "United States",
+      "hqAddress": "1641 California Street, Suite 400, Denver, Colorado",
+      "founding": null,
+      "fundingStage": null,
+      "status": null,
+      "investors": [
+        {
+          "id": "5a2f8766-8ca5-40a8-962c-a19898e43ace",
+          "name": "Crescent Enterprises Ventures"
+        },
+        {
+          "id": "77015273-4c49-4e16-9265-bcfffb5e459b",
+          "name": "Spark Capital OÜ"
+        },
+        {
+          "id": "9cb68a54-846e-41ae-8131-1d866f311bce",
+          "name": "HACK VC MANAGEMENT, LLC"
+        },
+        {
+          "id": "b016009b-431e-46dc-b95b-7c5c9ec605ea",
+          "name": "ARK Invest"
+        },
+        {
+          "id": "e3389e57-0aa1-494b-84fc-ddd4ceafbd80",
+          "name": "SALESFORCE VENTURES LLC"
+        }
+      ],
+      "fundingRounds": [],
+      "slush": false,
+      "people": [
+        {
+          "name": "Cully Cavness",
+          "role": "President",
+          "since": null
+        },
+        {
+          "name": "Chase Lochmiller",
+          "role": "CEO",
+          "since": null
+        }
+      ],
+      "parents": []
+    },
+    "f09598d4-8efa-418b-9de3-94e486d7655b": {
+      "id": "f09598d4-8efa-418b-9de3-94e486d7655b",
+      "name": "RHEINMETALL NORDIC AS",
+      "legalName": "RHEINMETALL NORDIC AS",
+      "aliases": [
+        "Rheinmetall Nordic"
+      ],
+      "website": null,
+      "domains": [],
+      "description": "Norwegian company headquartered in Nøtterøy, Norway.",
+      "industries": [],
+      "country": "Norway",
+      "hqAddress": "Postboks 143, Nøtterøy, NO-38, 3106, NO",
+      "founding": null,
+      "fundingStage": null,
+      "status": null,
+      "investors": [],
+      "fundingRounds": [],
+      "slush": false,
+      "people": [],
+      "parents": []
+    },
+    "12f22f14-5759-4ded-be2a-f430fde40ede": {
+      "id": "12f22f14-5759-4ded-be2a-f430fde40ede",
+      "name": "BAE SYSTEMS PLC",
+      "legalName": "BAE SYSTEMS PLC",
+      "aliases": [
+        "BRITISH AEROSPACE PUBLIC LIMITED COMPANY",
+        "BAe",
+        "British Aerospace",
+        "BAE Systems",
+        "British Aerospace Public Limited Company",
+        "BA",
+        "BAE Systems (LON: BA.)",
+        "BAE Systems AB",
+        "BAESY",
+        "BRITISH AEROSPACE LIMITED",
+        "British Aerospace Limited",
+        "Bae System",
+        "BAESY OTC",
+        "Bae Systems Pension Funds Trustees Limited",
+        "BAE Systems investor relations site"
+      ],
+      "website": "baesystems.com",
+      "domains": [
+        "baesystems.com"
+      ],
+      "description": "A British aerospace and defence firm based in London, established in 1979.",
+      "industries": [
+        {
+          "code": "RENEWABLE_ENERGY",
+          "label": null
+        },
+        {
+          "code": "TRANSPORTATION_AND_LOGISTICS",
+          "label": null
+        },
+        {
+          "code": "SOFTWARE_AND_SERVICES",
+          "label": null
+        },
+        {
+          "code": "MACHINERY",
+          "label": null
+        },
+        {
+          "code": "AEROSPACE_AND_DEFENSE",
+          "label": null
+        }
+      ],
+      "country": "United Kingdom",
+      "hqAddress": "6 Carlton Gardens, London, GB-LND, SW1Y 5AD, GB",
+      "founding": {
+        "date": "1979-12-31",
+        "precision": null,
+        "sources": [
+          {
+            "name": "GLEIF",
+            "url": "https://search.gleif.org/#/record/8SVCSVKSGDWMW2QHOH83",
+            "date": "2026-04-17",
+            "rank": "FILING"
+          },
+          {
+            "name": "Companies House UK",
+            "url": "https://find-and-update.company-information.service.gov.uk/company/01470151",
+            "date": "2026-11-01",
+            "rank": "FILING"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": "ACTIVE",
+      "investors": [
+        {
+          "id": "008787cd-711a-4fce-8b2f-20ada7b66adb",
+          "name": "US Space Forces"
+        },
+        {
+          "id": "0247c487-08b6-4e07-8e92-0969cdfeaa2d",
+          "name": "ICEYE"
+        },
+        {
+          "id": "0ff9adef-c548-4890-931f-ae6112863d89",
+          "name": "US Space Force"
+        },
+        {
+          "id": "144d9284-36bf-42cc-9fc9-2dcc19ec662b",
+          "name": "BAE SYSTEMS EXECUTIVE PENSION SCHEME TRUSTEES LIMITED"
+        },
+        {
+          "id": "21a3a36e-9760-4727-8442-a83de2485827",
+          "name": "U.S. Department of War"
+        },
+        {
+          "id": "21fd25fe-a6e5-4ca6-a606-f1bf1a8c0cae",
+          "name": "MBDA Group"
+        },
+        {
+          "id": "31c3143a-d9ec-4e9c-bd9b-4f244a9da38c",
+          "name": "Scale AI"
+        },
+        {
+          "id": "53d502f1-7df4-47b2-b359-6d23f18349ae",
+          "name": "Scottish Enterprise"
+        },
+        {
+          "id": "5bed7703-1d3a-4017-b8ce-ad1dd50bb194",
+          "name": "University of Glasgow"
+        },
+        {
+          "id": "5c8b52f9-9875-4e86-b150-4b67dbb712fe",
+          "name": "Instream Water, Inc."
+        },
+        {
+          "id": "5ec310cb-1c01-408a-8976-720c1ee24f8f",
+          "name": "Bohemia Interactive Simulations k.s."
+        },
+        {
+          "id": "6c074476-79c0-4e6d-bd76-f2fc4905d0ff",
+          "name": "Oxdynamics"
+        },
+        {
+          "id": "6c21f6a1-9459-45d5-a2a9-5f3269cc20a9",
+          "name": "HICX SOLUTIONS LIMITED"
+        },
+        {
+          "id": "81ccd6e9-a4dc-4624-8d38-1dd488c9ad21",
+          "name": "Local Government Pension Scheme (LGPS)"
+        },
+        {
+          "id": "8c4572b2-3881-401b-9058-8cddfe90a342",
+          "name": "U.S. Army"
+        },
+        {
+          "id": "903f54b0-1bb2-406c-8bcc-9b80df792a75",
+          "name": "NASA"
+        },
+        {
+          "id": "951d2552-8978-4cd6-8e8d-f66f33a9758f",
+          "name": "FIRST Tech Challenge"
+        },
+        {
+          "id": "9ac653ab-6ccc-48fb-8bda-18f47f56ed27",
+          "name": "Swedish Defence Materiel Administration (FMV)"
+        },
+        {
+          "id": "ace91e46-9146-4a04-b20b-2456352660d2",
+          "name": "MALLOY AERONAUTICS LIMITED"
+        },
+        {
+          "id": "b5101d8a-70c0-4639-ac8a-ea6ccaf06d5a",
+          "name": "KIRINTEC LIMITED"
+        },
+        {
+          "id": "bbedca0b-9c18-4d42-ab8d-7a21e8a62b5a",
+          "name": "UK Ministry of Defence"
+        },
+        {
+          "id": "bcbcddf7-4f34-4739-b305-321f4f4c851f",
+          "name": "United States Department of Defense"
+        },
+        {
+          "id": "c01e8e5b-6eba-483a-b2e6-2a2a5220e7d1",
+          "name": "Expeditions"
+        },
+        {
+          "id": "ce86de33-4ede-421e-9d02-10bd02b79842",
+          "name": "London Stock Exchange"
+        },
+        {
+          "id": "d68e2446-261f-4722-b2ce-4574b8edd99a",
+          "name": "Alvis Pension Scheme Trustees Limited"
+        },
+        {
+          "id": "fbe57186-f282-4f9f-ba56-c08958bb5298",
+          "name": "NEXT Semiconductor"
+        }
+      ],
+      "fundingRounds": [],
+      "slush": false,
+      "people": [
+        {
+          "name": "Charles Woodburn",
+          "role": "CEO",
+          "since": null
+        },
+        {
+          "name": "Brad Pelachyk",
+          "role": "VP",
+          "since": null
+        },
+        {
+          "name": "Mona Bates",
+          "role": "VP",
+          "since": "2026-02-23"
+        },
+        {
+          "name": "Robert Bacon",
+          "role": "Various roles",
+          "since": null
+        },
+        {
+          "name": "David Morgan",
+          "role": "Pilot Instructor",
+          "since": null
+        },
+        {
+          "name": "Brad Greve",
+          "role": "Chief Financial Officer",
+          "since": "2020-04-01"
+        }
+      ],
+      "parents": []
+    },
+    "5b096d44-4315-4802-bfe1-5e11b0b1e0c2": {
+      "id": "5b096d44-4315-4802-bfe1-5e11b0b1e0c2",
+      "name": "FIRE POINT S.R.L.",
+      "legalName": "FIRE POINT S.R.L.",
+      "aliases": [],
+      "website": null,
+      "domains": [],
+      "description": "Italian company headquartered in Lesmo, founded in 2016.",
+      "industries": [],
+      "country": "Italy",
+      "hqAddress": "VIA GAETANO RATTI 82/84, LESMO, 20855, IT",
+      "founding": {
+        "date": "2016-02-28",
+        "precision": null,
+        "sources": [
+          {
+            "name": "GLEIF",
+            "url": "https://search.gleif.org/#/record/894500O8K93YOSJ0JA06",
+            "date": "2026-04-08",
+            "rank": "FILING"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": null,
+      "investors": [],
+      "fundingRounds": [],
+      "slush": false,
+      "people": [],
+      "parents": []
+    },
+    "77b9c8fc-5c0c-4fa5-b4ce-aa3996c1109f": {
+      "id": "77b9c8fc-5c0c-4fa5-b4ce-aa3996c1109f",
+      "name": "RILLET LTD",
+      "legalName": "RILLET LTD",
+      "aliases": [],
+      "website": null,
+      "domains": [],
+      "description": "British software and services company headquartered in London, founded in 2026.",
+      "industries": [
+        {
+          "code": "SOFTWARE_AND_SERVICES",
+          "label": null
+        }
+      ],
+      "country": "United Kingdom",
+      "hqAddress": null,
+      "founding": {
+        "date": "2026-04-23",
+        "precision": null,
+        "sources": [
+          {
+            "name": "Companies House UK",
+            "url": "https://find-and-update.company-information.service.gov.uk/company/17176571",
+            "date": "2026-10-01",
+            "rank": "FILING"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": "ACTIVE",
+      "investors": [],
+      "fundingRounds": [],
+      "slush": false,
+      "people": [],
+      "parents": []
+    },
+    "abd5b025-cb25-485c-9456-d359e525e221": {
+      "id": "abd5b025-cb25-485c-9456-d359e525e221",
+      "name": "Robin Radar Systems B.V.",
+      "legalName": "Robin Radar Systems B.V.",
+      "aliases": [
+        "Robin Radar Systems"
+      ],
+      "website": null,
+      "domains": [],
+      "description": "A Dutch radar technology company founded in 2010 and headquartered in The Hague.",
+      "industries": [
+        {
+          "code": "AEROSPACE_AND_DEFENSE",
+          "label": null
+        },
+        {
+          "code": "HARDWARE_AND_EQUIPMENT",
+          "label": null
+        }
+      ],
+      "country": "Netherlands",
+      "hqAddress": "Energieweg 1, Delft, 2627AP, NL",
+      "founding": {
+        "date": "2010-06-23",
+        "precision": null,
+        "sources": [
+          {
+            "name": "GLEIF",
+            "url": "https://search.gleif.org/#/record/724500IIOB5CD3C4UZ90",
+            "date": "2026-09-17",
+            "rank": "FILING"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": null,
+      "investors": [
+        {
+          "id": "0cce6a8f-3b8e-4ac4-81ad-decbbc108832",
+          "name": "SHIFT Invest"
+        }
+      ],
+      "fundingRounds": [],
+      "slush": false,
+      "people": [],
+      "parents": [
+        {
+          "id": "323df5a2-3839-41b7-9ced-244c47627b73",
+          "name": "Falcon Group B.V.",
+          "since": "2025-12-31"
+        }
+      ]
     }
   },
   "entries": [
@@ -18612,8 +19070,7 @@
         "rank": null
       },
       "match": "news",
-      "claim": "Google announced in June 2026 plans to build its first data center in Sweden (Avesta), marking its expansion into the Swedish market.",
-      "evidence": "Home / Google Announces First Sweden Data Center for AI Growth\n\n# Google to Build First Swedish Data Center as Nordic Region Emerges as Key AI Infrastructure Hub\n\n Pranav Hotkar 03 Jun, 2026\n\nStockholm, Sweden – June 2, 2026 - Google has announced plans to build its first data center in Sweden, expanding its European digital infrastructure footprint as demand for artificial intelligence and cloud computing capacity accelerates across the region. [...] ### Tags:\n\nGoogle Data Center Expansion Sweden AI Infrastructure Avesta Data Center Project Google Cloud Services Nordic Digital Infrastructure Renewable Energy Data Centers Hyperscale Computing Growth European Cloud Expansion AI Workload Capacity\n\n## More News\n\nMeta Brings AI-Optimized Temple Data Center Online as U.S. Infrastructure Expansion Continues\n\nSchneider Electric, AMD Unveil Helios Reference Design to Speed AI Data Center Deployment\n\n.jpg) [...] Google currently operates European cloud regions and data center campuses in countries including Finland, the Netherlands, Ireland, Belgium, and Denmark. The Sweden expansion further strengthens the company’s Nordic infrastructure presence, where access to renewable power and stable"
+      "claim": "Google announced in June 2026 plans to build its first data center in Sweden (Avesta), marking its expansion into the Swedish market."
     },
     {
       "id": "801389e34e62f8ae",
@@ -18666,6 +19123,96 @@
       },
       "match": "news",
       "claim": "OpenAI announced it will open its first Nordic office in Stockholm during the second half of 2026, confirming the company’s office opening in Sweden in 2026."
+    },
+    {
+      "id": "a0d548037bd22f08",
+      "kind": "news",
+      "doorId": "f9c07405-1cdd-437a-b2ca-f5c784698ff4",
+      "doorName": "Google",
+      "local": null,
+      "market": "Sweden",
+      "date": "2026-06-02",
+      "source": {
+        "name": "Ground News",
+        "url": "https://ground.news/article/google-sweden-data-centre-elite-cloud-expansion",
+        "date": "2026-06-02",
+        "rank": null
+      },
+      "match": "news",
+      "claim": "Google entered the Swedish market in 2026 by breaking ground on a new data centre in Horndal on 2 June 2026.",
+      "evidence": "See every side of every news story\n\nGet Started\n\nBrowser Extension\n\nSubscribeLogin\n\nPublished 5 months ago • loading... • Updated 5 months ago\n\n# Google Breaks Ground on Data Center in Horndal, Sweden\n\nSummary by Google Cloud Press Corner\n\nHORNDAL, Sweden — June 2, 2026 — Today, Google broke ground on a new data center in Horndal. The facility, designed for off-site heat recovery, will help meet growing demand for Google’s...\n\n### 8Articles\n\n### 8Articles\n\nsvt Nyhetersvt Nyheter\n\nLean Left [...] Read Full Article\n\nGoogle Cloud Press CornerGoogle Cloud Press Corner\n\ndatacenterdynamics.comdatacenterdynamics.com\n\nView article\n\nReposted by\n\ndatacenterdynamics.comdatacenterdynamics.com\n\n#### Google Breaks Ground on Data Center in Horndal, SwedenHORNDAL, Sweden — June 2, 2026 — Today, Google broke ground on a new data center in Horndal. The facility, designed for off-site heat recovery, will help meet growing demand for Google’s...\n\n5 months ago\n\nRead Full Article [...] ### Factuality\n\nTo view factuality data please Upgrade to Premium\n\n#### Ownership\n\nTo view ownership data pleaseUpgrade to Vantage\n\nsvt Nyheter broke the news in Stockholm, Sweden 5 months ago on Tuesday, June 2, 2026.\n\nS"
+    },
+    {
+      "id": "2461846b8b9c5343",
+      "kind": "news",
+      "doorId": "369e2dfb-44da-4676-b792-49a2cbd4688e",
+      "doorName": "atNorth Holding AB",
+      "local": null,
+      "market": "Norway",
+      "date": "2026-06-09",
+      "source": {
+        "name": "finance.yahoo.com",
+        "url": "https://finance.yahoo.com/sectors/technology/articles/atnorth-joins-norwegian-data-center-073000144.html",
+        "date": "2026-06-09",
+        "rank": null
+      },
+      "match": "news",
+      "claim": "atNorth expanded into Norway in 2026 by acquiring land for the NOR01 data centre campus at Haugaland Business Park and joined the Norwegian Data Center Industry association.",
+      "evidence": "REYKJAVÍK, Iceland, June 9, 2026 /PRNewswire/ -- atNorth, the leading Nordic high-density colocation and built-to-suit data center provider, today announced that it has joined the Norwegian Data Center Industry, an industry body representing the whole data center ecosystem in Norway. The announcement follows atNorth's recent expansion into Norway, marked by the acquisition of land for its flagship NOR01 data center campus at Haugaland Business Park, a 36-hectare site designed to support high-density workloads and hyperscale deployments. By joining the Norwegian Data Center Industry, atNorth aims to bolster collaboration between industry stakeholders, policymakers, and regional partners to support the continued growth of Norway's digital infrastructure ecosystem. The business is also a participant in global initiatives including theClimate Neutral Data Centre Pact and the UN Global Compact, as well as being an active member of the European Data Center Association (EUDCA) and other regional data center industry associations in the Nordics."
+    },
+    {
+      "id": "165fae76fe71a23b",
+      "kind": "news",
+      "doorId": "bcabc7e2-7232-4902-9ba9-590b61e9f363",
+      "doorName": "Crusoe",
+      "local": null,
+      "market": "Norway",
+      "date": "2026-10-21",
+      "source": {
+        "name": "finance.yahoo.com",
+        "url": "https://finance.yahoo.com/technology/ai/articles/polar-expands-partnership-crusoe-norway-115100562.html",
+        "date": "2026-10-21",
+        "rank": null
+      },
+      "match": "news",
+      "claim": "Crusoe entered the Norwegian market by partnering with Polar Data Centers; its AI infrastructure is live at Polar’s DRA01 facility in Tørdal and expanded with a new 40 MW development (DRA02).",
+      "evidence": "# Polar Expands Partnership with Crusoe in Norway with New 40MW AI Infrastructure Development. *DRA01 facility now live and powering Crusoe Cloud, as partnership expands into DRA02 to support continued growth of AI infrastructure in Europe*. LONDON, Oct. 21, 2026 (GLOBE NEWSWIRE) -- Polar Data Centers (\"Polar\"), a European developer and operator of AI-ready data center infrastructure, today announced the expansion of its partnership with Crusoe, the AI factory company, building on the successful deployment and operation of Crusoe's AI infrastructure at Polar's DRA01 facility in Tørdal, Norway. The facility combines modular infrastructure, advanced cooling technology, and resilient electrical systems designed around the requirements of the latest GPU deployments, providing a best-in-class, operational environment to support Crusoe Cloud, Crusoe's AI cloud platform and AI services. \"Our expansion with Polar in Norway lets Crusoe serve some of the world's most innovative companies with reliable access to Crusoe Cloud's AI cloud services."
+    },
+    {
+      "id": "157391b7d2b95527",
+      "kind": "news",
+      "doorId": "5b096d44-4315-4802-bfe1-5e11b0b1e0c2",
+      "doorName": "FIRE POINT S.R.L.",
+      "local": null,
+      "market": "Denmark",
+      "date": "2026-07-13",
+      "source": {
+        "name": "Ukraine News Today: War, Business & Culture",
+        "url": "https://united24media.com/war-in-ukraine/ukraine-to-open-freyja-missile-defense-office-in-denmark-as-11-countries-join-project-24276",
+        "date": "2026-07-13",
+        "rank": null
+      },
+      "match": "news",
+      "claim": "Ukrainian defence firm Fire Point announced plans to open a FREYJA coordination office in Copenhagen, showing its expansion into Denmark.",
+      "evidence": "Zelenskyy also described FREYJA as a potential strategic advantage for NATO, saying that sufficient European-produced interceptors could significantly reduce Russia’s ability to threaten neighboring countries with ballistic missiles.\n\n“Russia will be largely toothless once we have enough interceptors to shoot down its ballistic missiles,” he said.\n\nThe FREYJA program was formally launched in Paris on July 13, 2026, with Ukraine and nine European countries establishing a coalition to develop a shared anti-ballistic missile defense system.\n\nUkrainian defense manufacturer Fire Point is developing the FP-7.X interceptor missile and launcher, while European partners are contributing radar, guidance, tracking, and command-and-control technologies. [...] The project aims to offer a lower-cost alternative to US-made Patriot interceptors, with Fire Point targeting a price below €1 million per missile. The company has already begun integrating European components, while Ukraine and Norway are working toward initial system tests by the end of 2026, with a successful ballistic missile interception targeted for 2027.\n\nDiscuss this article: [...] Infographic showing the FREYJA pan-European missi"
+    },
+    {
+      "id": "231ef9a93e044758",
+      "kind": "news",
+      "doorId": "5b096d44-4315-4802-bfe1-5e11b0b1e0c2",
+      "doorName": "FIRE POINT S.R.L.",
+      "local": null,
+      "market": "Denmark",
+      "date": "2026-09-08",
+      "source": {
+        "name": "uk.finance.yahoo.com",
+        "url": "https://uk.finance.yahoo.com/news/ukraines-fire-point-gets-113-104033289.html",
+        "date": "2026-09-08",
+        "rank": null
+      },
+      "match": "news",
+      "claim": "Fire Point entered the Danish market by establishing a subsidiary near Skrydstrup Air Base and receiving a DKK 750 million state loan guarantee in October 2026.",
+      "evidence": "# Ukraine's Fire Point gets $113 million state loan guarantee in Denmark. An FP-5 Flamingo cruise missile, manufactured by Ukrainian defence company Fire Point, is displayed during the first day of the International Defence Industry Exhibition (MSPO) in Kielce, Poland, September 8, 2026. COPENHAGEN, Oct 21 (Reuters) - Denmark will guarantee a 750 million crowns ($112,6 million) loan ‌to the Danish subsidiary of Ukrainian ‌drone and missile maker Fire Point, the Nordic country's ​government said on Wednesday. The loan is backed by the state because the war in Ukraine prevents Fire Point from borrowing on ordinary ‌terms in Denmark, ⁠the government said. • The Danish rocket fuel plant is set to ‌be up and running ​by the end of ​2027. • Fire Point ​signed agreements with more than ‌a dozen European defence companies ​for radar, ​guidance and other systems for the Freyja missile defence project, aiming to give ​Ukraine a ‌domestic alternative to the US-made Patriot system."
     }
   ],
   "rounds": [

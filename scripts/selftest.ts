@@ -2,7 +2,7 @@
 import assert from "node:assert/strict";
 import { normalizeCompany, normalizeFund } from "../src/lib/normalize";
 import { concreteDateInText, concreteDateInUrl, isPlaceholderDate } from "../src/lib/dates";
-import { heuristic, JOB_SOURCE } from "../src/lib/news";
+import { heuristic, JOB_SOURCE, claimedCountry } from "../src/lib/news";
 import { aliasMatch, SEED_FUNDS } from "../src/lib/seed";
 import { partnerTypes, industryWords, checkIndustries, isBoilerplate } from "../src/lib/partner";
 import { countryFromAddress, filingFounding, rankOf, type Profile } from "../src/lib/profile";
@@ -104,6 +104,11 @@ assert.equal(claim("Avanza appointed Christian Sillesen as country manager for D
 assert.ok(!claim("Amazon appointed Julian Tydeman as Country Manager for Sweden, announced on 9 November 2026.", undefined, "He was part of the team that launched Amazon.se in 2020.").isEntry, "history is not novelty");
 assert.ok(!claim("Crusoe entered the Norwegian market by partnering with Polar Data Centers on 21 October 2026.").isEntry, "a partnership is not an entry");
 assert.equal(claim("Advantech, a Taiwanese industrial technology firm, opened a new Nordic office in Stockholm on September 10, 2026.").company, "Advantech", "appositive lead");
+assert.equal(claimedCountry("Ukrainian defence firm Fire Point announced plans to open an office in Copenhagen.", "Fire Point"), "Ukraine");
+assert.equal(claimedCountry("Advantech, a Taiwanese industrial technology firm, opened a new Nordic office in Stockholm.", "Advantech"), "Taiwan");
+assert.equal(claimedCountry("Arondite announced it is opening its first international office in Oslo.", "Arondite"), null);
+assert.ok(claim("atNorth expanded into Norway on 9 June 2026 by acquiring land for the NOR01 data centre campus.").isEntry, "buying land for a site is an entry");
+assert.ok(!claim("Kry expanded in Sweden on 3 June 2026 by acquiring Medinord.").isEntry, "buying a company is not");
 assert.ok(!claim("SEB appointed Niina Äikäs as Country Manager of SEB in Finland, effective 1 September 2026.").isEntry, "a replacement country manager is not an entry");
 assert.ok(claim("Acme launched in Germany on 3 November 2026.").isEntry, "launches in DE");
 assert.ok(!claim("Euro Tech Holdings entered Norway through a 50/50 joint\u2011venture with Sea Clean AS.").isEntry, "non-breaking hyphen joint venture");
