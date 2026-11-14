@@ -101,6 +101,9 @@ assert.ok(ar.doors[0].whyYou.some((w) => /data centres/.test(w.sentence)), "why-
 // news claims: phrasings, job boards, odd hyphens
 const claim = (text: string, url = "https://press.example.com/2026/11/10/x", knowbit = "") => heuristic({ index: 0, market: "Denmark", text, url, sourceName: "x", knowbit });
 assert.equal(claim("Avanza appointed Christian Sillesen as country manager for Denmark on 12 October 2026.", undefined, "In April, Avanza announced its intention to establish operations in Denmark.").company, "Avanza", "a country manager for a new presence");
+assert.ok(!claim("Amazon appointed Julian Tydeman as Country Manager for Sweden, announced on 9 November 2026.", undefined, "He was part of the team that launched Amazon.se in 2020.").isEntry, "history is not novelty");
+assert.ok(!claim("Crusoe entered the Norwegian market by partnering with Polar Data Centers on 21 October 2026.").isEntry, "a partnership is not an entry");
+assert.equal(claim("Advantech, a Taiwanese industrial technology firm, opened a new Nordic office in Stockholm on September 10, 2026.").company, "Advantech", "appositive lead");
 assert.ok(!claim("SEB appointed Niina Äikäs as Country Manager of SEB in Finland, effective 1 September 2026.").isEntry, "a replacement country manager is not an entry");
 assert.ok(claim("Acme launched in Germany on 3 November 2026.").isEntry, "launches in DE");
 assert.ok(!claim("Euro Tech Holdings entered Norway through a 50/50 joint\u2011venture with Sea Clean AS.").isEntry, "non-breaking hyphen joint venture");

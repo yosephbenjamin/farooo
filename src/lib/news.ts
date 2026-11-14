@@ -14,7 +14,7 @@ export const WIDE_MARKETS: { market: string; adj: string }[] = [
   { market: "Germany", adj: "German" }, { market: "United Kingdom", adj: "UK" }, { market: "Netherlands", adj: "Dutch" }, { market: "France", adj: "French" },
 ];
 
-const NOT_ENTRY = /\b(forecast|market (size|is expected|will grow)|cagr|merg(e|er|ed)|acquir|acquisition|takeover|stake in|partner(ed|s|ship) with|joint[- ]venture|alliance|raised|funding round|ipo|layoffs?|exit(s|ed)? the|withdraw|leav(e|es|ing) the|job (posting|for)|posted a job|contracts? with)\b/i;
+const NOT_ENTRY = /\b(forecast|market (size|is expected|will grow)|cagr|merg(e|er|ed)|acquir|acquisition|takeover|stake in|partner(ed|ing|s|ship) with|joint[- ]venture|alliance|raised|funding round|ipo|layoffs?|exit(s|ed)? the|withdraw|leav(e|es|ing) the|job (posting|for)|posted a job|contracts? with)\b/i;
 /** Countries Faro reads market entry for: the Nordics first, then the big European markets. */
 const C = String.raw`(?:finland|sweden|norway|denmark|iceland|the nordics|scandinavia|germany|the uk|the united kingdom|britain|the netherlands|france|europe)`;
 const ADJ = String.raw`(?:finnish|swedish|norwegian|danish|nordic|icelandic|german|british|uk|dutch|french)`;
@@ -29,6 +29,7 @@ const ENTRY = new RegExp(
     String.raw`launch(es|ed|ing)? in ${C}`,
     String.raw`open(s|ed|ing)? (a |an |its )?(first |new )?(international |nordic |local |european )?(office|branch|base|store|hub|subsidiary|headquarters|data cent(er|re)|factory|plant)`,
     String.raw`new (office|branch|subsidiary|base|hub) in`,
+    String.raw`(open|launch|inaugurat|announc|establish|unveil)\w* (a |an |its |their )?([\w-]+ ){0,3}(office|branch|hub|subsidiary|base|data cent(er|re)|cloud region|factory|plant)s? in`,
     String.raw`first (operational )?(presence|office|store|market|customers?) in`,
     String.raw`(set(s|ting)? up|establish(es|ed|ing)?) (a |an |its )?(local |nordic |new )?(office|branch|subsidiary|presence|entity|base)`,
     String.raw`arriv(es|ed|ing) in`,
@@ -46,7 +47,10 @@ const NEW_PRESENCE = /\b(first|launch\w*|entr(y|ies)|enter(s|ed|ing)?|expan\w*|n
 export function isEntryText(text: string, evidence = ""): boolean {
   if (NOT_ENTRY.test(text)) return false;
   if (ENTRY.test(text)) return true;
-  return HIRE.test(text) && NEW_PRESENCE.test(`${text} ${evidence}`);
+  if (!HIRE.test(text)) return false;
+  if (NEW_PRESENCE.test(text)) return true;
+  // the cited text, sentence by sentence, ignoring history ("he launched Amazon.se in 2020")
+  return evidence.split(/(?<=[.!?])\s+|\n+/).some((x) => NEW_PRESENCE.test(x) && !/\b(19\d\d|20[01]\d|202[0-4])\b/.test(x));
 }
 
 export interface Claim {
@@ -77,6 +81,10 @@ const NAME = String.raw`((?:[A-Z0-9]|[a-z]+[A-Z])[\w&.'’-]*(?:\s+(?:[A-Z0-9][\
 // "Arondite announced…"  /  "Portuguese drone maker Tekever announced…"
 const LEADS = [
   new RegExp(String.raw`^(?:\*\*)?` + NAME + String.raw`(?:\s*\([^)]*\))?\s+` + VERB + String.raw`\b`),
+  // "Advantech, a Taiwanese industrial technology firm, opened…"
+  new RegExp(String.raw`^(?:\*\*)?` + NAME + String.raw`,\s+(?:an?|the)\s+[^,]{3,90},\s+` + VERB + String.raw`\b`),
+  // "The fact with ID … reports that FPT Software expanded…"
+  new RegExp(String.raw`\b(?:reports?|states?|shows?|confirms?|notes?|says?|said|indicates?) that\s+` + NAME + String.raw`(?:\s*\([^)]*\))?\s+` + VERB + String.raw`\b`),
   new RegExp(String.raw`^(?:[A-Z][a-z]+\s+)?(?:[a-z][\w-]*\s+){1,3}` + NAME + String.raw`(?:\s*\([^)]*\))?\s+` + VERB + String.raw`\b`),
 ];
 

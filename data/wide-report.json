@@ -1,27 +1,21 @@
 {
-  "ranAt": "2026-11-14T12:08:57.217Z",
+  "ranAt": "2026-11-14T12:10:27.797Z",
   "now": "2026-11-14",
   "planned": 150,
   "reports": [
     {
       "searches": 50,
       "claims": 254,
-      "notEntry": 206,
-      "noDate": 30,
-      "old": 7,
+      "notEntry": 219,
+      "noDate": 23,
+      "old": 4,
       "unresolved": 5,
       "local": 1,
-      "kept": 5,
-      "keptNames": [
-        "SEB SA -> Finland (2026-09-01)",
-        "Amazon -> Sweden (2026-11-09)",
-        "OpenAI Group PBC -> Sweden (2026-06-18)"
-      ],
-      "entityCalls": -37,
-      "statuses": {
-        "200": 12,
-        "429": 1
-      }
+      "kept": 2,
+      "keptNames": [],
+      "searchCallsSent": 0,
+      "entityCallsSent": 0,
+      "statuses": {}
     }
   ],
   "queries": [

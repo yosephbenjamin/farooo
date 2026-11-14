@@ -4199,6 +4199,45 @@
       "people": [],
       "parents": []
     },
+    "f8ca2ae3-90d4-4d49-a3e1-f1d1828ca82d": {
+      "id": "f8ca2ae3-90d4-4d49-a3e1-f1d1828ca82d",
+      "name": "VATTENFALL GMBH",
+      "legalName": "VATTENFALL GMBH",
+      "aliases": [
+        "VATTENFALL (DEUTSCHLAND) GMBH"
+      ],
+      "website": null,
+      "domains": [],
+      "description": "German company headquartered in Berlin, founded in 1996.",
+      "industries": [],
+      "country": "Germany",
+      "hqAddress": "HILDEGARD-KNEF-PLATZ 2, BERLIN, DE-BE, 10829, DE",
+      "founding": {
+        "date": "1996-10-27",
+        "precision": null,
+        "sources": [
+          {
+            "name": "GLEIF",
+            "url": "https://search.gleif.org/#/record/549300JPPXLQ31157O17",
+            "date": "2026-04-08",
+            "rank": "FILING"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": null,
+      "investors": [],
+      "fundingRounds": [],
+      "slush": false,
+      "people": [],
+      "parents": [
+        {
+          "id": "3d2f0fcb-96a6-4c37-ae5b-90b437064a64",
+          "name": "Vattenfall AB",
+          "since": "2018-03-03"
+        }
+      ]
+    },
     "53c81a9a-5125-599c-8073-9ad18c226d1b": {
       "id": "53c81a9a-5125-599c-8073-9ad18c226d1b",
       "name": "Enermiq Oy",
@@ -4663,6 +4702,71 @@
         {
           "name": "Juho Ojala",
           "role": "CTO",
+          "since": null
+        }
+      ],
+      "parents": []
+    },
+    "6ed00269-d85b-49ae-8615-57842a41865f": {
+      "id": "6ed00269-d85b-49ae-8615-57842a41865f",
+      "name": "Amazon",
+      "legalName": null,
+      "aliases": [],
+      "website": "amazon.com",
+      "domains": [
+        "amazon.com"
+      ],
+      "description": "Multinational technology company engaged in e-commerce, cloud computing, digital streaming, and artificial intelligence.",
+      "industries": [
+        {
+          "code": "RETAIL",
+          "label": null
+        },
+        {
+          "code": "SOFTWARE_AND_SERVICES",
+          "label": null
+        },
+        {
+          "code": "INTERNET_AND_WEB_SERVICES",
+          "label": null
+        },
+        {
+          "code": "VENTURE_CAPITAL",
+          "label": null
+        }
+      ],
+      "country": "United States",
+      "hqAddress": "410 Terry Ave N, Seattle, WA 98109, United States",
+      "founding": {
+        "date": "1994-07-05",
+        "precision": null,
+        "sources": [
+          {
+            "name": "Amazon is founded by Jeff Bezos | July 5, 1994 | HISTORY",
+            "url": "https://www.history.com/this-day-in-history/july-5/amazon-is-founded-by-jeff-bezos",
+            "date": "2024-06-26",
+            "rank": null
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": null,
+      "investors": [
+        {
+          "id": "08272ee5-0ee4-4ba4-a33b-7ccc8b772565",
+          "name": "BAILLIE GIFFORD & CO"
+        },
+        {
+          "id": "8ce12d7b-6dbf-4c94-b23a-57904ac25630",
+          "name": "Kleiner Perkins Caufield & Byers VIII, L.P."
+        }
+      ],
+      "fundingRounds": [],
+      "slush": false,
+      "people": [
+        {
+          "name": "Jeffrey P. Bezos",
+          "role": "CEO",
           "since": null
         }
       ],
@@ -6075,6 +6179,48 @@
         {
           "name": "Juha Iivari",
           "role": "Director, Business Development",
+          "since": null
+        }
+      ],
+      "parents": []
+    },
+    "ab60b5f8-ec94-5eb9-b5d1-068219c1f4d3": {
+      "id": "ab60b5f8-ec94-5eb9-b5d1-068219c1f4d3",
+      "name": "SEB",
+      "legalName": "SEB",
+      "aliases": [],
+      "website": null,
+      "domains": [],
+      "description": "A French retail company headquartered in La Courneuve, founded in 2020.",
+      "industries": [
+        {
+          "code": "RETAIL",
+          "label": "4674B"
+        }
+      ],
+      "country": "France",
+      "hqAddress": "75 RUE RATEAU, 93120 LA COURNEUVE, FRANCE",
+      "founding": {
+        "date": "2020-09-22",
+        "precision": null,
+        "sources": [
+          {
+            "name": "INPI",
+            "url": "https://data.inpi.fr/entreprises/889185575",
+            "date": "2025-11-28",
+            "rank": "FILING"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": "ACTIVE",
+      "investors": [],
+      "fundingRounds": [],
+      "slush": false,
+      "people": [
+        {
+          "name": "Osman Borisov",
+          "role": "CEO",
           "since": null
         }
       ],
@@ -9727,6 +9873,42 @@
       ],
       "parents": []
     },
+    "6946170e-88fc-4335-abbc-a07d300865dd": {
+      "id": "6946170e-88fc-4335-abbc-a07d300865dd",
+      "name": "SEB-SEB LIMITED",
+      "legalName": "SEB-SEB LIMITED",
+      "aliases": [],
+      "website": null,
+      "domains": [],
+      "description": "A retail company based in Aylesbury, England, incorporated in 2024.",
+      "industries": [
+        {
+          "code": "RETAIL",
+          "label": null
+        }
+      ],
+      "country": "United Kingdom",
+      "hqAddress": null,
+      "founding": {
+        "date": "2024-04-24",
+        "precision": null,
+        "sources": [
+          {
+            "name": "Companies House UK",
+            "url": "https://find-and-update.company-information.service.gov.uk/company/15675842",
+            "date": "2026-10-01",
+            "rank": "FILING"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": "ACTIVE",
+      "investors": [],
+      "fundingRounds": [],
+      "slush": false,
+      "people": [],
+      "parents": []
+    },
     "0040ced7-13d6-5082-ba33-6d81cd8a53bb": {
       "id": "0040ced7-13d6-5082-ba33-6d81cd8a53bb",
       "name": "AMOS.io",
@@ -9777,6 +9959,54 @@
           "since": null
         }
       ],
+      "parents": []
+    },
+    "1eb8e38c-c506-4be5-8208-b6e87fe90a7c": {
+      "id": "1eb8e38c-c506-4be5-8208-b6e87fe90a7c",
+      "name": "SEB SA",
+      "legalName": "SEB SA",
+      "aliases": [
+        "SEB S.A.",
+        "SEB"
+      ],
+      "website": null,
+      "domains": [],
+      "description": "A French company headquartered in Écully, founded in 1974, that manufactures small domestic appliances.",
+      "industries": [
+        {
+          "code": "CONSULTING",
+          "label": "741J"
+        },
+        {
+          "code": "BANKING",
+          "label": "6420Z"
+        }
+      ],
+      "country": "France",
+      "hqAddress": "112 CHEMIN DU MOULIN CARRON, CAMPUS SEB, ECULLY, FR-69, 69130, FR",
+      "founding": {
+        "date": "1974-01-01",
+        "precision": null,
+        "sources": [
+          {
+            "name": "GLEIF",
+            "url": "https://search.gleif.org/#/record/969500WP61NBK098AC47",
+            "date": "2026-09-18",
+            "rank": "FILING"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": "ACTIVE",
+      "investors": [],
+      "fundingRounds": [
+        {
+          "id": "dd7ecca3-b279-54d7-bcc0-fd2e732de2ed",
+          "role": "LENDER"
+        }
+      ],
+      "slush": false,
+      "people": [],
       "parents": []
     },
     "70a4a389-9445-428c-98d0-92b3203444f6": {
@@ -10349,6 +10579,156 @@
         }
       ],
       "parents": []
+    },
+    "d4245a8e-6996-4663-b238-9c3e8d3742d7": {
+      "id": "d4245a8e-6996-4663-b238-9c3e8d3742d7",
+      "name": "AMAZON WEB SERVICES, INC.",
+      "legalName": "AMAZON WEB SERVICES, INC.",
+      "aliases": [
+        "Amazon Web Services",
+        "AWS",
+        "Amazon AWS",
+        "Amazon",
+        "Amazon (AWS)",
+        "Amazon Web Services (AWS)",
+        "Amazon/AWS",
+        "AMZN",
+        "Amazon.com (AWS)",
+        "Amazon (AMZN)",
+        "Amazon/AWS (AMZN)",
+        "Amazon / AWS",
+        "Amazon / AWS (AMZN)",
+        "Amazon.com / AWS",
+        "Amazon / AWS — AMZN",
+        "Amazon (Amazon Web Services / AWS)",
+        "Amazon (NASDAQ: AMZN)",
+        "Amazon.com",
+        "Amazon Neptune",
+        "Amazon Web Services LLC",
+        "AWS (Amazon Web Services)",
+        "Amazon Web Services"
+      ],
+      "website": "aws.amazon.com",
+      "domains": [
+        "aws.amazon.com"
+      ],
+      "description": "Amazon.com, Inc.",
+      "industries": [
+        {
+          "code": "RENEWABLE_ENERGY",
+          "label": null
+        },
+        {
+          "code": "RETAIL",
+          "label": null
+        },
+        {
+          "code": "TRANSPORTATION_AND_LOGISTICS",
+          "label": null
+        },
+        {
+          "code": "BIOTECHNOLOGY",
+          "label": null
+        },
+        {
+          "code": "HOSPITALITY_AND_TOURISM",
+          "label": null
+        }
+      ],
+      "country": "United States",
+      "hqAddress": "410 TERRY AVENUE NORTH, SEATTLE, US-WA, 98109, US",
+      "founding": {
+        "date": "2006-05-03",
+        "precision": null,
+        "sources": [
+          {
+            "name": "GLEIF",
+            "url": "https://search.gleif.org/#/record/2549000I2PRQGGIGCA75",
+            "date": "2026-09-18",
+            "rank": "FILING"
+          },
+          {
+            "name": "AMAZON WEB SERVICES, INC. - LEI: 2549000I2PRQGGIGCA75",
+            "url": "https://lei.bloomberg.com/leis/view/2549000I2PRQGGIGCA75",
+            "date": "2006-05-03",
+            "rank": null
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": null,
+      "investors": [
+        {
+          "id": "1cee6178-6248-4aec-b1f7-ce8324e1c90d",
+          "name": "Major Employment and Investment (MEI) Project Approval Commission"
+        }
+      ],
+      "fundingRounds": [
+        {
+          "id": "59db51c8-b3c6-5d2d-9536-4c962e9c2e35",
+          "role": "INVESTOR"
+        }
+      ],
+      "slush": false,
+      "people": [
+        {
+          "name": "Andrew Jassy",
+          "role": "CEO",
+          "since": null
+        },
+        {
+          "name": "Matt Garman",
+          "role": "CEO",
+          "since": null
+        },
+        {
+          "name": "Adam Selipsky",
+          "role": "CEO",
+          "since": null
+        },
+        {
+          "name": "Peter DeSantis",
+          "role": "VP",
+          "since": null
+        },
+        {
+          "name": "Dave Brown",
+          "role": "VP",
+          "since": null
+        },
+        {
+          "name": "Maximilian Schellhorn",
+          "role": "AWS Solutions Architect",
+          "since": null
+        },
+        {
+          "name": "Bratin Saha",
+          "role": "Vice President, Machine Learning Services",
+          "since": null
+        },
+        {
+          "name": "Jean-Baptiste Tristan",
+          "role": "Principal Applied Scientist, Automated Reasoning Group",
+          "since": null
+        },
+        {
+          "name": "Eron Kelly",
+          "role": "General Manager of World‑Wide Product Marketing",
+          "since": null
+        },
+        {
+          "name": "Javier Torres",
+          "role": "Director of Central Sales EMEA",
+          "since": null
+        }
+      ],
+      "parents": [
+        {
+          "id": "acb76581-d0d9-4cd1-a809-1fc66317b726",
+          "name": "AMAZON.COM, INC.",
+          "since": "2006-05-03"
+        }
+      ]
     },
     "f4f6c0a6-37c6-44ee-85d7-631c66121b3d": {
       "id": "f4f6c0a6-37c6-44ee-85d7-631c66121b3d",
@@ -12448,6 +12828,44 @@
           "since": null
         }
       ],
+      "parents": []
+    },
+    "d2b94f89-bdec-4953-98c4-e0b3ad8db7be": {
+      "id": "d2b94f89-bdec-4953-98c4-e0b3ad8db7be",
+      "name": "AMAZON MUSIC LIMITED",
+      "legalName": "AMAZON MUSIC LIMITED",
+      "aliases": [
+        "Amazon Music"
+      ],
+      "website": null,
+      "domains": [],
+      "description": "A London-based entertainment company operating under the name Amazon Music since 1999.",
+      "industries": [
+        {
+          "code": "ENTERTAINMENT",
+          "label": null
+        }
+      ],
+      "country": "United Kingdom",
+      "hqAddress": null,
+      "founding": {
+        "date": "1999-09-23",
+        "precision": null,
+        "sources": [
+          {
+            "name": "Companies House UK",
+            "url": "https://find-and-update.company-information.service.gov.uk/company/03847554",
+            "date": "2026-11-01",
+            "rank": "FILING"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": "ACTIVE",
+      "investors": [],
+      "fundingRounds": [],
+      "slush": false,
+      "people": [],
       "parents": []
     },
     "cec3e672-4d44-5c1f-a868-e649fb1a4dbb": {
@@ -17218,6 +17636,53 @@
       ],
       "parents": []
     },
+    "3d2f0fcb-96a6-4c37-ae5b-90b437064a64": {
+      "id": "3d2f0fcb-96a6-4c37-ae5b-90b437064a64",
+      "name": "Vattenfall AB",
+      "legalName": "Vattenfall AB",
+      "aliases": [
+        "Vattenfall"
+      ],
+      "website": null,
+      "domains": [],
+      "description": "Swedish company based in Stockholm operating in renewable energy and utilities since 1937",
+      "industries": [
+        {
+          "code": "RENEWABLE_ENERGY",
+          "label": null
+        },
+        {
+          "code": "UTILITIES",
+          "label": null
+        }
+      ],
+      "country": "Sweden",
+      "hqAddress": "Evenemangsgatan 13, Stockholm, SE-AB, 169 92, SE",
+      "founding": {
+        "date": "1937-06-18",
+        "precision": null,
+        "sources": [
+          {
+            "name": "GLEIF",
+            "url": "https://search.gleif.org/#/record/549300T5RZ1HA5HZ3109",
+            "date": "2026-08-08",
+            "rank": "FILING"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": null,
+      "investors": [
+        {
+          "id": "2d9933e1-c1ad-4a7a-a6e9-aa3c05161fda",
+          "name": "Energetický a průmyslový holding, a.s."
+        }
+      ],
+      "fundingRounds": [],
+      "slush": false,
+      "people": [],
+      "parents": []
+    },
     "5da24f2b-6241-5612-b30f-bec294775190": {
       "id": "5da24f2b-6241-5612-b30f-bec294775190",
       "name": "Bondie Oy",
@@ -17482,6 +17947,47 @@
         }
       ],
       "parents": []
+    },
+    "4b95681f-d12f-4c76-98ab-2b692e5edf81": {
+      "id": "4b95681f-d12f-4c76-98ab-2b692e5edf81",
+      "name": "Vattenfall Oy",
+      "legalName": "Vattenfall Oy",
+      "aliases": [
+        "Vattenfall Sähkönmyynti Oy",
+        "Vattenfall Sahkonmyynti Oy",
+        "Vattenfall"
+      ],
+      "website": null,
+      "domains": [],
+      "description": "A Finnish electricity and heat utility subsidiary of the Swedish energy group Vattenfall, founded in 2003 and headquartered in Helsinki.",
+      "industries": [],
+      "country": "Finland",
+      "hqAddress": "Konepajankuja 3 B, Helsinki, FI-18, 00510, FI",
+      "founding": {
+        "date": "2003-07-22",
+        "precision": null,
+        "sources": [
+          {
+            "name": "GLEIF",
+            "url": "https://search.gleif.org/#/record/549300F7CPGDOX2FAU13",
+            "date": "2026-09-28",
+            "rank": "FILING"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": null,
+      "investors": [],
+      "fundingRounds": [],
+      "slush": false,
+      "people": [],
+      "parents": [
+        {
+          "id": "3d2f0fcb-96a6-4c37-ae5b-90b437064a64",
+          "name": "Vattenfall AB",
+          "since": "2017-10-30"
+        }
+      ]
     },
     "6a966907-4006-4a4b-8d11-2330f76cb3cd": {
       "id": "6a966907-4006-4a4b-8d11-2330f76cb3cd",
@@ -17969,166 +18475,6 @@
       "slush": true,
       "people": [],
       "parents": []
-    },
-    "1eb8e38c-c506-4be5-8208-b6e87fe90a7c": {
-      "id": "1eb8e38c-c506-4be5-8208-b6e87fe90a7c",
-      "name": "SEB SA",
-      "legalName": "SEB SA",
-      "aliases": [
-        "SEB S.A.",
-        "SEB"
-      ],
-      "website": null,
-      "domains": [],
-      "description": "A French company headquartered in Écully, founded in 1974, that manufactures small domestic appliances.",
-      "industries": [
-        {
-          "code": "CONSULTING",
-          "label": "741J"
-        },
-        {
-          "code": "BANKING",
-          "label": "6420Z"
-        }
-      ],
-      "country": "France",
-      "hqAddress": "112 CHEMIN DU MOULIN CARRON, CAMPUS SEB, ECULLY, FR-69, 69130, FR",
-      "founding": {
-        "date": "1974-01-01",
-        "precision": null,
-        "sources": [
-          {
-            "name": "GLEIF",
-            "url": "https://search.gleif.org/#/record/969500WP61NBK098AC47",
-            "date": "2026-09-18",
-            "rank": "FILING"
-          }
-        ]
-      },
-      "fundingStage": null,
-      "status": "ACTIVE",
-      "investors": [],
-      "fundingRounds": [
-        {
-          "id": "dd7ecca3-b279-54d7-bcc0-fd2e732de2ed",
-          "role": "LENDER"
-        }
-      ],
-      "slush": false,
-      "people": [],
-      "parents": []
-    },
-    "3d2f0fcb-96a6-4c37-ae5b-90b437064a64": {
-      "id": "3d2f0fcb-96a6-4c37-ae5b-90b437064a64",
-      "name": "Vattenfall AB",
-      "legalName": "Vattenfall AB",
-      "aliases": [
-        "Vattenfall"
-      ],
-      "website": null,
-      "domains": [],
-      "description": "Swedish company based in Stockholm operating in renewable energy and utilities since 1937",
-      "industries": [
-        {
-          "code": "RENEWABLE_ENERGY",
-          "label": null
-        },
-        {
-          "code": "UTILITIES",
-          "label": null
-        }
-      ],
-      "country": "Sweden",
-      "hqAddress": "Evenemangsgatan 13, Stockholm, SE-AB, 169 92, SE",
-      "founding": {
-        "date": "1937-06-18",
-        "precision": null,
-        "sources": [
-          {
-            "name": "GLEIF",
-            "url": "https://search.gleif.org/#/record/549300T5RZ1HA5HZ3109",
-            "date": "2026-08-08",
-            "rank": "FILING"
-          }
-        ]
-      },
-      "fundingStage": null,
-      "status": null,
-      "investors": [
-        {
-          "id": "2d9933e1-c1ad-4a7a-a6e9-aa3c05161fda",
-          "name": "Energetický a průmyslový holding, a.s."
-        }
-      ],
-      "fundingRounds": [],
-      "slush": false,
-      "people": [],
-      "parents": []
-    },
-    "6ed00269-d85b-49ae-8615-57842a41865f": {
-      "id": "6ed00269-d85b-49ae-8615-57842a41865f",
-      "name": "Amazon",
-      "legalName": null,
-      "aliases": [],
-      "website": "amazon.com",
-      "domains": [
-        "amazon.com"
-      ],
-      "description": "Multinational technology company engaged in e-commerce, cloud computing, digital streaming, and artificial intelligence.",
-      "industries": [
-        {
-          "code": "RETAIL",
-          "label": null
-        },
-        {
-          "code": "SOFTWARE_AND_SERVICES",
-          "label": null
-        },
-        {
-          "code": "INTERNET_AND_WEB_SERVICES",
-          "label": null
-        },
-        {
-          "code": "VENTURE_CAPITAL",
-          "label": null
-        }
-      ],
-      "country": "United States",
-      "hqAddress": "410 Terry Ave N, Seattle, WA 98109, United States",
-      "founding": {
-        "date": "1994-07-05",
-        "precision": null,
-        "sources": [
-          {
-            "name": "Amazon is founded by Jeff Bezos | July 5, 1994 | HISTORY",
-            "url": "https://www.history.com/this-day-in-history/july-5/amazon-is-founded-by-jeff-bezos",
-            "date": "2024-06-26",
-            "rank": null
-          }
-        ]
-      },
-      "fundingStage": null,
-      "status": null,
-      "investors": [
-        {
-          "id": "08272ee5-0ee4-4ba4-a33b-7ccc8b772565",
-          "name": "BAILLIE GIFFORD & CO"
-        },
-        {
-          "id": "8ce12d7b-6dbf-4c94-b23a-57904ac25630",
-          "name": "Kleiner Perkins Caufield & Byers VIII, L.P."
-        }
-      ],
-      "fundingRounds": [],
-      "slush": false,
-      "people": [
-        {
-          "name": "Jeffrey P. Bezos",
-          "role": "CEO",
-          "since": null
-        }
-      ],
-      "parents": []
     }
   },
   "entries": [
@@ -18266,7 +18612,8 @@
         "rank": null
       },
       "match": "news",
-      "claim": "Google announced in June 2026 plans to build its first data center in Sweden (Avesta), marking its expansion into the Swedish market."
+      "claim": "Google announced in June 2026 plans to build its first data center in Sweden (Avesta), marking its expansion into the Swedish market.",
+      "evidence": "Home / Google Announces First Sweden Data Center for AI Growth\n\n# Google to Build First Swedish Data Center as Nordic Region Emerges as Key AI Infrastructure Hub\n\n Pranav Hotkar 03 Jun, 2026\n\nStockholm, Sweden – June 2, 2026 - Google has announced plans to build its first data center in Sweden, expanding its European digital infrastructure footprint as demand for artificial intelligence and cloud computing capacity accelerates across the region. [...] ### Tags:\n\nGoogle Data Center Expansion Sweden AI Infrastructure Avesta Data Center Project Google Cloud Services Nordic Digital Infrastructure Renewable Energy Data Centers Hyperscale Computing Growth European Cloud Expansion AI Workload Capacity\n\n## More News\n\nMeta Brings AI-Optimized Temple Data Center Online as U.S. Infrastructure Expansion Continues\n\nSchneider Electric, AMD Unveil Helios Reference Design to Speed AI Data Center Deployment\n\n.jpg) [...] Google currently operates European cloud regions and data center campuses in countries including Finland, the Netherlands, Ireland, Belgium, and Denmark. The Sweden expansion further strengthens the company’s Nordic infrastructure presence, where access to renewable power and stable"
     },
     {
       "id": "801389e34e62f8ae",
@@ -18300,7 +18647,8 @@
         "rank": null
       },
       "match": "news",
-      "claim": "Amazon appointed Julian Tydeman as Country Manager for Sweden in 2026, as announced on 9 November 2026."
+      "claim": "Amazon appointed Julian Tydeman as Country Manager for Sweden in 2026, as announced on 9 November 2026.",
+      "evidence": "+ EVENTS 2026\n  + EVENTS 2027\n  + EVENT PARTNERSHIPS\n Advertising & Paid content\n\n  + RETAIL FILES – EDITORIAL CALENDAR\n  + ONLINE ADVERTISING & PAID CONTENT\n  + PRINT ADVERTISING\n Members’ area\n\nNewsletter\n\n Register for free\n\nMembers' area\n\n Log in\n Become a member\n\nthumb\n\nWritten by Stefan Van Rompaey\n\nIn this article\n\n Companies Amazon\n Topics Management change\n Geography BelgiumNetherlandsScandinavia\n\nShare article\n\n# Amazon appoints new country managers in Belgium, the Netherlands and Sweden\n\nicon\n\nGeneral9 November, 2026\n\nYannick Heers, Christianne Deregnaucourt-Lebouille, Julian Tydeman\n\nAmazon has appointed new country managers for three European countries. All three report to Gulfem Toygar, who has taken on the newly created role of Managing Director, EU Emerging Stores. [...] Food4 November, 2026\n\n  Carrefour looks back on record-breaking Scanmania event\n\nFollow RetailDetail\n\n socialFacebook\n socialTwitter\n socialInstagram\n sociallinkedIn [...] Sign up for our newsletter for free\n\nJulian Tydeman has been with Amazon since 2009, working in the United Kingdom, Luxembourg and Sweden. He was part of the team that launched Amazon.se in 2020 and has since held various leadersh"
     },
     {
       "id": "a67831fecee6bb21",
