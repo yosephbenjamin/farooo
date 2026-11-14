@@ -20,7 +20,15 @@ const monthOf = (iso: string) => MONTHS[Number(iso.split("-")[1]) - 1];
 const daysAgo = (now: string, iso: string) => Math.round((Date.parse(now) - Date.parse(iso)) / 86_400_000);
 const list = (xs: string[]) => (xs.length <= 2 ? xs.join(" and ") : `${xs.slice(0, -1).join(", ")} and ${xs.at(-1)}`);
 
-export function headline(r: DoorReport, shown: Door[]): string {
+/**
+ * "Eleven doors opened for Measur since December 2025. Four through people you know."
+ * Counts every door (the log lists the best); the warm paths, Faro's edge, get the second sentence.
+ */
+export function headline(r: DoorReport, doors: Door[]): string {
+  return [opened(r, doors), throughPeople(doors)].filter(Boolean).join(" ");
+}
+
+function opened(r: DoorReport, shown: Door[]): string {
   const name = r.startup.name;
   if (!r.startup.country && !r.startup.industries.length) return `The lighthouse can't see ${name} yet.`;
   if (!shown.length) return `Quiet water for ${name}. No door has opened.`;
@@ -32,6 +40,15 @@ export function headline(r: DoorReport, shown: Door[]): string {
   const oldest = [...shown].sort((a, b) => a.whyNow.date.localeCompare(b.whyNow.date))[0].whyNow.date;
   const sameYear = oldest.slice(0, 4) === r.now.slice(0, 4);
   return `${numWord(shown.length)} ${door(shown.length)} opened for ${name} since ${monthOf(oldest)}${sameYear ? "" : ` ${oldest.slice(0, 4)}`}.`;
+}
+
+/** "Four through people you know." / "All through people you know." / "" */
+export function throughPeople(doors: Door[]): string {
+  const warm = doors.filter((d) => d.warm.length).length;
+  if (!warm) return "";
+  if (warm === doors.length && warm > 1) return "All through people you know.";
+  if (warm === 1 && doors.length === 1) return "Through someone you know.";
+  return `${numWord(warm)} through people you know.`;
 }
 
 /** The line under the headline: where we're watching and through whom. */
