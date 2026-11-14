@@ -46,3 +46,7 @@ Choices made without stopping to ask. Newest last.
 39. **Readable labels.** Cala's short labels (`robo`, `medtechPharma`, `dualUseTech`, `somethingElse`…) map to words ("robotics", "medtech", "dual-use tech", or the code's words) so why-you never says "will buy robo".
 40. **Entrants pass order.** Foreign attendees next to the demo startups' industries go first: cached profile industries when present (health/medical/pharma/biotech and hardware/aerospace/defence/robotics score highest, internet/cloud next, software last), otherwise words in the attendee's name (health, med, robot, drone, defence, space, AI, cloud, data, chip…). Order only; it never decides a door. 378 of 2,777 scored above zero.
 41. **Credit is reported, not guessed.** The client now counts what it actually sends (`calaStats`: sent, OK, status codes, cache hits), and the entrants stage writes `data/entrants-report.json` with those counts and an estimate of the calls left (attendees remaining × observed calls per attendee, at least one). Cala exposes no balance, so Faro states only what was spent and what remains.
+
+## v2.1 (vision restated: Faro finds partners all year; Slush is one "where to meet" signal)
+
+42. **Ranking follows the vision:** 1 market entry + warm path + shared event, 2 market entry + warm path, 3 market entry, 4 fresh round + warm path. A warm path now outranks an event: entry + Slush without an introducer is tier 3. The shared event is Slush 2026 (the event Cala has); the code reads `door.slush`, so a second event would plug in there.

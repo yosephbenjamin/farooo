@@ -9,7 +9,7 @@
  *   4. warm path  a shared investor, and whether they led
  *   5. who        people with roles from Cala, else a Google X-ray link
  *
- * Tiers: 1 entry + Slush + warm path, 2 entry + Slush, 3 entry, 4 fresh round + warm path.
+ * Tiers: 1 entry + warm path + shared event, 2 entry + warm path, 3 entry, 4 fresh round + warm path.
  * Nothing else is shown.
  */
 import { normalizeFund, normalizeCompany } from "./normalize";
@@ -297,8 +297,8 @@ export function buildReport(pool: Pool, startup: StartupSummary, opts: { now: st
 
 // ---------- ranking (render time) ----------
 export function tierOf(d: Door): number {
-  if (d.entering && d.slush && d.warm.length) return 1;
-  if (d.entering && d.slush) return 2;
+  if (d.entering && d.warm.length && d.slush) return 1; // + a shared event (Slush 2026 is the one Cala has)
+  if (d.entering && d.warm.length) return 2;
   if (d.entering) return 3;
   return 4;
 }

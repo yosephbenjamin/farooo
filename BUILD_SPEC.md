@@ -28,10 +28,12 @@
 
 ## Ranking
 
-1. market entry + Slush + warm path
-2. market entry + Slush
+1. market entry + warm path + shared event (Slush 2026 is the event Cala has)
+2. market entry + warm path
 3. market entry
 4. fresh round + warm path
+
+Faro works all year; Slush is one "where to meet" signal, not the point.
 
 Within each tier, favour the partnership types the user tapped "more like this" on. Anything outside these tiers isn't shown.
 

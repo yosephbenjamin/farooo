@@ -62,6 +62,8 @@ const ranked = rankDoors(r.doors, parseTaps(null));
 assert.equal(ranked[0].id, "p1");
 assert.equal(tierOf(ranked[0]), 1);
 assert.equal(tierOf(ranked[1]), 3);
+assert.equal(tierOf({ ...ranked[0], slush: false }), 2, "entry + warm path beats entry + event");
+assert.equal(tierOf({ ...ranked[0], warm: [] }), 3, "entry + event alone is plain entry");
 const fl = firstLook(r.doors);
 assert.equal(new Set(fl.map((x) => x.type)).size, fl.length, "first look: different partnership types");
 const tapped = applyTap(parseTaps(null), "customer", "notnow", "p2");

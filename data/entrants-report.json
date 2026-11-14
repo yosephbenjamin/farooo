@@ -1,5 +1,5 @@
 {
-  "ranAt": "2026-11-14T10:48:30.555Z",
+  "ranAt": "2026-11-14T11:18:23.798Z",
   "now": "2026-11-14",
   "foreign": 2777,
   "visited": 671,
@@ -9,15 +9,12 @@
   "entryNames": [],
   "outOfCredit": true,
   "calls": {
-    "sent": 607,
-    "ok": 602,
+    "sent": 1,
+    "ok": 0,
     "status": {
-      "200": 602,
-      "402": 1,
-      "429": 2,
-      "502": 2
+      "402": 1
     },
-    "cacheHits": 99
+    "cacheHits": 700
   },
   "remaining": {
     "attendees": 2106,
