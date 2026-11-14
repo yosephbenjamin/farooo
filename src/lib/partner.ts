@@ -135,3 +135,59 @@ export function bestWhyYou(m: MatchInput): WhyYou | null {
   const w = m.weights ?? {};
   return [...all].sort((a, b) => (w[b.type] ?? 0) - (w[a.type] ?? 0) || PARTNER_TYPES.indexOf(a.type) - PARTNER_TYPES.indexOf(b.type))[0];
 }
+
+// ---------- industry codes that contradict the description ----------
+/**
+ * What a company does, read from its Cala description (or, when that is boilerplate generated
+ * from the code itself, the sourced Cala claim the door came from). Only names of businesses,
+ * never activities like "investment" or "partnership", so a sentence about money or a deal
+ * doesn't read as a sector. Used only to check the industry code, never to invent a door.
+ */
+const DESCRIBES: [RegExp, Industry][] = [
+  [/\bdata[- ]?cent(?:er|re)s?\b|\bcolocation\b|\bhyperscale\b|\bgpu cloud\b|\bcloud (?:infrastructure|provider|computing)\b/i, { code: "INTERNET_AND_WEB_SERVICES", label: "dataCentres" }],
+  [/\b(?:neo)?bank(?:s|ing)?\b|\bpayments?\b|\blending\b|\binsurers?\b|\binsurance\b|\bfintech\b/i, { code: "FINTECH", label: null }],
+  [/\bdrones?\b|\bunmanned\b|\bdefen[cs]e\b|\bmilitary\b|\bsatellites?\b/i, { code: "AEROSPACE_AND_DEFENSE", label: null }],
+  [/\bsoftware\b|\bsaas\b/i, { code: "SOFTWARE_AND_SERVICES", label: null }],
+  [/\bsemiconductors?\b|\bchips?\b|\bprocessors?\b|\bhardware\b/i, { code: "HARDWARE_AND_EQUIPMENT", label: null }],
+  [/\bmedical\b|\bhealth ?care\b|\bclinics?\b|\bhospitals?\b|\bpatients?\b/i, { code: "HEALTHCARE_PROVIDERS", label: null }],
+  [/\bsolar\b|\bwind (?:farm|power|turbine)s?\b|\bbatter(?:y|ies)\b|\brenewable\b/i, { code: "RENEWABLE_ENERGY", label: null }],
+  [/\blogistics\b|\bfreight\b|\bshipping\b/i, { code: "TRANSPORTATION_AND_LOGISTICS", label: null }],
+];
+
+/** "Swedish fintech company founded in 2018, headquartered in Kista." Generated from the code; no evidence of its own. */
+export function isBoilerplate(desc: string | null | undefined): boolean {
+  if (!desc) return true;
+  const d = desc.trim();
+  return d.length < 160 && /^(?:an? )?[A-Z][\w-]*(?: [\w&/-]+){0,5}? (?:company|firm|business|organi[sz]ation)\b[,]? (?:founded|headquartered|based|registered|established|incorporated)\b/i.test(d) && !/\b(?:builds?|develops?|provides?|offers?|operates?|makes?|sells?)\b/i.test(d);
+}
+
+export interface IndustryCheck {
+  /** The industries to match on: the codes, or what the description says when they contradict it. */
+  industries: Industry[];
+  /** Set when the codes contradicted the description and the description won. */
+  uncertain: null | { coded: string; read: string };
+  /** The codes contradict a description that is itself unclear: no real reason, drop. */
+  drop: boolean;
+}
+
+/**
+ * Check a door's industry codes against what Cala says it does.
+ *  - description silent, or consistent with a code: keep the codes;
+ *  - description points to one sector the codes don't: use the description, mark uncertain;
+ *  - description points to several sectors, none the codes': unclear, drop.
+ */
+export function checkIndustries(industries: Industry[], description: string | null, claim?: string | null): IndustryCheck {
+  const text = [isBoilerplate(description) ? "" : description ?? "", claim ?? ""].join(" ").trim();
+  const read = DESCRIBES.filter(([re]) => re.test(text)).map(([, ind]) => ind);
+  const keep: IndustryCheck = { industries, uncertain: null, drop: false };
+  if (!read.length || !industries.length) return keep; // no codes stays "no real reason": the description never invents a door
+  const coded = new Set(industries.map((i) => sectorOf(i.code)));
+  if (read.some((i) => coded.has(sectorOf(i.code)))) return keep;
+  const sectors = new Set(read.map((i) => sectorOf(i.code)));
+  if (sectors.size > 1) return { industries, uncertain: null, drop: true };
+  return {
+    industries: read,
+    uncertain: { coded: industries.map(industryWords).join(" and "), read: read.map(industryWords).join(" and ") },
+    drop: false,
+  };
+}

@@ -16512,7 +16512,8 @@
         "date": "2026-10-05",
         "rank": null
       },
-      "match": "news"
+      "match": "news",
+      "claim": "atNorth announced in October 2026 plans to develop a new data centre (FIN05) in Salo, Finland, with an expected investment of about €2 billion."
     },
     {
       "id": "103dd91f81b9a921",
@@ -16528,7 +16529,8 @@
         "date": "2026-11-13",
         "rank": null
       },
-      "match": "news"
+      "match": "news",
+      "claim": "Cerebras reported signing contracts for additional data‑centre capacity in Norway and Finland during 2026, expanding its European footprint with most new capacity slated for 2027 outside the U.S."
     },
     {
       "id": "51c550fefd9b8f0d",
@@ -16544,7 +16546,8 @@
         "date": "2026-11-12",
         "rank": null
       },
-      "match": "news"
+      "match": "news",
+      "claim": "Arondite announced in November 2026 that it is opening its first international office in Oslo, Norway, with a £35 million investment, confirming its expansion into Norway."
     },
     {
       "id": "383d4949288b364f",
@@ -16560,7 +16563,8 @@
         "date": "2026-11-06",
         "rank": null
       },
-      "match": "news"
+      "match": "news",
+      "claim": "Portuguese drone maker Tekever announced on 6 November 2026 its first operational presence in Denmark, establishing a base in Odense with backing from EIFO."
     }
   ],
   "rounds": [

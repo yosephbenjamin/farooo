@@ -176,7 +176,8 @@
         }
       ],
       "xray": "https://www.google.com/search?q=site%3Alinkedin.com%2Fin%20%22Causa%20Prima%22%20(%22country%20manager%22%20OR%20%22head%20of%20operations%22%20OR%20procurement)%20Spain",
-      "entering": false
+      "entering": false,
+      "industryNote": null
     },
     {
       "id": "3d3edba6-f4d7-432b-80d3-d07872e11def",
@@ -219,7 +220,8 @@
         }
       ],
       "xray": "https://www.google.com/search?q=site%3Alinkedin.com%2Fin%20%22Verda%22%20(partnerships%20OR%20%22head%20of%20product%22%20OR%20CTO)%20Finland",
-      "entering": false
+      "entering": false,
+      "industryNote": null
     },
     {
       "id": "9423779d-819b-46ac-bf29-a5edb6b2553f",
@@ -255,7 +257,8 @@
       ],
       "people": [],
       "xray": "https://www.google.com/search?q=site%3Alinkedin.com%2Fin%20%22Olix%22%20(partnerships%20OR%20%22head%20of%20product%22%20OR%20CTO)%20United%20Kingdom",
-      "entering": false
+      "entering": false,
+      "industryNote": null
     }
   ]
 }

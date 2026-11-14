@@ -140,19 +140,23 @@
       },
       "whyYou": [
         {
-          "type": "customer",
-          "sentence": "Customer. A fintech company setting up in Finland will buy software, and you sell it there."
+          "type": "integration",
+          "sentence": "Integration. They build data centres, you build software: the two plug into the same stack."
         },
         {
-          "type": "integration",
-          "sentence": "Integration. They build fintech, you build software: the two plug into the same stack."
+          "type": "distribution",
+          "sentence": "Distribution. They're new to Finland and sell data centres to the buyers you already reach."
         }
       ],
       "slush": false,
       "warm": [],
       "people": [],
-      "xray": "https://www.google.com/search?q=site%3Alinkedin.com%2Fin%20%22atNorth%22%20(%22country%20manager%22%20OR%20%22head%20of%20operations%22%20OR%20procurement)%20Finland",
-      "entering": true
+      "xray": "https://www.google.com/search?q=site%3Alinkedin.com%2Fin%20%22atNorth%22%20(partnerships%20OR%20%22head%20of%20product%22%20OR%20CTO)%20Finland",
+      "entering": true,
+      "industryNote": {
+        "coded": "fintech",
+        "read": "data centres"
+      }
     },
     {
       "id": "06bee415-d05a-47f3-8c14-8e6b779f8e1d",
@@ -199,7 +203,8 @@
         }
       ],
       "xray": "https://www.google.com/search?q=site%3Alinkedin.com%2Fin%20%22Cerebras%20Systems%22%20(partnerships%20OR%20%22head%20of%20product%22%20OR%20CTO)%20Finland",
-      "entering": true
+      "entering": true,
+      "industryNote": null
     },
     {
       "id": "9fb29819-a62b-5d13-be35-67eeb5e534a1",
@@ -231,7 +236,8 @@
       ],
       "people": [],
       "xray": "https://www.google.com/search?q=site%3Alinkedin.com%2Fin%20%22Vensum%22%20(%22country%20manager%22%20OR%20%22head%20of%20operations%22%20OR%20procurement)%20Finland",
-      "entering": false
+      "entering": false,
+      "industryNote": null
     },
     {
       "id": "b7226c97-3a44-5176-8544-cb91246b2249",
@@ -274,7 +280,8 @@
         }
       ],
       "xray": "https://www.google.com/search?q=site%3Alinkedin.com%2Fin%20%22Kova%20Labs%22%20(%22country%20manager%22%20OR%20%22head%20of%20operations%22%20OR%20procurement)%20Finland",
-      "entering": false
+      "entering": false,
+      "industryNote": null
     },
     {
       "id": "75c397bb-0819-5178-b96b-630417e6bb9e",
@@ -317,7 +324,8 @@
         }
       ],
       "xray": "https://www.google.com/search?q=site%3Alinkedin.com%2Fin%20%22Ambio%22%20(%22country%20manager%22%20OR%20%22head%20of%20operations%22%20OR%20procurement)%20Finland",
-      "entering": false
+      "entering": false,
+      "industryNote": null
     },
     {
       "id": "3d3edba6-f4d7-432b-80d3-d07872e11def",
@@ -364,7 +372,8 @@
         }
       ],
       "xray": "https://www.google.com/search?q=site%3Alinkedin.com%2Fin%20%22Verda%22%20(partnerships%20OR%20%22head%20of%20product%22%20OR%20CTO)%20Finland",
-      "entering": false
+      "entering": false,
+      "industryNote": null
     },
     {
       "id": "49fb961a-7281-5f17-94be-5e0c1720d2d5",
@@ -396,7 +405,8 @@
       ],
       "people": [],
       "xray": "https://www.google.com/search?q=site%3Alinkedin.com%2Fin%20%22S-Transistors%22%20(partnerships%20OR%20%22head%20of%20product%22%20OR%20CTO)%20Finland",
-      "entering": false
+      "entering": false,
+      "industryNote": null
     }
   ]
 }

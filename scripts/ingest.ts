@@ -274,7 +274,7 @@ async function main() {
       const sameBrand = ((await spend(() => searchEntities(company, { types: ["Company"], limit: 10 }))) ?? []).filter((e) => normalizeCompany(e.name) === bkey || normalizeCompany(e.name).startsWith(bkey + " "));
       if (sameBrand.some((e) => words.some((w) => new RegExp(`\\b${w}\\b`, "i").test(e.description ?? "")))) { stats.local++; continue; }
       const id = createHash("sha256").update(`news|${p.id}|${market}|${date}`).digest("hex").slice(0, 16);
-      entries.set(id, { id, kind: "news", doorId: p.id, doorName: p.name, local: null, market, date, source: { name: c.sourceName, url: c.url, date, rank: null }, match: "news" });
+      entries.set(id, { id, kind: "news", doorId: p.id, doorName: p.name, local: null, market, date, source: { name: c.sourceName, url: c.url, date, rank: null }, match: "news", claim: c.text });
       stats.kept++;
     }
     writeJson("news-report.json", { ranAt: new Date().toISOString(), now, extraction: llm ? "llm" : "heuristic", stats });

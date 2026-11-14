@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import { normalizeCompany, normalizeFund } from "../src/lib/normalize";
 import { concreteDateInText, concreteDateInUrl, isPlaceholderDate } from "../src/lib/dates";
 import { aliasMatch, SEED_FUNDS } from "../src/lib/seed";
-import { partnerTypes, industryWords } from "../src/lib/partner";
+import { partnerTypes, industryWords, checkIndustries, isBoilerplate } from "../src/lib/partner";
 import { countryFromAddress, filingFounding, rankOf, type Profile } from "../src/lib/profile";
 import { buildReport, firstLook, rankDoors, tierOf, xrayLink, prettyRound, type Pool } from "../src/lib/doors";
 import { applyTap, parseTaps, serializeTaps } from "../src/lib/taps";
@@ -67,4 +67,31 @@ assert.equal(new Set(fl.map((x) => x.type)).size, fl.length, "first look: differ
 const tapped = applyTap(parseTaps(null), "customer", "notnow", "p2");
 assert.ok(!rankDoors(r.doors, parseTaps(serializeTaps(tapped))).some((d) => d.id === "p2"));
 assert.ok(xrayLink("Acme", "Finland", "integration").startsWith("https://www.google.com/search?q=site%3Alinkedin.com%2Fin"));
+
+// industry codes that contradict the description (atNorth: a data-centre operator coded FINTECH)
+const fin = [{ code: "FINTECH", label: null }];
+const boiler = "Swedish fintech company founded in 2018, headquartered in Kista, Stockholm.";
+assert.ok(isBoilerplate(boiler), "generated from the code: no evidence of its own");
+assert.ok(!isBoilerplate("Develops AI-centric drones for maritime surveillance."));
+const at = checkIndustries(fin, boiler, "atNorth announced in October 2026 plans to develop a new data centre (FIN05) in Salo, Finland, with an expected investment of about €2 billion.");
+assert.equal(at.drop, false);
+assert.deepEqual(at.uncertain, { coded: "fintech", read: "data centres" });
+assert.equal(at.industries[0].code, "INTERNET_AND_WEB_SERVICES");
+assert.equal(checkIndustries(fin, "Runs a neobank and payments app for freelancers.").uncertain, null, "consistent: keep the code");
+assert.equal(checkIndustries(fin, boiler).uncertain, null, "description silent: keep the code");
+assert.ok(checkIndustries(fin, "Makes drones and runs data centres.").drop, "contradicted and unclear: drop");
+const verda = { id: "v", name: "Verda", country: "Finland", industries: [{ code: "SOFTWARE_AND_SERVICES", label: "ai" }], investors: [], resolvedFrom: "cala" as const };
+const atPool: Pool = {
+  profiles: { an: prof("an", { industries: fin, country: "Sweden", description: boiler }), mx: prof("mx", { industries: fin, country: "Sweden", description: "Makes drones and runs data centres." }) },
+  entries: [
+    { id: "a1", kind: "news", doorId: "an", doorName: "atNorth", local: null, market: "Finland", date: "2026-10-05", source: { name: "n", url: "u", date: null, rank: null }, match: "news", claim: "atNorth plans to develop a new data centre in Salo, Finland." },
+    { id: "a2", kind: "news", doorId: "mx", doorName: "Mixed", local: null, market: "Finland", date: "2026-10-05", source: { name: "n", url: "u", date: null, rank: null }, match: "news" },
+  ],
+  rounds: [],
+  slush: { ids: [], names: [] },
+};
+const ar = buildReport(atPool, verda, { now: "2026-11-14" });
+assert.deepEqual(ar.doors.map((d) => d.id), ["an"], "the unclear door is dropped");
+assert.ok(ar.doors[0].industryNote, "marked uncertain");
+assert.ok(ar.doors[0].whyYou.some((w) => /data centres/.test(w.sentence)), "why-you from the description");
 console.log("selftest ok");

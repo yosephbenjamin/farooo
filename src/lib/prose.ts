@@ -75,6 +75,13 @@ export function sourceLine(d: Door): string {
   return `${shortDate(d.whyNow.date)} · ${name}${s.rank ? ` · ${s.rank}` : ""}`;
 }
 
+/** The quiet † footnote when Cala's industry code contradicted the description. */
+export function industryNoteLine(d: Door): string | null {
+  const n = d.industryNote;
+  if (!n) return null;
+  return `${d.name}: Cala codes it ${n.coded}; why-you read from its description (${n.read}). Uncertain.`;
+}
+
 function hostName(url: string) {
   try {
     return new URL(url).hostname.replace(/^www\./, "");

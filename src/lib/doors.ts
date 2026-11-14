@@ -14,7 +14,7 @@
  */
 import { normalizeFund, normalizeCompany } from "./normalize";
 import { seedSlugForName } from "./seed";
-import { bestWhyYou, partnerTypes, PARTNER_TYPES, type PartnerType, type WhyYou } from "./partner";
+import { bestWhyYou, checkIndustries, partnerTypes, PARTNER_TYPES, type IndustryCheck, type PartnerType, type WhyYou } from "./partner";
 import { prettyName, type Industry, type Person, type Profile, type RankedSource } from "./profile";
 
 export const DAY = 86_400_000;
@@ -38,6 +38,8 @@ export interface MarketEntry {
   source: RankedSource;
   /** How the local company was tied to the foreign one. */
   match: "website" | "registry-parent" | "news";
+  /** For news: the sourced Cala claim the entry came from. */
+  claim?: string;
 }
 
 export interface FreshRound {
@@ -79,6 +81,8 @@ export interface Door {
   people: Person[];
   xray: string;
   entering: boolean;
+  /** Cala's industry code contradicted its description; why-you was read from the description. */
+  industryNote?: IndustryCheck["uncertain"];
 }
 
 export interface StartupSummary {
@@ -224,10 +228,12 @@ export function buildReport(pool: Pool, startup: StartupSummary, opts: { now: st
     const p = pool.profiles[e.doorId];
     const local = e.local ? pool.profiles[e.local.id] : undefined;
     if (normalizeCompany(e.doorName) === selfName || startup.id === e.doorId) continue;
-    const industries = p?.industries.length ? p.industries : local?.industries ?? [];
+    const coded = p?.industries.length ? p.industries : local?.industries ?? [];
+    const check = checkIndustries(coded, p?.description ?? local?.description ?? null, e.claim);
+    if (check.drop) continue; // code contradicts an unclear description: no real reason
     const whyYou = partnerTypes({
       you: startup,
-      door: { name: e.doorName, industries, country: p?.country ?? null },
+      door: { name: e.doorName, industries: check.industries, country: p?.country ?? null },
       entering: true,
       market: startup.country,
     });
@@ -252,6 +258,7 @@ export function buildReport(pool: Pool, startup: StartupSummary, opts: { now: st
       people,
       xray: xrayLink(prettyName(p?.name ?? e.doorName), startup.country, whyYou[0].type),
       entering: true,
+      industryNote: check.uncertain,
     });
   }
 
@@ -266,7 +273,9 @@ export function buildReport(pool: Pool, startup: StartupSummary, opts: { now: st
     const src0 = pickSource(r.sources, r.date);
     if (!src0) continue;
     const src = withOwnRank(src0, p);
-    const whyYou = partnerTypes({ you: startup, door: { name: p.name, industries: p.industries, country: p.country }, entering: false, market: startup.country });
+    const check = checkIndustries(p.industries, p.description);
+    if (check.drop) continue;
+    const whyYou = partnerTypes({ you: startup, door: { name: p.name, industries: check.industries, country: p.country }, entering: false, market: startup.country });
     if (!whyYou.length) continue;
     doors.set(r.companyId, {
       id: r.companyId,
@@ -279,6 +288,7 @@ export function buildReport(pool: Pool, startup: StartupSummary, opts: { now: st
       people: p.people.filter((x) => goodRole(x.role)).slice(0, 2),
       xray: xrayLink(prettyName(p.name), p.country, whyYou[0].type),
       entering: false,
+      industryNote: check.uncertain,
     });
   }
 
