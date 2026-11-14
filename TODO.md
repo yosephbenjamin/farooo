@@ -9,7 +9,7 @@
 | N4 Web log v2 | done | design unchanged; taps re-rank instantly (cookie) |
 | N5 Gmail contextual sidebar | done, ready to test | `gmail-addon/`, `/api/gmail`; name asked once on personal addresses; install steps in `GMAIL.md` (Vercel + script.google.com test deployment) |
 | N6 Booth | done | Distance Technologies, Dalip, RiACT (seed stage, this week's entry doors) pinned by Cala id and precomputed; Oura and Verda left (not seed stage) |
-| N7 Rerun ingest with the new key | done (partial: credit ran out) | users, rounds (with `is_lead`), news, 200 Nordic attendees, 671 foreign attendees (607 calls this pass, ended on 402). 282 profiles cached |
+| N7 Rerun ingest | partial | new key (14 Nov): 150 widened news searches + 819 entity calls succeeded, no 402. Entrants pass at 1,350 of 2,777 foreign attendees (stopped externally), 2 candidates, no subsidiary yet. Resume: `npm run ingest -- --stage=entrants,investors` (~1,400 calls), then `--stage=recheck` and `npm run demo` |
 | N8 Docs | done | BUILD_SPEC, README, DECISIONS, DATA_NOTES, DEMO |
 
 ## v1 (shipped, superseded where BUILD_SPEC says so)
