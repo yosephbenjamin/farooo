@@ -1,0 +1,122 @@
+{
+  "now": "2026-11-14",
+  "startup": {
+    "id": "c50873cf-a1e6-5c47-a1b8-aba71d38edbd",
+    "name": "Dalip",
+    "country": "Norway",
+    "industries": [
+      {
+        "code": "SOFTWARE_AND_SERVICES",
+        "label": "ai"
+      }
+    ],
+    "investors": [
+      {
+        "key": "kjetil-j-olsen",
+        "name": "Kjetil J. Olsen"
+      },
+      {
+        "key": "christoffer-o-hern-s",
+        "name": "Christoffer O. Hernæs"
+      },
+      {
+        "key": "israr-khan",
+        "name": "ISRAR KHAN LTD"
+      },
+      {
+        "key": "eivind-skibenes",
+        "name": "Eivind Skibenes"
+      },
+      {
+        "key": "trond-riiber-knudsen",
+        "name": "Trond Riiber Knudsen"
+      },
+      {
+        "key": "fredrik-campbell-str-mme",
+        "name": "Fredrik Campbell Strømme"
+      },
+      {
+        "key": "tore-sagstuen",
+        "name": "Tore Sagstuen"
+      },
+      {
+        "key": "sophus-slaatta",
+        "name": "Sophus Slaatta"
+      }
+    ],
+    "resolvedFrom": "cala"
+  },
+  "doors": [
+    {
+      "id": "3675c9a9-8c24-4060-917d-e01964f5dcee",
+      "name": "Arondite",
+      "country": "United Kingdom",
+      "whyNow": {
+        "kind": "news",
+        "date": "2026-11-12",
+        "text": "is entering Norway",
+        "source": {
+          "name": "Welcome to GOV.UK",
+          "url": "https://www.gov.uk/government/news/uk-commandos-to-get-ai-enabled-edge-from-british-scale-up-arondite-as-company-expands-to-natos-northern-flank",
+          "date": "2026-11-12",
+          "rank": null
+        }
+      },
+      "whyYou": [
+        {
+          "type": "integration",
+          "sentence": "Integration. They build software, you build AI software: the two plug into the same stack."
+        },
+        {
+          "type": "distribution",
+          "sentence": "Distribution. They're new to Norway and sell software to the buyers you already reach."
+        },
+        {
+          "type": "customer",
+          "sentence": "Customer. A defence company setting up in Norway will buy AI software, and you sell it there."
+        }
+      ],
+      "slush": false,
+      "warm": [],
+      "people": [],
+      "xray": "https://www.google.com/search?q=site%3Alinkedin.com%2Fin%20%22Arondite%22%20(partnerships%20OR%20%22head%20of%20product%22%20OR%20CTO)%20Norway",
+      "entering": true,
+      "industryNote": null
+    },
+    {
+      "id": "369e2dfb-44da-4676-b792-49a2cbd4688e",
+      "name": "atNorth",
+      "country": "Sweden",
+      "whyNow": {
+        "kind": "news",
+        "date": "2026-06-09",
+        "text": "is entering Norway",
+        "source": {
+          "name": "finance.yahoo.com",
+          "url": "https://finance.yahoo.com/sectors/technology/articles/atnorth-joins-norwegian-data-center-073000144.html",
+          "date": "2026-06-09",
+          "rank": null
+        }
+      },
+      "whyYou": [
+        {
+          "type": "integration",
+          "sentence": "Integration. They build data centres, you build AI software: the two plug into the same stack."
+        },
+        {
+          "type": "distribution",
+          "sentence": "Distribution. They're new to Norway and sell data centres to the buyers you already reach."
+        }
+      ],
+      "slush": false,
+      "warm": [],
+      "people": [],
+      "xray": "https://www.google.com/search?q=site%3Alinkedin.com%2Fin%20%22atNorth%22%20(partnerships%20OR%20%22head%20of%20product%22%20OR%20CTO)%20Norway",
+      "entering": true,
+      "industryNote": {
+        "coded": "fintech",
+        "read": "data centres"
+      }
+    }
+  ]
+}

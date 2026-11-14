@@ -1,0 +1,198 @@
+{
+  "now": "2026-11-14",
+  "startup": {
+    "id": "88917971-7acd-5977-b108-0ef6fa5ce36e",
+    "name": "Distance Technologies",
+    "country": "Finland",
+    "industries": [
+      {
+        "code": "SOFTWARE_AND_SERVICES",
+        "label": "deeptech"
+      }
+    ],
+    "investors": [
+      {
+        "key": "foobar-vc",
+        "name": "Foobar.vc"
+      },
+      {
+        "key": "hella-ventures",
+        "name": "HELLA Ventures"
+      },
+      {
+        "key": "fov-ventures",
+        "name": "FOV Ventures"
+      },
+      {
+        "key": "gv",
+        "name": "GV"
+      },
+      {
+        "key": "maki-vc",
+        "name": "Maki.vc"
+      },
+      {
+        "key": "business-finland",
+        "name": "Business Finland"
+      }
+    ],
+    "resolvedFrom": "cala"
+  },
+  "doors": [
+    {
+      "id": "369e2dfb-44da-4676-b792-49a2cbd4688e",
+      "name": "atNorth",
+      "country": "Sweden",
+      "whyNow": {
+        "kind": "news",
+        "date": "2026-10-05",
+        "text": "is entering Finland",
+        "source": {
+          "name": "finance.yahoo.com",
+          "url": "https://finance.yahoo.com/technology/articles/atnorth-develop-data-center-salo-081800418.html",
+          "date": "2026-10-05",
+          "rank": null
+        }
+      },
+      "whyYou": [
+        {
+          "type": "integration",
+          "sentence": "Integration. They build data centres, you build deeptech: the two plug into the same stack."
+        },
+        {
+          "type": "distribution",
+          "sentence": "Distribution. They're new to Finland and sell data centres to the buyers you already reach."
+        }
+      ],
+      "slush": false,
+      "warm": [],
+      "people": [],
+      "xray": "https://www.google.com/search?q=site%3Alinkedin.com%2Fin%20%22atNorth%22%20(partnerships%20OR%20%22head%20of%20product%22%20OR%20CTO)%20Finland",
+      "entering": true,
+      "industryNote": {
+        "coded": "fintech",
+        "read": "data centres"
+      }
+    },
+    {
+      "id": "06bee415-d05a-47f3-8c14-8e6b779f8e1d",
+      "name": "Cerebras Systems",
+      "country": "United States",
+      "whyNow": {
+        "kind": "news",
+        "date": "2026-11-13",
+        "text": "is entering Finland",
+        "source": {
+          "name": "Stock Market News & Investing Research | The Motley Fool",
+          "url": "https://www.fool.com/earnings/call-transcripts/2026/11/13/cerebras-cbrs-q3-2026-earnings-call-transcript",
+          "date": "2026-11-13",
+          "rank": null
+        }
+      },
+      "whyYou": [
+        {
+          "type": "integration",
+          "sentence": "Integration. They build software, you build deeptech: the two plug into the same stack."
+        },
+        {
+          "type": "distribution",
+          "sentence": "Distribution. They're new to Finland and sell software to the buyers you already reach."
+        }
+      ],
+      "slush": false,
+      "warm": [],
+      "people": [
+        {
+          "name": "Jean-Philippe Fricker",
+          "role": "CTO",
+          "since": null
+        },
+        {
+          "name": "Gary Lauterbach",
+          "role": "CTO",
+          "since": null
+        }
+      ],
+      "xray": "https://www.google.com/search?q=site%3Alinkedin.com%2Fin%20%22Cerebras%20Systems%22%20(partnerships%20OR%20%22head%20of%20product%22%20OR%20CTO)%20Finland",
+      "entering": true,
+      "industryNote": null
+    },
+    {
+      "id": "9fb29819-a62b-5d13-be35-67eeb5e534a1",
+      "name": "Vensum",
+      "country": "Finland",
+      "whyNow": {
+        "kind": "round",
+        "date": "2026-11-06",
+        "text": "raised a €9M Series A",
+        "source": {
+          "name": "tech.eu",
+          "url": "https://tech.eu/2026/11/06/vensum-power-raises-eur9m-to-cut-power-losses-in-ai-data-centres-ev-charging-and-energy-storage//",
+          "date": "2026-11-06",
+          "rank": "PRESS"
+        }
+      },
+      "whyYou": [
+        {
+          "type": "customer",
+          "sentence": "Customer. An energy company with fresh money is a buyer of deeptech."
+        }
+      ],
+      "slush": true,
+      "warm": [
+        {
+          "investor": "Business Finland",
+          "led": false
+        }
+      ],
+      "people": [],
+      "xray": "https://www.google.com/search?q=site%3Alinkedin.com%2Fin%20%22Vensum%22%20(%22country%20manager%22%20OR%20%22head%20of%20operations%22%20OR%20procurement)%20Finland",
+      "entering": false,
+      "industryNote": null
+    },
+    {
+      "id": "9ea03240-306c-5366-8f5c-6191e94b07f6",
+      "name": "Volare",
+      "country": "Finland",
+      "whyNow": {
+        "kind": "round",
+        "date": "2026-10-26",
+        "text": "raised a €7.1M Series A",
+        "source": {
+          "name": "techfundingnews.com",
+          "url": "https://techfundingnews.com/volare-7-1m-second-insect-protein-plant-finland/",
+          "date": "2026-10-26",
+          "rank": "PRESS"
+        }
+      },
+      "whyYou": [
+        {
+          "type": "customer",
+          "sentence": "Customer. A food company with fresh money is a buyer of deeptech."
+        }
+      ],
+      "slush": true,
+      "warm": [
+        {
+          "investor": "Maki.vc",
+          "led": true
+        }
+      ],
+      "people": [
+        {
+          "name": "Jarna Hyvönen",
+          "role": "CEO",
+          "since": null
+        },
+        {
+          "name": "Matti Tähtinen",
+          "role": "CTO",
+          "since": null
+        }
+      ],
+      "xray": "https://www.google.com/search?q=site%3Alinkedin.com%2Fin%20%22Volare%22%20(%22country%20manager%22%20OR%20%22head%20of%20operations%22%20OR%20procurement)%20Finland",
+      "entering": false,
+      "industryNote": null
+    }
+  ]
+}

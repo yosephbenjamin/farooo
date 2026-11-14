@@ -1,5 +1,5 @@
 [
-  { "name": "Oura", "slug": "oura", "calaId": "d7c6e39d-2577-418a-a1e4-cf38ff394543", "description": "Smart ring that tracks sleep, activity and health." },
-  { "name": "RiACT", "slug": "riact", "calaId": "17713367-624b-5b2d-a655-b616b48cf774", "description": "Software for robots: a real-time platform for building flexible robot applications, from Denmark." },
-  { "name": "Verda", "slug": "verda", "calaId": "3d3edba6-f4d7-432b-80d3-d07872e11def", "description": "AI cloud infrastructure on clean energy, built in Finland." }
+  { "name": "Distance Technologies", "slug": "distance-technologies", "calaId": "88917971-7acd-5977-b108-0ef6fa5ce36e", "description": "Mixed-reality displays from Helsinki, seed stage." },
+  { "name": "Dalip", "slug": "dalip", "calaId": "c50873cf-a1e6-5c47-a1b8-aba71d38edbd", "description": "AI software from Oslo, pre-seed." },
+  { "name": "RiACT", "slug": "riact", "calaId": "17713367-624b-5b2d-a655-b616b48cf774", "description": "Software for robots: a real-time platform for building flexible robot applications, from Denmark." }
 ]

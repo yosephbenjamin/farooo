@@ -1,0 +1,1 @@
+{"method":"GET","path":"/v1/entities?name=Whoever.global&entity_types=Company&limit=10","body":null,"fetchedAt":"2026-11-14T13:04:47.991Z","response":{"entities":[{"id":"4d2f92ce-df40-585b-a8a8-fc64348e78d6","name":"Whoever.global","entity_type":"Company","description":"Build your Own Business with AI"}]}}

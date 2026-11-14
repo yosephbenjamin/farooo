@@ -37,12 +37,12 @@
       "country": "Portugal",
       "whyNow": {
         "kind": "news",
-        "date": "2026-11-06",
+        "date": "2026-11-10",
         "text": "is entering Denmark",
         "source": {
-          "name": "portugalresident.com",
-          "url": "https://www.portugalresident.com/portuguese-drone-maker-tekever-expands-into-denmark",
-          "date": "2026-11-06",
+          "name": "Invest in Odense",
+          "url": "https://investinodense.com/tekever-establishes-its-first-nordic-base-in-odense",
+          "date": "2026-11-10",
           "rank": null
         }
       },
@@ -75,6 +75,38 @@
         }
       ],
       "xray": "https://www.google.com/search?q=site%3Alinkedin.com%2Fin%20%22Tekever%22%20(partnerships%20OR%20%22head%20of%20product%22%20OR%20CTO)%20Denmark",
+      "entering": true,
+      "industryNote": null
+    },
+    {
+      "id": "6d818a5a-e708-4ca3-bb14-069fcbdd853d",
+      "name": "Avanza",
+      "country": "Sweden",
+      "whyNow": {
+        "kind": "news",
+        "date": "2026-10-12",
+        "text": "is entering Denmark",
+        "source": {
+          "name": "investors.avanza.se",
+          "url": "https://investors.avanza.se/en/media/press/2026/christian-sillesen-appointed-country-manager-for-avanza-in-denmark",
+          "date": "2026-10-12",
+          "rank": "PRIMARY"
+        }
+      },
+      "whyYou": [
+        {
+          "type": "customer",
+          "sentence": "Customer. A fintech company setting up in Denmark will buy robotics, and you sell it there."
+        },
+        {
+          "type": "integration",
+          "sentence": "Integration. They build fintech, you build robotics: the two plug into the same stack."
+        }
+      ],
+      "slush": false,
+      "warm": [],
+      "people": [],
+      "xray": "https://www.google.com/search?q=site%3Alinkedin.com%2Fin%20%22Avanza%22%20(%22country%20manager%22%20OR%20%22head%20of%20operations%22%20OR%20procurement)%20Denmark",
       "entering": true,
       "industryNote": null
     }

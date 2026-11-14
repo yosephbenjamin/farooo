@@ -251,7 +251,7 @@ export function buildReport(pool: Pool, startup: StartupSummary, opts: { now: st
         kind: e.kind === "subsidiary" ? "entry" : "news",
         date: e.date,
         text: e.kind === "subsidiary" && e.local ? `registered ${e.local.name} in ${startup.country}` : `is entering ${e.market}`,
-        source: e.source,
+        source: withOwnRank(e.source, p),
       },
       whyYou,
       slush: isSlush(p, e.doorId, e.local?.id) || isSlush(local),
