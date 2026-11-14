@@ -1,0 +1,1 @@
+{"method":"GET","path":"/v1/entities?name=WorkMatchPeople&entity_types=Company&limit=10","body":null,"fetchedAt":"2026-11-14T13:23:29.553Z","response":{"entities":[{"id":"5f10ea93-0a35-5436-abd3-1b300263528a","name":"WorkMatchPeople","entity_type":"Company","description":"A consulting firm based in Espoo, Finland, founded in 2026."}]}}

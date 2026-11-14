@@ -20452,6 +20452,37 @@
       "slush": false,
       "people": [],
       "parents": []
+    },
+    "40abe702-b7de-4c0e-b91e-50cbf6775fe0": {
+      "id": "40abe702-b7de-4c0e-b91e-50cbf6775fe0",
+      "name": "GreenGuard Automation ApS",
+      "legalName": "GreenGuard Automation ApS",
+      "aliases": [],
+      "website": null,
+      "domains": [],
+      "description": "A Danish company headquartered in Aarhus, founded in 2025.",
+      "industries": [],
+      "country": "Denmark",
+      "hqAddress": "Langelandsgade 209, 1. th., Aarhus N, 8200, DK",
+      "founding": {
+        "date": "2025-04-02",
+        "precision": null,
+        "sources": [
+          {
+            "name": "GLEIF",
+            "url": "https://search.gleif.org/#/record/984500N54086FFAFBG75",
+            "date": "2026-04-08",
+            "rank": "FILING"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": null,
+      "investors": [],
+      "fundingRounds": [],
+      "slush": false,
+      "people": [],
+      "parents": []
     }
   },
   "entries": [
