@@ -99,8 +99,9 @@ assert.ok(ar.doors[0].industryNote, "marked uncertain");
 assert.ok(ar.doors[0].whyYou.some((w) => /data centres/.test(w.sentence)), "why-you from the description");
 
 // news claims: phrasings, job boards, odd hyphens
-const claim = (text: string, url = "https://press.example.com/2026/11/10/x") => heuristic({ index: 0, market: "Denmark", text, url, sourceName: "x", knowbit: "" });
-assert.equal(claim("Avanza appointed Christian Sillesen as country manager for Denmark on 12 October 2026.").company, "Avanza");
+const claim = (text: string, url = "https://press.example.com/2026/11/10/x", knowbit = "") => heuristic({ index: 0, market: "Denmark", text, url, sourceName: "x", knowbit });
+assert.equal(claim("Avanza appointed Christian Sillesen as country manager for Denmark on 12 October 2026.", undefined, "In April, Avanza announced its intention to establish operations in Denmark.").company, "Avanza", "a country manager for a new presence");
+assert.ok(!claim("SEB appointed Niina Äikäs as Country Manager of SEB in Finland, effective 1 September 2026.").isEntry, "a replacement country manager is not an entry");
 assert.ok(claim("Acme launched in Germany on 3 November 2026.").isEntry, "launches in DE");
 assert.ok(!claim("Euro Tech Holdings entered Norway through a 50/50 joint\u2011venture with Sea Clean AS.").isEntry, "non-breaking hyphen joint venture");
 assert.ok(JOB_SOURCE.test("https://jobs.uber.com/en/jobs/156150") && !JOB_SOURCE.test("https://tech.eu/2026/11/06/vensum"));

@@ -78,7 +78,7 @@ async function writeCache(key: string, method: string, p: string, body: unknown,
 }
 
 /** What this process actually sent to Cala (cache hits excluded): for credit reports. */
-export const calaStats = { sent: 0, ok: 0, cacheHits: 0, status: {} as Record<number, number> };
+export const calaStats = { sent: 0, ok: 0, cacheHits: 0, status: {} as Record<number, number>, searches: 0, entity: 0 };
 
 export class CalaError extends Error {
   constructor(
@@ -133,6 +133,8 @@ export async function calaRequest<T = unknown>(
       });
       const text = await res.text();
       calaStats.sent++;
+      if (p.startsWith("/v1/knowledge")) calaStats.searches++;
+      else calaStats.entity++;
       calaStats.status[res.status] = (calaStats.status[res.status] ?? 0) + 1;
       if (res.ok) calaStats.ok++;
       if (res.status === 429 || res.status >= 500) {

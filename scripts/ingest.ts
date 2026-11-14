@@ -233,11 +233,13 @@ async function keepClaim(c: Claim, x: { company: string | null; date: string | n
   const sameBrand = ((await spend(() => searchEntities(company, { types: ["Company"], limit: 10 }))) ?? []).filter((e) => normalizeCompany(e.name) === bkey || normalizeCompany(e.name).startsWith(bkey + " "));
   if (sameBrand.some((e) => words.some((w) => new RegExp(`\\b${w}\\b`, "i").test(e.description ?? "")))) { stats.local++; return; }
   const id = createHash("sha256").update(`news|${p.id}|${market}|${date}`).digest("hex").slice(0, 16);
+  // one article, one door: the same source and market already gave another entity (OpenAI / OpenAI Group PBC)
+  if ([...entries.values()].some((e) => e.id !== id && e.kind === "news" && e.market === market && e.source.url === c.url)) { stats.local++; return; }
   if (!entries.has(id)) {
     newEntrants.add(p.id);
     stats.keptNames.push(`${p.name} -> ${market} (${date})`);
   }
-  entries.set(id, { id, kind: "news", doorId: p.id, doorName: p.name, local: null, market, date, source: { name: c.sourceName, url: c.url, date, rank: null }, match: "news", claim: c.text });
+  entries.set(id, { id, kind: "news", doorId: p.id, doorName: p.name, local: null, market, date, source: { name: c.sourceName, url: c.url, date, rank: null }, match: "news", claim: c.text, evidence: c.knowbit.slice(0, 1200) });
   stats.kept++;
 }
 
@@ -258,9 +260,20 @@ function plausibleEntrant(company: string, p: Profile): boolean {
 /** Re-check every stored news entry against the current rules (claim text, source, entity). */
 function recheckNews() {
   let dropped = 0;
-  for (const [id, e] of [...entries]) {
+  const seen = new Set<string>();
+  for (const [id, e] of [...entries].sort(([, a], [, b]) => Number(!!b.evidence) - Number(!!a.evidence))) {
+    if (e.kind === "news") {
+      const k = `${e.market}|${e.source.url}`;
+      if (seen.has(k)) {
+        entries.delete(id);
+        dropped++;
+        log(`recheck: dropped duplicate ${e.doorName} -> ${e.market} (same article)`);
+        continue;
+      }
+      seen.add(k);
+    }
     if (e.kind !== "news" || !e.claim) continue;
-    const h = heuristic({ index: 0, market: e.market, text: e.claim, url: e.source.url, sourceName: e.source.name, knowbit: "" });
+    const h = heuristic({ index: 0, market: e.market, text: e.claim, url: e.source.url, sourceName: e.source.name, knowbit: e.evidence ?? "" });
     const p = profiles[e.doorId];
     // the old entries' dates may come from the KnowBit, which isn't stored: judge entry-ness and the entity only
     if (!h.isEntry || !h.company || !p || !plausibleEntrant(h.company, p)) {
@@ -395,13 +408,12 @@ async function main() {
     const cap = Number(arg("searches") ?? 150);
     const qs = wideQueries(now.slice(0, 4)).slice(0, cap);
     const stats = newsStats();
-    const sent0 = calaStats.sent;
     let searches = 0;
     const reports: unknown[] = [];
     const report = () => {
-      const r = { searches, ...stats, keptNames: [...stats.keptNames], entityCalls: calaStats.sent - sent0 - searches, statuses: { ...calaStats.status } };
+      const r = { searches, ...stats, keptNames: [...stats.keptNames], searchCallsSent: calaStats.searches, entityCallsSent: calaStats.entity, statuses: { ...calaStats.status } };
       reports.push(r);
-      log(`wide yield after ${searches} searches: ${stats.claims} claims, ${stats.notEntry} not entries, ${stats.noDate} undated, ${stats.old} old, ${stats.unresolved} unresolved, ${stats.local} local, ${stats.kept} kept (${stats.keptNames.length} new); ${r.entityCalls} entity calls`);
+      log(`wide yield after ${searches} searches: ${stats.claims} claims, ${stats.notEntry} not entries, ${stats.noDate} undated, ${stats.old} old, ${stats.unresolved} unresolved, ${stats.local} local, ${stats.kept} kept (${stats.keptNames.length} new); calls sent this run: ${r.searchCallsSent} searches, ${r.entityCallsSent} entity`);
       for (const k of stats.keptNames) log(`   new entry: ${k}`);
       writeJson("wide-report.json", { ranAt: new Date().toISOString(), now, planned: qs.length, reports, queries: qs.map((q) => q.q) });
       save(`wide ${searches}`);

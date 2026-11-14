@@ -31,8 +31,6 @@ const ENTRY = new RegExp(
     String.raw`new (office|branch|subsidiary|base|hub) in`,
     String.raw`first (operational )?(presence|office|store|market|customers?) in`,
     String.raw`(set(s|ting)? up|establish(es|ed|ing)?) (a |an |its )?(local |nordic |new )?(office|branch|subsidiary|presence|entity|base)`,
-    String.raw`(hire[sd]?|hiring|appoint(s|ed)?|nam(es|ed)) (a |its |their )?(first )?(country manager|country director|general manager|managing director|head of)`,
-    String.raw`\bcountry (manager|director)\b`,
     String.raw`arriv(es|ed|ing) in`,
     String.raw`debut(s|ed)? in`,
     String.raw`roll(s|ed|ing)? out .{0,40}\bto ${C}`,
@@ -40,6 +38,16 @@ const ENTRY = new RegExp(
   ].join("|"),
   "i",
 );
+
+/** A country-manager hire: an entry only when the text says the presence is new (Avanza), never a replacement (SEB in Finland). */
+const HIRE = /\b(country (manager|director)|general manager for|managing director for|head of (sales|operations|business) for)\b/i;
+const NEW_PRESENCE = /\b(first|launch\w*|entr(y|ies)|enter(s|ed|ing)?|expan\w*|new market|establish\w*|set(s|ting)? up|build\w* (its |the |our )?presence|open(s|ed|ing)? (an? |its )?(office|branch))\b/i;
+
+export function isEntryText(text: string, evidence = ""): boolean {
+  if (NOT_ENTRY.test(text)) return false;
+  if (ENTRY.test(text)) return true;
+  return HIRE.test(text) && NEW_PRESENCE.test(`${text} ${evidence}`);
+}
 
 export interface Claim {
   index: number;
@@ -81,7 +89,7 @@ export const plainText = (t: string) => t.replace(/[\u2010-\u2015\u2212]/g, "-")
 export function heuristic(c0: Claim) {
   const c = { ...c0, text: plainText(c0.text), knowbit: plainText(c0.knowbit) };
   if (JOB_SOURCE.test(c.url)) return { company: null, date: null, isEntry: false };
-  if (NOT_ENTRY.test(c.text) || !ENTRY.test(c.text)) return { company: null, date: null, isEntry: false };
+  if (!isEntryText(c.text, c.knowbit)) return { company: null, date: null, isEntry: false };
   let company: string | null = null;
   for (const re of LEADS) {
     const m = c.text.match(re);

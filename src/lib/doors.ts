@@ -38,8 +38,9 @@ export interface MarketEntry {
   source: RankedSource;
   /** How the local company was tied to the foreign one. */
   match: "website" | "registry-parent" | "news";
-  /** For news: the sourced Cala claim the entry came from. */
+  /** For news: the sourced Cala claim the entry came from, and the cited text behind it. */
   claim?: string;
+  evidence?: string;
 }
 
 export interface FreshRound {

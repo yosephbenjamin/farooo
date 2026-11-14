@@ -1,33 +1,26 @@
 {
-  "ranAt": "2026-11-14T12:04:35.975Z",
+  "ranAt": "2026-11-14T12:08:57.217Z",
   "now": "2026-11-14",
   "planned": 150,
   "reports": [
     {
       "searches": 50,
       "claims": 254,
-      "notEntry": 217,
-      "noDate": 24,
-      "old": 2,
-      "unresolved": 2,
-      "local": 0,
-      "kept": 9,
+      "notEntry": 206,
+      "noDate": 30,
+      "old": 7,
+      "unresolved": 5,
+      "local": 1,
+      "kept": 5,
       "keptNames": [
-        "POLAR CAPITAL LLP -> Sweden (2026-09-13)",
-        "Uber -> Denmark (2026-11-10)",
-        "CRANE WORLDWIDE LOGISTICS INDIA PRIVATE LIMITED -> Norway (2026-09-10)",
-        "CATL GROUPE -> Norway (2026-09-24)",
-        "EURO TECH HOLDINGS CO LTD -> Norway (2026-10-12)",
-        "Avanza -> Denmark (2026-10-12)",
-        "OpenAI -> Sweden (2026-06-18)",
-        "ADVANTECH SURGICAL LTD -> Sweden (2026-09-10)",
-        "Google -> Sweden (2026-06-03)"
+        "SEB SA -> Finland (2026-09-01)",
+        "Amazon -> Sweden (2026-11-09)",
+        "OpenAI Group PBC -> Sweden (2026-06-18)"
       ],
-      "entityCalls": 85,
+      "entityCalls": -37,
       "statuses": {
-        "200": 86,
-        "429": 3,
-        "502": 46
+        "200": 12,
+        "429": 1
       }
     }
   ],

@@ -17969,6 +17969,166 @@
       "slush": true,
       "people": [],
       "parents": []
+    },
+    "1eb8e38c-c506-4be5-8208-b6e87fe90a7c": {
+      "id": "1eb8e38c-c506-4be5-8208-b6e87fe90a7c",
+      "name": "SEB SA",
+      "legalName": "SEB SA",
+      "aliases": [
+        "SEB S.A.",
+        "SEB"
+      ],
+      "website": null,
+      "domains": [],
+      "description": "A French company headquartered in Écully, founded in 1974, that manufactures small domestic appliances.",
+      "industries": [
+        {
+          "code": "CONSULTING",
+          "label": "741J"
+        },
+        {
+          "code": "BANKING",
+          "label": "6420Z"
+        }
+      ],
+      "country": "France",
+      "hqAddress": "112 CHEMIN DU MOULIN CARRON, CAMPUS SEB, ECULLY, FR-69, 69130, FR",
+      "founding": {
+        "date": "1974-01-01",
+        "precision": null,
+        "sources": [
+          {
+            "name": "GLEIF",
+            "url": "https://search.gleif.org/#/record/969500WP61NBK098AC47",
+            "date": "2026-09-18",
+            "rank": "FILING"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": "ACTIVE",
+      "investors": [],
+      "fundingRounds": [
+        {
+          "id": "dd7ecca3-b279-54d7-bcc0-fd2e732de2ed",
+          "role": "LENDER"
+        }
+      ],
+      "slush": false,
+      "people": [],
+      "parents": []
+    },
+    "3d2f0fcb-96a6-4c37-ae5b-90b437064a64": {
+      "id": "3d2f0fcb-96a6-4c37-ae5b-90b437064a64",
+      "name": "Vattenfall AB",
+      "legalName": "Vattenfall AB",
+      "aliases": [
+        "Vattenfall"
+      ],
+      "website": null,
+      "domains": [],
+      "description": "Swedish company based in Stockholm operating in renewable energy and utilities since 1937",
+      "industries": [
+        {
+          "code": "RENEWABLE_ENERGY",
+          "label": null
+        },
+        {
+          "code": "UTILITIES",
+          "label": null
+        }
+      ],
+      "country": "Sweden",
+      "hqAddress": "Evenemangsgatan 13, Stockholm, SE-AB, 169 92, SE",
+      "founding": {
+        "date": "1937-06-18",
+        "precision": null,
+        "sources": [
+          {
+            "name": "GLEIF",
+            "url": "https://search.gleif.org/#/record/549300T5RZ1HA5HZ3109",
+            "date": "2026-08-08",
+            "rank": "FILING"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": null,
+      "investors": [
+        {
+          "id": "2d9933e1-c1ad-4a7a-a6e9-aa3c05161fda",
+          "name": "Energetický a průmyslový holding, a.s."
+        }
+      ],
+      "fundingRounds": [],
+      "slush": false,
+      "people": [],
+      "parents": []
+    },
+    "6ed00269-d85b-49ae-8615-57842a41865f": {
+      "id": "6ed00269-d85b-49ae-8615-57842a41865f",
+      "name": "Amazon",
+      "legalName": null,
+      "aliases": [],
+      "website": "amazon.com",
+      "domains": [
+        "amazon.com"
+      ],
+      "description": "Multinational technology company engaged in e-commerce, cloud computing, digital streaming, and artificial intelligence.",
+      "industries": [
+        {
+          "code": "RETAIL",
+          "label": null
+        },
+        {
+          "code": "SOFTWARE_AND_SERVICES",
+          "label": null
+        },
+        {
+          "code": "INTERNET_AND_WEB_SERVICES",
+          "label": null
+        },
+        {
+          "code": "VENTURE_CAPITAL",
+          "label": null
+        }
+      ],
+      "country": "United States",
+      "hqAddress": "410 Terry Ave N, Seattle, WA 98109, United States",
+      "founding": {
+        "date": "1994-07-05",
+        "precision": null,
+        "sources": [
+          {
+            "name": "Amazon is founded by Jeff Bezos | July 5, 1994 | HISTORY",
+            "url": "https://www.history.com/this-day-in-history/july-5/amazon-is-founded-by-jeff-bezos",
+            "date": "2024-06-26",
+            "rank": null
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": null,
+      "investors": [
+        {
+          "id": "08272ee5-0ee4-4ba4-a33b-7ccc8b772565",
+          "name": "BAILLIE GIFFORD & CO"
+        },
+        {
+          "id": "8ce12d7b-6dbf-4c94-b23a-57904ac25630",
+          "name": "Kleiner Perkins Caufield & Byers VIII, L.P."
+        }
+      ],
+      "fundingRounds": [],
+      "slush": false,
+      "people": [
+        {
+          "name": "Jeffrey P. Bezos",
+          "role": "CEO",
+          "since": null
+        }
+      ],
+      "parents": []
     }
   },
   "entries": [
@@ -18107,6 +18267,57 @@
       },
       "match": "news",
       "claim": "Google announced in June 2026 plans to build its first data center in Sweden (Avesta), marking its expansion into the Swedish market."
+    },
+    {
+      "id": "801389e34e62f8ae",
+      "kind": "news",
+      "doorId": "1eb8e38c-c506-4be5-8208-b6e87fe90a7c",
+      "doorName": "SEB SA",
+      "local": null,
+      "market": "Finland",
+      "date": "2026-09-01",
+      "source": {
+        "name": "The leading Nordic corporate bank",
+        "url": "https://sebgroup.com/press/press-releases/2026/seb-appoints-new-head-of-baltic-division-and-new-country-manager-in-finland",
+        "date": "2026-09-01",
+        "rank": null
+      },
+      "match": "news",
+      "claim": "SEB appointed Niina Äikäs as Country Manager of SEB in Finland, effective 1 September 2026."
+    },
+    {
+      "id": "bbea840bfbf2c8ed",
+      "kind": "news",
+      "doorId": "6ed00269-d85b-49ae-8615-57842a41865f",
+      "doorName": "Amazon",
+      "local": null,
+      "market": "Sweden",
+      "date": "2026-11-09",
+      "source": {
+        "name": "Homepage",
+        "url": "https://www.retaildetail.eu/news/general/amazon-belgium-has-a-new-country-manager",
+        "date": "2026-11-09",
+        "rank": null
+      },
+      "match": "news",
+      "claim": "Amazon appointed Julian Tydeman as Country Manager for Sweden in 2026, as announced on 9 November 2026."
+    },
+    {
+      "id": "a67831fecee6bb21",
+      "kind": "news",
+      "doorId": "38f805b1-be15-4e8d-8b6b-0536276ec111",
+      "doorName": "OpenAI Group PBC",
+      "local": null,
+      "market": "Sweden",
+      "date": "2026-06-18",
+      "source": {
+        "name": "The Local Sweden - News and practical guides in English",
+        "url": "https://www.thelocal.se/20260618/chatgpt-creator-openai-to-launch-its-first-nordic-office-in-stockholm?gaa_at=eafs&gaa_n=AVngi4h11yhbuCP946dAROYKhHuGx54Le7GY4950o4lcWixHqewHPwRyc6pO&gaa_ts=6a5850c3&gaa_sig=jDEPDwVJtSnwQy3fU3JqTkccgRevWiAIkM-lktuYsxtsltbfDQ06k4xEqoC0_0iyivQWXEtwdfQaszex0yW-4g%3D%3D",
+        "date": "2026-06-18",
+        "rank": null
+      },
+      "match": "news",
+      "claim": "OpenAI announced it will open its first Nordic office in Stockholm during the second half of 2026, confirming the company’s office opening in Sweden in 2026."
     }
   ],
   "rounds": [
