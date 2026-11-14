@@ -7,6 +7,15 @@ import { parseTaps } from "@/lib/taps";
 export const dynamic = "force-dynamic";
 export const maxDuration = 30;
 
+/**
+ * Gmail gives an add-on about 30 s to answer, and so does Vercel's function limit. A live Cala
+ * lookup for a startup Faro hasn't stored paces its calls ~6 s apart and can run past both, and
+ * then the sidebar just spins. So every answer races a budget well inside that limit; past it the
+ * add-on gets a plain "try again" card, never silence.
+ */
+const BUDGET_MS = Number(process.env.FARO_GMAIL_BUDGET_MS ?? 20_000);
+const SLOW = Symbol("slow");
+
 const PUBLIC_MAIL = /^(gmail|googlemail|outlook|hotmail|live|yahoo|icloud|me|proton|protonmail|aol|gmx)\./i;
 
 /**
@@ -22,6 +31,20 @@ const PUBLIC_MAIL = /^(gmail|googlemail|outlook|hotmail|live|yahoo|icloud|me|pro
  * returns that door; otherwise the user's log.
  */
 export async function GET(req: Request) {
+  let timer: ReturnType<typeof setTimeout> | undefined;
+  const slow = new Promise<typeof SLOW>((resolve) => {
+    timer = setTimeout(() => resolve(SLOW), BUDGET_MS);
+  });
+  const out = await Promise.race([answer(req), slow]);
+  clearTimeout(timer);
+  if (out === SLOW) {
+    console.error("gmail: over budget", BUDGET_MS);
+    return NextResponse.json({ error: "Cala is taking its time with this one. Try again in a minute." });
+  }
+  return out;
+}
+
+async function answer(req: Request): Promise<NextResponse> {
   const u = new URL(req.url);
   const user = (u.searchParams.get("user") ?? "").trim();
   const startup = (u.searchParams.get("startup") ?? "").trim();

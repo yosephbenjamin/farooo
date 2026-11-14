@@ -10,7 +10,8 @@ import { createHash } from "node:crypto";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 
-const BASE = "https://api.cala.ai";
+// CALA_BASE: tests only (a local stand-in that answers slowly). Never set it in production.
+const BASE = process.env.CALA_BASE || "https://api.cala.ai";
 const TIMEOUT_MS = 90_000;
 const MAX_RETRIES = 6;
 const CACHE_DIR = path.join(process.cwd(), "data", "cache", "cala");
