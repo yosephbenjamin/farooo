@@ -6,8 +6,9 @@ import { heuristic, JOB_SOURCE, claimedCountry } from "../src/lib/news";
 import { aliasMatch, SEED_FUNDS } from "../src/lib/seed";
 import { partnerTypes, industryWords, checkIndustries, isBoilerplate } from "../src/lib/partner";
 import { countryFromAddress, filingFounding, rankOf, type Profile } from "../src/lib/profile";
-import { buildReport, firstLook, rankDoors, tierOf, xrayLink, prettyRound, type Pool } from "../src/lib/doors";
+import { buildReport, firstLook, rankDoors, tierOf, xrayLink, prettyRound, NO_TAPS, type Pool } from "../src/lib/doors";
 import { applyTap, parseTaps, serializeTaps } from "../src/lib/taps";
+import { parseSignals, EMPLOYEES_METRIC } from "../src/lib/signals";
 
 const seed = (n: string) => SEED_FUNDS.find((f) => f.name === n)!;
 assert.equal(normalizeCompany("Carbo Culture Oy"), "carbo culture");
@@ -116,4 +117,42 @@ assert.ok(claim("Acme launched in Germany on 3 November 2026.").isEntry, "launch
 assert.ok(!claim("Euro Tech Holdings entered Norway through a 50/50 joint\u2011venture with Sea Clean AS.").isEntry, "non-breaking hyphen joint venture");
 assert.ok(JOB_SOURCE.test("https://jobs.uber.com/en/jobs/156150") && !JOB_SOURCE.test("https://tech.eu/2026/11/06/vensum"));
 assert.ok(!claim("Uber is launching Uber Direct in Denmark.", "https://jobs.uber.com/en/jobs/1").isEntry, "a vacancy is not an announcement");
+
+// north-star reasons: new hires (executives, headcount jump), new acquisitions, new money
+const src = [{ name: "x", document: "https://example.com/a", date: "2026-10-01" }];
+const sig = parseSignals({
+  id: "c1", name: "C1", entity_type: "Company",
+  relationships: {
+    incoming: { IS_CTO_OF: [{ id: "p1", name: "Ada L", entity_type: "Person", properties: { valid_since: "2026-09-15", sources: src } }, { id: "p2", name: "Old Boss", entity_type: "Person", properties: { valid_since: "2026-09-01", valid_until: "2026-10-01", sources: src } }] },
+    outgoing: { PARTICIPATES_IN_CORPORATE_EVENT: [
+      { id: "e1", name: "MNA_COMPLETED", entity_type: "CorporateEvent", properties: { role: "ACQUIRER", event_date: "2026-10-20", sources: src } },
+      { id: "e2", name: "MNA_COMPLETED", entity_type: "CorporateEvent", properties: { role: "TARGET", event_date: "2026-10-21", sources: src } },
+      { id: "e3", name: "FINANCING_RAISED_OR_FACILITY_ENTERED", entity_type: "CorporateEvent", properties: { role: "ISSUER", event_date: "2026-11-02", sources: src } },
+    ] },
+  },
+  numerical_observations: [{ id: EMPLOYEES_METRIC, data: [{ time: "2024-12-31T00:00:00Z", value: 20 }, { time: "2025-12-31T00:00:00Z", value: 31, origin: { name: "finder.fi", url: "https://finder.fi/x" } }] }],
+} as never);
+assert.deepEqual(sig.map((e) => e.kind).sort(), ["acquisition", "exec", "headcount", "money"], "one of each; a target role and a past executive don't count");
+assert.equal(sig.find((e) => e.kind === "headcount")!.text, "grew from 20 to 31 people");
+const sigPool: Pool = {
+  profiles: {
+    m1: prof("m1", { industries: [{ code: "FINTECH", label: "fintech" }], country: "Finland", investors: [{ id: "i", name: "Creandum" }] }),
+    g1: prof("g1", { industries: [{ code: "FINTECH", label: "fintech" }], country: "Finland", investors: [{ id: "i", name: "Creandum" }], description: "A publicly traded bank listed on Nasdaq Helsinki." }),
+    h1: prof("h1", { industries: [{ code: "HEALTHCARE_PROVIDERS", label: null }], country: "Finland" }),
+  },
+  entries: [], rounds: [], slush: { ids: [], names: [] },
+  events: [
+    { id: "a", companyId: "m1", kind: "acquisition", date: "2026-10-20", text: "acquired Foo", source: { name: "x", url: "https://x", date: null, rank: "PRESS" } },
+    { id: "b", companyId: "g1", kind: "money", date: "2026-11-10", text: "raised a round", source: { name: "x", url: "https://x", date: null, rank: "PRESS" } },
+    { id: "c", companyId: "h1", kind: "exec", date: "2026-09-15", text: "named Ada L CTO", source: { name: "x", url: "https://x", date: null, rank: "PRESS" } },
+    { id: "d", companyId: "h1", kind: "exec", date: "2025-01-15", text: "named Too Old CEO", source: { name: "x", url: "https://x", date: null, rank: "PRESS" } },
+  ],
+};
+const sr = buildReport(sigPool, { id: "me", name: "Me", country: "Finland", industries: [sw], investors: [{ key: "creandum", name: "Creandum" }], resolvedFrom: "cala" }, { now: "2026-11-14" });
+const sranked = rankDoors(sr.doors, NO_TAPS);
+assert.equal(sranked.length, 3);
+assert.equal(sranked[0].id, "m1", "no giants as headlines: the listed bank (newer) doesn't lead");
+assert.equal(tierOf(sranked.find((d) => d.id === "m1")!), 2, "a reason + warm path");
+assert.equal(tierOf(sranked.find((d) => d.id === "h1")!), 4, "a reason without a warm path");
+assert.equal(sranked.find((d) => d.id === "h1")!.whyNow.text, "named Ada L CTO", "old executives are outside the window");
 console.log("selftest ok");

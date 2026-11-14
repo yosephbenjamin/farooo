@@ -9,13 +9,14 @@
  *   4. warm path  a shared investor, and whether they led
  *   5. who        people with roles from Cala, else a Google X-ray link
  *
- * Tiers: 1 entry + warm path + shared event, 2 entry + warm path, 3 entry, 4 fresh round + warm path.
+ * Tiers: 1 reason + warm path + shared event, 2 reason + warm path, 3 market entry, 4 other reason without a warm path.
  * Nothing else is shown.
  */
 import { normalizeFund, normalizeCompany } from "./normalize";
 import { seedSlugForName } from "./seed";
 import { bestWhyYou, checkIndustries, partnerTypes, PARTNER_TYPES, type IndustryCheck, type PartnerType, type WhyYou } from "./partner";
 import { prettyName, type Industry, type Person, type Profile, type RankedSource } from "./profile";
+import type { TimedEvent } from "./signals";
 
 export const DAY = 86_400_000;
 /** A new national company counts as "entering" for this long after its registry founding date. */
@@ -23,6 +24,10 @@ export const ENTRY_WINDOW_DAYS = 365;
 /** Expansion news and fresh rounds count for this long. */
 export const NEWS_WINDOW_DAYS = 180;
 export const ROUND_WINDOW_DAYS = 120;
+/** New executives and completed acquisitions count for this long; a headcount jump (annual registry data) for a year. */
+export const HIRE_WINDOW_DAYS = 180;
+export const ACQ_WINDOW_DAYS = 180;
+export const HEADCOUNT_WINDOW_DAYS = 365;
 
 // ---------- inputs ----------
 export interface MarketEntry {
@@ -60,11 +65,15 @@ export interface Pool {
   rounds: FreshRound[];
   /** Slush 2026 attendees: ids and normalised names. */
   slush: { ids: string[]; names: string[] };
+  /** New money (financings), new hires (executives, headcount jumps), new acquisitions. */
+  events?: TimedEvent[];
+  /** Latest headcount by company id, where Cala has the series. */
+  headcount?: Record<string, number>;
 }
 
 // ---------- outputs ----------
 export interface Reason {
-  kind: "entry" | "news" | "round";
+  kind: "entry" | "news" | "round" | "hire" | "acquisition";
   date: string;
   text: string; // "opened Acme Finland Oy in Finland", "is entering Sweden", "raised a €9M Series A"
   source: RankedSource;
@@ -84,6 +93,8 @@ export interface Door {
   entering: boolean;
   /** Cala's industry code contradicted its description; why-you was read from the description. */
   industryNote?: IndustryCheck["uncertain"];
+  /** A giant (listed, multinational, ≥ 1,000 people or ≥ 20 investors): never the headline door. */
+  giant?: boolean;
 }
 
 export interface StartupSummary {
@@ -196,8 +207,25 @@ function withOwnRank(s: RankedSource, p: Profile | undefined): RankedSource {
   return s;
 }
 
+/** Listed, multinational, very large or very widely funded: a giant, not a headline. */
+export function isGiant(p: Profile | undefined, headcount?: number | null): boolean {
+  if (!p) return false;
+  return (
+    (headcount ?? 0) >= 1000 ||
+    p.investors.length >= 20 ||
+    /^(IPO|PUBLIC|POST_IPO|LISTED)$/i.test(p.fundingStage ?? "") ||
+    /\b(multinational|publicly traded|listed on|nasdaq|nyse|stock exchange|fortune 500)\b/i.test(p.description ?? "")
+  );
+}
+
+/** Weapons and military makers (defence code + military wording anywhere we have): left out of the demos. */
+export function isWeaponsMaker(p: Profile | undefined, ...texts: (string | null | undefined)[]): boolean {
+  if (!p || !p.industries.some((i) => /AEROSPACE_AND_DEFEN|DEFEN[CS]E/.test(i.code) || i.label === "dualUseTech")) return false;
+  return /\b(defen[cs]e|military|weapons?|munitions?|missiles?|armed forces|combat|warfare|commandos?|soldiers?|battlefield)\b/i.test([p.description, ...texts].join(" "));
+}
+
 // ---------- the engine ----------
-export function buildReport(pool: Pool, startup: StartupSummary, opts: { now: string }): DoorReport {
+export function buildReport(pool: Pool, startup: StartupSummary, opts: { now: string; noWeapons?: boolean }): DoorReport {
   const { now } = opts;
   const youKeys = new Map(startup.investors.map((i) => [i.key, i.name]));
   const slushIds = new Set(pool.slush.ids);
@@ -232,6 +260,7 @@ export function buildReport(pool: Pool, startup: StartupSummary, opts: { now: st
     const coded = p?.industries.length ? p.industries : local?.industries ?? [];
     const check = checkIndustries(coded, p?.description ?? local?.description ?? null, e.claim);
     if (check.drop) continue; // code contradicts an unclear description: no real reason
+    if (opts.noWeapons && isWeaponsMaker(p, e.claim, e.evidence, e.source.url)) continue;
     const whyYou = partnerTypes({
       you: startup,
       door: { name: e.doorName, industries: check.industries, country: p?.country ?? null },
@@ -260,36 +289,48 @@ export function buildReport(pool: Pool, startup: StartupSummary, opts: { now: st
       xray: xrayLink(prettyName(p?.name ?? e.doorName), startup.country, whyYou[0].type),
       entering: true,
       industryNote: check.uncertain,
+      giant: isGiant(p, pool.headcount?.[e.doorId]),
     });
   }
 
-  // 2. fresh rounds, only with a warm path; newest round per company wins
-  for (const r of [...pool.rounds].sort((a, b) => b.date.localeCompare(a.date))) {
+  // 2. new money, new hires, new acquisitions: the newest reason per company wins
+  type Cand = { companyId: string; date: string; kind: Reason["kind"]; text: string; source: RankedSource | null; investors: FreshRound["investors"] };
+  const win = (k: Reason["kind"], ev?: TimedEvent) => (k === "round" ? ROUND_WINDOW_DAYS : k === "acquisition" ? ACQ_WINDOW_DAYS : ev?.kind === "headcount" ? HEADCOUNT_WINDOW_DAYS : HIRE_WINDOW_DAYS);
+  const cands: Cand[] = [];
+  for (const r of pool.rounds) {
     if (!isConcreteDate(r.date) || r.date > now || daysAgo(now, r.date) > ROUND_WINDOW_DAYS) continue;
-    if (doors.has(r.companyId) || r.companyId === startup.id) continue;
-    const p = pool.profiles[r.companyId];
+    cands.push({ companyId: r.companyId, date: r.date, kind: "round", text: roundText(r.label, r.amount, r.currency), source: pickSource(r.sources, r.date), investors: r.investors });
+  }
+  for (const ev of pool.events ?? []) {
+    const kind: Reason["kind"] = ev.kind === "money" ? "round" : ev.kind === "acquisition" ? "acquisition" : "hire";
+    if (!isConcreteDate(ev.date) || ev.date > now || daysAgo(now, ev.date) > win(kind, ev)) continue;
+    cands.push({ companyId: ev.companyId, date: ev.date, kind, text: ev.text, source: ev.source, investors: [] });
+  }
+  for (const c of cands.sort((a, b) => b.date.localeCompare(a.date))) {
+    if (doors.has(c.companyId) || c.companyId === startup.id) continue;
+    const p = pool.profiles[c.companyId];
     if (!p || normalizeCompany(p.name) === selfName) continue;
-    const warm = warmOf(p, r.investors);
-    if (!warm.length) continue;
-    const src0 = pickSource(r.sources, r.date);
-    if (!src0) continue;
-    const src = withOwnRank(src0, p);
+    if (!c.source) continue;
+    if (opts.noWeapons && isWeaponsMaker(p)) continue;
+    const warm = warmOf(p, [...c.investors, ...roundsOf(c.companyId).flatMap((r) => r.investors)]);
+    const src = withOwnRank(c.source, p);
     const check = checkIndustries(p.industries, p.description);
     if (check.drop) continue;
     const whyYou = partnerTypes({ you: startup, door: { name: p.name, industries: check.industries, country: p.country }, entering: false, market: startup.country });
     if (!whyYou.length) continue;
-    doors.set(r.companyId, {
-      id: r.companyId,
+    doors.set(c.companyId, {
+      id: c.companyId,
       name: prettyName(p.name),
       country: p.country,
-      whyNow: { kind: "round", date: r.date, text: roundText(r.label, r.amount, r.currency), source: src },
+      whyNow: { kind: c.kind, date: c.date, text: c.text, source: src },
       whyYou,
-      slush: isSlush(p, r.companyId),
+      slush: isSlush(p, c.companyId),
       warm,
       people: p.people.filter((x) => goodRole(x.role)).slice(0, 2),
       xray: xrayLink(prettyName(p.name), p.country, whyYou[0].type),
       entering: false,
       industryNote: check.uncertain,
+      giant: isGiant(p, pool.headcount?.[c.companyId]),
     });
   }
 
@@ -297,9 +338,15 @@ export function buildReport(pool: Pool, startup: StartupSummary, opts: { now: st
 }
 
 // ---------- ranking (render time) ----------
+/**
+ * 1 a reason + warm path + shared event (Slush 2026 is the event Cala has)
+ * 2 a reason + warm path
+ * 3 market entry (a timed door, no warm path needed)
+ * 4 new money / new hires / new acquisition, no warm path yet ("Find the right person →")
+ */
 export function tierOf(d: Door): number {
-  if (d.entering && d.warm.length && d.slush) return 1; // + a shared event (Slush 2026 is the one Cala has)
-  if (d.entering && d.warm.length) return 2;
+  if (d.warm.length && d.slush) return 1;
+  if (d.warm.length) return 2;
   if (d.entering) return 3;
   return 4;
 }
@@ -313,10 +360,14 @@ export function leadWhyYou(d: Door, taps: Taps): WhyYou {
 export function rankDoors(doors: Door[], taps: Taps): Door[] {
   const hidden = new Set(taps.hidden);
   const w = (d: Door) => taps.weights[leadWhyYou(d, taps).type] ?? 0;
-  return doors
+  const ranked = doors
     .filter((d) => !hidden.has(d.id))
     .filter((d) => (taps.weights[leadWhyYou(d, taps).type] ?? 0) > -3) // three "not now"s mute a type
     .sort((a, b) => tierOf(a) - tierOf(b) || w(b) - w(a) || b.whyNow.date.localeCompare(a.whyNow.date));
+  // no giants as headlines: the first non-giant leads, the rest keep their order
+  const lead = ranked.findIndex((d) => !d.giant);
+  if (lead > 0) ranked.unshift(...ranked.splice(lead, 1));
+  return ranked;
 }
 
 /**
@@ -334,7 +385,10 @@ export function firstLook(doors: Door[]): { door: Door; type: PartnerType }[] {
     if (out.length >= 3) break;
     if (!out.some((o) => o.door.id === d.id)) out.push({ door: d, type: leadWhyYou(d, NO_TAPS).type });
   }
-  return out.sort((a, b) => tierOf(a.door) - tierOf(b.door) || b.door.whyNow.date.localeCompare(a.door.whyNow.date)).slice(0, 3);
+  const sorted = out.sort((a, b) => tierOf(a.door) - tierOf(b.door) || b.door.whyNow.date.localeCompare(a.door.whyNow.date)).slice(0, 3);
+  const lead = sorted.findIndex((x) => !x.door.giant);
+  if (lead > 0) sorted.unshift(...sorted.splice(lead, 1));
+  return sorted;
 }
 
 export { bestWhyYou };

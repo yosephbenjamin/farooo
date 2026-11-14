@@ -19,13 +19,15 @@
  *   3b. wide     widened news searches (opens office in / launches in / expands to / enters the …
  *                market / hires country manager; FI SE NO DK DE UK NL FR), --searches=N (default 150)
  *   3c. investors investors of every entrant (profile INVESTED_IN + FundingRound participants)
+ *   3d. signals   new money / new hires / new acquisitions for the demo startups' keyrings, --calls=N (default 150)
  *
  * Flags: --stage=users,rounds,news,wide,investors,slush,entrants  --budget=N (max new API calls this run)
  */
 import { createHash } from "node:crypto";
 import { readdirSync, readFileSync } from "node:fs";
 import path from "node:path";
-import { getEntity, knowledgeSearch, searchEntities, CalaError, calaStats } from "../src/lib/cala";
+import { calaRequest, getEntity, knowledgeSearch, searchEntities, CalaError, calaStats, type GetEntityResponse } from "../src/lib/cala";
+import { parseSignals, latestHeadcount, SIGNAL_QUERY, type TimedEvent } from "../src/lib/signals";
 import { relAll, fetchProfileRaw, PROFILE_QUERY } from "../src/lib/graph";
 import { readJson, writeJson, today, DATA_DIR } from "../src/lib/data";
 import { parseProfile, filingFounding, rankedSources, type Profile, type RankedSource } from "../src/lib/profile";
@@ -33,7 +35,7 @@ import { claimedCountry, claimsOf, heuristic, NEWS_MARKETS, WIDE_MARKETS, type C
 import { extractClaims, llmEnabled } from "../src/lib/llm";
 import { normalizeCompany } from "../src/lib/normalize";
 import { resolveByName, summarize } from "../src/lib/identity";
-import { ENTRY_WINDOW_DAYS, ROUND_WINDOW_DAYS, type FreshRound, type MarketEntry, type Pool } from "../src/lib/doors";
+import { ENTRY_WINDOW_DAYS, ROUND_WINDOW_DAYS, investorKey, isGiant, isWeaponsMaker, type FreshRound, type MarketEntry, type Pool } from "../src/lib/doors";
 import type { DemoStartup } from "../src/lib/report";
 import type { Dataset } from "../src/lib/types";
 
@@ -106,6 +108,8 @@ const prev = readJson<Pool | null>("pool.json", null);
 const entries = new Map<string, MarketEntry>((prev?.entries ?? []).map((e) => [e.id, e]));
 const rounds = new Map<string, FreshRound>((prev?.rounds ?? []).map((r) => [r.id, r]));
 let slush: Pool["slush"] = prev?.slush ?? { ids: [], names: [] };
+const events = new Map<string, TimedEvent>((prev?.events ?? []).map((e) => [e.id, e]));
+const headcount: Record<string, number> = { ...(prev?.headcount ?? {}) };
 
 /** Merge with what's on disk, so two stages running at once don't overwrite each other. */
 function save(stage: string) {
@@ -113,7 +117,9 @@ function save(stage: string) {
   for (const [id, p] of Object.entries(disk?.profiles ?? {})) if (!profiles[id]) profiles[id] = p;
   for (const e of disk?.entries ?? []) if (!entries.has(e.id)) entries.set(e.id, e);
   for (const r of disk?.rounds ?? []) if (!rounds.has(r.id)) rounds.set(r.id, r);
-  const pool: Pool = { profiles, entries: [...entries.values()], rounds: [...rounds.values()], slush };
+  for (const e of disk?.events ?? []) if (!events.has(e.id)) events.set(e.id, e);
+  for (const [k, v] of Object.entries(disk?.headcount ?? {})) if (headcount[k] == null) headcount[k] = v;
+  const pool: Pool = { profiles, entries: [...entries.values()], rounds: [...rounds.values()], slush, events: [...events.values()], headcount };
   writeJson("pool.json", pool);
   log(`saved after ${stage}: ${Object.keys(profiles).length} profiles, ${entries.size} entries, ${rounds.size} rounds${Number.isFinite(budget) ? `, budget left ${budget}` : ""}`);
 }
@@ -419,7 +425,7 @@ async function main() {
   // ---------- 3a. recheck stored news entries against the current rules ----------
   if (STAGES.has("recheck")) {
     log(`recheck: ${await recheckNews()} news entries dropped`);
-    writeJson("pool.json", { profiles, entries: [...entries.values()], rounds: [...rounds.values()], slush }); // overwrite, no merge: drops must stick
+    writeJson("pool.json", { profiles, entries: [...entries.values()], rounds: [...rounds.values()], slush, events: [...events.values()], headcount }); // overwrite, no merge: drops must stick
   }
 
   // ---------- 3b. widened news: more phrasings and markets, capped, yield every 50 ----------
@@ -474,6 +480,70 @@ async function main() {
     }
     log("investors", st);
     save("investors");
+  }
+
+  // ---------- 3d. new money, new hires, new acquisitions in the demo startups' keyrings ----------
+  if (STAGES.has("signals")) {
+    const cap = Number(arg("calls") ?? 150);
+    const sent0 = calaStats.sent;
+    const left = () => cap - (calaStats.sent - sent0);
+    const st = { portfolios: 0, companies: 0, events: 0, byKind: {} as Record<string, number>, targets: 0 };
+    // public agencies and global funds make weak warm paths and huge keyrings: not walked
+    const SKIP = /^(gv|google ventures|business finland|tesi|eifo|innovation norway|vinnova|almi)$/i;
+    const keyrings: { demo: string; ids: string[] }[] = [];
+    for (const d of demos) {
+      const u = d.calaId ? profiles[d.calaId] : undefined;
+      if (!u) continue;
+      const ids: string[] = [];
+      for (const inv of u.investors) {
+        if (SKIP.test(inv.name.trim())) continue;
+        const kr = ds?.keyrings?.[investorKey(inv.name)] as string[] | undefined;
+        if (kr?.length) {
+          for (const cid of kr) { const c = ds!.companies[cid]; if (c?.ids[0]) ids.push(c.ids[0]); }
+          continue;
+        }
+        if (left() <= 0) break;
+        const r = await spend(() => getEntity(inv.id, { properties: ["name"], relationships: { outgoing: { INVESTED_IN: { limit: 100 } } } }));
+        st.portfolios++;
+        for (const x of r?.relationships?.outgoing?.INVESTED_IN ?? []) if (x.entity_type !== "Person") ids.push(x.id);
+      }
+      const nordic = (id: string) => { const p = profiles[id]; return p?.country ? MARKETS.has(p.country) : null; };
+      // Nordic first, unknown next, foreign last; never giants or weapons makers we already know
+      const uniq = [...new Set(ids)].filter((id) => id !== u.id && !isGiant(profiles[id], headcount[id]) && !isWeaponsMaker(profiles[id]));
+      uniq.sort((a, b) => Number(nordic(b) === true) - Number(nordic(a) === true) || Number(nordic(a) === false) - Number(nordic(b) === false));
+      keyrings.push({ demo: d.name, ids: uniq });
+      log(`signals: ${d.name}: ${uniq.length} keyring companies`);
+    }
+    // round-robin across the demo startups so each gets its share of the budget
+    const queue: string[] = [];
+    for (let i = 0; keyrings.some((k) => i < k.ids.length); i++) for (const k of keyrings) if (k.ids[i] && !queue.includes(k.ids[i])) queue.push(k.ids[i]);
+    for (const id of queue) {
+      if (left() <= 0 || outOfCredit) break;
+      const res = await spend(() => calaRequest<GetEntityResponse>("POST", `/v1/entities/${id}`, SIGNAL_QUERY));
+      if (!res || "__error" in res) continue;
+      st.companies++;
+      const p = parseProfile(res);
+      profiles[p.id] = p;
+      const hc = latestHeadcount(res);
+      if (hc != null) headcount[p.id] = hc;
+      for (const ev of parseSignals(res)) {
+        if (ev.date > now) continue;
+        events.set(ev.id, ev);
+        st.events++;
+        st.byKind[ev.kind] = (st.byKind[ev.kind] ?? 0) + 1;
+      }
+      if (st.companies % 20 === 0) save(`signals ${st.companies}`);
+    }
+    // name the target of recent acquisitions (one call each, while budget lasts)
+    for (const ev of [...events.values()].filter((e) => e.kind === "acquisition" && e.eventId && e.text === "completed an acquisition" && dayDiff(e.date, now) <= 180)) {
+      if (left() <= 0 || outOfCredit) break;
+      const r = await spend(() => getEntity(ev.eventId!, { properties: ["name"], relationships: { incoming: { PARTICIPATES_IN_CORPORATE_EVENT: { limit: 10 } } } }));
+      const target = (r?.relationships?.incoming?.PARTICIPATES_IN_CORPORATE_EVENT ?? []).find((x) => String(x.properties?.role ?? "") === "TARGET");
+      if (target) { ev.text = `acquired ${target.name}`; st.targets++; }
+    }
+    writeJson("signals-report.json", { ranAt: new Date().toISOString(), now, cap, callsSent: calaStats.sent - sent0, ok: calaStats.ok, statuses: calaStats.status, ...st, keyrings: keyrings.map((k) => ({ demo: k.demo, companies: k.ids.length })) });
+    log("signals", JSON.stringify(st), `calls sent ${calaStats.sent - sent0}/${cap}`);
+    save("signals");
   }
 
   // ---------- 4. Slush attendees -> new national companies of foreign firms ----------
