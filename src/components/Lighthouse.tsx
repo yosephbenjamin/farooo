@@ -1,58 +1,112 @@
-import { ink, paths, LIGHT } from "./ink";
+import type { ReactNode } from "react";
+import { ink, paths, wash, LIGHT, PEACH, SEA } from "./ink";
+
+interface Props {
+  className?: string;
+  lit?: boolean;
+  /** The loading state: one long beam turns slowly around the lamp, passing behind the tower. */
+  sweeping?: boolean;
+  /** The line "boils" (two drawings of the same lighthouse alternate): it is at work. */
+  boil?: boolean;
+  /** The ink lines draw themselves once, then the colour arrives. */
+  draw?: boolean;
+  /** Standing in the Shore scene: no water of its own. */
+  scene?: boolean;
+  /** A small mark (the header): heavier line, no fine detail. */
+  mark?: boolean;
+}
+
+const PAPER = "var(--paper)";
+// tower edges at height y (it tapers from the gallery down to the rock)
+const L = (y: number) => 96 - ((y - 75) * 10) / 121;
+const R = (y: number) => 124 + ((y - 75) * 10) / 121;
+const band = (y1: number, y2: number): [number, number][] => [[L(y1), y1], [R(y1), y1], [R(y2), y2], [L(y2), y2]];
 
 /**
- * A small hand-drawn lighthouse. The lamp is the page's only yellow.
- * `sweeping`: the loading state; one long beam turns slowly around the lamp, passing behind the tower.
+ * A small hand-drawn lighthouse: ink line, peach bands, a yellow lamp. Faro's own drawing.
  */
-export function Lighthouse({ className, lit = true, sweeping = false }: { className?: string; lit?: boolean; sweeping?: boolean }) {
+export function Lighthouse({ className, lit = true, sweeping = false, boil = false, draw = false, scene = false, mark = false }: Props) {
+  const sw = mark ? 5 : scene ? 1 : 1.5;
+  const o = (seed: number, more: object = {}) => ({ seed, strokeWidth: sw, ...more });
+  const fine = (seed: number) => ({ seed, strokeWidth: scene ? 0.85 : 1.1 });
+
+  /** Every ink line of the lighthouse, drawn with seeds from `s`. */
+  const lines = (s: number): ReactNode => (
+    <>
+      {paths(ink.poly([[96, 75], [124, 75], [134, 196], [86, 196]], o(s + 12)), "tower")}
+      {paths(ink.rect(90, 68, 40, 7, o(s + 8)), "gallery")}
+      {paths(ink.rect(97, 44, 26, 24, o(s + 5)), "lamproom")}
+      {paths(ink.poly([[93, 44], [110, 25], [127, 44]], o(s + 3)), "roof")}
+      {paths(ink.line(110, 25, 110, 15, o(s + 4)), "finial")}
+      {!mark && (
+        <>
+          {paths(ink.line(110, 44, 110, 68, fine(s + 7)), "mullion")}
+          {paths(ink.line(90, 61, 130, 61, fine(s + 11)), "rail")}
+          {paths(ink.line(92, 68, 92, 61, fine(s + 9)), "rail1")}
+          {paths(ink.line(128, 68, 128, 61, fine(s + 10)), "rail2")}
+          {paths(ink.line(L(106), 106, R(106), 106, o(s + 13)), "band1")}
+          {paths(ink.line(L(126), 126, R(126), 126, o(s + 14)), "band1b")}
+          {paths(ink.line(L(150), 150, R(150), 150, o(s + 15)), "band2")}
+          {paths(ink.line(L(170), 170, R(170), 170, o(s + 16)), "band2b")}
+          {paths(ink.path("M104 196 L104 183 Q110 175 116 183 L116 196", o(s + 17)), "door")}
+          {paths(ink.rect(106, 86, 8, 11, fine(s + 18)), "win")}
+        </>
+      )}
+      {paths(ink.curve([[58, 201], [78, 193], [100, 197], [124, 193], [146, 198], [166, 203]], o(s + 19)), "rock")}
+      {!scene && !mark && (
+        <>
+          {paths(ink.line(30, 216, 62, 215, fine(s + 20)), "wave1")}
+          {paths(ink.line(72, 216, 80, 216, fine(s + 21)), "wave1b")}
+          {paths(ink.line(140, 224, 190, 223, fine(s + 22)), "wave2")}
+          {paths(ink.line(96, 231, 122, 231, fine(s + 23)), "wave3")}
+        </>
+      )}
+    </>
+  );
+
   const s = 7;
-  const PAPER = "var(--paper)";
   return (
-    <svg viewBox="0 0 220 240" className={className} role="img" aria-label={sweeping ? "A hand-drawn lighthouse, its beam turning" : "A hand-drawn lighthouse"}>
-      {/* the sweeping beam (loading) */}
+    <svg
+      viewBox={scene ? "34 0 152 208" : mark ? "40 6 140 204" : "0 0 220 240"}
+      className={`overflow-visible ${className ?? ""}`}
+      role="img"
+      aria-label={sweeping ? "A hand-drawn lighthouse, its beam turning" : "A hand-drawn lighthouse"}
+    >
+      {/* the sea it stands in (the Shore scene brings its own) */}
+      {!scene && !mark && <g className={draw ? "wash-in" : undefined}>{wash([[20, 206], [198, 204], [204, 236], [14, 238]], SEA, s + 40, "sea", [0, 0])}</g>}
+      {/* the turning beam (loading) */}
       {sweeping && (
         <g className="sweep" style={{ transformOrigin: "110px 56px" }}>
-          {paths(ink.poly([[110, 56], [218, 30], [218, 82]], { seed: s + 30, stroke: "none", fill: LIGHT, fillStyle: "solid", roughness: 0.6 }), "sweepbeam", { opacity: 0.6 })}
-          {paths(ink.line(110, 56, 216, 31, { seed: s + 31, stroke: LIGHT, strokeWidth: 0.8 }), "sweepedge1", { opacity: 0.8 })}
-          {paths(ink.line(110, 56, 216, 81, { seed: s + 32, stroke: LIGHT, strokeWidth: 0.8 }), "sweepedge2", { opacity: 0.8 })}
+          {wash([[110, 56], [226, 28], [226, 84]], LIGHT, s + 30, "sweepbeam", [0, 0], { opacity: 0.7 })}
         </g>
       )}
       {/* paper behind the tower, so the turning beam passes behind it */}
-      {sweeping && paths(ink.poly([[94, 44], [110, 26], [126, 44], [126, 68], [130, 68], [130, 75], [124, 75], [134, 196], [86, 196], [96, 75], [90, 75], [90, 68], [94, 68]], { seed: s + 33, stroke: "none", fill: PAPER, fillStyle: "solid", roughness: 0 }), "occlude")}
-      {/* beam */}
-      {lit && !sweeping && (
-        <g className="beam">
-          {paths(ink.poly([[110, 58], [8, 34], [8, 74]], { seed: s + 1, stroke: "none", fill: LIGHT, fillStyle: "solid", roughness: 0.6 }), "beamL", { opacity: 0.55 })}
-          {paths(ink.poly([[110, 58], [212, 38], [212, 70]], { seed: s + 2, stroke: "none", fill: LIGHT, fillStyle: "solid", roughness: 0.6 }), "beamR", { opacity: 0.55 })}
+      {sweeping && wash([[93, 44], [110, 25], [127, 44], [126, 68], [130, 68], [130, 75], [124, 75], [134, 196], [86, 196], [96, 75], [90, 75], [90, 68], [94, 68]], PAPER, s + 33, "occlude", [0, 0])}
+      {/* the resting beams */}
+      {lit && !sweeping && !mark && (
+        <g className={draw ? "wash-in" : undefined}>
+          <g className="beam">
+            {wash([[110, 56], [10, 36], [10, 76]], LIGHT, s + 1, "beamL", [0, 0], { opacity: 0.5 })}
+            {wash([[110, 56], [210, 38], [210, 74]], LIGHT, s + 2, "beamR", [0, 0], { opacity: 0.5 })}
+          </g>
         </g>
       )}
-      {/* roof + finial */}
-      {paths(ink.poly([[94, 44], [110, 26], [126, 44]], { seed: s + 3 }), "roof")}
-      {paths(ink.line(110, 26, 110, 16, { seed: s + 4 }), "finial")}
-      {/* lamp room */}
-      {paths(ink.rect(97, 44, 26, 24, { seed: s + 5 }), "lamproom")}
-      {lit && paths(ink.rect(103, 49, 14, 14, { seed: s + 6, stroke: "none", fill: LIGHT, fillStyle: "solid", roughness: 0.4 }), "lamp")}
-      {paths(ink.line(110, 44, 110, 68, { seed: s + 7, strokeWidth: 0.9 }), "mullion")}
-      {/* gallery */}
-      {paths(ink.rect(90, 68, 40, 7, { seed: s + 8 }), "gallery")}
-      {paths(ink.line(92, 68, 92, 62, { seed: s + 9, strokeWidth: 0.9 }), "rail1")}
-      {paths(ink.line(128, 68, 128, 62, { seed: s + 10, strokeWidth: 0.9 }), "rail2")}
-      {paths(ink.line(90, 62, 130, 62, { seed: s + 11, strokeWidth: 0.9 }), "rail3")}
-      {/* tower */}
-      {paths(ink.poly([[96, 75], [124, 75], [134, 196], [86, 196]], { seed: s + 12 }), "tower")}
-      {/* bands */}
-      {paths(ink.line(93, 112, 127, 112, { seed: s + 13 }), "band1")}
-      {paths(ink.line(91, 124, 129, 124, { seed: s + 14 }), "band1b")}
-      {paths(ink.line(89, 154, 131, 154, { seed: s + 15 }), "band2")}
-      {paths(ink.line(88, 166, 132, 166, { seed: s + 16 }), "band2b")}
-      {/* door + window */}
-      {paths(ink.path("M104 196 L104 182 Q110 175 116 182 L116 196", { seed: s + 17 }), "door")}
-      {paths(ink.rect(106, 88, 8, 11, { seed: s + 18, strokeWidth: 1 }), "win")}
-      {/* rocks and water */}
-      {paths(ink.curve([[62, 200], [80, 192], [100, 197], [124, 193], [146, 198], [162, 202]], { seed: s + 19 }), "rock")}
-      {paths(ink.curve([[30, 214], [48, 209], [66, 214], [84, 209], [102, 214]], { seed: s + 20, strokeWidth: 1 }), "wave1")}
-      {paths(ink.curve([[120, 222], [138, 217], [156, 222], [174, 217], [192, 222]], { seed: s + 21, strokeWidth: 1 }), "wave2")}
-      {paths(ink.curve([[56, 230], [70, 226], [84, 230]], { seed: s + 22, strokeWidth: 0.9 }), "wave3")}
+      {/* colour: peach roof and bands, the yellow lamp */}
+      <g className={draw ? "wash-in" : undefined}>
+        {wash([[93, 44], [110, 25], [127, 44]], PEACH, s + 41, "roofwash", mark ? [0, 0] : [2.5, 1.5])}
+        {wash(band(106, 126), PEACH, s + 42, "bandwash1", mark ? [0, 0] : [2.5, 1.5])}
+        {wash(band(150, 170), PEACH, s + 43, "bandwash2", mark ? [0, 0] : [2.5, 1.5])}
+        {lit && wash([[100, 47], [121, 47], [121, 66], [100, 66]], LIGHT, s + 6, "lamp", mark ? [0, 0] : [1, 0.5])}
+      </g>
+      {/* ink */}
+      {boil ? (
+        <>
+          <g className="boil-a">{lines(s)}</g>
+          <g className="boil-b">{lines(s + 200)}</g>
+        </>
+      ) : (
+        <g className={draw ? "draw" : undefined}>{lines(s)}</g>
+      )}
     </svg>
   );
 }

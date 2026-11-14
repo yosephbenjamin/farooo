@@ -1,7 +1,7 @@
 "use client";
 
 import { useParams, useSearchParams } from "next/navigation";
-import { Lighthouse } from "@/components/Lighthouse";
+import { Shore } from "@/components/Shore";
 
 /**
  * Shown while the log is built. A startup Faro hasn't seen before is looked up live in Cala
@@ -23,33 +23,28 @@ export default function Loading() {
   const search = useSearchParams();
   const name = search.get("name")?.trim() || decodeURIComponent(params?.startup ?? "").replace(/-/g, " ");
   return (
-    <main className="mx-auto flex min-h-screen max-w-5xl items-center px-4 sm:px-8" aria-busy="true">
-      <div className="flex w-full flex-col items-start gap-8 sm:flex-row sm:items-end sm:gap-12">
-        <Lighthouse sweeping className="h-36 w-36 shrink-0 sm:h-52 sm:w-52" />
-        <div className="pb-3">
-          <p className="text-[clamp(34px,5.5vw,64px)] font-light leading-[1.05] tracking-[-0.015em] text-ink-deep">
-            <span className="caret">Looking for {name}</span>
-          </p>
-          <p className="mt-6 grid text-[19px] italic text-ink-500">
-            {STEPS.map((s, i) => {
-              const next = STEPS[i + 1];
-              return (
-                <span
-                  key={i}
-                  className="loader-step [grid-area:1/1]"
-                  style={{
-                    animationName: next ? "stepshow" : "stepstay",
-                    animationDelay: `${s.at}ms`,
-                    animationDuration: next ? `${next.at - s.at}ms` : "600ms",
-                  }}
-                >
-                  {s.line}
-                </span>
-              );
-            })}
-          </p>
-        </div>
-      </div>
-    </main>
+    <Shore sweeping>
+      <p className="text-[clamp(38px,4.7vw,68px)] font-light leading-[1.04] tracking-[-0.02em] text-ink-deep">
+        <span className="caret">Looking for {name}</span>
+      </p>
+      <p className="mt-[4vh] grid text-[clamp(22px,2.2vw,30px)] font-light italic text-ink-500">
+        {STEPS.map((s, i) => {
+          const next = STEPS[i + 1];
+          return (
+            <span
+              key={i}
+              className="loader-step [grid-area:1/1]"
+              style={{
+                animationName: next ? "stepshow" : "stepstay",
+                animationDelay: `${s.at}ms`,
+                animationDuration: next ? `${next.at - s.at}ms` : "600ms",
+              }}
+            >
+              {s.line}
+            </span>
+          );
+        })}
+      </p>
+    </Shore>
   );
 }

@@ -1,16 +1,13 @@
-import { Lighthouse } from "@/components/Lighthouse";
+import { Shore } from "@/components/Shore";
 import { demoStartups } from "@/lib/report";
 
 export default function Home() {
   const demos = demoStartups();
   return (
-    <main className="mx-auto flex min-h-screen max-w-5xl items-center px-4 sm:px-8">
-      <form action="/for" method="get" className="flex w-full flex-col items-start gap-8 sm:flex-row sm:items-end sm:gap-12">
-        <Lighthouse className="h-36 w-36 shrink-0 sm:h-52 sm:w-52" />
-        <label className="block w-full pb-3">
-          <span className="block text-[clamp(34px,5.5vw,64px)] font-light leading-[1.05] tracking-[-0.015em] text-ink-deep">
-            Which startup are you?
-          </span>
+    <Shore draw>
+      <form action="/for" method="get">
+        <label className="block">
+          <span className="block text-[clamp(38px,4.7vw,68px)] font-light leading-[1.04] tracking-[-0.02em] text-ink-deep">Which startup are you?</span>
           <input
             name="s"
             list="demo-startups"
@@ -19,9 +16,9 @@ export default function Home() {
             spellCheck={false}
             required
             placeholder={demos[0]?.name ?? ""}
-            className="mt-6 w-full max-w-md border-0 border-b border-ink-300 bg-transparent pb-2 text-[clamp(22px,2.4vw,30px)] font-light text-ink outline-none placeholder:text-ink-300 placeholder:italic focus:border-ink"
+            className="mt-[4vh] w-full max-w-[30rem] border-0 border-b-[1.5px] border-ink bg-transparent pb-2 text-[clamp(24px,2.5vw,34px)] font-light text-ink-deep outline-none placeholder:italic placeholder:text-ink-300 focus:border-ink-deep"
           />
-          <span className="mt-5 block max-w-md text-[17px] leading-relaxed text-ink-500">
+          <span className="mt-6 block max-w-[30rem] text-[clamp(17px,1.35vw,20px)] leading-[1.5] text-ink-500">
             New money, new hires, new acquisitions. Faro tells you who just got a reason to partner, and who can introduce you.
           </span>
           <datalist id="demo-startups">
@@ -31,6 +28,6 @@ export default function Home() {
           </datalist>
         </label>
       </form>
-    </main>
+    </Shore>
   );
 }
