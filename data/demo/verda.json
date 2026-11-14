@@ -204,7 +204,7 @@
       "whyYou": [
         {
           "type": "customer",
-          "sentence": "Customer. A dual use tech company with fresh money is a buyer of software."
+          "sentence": "Customer. A dual-use tech company with fresh money is a buyer of software."
         }
       ],
       "slush": true,
@@ -292,7 +292,7 @@
       "whyYou": [
         {
           "type": "integration",
-          "sentence": "Integration. They build information networks, you build software: the two plug into the same stack."
+          "sentence": "Integration. They build networks, you build software: the two plug into the same stack."
         }
       ],
       "slush": true,

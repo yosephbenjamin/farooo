@@ -59,10 +59,31 @@ const WORDS: Record<string, string> = {
   TRANSPORTATION_AND_LOGISTICS: "transport and logistics",
   ADVERTISING_AND_MARKETING: "marketing",
   CONSTRUCTION_AND_ENGINEERING: "construction",
+  AEROSPACE_AND_DEFENSE: "defence",
+};
+
+/** Cala's short source labels that don't read as words. */
+const LABELS: Record<string, string> = {
+  robo: "robotics",
+  medtechPharma: "medtech",
+  marketingAds: "marketing",
+  propConstruction: "construction tech",
+  manufacturingMaterials: "manufacturing materials",
+  musicEntertainment: "music",
+  clothingFashion: "fashion",
+  onlineMarkets: "online marketplaces",
+  informationNetworks: "networks",
+  comms: "communications",
+  edu: "education",
+  dualUseTech: "dual-use tech",
+  somethingElse: "",
 };
 
 /** "enterpriseSoftware" -> "enterprise software", "ai" -> "AI", "SOFTWARE_AND_SERVICES" -> "software". */
 export function industryWords(ind: Industry): string {
+  const mapped = ind.label ? LABELS[ind.label.trim()] : undefined;
+  if (mapped === "") return industryWords({ code: ind.code, label: null });
+  if (mapped) return mapped;
   const l = ind.label?.trim();
   if (l && l.length > 1 && !/^[A-Z_]+$/.test(l)) {
     const w = l

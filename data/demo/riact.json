@@ -1,0 +1,82 @@
+{
+  "now": "2026-11-14",
+  "startup": {
+    "id": "17713367-624b-5b2d-a655-b616b48cf774",
+    "name": "RiACT",
+    "country": "Denmark",
+    "industries": [
+      {
+        "code": "HARDWARE_AND_EQUIPMENT",
+        "label": "robo"
+      }
+    ],
+    "investors": [
+      {
+        "key": "butterfly-ventures",
+        "name": "Butterfly Ventures"
+      },
+      {
+        "key": "m-lgaard-capital",
+        "name": "Mølgaard Capital"
+      },
+      {
+        "key": "navigare-seed",
+        "name": "Navigare Seed AB"
+      },
+      {
+        "key": "navigare-ventures",
+        "name": "Navigare Ventures"
+      }
+    ],
+    "resolvedFrom": "cala"
+  },
+  "doors": [
+    {
+      "id": "6a5b971e-bb28-438b-9437-3f694c5c9ff1",
+      "name": "Tekever",
+      "country": "Portugal",
+      "whyNow": {
+        "kind": "news",
+        "date": "2026-11-06",
+        "text": "is entering Denmark",
+        "source": {
+          "name": "portugalresident.com",
+          "url": "https://www.portugalresident.com/portuguese-drone-maker-tekever-expands-into-denmark",
+          "date": "2026-11-06",
+          "rank": null
+        }
+      },
+      "whyYou": [
+        {
+          "type": "integration",
+          "sentence": "Integration. They build software, you build robotics: the two plug into the same stack."
+        },
+        {
+          "type": "distribution",
+          "sentence": "Distribution. They're new to Denmark and sell software to the buyers you already reach."
+        },
+        {
+          "type": "customer",
+          "sentence": "Customer. A defence company setting up in Denmark will buy robotics, and you sell it there."
+        }
+      ],
+      "slush": false,
+      "warm": [],
+      "people": [
+        {
+          "name": "Pedro Sinogas",
+          "role": "CEO",
+          "since": null
+        },
+        {
+          "name": "Ricardo Mendes Malta",
+          "role": "CEO",
+          "since": null
+        }
+      ],
+      "xray": "https://www.google.com/search?q=site%3Alinkedin.com%2Fin%20%22Tekever%22%20(partnerships%20OR%20%22head%20of%20product%22%20OR%20CTO)%20Denmark",
+      "entering": true,
+      "industryNote": null
+    }
+  ]
+}

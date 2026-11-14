@@ -8,7 +8,7 @@
 | N3 Door engine v2 | done | five parts, tiers, taps, first look; codes that contradict the description → read from the description, marked † uncertain (atNorth); self-tested |
 | N4 Web log v2 | done | design unchanged; taps re-rank instantly (cookie) |
 | N5 Gmail contextual sidebar | done, untested in Gmail | `gmail-addon/`, `/api/gmail` |
-| N6 Booth | done | Oura, Lovable, Verda pinned by Cala id and precomputed |
+| N6 Booth | done | Oura, RiACT, Verda pinned by Cala id and precomputed. RiACT (Danish seed robot software, at Slush) replaced Lovable; its top door is tier 3 (Tekever → Denmark): no entrant attends Slush yet, so tier 1 is unreachable (DECISIONS 38) |
 | N7 Rerun ingest with the new key | done (partial by design) | users, rounds (with `is_lead`), news, 200 Nordic attendees, 69 foreign attendees. 281 profiles cached. Remaining attendees are opt-in (hours) |
 | N8 Docs | done | BUILD_SPEC, README, DECISIONS, DATA_NOTES, DEMO |
 
