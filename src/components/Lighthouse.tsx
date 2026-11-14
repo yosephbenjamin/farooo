@@ -4,7 +4,7 @@ import { ink, paths, wash, LIGHT, PEACH, SEA } from "./ink";
 interface Props {
   className?: string;
   lit?: boolean;
-  /** The loading state: one long beam turns slowly around the lamp, passing behind the tower. */
+  /** The loading state: one long beam looks around from the lamp, passing behind the tower. */
   sweeping?: boolean;
   /** The line "boils" (two drawings of the same lighthouse alternate): it is at work. */
   boil?: boolean;

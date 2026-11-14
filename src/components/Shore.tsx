@@ -11,7 +11,7 @@ const still = { vectorEffect: "non-scaling-stroke" as const };
  */
 export function Shore({ children, sweeping = false, draw = false }: { children: ReactNode; sweeping?: boolean; draw?: boolean }) {
   return (
-    <main className="relative flex min-h-screen flex-col overflow-hidden" aria-busy={sweeping || undefined}>
+    <main className="relative flex min-h-screen flex-col overflow-hidden supports-[min-height:100svh]:min-h-svh" aria-busy={sweeping || undefined}>
       <div className="mx-auto flex w-full max-w-6xl flex-1 flex-col justify-between px-5 sm:flex-row sm:items-end sm:justify-start sm:gap-[5vw] sm:px-10">
         <div className="order-1 w-full pt-[13vh] sm:order-2 sm:self-center sm:pb-[3vh] sm:pt-0">{children}</div>
         <Lighthouse scene sweeping={sweeping} boil={sweeping} draw={draw} className="relative z-10 order-2 -mb-[2.6vh] h-[36vh] w-auto shrink-0 self-start sm:order-1 sm:h-[56vh] sm:self-end" />
