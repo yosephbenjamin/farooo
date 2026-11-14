@@ -147,6 +147,10 @@ export function partnerTypes(m: MatchInput): WhyYou[] {
       if (!has("distribution") && m.entering && us === dsec && m.you.country && m.door.country && m.door.country !== m.you.country) {
         out.push({ type: "distribution", sentence: `Distribution. They sell ${dw} and they're new to ${where}. You already know the buyers.` });
       }
+      // two consumer brands reach the same buyers: each can carry the other (a bundle, a shelf, a list)
+      if (!has("distribution") && us === "consumer" && dsec === "consumer") {
+        out.push({ type: "distribution", sentence: dw === uw ? `Distribution. You both sell ${uw} to consumers, from different shelves.` : `Distribution. They sell ${dw}, you sell ${uw}. Both to consumers.` });
+      }
     }
   }
   return out;

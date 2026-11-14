@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { firstLook, leadWhyYou, rankDoors, tierOf, type Door, type DoorReport, type Taps } from "@/lib/doors";
-import { doorCountLine, entryLead, entryMeta, entryWhy, headline, industryNoteLine, numWord, sourceLine } from "@/lib/prose";
+import { doorCountLine, entryLead, entryMeta, entryWhy, headline, industryNoteLine, numWord, quietLine, sourceLine } from "@/lib/prose";
 import { applyTap, serializeTaps, tapsCookie } from "@/lib/taps";
 import type { PartnerType } from "@/lib/partner";
 import { DoorMap } from "./DoorMap";
@@ -18,6 +18,8 @@ interface Props {
   scriptedId?: string | null;
   /** Reveal the scripted door automatically after this many ms. */
   autoMs?: number | null;
+  /** The demo startups, offered when Faro can't see this one. */
+  demos?: { name: string; slug: string }[];
 }
 
 const NEW = "__new";
@@ -25,7 +27,7 @@ const NEW = "__new";
 type Pick = { door: Door; type?: PartnerType; added?: boolean };
 const reasonOf = (d: Door) => (d.whyNow.kind === "news" || d.whyNow.kind === "entry" ? "entry" : d.whyNow.kind);
 
-export function LogView({ report, slug, taps: initialTaps, booth = false, scriptedId = null, autoMs = null }: Props) {
+export function LogView({ report, slug, taps: initialTaps, booth = false, scriptedId = null, autoMs = null, demos = [] }: Props) {
   const [taps, setTaps] = useState<Taps>(initialTaps);
   const [revealed, setRevealed] = useState(!scriptedId);
   const [typed, setTyped] = useState(0);
@@ -102,12 +104,15 @@ export function LogView({ report, slug, taps: initialTaps, booth = false, script
   };
 
   // map: buildings are the investors behind warm paths, plus one for newcomers without one
-  const country = report.startup.country ?? "your market";
   // a building per investor that is the first warm path of at least one door (no empty buildings)
   const warmNames = [...new Set(rankDoors(report.doors, taps).flatMap((d) => (d.warm[0] ? [d.warm[0].investor] : [])))];
+  // no doors yet: the investors Faro is watching through stand dark on the street
+  const quiet = report.doors.length === 0;
+  const watching = quiet ? report.startup.investors.filter((i) => !/^(business finland|innovation norway|vinnova|eic)\b/i.test(i.name)).slice(0, 3) : [];
   const mapInvestors = [
+    ...watching.map((i) => ({ id: i.name, name: i.name })),
     ...warmNames.slice(0, 5).map((n) => ({ id: n, name: n })),
-    ...(report.doors.some((d) => !d.warm.some((w) => warmNames.slice(0, 5).includes(w.investor))) ? [{ id: NEW, name: `New in ${country}` }] : []),
+    ...(report.doors.some((d) => !d.warm.some((w) => warmNames.slice(0, 5).includes(w.investor))) ? [{ id: NEW, name: "Close by" }] : []),
   ];
   const mapDoors = useMemo(
     () =>
@@ -172,6 +177,8 @@ export function LogView({ report, slug, taps: initialTaps, booth = false, script
             })}
           </ol>
 
+          {quiet && <Empty report={report} demos={demos.filter((d) => d.slug !== slug)} T={T} />}
+
           {shownDoors.length > 0 && (
             <ol className={`mt-14 space-y-1.5 border-t border-paper-200 pt-6 text-ink-500 ${T.small}`}>
               {shownDoors.map((d, i) => (
@@ -199,19 +206,49 @@ export function LogView({ report, slug, taps: initialTaps, booth = false, script
         </section>
 
         <aside className={booth ? "lg:sticky lg:top-[6vh] self-start" : "md:sticky md:top-12 self-start"}>
-          <DoorMap
-            startup={report.startup.name}
-            investors={mapInvestors}
-            doors={mapDoors}
-            holdId={scripted && !revealed ? scripted.id : null}
-            animateId={scripted && revealed ? scripted.id : null}
-            className="w-full h-auto"
-            maxPerInvestor={25}
-            big={booth}
-          />
+          {mapInvestors.length === 0 ? (
+            <Lighthouse className="mx-auto h-auto w-[min(70%,22rem)]" />
+          ) : (
+            <DoorMap
+              startup={report.startup.name}
+              investors={mapInvestors}
+              doors={mapDoors}
+              holdId={scripted && !revealed ? scripted.id : null}
+              animateId={scripted && revealed ? scripted.id : null}
+              className="w-full h-auto"
+              maxPerInvestor={25}
+              big={booth}
+            />
+          )}
         </aside>
       </div>
     </main>
+  );
+}
+
+/** Never an empty screen: what Faro watches, or, when it can't see the startup, where to go next. */
+function Empty({ report, demos, T }: { report: DoorReport; demos: { name: string; slug: string }[]; T: { lead: string; why: string } }) {
+  const line = quietLine(report);
+  return (
+    <div className={`max-w-[44ch] ${T.why} leading-[1.5] text-ink-500`}>
+      <p>{line ?? `Faro couldn't find where ${report.startup.name} is or what it builds. Try its full or legal name, or look through one of these:`}</p>
+      {!line && demos.length > 0 && (
+        <ul className="mt-4 space-y-1">
+          {demos.map((d) => (
+            <li key={d.slug}>
+              <Link href={`/for/${d.slug}`} className="text-ink underline decoration-ink-300 underline-offset-4">
+                {d.name}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      )}
+      <p className="mt-6">
+        <Link href="/" className="text-ink underline decoration-ink-300 underline-offset-4">
+          Ask about another startup →
+        </Link>
+      </p>
+    </div>
   );
 }
 

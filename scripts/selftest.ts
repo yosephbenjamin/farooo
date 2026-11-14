@@ -6,9 +6,9 @@ import { heuristic, JOB_SOURCE, claimedCountry } from "../src/lib/news";
 import { aliasMatch, SEED_FUNDS } from "../src/lib/seed";
 import { partnerTypes, industryWords, checkIndustries, isBoilerplate } from "../src/lib/partner";
 import { countryFromAddress, filingFounding, rankOf, type Profile } from "../src/lib/profile";
-import { buildReport, firstLook, rankDoors, tierOf, xrayLink, prettyRound, NO_TAPS, type Pool } from "../src/lib/doors";
+import { buildReport, closeBy, firstLook, rankDoors, tierOf, xrayLink, prettyRound, NO_TAPS, type Pool } from "../src/lib/doors";
 import { applyTap, parseTaps, serializeTaps } from "../src/lib/taps";
-import { headline } from "../src/lib/prose";
+import { entryMeta, headline, quietLine } from "../src/lib/prose";
 import { parseSignals, EMPLOYEES_METRIC } from "../src/lib/signals";
 
 const seed = (n: string) => SEED_FUNDS.find((f) => f.name === n)!;
@@ -166,4 +166,28 @@ assert.equal(tierOf(sranked.find((d) => d.id === "m1")!), 1, "a reason + warm pa
 assert.equal(tierOf(sranked.find((d) => d.id === "h1")!), 2, "a reason without a warm path");
 assert.equal(sranked.find((d) => d.id === "h1")!.whyNow.text, "named Ada L CTO", "old executives are outside the window");
 assert.equal(headline(sr, sranked), "Three doors opened for Me since September. Two through people you know.", "warm paths get the second sentence");
+// leniency: consumer brands partner with each other; neighbours without an introducer, after your own country
+{
+  const sports = { code: "CONSUMER_GOODS", label: "sports" };
+  const food = { code: "FOOD_AND_BEVERAGE", label: "food" };
+  const cp = partnerTypes({ you: { name: "A", industries: [sports], country: "Finland" }, door: { name: "B", industries: [food], country: "Finland" }, entering: false, market: "Finland", reason: "round" });
+  assert.deepEqual(cp.map((x) => x.type), ["distribution"], "two consumer brands: distribution");
+  assert.match(cp[0].sentence, /Both to consumers/);
+  assert.deepEqual(partnerTypes({ you: { name: "A", industries: [sports], country: "Finland" }, door: { name: "B", industries: [sports], country: "Finland" }, entering: false, market: "Finland" }), [], "the same product is still a competitor");
+  assert.equal(closeBy("Finland", "Finland"), true);
+  assert.equal(closeBy("Finland", "Sweden"), "near");
+  assert.equal(closeBy("Finland", "France"), false);
+  const me = prof("me", { industries: [{ code: "SOFTWARE_AND_SERVICES", label: "ai" }], country: "Finland" });
+  const door = (id: string, country: string, date: string) => prof(id, { industries: [{ code: "FINTECH", label: null }], country });
+  const lp: Pool = {
+    profiles: { me, fi: door("fi", "Finland", "2026-11-01"), se: door("se", "Sweden", "2026-11-10"), fr: door("fr", "France", "2026-11-10") },
+    entries: [], slush: { ids: [], names: [] },
+    rounds: ["fi", "se", "fr"].map((id) => ({ id: `r-${id}`, companyId: id, date: id === "fi" ? "2026-11-01" : "2026-11-10", label: "SEED", amount: null, currency: null, sources: [{ name: "n", url: "u", date: null, rank: "PRESS" as const }], investors: [] })),
+  };
+  const lr = buildReport(lp, { id: "me", name: "Me", country: "Finland", industries: me.industries, investors: [], resolvedFrom: "cala" }, { now: "2026-11-14" });
+  assert.deepEqual(rankDoors(lr.doors, NO_TAPS).map((d) => d.id), ["fi", "se"], "a neighbour is a door, after your own country even when newer; a far country isn't");
+  assert.ok(lr.doors.find((d) => d.id === "se")!.nearby && entryMeta(lr.doors.find((d) => d.id === "se")!).parts.includes("Based in Sweden"));
+  assert.match(quietLine({ ...lr, doors: [] })!, /^Faro is watching Finland and its neighbours\./);
+}
+
 console.log("selftest ok");

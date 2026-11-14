@@ -95,6 +95,8 @@ export interface Door {
   industryNote?: IndustryCheck["uncertain"];
   /** A giant (listed, multinational, ≥ 1,000 people or ≥ 20 investors): never the headline door. */
   giant?: boolean;
+  /** No introducer, and headquartered in a neighbouring country rather than yours: ranked after your own. */
+  nearby?: boolean;
 }
 
 export interface StartupSummary {
@@ -186,6 +188,23 @@ export function xrayLink(company: string, country: string | null, type: PartnerT
 }
 
 const NORDICS = ["Finland", "Sweden", "Norway", "Denmark", "Iceland"];
+
+/** Neighbours close enough that a company there is a door without an introducer. */
+const REGIONS: string[][] = [
+  NORDICS,
+  ["Estonia", "Latvia", "Lithuania"],
+  ["Germany", "Austria", "Switzerland"],
+  ["Belgium", "Netherlands", "Luxembourg"],
+  ["United Kingdom", "Ireland"],
+  ["Spain", "Portugal"],
+  ["United States", "Canada"],
+];
+/** Same country: true. A neighbour (same region, another country): "near". Otherwise false. */
+export function closeBy(you: string | null, them: string | null): boolean | "near" {
+  if (!you || !them) return false;
+  if (you === them) return true;
+  return REGIONS.some((r) => r.includes(you) && r.includes(them)) ? "near" : false;
+}
 /** A SPAC merger is going public, not buying a business. */
 export const SPAC = /\b(acquisition corp(oration)?|spac|blank check)\b/i;
 
@@ -323,8 +342,9 @@ export function buildReport(pool: Pool, startup: StartupSummary, opts: { now: st
     if (opts.noWeapons && isWeaponsMaker(p, c.text, c.source.url)) continue;
     if (c.kind === "acquisition" && SPAC.test(c.text)) continue;
     const warm = warmOf(p, [...c.investors, ...roundsOf(c.companyId).flatMap((r) => r.investors)]);
-    // without an introducer, only a company in your own country is close enough to be a door
-    if (!warm.length && (!p.country || p.country !== startup.country)) continue;
+    // without an introducer, only a company in your own country or a neighbouring one is close enough to be a door
+    const close = closeBy(startup.country, p.country);
+    if (!warm.length && !close) continue;
     const src = withOwnRank(c.source, p);
     const check = checkIndustries(p.industries, p.description);
     if (check.drop) continue;
@@ -343,6 +363,7 @@ export function buildReport(pool: Pool, startup: StartupSummary, opts: { now: st
       entering: false,
       industryNote: check.uncertain,
       giant: isGiant(p, pool.headcount?.[c.companyId]),
+      ...(!warm.length && close === "near" ? { nearby: true } : {}),
     });
   }
 
@@ -371,7 +392,7 @@ export function rankDoors(doors: Door[], taps: Taps): Door[] {
   const ranked = doors
     .filter((d) => !hidden.has(d.id))
     .filter((d) => (taps.weights[leadWhyYou(d, taps).type] ?? 0) > -3) // three "not now"s mute a type
-    .sort((a, b) => tierOf(a) - tierOf(b) || w(b) - w(a) || Number(b.slush) - Number(a.slush) || b.whyNow.date.localeCompare(a.whyNow.date));
+    .sort((a, b) => tierOf(a) - tierOf(b) || w(b) - w(a) || Number(!!a.nearby) - Number(!!b.nearby) || Number(b.slush) - Number(a.slush) || b.whyNow.date.localeCompare(a.whyNow.date));
   // no giants as headlines: the first non-giant leads, the rest keep their order
   const lead = ranked.findIndex((d) => !d.giant);
   if (lead > 0) ranked.unshift(...ranked.splice(lead, 1));
@@ -401,7 +422,7 @@ export function firstLook(doors: Door[]): { door: Door; type: PartnerType }[] {
       out.push({ door: d, type: leadWhyYou(d, NO_TAPS).type });
     }
   }
-  const sorted = out.sort((a, b) => tierOf(a.door) - tierOf(b.door) || Number(b.door.slush) - Number(a.door.slush) || b.door.whyNow.date.localeCompare(a.door.whyNow.date)).slice(0, 3);
+  const sorted = out.sort((a, b) => tierOf(a.door) - tierOf(b.door) || Number(!!a.door.nearby) - Number(!!b.door.nearby) || Number(b.door.slush) - Number(a.door.slush) || b.door.whyNow.date.localeCompare(a.door.whyNow.date)).slice(0, 3);
   const lead = sorted.findIndex((x) => !x.door.giant);
   if (lead > 0) sorted.unshift(...sorted.splice(lead, 1));
   return sorted;
