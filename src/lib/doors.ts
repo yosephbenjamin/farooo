@@ -98,12 +98,24 @@ export function pickSource(sources: Source[], date: string): { name: string; url
   }
 }
 
+/** "SERIES_A" -> "Series A", "PRE_SEED" -> "pre-seed", "SEED" -> "seed". */
+export function prettyRound(t: string | null): string | null {
+  if (!t || /^(other|unknown|undisclosed|not specified|n\/a)$/i.test(t.replace(/_/g, " "))) return null;
+  const x = t.replace(/_/g, " ").trim().toLowerCase();
+  const m = x.match(/^series ([a-z])(\+?)$/);
+  if (m) return `Series ${m[1].toUpperCase()}${m[2]}`;
+  if (x === "pre seed" || x === "pre-seed") return "pre-seed";
+  if (x === "seed" || x === "angel" || x === "grant" || x === "growth" || x === "venture" || x === "bridge") return x;
+  return x.replace(/\b(\w)/, (c) => c.toLowerCase());
+}
+
 function roundText(roundType: string | null, amount: number | null, currency: string | null) {
   const amt = fmtAmount(amount, currency);
-  const t = roundType && !/^(other|unknown|undisclosed)$/i.test(roundType) ? roundType : null;
+  const t0 = prettyRound(roundType);
+  const t = t0 && /^(seed|pre-seed|angel|bridge|growth|venture)$/.test(t0) ? `${t0} round` : t0;
   if (amt && t) return `raised ${/^[aeiou]/i.test(amt) ? "an" : "a"} ${amt} ${t}`;
   if (amt) return `raised ${amt}`;
-  if (t) return `closed ${/^[aeiou]/i.test(t) ? "an" : "a"} ${t} round`;
+  if (t) return `closed ${/^[aeiou]/i.test(t) ? "an" : "a"} ${t.endsWith("round") ? t : `${t} round`}`;
   return "raised a round";
 }
 
@@ -133,20 +145,55 @@ export function blurbOf(c: { description: string | null }): string | null {
   return d.length > 120 ? d.slice(0, 117).replace(/\s\S*$/, "") + "…" : d;
 }
 
-export function companySectors(c: Company, enrich?: Record<string, string>): Sector[] {
-  const text = [c.name, c.description ?? "", enrich?.[c.id] ?? ""].join(" ");
-  return sectorsOf(text, c.industries);
+/**
+ * Sector evidence for a company: its description, enrichment, the titles and URL slugs of the
+ * sources behind its rounds ("vensum-power-raises-eur9m-to-cut-power-loss"), and what the daily
+ * job reported alongside its events. Evidence only; none of it is shown verbatim.
+ */
+export function companySectors(c: Company, enrich?: Record<string, string>, ds?: Dataset, events: FaroEvent[] = []): Sector[] {
+  const parts = [c.name, c.description ?? "", enrich?.[c.id] ?? ""];
+  if (ds) {
+    const token = normalizeCompany(c.name).split(" ")[0];
+    for (const rid of c.roundIds) {
+      for (const src of ds.rounds[rid]?.sources ?? []) {
+        // only sources that are about this company (skip roundups and aggregator pages)
+        const about = token.length >= 3 && `${src.name} ${src.url}`.toLowerCase().replace(/[^a-z0-9]+/g, "").includes(token.replace(/ /g, ""));
+        if (about && !/tracxn|crunchbase|pitchbook|dealroom|prh\.fi/.test(src.url)) {
+          if (/\s/.test(src.name)) parts.push(src.name.replace(/\|[^|]*$/, "")); // article titles, not "site.com"
+          try {
+            parts.push(decodeURIComponent(new URL(src.url).pathname).replace(/[-_/]+/g, " "));
+          } catch {}
+        }
+      }
+    }
+  }
+  for (const e of events) if (e.companyId === c.id && e.description) parts.push(e.description);
+  return sectorsOf(parts.join(" "), c.industries).filter((x) => x !== "consumer" || !!c.description);
 }
 
 // ---------- startup resolution ----------
+/** Words that may trail a brand in a legal name: "Oura" finds "Oura Health". */
+const BRAND_TRAIL = new Set(["health", "technologies", "technology", "tech", "group", "labs", "lab", "ai", "app", "games", "studios", "studio", "energy", "power", "systems", "solutions", "software", "holding", "holdings", "international", "global", "nordic", "finland", "sweden", "norway", "denmark", "io", "hq"]);
+
 export function findInDataset(ds: Dataset, name: string): Company | null {
   const key = normalizeCompany(name);
   if (!key) return null;
+  const squash = key.replace(/ /g, "");
   let best: Company | null = null;
+  let bestRank = -1;
   for (const c of Object.values(ds.companies)) {
-    const keys = [c.name, ...c.aliases].map(normalizeCompany);
-    if (keys.includes(key)) {
-      if (!best || c.investors.length > best.investors.length) best = c;
+    for (const k of [c.name, ...c.aliases].map(normalizeCompany)) {
+      let rank = -1;
+      if (k === key) rank = 3;
+      else if (k.replace(/ /g, "") === squash) rank = 2;
+      else if (k.startsWith(key + " ") && k.slice(key.length + 1).split(" ").every((t) => BRAND_TRAIL.has(t))) rank = 1;
+      else if (key.startsWith(k + " ") && key.slice(k.length + 1).split(" ").every((t) => BRAND_TRAIL.has(t))) rank = 1;
+      if (rank > bestRank || (rank === bestRank && rank >= 0 && best && c.investors.length > best.investors.length)) {
+        if (rank >= 0) {
+          best = c;
+          bestRank = rank;
+        }
+      }
     }
   }
   return best;
@@ -163,9 +210,11 @@ export async function resolveStartup(
   const invName = (id: string) => ds.investors.find((i) => i.id === id)?.name ?? id;
   const local = findInDataset(ds, name);
   if (local) {
+    const typed = name.trim();
+    const brandOnly = normalizeCompany(typed) !== normalizeCompany(local.name) && typed.length < local.name.length;
     return {
       id: local.id,
-      name: local.name,
+      name: brandOnly ? typed : local.name,
       description: description || local.description || "",
       country: local.country,
       sectors: sectorsOf([local.name, description, local.description ?? ""].join(" "), local.industries),
@@ -226,7 +275,7 @@ export function buildReport(
       if (normalizeCompany(c.name) === normalizeCompany(startup.name)) continue;
       let d = doorsById.get(cid);
       if (!d) {
-        const sectors = companySectors(c, opts.enrich);
+        const sectors = companySectors(c, opts.enrich, ds, events);
         const blurb = blurbOf(c) ?? (opts.enrich?.[cid] ? opts.enrich[cid].replace(/\.$/, "") : null);
         const fit = fitBetween(
           { name: startup.name, sectors: startup.sectors, country: startup.country },

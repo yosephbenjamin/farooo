@@ -20,7 +20,8 @@ export function paths(d: Drawable, key: string | number, extra?: React.SVGProps<
   return gen.toPaths(d).map((p, i) => (
     <path
       key={`${key}-${i}`}
-      d={p.d}
+      // round so server and browser floating point agree (no hydration mismatch)
+      d={p.d.replace(/-?\d+\.\d+(e-?\d+)?/g, (v) => (Math.round(Number(v) * 100) / 100).toString())}
       stroke={p.stroke === "none" ? "none" : p.stroke}
       strokeWidth={p.strokeWidth}
       fill={p.fill ?? "none"}

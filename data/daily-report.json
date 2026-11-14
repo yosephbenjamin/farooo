@@ -1,0 +1,83 @@
+{
+  "ranAt": "2026-11-14T00:49:31.543Z",
+  "now": "2026-11-14",
+  "queries": 37,
+  "rows": 14,
+  "stats": {
+    "placeholder": 0,
+    "noDate": 0,
+    "verifiedGraph": 1,
+    "verifiedSearch": 0,
+    "unverified": 3,
+    "outOfWindow": 0,
+    "notRelevant": 10
+  },
+  "kept": 1,
+  "drops": [
+    {
+      "company": "Legora",
+      "reason": "no shared investor in keyrings",
+      "date": "Oct 2026"
+    },
+    {
+      "company": "Green Voltis",
+      "reason": "no shared investor in keyrings",
+      "date": "Early Nov 2026"
+    },
+    {
+      "company": "Sortrace",
+      "reason": "no shared investor in keyrings",
+      "date": "30 Oct 2026"
+    },
+    {
+      "company": "Anna Group",
+      "reason": "no shared investor in keyrings",
+      "date": "Oct 2026"
+    },
+    {
+      "company": "Inclus",
+      "reason": "no shared investor in keyrings",
+      "date": "Oct 2026"
+    },
+    {
+      "company": "Sumary",
+      "reason": "no concrete date with source",
+      "date": "10 Nov 2026"
+    },
+    {
+      "company": "DCAI – Danish Centre for AI Innovation",
+      "reason": "no shared investor in keyrings",
+      "date": "Nov 2026"
+    },
+    {
+      "company": "Teton.ai",
+      "reason": "no shared investor in keyrings",
+      "date": "Nov 2026"
+    },
+    {
+      "company": "Numina",
+      "reason": "no shared investor in keyrings",
+      "date": "Nov 2026"
+    },
+    {
+      "company": "Plinto",
+      "reason": "no shared investor in keyrings",
+      "date": "Nov 2026"
+    },
+    {
+      "company": "Atech",
+      "reason": "no concrete date with source",
+      "date": "Nov 2026"
+    },
+    {
+      "company": "Memora",
+      "reason": "no shared investor in keyrings",
+      "date": "Oct 2026"
+    },
+    {
+      "company": "Claimlane",
+      "reason": "no concrete date with source",
+      "date": "Nov 2026"
+    }
+  ]
+}

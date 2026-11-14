@@ -43,6 +43,10 @@ body {
 a { color: inherit; text-decoration-color: var(--ink-300); text-underline-offset: 0.18em; text-decoration-thickness: 1px; }
 a:hover { text-decoration-color: var(--ink); }
 
+input::-webkit-calendar-picker-indicator { display: none !important; }
+@keyframes labelin { from { opacity: 0; } to { opacity: 1; } }
+.window-label-anim { animation: labelin 1.2s ease-out .6s both; }
+
 .mono { font-family: var(--font-mono); letter-spacing: 0; }
 
 /* the door-opens moment */

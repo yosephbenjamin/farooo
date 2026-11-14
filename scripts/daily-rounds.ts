@@ -32,14 +32,15 @@ function monthName(d: Date) {
 }
 
 async function main() {
-  const ds = loadDataset();
   const now = today();
   const nowD = new Date(now + "T00:00:00Z");
   const prev = new Date(Date.UTC(nowD.getUTCFullYear(), nowD.getUTCMonth() - 1, 1));
   const cutoff = new Date(nowD.getTime() - WINDOW_DAYS * 86400000).toISOString().slice(0, 10);
   const months = [`${monthName(prev)} ${prev.getUTCFullYear()}`, `${monthName(nowD)} ${nowD.getUTCFullYear()}`];
 
-  const queries: string[] = [];
+  const queries: string[] = [
+    `Startup funding rounds announced in Finland, Sweden, Norway, Denmark in ${monthName(prev)} and ${monthName(nowD)} ${nowD.getUTCFullYear()}`,
+  ];
   for (const c of ["Finland", "Sweden", "Norway", "Denmark"])
     queries.push(`Startup funding rounds announced in ${c} in ${months[0]} and ${months[1]}: company, date, amount, round, investors, sector`);
   queries.push(`Nordic startups that raised venture funding in the last 30 days before ${now}: company, exact date, amount, round, investors`);
@@ -67,6 +68,8 @@ async function main() {
     }),
   );
   log(`${rows.length} rows`);
+  if (process.argv.includes("--prewarm")) return;
+  const ds = loadDataset();
 
   // de-duplicate rows by company
   const byCompany = new Map<string, (typeof rows)[number]>();

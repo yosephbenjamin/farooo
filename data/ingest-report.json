@@ -1,0 +1,363 @@
+{
+  "generatedAt": "2026-11-14T00:49:16.494Z",
+  "investors": 29,
+  "vehicles": 60,
+  "companies": 1066,
+  "rounds": 680,
+  "keyringSizes": {
+    "northzone": 134,
+    "balderton-capital": 72,
+    "antler": 70,
+    "sisu-game-ventures": 68,
+    "seedcamp": 60,
+    "alliance-venture": 59,
+    "butterfly-ventures": 59,
+    "icebreaker-vc": 58,
+    "superhero-capital": 56,
+    "voima-ventures": 55,
+    "lifeline-ventures": 51,
+    "creandum": 50,
+    "atomico": 48,
+    "tesi": 46,
+    "luminar-ventures": 40,
+    "vendep-capital": 39,
+    "heartcore-capital": 38,
+    "maki-vc": 28,
+    "nordic-makers": 27,
+    "inventure": 23,
+    "eqt-ventures": 23,
+    "wave-ventures": 20,
+    "moonfire-ventures": 18,
+    "kinnevik": 16,
+    "j12-ventures": 13,
+    "byfounders": 12,
+    "contrarian-ventures": 11,
+    "spintop-ventures": 11,
+    "nordicninja": 6
+  },
+  "unresolvedSeeds": [
+    "Industrifonden"
+  ],
+  "oneDirectional": {
+    "both": 0,
+    "fundOnly": 1201,
+    "companyOnly": 0,
+    "roundOnly": 10
+  },
+  "merges": [
+    [
+      "Carbo Culture Oy",
+      "Carbo Culture"
+    ],
+    [
+      "Receipt Hero",
+      "ReceiptHero"
+    ],
+    [
+      "Inven",
+      "Inven"
+    ],
+    [
+      "Strise",
+      "STRISE AS"
+    ],
+    [
+      "FLOWHAVEN OY",
+      "Flowhaven Oy"
+    ],
+    [
+      "TheStorage",
+      "TheStorage"
+    ],
+    [
+      "ÄIO",
+      "AIO"
+    ],
+    [
+      "Nucu",
+      "Nucu Oy"
+    ],
+    [
+      "Lovable",
+      "Lovable"
+    ],
+    [
+      "Lovable",
+      "Lovable"
+    ],
+    [
+      "Trade",
+      "Trade"
+    ],
+    [
+      "Trade",
+      "Trade"
+    ],
+    [
+      "Maisa",
+      "Maisa"
+    ],
+    [
+      "Nexos.ai",
+      "Nexos AI"
+    ],
+    [
+      "CLEO AI LTD.",
+      "Cleo AI"
+    ],
+    [
+      "Small Giant Games Oy",
+      "Small Giant Games"
+    ],
+    [
+      "INEFFABLE INTELLIGENCE LTD",
+      "Ineffable Intelligence"
+    ],
+    [
+      "SeeQC",
+      "SeeQC, Inc."
+    ],
+    [
+      "Supercell Oy",
+      "Supercell Oy"
+    ],
+    [
+      "Framer",
+      "Framer B.V."
+    ],
+    [
+      "DeepL SE",
+      "DeepL SE"
+    ],
+    [
+      "TEM",
+      "Tem"
+    ],
+    [
+      "Wonder Studios",
+      "Wonder Studios"
+    ],
+    [
+      "ClaimSorted",
+      "CLAIMSORTED LTD"
+    ],
+    [
+      "Neverthink",
+      "Neverthink"
+    ],
+    [
+      "OpenFX",
+      "OpenFX"
+    ],
+    [
+      "Einride AB",
+      "Einride AB"
+    ],
+    [
+      "Pollen",
+      "Pollen"
+    ],
+    [
+      "OpenFX",
+      "OpenFX"
+    ],
+    [
+      "Kota",
+      "Kota"
+    ],
+    [
+      "Filed",
+      "Filed"
+    ],
+    [
+      "Red Points",
+      "Red Points"
+    ],
+    [
+      "Genesis AI",
+      "Genesis AI"
+    ],
+    [
+      "Cedar",
+      "Cedar"
+    ],
+    [
+      "Jobandtalent",
+      "Job&Talent"
+    ],
+    [
+      "Oda",
+      "Oda"
+    ],
+    [
+      "Oda",
+      "Oda"
+    ],
+    [
+      "Oda",
+      "Oda"
+    ],
+    [
+      "Job&Talent",
+      "Job&Talent"
+    ],
+    [
+      "TravelPerk",
+      "Travelperk Ltd."
+    ],
+    [
+      "Cedar",
+      "Cedar"
+    ],
+    [
+      "Iconic",
+      "Iconic"
+    ],
+    [
+      "Rocky Road",
+      "RockyRoad"
+    ],
+    [
+      "Kapacity.io",
+      "Kapacity.io"
+    ],
+    [
+      "Pluto.markets",
+      "Pluto.markets"
+    ],
+    [
+      "Singa Oy",
+      "Singa"
+    ],
+    [
+      "Pluto.markets",
+      "Pluto.markets"
+    ],
+    [
+      "REVOLUT LTD",
+      "Revolut Ltd"
+    ],
+    [
+      "ESCAPE",
+      "Escape"
+    ],
+    [
+      "RESON8 LTD",
+      "Reson8"
+    ],
+    [
+      "Tinybird",
+      "Tinybird"
+    ],
+    [
+      "MySQL",
+      "MySQL"
+    ],
+    [
+      "Thread",
+      "Thread"
+    ],
+    [
+      "Crowdcube",
+      "CROWDCUBE LIMITED"
+    ],
+    [
+      "Betfair",
+      "Betfair"
+    ],
+    [
+      "Thread",
+      "Thread"
+    ],
+    [
+      "ESCAPE",
+      "Escape"
+    ],
+    [
+      "Taktile",
+      "Taktile"
+    ],
+    [
+      "Thread",
+      "Thread"
+    ],
+    [
+      "Thread",
+      "Thread"
+    ],
+    [
+      "Fuse",
+      "Fuse"
+    ],
+    [
+      "Two.inc",
+      "two"
+    ],
+    [
+      "Hemby",
+      "HEMBY LTD"
+    ],
+    [
+      "NextMind",
+      "NextMind SAS"
+    ],
+    [
+      "Linkup",
+      "Linkup"
+    ],
+    [
+      "Arcane",
+      "Arcane"
+    ],
+    [
+      "Arcane",
+      "Arcane"
+    ],
+    [
+      "UIPATH, INC.",
+      "UiPath"
+    ],
+    [
+      "MyTelescope",
+      "My Telescope"
+    ],
+    [
+      "RIACT LIMITED",
+      "RiACT ApS"
+    ],
+    [
+      "SisuSemi",
+      "Sisu Semi"
+    ],
+    [
+      "IQM Quantum Computers Oyj",
+      "IQM Quantum Computers"
+    ],
+    [
+      "Kelluu Oy",
+      "Kelluu"
+    ],
+    [
+      "Lingo.dev",
+      "Lingo.dev"
+    ],
+    [
+      "Sonia",
+      "Sonia"
+    ],
+    [
+      "Sonia",
+      "Sonia"
+    ],
+    [
+      "Flex AI",
+      "FlexAI"
+    ]
+  ],
+  "droppedFundLike": [
+    "Butterfly Ventures"
+  ],
+  "nameMatchedLinks": 0,
+  "roundsWithoutDate": 21,
+  "roundsWithoutIssuer": 4
+}

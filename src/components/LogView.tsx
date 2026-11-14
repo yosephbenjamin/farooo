@@ -54,7 +54,7 @@ export function LogView({ report, booth = false, scriptedId = null, autoMs = nul
     () => (scripted && !revealed ? report.opened.filter((d) => d.companyId !== scripted.companyId) : report.opened),
     [report, scripted, revealed],
   );
-  const shown = opened.slice(0, booth ? 4 : 6);
+  const shown = opened.slice(0, booth ? 3 : 6);
   const footnotes = shown.filter((d) => d.reason);
   const count = doorCountLine(report);
   const timed = report.timed.slice(0, 3);
@@ -71,12 +71,12 @@ export function LogView({ report, booth = false, scriptedId = null, autoMs = nul
   );
 
   const T = booth
-    ? { h1: "text-[clamp(48px,5.4vw,96px)] leading-[1.02]", lead: "text-[clamp(26px,2.3vw,40px)]", why: "text-[clamp(20px,1.6vw,28px)]", small: "text-[clamp(14px,1vw,18px)]", gap: "space-y-10" }
+    ? { h1: "text-[clamp(44px,4.4vw,88px)] leading-[1.03]", lead: "text-[clamp(24px,1.95vw,38px)]", why: "text-[clamp(18px,1.35vw,26px)]", small: "text-[clamp(13px,0.85vw,17px)]", gap: "space-y-8" }
     : { h1: "text-[clamp(38px,5vw,64px)] leading-[1.05]", lead: "text-[22px] sm:text-[25px]", why: "text-[17px] sm:text-[19px]", small: "text-[12px]", gap: "space-y-8" };
 
   return (
-    <main className={`mx-auto w-full ${booth ? "max-w-[1700px] px-[4vw] py-[5vh] min-h-screen" : "max-w-6xl px-4 sm:px-8 py-10 sm:py-14"}`}>
-      <header className="mb-10 sm:mb-14 flex items-center justify-between">
+    <main className={`mx-auto w-full ${booth ? "max-w-[1800px] px-[4vw] py-[4vh] min-h-screen" : "max-w-6xl px-4 sm:px-8 py-10 sm:py-14"}`}>
+      <header className={`flex items-center justify-between ${booth ? "mb-[4vh]" : "mb-10 sm:mb-14"}`}>
         <Link href="/" className="flex items-center gap-2 no-underline" aria-label="Faro, home">
           <Lighthouse className={booth ? "h-12 w-12" : "h-8 w-8"} lit={revealed} />
           <span className={`mono uppercase tracking-[0.18em] text-ink-500 ${booth ? "text-sm" : "text-[11px]"}`}>Faro</span>
@@ -88,12 +88,12 @@ export function LogView({ report, booth = false, scriptedId = null, autoMs = nul
         )}
       </header>
 
-      <div className={`grid gap-12 ${booth ? "lg:grid-cols-[1.25fr_1fr] lg:gap-[5vw]" : "md:grid-cols-[1.3fr_1fr] md:gap-14"}`}>
+      <div className={`grid gap-12 ${booth ? "lg:grid-cols-[1fr_1.15fr] lg:gap-[4vw]" : "md:grid-cols-[1fr_1.1fr] md:gap-12"}`}>
         <section>
           <h1 className={`font-light tracking-[-0.015em] text-ink-deep ${T.h1}`}>{headline(report, opened)}</h1>
           {subline(report) && <p className={`mt-4 italic text-ink-500 ${T.why}`}>{subline(report)}</p>}
 
-          <ol className={`mt-12 ${T.gap}`}>
+          <ol className={`${booth ? "mt-[5vh]" : "mt-12"} ${T.gap}`}>
             {scripted && revealed && (
               <Entry
                 key="scripted"
@@ -158,7 +158,8 @@ export function LogView({ report, booth = false, scriptedId = null, autoMs = nul
             holdId={scripted && !revealed ? scripted.companyId : null}
             animateId={scripted && revealed ? scripted.companyId : null}
             className="w-full h-auto"
-            maxPerInvestor={booth ? 18 : 16}
+            maxPerInvestor={25}
+            big={booth}
           />
         </aside>
       </div>
@@ -186,8 +187,8 @@ function Entry({
 }) {
   const lead = entryLead(d);
   return (
-    <li className="max-w-[40ch]">
-      <p className={`${T.lead} leading-snug text-ink-deep`}>
+    <li>
+      <p className={`${T.lead} max-w-[30ch] leading-snug text-ink-deep`}>
         {leadOverride != null ? (
           <span className="caret">{leadOverride}</span>
         ) : (
@@ -203,7 +204,7 @@ function Entry({
         )}
       </p>
       <p
-        className={`mt-1.5 ${T.why} leading-relaxed text-ink-500 transition-opacity duration-700 ${fresh && leadOverride != null ? "opacity-0" : "opacity-100"}`}
+        className={`mt-1.5 ${T.why} max-w-[46ch] leading-relaxed text-ink-500 transition-opacity duration-700 ${fresh && leadOverride != null ? "opacity-0" : "opacity-100"}`}
       >
         {entryWhy(d)}
       </p>

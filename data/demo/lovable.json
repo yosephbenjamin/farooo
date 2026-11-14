@@ -1,0 +1,3881 @@
+{
+  "now": "2026-11-14",
+  "startup": {
+    "id": "89d3a43c-fee4-4491-853e-a216cbef6c50",
+    "name": "Lovable",
+    "description": "AI app builder for developers and non-developers: describe software in plain words, get a working app.",
+    "country": "Sweden",
+    "sectors": [
+      "ai",
+      "devtools",
+      "saas",
+      "consumer"
+    ],
+    "investors": [
+      {
+        "investorId": "byfounders",
+        "investorName": "byFounders"
+      },
+      {
+        "investorId": "creandum",
+        "investorName": "Creandum"
+      },
+      {
+        "investorId": "balderton-capital",
+        "investorName": "Balderton Capital"
+      },
+      {
+        "investorId": "antler",
+        "investorName": "Antler"
+      }
+    ],
+    "resolvedFrom": "dataset"
+  },
+  "opened": [
+    {
+      "companyId": "fc9b463a-a6db-41e7-ba8c-b94e51a163e3",
+      "name": "Causa Prima",
+      "country": null,
+      "blurb": null,
+      "sectors": [
+        "payments",
+        "ai",
+        "saas",
+        "media"
+      ],
+      "fit": {
+        "score": 3,
+        "sentence": "Causa Prima handles billing; the apps your users build will need it.",
+        "kind": "complement"
+      },
+      "via": [
+        {
+          "investorId": "creandum",
+          "investorName": "Creandum"
+        }
+      ],
+      "reason": {
+        "kind": "round",
+        "date": "2026-10-13",
+        "text": "raised a $20M seed round",
+        "source": {
+          "name": "fortune.com",
+          "url": "https://fortune.com/2026/10/13/startup-causa-prima-20-million-billing-disputes-ai-agents/"
+        }
+      }
+    },
+    {
+      "companyId": "3d3edba6-f4d7-432b-80d3-d07872e11def",
+      "name": "Verda",
+      "country": "Finland",
+      "blurb": "finnish AI cloud infrastructure startup focused on clean energy, based in Helsin",
+      "sectors": [
+        "energy",
+        "ai",
+        "devtools",
+        "media"
+      ],
+      "fit": {
+        "score": 3,
+        "sentence": "Verda builds the tools your engineers use.",
+        "kind": "complement"
+      },
+      "via": [
+        {
+          "investorId": "byfounders",
+          "investorName": "byFounders"
+        }
+      ],
+      "reason": {
+        "kind": "round",
+        "date": "2026-09-22",
+        "text": "raised a $189M Series B",
+        "source": {
+          "name": "eu-startups.com",
+          "url": "https://www.eu-startups.com/2026/09/helsinkis-verda-becomes-europes-latest-unicorn-after-raising-e164-8-million-to-scale-its-full-stack-ai-cloud/"
+        }
+      }
+    },
+    {
+      "companyId": "9423779d-819b-46ac-bf29-a5edb6b2553f",
+      "name": "Olix",
+      "country": null,
+      "blurb": null,
+      "sectors": [
+        "ai",
+        "hardware"
+      ],
+      "fit": {
+        "score": 0,
+        "sentence": "Olix, same investor.",
+        "kind": "none"
+      },
+      "via": [
+        {
+          "investorId": "creandum",
+          "investorName": "Creandum"
+        }
+      ],
+      "reason": {
+        "kind": "round",
+        "date": "2026-08-03",
+        "text": "raised a $317M Series B",
+        "source": {
+          "name": "techcrunch.com",
+          "url": "https://techcrunch.com/2026/08/09/this-former-notorious-red-light-district-is-now-one-of-the-worlds-top-ai-hubs"
+        }
+      }
+    }
+  ],
+  "timed": [],
+  "doors": [
+    {
+      "companyId": "fc9b463a-a6db-41e7-ba8c-b94e51a163e3",
+      "name": "Causa Prima",
+      "country": null,
+      "blurb": null,
+      "sectors": [
+        "payments",
+        "ai",
+        "saas",
+        "media"
+      ],
+      "fit": {
+        "score": 3,
+        "sentence": "Causa Prima handles billing; the apps your users build will need it.",
+        "kind": "complement"
+      },
+      "via": [
+        {
+          "investorId": "creandum",
+          "investorName": "Creandum"
+        }
+      ],
+      "reason": {
+        "kind": "round",
+        "date": "2026-10-13",
+        "text": "raised a $20M seed round",
+        "source": {
+          "name": "fortune.com",
+          "url": "https://fortune.com/2026/10/13/startup-causa-prima-20-million-billing-disputes-ai-agents/"
+        }
+      }
+    },
+    {
+      "companyId": "3d3edba6-f4d7-432b-80d3-d07872e11def",
+      "name": "Verda",
+      "country": "Finland",
+      "blurb": "finnish AI cloud infrastructure startup focused on clean energy, based in Helsin",
+      "sectors": [
+        "energy",
+        "ai",
+        "devtools",
+        "media"
+      ],
+      "fit": {
+        "score": 3,
+        "sentence": "Verda builds the tools your engineers use.",
+        "kind": "complement"
+      },
+      "via": [
+        {
+          "investorId": "byfounders",
+          "investorName": "byFounders"
+        }
+      ],
+      "reason": {
+        "kind": "round",
+        "date": "2026-09-22",
+        "text": "raised a $189M Series B",
+        "source": {
+          "name": "eu-startups.com",
+          "url": "https://www.eu-startups.com/2026/09/helsinkis-verda-becomes-europes-latest-unicorn-after-raising-e164-8-million-to-scale-its-full-stack-ai-cloud/"
+        }
+      }
+    },
+    {
+      "companyId": "9423779d-819b-46ac-bf29-a5edb6b2553f",
+      "name": "Olix",
+      "country": null,
+      "blurb": null,
+      "sectors": [
+        "ai",
+        "hardware"
+      ],
+      "fit": {
+        "score": 0,
+        "sentence": "Olix, same investor.",
+        "kind": "none"
+      },
+      "via": [
+        {
+          "investorId": "creandum",
+          "investorName": "Creandum"
+        }
+      ],
+      "reason": {
+        "kind": "round",
+        "date": "2026-08-03",
+        "text": "raised a $317M Series B",
+        "source": {
+          "name": "techcrunch.com",
+          "url": "https://techcrunch.com/2026/08/09/this-former-notorious-red-light-district-is-now-one-of-the-worlds-top-ai-hubs"
+        }
+      }
+    },
+    {
+      "companyId": "3105fdbe-e3c9-4019-bc71-7c89d36f4d84",
+      "name": "Embat Technologies Sl",
+      "country": null,
+      "blurb": "madrid-based fintech and software company manufacturing Embat, founded in 2021",
+      "sectors": [
+        "fintech",
+        "saas",
+        "manufacturing"
+      ],
+      "fit": {
+        "score": 3,
+        "sentence": "Embat Technologies Sl works with finance teams; your software could plug into their stack.",
+        "kind": "complement"
+      },
+      "via": [
+        {
+          "investorId": "creandum",
+          "investorName": "Creandum"
+        }
+      ],
+      "reason": {
+        "kind": "round",
+        "date": "2026-05-12",
+        "text": "closed a Series B round",
+        "source": {
+          "name": "tracxn.com",
+          "url": "https://tracxn.com/d/companies/embat/__U9jK-4YRpbTUmyuPIclbHXdzAhwq12ZYGUejWW8IVBs/funding-and-investors"
+        }
+      }
+    },
+    {
+      "companyId": "0bb24229-1743-4166-82a7-d6eceadb2b7b",
+      "name": "Stream",
+      "country": null,
+      "blurb": "a London‑based European fintech company founded in 2018 that provides workplace",
+      "sectors": [
+        "fintech",
+        "commerce",
+        "health",
+        "hr",
+        "saas",
+        "media",
+        "consumer"
+      ],
+      "fit": {
+        "score": 3,
+        "sentence": "Stream works with finance teams; your software could plug into their stack.",
+        "kind": "complement"
+      },
+      "via": [
+        {
+          "investorId": "balderton-capital",
+          "investorName": "Balderton Capital"
+        }
+      ],
+      "reason": {
+        "kind": "round",
+        "date": "2026-01-20",
+        "text": "raised a $90M Series D",
+        "source": {
+          "name": "uktech.news",
+          "url": "https://www.uktech.news/fintech/stream-67m-series-d-20260120"
+        }
+      }
+    },
+    {
+      "companyId": "00755240-7c50-4378-b4c0-a1f2ea218778",
+      "name": "Vesence",
+      "country": null,
+      "blurb": "cursor for Lawyers. Agentic AI in MS Office",
+      "sectors": [
+        "ai",
+        "legal"
+      ],
+      "fit": {
+        "score": 3,
+        "sentence": "Vesence lives in documents; your AI reads them.",
+        "kind": "complement"
+      },
+      "via": [
+        {
+          "investorId": "creandum",
+          "investorName": "Creandum"
+        }
+      ],
+      "reason": {
+        "kind": "round",
+        "date": "2025-10-28",
+        "text": "raised a $9M seed round",
+        "source": {
+          "name": "Vesence Raises $9M Seed Round",
+          "url": "https://www.vesence.com/blog/seed-round-announcement"
+        }
+      }
+    },
+    {
+      "companyId": "2102bd9c-8835-4cbe-8d34-1999d874ebc8",
+      "name": "Abacum Planning S.L. (Sociedad Unipersonal)",
+      "country": "Spain",
+      "blurb": "sOCIEDAD UNIPERSONAL) (A Spanish company founded on April 30, 2020, headquartered at Passeig de Gracia",
+      "sectors": [
+        "fintech",
+        "ai",
+        "data",
+        "saas"
+      ],
+      "fit": {
+        "score": 3,
+        "sentence": "Abacum Planning S.L. (Sociedad Unipersonal) works with finance teams; your software could plug into their stack.",
+        "kind": "complement"
+      },
+      "via": [
+        {
+          "investorId": "creandum",
+          "investorName": "Creandum"
+        }
+      ],
+      "reason": {
+        "kind": "round",
+        "date": "2025-05-28",
+        "text": "raised a $60M Series B",
+        "source": {
+          "name": "cfoshortlist.com",
+          "url": "https://www.cfoshortlist.com/vendors/abacum"
+        }
+      }
+    },
+    {
+      "companyId": "ef1e844f-0dae-4ed8-9a2b-35cab610db58",
+      "name": "Taktile",
+      "country": null,
+      "blurb": "a fintech and software services organization dual‑headquartered in New York and",
+      "sectors": [
+        "fintech",
+        "saas"
+      ],
+      "fit": {
+        "score": 3,
+        "sentence": "Taktile works with finance teams; your software could plug into their stack.",
+        "kind": "complement"
+      },
+      "via": [
+        {
+          "investorId": "balderton-capital",
+          "investorName": "Balderton Capital"
+        }
+      ],
+      "reason": {
+        "kind": "round",
+        "date": "2025-02-27",
+        "text": "raised a $54M Series B",
+        "source": {
+          "name": "techcrunch.com",
+          "url": "https://techcrunch.com/2025/02/27/taktile-helps-fintechs-build-automated-decision-making-workflows"
+        }
+      }
+    },
+    {
+      "companyId": "57417792-a843-43db-9cfc-730d969e2fb6",
+      "name": "Cleo AI",
+      "country": null,
+      "blurb": null,
+      "sectors": [
+        "fintech",
+        "ai",
+        "media"
+      ],
+      "fit": {
+        "score": 3,
+        "sentence": "Cleo AI works with finance teams; your software could plug into their stack.",
+        "kind": "complement"
+      },
+      "via": [
+        {
+          "investorId": "balderton-capital",
+          "investorName": "Balderton Capital"
+        }
+      ],
+      "reason": {
+        "kind": "round",
+        "date": "2025-01-01",
+        "text": "raised a $38.8M Series C",
+        "source": {
+          "name": "sifted.eu",
+          "url": "https://sifted.eu/articles/cleo-ceo-teases-ipo"
+        }
+      }
+    },
+    {
+      "companyId": "0e85539d-10df-4c0c-9826-d98b1c245ec2",
+      "name": "Agave Games",
+      "country": null,
+      "blurb": "mobile puzzle game developer & publisher building unique experiences for audienc",
+      "sectors": [
+        "gaming",
+        "devtools",
+        "construction"
+      ],
+      "fit": {
+        "score": 3,
+        "sentence": "Agave Games builds the tools your engineers use.",
+        "kind": "complement"
+      },
+      "via": [
+        {
+          "investorId": "balderton-capital",
+          "investorName": "Balderton Capital"
+        }
+      ],
+      "reason": {
+        "kind": "round",
+        "date": "2024-12-17",
+        "text": "raised a $18M Series A",
+        "source": {
+          "name": "techcrunch.com",
+          "url": "https://techcrunch.com/2024/12/17/agave-the-startup-behind-find-the-cat-finds-18m"
+        }
+      }
+    },
+    {
+      "companyId": "1ef021a4-6c07-4033-a965-05313e60a9e4",
+      "name": "Rillet",
+      "country": null,
+      "blurb": "a private AI-native accounting platform",
+      "sectors": [
+        "fintech",
+        "ai",
+        "saas"
+      ],
+      "fit": {
+        "score": 3,
+        "sentence": "Rillet works with finance teams; your software could plug into their stack.",
+        "kind": "complement"
+      },
+      "via": [
+        {
+          "investorId": "creandum",
+          "investorName": "Creandum"
+        }
+      ],
+      "reason": {
+        "kind": "round",
+        "date": "2024-07-29",
+        "text": "raised a $13.5M seed round",
+        "source": {
+          "name": "techcrunch.com",
+          "url": "https://techcrunch.com/2025/05/28/rillet-raises-25m-from-sequoia-to-automate-general-ledger-systems-using-ai"
+        }
+      }
+    },
+    {
+      "companyId": "17b68924-9a26-4118-b605-869656523d1d",
+      "name": "Finoa",
+      "country": null,
+      "blurb": null,
+      "sectors": [
+        "fintech",
+        "saas"
+      ],
+      "fit": {
+        "score": 3,
+        "sentence": "Finoa works with finance teams; your software could plug into their stack.",
+        "kind": "complement"
+      },
+      "via": [
+        {
+          "investorId": "balderton-capital",
+          "investorName": "Balderton Capital"
+        }
+      ],
+      "reason": {
+        "kind": "round",
+        "date": "2024-01-09",
+        "text": "closed a Series B round",
+        "source": {
+          "name": "tracxn.com",
+          "url": "https://tracxn.com/d/companies/finoa/__NatYLdnSHjZfHGF-xiPFYseQS9An0Dv6O-Dbus0gCcI"
+        }
+      }
+    },
+    {
+      "companyId": "0d0425ad-207d-4c48-8b02-88a46ca34c6f",
+      "name": "Lassie",
+      "country": "Spain",
+      "blurb": "a Spanish digital pet insurer operating in the financial, fintech, and health in",
+      "sectors": [
+        "fintech",
+        "insurance",
+        "health",
+        "consumer"
+      ],
+      "fit": {
+        "score": 3,
+        "sentence": "Lassie works with finance teams; your software could plug into their stack.",
+        "kind": "complement"
+      },
+      "via": [
+        {
+          "investorId": "balderton-capital",
+          "investorName": "Balderton Capital"
+        }
+      ],
+      "reason": {
+        "kind": "round",
+        "date": "2023-11-28",
+        "text": "raised a $25M Series B",
+        "source": {
+          "name": "techcrunch.com",
+          "url": "https://techcrunch.com/2023/11/28/as-pet-owners-turn-to-mobile-insurance-apps-lassie-raises-25m-series-b-led-by-balderton"
+        }
+      }
+    },
+    {
+      "companyId": "cdbc8965-91f4-4712-94fa-b962abf94d03",
+      "name": "32Co",
+      "country": null,
+      "blurb": "revolutionising access to specialised healthcare services by connecting general",
+      "sectors": [
+        "health"
+      ],
+      "fit": {
+        "score": 3,
+        "sentence": "32Co sits on clinical workflows that AI can lighten.",
+        "kind": "complement"
+      },
+      "via": [
+        {
+          "investorId": "balderton-capital",
+          "investorName": "Balderton Capital"
+        }
+      ],
+      "reason": {
+        "kind": "round",
+        "date": "2023-06-28",
+        "text": "raised a $2.8M seed round",
+        "source": {
+          "name": "tracxn.com",
+          "url": "https://tracxn.com/d/companies/32co/__FXM_XhYkWE17c-5HW6nX7JLTz14kawMtqjvlyAEwnu8/funding-and-investors"
+        }
+      }
+    },
+    {
+      "companyId": "1ff0a257-f6e7-43ed-8b7f-756bc3c72cfd",
+      "name": "TreasurySpring",
+      "country": null,
+      "blurb": null,
+      "sectors": [
+        "fintech",
+        "saas"
+      ],
+      "fit": {
+        "score": 3,
+        "sentence": "TreasurySpring works with finance teams; your software could plug into their stack.",
+        "kind": "complement"
+      },
+      "via": [
+        {
+          "investorId": "balderton-capital",
+          "investorName": "Balderton Capital"
+        }
+      ],
+      "reason": {
+        "kind": "round",
+        "date": "2023-06-21",
+        "text": "raised a $29M Series B",
+        "source": {
+          "name": "techcrunch.com",
+          "url": "https://techcrunch.com/2023/06/25/treasuryspring"
+        }
+      }
+    },
+    {
+      "companyId": "a8b07a9d-b4d4-45e4-a678-a0c933a551b4",
+      "name": "Brigad",
+      "country": null,
+      "blurb": "a freelancer marketplace platform connecting hospitality and healthcare workers",
+      "sectors": [
+        "commerce",
+        "health",
+        "saas",
+        "travel"
+      ],
+      "fit": {
+        "score": 3,
+        "sentence": "Brigad sits on clinical workflows that AI can lighten.",
+        "kind": "complement"
+      },
+      "via": [
+        {
+          "investorId": "balderton-capital",
+          "investorName": "Balderton Capital"
+        }
+      ],
+      "reason": {
+        "kind": "round",
+        "date": "2023-02-15",
+        "text": "raised a $30M Series B",
+        "source": {
+          "name": "techcrunch.com",
+          "url": "https://techcrunch.com/2023/02/15/brigad-raises-30-million-for-its-freelancer-marketplace-for-hospitality-and-care-workers"
+        }
+      }
+    },
+    {
+      "companyId": "332ba5ea-5dae-4a95-a2fc-54909c980eb3",
+      "name": "Leyr",
+      "country": null,
+      "blurb": "builds a secure interoperability layer for healthcare, enabling seamless data ex",
+      "sectors": [
+        "health",
+        "data"
+      ],
+      "fit": {
+        "score": 3,
+        "sentence": "Leyr sits on clinical workflows that AI can lighten.",
+        "kind": "complement"
+      },
+      "via": [
+        {
+          "investorId": "antler",
+          "investorName": "Antler"
+        }
+      ],
+      "reason": {
+        "kind": "round",
+        "date": "2022-11-01",
+        "text": "raised a $826K seed round",
+        "source": {
+          "name": "tracxn.com",
+          "url": "https://tracxn.com/d/companies/leyr/__j2VFtoTOueSG2E2NRnjVsVOGVh_qPPu2XrWcspQECnY"
+        }
+      }
+    },
+    {
+      "companyId": "6eb7af43-9fa6-4ac9-9594-9baa9a3f5de0",
+      "name": "KRY",
+      "country": "Sweden",
+      "blurb": "swedish digital health‑care provider",
+      "sectors": [
+        "health",
+        "space",
+        "media"
+      ],
+      "fit": {
+        "score": 3,
+        "sentence": "KRY sits on clinical workflows that AI can lighten.",
+        "kind": "complement"
+      },
+      "via": [
+        {
+          "investorId": "creandum",
+          "investorName": "Creandum"
+        }
+      ],
+      "reason": {
+        "kind": "round",
+        "date": "2022-07-21",
+        "text": "raised a $160M Series D",
+        "source": {
+          "name": "tracxn.com",
+          "url": "https://tracxn.com/d/companies/kry/__iiMY9TfcoEDyHIl-lcMfyiMZocGAj7wQHsCMgWIY_ro"
+        }
+      }
+    },
+    {
+      "companyId": "14f14f8a-f0c4-4556-b6d6-d93b28e9ea22",
+      "name": "Dream Games Teknoloji̇ Anoni̇M şİRketi̇",
+      "country": null,
+      "blurb": "a Turkish video game developer founded in 2019 and based in Istanbul",
+      "sectors": [
+        "gaming",
+        "devtools",
+        "space",
+        "media"
+      ],
+      "fit": {
+        "score": 3,
+        "sentence": "Dream Games Teknoloji̇ Anoni̇M şİRketi̇ builds the tools your engineers use.",
+        "kind": "complement"
+      },
+      "via": [
+        {
+          "investorId": "balderton-capital",
+          "investorName": "Balderton Capital"
+        }
+      ],
+      "reason": {
+        "kind": "round",
+        "date": "2022-01-18",
+        "text": "raised a $255M Series C",
+        "source": {
+          "name": "techcrunch.com",
+          "url": "https://techcrunch.com/2022/01/18/score-another-win-for-istanbul-gaming-startups-dream-games-raises-255m-at-a-2-75b-valuation"
+        }
+      }
+    },
+    {
+      "companyId": "1a2db2be-b643-43dc-8b85-4bd402af07a0",
+      "name": "Billie",
+      "country": null,
+      "blurb": null,
+      "sectors": [
+        "payments",
+        "saas"
+      ],
+      "fit": {
+        "score": 3,
+        "sentence": "Billie handles billing; the apps your users build will need it.",
+        "kind": "complement"
+      },
+      "via": [
+        {
+          "investorId": "creandum",
+          "investorName": "Creandum"
+        }
+      ],
+      "reason": {
+        "kind": "round",
+        "date": "2021-10-25",
+        "text": "raised a $100M Series C",
+        "source": {
+          "name": "techcrunch.com",
+          "url": "https://techcrunch.com/2021/10/25/billie-a-buy-now-pay-later-specialist-for-the-b2b-market-raises-100m-on-a-640m-valuation"
+        }
+      }
+    },
+    {
+      "companyId": "95643ea4-a62d-44b1-a8b6-943ccf17356d",
+      "name": "Beauty Pie",
+      "country": "United Kingdom",
+      "blurb": "british direct‑to‑consumer beauty brand founded in 2016 by Marcia Kilgore",
+      "sectors": [
+        "health",
+        "marketing",
+        "consumer"
+      ],
+      "fit": {
+        "score": 3,
+        "sentence": "Beauty Pie sits on clinical workflows that AI can lighten.",
+        "kind": "complement"
+      },
+      "via": [
+        {
+          "investorId": "balderton-capital",
+          "investorName": "Balderton Capital"
+        }
+      ],
+      "reason": {
+        "kind": "round",
+        "date": "2021-09-08",
+        "text": "raised a $100M Series B",
+        "source": {
+          "name": "techcrunch.com",
+          "url": "https://techcrunch.com/2021/09/08/beauty-pie-an-online-buyers-club-picks-up-100m-to-boost-its-beauty-and-wellness-business"
+        }
+      }
+    },
+    {
+      "companyId": "58c07a1d-eeab-4dcf-914b-9d752fd57e0f",
+      "name": "ComplyAdvantage",
+      "country": null,
+      "blurb": "london‑based fintech company founded in 2018 that provides financial crime compl",
+      "sectors": [
+        "fintech",
+        "ai",
+        "data",
+        "security",
+        "saas"
+      ],
+      "fit": {
+        "score": 3,
+        "sentence": "ComplyAdvantage works with finance teams; your software could plug into their stack.",
+        "kind": "complement"
+      },
+      "via": [
+        {
+          "investorId": "balderton-capital",
+          "investorName": "Balderton Capital"
+        }
+      ],
+      "reason": {
+        "kind": "round",
+        "date": "2020-07-17",
+        "text": "raised a $50M Series C",
+        "source": {
+          "name": "techcrunch.com",
+          "url": "https://techcrunch.com/2020/07/28/complyadvantage-nabs-50m-for-an-ai-platform-and-database-to-detect-and-stop-financial-crime"
+        }
+      }
+    },
+    {
+      "companyId": "a9b85b89-ac07-4c31-a485-eaacfb2a37c1",
+      "name": "Argent",
+      "country": null,
+      "blurb": "a UK‑based digital cryptocurrency wallet and financial services platform",
+      "sectors": [
+        "payments",
+        "fintech",
+        "saas",
+        "consumer"
+      ],
+      "fit": {
+        "score": 3,
+        "sentence": "Argent works with finance teams; your software could plug into their stack.",
+        "kind": "complement"
+      },
+      "via": [
+        {
+          "investorId": "creandum",
+          "investorName": "Creandum"
+        }
+      ],
+      "reason": {
+        "kind": "round",
+        "date": "2020-01-06",
+        "text": "raised a $12M Series A",
+        "source": {
+          "name": "techcrunch.com",
+          "url": "https://techcrunch.com/2020/05/18/buzzy-ethereum-wallet-app-argent-comes-out-of-stealth"
+        }
+      }
+    },
+    {
+      "companyId": "fd7eec04-9d05-489f-8089-05dc77e933b4",
+      "name": "SOPHiA GENETICS",
+      "country": "Switzerland",
+      "blurb": null,
+      "sectors": [
+        "health",
+        "biotech",
+        "data",
+        "saas"
+      ],
+      "fit": {
+        "score": 3,
+        "sentence": "SOPHiA GENETICS sits on clinical workflows that AI can lighten.",
+        "kind": "complement"
+      },
+      "via": [
+        {
+          "investorId": "balderton-capital",
+          "investorName": "Balderton Capital"
+        }
+      ],
+      "reason": {
+        "kind": "round",
+        "date": "2019-01-03",
+        "text": "raised a $77M Series E",
+        "source": {
+          "name": "techcrunch.com",
+          "url": "https://techcrunch.com/2019/01/04/sophia-genetics-bags-77m-series-e-with-850-hospitals-signed-up-to-its-data-driven-medicine"
+        }
+      }
+    },
+    {
+      "companyId": "ceb30617-8ab1-414c-8e75-cac1e0ee5e4f",
+      "name": "Resolution Games",
+      "country": "Sweden",
+      "blurb": "swedish video game developer specializing in virtual reality, headquartered in S",
+      "sectors": [
+        "gaming",
+        "devtools",
+        "media"
+      ],
+      "fit": {
+        "score": 3,
+        "sentence": "Resolution Games builds the tools your engineers use.",
+        "kind": "complement"
+      },
+      "via": [
+        {
+          "investorId": "creandum",
+          "investorName": "Creandum"
+        }
+      ],
+      "reason": {
+        "kind": "round",
+        "date": "2018-10-23",
+        "text": "raised a $7.5M Series B",
+        "source": {
+          "name": "techcrunch.com",
+          "url": "https://techcrunch.com/2018/10/23/stockholm-based-resolution-games-nabs-7-5m-to-pioneer-ar-vr-experiences"
+        }
+      }
+    },
+    {
+      "companyId": "cb9ef4ad-f5ee-4ae9-bd35-d3924b57eb21",
+      "name": "Tide",
+      "country": null,
+      "blurb": "a UK‑based fintech platform offering business current accounts and financial adm",
+      "sectors": [
+        "fintech",
+        "saas"
+      ],
+      "fit": {
+        "score": 3,
+        "sentence": "Tide works with finance teams; your software could plug into their stack.",
+        "kind": "complement"
+      },
+      "via": [
+        {
+          "investorId": "creandum",
+          "investorName": "Creandum"
+        }
+      ],
+      "reason": {
+        "kind": "round",
+        "date": "2018-08-20",
+        "text": "raised a $10.2M Series A",
+        "source": {
+          "name": "tracxn.com",
+          "url": "https://tracxn.com/d/companies/tide/__-iodg6wQzO-J1zXdyyIGbC7ghptVvUxsCpenj247epM/funding-and-investors"
+        }
+      }
+    },
+    {
+      "companyId": "0a3d7daf-bd0d-4679-ade5-49eb86e5095a",
+      "name": "Revolut",
+      "country": "United Kingdom",
+      "blurb": "a British fintech and banking services company headquartered in London, founded",
+      "sectors": [
+        "fintech"
+      ],
+      "fit": {
+        "score": 3,
+        "sentence": "Revolut works with finance teams; your software could plug into their stack.",
+        "kind": "complement"
+      },
+      "via": [
+        {
+          "investorId": "balderton-capital",
+          "investorName": "Balderton Capital"
+        }
+      ],
+      "reason": {
+        "kind": "round",
+        "date": "2016-07-01",
+        "text": "raised a $10M Series A",
+        "source": {
+          "name": "techcrunch.com",
+          "url": "https://techcrunch.com/2016/07/12/revolut-raises-10-million-series-a/"
+        }
+      }
+    },
+    {
+      "companyId": "ab8a8ca2-7a87-43df-8c46-6eab9bf70bde",
+      "name": "Credit Benchmark",
+      "country": null,
+      "blurb": "a financial data analytics company that provides consensus credit risk assessmen",
+      "sectors": [
+        "fintech",
+        "data",
+        "saas"
+      ],
+      "fit": {
+        "score": 3,
+        "sentence": "Credit Benchmark works with finance teams; your software could plug into their stack.",
+        "kind": "complement"
+      },
+      "via": [
+        {
+          "investorId": "balderton-capital",
+          "investorName": "Balderton Capital"
+        }
+      ],
+      "reason": {
+        "kind": "round",
+        "date": "2015-07-15",
+        "text": "raised a $20M Series B",
+        "source": {
+          "name": "techcrunch.com",
+          "url": "https://techcrunch.com/2015/07/15/credit-benchmark-gets-further-20m-for-its-consensus-credit-risk-platform"
+        }
+      }
+    },
+    {
+      "companyId": "93d09843-cc48-4c70-aa16-df4ba745aae0",
+      "name": "Circle Health",
+      "country": null,
+      "blurb": "healthcare company, offering treatment centres across the UK",
+      "sectors": [
+        "health",
+        "biotech"
+      ],
+      "fit": {
+        "score": 3,
+        "sentence": "Circle Health sits on clinical workflows that AI can lighten.",
+        "kind": "complement"
+      },
+      "via": [
+        {
+          "investorId": "balderton-capital",
+          "investorName": "Balderton Capital"
+        }
+      ],
+      "reason": {
+        "kind": "round",
+        "date": "2012-06-01",
+        "text": "raised a £47.5M post-ipo equity",
+        "source": {
+          "name": "en.wikipedia.org",
+          "url": "https://en.wikipedia.org/wiki/Circle_Health_Group"
+        }
+      }
+    },
+    {
+      "companyId": "6c4f32f7-1aa1-430b-ade7-83a5b7821c28",
+      "name": "Talend",
+      "country": null,
+      "blurb": "a multinational software and services company serving sectors such as telecommun",
+      "sectors": [
+        "devtools",
+        "saas",
+        "telecom"
+      ],
+      "fit": {
+        "score": 3,
+        "sentence": "Talend builds the tools your engineers use.",
+        "kind": "complement"
+      },
+      "via": [
+        {
+          "investorId": "balderton-capital",
+          "investorName": "Balderton Capital"
+        }
+      ],
+      "reason": {
+        "kind": "round",
+        "date": "2010-11-10",
+        "text": "raised a $34M Series E",
+        "source": {
+          "name": "techcrunch.com",
+          "url": "https://techcrunch.com/2010/11/10/open-source-software-company-talend-raises-34m-acquires-sopera"
+        }
+      }
+    },
+    {
+      "companyId": "46917f06-2a9a-44be-a1f4-6579d9f1b321",
+      "name": "Seon",
+      "country": null,
+      "blurb": "finTech company that provides fraud prevention solutions",
+      "sectors": [
+        "fintech",
+        "security",
+        "marketing"
+      ],
+      "fit": {
+        "score": 3,
+        "sentence": "Seon works with finance teams; your software could plug into their stack.",
+        "kind": "complement"
+      },
+      "via": [
+        {
+          "investorId": "creandum",
+          "investorName": "Creandum"
+        }
+      ],
+      "reason": null
+    },
+    {
+      "companyId": "713fe0ae-4778-4e9c-8d65-bafa28a903b4",
+      "name": "TypeLess",
+      "country": null,
+      "blurb": "aI messaging API for smarter, faster communication",
+      "sectors": [
+        "ai",
+        "devtools"
+      ],
+      "fit": {
+        "score": 3,
+        "sentence": "TypeLess builds the tools your engineers use.",
+        "kind": "complement"
+      },
+      "via": [
+        {
+          "investorId": "balderton-capital",
+          "investorName": "Balderton Capital"
+        }
+      ],
+      "reason": null
+    },
+    {
+      "companyId": "451b1614-8eaa-42ba-ba97-4ad58ebd3581",
+      "name": "Soundtrack Your Brand",
+      "country": "Sweden",
+      "blurb": "a Swedish B2B music streaming service for businesses",
+      "sectors": [
+        "saas",
+        "space",
+        "media",
+        "marketing"
+      ],
+      "fit": {
+        "score": 1,
+        "sentence": "Soundtrack Your Brand: a Swedish B2B music streaming service for businesses",
+        "kind": "adjacent"
+      },
+      "via": [
+        {
+          "investorId": "creandum",
+          "investorName": "Creandum"
+        },
+        {
+          "investorId": "balderton-capital",
+          "investorName": "Balderton Capital"
+        }
+      ],
+      "reason": {
+        "kind": "round",
+        "date": "2017-02-17",
+        "text": "raised a $22M Series C",
+        "source": {
+          "name": "techcrunch.com",
+          "url": "https://techcrunch.com/2017/02/17/soundtrack-your-brand-a-spotify-for-b2b-nabs-22m-for-expansion"
+        }
+      }
+    },
+    {
+      "companyId": "583abc19-8948-410d-85bc-eda4901334c4",
+      "name": "Tictail",
+      "country": "Sweden",
+      "blurb": "swedish e‑commerce platform for independent retailers",
+      "sectors": [
+        "commerce",
+        "saas",
+        "media"
+      ],
+      "fit": {
+        "score": 1,
+        "sentence": "Tictail: swedish e‑commerce platform for independent retailers",
+        "kind": "adjacent"
+      },
+      "via": [
+        {
+          "investorId": "creandum",
+          "investorName": "Creandum"
+        },
+        {
+          "investorId": "balderton-capital",
+          "investorName": "Balderton Capital"
+        }
+      ],
+      "reason": {
+        "kind": "round",
+        "date": "2015-07-29",
+        "text": "raised a $22M Series B",
+        "source": {
+          "name": "techcrunch.com",
+          "url": "https://techcrunch.com/2015/07/29/tictail-doubles-down-with-thrive-capital-creandum-raises-22m-to-carve-out-online-marketplace"
+        }
+      }
+    },
+    {
+      "companyId": "16e8a1c4-4ec3-46c5-82ba-96f7b9905794",
+      "name": "Wayve Technologies",
+      "country": "United Kingdom",
+      "blurb": "british software and consulting company headquartered in London, founded in 2017",
+      "sectors": [
+        "saas",
+        "manufacturing",
+        "space"
+      ],
+      "fit": {
+        "score": 1,
+        "sentence": "Wayve Technologies: british software and consulting company headquartered in London, founded in 2017",
+        "kind": "adjacent"
+      },
+      "via": [
+        {
+          "investorId": "balderton-capital",
+          "investorName": "Balderton Capital"
+        }
+      ],
+      "reason": {
+        "kind": "round",
+        "date": "2026-02-09",
+        "text": "raised a $1.2B Series D",
+        "source": {
+          "name": "techcrunch.com",
+          "url": "https://techcrunch.com/2026/03/12/uber-wayve-and-nissan-plan-to-launch-a-robotaxi-service-in-tokyo-this-year"
+        }
+      }
+    },
+    {
+      "companyId": "dae82b91-1787-45fe-88b1-cb2eea1cc65e",
+      "name": "Nexos.ai",
+      "country": "Lithuania",
+      "blurb": "lithuanian AI orchestration startup offering the AI Workspace platform",
+      "sectors": [
+        "ai",
+        "security",
+        "saas",
+        "space"
+      ],
+      "fit": {
+        "score": 1,
+        "sentence": "Nexos.ai: lithuanian AI orchestration startup offering the AI Workspace platform",
+        "kind": "adjacent"
+      },
+      "via": [
+        {
+          "investorId": "creandum",
+          "investorName": "Creandum"
+        }
+      ],
+      "reason": {
+        "kind": "round",
+        "date": "2025-10-21",
+        "text": "raised a $35M Series A",
+        "source": {
+          "name": "techcrunch.com",
+          "url": "https://techcrunch.com/2025/10/20/european-ai-rising-star-nexos-ai-raises-30m-to-unlock-enterprise-ai-adoption"
+        }
+      }
+    },
+    {
+      "companyId": "f5f751ec-7865-4355-8e29-341ce55c83ac",
+      "name": "Jack & Jill AI",
+      "country": null,
+      "blurb": "london‑based UK startup that provides AI‑driven recruitment‑agent services",
+      "sectors": [
+        "ai",
+        "hr"
+      ],
+      "fit": {
+        "score": 1,
+        "sentence": "Jack & Jill AI: london‑based UK startup that provides AI‑driven recruitment‑agent services",
+        "kind": "adjacent"
+      },
+      "via": [
+        {
+          "investorId": "creandum",
+          "investorName": "Creandum"
+        }
+      ],
+      "reason": {
+        "kind": "round",
+        "date": "2025-10-16",
+        "text": "raised a $20M seed round",
+        "source": {
+          "name": "techcrunch.com",
+          "url": "https://techcrunch.com/2025/10/16/jack-jill-raises-20-million-to-bring-conversational-ai-to-job-hunting"
+        }
+      }
+    },
+    {
+      "companyId": "f1486101-629c-487e-a200-dbb67d2539d2",
+      "name": "ClaimSorted",
+      "country": "United Kingdom",
+      "blurb": "british software and services company headquartered in London, founded in 2024",
+      "sectors": [
+        "insurance",
+        "ai",
+        "saas",
+        "media"
+      ],
+      "fit": {
+        "score": 1,
+        "sentence": "ClaimSorted: british software and services company headquartered in London, founded in 2024",
+        "kind": "adjacent"
+      },
+      "via": [
+        {
+          "investorId": "balderton-capital",
+          "investorName": "Balderton Capital"
+        }
+      ],
+      "reason": {
+        "kind": "round",
+        "date": "2025-10-13",
+        "text": "raised a $13.3M seed round",
+        "source": {
+          "name": "linkedin.com",
+          "url": "https://www.linkedin.com/posts/seb-johnson_breaking-claimsorted-has-raised-one-of-ever-activity-7383419936024526848-tOgW"
+        }
+      }
+    },
+    {
+      "companyId": "0f84f5e5-fd26-45af-9e25-95a06d18b01e",
+      "name": "Appcharge",
+      "country": null,
+      "blurb": "direct-to-consumer mobile gaming monetization platform helping developers bypass",
+      "sectors": [
+        "commerce",
+        "gaming",
+        "saas",
+        "media",
+        "consumer"
+      ],
+      "fit": {
+        "score": 1,
+        "sentence": "Appcharge: direct-to-consumer mobile gaming monetization platform helping developers bypass",
+        "kind": "adjacent"
+      },
+      "via": [
+        {
+          "investorId": "creandum",
+          "investorName": "Creandum"
+        }
+      ],
+      "reason": {
+        "kind": "round",
+        "date": "2025-08-13",
+        "text": "raised a $58M Series B",
+        "source": {
+          "name": "businesswire.com",
+          "url": "https://www.businesswire.com/news/home/20250813210482/en/Appcharge-Raises-$58-Million-in-Series-B-Round-Led-by-IVP-to-Scale-Top-Direct-to-Consumer-Platform-for-Mobile-Games"
+        }
+      }
+    },
+    {
+      "companyId": "3e1f0925-cb71-4859-97f5-01e36eed1718",
+      "name": "Boardy",
+      "country": null,
+      "blurb": "aI-powered professional networking platform founded by Andrew D'Souza",
+      "sectors": [
+        "ai",
+        "saas",
+        "telecom"
+      ],
+      "fit": {
+        "score": 1,
+        "sentence": "Boardy: aI-powered professional networking platform founded by Andrew D'Souza",
+        "kind": "adjacent"
+      },
+      "via": [
+        {
+          "investorId": "creandum",
+          "investorName": "Creandum"
+        }
+      ],
+      "reason": {
+        "kind": "round",
+        "date": "2025-01-14",
+        "text": "raised a $8M seed round",
+        "source": {
+          "name": "techcrunch.com",
+          "url": "https://techcrunch.com/2025/01/14/boardy-ai-raises-8m-seed-round-months-after-closing-pre-seed"
+        }
+      }
+    },
+    {
+      "companyId": "c1bc00be-1126-42d4-bd6e-d88476ff87aa",
+      "name": "Kong",
+      "country": null,
+      "blurb": "a software and services organization in Tiger Global's portfolio",
+      "sectors": [
+        "saas"
+      ],
+      "fit": {
+        "score": 1,
+        "sentence": "Kong: a software and services organization in Tiger Global's portfolio",
+        "kind": "adjacent"
+      },
+      "via": [
+        {
+          "investorId": "balderton-capital",
+          "investorName": "Balderton Capital"
+        }
+      ],
+      "reason": {
+        "kind": "round",
+        "date": "2024-11-19",
+        "text": "raised a $175M Series E",
+        "source": {
+          "name": "news.crunchbase.com",
+          "url": "https://news.crunchbase.com/venture/ai-leads-biggest-funding-rounds-xai-anthropic"
+        }
+      }
+    },
+    {
+      "companyId": "9767f74d-536e-4d63-b38e-23749f47aaa0",
+      "name": "H Company",
+      "country": null,
+      "blurb": "an AI company developing agentic AI models, founded by Antoine Chassang",
+      "sectors": [
+        "ai"
+      ],
+      "fit": {
+        "score": 1,
+        "sentence": "H Company: an AI company developing agentic AI models, founded by Antoine Chassang",
+        "kind": "adjacent"
+      },
+      "via": [
+        {
+          "investorId": "creandum",
+          "investorName": "Creandum"
+        }
+      ],
+      "reason": {
+        "kind": "round",
+        "date": "2024-05-21",
+        "text": "raised a $220M seed round",
+        "source": {
+          "name": "techcrunch.com",
+          "url": "https://techcrunch.com/2024/05/21/french-ai-startup-h-raises-220-million-seed-round"
+        }
+      }
+    },
+    {
+      "companyId": "70959ec6-d2a2-402c-adb3-45de60bbf0d7",
+      "name": "Tilt",
+      "country": null,
+      "blurb": "mobile crowdfunding: The easiest way to collect, fundraise, and sell…",
+      "sectors": [
+        "commerce",
+        "consumer"
+      ],
+      "fit": {
+        "score": 1,
+        "sentence": "Tilt: mobile crowdfunding: The easiest way to collect, fundraise, and sell…",
+        "kind": "adjacent"
+      },
+      "via": [
+        {
+          "investorId": "balderton-capital",
+          "investorName": "Balderton Capital"
+        }
+      ],
+      "reason": {
+        "kind": "round",
+        "date": "2024-04-19",
+        "text": "raised a $18M Series A",
+        "source": {
+          "name": "techcrunch.com",
+          "url": "https://techcrunch.com/2024/08/22/tilt-raises-18m-series-a-to-build-on-its-live-shopping-apps-success"
+        }
+      }
+    },
+    {
+      "companyId": "80824ae5-c3dc-4316-b4cb-796834d7f919",
+      "name": "Atla AI",
+      "country": null,
+      "blurb": "the improvement engine for AI agents",
+      "sectors": [
+        "ai"
+      ],
+      "fit": {
+        "score": 1,
+        "sentence": "Atla AI: the improvement engine for AI agents",
+        "kind": "adjacent"
+      },
+      "via": [
+        {
+          "investorId": "creandum",
+          "investorName": "Creandum"
+        }
+      ],
+      "reason": {
+        "kind": "round",
+        "date": "2023-12-07",
+        "text": "raised a $5M seed round",
+        "source": {
+          "name": "tracxn.com",
+          "url": "https://tracxn.com/d/companies/atla/__pRDnEKop_Br5tG4IVjFmbCIvzttBxRkQCU7Jw4eUQRs"
+        }
+      }
+    },
+    {
+      "companyId": "2fcbdac0-4027-4b78-8a5b-67a99447ca81",
+      "name": "Klaus",
+      "country": null,
+      "blurb": "aI-powered customer service quality management platform (acquired by Zendesk)",
+      "sectors": [
+        "ai",
+        "saas"
+      ],
+      "fit": {
+        "score": 1,
+        "sentence": "Klaus: aI-powered customer service quality management platform (acquired by Zendesk)",
+        "kind": "adjacent"
+      },
+      "via": [
+        {
+          "investorId": "creandum",
+          "investorName": "Creandum"
+        }
+      ],
+      "reason": {
+        "kind": "round",
+        "date": "2022-09-29",
+        "text": "raised a $11.5M Series A",
+        "source": {
+          "name": "techcrunch.com",
+          "url": "https://techcrunch.com/2022/09/29/klaus-secures-fresh-capital-to-automatically-categorize-and-score-customer-interactions"
+        }
+      }
+    },
+    {
+      "companyId": "e9513db0-86a1-4f4f-b8fd-540404a32c2a",
+      "name": "Aumio",
+      "country": null,
+      "blurb": "aumio is the ultimate sleep and mindfulness app for children, helping them to gr",
+      "sectors": [
+        "consumer"
+      ],
+      "fit": {
+        "score": 1,
+        "sentence": "Aumio: aumio is the ultimate sleep and mindfulness app for children, helping them to gr",
+        "kind": "adjacent"
+      },
+      "via": [
+        {
+          "investorId": "byfounders",
+          "investorName": "byFounders"
+        }
+      ],
+      "reason": {
+        "kind": "round",
+        "date": "2022-05-19",
+        "text": "raised a $3.2M seed round",
+        "source": {
+          "name": "techcrunch.com",
+          "url": "https://techcrunch.com/2022/06/04/for-mental-health-startups-happiness-is-in-niches"
+        }
+      }
+    },
+    {
+      "companyId": "d3d5bd1d-468e-40a6-818f-34295887f5c0",
+      "name": "Aircall",
+      "country": null,
+      "blurb": "cloud-based phone system and call center software for sales and support teams",
+      "sectors": [
+        "saas",
+        "marketing"
+      ],
+      "fit": {
+        "score": 1,
+        "sentence": "Aircall: cloud-based phone system and call center software for sales and support teams",
+        "kind": "adjacent"
+      },
+      "via": [
+        {
+          "investorId": "balderton-capital",
+          "investorName": "Balderton Capital"
+        }
+      ],
+      "reason": {
+        "kind": "round",
+        "date": "2022-02-23",
+        "text": "raised a $120M Series D",
+        "source": {
+          "name": "techcrunch.com",
+          "url": "https://techcrunch.com/2022/02/23/aircall-raises-120-million-series-d/"
+        }
+      }
+    },
+    {
+      "companyId": "7530a6da-83eb-49f4-a6f4-c35210b5172e",
+      "name": "Infarm",
+      "country": null,
+      "blurb": "luxembourg-based impact venture capital firm investing in early-stage and growth",
+      "sectors": [
+        "saas",
+        "construction",
+        "agriculture",
+        "telecom"
+      ],
+      "fit": {
+        "score": 1,
+        "sentence": "Infarm: luxembourg-based impact venture capital firm investing in early-stage and growth",
+        "kind": "adjacent"
+      },
+      "via": [
+        {
+          "investorId": "balderton-capital",
+          "investorName": "Balderton Capital"
+        }
+      ],
+      "reason": {
+        "kind": "round",
+        "date": "2021-12-16",
+        "text": "raised a $200M Series D",
+        "source": {
+          "name": "techcrunch.com",
+          "url": "https://techcrunch.com/2021/12/16/vertical-farming-startup-infarm-raises-200m-for-international-expansion"
+        }
+      }
+    },
+    {
+      "companyId": "d98ffae1-1829-447c-8151-5a033e861895",
+      "name": "Neo4j",
+      "country": null,
+      "blurb": "a graph database provider and software services company based in San Mateo, Cali",
+      "sectors": [
+        "data",
+        "saas"
+      ],
+      "fit": {
+        "score": 1,
+        "sentence": "Neo4j: a graph database provider and software services company based in San Mateo, Cali",
+        "kind": "adjacent"
+      },
+      "via": [
+        {
+          "investorId": "creandum",
+          "investorName": "Creandum"
+        }
+      ],
+      "reason": {
+        "kind": "round",
+        "date": "2021-06-17",
+        "text": "raised a $325M Series F",
+        "source": {
+          "name": "techcrunch.com",
+          "url": "https://techcrunch.com/2021/06/17/neo4j-series-f"
+        }
+      }
+    },
+    {
+      "companyId": "b55c7e1e-bf18-40ad-b680-645ea9c64cd9",
+      "name": "Rekki",
+      "country": null,
+      "blurb": "online ordering platform for restaurants and food suppliers",
+      "sectors": [
+        "food",
+        "saas"
+      ],
+      "fit": {
+        "score": 1,
+        "sentence": "Rekki: online ordering platform for restaurants and food suppliers",
+        "kind": "adjacent"
+      },
+      "via": [
+        {
+          "investorId": "creandum",
+          "investorName": "Creandum"
+        }
+      ],
+      "reason": {
+        "kind": "round",
+        "date": "2019-01-01",
+        "text": "closed a seed round",
+        "source": {
+          "name": "techcrunch.com",
+          "url": "https://techcrunch.com/2020/07/17/carolina-brochado-eqt-growth"
+        }
+      }
+    },
+    {
+      "companyId": "a5d004b2-2ac6-4192-8ebd-8e91663f30e7",
+      "name": "Thread",
+      "country": null,
+      "blurb": "thread makes it incredibly easy to dress well, using stylists and AI",
+      "sectors": [
+        "ai"
+      ],
+      "fit": {
+        "score": 1,
+        "sentence": "Thread: thread makes it incredibly easy to dress well, using stylists and AI",
+        "kind": "adjacent"
+      },
+      "via": [
+        {
+          "investorId": "balderton-capital",
+          "investorName": "Balderton Capital"
+        }
+      ],
+      "reason": {
+        "kind": "round",
+        "date": "2018-10-16",
+        "text": "closed a Series B round",
+        "source": {
+          "name": "tracxn.com",
+          "url": "https://tracxn.com/d/companies/thread/__cJNwiP6VAWcOOtQE92bFsJZVhgcvbVr_3Ofli8rQjho/funding-and-investors"
+        }
+      }
+    },
+    {
+      "companyId": "2b6c9a0d-811c-4c1e-9ad0-abeac30a7c92",
+      "name": "Roli",
+      "country": null,
+      "blurb": "a Delhi‑based Indian company that develops software, hardware, entertainment, an",
+      "sectors": [
+        "saas",
+        "hardware",
+        "media"
+      ],
+      "fit": {
+        "score": 1,
+        "sentence": "Roli: a Delhi‑based Indian company that develops software, hardware, entertainment, an",
+        "kind": "adjacent"
+      },
+      "via": [
+        {
+          "investorId": "balderton-capital",
+          "investorName": "Balderton Capital"
+        }
+      ],
+      "reason": {
+        "kind": "round",
+        "date": "2017-10-25",
+        "text": "closed a venture round",
+        "source": {
+          "name": "techcrunch.com",
+          "url": "https://techcrunch.com/2017/10/25/music-startup-roli-adds-pharrell-williams-as-new-investor-and-chief-creative-officer"
+        }
+      }
+    },
+    {
+      "companyId": "f344c051-7dba-4b82-bb6f-d07672108b8a",
+      "name": "Citymapper",
+      "country": null,
+      "blurb": "a transport and navigation technology company",
+      "sectors": [
+        "mobility",
+        "consumer"
+      ],
+      "fit": {
+        "score": 1,
+        "sentence": "Citymapper: a transport and navigation technology company",
+        "kind": "adjacent"
+      },
+      "via": [
+        {
+          "investorId": "balderton-capital",
+          "investorName": "Balderton Capital"
+        }
+      ],
+      "reason": {
+        "kind": "round",
+        "date": "2014-04-17",
+        "text": "raised a $10M Series A",
+        "source": {
+          "name": "techcrunch.com",
+          "url": "https://techcrunch.com/2014/04/17/citymapper-10m"
+        }
+      }
+    },
+    {
+      "companyId": "4abd615b-1552-4c1a-8917-b4d29ad6e9e6",
+      "name": "Sketchfab",
+      "country": null,
+      "blurb": "a company that operates an online platform for publishing, sharing, and discover",
+      "sectors": [
+        "saas",
+        "media"
+      ],
+      "fit": {
+        "score": 1,
+        "sentence": "Sketchfab: a company that operates an online platform for publishing, sharing, and discover",
+        "kind": "adjacent"
+      },
+      "via": [
+        {
+          "investorId": "balderton-capital",
+          "investorName": "Balderton Capital"
+        }
+      ],
+      "reason": {
+        "kind": "round",
+        "date": "2013-12-05",
+        "text": "raised a $2M seed round",
+        "source": {
+          "name": "techcrunch.com",
+          "url": "https://techcrunch.com/2015/06/16/sketchfab-the-platform-for-3d-files-lands-7m-series-a-led-by-firstmark"
+        }
+      }
+    },
+    {
+      "companyId": "a58e9b67-3848-44c1-a672-14eab8fed24f",
+      "name": "Voi",
+      "country": null,
+      "blurb": null,
+      "sectors": [
+        "insurance",
+        "logistics",
+        "mobility",
+        "media"
+      ],
+      "fit": {
+        "score": 0,
+        "sentence": "Voi, same investor.",
+        "kind": "none"
+      },
+      "via": [
+        {
+          "investorId": "creandum",
+          "investorName": "Creandum"
+        },
+        {
+          "investorId": "balderton-capital",
+          "investorName": "Balderton Capital"
+        }
+      ],
+      "reason": {
+        "kind": "round",
+        "date": "2024-01-01",
+        "text": "raised a $25M funding round",
+        "source": {
+          "name": "sifted.eu",
+          "url": "https://sifted.eu/articles/startup-raise-voi-scooter-news"
+        }
+      }
+    },
+    {
+      "companyId": "f9a29a95-b997-410f-95df-98b4106a4eb7",
+      "name": "Lifesum",
+      "country": null,
+      "blurb": null,
+      "sectors": [],
+      "fit": {
+        "score": 0,
+        "sentence": "Lifesum, same investor.",
+        "kind": "none"
+      },
+      "via": [
+        {
+          "investorId": "creandum",
+          "investorName": "Creandum"
+        },
+        {
+          "investorId": "balderton-capital",
+          "investorName": "Balderton Capital"
+        }
+      ],
+      "reason": null
+    },
+    {
+      "companyId": "24fd8d4a-dd15-4cc1-82bf-3e4910eacea8",
+      "name": "Depop",
+      "country": null,
+      "blurb": null,
+      "sectors": [],
+      "fit": {
+        "score": 0,
+        "sentence": "Depop, same investor.",
+        "kind": "none"
+      },
+      "via": [
+        {
+          "investorId": "creandum",
+          "investorName": "Creandum"
+        },
+        {
+          "investorId": "balderton-capital",
+          "investorName": "Balderton Capital"
+        }
+      ],
+      "reason": null
+    },
+    {
+      "companyId": "4c1057b9-0d5e-475f-9899-731ee6793c10",
+      "name": "Quantum-Systems",
+      "country": "Germany",
+      "blurb": null,
+      "sectors": [
+        "hardware"
+      ],
+      "fit": {
+        "score": 0,
+        "sentence": "Quantum-Systems, same investor.",
+        "kind": "none"
+      },
+      "via": [
+        {
+          "investorId": "balderton-capital",
+          "investorName": "Balderton Capital"
+        }
+      ],
+      "reason": {
+        "kind": "round",
+        "date": "2026-07-02",
+        "text": "raised a $1.2B Series D",
+        "source": {
+          "name": "tracxn.com",
+          "url": "https://tracxn.com/d/companies/quantum-systems/__sXYOkm8VaEm5_Ehxyly1geYDZyqVa27MHL-T3Fcky_o/funding-and-investors"
+        }
+      }
+    },
+    {
+      "companyId": "b83744c2-5f25-4df7-98fd-c0b3d96e49f0",
+      "name": "PAVE Space",
+      "country": null,
+      "blurb": "builds orbital transfer vehicles and kick-stage propulsion systems to deliver pa",
+      "sectors": [
+        "logistics",
+        "mobility",
+        "construction",
+        "space",
+        "media"
+      ],
+      "fit": {
+        "score": 0,
+        "sentence": "PAVE Space: builds orbital transfer vehicles and kick-stage propulsion systems to deliver pa",
+        "kind": "none"
+      },
+      "via": [
+        {
+          "investorId": "creandum",
+          "investorName": "Creandum"
+        }
+      ],
+      "reason": {
+        "kind": "round",
+        "date": "2026-03-25",
+        "text": "raised a $40M seed round",
+        "source": {
+          "name": "tracxn.com",
+          "url": "https://tracxn.com/d/companies/pavespace/__thPv9XgJuw1NsEA2xjFiDRiPrKS_dTS--Cs6S4Ac1vI/funding-and-investors"
+        }
+      }
+    },
+    {
+      "companyId": "4694aa02-7e04-4b69-b6c8-897b0854f678",
+      "name": "Escape",
+      "country": "France",
+      "blurb": "offensive security for the teams that are 100x outnumbered",
+      "sectors": [
+        "security"
+      ],
+      "fit": {
+        "score": 0,
+        "sentence": "Escape: offensive security for the teams that are 100x outnumbered",
+        "kind": "none"
+      },
+      "via": [
+        {
+          "investorId": "balderton-capital",
+          "investorName": "Balderton Capital"
+        }
+      ],
+      "reason": {
+        "kind": "round",
+        "date": "2026-03-10",
+        "text": "closed a Series A round",
+        "source": {
+          "name": "tracxn.com",
+          "url": "https://tracxn.com/d/companies/escape/__jSfAJDiLH8_Hz29Gb26cwX6eydH7yPCsqpAKg3gj11Q/funding-and-investors"
+        }
+      }
+    },
+    {
+      "companyId": "dd8c8c55-9d9c-479b-9bd7-5faee98b7698",
+      "name": "Homie",
+      "country": null,
+      "blurb": null,
+      "sectors": [
+        "saas",
+        "space",
+        "marketing"
+      ],
+      "fit": {
+        "score": 0,
+        "sentence": "Homie, same investor.",
+        "kind": "none"
+      },
+      "via": [
+        {
+          "investorId": "antler",
+          "investorName": "Antler"
+        }
+      ],
+      "reason": {
+        "kind": "round",
+        "date": "2026-01-13",
+        "text": "raised a €1M pre-seed round",
+        "source": {
+          "name": "techfundingnews.com",
+          "url": "https://techfundingnews.com/homie-raises-1m-pre-seed-to-scale-warm-b2b-introductions/"
+        }
+      }
+    },
+    {
+      "companyId": "3f99b196-92ef-4d4b-a8f7-eae97604a143",
+      "name": "Black Forest Labs",
+      "country": "Germany",
+      "blurb": null,
+      "sectors": [
+        "saas",
+        "agriculture"
+      ],
+      "fit": {
+        "score": 0,
+        "sentence": "Black Forest Labs, same investor.",
+        "kind": "none"
+      },
+      "via": [
+        {
+          "investorId": "creandum",
+          "investorName": "Creandum"
+        }
+      ],
+      "reason": {
+        "kind": "round",
+        "date": "2025-11-21",
+        "text": "raised a $308M Series B",
+        "source": {
+          "name": "techcrunch.com",
+          "url": "https://techcrunch.com/2025/12/01/black-forest-labs-raises-300m-at-3-25b-valuation"
+        }
+      }
+    },
+    {
+      "companyId": "b7250b1e-4e60-43fd-99f3-d61fbc388f66",
+      "name": "Sava",
+      "country": null,
+      "blurb": "building the future of trusts",
+      "sectors": [
+        "construction"
+      ],
+      "fit": {
+        "score": 0,
+        "sentence": "Sava: building the future of trusts",
+        "kind": "none"
+      },
+      "via": [
+        {
+          "investorId": "balderton-capital",
+          "investorName": "Balderton Capital"
+        }
+      ],
+      "reason": {
+        "kind": "round",
+        "date": "2025-07-31",
+        "text": "closed a Series A round",
+        "source": {
+          "name": "techcrunch.com",
+          "url": "https://techcrunch.com/2024/08/12/euro-vcs-welcome-baldertons-fresh-1-3b-but-grumble-about-europes-ai-misses"
+        }
+      }
+    },
+    {
+      "companyId": "bbdead4b-d3fa-4f9a-a94a-181ec813a93c",
+      "name": "Capi Money",
+      "country": null,
+      "blurb": null,
+      "sectors": [],
+      "fit": {
+        "score": 0,
+        "sentence": "Capi Money, same investor.",
+        "kind": "none"
+      },
+      "via": [
+        {
+          "investorId": "creandum",
+          "investorName": "Creandum"
+        }
+      ],
+      "reason": {
+        "kind": "round",
+        "date": "2025-02-18",
+        "text": "raised a $8M Series A",
+        "source": {
+          "name": "tracxn.com",
+          "url": "https://tracxn.com/d/companies/capi-money/__56xXonPKP4iqD7yu5J027ZNvF-3-15Bc4WnLdvh8SGI"
+        }
+      }
+    },
+    {
+      "companyId": "ef043f20-e5cc-4d42-8930-42003ac086a1",
+      "name": "QMill",
+      "country": null,
+      "blurb": null,
+      "sectors": [
+        "manufacturing",
+        "hardware"
+      ],
+      "fit": {
+        "score": 0,
+        "sentence": "QMill, same investor.",
+        "kind": "none"
+      },
+      "via": [
+        {
+          "investorId": "antler",
+          "investorName": "Antler"
+        }
+      ],
+      "reason": {
+        "kind": "round",
+        "date": "2024-09-17",
+        "text": "raised a €4M seed round",
+        "source": {
+          "name": "eu-startups.com",
+          "url": "https://www.eu-startups.com/2024/09/finnish-startup-qmill-raises-e4-million-to-deliver-near-term-industrial-quantum-advantage/"
+        }
+      }
+    },
+    {
+      "companyId": "2095072e-ea2d-4db0-ba08-02ea66078fb9",
+      "name": "Sarl Albert Rillet",
+      "country": "France",
+      "blurb": null,
+      "sectors": [],
+      "fit": {
+        "score": 0,
+        "sentence": "Sarl Albert Rillet, same investor.",
+        "kind": "none"
+      },
+      "via": [
+        {
+          "investorId": "creandum",
+          "investorName": "Creandum"
+        }
+      ],
+      "reason": {
+        "kind": "round",
+        "date": "2024-07-29",
+        "text": "raised a $13.5M seed round",
+        "source": {
+          "name": "techcrunch.com",
+          "url": "https://techcrunch.com/2025/05/28/rillet-raises-25m-from-sequoia-to-automate-general-ledger-systems-using-ai"
+        }
+      }
+    },
+    {
+      "companyId": "3006840a-fea6-42d0-a5cc-c6c991f38e69",
+      "name": "Prewave",
+      "country": null,
+      "blurb": null,
+      "sectors": [
+        "logistics",
+        "ai",
+        "saas",
+        "media",
+        "marketing"
+      ],
+      "fit": {
+        "score": 0,
+        "sentence": "Prewave, same investor.",
+        "kind": "none"
+      },
+      "via": [
+        {
+          "investorId": "creandum",
+          "investorName": "Creandum"
+        }
+      ],
+      "reason": {
+        "kind": "round",
+        "date": "2024-06-25",
+        "text": "raised a €63M Series B",
+        "source": {
+          "name": "xista.vc",
+          "url": "https://xista.vc/news/detail/prewave-raises-eur63m-series-b-to-revolutionise-supply-chain-risk-management-with-ai-driven-superintelligence-platform"
+        }
+      }
+    },
+    {
+      "companyId": "dfd72d7f-3ceb-52ba-8e48-af7414f4f89b",
+      "name": "Makiina",
+      "country": null,
+      "blurb": null,
+      "sectors": [],
+      "fit": {
+        "score": 0,
+        "sentence": "Makiina, same investor.",
+        "kind": "none"
+      },
+      "via": [
+        {
+          "investorId": "byfounders",
+          "investorName": "byFounders"
+        }
+      ],
+      "reason": {
+        "kind": "round",
+        "date": "2024-06-16",
+        "text": "raised a $800K pre-seed round",
+        "source": {
+          "name": "nordic9.com",
+          "url": "https://nordic9.com/news/aql-robotics-in-a-800000-pre-seed-round-led-by-fov-ventures/"
+        }
+      }
+    },
+    {
+      "companyId": "604c663f-2b8b-4f87-a72a-85a220a65c22",
+      "name": "Photoroom SAS",
+      "country": null,
+      "blurb": null,
+      "sectors": [
+        "ai",
+        "consumer"
+      ],
+      "fit": {
+        "score": 0,
+        "sentence": "Photoroom SAS, same investor.",
+        "kind": "none"
+      },
+      "via": [
+        {
+          "investorId": "balderton-capital",
+          "investorName": "Balderton Capital"
+        }
+      ],
+      "reason": {
+        "kind": "round",
+        "date": "2024-02-27",
+        "text": "raised a $43M Series B",
+        "source": {
+          "name": "techcrunch.com",
+          "url": "https://techcrunch.com/2024/02/27/confirmed-photoroom-the-ai-image-editor-raised-43m-at-a-500m-valuation"
+        }
+      }
+    },
+    {
+      "companyId": "4ac538f7-0e56-508f-8c72-ed938a41cea4",
+      "name": "Qa Tech",
+      "country": null,
+      "blurb": null,
+      "sectors": [],
+      "fit": {
+        "score": 0,
+        "sentence": "Qa Tech, same investor.",
+        "kind": "none"
+      },
+      "via": [
+        {
+          "investorId": "byfounders",
+          "investorName": "byFounders"
+        }
+      ],
+      "reason": {
+        "kind": "round",
+        "date": "2023-09-26",
+        "text": "raised a $1M pre-seed round",
+        "source": {
+          "name": "bebeez.eu",
+          "url": "https://bebeez.eu/2023/10/05/swedish-startup-raises-1-million-pre-seed-to-disrupt-software-testing-with-ai-advancements/"
+        }
+      }
+    },
+    {
+      "companyId": "439fe7e2-930f-4a07-bc23-7df212cfc3a7",
+      "name": "Portfolio Companies",
+      "country": null,
+      "blurb": "a Japanese-backed venture capital firm investing in deeptech, industrial technol",
+      "sectors": [
+        "manufacturing"
+      ],
+      "fit": {
+        "score": 0,
+        "sentence": "Portfolio Companies: a Japanese-backed venture capital firm investing in deeptech, industrial technol",
+        "kind": "none"
+      },
+      "via": [
+        {
+          "investorId": "creandum",
+          "investorName": "Creandum"
+        }
+      ],
+      "reason": {
+        "kind": "round",
+        "date": "2022-12-07",
+        "text": "raised a $200M Series C",
+        "source": {
+          "name": "einride.tech",
+          "url": "https://www.einride.tech/press/einride-financing-2022"
+        }
+      }
+    },
+    {
+      "companyId": "ababa791-215e-45cd-b6db-15374d6bb6b0",
+      "name": "Rumli",
+      "country": null,
+      "blurb": "tech-led property management roll-up across the Nordics",
+      "sectors": [
+        "realestate"
+      ],
+      "fit": {
+        "score": 0,
+        "sentence": "Rumli: tech-led property management roll-up across the Nordics",
+        "kind": "none"
+      },
+      "via": [
+        {
+          "investorId": "byfounders",
+          "investorName": "byFounders"
+        }
+      ],
+      "reason": {
+        "kind": "round",
+        "date": "2022-11-18",
+        "text": "raised a €3M seed round",
+        "source": {
+          "name": "tech.eu",
+          "url": "https://tech.eu/2022/11/18/danish-proptech-proper"
+        }
+      }
+    },
+    {
+      "companyId": "e970961f-b15f-4f84-a6c7-1fa858527450",
+      "name": "Leapsome",
+      "country": null,
+      "blurb": "founded in Berlin in 2017 by CEO Jenny Podewils",
+      "sectors": [],
+      "fit": {
+        "score": 0,
+        "sentence": "Leapsome: founded in Berlin in 2017 by CEO Jenny Podewils",
+        "kind": "none"
+      },
+      "via": [
+        {
+          "investorId": "creandum",
+          "investorName": "Creandum"
+        }
+      ],
+      "reason": {
+        "kind": "round",
+        "date": "2022-03-24",
+        "text": "raised a $60M Series A",
+        "source": {
+          "name": "techcrunch.com",
+          "url": "https://techcrunch.com/2022/09/22/berlins-visionaries-club-vc-boosts-its-funds-with-e350m-worth-of-fresh-capital-for-b2b-investments"
+        }
+      }
+    },
+    {
+      "companyId": "9361f9f7-2737-42ed-96b9-bd79a7041465",
+      "name": "Merama",
+      "country": "United States",
+      "blurb": "a Latin American e‑commerce aggregator backed by SoftBank Latin America Fund",
+      "sectors": [
+        "commerce"
+      ],
+      "fit": {
+        "score": 0,
+        "sentence": "Merama: a Latin American e‑commerce aggregator backed by SoftBank Latin America Fund",
+        "kind": "none"
+      },
+      "via": [
+        {
+          "investorId": "balderton-capital",
+          "investorName": "Balderton Capital"
+        }
+      ],
+      "reason": {
+        "kind": "round",
+        "date": "2021-09-13",
+        "text": "raised a $225M Series B",
+        "source": {
+          "name": "techcrunch.com",
+          "url": "https://techcrunch.com/2021/12/09/e-commerce-aggregator-merama-gets-its-horn-after-just-12-months-in-business"
+        }
+      }
+    },
+    {
+      "companyId": "1717c90d-b82b-4220-9e94-4eab13085fcd",
+      "name": "Outfunnel",
+      "country": null,
+      "blurb": "outfunnel connects sales and marketing tools for better lead management",
+      "sectors": [
+        "marketing"
+      ],
+      "fit": {
+        "score": 0,
+        "sentence": "Outfunnel: outfunnel connects sales and marketing tools for better lead management",
+        "kind": "none"
+      },
+      "via": [
+        {
+          "investorId": "byfounders",
+          "investorName": "byFounders"
+        }
+      ],
+      "reason": {
+        "kind": "round",
+        "date": "2020-09-16",
+        "text": "raised a €1.1M pre-seed round",
+        "source": {
+          "name": "techcrunch.com",
+          "url": "https://techcrunch.com/2020/09/16/outfunnel"
+        }
+      }
+    },
+    {
+      "companyId": "8fe2b7b4-ee53-4b2f-8794-1832225784af",
+      "name": "Kahoot!",
+      "country": "Norway",
+      "blurb": null,
+      "sectors": [
+        "gaming",
+        "saas",
+        "education",
+        "consumer"
+      ],
+      "fit": {
+        "score": 0,
+        "sentence": "Kahoot!, same investor.",
+        "kind": "none"
+      },
+      "via": [
+        {
+          "investorId": "creandum",
+          "investorName": "Creandum"
+        }
+      ],
+      "reason": {
+        "kind": "round",
+        "date": "2020-06-11",
+        "text": "raised a $28M post ipo equity",
+        "source": {
+          "name": "techcrunch.com",
+          "url": "https://techcrunch.com/2020/06/11/kahoot-raises-28m-for-its-user-generated-educational-gaming-platform-now-valued-at-1-4b"
+        }
+      }
+    },
+    {
+      "companyId": "52a72b11-60a8-4fa8-833a-2715df7da42b",
+      "name": "Dazzle Rocks",
+      "country": null,
+      "blurb": "mobile game studio focused on puzzle games with match-3 mechanics",
+      "sectors": [
+        "gaming"
+      ],
+      "fit": {
+        "score": 0,
+        "sentence": "Dazzle Rocks: mobile game studio focused on puzzle games with match-3 mechanics",
+        "kind": "none"
+      },
+      "via": [
+        {
+          "investorId": "byfounders",
+          "investorName": "byFounders"
+        }
+      ],
+      "reason": {
+        "kind": "round",
+        "date": "2020-05-05",
+        "text": "closed a Series A round",
+        "source": {
+          "name": "tracxn.com",
+          "url": "https://tracxn.com/d/companies/dazzle-rocks/__L7x89K7h8phFjIsrRIzOTqm2bwGg6o6fSicAT6zGeNI"
+        }
+      }
+    },
+    {
+      "companyId": "2d19ac3c-a7af-4edd-a37e-9d36d76a386a",
+      "name": "TWAICE Technologies",
+      "country": "Germany",
+      "blurb": null,
+      "sectors": [
+        "energy",
+        "data",
+        "saas"
+      ],
+      "fit": {
+        "score": 0,
+        "sentence": "TWAICE Technologies, same investor.",
+        "kind": "none"
+      },
+      "via": [
+        {
+          "investorId": "creandum",
+          "investorName": "Creandum"
+        }
+      ],
+      "reason": {
+        "kind": "round",
+        "date": "2020-03-25",
+        "text": "raised a €11M Series A",
+        "source": {
+          "name": "techcrunch.com",
+          "url": "https://techcrunch.com/2020/03/25/battery-analytics-software-startup-twaice-raises-e11m-series-a-led-by-creandum"
+        }
+      }
+    },
+    {
+      "companyId": "b8aa7b90-0445-4265-8b4e-e65fc4e28f88",
+      "name": "Utopos Games",
+      "country": null,
+      "blurb": "game development studio",
+      "sectors": [
+        "gaming"
+      ],
+      "fit": {
+        "score": 0,
+        "sentence": "Utopos Games: game development studio",
+        "kind": "none"
+      },
+      "via": [
+        {
+          "investorId": "byfounders",
+          "investorName": "byFounders"
+        }
+      ],
+      "reason": {
+        "kind": "round",
+        "date": "2019-10-08",
+        "text": "raised a $1M seed round",
+        "source": {
+          "name": "tracxn.com",
+          "url": "https://tracxn.com/d/companies/utoposgames/__wOOKLUdD9ARBLM8u8mbk8oY-aMcQHzgTBou7DmW7pK0"
+        }
+      }
+    },
+    {
+      "companyId": "3608d99f-cd9c-4948-a494-0ee0e4ce4afe",
+      "name": "Greenely Premium",
+      "country": "Sweden",
+      "blurb": "a Swedish energy‑tech company based in Stockholm",
+      "sectors": [
+        "energy"
+      ],
+      "fit": {
+        "score": 0,
+        "sentence": "Greenely Premium: a Swedish energy‑tech company based in Stockholm",
+        "kind": "none"
+      },
+      "via": [
+        {
+          "investorId": "byfounders",
+          "investorName": "byFounders"
+        }
+      ],
+      "reason": {
+        "kind": "round",
+        "date": "2019-07-25",
+        "text": "raised a $2.8M seed round",
+        "source": {
+          "name": "techcrunch.com",
+          "url": "https://techcrunch.com/2024/07/26/energy-tech-startup-greenely-grabs-e8m-to-reach-more-households-and-support-europes-energy-transition"
+        }
+      }
+    },
+    {
+      "companyId": "d458bf05-1a24-454f-a23d-edb050058757",
+      "name": "RebTel Networks",
+      "country": "Sweden",
+      "blurb": null,
+      "sectors": [
+        "telecom"
+      ],
+      "fit": {
+        "score": 0,
+        "sentence": "RebTel Networks, same investor.",
+        "kind": "none"
+      },
+      "via": [
+        {
+          "investorId": "balderton-capital",
+          "investorName": "Balderton Capital"
+        }
+      ],
+      "reason": {
+        "kind": "round",
+        "date": "2018-06-21",
+        "text": "raised a $8M Series B",
+        "source": {
+          "name": "news.crunchbase.com",
+          "url": "https://news.crunchbase.com/startups/immigrant-and-refugee-tech-platform-rebtel-raises-8m-to-build-banking-for-the-worlds-migrants"
+        }
+      }
+    },
+    {
+      "companyId": "f681d6ca-a4fc-462f-89a1-051e3c731cec",
+      "name": "Frontier Car Group",
+      "country": null,
+      "blurb": "a company (SEC Central Index Key 0001693275) with Peter Lindholm among its board",
+      "sectors": [
+        "commerce"
+      ],
+      "fit": {
+        "score": 0,
+        "sentence": "Frontier Car Group: a company (SEC Central Index Key 0001693275) with Peter Lindholm among its board",
+        "kind": "none"
+      },
+      "via": [
+        {
+          "investorId": "balderton-capital",
+          "investorName": "Balderton Capital"
+        }
+      ],
+      "reason": {
+        "kind": "round",
+        "date": "2018-05-01",
+        "text": "raised a $41M Series B",
+        "source": {
+          "name": "techcrunch.com",
+          "url": "https://techcrunch.com/2018/05/01/frontier-car-group-raises-another-58m-for-its-used-car-marketplace-for-emerging-economies"
+        }
+      }
+    },
+    {
+      "companyId": "a5660fb2-82e1-467b-9751-cf09e1e69661",
+      "name": "Small Giant Games",
+      "country": "Finland",
+      "blurb": "finnish mobile gaming studio founded in 2013, headquartered in Helsinki and oper",
+      "sectors": [
+        "gaming"
+      ],
+      "fit": {
+        "score": 0,
+        "sentence": "Small Giant Games: finnish mobile gaming studio founded in 2013, headquartered in Helsinki and oper",
+        "kind": "none"
+      },
+      "via": [
+        {
+          "investorId": "creandum",
+          "investorName": "Creandum"
+        }
+      ],
+      "reason": {
+        "kind": "round",
+        "date": "2018-02-20",
+        "text": "closed a Series B round",
+        "source": {
+          "name": "techcrunch.com",
+          "url": "https://techcrunch.com/2018/12/20/zynga-to-acquire-small-giant-games-the-maker-of-empires-puzzles-for-700m"
+        }
+      }
+    },
+    {
+      "companyId": "135929d7-2641-4b61-b2da-da60e67afe95",
+      "name": "Mojiworks",
+      "country": null,
+      "blurb": null,
+      "sectors": [
+        "gaming"
+      ],
+      "fit": {
+        "score": 0,
+        "sentence": "Mojiworks, same investor.",
+        "kind": "none"
+      },
+      "via": [
+        {
+          "investorId": "balderton-capital",
+          "investorName": "Balderton Capital"
+        }
+      ],
+      "reason": {
+        "kind": "round",
+        "date": "2017-11-07",
+        "text": "raised a £2.1M Series A",
+        "source": {
+          "name": "techcrunch.com",
+          "url": "https://techcrunch.com/?p=1563586"
+        }
+      }
+    },
+    {
+      "companyId": "0686cee9-4e29-4a1e-8b25-0ce980cc098e",
+      "name": "Trade",
+      "country": null,
+      "blurb": "we're building Africa's Commodity Exchange",
+      "sectors": [
+        "construction"
+      ],
+      "fit": {
+        "score": 0,
+        "sentence": "Trade: we're building Africa's Commodity Exchange",
+        "kind": "none"
+      },
+      "via": [
+        {
+          "investorId": "creandum",
+          "investorName": "Creandum"
+        }
+      ],
+      "reason": {
+        "kind": "round",
+        "date": "2017-03-01",
+        "text": "raised a $3M seed round",
+        "source": {
+          "name": "Trade",
+          "url": "https://startupintros.com/orgs/trade"
+        }
+      }
+    },
+    {
+      "companyId": "39651925-4781-427a-9456-99a959189943",
+      "name": "Kyynel",
+      "country": null,
+      "blurb": "provides satellite and maritime communications network solutions, offering conne",
+      "sectors": [
+        "space",
+        "telecom"
+      ],
+      "fit": {
+        "score": 0,
+        "sentence": "Kyynel: provides satellite and maritime communications network solutions, offering conne",
+        "kind": "none"
+      },
+      "via": [
+        {
+          "investorId": "creandum",
+          "investorName": "Creandum"
+        }
+      ],
+      "reason": {
+        "kind": "round",
+        "date": "2016-10-27",
+        "text": "closed a Series A round",
+        "source": {
+          "name": "tracxn.com",
+          "url": "https://tracxn.com/d/companies/knl/__coS857ngQmwKhLznVQ40En308Kan8XRzvg27OTBeJ3M"
+        }
+      }
+    },
+    {
+      "companyId": "d916239b-cb14-44b9-8843-08036f57c517",
+      "name": "Crowdcube",
+      "country": "United Kingdom",
+      "blurb": null,
+      "sectors": [],
+      "fit": {
+        "score": 0,
+        "sentence": "Crowdcube, same investor.",
+        "kind": "none"
+      },
+      "via": [
+        {
+          "investorId": "balderton-capital",
+          "investorName": "Balderton Capital"
+        }
+      ],
+      "reason": {
+        "kind": "round",
+        "date": "2015-07-30",
+        "text": "closed a Series C round",
+        "source": {
+          "name": "tracxn.com",
+          "url": "https://tracxn.com/d/companies/crowdcube/__jdWABrvX0JnqiLz-ijOy3fj0PkWfFzbCbbIz8Zpfqkc/funding-and-investors"
+        }
+      }
+    },
+    {
+      "companyId": "547f5b82-2f21-4663-9cd4-613e695f46b6",
+      "name": "Linas Matkasse NewCo",
+      "country": "Sweden",
+      "blurb": null,
+      "sectors": [],
+      "fit": {
+        "score": 0,
+        "sentence": "Linas Matkasse NewCo, same investor.",
+        "kind": "none"
+      },
+      "via": [
+        {
+          "investorId": "creandum",
+          "investorName": "Creandum"
+        }
+      ],
+      "reason": {
+        "kind": "round",
+        "date": "2011-05-09",
+        "text": "closed a Series A round",
+        "source": {
+          "name": "tracxn.com",
+          "url": "https://tracxn.com/d/companies/linas-matkasse/__vZ1XSVDD__1J3KM1GDYpV1JFALXYAmYNd_OtGgPbHFE"
+        }
+      }
+    },
+    {
+      "companyId": "3740ae75-23a2-4d96-aef9-53b21bf95853",
+      "name": "Cint",
+      "country": "Sweden",
+      "blurb": "swedish market research technology company founded in 1998 and headquartered in",
+      "sectors": [
+        "data"
+      ],
+      "fit": {
+        "score": 0,
+        "sentence": "Cint: swedish market research technology company founded in 1998 and headquartered in",
+        "kind": "none"
+      },
+      "via": [
+        {
+          "investorId": "creandum",
+          "investorName": "Creandum"
+        }
+      ],
+      "reason": {
+        "kind": "round",
+        "date": "2010-09-15",
+        "text": "raised a $13M Series B",
+        "source": {
+          "name": "techcrunch.com",
+          "url": "https://techcrunch.com/2010/09/17/cint-secures-13m-from-prime-technology-ventures-and-existing-owners"
+        }
+      }
+    },
+    {
+      "companyId": "e34f9632-4c3f-436c-9fc4-1943e81a783d",
+      "name": "Axitech",
+      "country": null,
+      "blurb": "automated crash detection & intelligent accident management for connected cars",
+      "sectors": [],
+      "fit": {
+        "score": 0,
+        "sentence": "Axitech: automated crash detection & intelligent accident management for connected cars",
+        "kind": "none"
+      },
+      "via": [
+        {
+          "investorId": "balderton-capital",
+          "investorName": "Balderton Capital"
+        }
+      ],
+      "reason": {
+        "kind": "round",
+        "date": "2010-01-01",
+        "text": "closed a Series A round",
+        "source": {
+          "name": "balderton.com",
+          "url": "https://www.balderton.com/companies"
+        }
+      }
+    },
+    {
+      "companyId": "1a9308df-2227-5f18-86b7-d5fcb79e9593",
+      "name": "Juritas",
+      "country": null,
+      "blurb": null,
+      "sectors": [],
+      "fit": {
+        "score": 0,
+        "sentence": "Juritas, same investor.",
+        "kind": "none"
+      },
+      "via": [
+        {
+          "investorId": "byfounders",
+          "investorName": "byFounders"
+        }
+      ],
+      "reason": null
+    },
+    {
+      "companyId": "7d7f02ed-d2e1-4a82-8feb-d721c8b2c64e",
+      "name": "Digitail Commerce",
+      "country": null,
+      "blurb": null,
+      "sectors": [],
+      "fit": {
+        "score": 0,
+        "sentence": "Digitail Commerce, same investor.",
+        "kind": "none"
+      },
+      "via": [
+        {
+          "investorId": "byfounders",
+          "investorName": "byFounders"
+        }
+      ],
+      "reason": null
+    },
+    {
+      "companyId": "2448ce87-71ca-43c2-912e-6fd06057ced6",
+      "name": "Embat",
+      "country": null,
+      "blurb": null,
+      "sectors": [],
+      "fit": {
+        "score": 0,
+        "sentence": "Embat, same investor.",
+        "kind": "none"
+      },
+      "via": [
+        {
+          "investorId": "creandum",
+          "investorName": "Creandum"
+        }
+      ],
+      "reason": null
+    },
+    {
+      "companyId": "c4915979-3a90-4565-9e76-a6f6b849998c",
+      "name": "Maisa AI",
+      "country": null,
+      "blurb": null,
+      "sectors": [
+        "ai"
+      ],
+      "fit": {
+        "score": 0,
+        "sentence": "Maisa AI, same investor.",
+        "kind": "none"
+      },
+      "via": [
+        {
+          "investorId": "creandum",
+          "investorName": "Creandum"
+        }
+      ],
+      "reason": null
+    },
+    {
+      "companyId": "d108a1a5-d9cc-42f8-87f4-3872b111c5a5",
+      "name": "Factorial",
+      "country": null,
+      "blurb": null,
+      "sectors": [],
+      "fit": {
+        "score": 0,
+        "sentence": "Factorial, same investor.",
+        "kind": "none"
+      },
+      "via": [
+        {
+          "investorId": "creandum",
+          "investorName": "Creandum"
+        }
+      ],
+      "reason": null
+    },
+    {
+      "companyId": "f065108c-ff44-4103-bee0-292f18618035",
+      "name": "Maisa",
+      "country": null,
+      "blurb": null,
+      "sectors": [],
+      "fit": {
+        "score": 0,
+        "sentence": "Maisa, same investor.",
+        "kind": "none"
+      },
+      "via": [
+        {
+          "investorId": "creandum",
+          "investorName": "Creandum"
+        }
+      ],
+      "reason": null
+    },
+    {
+      "companyId": "01c0d729-be62-48e2-aeaf-313dfe311c61",
+      "name": "Abacum",
+      "country": null,
+      "blurb": null,
+      "sectors": [],
+      "fit": {
+        "score": 0,
+        "sentence": "Abacum, same investor.",
+        "kind": "none"
+      },
+      "via": [
+        {
+          "investorId": "creandum",
+          "investorName": "Creandum"
+        }
+      ],
+      "reason": null
+    },
+    {
+      "companyId": "2b09b91b-e624-46d3-882b-ebb203628e3b",
+      "name": "Laka",
+      "country": null,
+      "blurb": null,
+      "sectors": [],
+      "fit": {
+        "score": 0,
+        "sentence": "Laka, same investor.",
+        "kind": "none"
+      },
+      "via": [
+        {
+          "investorId": "creandum",
+          "investorName": "Creandum"
+        }
+      ],
+      "reason": null
+    },
+    {
+      "companyId": "758c6052-3868-46f0-8fb6-ad9fb1244b0b",
+      "name": "Trade Republic",
+      "country": null,
+      "blurb": null,
+      "sectors": [],
+      "fit": {
+        "score": 0,
+        "sentence": "Trade Republic, same investor.",
+        "kind": "none"
+      },
+      "via": [
+        {
+          "investorId": "creandum",
+          "investorName": "Creandum"
+        }
+      ],
+      "reason": null
+    },
+    {
+      "companyId": "889e19c6-c54c-46b4-9042-0d52aed7700f",
+      "name": "Vivino",
+      "country": null,
+      "blurb": null,
+      "sectors": [],
+      "fit": {
+        "score": 0,
+        "sentence": "Vivino, same investor.",
+        "kind": "none"
+      },
+      "via": [
+        {
+          "investorId": "creandum",
+          "investorName": "Creandum"
+        }
+      ],
+      "reason": null
+    },
+    {
+      "companyId": "e257bad2-3f0b-47d4-a94b-3a11c3a9ebde",
+      "name": "Omniata",
+      "country": null,
+      "blurb": null,
+      "sectors": [],
+      "fit": {
+        "score": 0,
+        "sentence": "Omniata, same investor.",
+        "kind": "none"
+      },
+      "via": [
+        {
+          "investorId": "creandum",
+          "investorName": "Creandum"
+        }
+      ],
+      "reason": null
+    },
+    {
+      "companyId": "006d4f3a-db34-4421-9128-95f4c248e323",
+      "name": "Dash0",
+      "country": null,
+      "blurb": null,
+      "sectors": [],
+      "fit": {
+        "score": 0,
+        "sentence": "Dash0, same investor.",
+        "kind": "none"
+      },
+      "via": [
+        {
+          "investorId": "balderton-capital",
+          "investorName": "Balderton Capital"
+        }
+      ],
+      "reason": null
+    },
+    {
+      "companyId": "1670b4f2-04e4-4438-b676-c6040bbf594c",
+      "name": "MySQL",
+      "country": null,
+      "blurb": null,
+      "sectors": [],
+      "fit": {
+        "score": 0,
+        "sentence": "MySQL, same investor.",
+        "kind": "none"
+      },
+      "via": [
+        {
+          "investorId": "balderton-capital",
+          "investorName": "Balderton Capital"
+        }
+      ],
+      "reason": null
+    },
+    {
+      "companyId": "1dc09be4-ba67-4a39-be07-93d02f10a801",
+      "name": "The Hut Group",
+      "country": null,
+      "blurb": null,
+      "sectors": [],
+      "fit": {
+        "score": 0,
+        "sentence": "The Hut Group, same investor.",
+        "kind": "none"
+      },
+      "via": [
+        {
+          "investorId": "balderton-capital",
+          "investorName": "Balderton Capital"
+        }
+      ],
+      "reason": null
+    },
+    {
+      "companyId": "309c7034-c837-49dc-b793-16b88accc5ea",
+      "name": "Yoox S.P.A.",
+      "country": null,
+      "blurb": null,
+      "sectors": [],
+      "fit": {
+        "score": 0,
+        "sentence": "Yoox S.P.A., same investor.",
+        "kind": "none"
+      },
+      "via": [
+        {
+          "investorId": "balderton-capital",
+          "investorName": "Balderton Capital"
+        }
+      ],
+      "reason": null
+    },
+    {
+      "companyId": "433569ec-11f6-459a-8abc-952470f6a8fc",
+      "name": "Darktrace",
+      "country": null,
+      "blurb": null,
+      "sectors": [],
+      "fit": {
+        "score": 0,
+        "sentence": "Darktrace, same investor.",
+        "kind": "none"
+      },
+      "via": [
+        {
+          "investorId": "balderton-capital",
+          "investorName": "Balderton Capital"
+        }
+      ],
+      "reason": null
+    },
+    {
+      "companyId": "70002293-931b-4127-b177-fed41cf4ac1f",
+      "name": "Betfair",
+      "country": null,
+      "blurb": null,
+      "sectors": [],
+      "fit": {
+        "score": 0,
+        "sentence": "Betfair, same investor.",
+        "kind": "none"
+      },
+      "via": [
+        {
+          "investorId": "balderton-capital",
+          "investorName": "Balderton Capital"
+        }
+      ],
+      "reason": null
+    },
+    {
+      "companyId": "7a4b1dfb-e793-45a7-a1f6-b08e036134b3",
+      "name": "GoCardless",
+      "country": null,
+      "blurb": null,
+      "sectors": [],
+      "fit": {
+        "score": 0,
+        "sentence": "GoCardless, same investor.",
+        "kind": "none"
+      },
+      "via": [
+        {
+          "investorId": "balderton-capital",
+          "investorName": "Balderton Capital"
+        }
+      ],
+      "reason": null
+    },
+    {
+      "companyId": "7c4af2b1-8c03-558f-9da1-74631564743c",
+      "name": "Reson8",
+      "country": null,
+      "blurb": null,
+      "sectors": [],
+      "fit": {
+        "score": 0,
+        "sentence": "Reson8, same investor.",
+        "kind": "none"
+      },
+      "via": [
+        {
+          "investorId": "balderton-capital",
+          "investorName": "Balderton Capital"
+        }
+      ],
+      "reason": null
+    },
+    {
+      "companyId": "ec4a8c2b-ce35-4f4d-a989-a016421d2646",
+      "name": "Wayve",
+      "country": null,
+      "blurb": null,
+      "sectors": [],
+      "fit": {
+        "score": 0,
+        "sentence": "Wayve, same investor.",
+        "kind": "none"
+      },
+      "via": [
+        {
+          "investorId": "balderton-capital",
+          "investorName": "Balderton Capital"
+        }
+      ],
+      "reason": null
+    },
+    {
+      "companyId": "f7b83867-acf2-411d-9265-95ea0c1d62ad",
+      "name": "Naturalmotion Games",
+      "country": null,
+      "blurb": null,
+      "sectors": [
+        "gaming"
+      ],
+      "fit": {
+        "score": 0,
+        "sentence": "Naturalmotion Games, same investor.",
+        "kind": "none"
+      },
+      "via": [
+        {
+          "investorId": "balderton-capital",
+          "investorName": "Balderton Capital"
+        }
+      ],
+      "reason": null
+    },
+    {
+      "companyId": "eb91e142-1cac-4099-9058-279a1f00b907",
+      "name": "Vestiaire Collective",
+      "country": null,
+      "blurb": null,
+      "sectors": [],
+      "fit": {
+        "score": 0,
+        "sentence": "Vestiaire Collective, same investor.",
+        "kind": "none"
+      },
+      "via": [
+        {
+          "investorId": "balderton-capital",
+          "investorName": "Balderton Capital"
+        }
+      ],
+      "reason": null
+    },
+    {
+      "companyId": "0883965c-ba7a-4e25-9c47-13cb95a652c2",
+      "name": "Prodigy Finance CM2018-1 Designated Activity Company",
+      "country": null,
+      "blurb": null,
+      "sectors": [],
+      "fit": {
+        "score": 0,
+        "sentence": "Prodigy Finance CM2018-1 Designated Activity Company, same investor.",
+        "kind": "none"
+      },
+      "via": [
+        {
+          "investorId": "balderton-capital",
+          "investorName": "Balderton Capital"
+        }
+      ],
+      "reason": null
+    },
+    {
+      "companyId": "0ab0d2f7-34c9-4f5f-af41-98a948fb37dc",
+      "name": "01health",
+      "country": null,
+      "blurb": null,
+      "sectors": [],
+      "fit": {
+        "score": 0,
+        "sentence": "01health, same investor.",
+        "kind": "none"
+      },
+      "via": [
+        {
+          "investorId": "balderton-capital",
+          "investorName": "Balderton Capital"
+        }
+      ],
+      "reason": null
+    },
+    {
+      "companyId": "160fded3-ec3a-40ea-8d78-1ecce191633b",
+      "name": "Tinybird",
+      "country": null,
+      "blurb": null,
+      "sectors": [],
+      "fit": {
+        "score": 0,
+        "sentence": "Tinybird, same investor.",
+        "kind": "none"
+      },
+      "via": [
+        {
+          "investorId": "balderton-capital",
+          "investorName": "Balderton Capital"
+        }
+      ],
+      "reason": null
+    },
+    {
+      "companyId": "1fe335f0-786c-459d-95a5-d30f38cb58c3",
+      "name": "Prodigy Finance",
+      "country": null,
+      "blurb": null,
+      "sectors": [],
+      "fit": {
+        "score": 0,
+        "sentence": "Prodigy Finance, same investor.",
+        "kind": "none"
+      },
+      "via": [
+        {
+          "investorId": "balderton-capital",
+          "investorName": "Balderton Capital"
+        }
+      ],
+      "reason": null
+    },
+    {
+      "companyId": "2daf9b7b-b02f-49dd-889c-ec10b61b978c",
+      "name": "Bookatable",
+      "country": null,
+      "blurb": null,
+      "sectors": [],
+      "fit": {
+        "score": 0,
+        "sentence": "Bookatable, same investor.",
+        "kind": "none"
+      },
+      "via": [
+        {
+          "investorId": "balderton-capital",
+          "investorName": "Balderton Capital"
+        }
+      ],
+      "reason": null
+    },
+    {
+      "companyId": "31c9ccf6-329a-548f-83b5-5c131a55ef8d",
+      "name": "Primer",
+      "country": null,
+      "blurb": null,
+      "sectors": [],
+      "fit": {
+        "score": 0,
+        "sentence": "Primer, same investor.",
+        "kind": "none"
+      },
+      "via": [
+        {
+          "investorId": "balderton-capital",
+          "investorName": "Balderton Capital"
+        }
+      ],
+      "reason": null
+    },
+    {
+      "companyId": "53ec923c-9c25-4ac1-b92f-8899ce13bf5e",
+      "name": "Davis AI",
+      "country": null,
+      "blurb": null,
+      "sectors": [
+        "ai"
+      ],
+      "fit": {
+        "score": 0,
+        "sentence": "Davis AI, same investor.",
+        "kind": "none"
+      },
+      "via": [
+        {
+          "investorId": "balderton-capital",
+          "investorName": "Balderton Capital"
+        }
+      ],
+      "reason": null
+    },
+    {
+      "companyId": "9d07ca34-d31d-4f8d-a7ec-2bfb201ce9c7",
+      "name": "Big Fish Games Ireland",
+      "country": null,
+      "blurb": null,
+      "sectors": [
+        "gaming",
+        "agriculture"
+      ],
+      "fit": {
+        "score": 0,
+        "sentence": "Big Fish Games Ireland, same investor.",
+        "kind": "none"
+      },
+      "via": [
+        {
+          "investorId": "balderton-capital",
+          "investorName": "Balderton Capital"
+        }
+      ],
+      "reason": null
+    },
+    {
+      "companyId": "cb29b028-3ffc-447f-b69f-3d5511b95476",
+      "name": "Scalable Capital",
+      "country": null,
+      "blurb": null,
+      "sectors": [],
+      "fit": {
+        "score": 0,
+        "sentence": "Scalable Capital, same investor.",
+        "kind": "none"
+      },
+      "via": [
+        {
+          "investorId": "balderton-capital",
+          "investorName": "Balderton Capital"
+        }
+      ],
+      "reason": null
+    },
+    {
+      "companyId": "d17260a1-6370-47ea-ab72-959fedd74709",
+      "name": "Clarity AI",
+      "country": null,
+      "blurb": null,
+      "sectors": [
+        "ai"
+      ],
+      "fit": {
+        "score": 0,
+        "sentence": "Clarity AI, same investor.",
+        "kind": "none"
+      },
+      "via": [
+        {
+          "investorId": "balderton-capital",
+          "investorName": "Balderton Capital"
+        }
+      ],
+      "reason": null
+    },
+    {
+      "companyId": "d4cf4a2b-f60e-490f-aa61-9700dff0b6a4",
+      "name": "Exein",
+      "country": null,
+      "blurb": null,
+      "sectors": [],
+      "fit": {
+        "score": 0,
+        "sentence": "Exein, same investor.",
+        "kind": "none"
+      },
+      "via": [
+        {
+          "investorId": "balderton-capital",
+          "investorName": "Balderton Capital"
+        }
+      ],
+      "reason": null
+    },
+    {
+      "companyId": "d90d7afe-e315-4ca5-bf76-f25498b52474",
+      "name": "Cleo",
+      "country": null,
+      "blurb": null,
+      "sectors": [],
+      "fit": {
+        "score": 0,
+        "sentence": "Cleo, same investor.",
+        "kind": "none"
+      },
+      "via": [
+        {
+          "investorId": "balderton-capital",
+          "investorName": "Balderton Capital"
+        }
+      ],
+      "reason": null
+    },
+    {
+      "companyId": "e269426d-084a-4a82-bde5-dff7b4c6e557",
+      "name": "Bebo",
+      "country": null,
+      "blurb": null,
+      "sectors": [],
+      "fit": {
+        "score": 0,
+        "sentence": "Bebo, same investor.",
+        "kind": "none"
+      },
+      "via": [
+        {
+          "investorId": "balderton-capital",
+          "investorName": "Balderton Capital"
+        }
+      ],
+      "reason": null
+    },
+    {
+      "companyId": "e2e860ff-54fc-4d41-92f8-11c3c6261463",
+      "name": "Bling Fr",
+      "country": null,
+      "blurb": null,
+      "sectors": [],
+      "fit": {
+        "score": 0,
+        "sentence": "Bling Fr, same investor.",
+        "kind": "none"
+      },
+      "via": [
+        {
+          "investorId": "balderton-capital",
+          "investorName": "Balderton Capital"
+        }
+      ],
+      "reason": null
+    },
+    {
+      "companyId": "e90c5a2b-f36d-42f5-822a-071695b1890f",
+      "name": "Geordie AI",
+      "country": null,
+      "blurb": null,
+      "sectors": [
+        "ai"
+      ],
+      "fit": {
+        "score": 0,
+        "sentence": "Geordie AI, same investor.",
+        "kind": "none"
+      },
+      "via": [
+        {
+          "investorId": "balderton-capital",
+          "investorName": "Balderton Capital"
+        }
+      ],
+      "reason": null
+    },
+    {
+      "companyId": "f12fb5f2-2dbc-4a7b-ad12-4b09e8a56507",
+      "name": "Huspy",
+      "country": null,
+      "blurb": null,
+      "sectors": [],
+      "fit": {
+        "score": 0,
+        "sentence": "Huspy, same investor.",
+        "kind": "none"
+      },
+      "via": [
+        {
+          "investorId": "balderton-capital",
+          "investorName": "Balderton Capital"
+        }
+      ],
+      "reason": null
+    },
+    {
+      "companyId": "f41afd03-e757-4285-909c-43b28e6816d5",
+      "name": "Future Energy Services",
+      "country": null,
+      "blurb": null,
+      "sectors": [
+        "energy"
+      ],
+      "fit": {
+        "score": 0,
+        "sentence": "Future Energy Services, same investor.",
+        "kind": "none"
+      },
+      "via": [
+        {
+          "investorId": "balderton-capital",
+          "investorName": "Balderton Capital"
+        }
+      ],
+      "reason": null
+    },
+    {
+      "companyId": "7ad7483e-19ae-4352-94d5-134e554f0b33",
+      "name": "Circulate8",
+      "country": null,
+      "blurb": null,
+      "sectors": [],
+      "fit": {
+        "score": 0,
+        "sentence": "Circulate8, same investor.",
+        "kind": "none"
+      },
+      "via": [
+        {
+          "investorId": "antler",
+          "investorName": "Antler"
+        }
+      ],
+      "reason": null
+    },
+    {
+      "companyId": "d5b4f4b1-6a8c-5641-8aea-8085e8d42a68",
+      "name": "Circulate",
+      "country": null,
+      "blurb": null,
+      "sectors": [],
+      "fit": {
+        "score": 0,
+        "sentence": "Circulate, same investor.",
+        "kind": "none"
+      },
+      "via": [
+        {
+          "investorId": "antler",
+          "investorName": "Antler"
+        }
+      ],
+      "reason": null
+    },
+    {
+      "companyId": "62a47986-851b-4547-9f2d-16e058aaabe4",
+      "name": "Lemonado",
+      "country": null,
+      "blurb": null,
+      "sectors": [],
+      "fit": {
+        "score": 0,
+        "sentence": "Lemonado, same investor.",
+        "kind": "none"
+      },
+      "via": [
+        {
+          "investorId": "antler",
+          "investorName": "Antler"
+        }
+      ],
+      "reason": null
+    },
+    {
+      "companyId": "12024662-bba0-4c18-953d-81adcbafcab3",
+      "name": "Baazar Now",
+      "country": null,
+      "blurb": null,
+      "sectors": [],
+      "fit": {
+        "score": 0,
+        "sentence": "Baazar Now, same investor.",
+        "kind": "none"
+      },
+      "via": [
+        {
+          "investorId": "antler",
+          "investorName": "Antler"
+        }
+      ],
+      "reason": null
+    },
+    {
+      "companyId": "1207d028-1a47-484a-812c-44590edae567",
+      "name": "Cloudgeni",
+      "country": null,
+      "blurb": null,
+      "sectors": [],
+      "fit": {
+        "score": 0,
+        "sentence": "Cloudgeni, same investor.",
+        "kind": "none"
+      },
+      "via": [
+        {
+          "investorId": "antler",
+          "investorName": "Antler"
+        }
+      ],
+      "reason": null
+    },
+    {
+      "companyId": "981a7e19-b03e-4953-bf0e-7263fb29b9ca",
+      "name": "Flow Space",
+      "country": null,
+      "blurb": null,
+      "sectors": [
+        "space"
+      ],
+      "fit": {
+        "score": 0,
+        "sentence": "Flow Space, same investor.",
+        "kind": "none"
+      },
+      "via": [
+        {
+          "investorId": "antler",
+          "investorName": "Antler"
+        }
+      ],
+      "reason": null
+    },
+    {
+      "companyId": "a820e4e9-2683-40f5-b24d-9f6afde471d8",
+      "name": "Irbc",
+      "country": null,
+      "blurb": null,
+      "sectors": [],
+      "fit": {
+        "score": 0,
+        "sentence": "Irbc, same investor.",
+        "kind": "none"
+      },
+      "via": [
+        {
+          "investorId": "antler",
+          "investorName": "Antler"
+        }
+      ],
+      "reason": null
+    },
+    {
+      "companyId": "b9e31695-9a7b-4f4a-b35d-8fb21b80a988",
+      "name": "Capsa AI",
+      "country": null,
+      "blurb": null,
+      "sectors": [
+        "ai"
+      ],
+      "fit": {
+        "score": 0,
+        "sentence": "Capsa AI, same investor.",
+        "kind": "none"
+      },
+      "via": [
+        {
+          "investorId": "antler",
+          "investorName": "Antler"
+        }
+      ],
+      "reason": null
+    },
+    {
+      "companyId": "bb63b68d-1ebf-4461-88fa-a99b462ed21f",
+      "name": "Novem",
+      "country": null,
+      "blurb": null,
+      "sectors": [],
+      "fit": {
+        "score": 0,
+        "sentence": "Novem, same investor.",
+        "kind": "none"
+      },
+      "via": [
+        {
+          "investorId": "antler",
+          "investorName": "Antler"
+        }
+      ],
+      "reason": null
+    },
+    {
+      "companyId": "c0863bd5-729f-4c7a-b888-bb40f7313f22",
+      "name": "TrustAI",
+      "country": null,
+      "blurb": null,
+      "sectors": [],
+      "fit": {
+        "score": 0,
+        "sentence": "TrustAI, same investor.",
+        "kind": "none"
+      },
+      "via": [
+        {
+          "investorId": "antler",
+          "investorName": "Antler"
+        }
+      ],
+      "reason": null
+    },
+    {
+      "companyId": "ff932aea-bb5c-4895-be5c-0e73709b79d0",
+      "name": "REmitted",
+      "country": null,
+      "blurb": null,
+      "sectors": [],
+      "fit": {
+        "score": 0,
+        "sentence": "REmitted, same investor.",
+        "kind": "none"
+      },
+      "via": [
+        {
+          "investorId": "antler",
+          "investorName": "Antler"
+        }
+      ],
+      "reason": null
+    },
+    {
+      "companyId": "0a1ca873-6402-40f2-a775-3ae8dac75575",
+      "name": "Flowla",
+      "country": null,
+      "blurb": null,
+      "sectors": [],
+      "fit": {
+        "score": 0,
+        "sentence": "Flowla, same investor.",
+        "kind": "none"
+      },
+      "via": [
+        {
+          "investorId": "antler",
+          "investorName": "Antler"
+        }
+      ],
+      "reason": null
+    },
+    {
+      "companyId": "10a3bdc5-b245-49b6-86d7-75d61e5dfda9",
+      "name": "Alterno",
+      "country": null,
+      "blurb": null,
+      "sectors": [],
+      "fit": {
+        "score": 0,
+        "sentence": "Alterno, same investor.",
+        "kind": "none"
+      },
+      "via": [
+        {
+          "investorId": "antler",
+          "investorName": "Antler"
+        }
+      ],
+      "reason": null
+    },
+    {
+      "companyId": "10b6462a-ab8c-5eaa-a13b-69255206269c",
+      "name": "Dhahaby",
+      "country": null,
+      "blurb": null,
+      "sectors": [],
+      "fit": {
+        "score": 0,
+        "sentence": "Dhahaby, same investor.",
+        "kind": "none"
+      },
+      "via": [
+        {
+          "investorId": "antler",
+          "investorName": "Antler"
+        }
+      ],
+      "reason": null
+    }
+  ],
+  "doorCount": [
+    {
+      "investorId": "balderton-capital",
+      "investorName": "Balderton Capital",
+      "count": 18,
+      "keyring": 71
+    },
+    {
+      "investorId": "creandum",
+      "investorName": "Creandum",
+      "count": 11,
+      "keyring": 49
+    },
+    {
+      "investorId": "antler",
+      "investorName": "Antler",
+      "count": 1,
+      "keyring": 69
+    },
+    {
+      "investorId": "byfounders",
+      "investorName": "byFounders",
+      "count": 1,
+      "keyring": 11
+    }
+  ]
+}

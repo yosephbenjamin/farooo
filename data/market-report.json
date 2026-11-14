@@ -1,0 +1,53 @@
+{
+  "ranAt": "2026-11-14T00:49:32.242Z",
+  "now": "2026-11-14",
+  "extraction": "heuristic",
+  "stats": {
+    "claims": 9,
+    "notEntry": 6,
+    "noCompany": 0,
+    "noDate": 3,
+    "outOfWindow": 0,
+    "localCompany": 0,
+    "kept": 0,
+    "duplicate": 0
+  },
+  "drops": [
+    {
+      "text": "Google (Alphabet) announced in September 2026 a €13 billion (≈$15.1 billion) AI infrastructure investment in Finland, covering three new dat",
+      "reason": "not a market entry"
+    },
+    {
+      "text": "TikTok announced a $1.16 billion investment to build a second data centre in Finland as part of a broader €12 billion initiative to localise",
+      "reason": "no concrete date"
+    },
+    {
+      "text": "atNorth announced in October 2026 plans to develop a new data centre (FIN05) in Salo, Finland, with an expected investment of about €2 billi",
+      "reason": "not a market entry"
+    },
+    {
+      "text": "Cerebras reported signing contracts for additional data‑centre capacity in Norway and Finland during 2026, expanding its European footprint ",
+      "reason": "not a market entry"
+    },
+    {
+      "text": "GAC (Guangzhou Automobile Group) launched its AION V electric vehicle in Finland in 2026, marking Finland as the first market in its collabo",
+      "reason": "no concrete date"
+    },
+    {
+      "text": "Heitman acquired a majority stake in Talliosake’s rental business and launched the Talli self‑storage platform, starting with 15 properties ",
+      "reason": "not a market entry"
+    },
+    {
+      "text": "SOL Group (Italy) acquired Danish company Nowus Healthcare in July 2026, enabling SOL Group (through its VIVISOL brand) to expand its respir",
+      "reason": "not a market entry"
+    },
+    {
+      "text": "ESA BIC Finland announced expansion of its business incubation operations to Finland’s west coast (Vaasa) and to Tampere, establishing a new",
+      "reason": "no concrete date"
+    },
+    {
+      "text": "Ukrainian and Finnish defence companies signed cooperation documents in 2026, creating a €300 million defence cooperation package covering u",
+      "reason": "not a market entry"
+    }
+  ]
+}

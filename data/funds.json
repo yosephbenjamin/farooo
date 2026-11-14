@@ -1,0 +1,916 @@
+[
+  {
+    "seed": "Inventure",
+    "slug": "inventure",
+    "included": [
+      {
+        "id": "fd3ba350-0e55-40b5-96e3-013994777fdc",
+        "name": "Inventure",
+        "entity_type": "Organization",
+        "description": "a Finnish investment firm headquartered in Helsinki"
+      }
+    ],
+    "rejected": [
+      {
+        "id": "3794cb88-1519-4ed6-b8dd-cbd641d85c62",
+        "name": "INVENTURE",
+        "reason": "excluded by hand"
+      },
+      {
+        "id": "742512f9-7387-4b5f-9660-14c160757040",
+        "name": "Inventure, LLC",
+        "reason": "country: United States"
+      },
+      {
+        "id": "f1877c0c-bc62-41b3-88be-a2c2320523d3",
+        "name": "InVenture Partners",
+        "reason": "excluded by hand"
+      },
+      {
+        "id": "a015b9f7-d39d-4c60-977d-2594588d952a",
+        "name": "INVENTURE AS",
+        "reason": "country: Norway"
+      },
+      {
+        "id": "dd1bc499-47de-48b7-a2d0-758e3e360d36",
+        "name": "Inventure Fund Ky",
+        "reason": "no investment relationships"
+      },
+      {
+        "id": "cb94ede6-15fd-4658-ac49-37a742748dff",
+        "name": "Inventure Fund II Ky",
+        "reason": "no investment relationships"
+      },
+      {
+        "id": "a535e30c-d57a-4cca-8f24-07515abfdeb8",
+        "name": "INVENTURE FUND II, L.P.",
+        "reason": "no investment relationships"
+      }
+    ]
+  },
+  {
+    "seed": "Lifeline Ventures",
+    "slug": "lifeline-ventures",
+    "included": [
+      {
+        "id": "4d668c75-c7a0-4f5b-baea-ce0fa6a34e31",
+        "name": "Lifeline Ventures AB",
+        "entity_type": "Company",
+        "description": "A Swedish company incorporated in 2010 and headquartered in Stockholm."
+      },
+      {
+        "id": "476a73ac-afa2-4713-9f73-188bc7ec0b95",
+        "name": "Lifeline Ventures",
+        "entity_type": "Organization",
+        "description": "Finnish venture capital firm headquartered in Helsinki."
+      }
+    ],
+    "rejected": [
+      {
+        "id": "111aea67-7cea-43ec-b4cd-25b1b9b6140a",
+        "name": "Lifeline Ventures Fund II Ky",
+        "reason": "no investment relationships"
+      },
+      {
+        "id": "503fca19-dcb6-4f69-9834-b2fa4f6debdf",
+        "name": "Lifeline Ventures III AB",
+        "reason": "no investment relationships"
+      },
+      {
+        "id": "16055086-7d3a-4990-a5e4-422333413419",
+        "name": "Lifeline Ventures Fund VI SCSp",
+        "reason": "no investment relationships"
+      },
+      {
+        "id": "4adf4b57-7577-4f47-9f32-9baee27f1654",
+        "name": "Lifeline Ventures Fund I Ky",
+        "reason": "no investment relationships"
+      },
+      {
+        "id": "497f6def-dd8e-458f-8538-ac268d629cb8",
+        "name": "Lifeline Ventures Fund III Ky",
+        "reason": "no investment relationships"
+      },
+      {
+        "id": "20eae7aa-1d65-42ae-9f84-bcca35a0f060",
+        "name": "Lifeline Ventures Fund V Ky",
+        "reason": "no investment relationships"
+      },
+      {
+        "id": "8a7a3a32-c9c8-4f28-bc09-51d442ccfae9",
+        "name": "Lifeline Ventures Fund IV Ky",
+        "reason": "no investment relationships"
+      }
+    ]
+  },
+  {
+    "seed": "Maki.vc",
+    "slug": "maki-vc",
+    "included": [
+      {
+        "id": "8f0ff46d-d609-4ce0-b719-85f739b92ca3",
+        "name": "Maki.vc",
+        "entity_type": "Organization",
+        "description": "a venture capital firm that provides funding to companies"
+      },
+      {
+        "id": "415bc278-6ed1-4973-a684-07a8b8c5d855",
+        "name": "Maki.vc",
+        "entity_type": "Company",
+        "description": "Helsinki-based venture capital firm managing €260M across three funds, backing ambitious Nordic technology companies from day one."
+      },
+      {
+        "id": "ddc79d15-fc6b-5d6b-a2b7-9f6c6ec190d1",
+        "name": "Maki VC",
+        "entity_type": "Organization",
+        "description": "a venture capital firm that invests in early‑stage companies"
+      },
+      {
+        "id": "d6bba931-c5f5-56f1-8c78-a01daad6a6d5",
+        "name": "Maki",
+        "entity_type": "Organization",
+        "description": "A venture capital firm that has invested in companies including Quanscient Oy and Volare."
+      }
+    ],
+    "rejected": [
+      {
+        "id": "3100c303-0795-4673-a04d-7e612b421eb4",
+        "name": "MAKI.VC FUND I Ky",
+        "reason": "no investment relationships"
+      },
+      {
+        "id": "f8053251-7ca3-4547-8989-f5dafd52544f",
+        "name": "MAKI.VC FUND III Ky",
+        "reason": "no investment relationships"
+      },
+      {
+        "id": "9a72ceec-9ad1-4bbf-a6da-b3d4471715dd",
+        "name": "MAKI A/S",
+        "reason": "country: Denmark"
+      },
+      {
+        "id": "8be91376-ca84-5cd8-8474-a6bcb382499e",
+        "name": "MAKI",
+        "reason": "country: France"
+      }
+    ]
+  },
+  {
+    "seed": "Icebreaker.vc",
+    "slug": "icebreaker-vc",
+    "included": [
+      {
+        "id": "70fb3317-cd8c-4c52-aa86-66502789bce3",
+        "name": "Icebreaker.vc",
+        "entity_type": "Company",
+        "description": "Nordic early-stage VC firm backing teams at the earliest stages with €120M Fund III."
+      },
+      {
+        "id": "9f9d6c89-2cec-42b4-baed-ce8c8f1b8ac6",
+        "name": "Icebreaker",
+        "entity_type": "Company",
+        "description": "Offers Arctic icebreaker cruises in Lapland, Finland, including sea ice walks and survival suit floating experiences."
+      }
+    ],
+    "rejected": [
+      {
+        "id": "5a91c266-18ed-4f84-b3cd-1f06b8eac6c7",
+        "name": "ICEBREAKER VENTURES LLP",
+        "reason": "excluded by hand"
+      },
+      {
+        "id": "5a8cb929-5e73-4f9e-b814-0c4e23d758c3",
+        "name": "ICEBREAKER, INC.",
+        "reason": "country: United States"
+      },
+      {
+        "id": "f197500a-27e3-4ff7-8aae-02d01edf4a8a",
+        "name": "ICEBREAKER LIMITED",
+        "reason": "country: United Kingdom"
+      },
+      {
+        "id": "386a45e9-6e00-4e5c-8388-f3194460b3e3",
+        "name": "ICEBREAKER, LLC",
+        "reason": "country: United States"
+      },
+      {
+        "id": "5dd39623-cec2-4cda-a484-548a7c21b93d",
+        "name": "Icebreaker Ventures LLC",
+        "reason": "excluded by hand"
+      }
+    ]
+  },
+  {
+    "seed": "Voima Ventures",
+    "slug": "voima-ventures",
+    "included": [
+      {
+        "id": "1f973216-f1e5-4466-8409-da6608460c02",
+        "name": "Voima Ventures Oy",
+        "entity_type": "Company",
+        "description": "Finnish venture capital firm based in Helsinki, founded in 2018."
+      },
+      {
+        "id": "8673db97-466e-4e7e-8417-a0ce1207bf9e",
+        "name": "Voima Ventures",
+        "entity_type": "Organization",
+        "description": "A venture capital firm that acted as lead investor in TheStorage's seed round."
+      }
+    ],
+    "rejected": [
+      {
+        "id": "72101d71-41bb-4d55-be11-03d1b003116f",
+        "name": "Voima Ventures Fund II Ky",
+        "reason": "no investment relationships"
+      }
+    ]
+  },
+  {
+    "seed": "Superhero Capital",
+    "slug": "superhero-capital",
+    "included": [
+      {
+        "id": "8f18dee5-e41b-4eaa-86e2-f03f1a846edc",
+        "name": "Superhero Capital",
+        "entity_type": "Company",
+        "description": "Helsinki-based venture capital firm founded in 2015 investing in early-stage startups."
+      }
+    ],
+    "rejected": []
+  },
+  {
+    "seed": "byFounders",
+    "slug": "byfounders",
+    "included": [
+      {
+        "id": "2e8b308a-dab0-4fe3-8348-4e3cf12ea949",
+        "name": "byFounders Collective",
+        "entity_type": "Organization",
+        "description": "An early-stage venture fund collective that supports Nordic technology founders."
+      },
+      {
+        "id": "20003112-87a9-4ac0-be1a-bc97efecf19e",
+        "name": "byFounders",
+        "entity_type": "Organization",
+        "description": "is an early-stage venture capital fund based in Copenhagen, Denmark, that backs tech founders in the Nordics and Baltics."
+      }
+    ],
+    "rejected": []
+  },
+  {
+    "seed": "Creandum",
+    "slug": "creandum",
+    "included": [
+      {
+        "id": "7d4ebd18-3539-4f19-a2e0-93bebb838554",
+        "name": "Creandum Fund",
+        "entity_type": "Organization",
+        "description": "An international venture capital fund headquartered in Stockholm, Sweden."
+      },
+      {
+        "id": "6ba00a20-2cb4-4559-8fe2-f39484a9e5f6",
+        "name": "Creandum",
+        "entity_type": "Organization",
+        "description": "venture capital firm based in Stockholm, Sweden, founded by Stefan Lindeberg and focusing on fintech startups"
+      },
+      {
+        "id": "dced699e-9f7f-465f-8f27-2f2c251a33cc",
+        "name": "Creandum III, L.P.",
+        "entity_type": "Company",
+        "description": "a venture capital firm headquartered in St Peter Port, Guernsey, founded in 2011"
+      }
+    ],
+    "rejected": [
+      {
+        "id": "b5ae192f-6f7e-47cb-afc5-a04ee5cd714d",
+        "name": "Creandum II L.P.",
+        "reason": "no investment relationships"
+      }
+    ]
+  },
+  {
+    "seed": "Northzone",
+    "slug": "northzone",
+    "included": [
+      {
+        "id": "10c75ca4-24d6-4a32-8f22-08d4b1dfffce",
+        "name": "Northzone",
+        "entity_type": "Company",
+        "description": "Venture capital firm investing in early-stage tech companies across Europe."
+      },
+      {
+        "id": "9d7b3e91-acb3-4c80-9b3e-6de6a879fb89",
+        "name": "NORTHZONE IX L.P.",
+        "entity_type": "Company",
+        "description": "A private equity and venture capital firm based in St Helier, Jersey, founded in 2019."
+      },
+      {
+        "id": "91b2afa1-2f57-47b9-83b8-8de3454d51d2",
+        "name": "NORTHZONE VII L.P.",
+        "entity_type": "Company",
+        "description": "a venture capital firm incorporated in 2013 and headquartered in St. Helier, Jersey"
+      },
+      {
+        "id": "902e8e6b-aefd-452f-90f9-4ecf8d99652c",
+        "name": "NORTHZONE VIII L.P.",
+        "entity_type": "Company",
+        "description": "A venture‑capital company headquartered in St Helier, Jersey, founded in 2016."
+      }
+    ],
+    "rejected": [
+      {
+        "id": "208d7baa-10cd-4a73-825b-5bd3e827f79f",
+        "name": "Northzone",
+        "reason": "no investment relationships"
+      },
+      {
+        "id": "df707de8-b63c-4fc5-ae46-2094ebb9c483",
+        "name": "NORTHZONE VI L.P.",
+        "reason": "no investment relationships"
+      },
+      {
+        "id": "cfdce60a-bf4d-52ae-a260-be6b90029fa3",
+        "name": "Northzone Vi Lp",
+        "reason": "no investment relationships"
+      },
+      {
+        "id": "8e70845b-be9d-439f-b866-fa15ac908f00",
+        "name": "NORTHZONE XI L.P.",
+        "reason": "no investment relationships"
+      },
+      {
+        "id": "7c86a448-ef24-4f11-b57f-1e6c5acd1661",
+        "name": "Northzone Growth II L.P.",
+        "reason": "no investment relationships"
+      }
+    ]
+  },
+  {
+    "seed": "EQT Ventures",
+    "slug": "eqt-ventures",
+    "included": [
+      {
+        "id": "d6cf13e1-92ff-4567-bd72-30316f2498e5",
+        "name": "EQT Ventures",
+        "entity_type": "Organization",
+        "description": "A venture capital firm."
+      },
+      {
+        "id": "f3d72345-6e90-4a0d-ad5a-8b6a36eb500c",
+        "name": "EQT VENTURES INVESTMENTS S.À R.L.",
+        "entity_type": "Company",
+        "description": "A Luxembourg-based venture capital firm founded in 2015."
+      },
+      {
+        "id": "ca5cb2d6-9802-4605-b009-aaaac432b24f",
+        "name": "EQT Ventures LLC",
+        "entity_type": "Company",
+        "description": "a venture capital firm that operates as a subsidiary of EQT Corp"
+      },
+      {
+        "id": "c8a71740-f8ac-4901-aca5-68bbec989cd7",
+        "name": "EQT VENTURES II INVESTMENTS S.À R.L.",
+        "entity_type": "Company",
+        "description": "A Luxembourg-based private equity and venture capital firm founded in 2019."
+      }
+    ],
+    "rejected": []
+  },
+  {
+    "seed": "Atomico",
+    "slug": "atomico",
+    "included": [
+      {
+        "id": "8f929584-4c5e-409e-9140-d820fe57b6df",
+        "name": "ATOMICO MANAGEMENT, LTD.",
+        "entity_type": "Company",
+        "description": "Venture capital company founded in 2020, operating from George Town, Cayman Islands, also known as Atomico."
+      },
+      {
+        "id": "32e27d54-3922-407f-aa07-2747d94b210c",
+        "name": "Atomico",
+        "entity_type": "Company",
+        "description": "a London-based venture capital firm founded by Mattias Ljungman"
+      },
+      {
+        "id": "a36f9db0-0fa3-4f71-b212-8d94123a1625",
+        "name": "ATOMICO IV, L.P.",
+        "entity_type": "Company",
+        "description": "A Cayman Islands venture capital firm founded in 2015."
+      },
+      {
+        "id": "ca65fd64-5856-4586-b3ae-ac5824fb50a8",
+        "name": "Atomico Venture VI SCSp",
+        "entity_type": "Company",
+        "description": "A Luxembourg-based asset management company founded in 2021."
+      },
+      {
+        "id": "83fc5496-bc67-4fdf-bd8f-93772a92e489",
+        "name": "Atomico Growth VI SCSp",
+        "entity_type": "Company",
+        "description": "A Luxembourg-based asset management company founded in 2021."
+      }
+    ],
+    "rejected": [
+      {
+        "id": "9389170b-144d-4b10-b01a-813862fcc9bd",
+        "name": "Atomico V SCSp",
+        "reason": "no investment relationships"
+      },
+      {
+        "id": "15dbd1a0-1e58-42d7-8056-02fecf391bdf",
+        "name": "Atomico IV, L.P.",
+        "reason": "no investment relationships"
+      },
+      {
+        "id": "2d6251db-e061-4a00-a0fd-ff6d455b2124",
+        "name": "Atomico III, L.P.",
+        "reason": "no investment relationships"
+      },
+      {
+        "id": "524db68a-9f23-4fdd-8ff2-6faf586e35cd",
+        "name": "Atomico Ventures II, L.P.",
+        "reason": "no investment relationships"
+      },
+      {
+        "id": "ca743ea6-cd3b-414b-904d-e249c3626d3b",
+        "name": "Atomico Ventures II LP",
+        "reason": "no investment relationships"
+      }
+    ]
+  },
+  {
+    "seed": "Balderton Capital",
+    "slug": "balderton-capital",
+    "included": [
+      {
+        "id": "c96fa533-91c0-5674-bcbe-0d0dc934b7fa",
+        "name": "Balderton Capital",
+        "entity_type": "Organization",
+        "description": "a London-based venture capital firm"
+      },
+      {
+        "id": "13ea420a-0578-4e9f-b186-db27a09d75ac",
+        "name": "BALDERTON CAPITAL PARTNERS LIMITED",
+        "entity_type": "Company",
+        "description": "British private equity and venture capital firm founded in 2007 and headquartered in London."
+      },
+      {
+        "id": "93008e73-1c9b-4f67-8a34-c771f213392d",
+        "name": "BALDERTON CAPITAL IV, L.P.",
+        "entity_type": "Company",
+        "description": "a Wilmington, Delaware‑based private equity and venture capital firm founded in 2008"
+      }
+    ],
+    "rejected": [
+      {
+        "id": "0f41d74d-a76b-4ad2-8cc9-0b4847268ef3",
+        "name": "BALDERTON CAPITAL II, L.P.",
+        "reason": "no investment relationships"
+      },
+      {
+        "id": "ca2f8992-5b95-457a-88d0-7a109a4b830a",
+        "name": "BALDERTON CAPITAL III, L.P.",
+        "reason": "no investment relationships"
+      },
+      {
+        "id": "ba4785d8-6a05-43cc-9184-e18bfdf40a0a",
+        "name": "BALDERTON LIMITED",
+        "reason": "no investment relationships"
+      },
+      {
+        "id": "0a9bd1fc-1661-4a04-8494-05e14b74bee2",
+        "name": "BALDERTON PARTNERS LIMITED",
+        "reason": "no investment relationships"
+      }
+    ]
+  },
+  {
+    "seed": "Kinnevik",
+    "slug": "kinnevik",
+    "included": [
+      {
+        "id": "717b71cf-0575-4107-8464-6e739bb96ac3",
+        "name": "KINNEVIK AB",
+        "entity_type": "Company",
+        "description": "Swedish private equity and venture capital firm headquartered in Stockholm, founded in 1946."
+      }
+    ],
+    "rejected": [
+      {
+        "id": "a4f99943-23dc-4998-a900-6fecb0fdf99f",
+        "name": "KINNEVIK CAPITAL LTD.",
+        "reason": "country: United Kingdom"
+      },
+      {
+        "id": "dd476f5e-44ff-4d7c-8a15-ae22c945e7f0",
+        "name": "Kinnevik AB (publ)",
+        "reason": "no investment relationships"
+      },
+      {
+        "id": "c1a2f9de-06e4-581c-9a04-dffc7b7241bd",
+        "name": "Kinnevik Ab (Publ)",
+        "reason": "no investment relationships"
+      }
+    ]
+  },
+  {
+    "seed": "J12 Ventures",
+    "slug": "j12-ventures",
+    "included": [
+      {
+        "id": "8c6fed86-abdc-421c-836c-e1aab33097ef",
+        "name": "J12 Ventures",
+        "entity_type": "Company",
+        "description": "Swedish venture capital firm providing essential seed and pre-seed capital to Nordic tech startups."
+      }
+    ],
+    "rejected": [
+      {
+        "id": "6573cc48-1bba-4659-ad1a-8eb657d7eb70",
+        "name": "J12 B.V.",
+        "reason": "no investment relationships"
+      },
+      {
+        "id": "035d146f-56b3-4b08-8b38-3dd7549f5ef5",
+        "name": "J12 PARTNERS LIMITED",
+        "reason": "country: United Kingdom"
+      },
+      {
+        "id": "ab6003ac-4475-47a5-a786-51fce3ec7c08",
+        "name": "J12 Partners AB",
+        "reason": "no investment relationships"
+      },
+      {
+        "id": "d9230cd1-2a48-40ec-b820-b3c00bc42c4f",
+        "name": "J12 INVEST AS",
+        "reason": "country: Norway"
+      }
+    ]
+  },
+  {
+    "seed": "Luminar Ventures",
+    "slug": "luminar-ventures",
+    "included": [
+      {
+        "id": "be67283b-4529-4a2d-834a-96edc4b36971",
+        "name": "Luminar Ventures",
+        "entity_type": "Company",
+        "description": "Nordic venture capital fund specializing in early-stage investments in technology companies."
+      }
+    ],
+    "rejected": []
+  },
+  {
+    "seed": "Nordic Makers",
+    "slug": "nordic-makers",
+    "included": [
+      {
+        "id": "6f66e249-4cb9-4acd-8bfe-abe679a9c797",
+        "name": "Nordic Makers",
+        "entity_type": "Company",
+        "description": "Copenhagen-based venture capital fund investing in Nordic startups."
+      }
+    ],
+    "rejected": []
+  },
+  {
+    "seed": "Antler",
+    "slug": "antler",
+    "included": [
+      {
+        "id": "120aa512-9f63-4941-a01b-33d54a851ef5",
+        "name": "Antler",
+        "entity_type": "Organization",
+        "description": "A Singapore‑based venture capital firm founded in 2024 that focuses on financing fintech startups."
+      },
+      {
+        "id": "d3b95646-ae3b-40fc-af1c-b05c6516d131",
+        "name": "Antler",
+        "entity_type": "Company",
+        "description": "A global venture capital firm that creates and invests in early‑stage startups."
+      },
+      {
+        "id": "839c988a-738b-458d-bfd4-2637aebbd572",
+        "name": "ANTLER LIMITED",
+        "entity_type": "Company",
+        "description": "a London‑based British company operating in banking and retail, founded in 2020"
+      }
+    ],
+    "rejected": [
+      {
+        "id": "9291e237-21d7-493f-80b8-4205df666de8",
+        "name": "ANTLER SA",
+        "reason": "country: Switzerland"
+      },
+      {
+        "id": "32f466ef-9d91-5738-8320-b20730082d92",
+        "name": "Antler",
+        "reason": "no investment relationships"
+      },
+      {
+        "id": "7742e631-4d29-52d6-8bb6-70d5212107df",
+        "name": "Antler Innovation Pte Ltd",
+        "reason": "no investment relationships"
+      }
+    ]
+  },
+  {
+    "seed": "Alliance Venture",
+    "slug": "alliance-venture",
+    "included": [
+      {
+        "id": "d405faf4-b2f7-4e7a-a083-b5d2346e616d",
+        "name": "Alliance VC",
+        "entity_type": "Company",
+        "description": "Nordic venture capital firm based in Oslo investing in exceptional early-stage tech companies and purpose-driven founders."
+      }
+    ],
+    "rejected": [
+      {
+        "id": "a8263372-b48f-4838-8bcc-4dbb01348477",
+        "name": "ALLIANCE VENTURE SPRING AS",
+        "reason": "no investment relationships"
+      }
+    ]
+  },
+  {
+    "seed": "Sisu Game Ventures",
+    "slug": "sisu-game-ventures",
+    "included": [
+      {
+        "id": "d65d0f70-eb11-4879-8f11-2dcf932c4212",
+        "name": "Sisu Game Ventures Oy",
+        "entity_type": "Company",
+        "description": "Finnish venture capital firm headquartered in Helsinki, founded in 2014."
+      }
+    ],
+    "rejected": []
+  },
+  {
+    "seed": "Seedcamp",
+    "slug": "seedcamp",
+    "included": [
+      {
+        "id": "d2d11954-6bab-5ac9-8684-a54406623104",
+        "name": "Seedcamp Limited",
+        "entity_type": "Organization",
+        "description": "a London‑based seed‑stage venture capital firm founded in 2007"
+      },
+      {
+        "id": "aa87dde8-7dc3-4fc0-957f-143da6ddc0b7",
+        "name": "Seedcamp",
+        "entity_type": "Organization",
+        "description": "London‑based seed‑stage venture capital firm founded in 2007."
+      },
+      {
+        "id": "79d7e110-3634-45b1-ae19-f8b51818af45",
+        "name": "SEEDCAMP III L.P.",
+        "entity_type": "Company",
+        "description": "London‑based venture‑capital firm founded in 2014."
+      },
+      {
+        "id": "ffd198d5-ef20-4daa-a271-4671cca16d6c",
+        "name": "SEEDCAMP VI L.P.",
+        "entity_type": "Company",
+        "description": "A London‑based venture capital firm founded in 2022."
+      }
+    ],
+    "rejected": [
+      {
+        "id": "e79f742e-afd1-486e-b046-ff6aef8cd043",
+        "name": "SEEDCAMP IV L.P.",
+        "reason": "no investment relationships"
+      }
+    ]
+  },
+  {
+    "seed": "Vendep Capital",
+    "slug": "vendep-capital",
+    "included": [
+      {
+        "id": "c979df8c-22de-418c-89cf-a7b4a1640087",
+        "name": "Vendep Capital",
+        "entity_type": "Company",
+        "description": "Finnish seed-stage VC focused on B2B SaaS and marketplaces, one of Finland's most active seed investors."
+      }
+    ],
+    "rejected": []
+  },
+  {
+    "seed": "Butterfly Ventures",
+    "slug": "butterfly-ventures",
+    "included": [
+      {
+        "id": "114c3c85-dcce-450a-8305-1bacb716aec1",
+        "name": "Butterfly Ventures",
+        "entity_type": "Company",
+        "description": "Finnish VC investing €100K-€1M in seed and Series A stage startups since 2012."
+      }
+    ],
+    "rejected": [
+      {
+        "id": "a07abca3-fdb9-4ca6-ad7e-5911717ee2da",
+        "name": "Butterfly Ventures LLC",
+        "reason": "country: United States"
+      },
+      {
+        "id": "d7039d1c-c3c2-4181-9030-752e2be285a5",
+        "name": "Butterfly Ventures Limited",
+        "reason": "no investment relationships"
+      }
+    ]
+  },
+  {
+    "seed": "Tesi",
+    "slug": "tesi",
+    "included": [
+      {
+        "id": "df5be140-d50e-4e21-bb4f-d8f1e4ad3959",
+        "name": "Tesi",
+        "entity_type": "Organization",
+        "description": "A Finnish public investment company based in Helsinki that provides private equity and venture capital to technology firms."
+      }
+    ],
+    "rejected": [
+      {
+        "id": "cd63d5a6-ff71-4c0f-a149-f6bae0487b36",
+        "name": "TESI S.P.A.",
+        "reason": "country: Italy"
+      },
+      {
+        "id": "6e31798d-d33b-55ab-a01b-8139bd471fea",
+        "name": "TESI",
+        "reason": "country: Italy"
+      },
+      {
+        "id": "a0da8fe5-c050-4457-ae95-049d97c772fb",
+        "name": "TESI LTD",
+        "reason": "country: United Kingdom"
+      },
+      {
+        "id": "46c3b3eb-d84e-455e-a9e6-524dab3ce870",
+        "name": "TESI S.R.L.",
+        "reason": "country: Italy"
+      },
+      {
+        "id": "954ea884-e0f2-4566-8ca2-40f85ab89782",
+        "name": "TESI - S.R.L.",
+        "reason": "country: Italy"
+      }
+    ]
+  },
+  {
+    "seed": "Industrifonden",
+    "slug": "industrifonden",
+    "included": [],
+    "rejected": []
+  },
+  {
+    "seed": "NordicNinja",
+    "slug": "nordicninja",
+    "included": [
+      {
+        "id": "6491b438-55eb-426b-8490-9c5bbf493c5a",
+        "name": "Nordic Ninja VC",
+        "entity_type": "Company",
+        "description": "A Japanese-backed venture capital firm investing in European climate tech, deeptech, and digital society startups focused on reducing the global carbon footprint."
+      }
+    ],
+    "rejected": [
+      {
+        "id": "a46a1058-93a7-4b0f-bc1f-bc31238fb006",
+        "name": "NORDICNINJA VC LIMITED",
+        "reason": "country: United Kingdom"
+      },
+      {
+        "id": "54367890-7d78-4292-9f5a-fb8bd1b4863b",
+        "name": "NORDICNINJA FUND II SCSP",
+        "reason": "no investment relationships"
+      }
+    ]
+  },
+  {
+    "seed": "Wave Ventures",
+    "slug": "wave-ventures",
+    "included": [
+      {
+        "id": "c1ab0b56-e050-433b-8b3b-5c6526db70ef",
+        "name": "Wave Ventures",
+        "entity_type": "Company",
+        "description": "Student-led venture capital fund investing in ambitious early-stage startups across Finland and the Nordics at pre-seed stage."
+      },
+      {
+        "id": "40ac95ab-763e-43f0-aea2-cfda0a506d50",
+        "name": "Wave Ventures",
+        "entity_type": "Organization",
+        "description": "Venture capital firm headquartered in Helsinki, Finland."
+      }
+    ],
+    "rejected": [
+      {
+        "id": "067980c1-2fc5-4eec-8e99-a06774928a0c",
+        "name": "Wave Ventures Ltd.",
+        "reason": "no investment relationships"
+      }
+    ]
+  },
+  {
+    "seed": "Moonfire Ventures",
+    "slug": "moonfire-ventures",
+    "included": [
+      {
+        "id": "0ee6ddfb-9f59-4a4d-83af-d620c5e32ac7",
+        "name": "MOONFIRE VENTURES LLP",
+        "entity_type": "Company",
+        "description": "A London-based venture capital firm founded in 2019."
+      },
+      {
+        "id": "bf1c3197-1214-4f61-83df-fe99a7f5f34f",
+        "name": "Moonfire Ventures",
+        "entity_type": "Organization",
+        "description": "a venture capital firm founded by Mattias Ljungman"
+      },
+      {
+        "id": "717bf9a8-96c9-4885-ae27-6401a76ab1dd",
+        "name": "Moonfire Ventures Fund I LP",
+        "entity_type": "Company",
+        "description": "A company operating in the asset management industry."
+      },
+      {
+        "id": "47387e36-4797-45d7-8df2-1a5c2cbe51dc",
+        "name": "Moonfire II",
+        "entity_type": "Organization",
+        "description": "European venture capital fund based in Guernsey, operating through Aldea Ventures."
+      },
+      {
+        "id": "03752460-b77e-425c-904b-a29242b60006",
+        "name": "Moonfire",
+        "entity_type": "Organization",
+        "description": "A London‑based venture capital firm."
+      }
+    ],
+    "rejected": [
+      {
+        "id": "af313c9b-7321-4a50-9feb-f03d53445d35",
+        "name": "Moonfire GmbH",
+        "reason": "country: Germany"
+      }
+    ]
+  },
+  {
+    "seed": "Heartcore Capital",
+    "slug": "heartcore-capital",
+    "included": [
+      {
+        "id": "c7c91c8e-15b5-4ba8-a652-5fa93c268db1",
+        "name": "Heartcore Capital A/S",
+        "entity_type": "Company",
+        "description": "A Danish venture capital firm founded in 2011 and headquartered in Copenhagen."
+      }
+    ],
+    "rejected": [
+      {
+        "id": "0dd19e33-e4b4-468d-86e5-af1cfd777ced",
+        "name": "Heartcore AB",
+        "reason": "excluded by hand"
+      },
+      {
+        "id": "e2b4fb9b-97f0-4811-af9b-56afb9d676a2",
+        "name": "HeartCore Inc.",
+        "reason": "excluded by hand"
+      },
+      {
+        "id": "8f258dd3-8168-4655-ac3c-c1e4be952bde",
+        "name": "HeartCore Co., Ltd.",
+        "reason": "excluded by hand"
+      }
+    ]
+  },
+  {
+    "seed": "Contrarian Ventures",
+    "slug": "contrarian-ventures",
+    "included": [
+      {
+        "id": "3c7caf1d-2b92-493f-bed9-7e14f8e4cc78",
+        "name": "UAB Contrarian Ventures",
+        "entity_type": "Company",
+        "description": "Lithuanian venture capital firm headquartered in Vilnius, founded in 2017."
+      }
+    ],
+    "rejected": []
+  },
+  {
+    "seed": "Spintop Ventures",
+    "slug": "spintop-ventures",
+    "included": [
+      {
+        "id": "4b9d59a7-331d-4664-a491-a0b2e7d37c03",
+        "name": "Spintop Ventures",
+        "entity_type": "Company",
+        "description": "Swedish early-stage venture capital firm focused on Nordic tech companies from seed to Series A."
+      }
+    ],
+    "rejected": []
+  }
+]

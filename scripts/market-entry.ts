@@ -61,7 +61,6 @@ function marketCountry(market: string): string[] {
 }
 
 async function main() {
-  const ds = loadDataset();
   const now = today();
   const year = now.slice(0, 4);
   const cutoff = new Date(Date.parse(now) - 120 * 86400000).toISOString().slice(0, 10);
@@ -80,6 +79,8 @@ async function main() {
     }
   }
   log(`${claims.length} claims with sources`);
+  if (process.argv.includes("--prewarm")) return;
+  const ds = loadDataset();
 
   const llm = llmEnabled() ? await extractClaims(claims.map((c) => ({ index: c.index, text: c.text, url: c.url }))) : null;
   const llmBy = new Map((llm ?? []).map((x) => [x.index, x]));

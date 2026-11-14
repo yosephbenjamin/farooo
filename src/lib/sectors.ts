@@ -18,7 +18,7 @@ const LEX: [Sector, RegExp][] = [
   ["food", /\b(food|restaurant|grocer|meal|delivery platform|beverage|dairy|plant-based|alt(ernative)? protein|coffee|kitchen)\w*/],
   ["logistics", /\b(logistic|delivery|shipping|freight|fleet|courier|last-mile|supply chain|warehous|parcel)\w*/],
   ["mobility", /\b(mobility|scooter|e-?bike|ride|vehicle|automotive|\bev\b|electric vehicle|car sharing|charging|transport)\w*/],
-  ["energy", /\b(energy|battery|batteries|solar|wind|grid|hydrogen|power|electricity|nuclear|heat pump|thermal|storage)\b/],
+  ["energy", /\b(energy|batter(y|ies)|solar|wind (power|farms?|turbines?)|grid|hydrogen|electricity|nuclear|heat pumps?|power (conversion|electronics|grid|plants?|losses)|energy storage)\b/],
   ["climate", /\b(climate|carbon|emission|sustainab|circular|recycl|waste|biochar|net zero|cleantech|decarboni)\w*/],
   ["health", /\b(health|medical|clinic|patient|care|hospital|diagnos|therapy|mental|medtech|wellness|telemedicine|dental|pharmacy)\w*/],
   ["biotech", /\b(biotech|drug|genetic|genom|molecul|antibod|pharma|life science|cell|protein|enzyme|microb)\w*/],
@@ -33,7 +33,7 @@ const LEX: [Sector, RegExp][] = [
   ["construction", /\b(construction|building|architect|contractor|property development|bim)\w*/],
   ["realestate", /\b(real estate|proptech|property|housing|rental|landlord|tenant)\w*/],
   ["manufacturing", /\b(manufactur|industrial|factory|robot|automation|3d print|machinery|materials?)\w*/],
-  ["hardware", /\b(hardware|semiconductor|chip|sensor|device|iot|electronics|photonic|quantum|radar|lidar)\w*/],
+  ["hardware", /\b(hardware|semiconductor|chip|sensor|device|iot|electronics|photonic|quantum|radar|lidar|transistor|wearable|smart ring)\w*/],
   ["space", /\b(space|satellite|orbit|aerospace|launch)\w*/],
   ["education", /\b(education|edtech|learning|school|course|tutor|university|students?)\w*/],
   ["travel", /\b(travel|hotel|hospitality|booking|tourism|flights?|airline)\w*/],
@@ -42,7 +42,7 @@ const LEX: [Sector, RegExp][] = [
   ["marketing", /\b(marketing|advertis|adtech|brand|seo|customer engagement|loyalty|sales)\w*/],
   ["telecom", /\b(telecom|5g|network|connectivity|mobile operator|wireless)\w*/],
   ["consumer", /\b(consumer|app|lifestyle|fashion|beauty|dating|social|fitness|parent)\w*/],
-  ["defence", /\b(defen[cs]e|military|dual-use|drone|uav)\w*/],
+  ["defence", /\b(defen[cs]e|military|dual-use|drone|uav|battlefield|autonomous systems)\w*/],
 ];
 
 const INDUSTRY_MAP: Record<string, Sector[]> = {
@@ -114,7 +114,7 @@ const COMPLEMENTS: [Sector, Sector, string][] = [
   ["food", "logistics", "{door} could carry what you make to the door."],
   ["energy", "mobility", "{door} runs on electricity; you make or manage it."],
   ["mobility", "energy", "{door} supplies the power your vehicles need."],
-  ["energy", "manufacturing", "{door} runs factories hungry for cleaner power."],
+  ["energy", "manufacturing", "{door} serves industry, and industry is hungry for cleaner power."],
   ["manufacturing", "energy", "{door} sells energy to industry like yours."],
   ["climate", "manufacturing", "{door} has emissions to cut; that's your work."],
   ["climate", "energy", "{door} and you push the same transition from two ends."],
@@ -130,6 +130,12 @@ const COMPLEMENTS: [Sector, Sector, string][] = [
   ["fintech", "security", "{door} secures the identity checks your product depends on."],
   ["security", "saas", "{door} ships software with a security review to pass."],
   ["devtools", "saas", "{door} is a software team that could run on your tools."],
+  ["devtools", "payments", "{door} handles billing; the apps your users build will need it."],
+  ["payments", "devtools", "{door} is where new apps get built; each one needs payments."],
+  ["climate", "hardware", "{door} builds hardware whose footprint you can measure and cut."],
+  ["hardware", "energy", "{door} works on power; your devices draw it."],
+  ["energy", "hardware", "{door} builds hardware that lives on efficient power."],
+  ["health", "hardware", "{door} builds the kind of hardware that ends up in health devices."],
   ["saas", "devtools", "{door} builds the tools your engineers use."],
   ["data", "commerce", "{door} sits on commerce data you could put to work."],
   ["ai", "legal", "{door} lives in documents; your AI reads them."],
@@ -147,7 +153,7 @@ const COMPLEMENTS: [Sector, Sector, string][] = [
   ["hr", "education", "{door} trains the people your customers want to hire."],
   ["agriculture", "food", "{door} buys what farms grow."],
   ["food", "agriculture", "{door} grows what you cook or sell."],
-  ["hardware", "manufacturing", "{door} builds machines your hardware could sense or steer."],
+  ["hardware", "manufacturing", "{door} works in industry, where hardware like yours earns its keep."],
   ["manufacturing", "hardware", "{door} makes components your production lines need."],
   ["space", "defence", "{door} needs eyes and links in orbit."],
   ["defence", "space", "{door} puts sensors in orbit you could use."],
@@ -172,7 +178,8 @@ export function fitBetween(
   door: { name: string; sectors: Sector[]; country?: string | null; blurb?: string | null },
 ): Fit {
   for (const [a, b, s] of COMPLEMENTS) {
-    if (you.sectors.includes(a) && door.sectors.includes(b) && !(GENERIC.has(a) && GENERIC.has(b))) {
+    // a door's generic tags (AI, SaaS, data...) are weak evidence: never enough for a complement
+    if (you.sectors.includes(a) && door.sectors.includes(b) && !GENERIC.has(b)) {
       return { score: 3, sentence: s.replace("{door}", door.name).replace("{you}", you.name), kind: "complement" };
     }
   }

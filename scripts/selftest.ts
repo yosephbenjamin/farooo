@@ -1,0 +1,31 @@
+// npm test: small checks for the pure functions everything else leans on.
+import assert from "node:assert/strict";
+import { normalizeCompany, normalizeFund } from "../src/lib/normalize";
+import { concreteDateInText, concreteDateInUrl, isPlaceholderDate } from "../src/lib/dates";
+import { aliasMatch, SEED_FUNDS } from "../src/lib/seed";
+import { isBoilerplate, sectorsOf, fitBetween } from "../src/lib/sectors";
+
+const seed = (n: string) => SEED_FUNDS.find((f) => f.name === n)!;
+assert.equal(normalizeCompany("Carbo Culture Oy"), "carbo culture");
+assert.equal(normalizeCompany("Creades AB (publ)"), "creades");
+assert.equal(normalizeCompany("Wolt Enterprises Oy"), "wolt enterprises");
+assert.equal(normalizeFund("Lifeline Ventures Fund II Ky"), "lifeline ventures");
+assert.equal(normalizeFund("Creandum III, L.P."), "creandum");
+assert.equal(normalizeFund("EQT VENTURES II INVESTMENTS S.À R.L."), "eqt ventures investments");
+assert.ok(aliasMatch(seed("EQT Ventures"), "EQT VENTURES II INVESTMENTS S.À R.L."));
+assert.ok(aliasMatch(seed("byFounders"), "byFounders Collective"));
+assert.ok(!aliasMatch(seed("Inventure"), "InVenture Partners"));
+assert.ok(!aliasMatch(seed("Heartcore Capital"), "HeartCore Inc."));
+assert.equal(concreteDateInText("10 Nov 2026"), "2026-11-10");
+assert.equal(concreteDateInText("announced on November 7, 2026"), "2026-11-07");
+assert.equal(concreteDateInText("Early Nov 2026"), null);
+assert.equal(concreteDateInText("Oct 2026"), null);
+assert.equal(concreteDateInUrl("https://tech.eu/2026/11/07/foo-raises"), "2026-11-07");
+assert.equal(concreteDateInUrl("https://x.com/news-2026-10-02-bar"), "2026-10-02");
+assert.ok(isPlaceholderDate("Recent"));
+assert.ok(isBoilerplate("Swedish company founded in 2017 and headquartered in Stockholm."));
+assert.ok(!isBoilerplate("Finnish food-delivery platform founded in 2014, now owned by DoorDash."));
+assert.ok(sectorsOf("AI accounting automation").includes("fintech"));
+const f = fitBetween({ name: "PayCo", sectors: ["payments"] }, { name: "Shop", sectors: ["commerce"] });
+assert.equal(f.kind, "complement");
+console.log("selftest ok");

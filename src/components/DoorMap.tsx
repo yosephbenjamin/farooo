@@ -17,149 +17,150 @@ export interface MapProps {
   holdId?: string | null;
   className?: string;
   maxPerInvestor?: number;
+  /** Larger labels for booth mode (read from 2 m). */
+  big?: boolean;
 }
 
-const W = 640;
-const H = 600;
+const W = 840;
+const H = 660;
 const CX = W / 2;
-const CY = H / 2 + 6;
+const CY = H / 2;
+const COLS = 5;
+const WW = 13; // window width
+const WH = 17; // window height
+const GX = 7;
+const GY = 8;
+
+const r2 = (v: number) => Math.round(v * 10) / 10;
 
 /**
- * Hand-drawn map: the startup at the centre, its investors on a ring, and each investor's
- * doors as tiny windows. Lit windows are doors that opened recently.
+ * Hand-drawn map. The startup sits in the middle; each investor is a small building whose
+ * windows are its doors (its keyring). Lit windows are doors that opened recently, labelled
+ * on the building's outer side. Roads run from the startup to each building.
  */
-export function DoorMap({ startup, investors, doors, animateId, holdId, className, maxPerInvestor = 18 }: MapProps) {
-  const inv = investors.slice(0, 7);
-  const n = Math.max(inv.length, 1);
-  const R = n === 1 ? 0 : 150;
-  const pos = new Map<string, { x: number; y: number; a: number }>();
-  inv.forEach((iv, i) => {
-    const a = n === 1 ? -Math.PI / 2 : -Math.PI / 2 + (i * 2 * Math.PI) / n;
-    pos.set(iv.id, { x: CX + R * Math.cos(a), y: CY + R * Math.sin(a), a });
-  });
+export function DoorMap({ startup, investors, doors, animateId, holdId, className, maxPerInvestor = 25, big = false }: MapProps) {
+  const sc = big ? 1.35 : 1;
+  const inv = investors.slice(0, 6);
+  const n = inv.length;
+  const spots = layout(n);
 
-  // group doors by their first investor; lit ones first so they're always on the map
-  const groups = new Map<string, MapDoor[]>();
+  // each door lives in the building of its first investor
+  const homes = new Map<string, MapDoor[]>();
   for (const d of doors) {
-    const home = d.investorIds.find((id) => pos.has(id));
-    if (!home) continue;
-    groups.set(home, [...(groups.get(home) ?? []), d]);
+    const home = d.investorIds.find((id) => inv.some((i) => i.id === id));
+    if (home) homes.set(home, [...(homes.get(home) ?? []), d]);
   }
-  const windows: { d: MapDoor; x: number; y: number; home: string }[] = [];
-  const overflow: { home: string; n: number }[] = [];
-  for (const [home, ds] of groups) {
-    const p = pos.get(home)!;
-    const sorted = [...ds].sort((a, b) => Number(b.lit) - Number(a.lit) || Number(b.id === holdId) - Number(a.id === holdId));
-    const shown = sorted.slice(0, maxPerInvestor);
-    if (sorted.length > shown.length) overflow.push({ home, n: sorted.length - shown.length });
-    // windows on an outward fan around the investor
-    const outA = n === 1 ? -Math.PI / 2 : p.a;
-    shown.forEach((d, i) => {
-      const ring = Math.floor(i / 6);
-      const k = i % 6;
-      const spread = 0.95 / (ring + 1);
-      const ang = outA + (k - 2.5) * (spread / 2.5) * 0.9;
-      const r = 62 + ring * 26 + (n === 1 ? 40 : 0);
-      windows.push({ d, x: p.x + r * Math.cos(ang), y: p.y + r * Math.sin(ang), home });
-    });
-  }
-
-  const byId = new Map(windows.map((w) => [w.d.id, w]));
 
   return (
-    <svg viewBox={`0 0 ${W} ${H}`} className={className} role="img" aria-label={`Map of ${startup}, its investors and their doors`}>
-      {/* startup → investor lines */}
-      {inv.map((iv) => {
-        const p = pos.get(iv.id)!;
-        return paths(ink.line(CX, CY, p.x, p.y, { seed: seedOf(iv.id), strokeWidth: 1.1 }), `l-${iv.id}`);
-      })}
-      {/* investor → lit window threads, plus second warm paths */}
-      {windows.map((w) => {
-        const p = pos.get(w.home)!;
-        const out = [];
-        if (w.d.lit || w.d.id === holdId)
-          out.push(paths(ink.line(p.x, p.y, w.x, w.y, { seed: seedOf(w.d.id), strokeWidth: 0.8, roughness: 1.4 }), `t-${w.d.id}`, { stroke: "var(--ink-500)" }));
-        for (const other of w.d.investorIds) {
-          if (other === w.home || !pos.has(other)) continue;
-          const q = pos.get(other)!;
-          out.push(paths(ink.line(q.x, q.y, w.x, w.y, { seed: seedOf(w.d.id + other), strokeWidth: 0.6, roughness: 1.6, stroke: INK_FAINT }), `t2-${w.d.id}-${other}`));
-        }
-        return out;
-      })}
-      {/* windows */}
-      {windows.map((w) => {
-        const isHeld = w.d.id === holdId && w.d.id !== animateId;
-        const lit = (w.d.lit && !isHeld) || w.d.id === animateId;
-        const seed = seedOf(w.d.id);
+    <svg viewBox={n <= 2 ? `-70 ${CY - 200} ${W + 140} 400` : `-70 0 ${W + 140} ${H}`} className={className} role="img" aria-label={`Map of ${startup}, its investors and their doors`}>
+      {inv.map((iv, i) => {
+        const { x, y } = spots[i];
+        const all = [...(homes.get(iv.id) ?? [])].sort(
+          (a, b) => Number(b.lit || b.id === holdId) - Number(a.lit || a.id === holdId),
+        );
+        const shown = all.slice(0, maxPerInvestor);
+        const rows = Math.max(1, Math.ceil(shown.length / COLS));
+        const bw = COLS * WW + (COLS - 1) * GX + 20;
+        const bh = rows * WH + (rows - 1) * GY + 20;
+        const bx = r2(x - bw / 2);
+        const by = r2(y - bh / 2);
+        const right = x >= CX; // labels go on the outer side
+        const seed = seedOf(iv.id);
+        const roadEnd = { x: right ? bx : bx + bw, y: r2(y) };
+        const lit = shown
+          .map((d, k) => ({ d, k }))
+          .filter(({ d }) => d.id === animateId || (d.lit && d.id !== holdId));
+        const labelX = right ? bx + bw + 22 : bx - 22;
+        const step = 27 * sc;
+        const labelTop = r2(y - ((lit.length - 1) * step) / 2);
         return (
-          <g key={`w-${w.d.id}`} data-door={w.d.id}>
-            {lit && (
-              <rect
-                x={w.x - 4.5}
-                y={w.y - 5.5}
-                width={9}
-                height={11}
-                fill={w.d.id === animateId ? "transparent" : LIGHT}
-                className={w.d.id === animateId ? "window-lit-anim" : undefined}
-              />
-            )}
-            {paths(ink.rect(w.x - 4.5, w.y - 5.5, 9, 11, { seed, strokeWidth: lit ? 1.2 : 0.9, roughness: 0.9, stroke: lit ? "var(--ink)" : INK_FAINT }), `wr-${w.d.id}`)}
-            {paths(ink.line(w.x, w.y - 5.5, w.x, w.y + 5.5, { seed: seed + 1, strokeWidth: 0.6, roughness: 0.6, stroke: lit ? "var(--ink)" : INK_FAINT }), `wm-${w.d.id}`)}
-            {lit && (
-              <text
-                x={w.x + (w.x >= CX ? 9 : -9)}
-                y={w.y + 4}
-                textAnchor={w.x >= CX ? "start" : "end"}
-                fontFamily="var(--font-serif)"
-                fontStyle="italic"
-                fontSize={14}
-                fill="var(--ink)"
-              >
-                {w.d.name}
+          <g key={iv.id}>
+            {/* road */}
+            {paths(ink.line(CX + (right ? 26 : -26), CY, roadEnd.x, roadEnd.y, { seed, strokeWidth: 1.1, roughness: 1.3 }), `road-${iv.id}`)}
+            {/* building */}
+            {paths(ink.rect(bx, by, bw, bh, { seed: seed + 1, fill: "var(--paper)", fillStyle: "solid" }), `b-${iv.id}`)}
+            {paths(ink.poly([[bx - 4, by], [r2(bx + bw / 2), r2(by - 18)], [bx + bw + 4, by]], { seed: seed + 2, fill: "var(--paper)", fillStyle: "solid" }), `roof-${iv.id}`)}
+            {shown.map((d, k) => {
+              const wx = r2(bx + 10 + (k % COLS) * (WW + GX));
+              const wy = r2(by + 10 + Math.floor(k / COLS) * (WH + GY));
+              const isAnim = d.id === animateId;
+              const isLit = isAnim || (d.lit && d.id !== holdId);
+              const s = seedOf(d.id);
+              return (
+                <g key={d.id} data-door={d.id}>
+                  {isLit && (
+                    <rect x={wx} y={wy} width={WW} height={WH} fill={isAnim ? "transparent" : LIGHT} className={isAnim ? "window-lit-anim" : undefined} />
+                  )}
+                  {paths(ink.rect(wx, wy, WW, WH, { seed: s, strokeWidth: isLit ? 1.1 : 0.8, roughness: 0.8, stroke: isLit ? "var(--ink)" : INK_FAINT }), `w-${d.id}`)}
+                </g>
+              );
+            })}
+            {all.length > shown.length && (
+              <text x={r2(bx + bw / 2)} y={r2(by + bh + 42 * sc)} textAnchor="middle" fontFamily="var(--font-mono)" fontSize={13} fill="var(--ink-300)">
+                +{all.length - shown.length} more
               </text>
             )}
-          </g>
-        );
-      })}
-      {/* investors */}
-      {inv.map((iv) => {
-        const p = pos.get(iv.id)!;
-        const below = p.y >= CY - 1;
-        return (
-          <g key={`i-${iv.id}`}>
-            {paths(ink.circle(p.x, p.y, 15, { seed: seedOf(iv.id) + 3, fill: "var(--paper)", fillStyle: "solid" }), `ic-${iv.id}`)}
-            <text x={p.x} y={below ? p.y + 26 : p.y - 16} textAnchor="middle" fontFamily="var(--font-mono)" fontSize={11} fill="var(--ink-500)" letterSpacing={0.4}>
+            {/* investor name */}
+            <text x={r2(bx + bw / 2)} y={r2(by + bh + 24 * sc)} textAnchor="middle" fontFamily="var(--font-mono)" fontSize={14 * sc} letterSpacing={0.8} fill="var(--ink-500)">
               {iv.name.toUpperCase()}
             </text>
+            {/* labels for lit windows, with leader lines */}
+            {lit.map(({ d, k }, j) => {
+              const wx = bx + 10 + (k % COLS) * (WW + GX) + WW / 2;
+              const wy = by + 10 + Math.floor(k / COLS) * (WH + GY) + WH / 2;
+              const ly = r2(labelTop + j * step);
+              const edge = right ? bx + bw : bx;
+              return (
+                <g key={`lbl-${d.id}`} className={d.id === animateId ? "window-label-anim" : undefined}>
+                  {paths(ink.line(r2(wx), r2(wy), r2(edge + (right ? 6 : -6)), ly - 4, { seed: seedOf(d.id) + 2, strokeWidth: 0.6, roughness: 0.6, stroke: "var(--ink-500)" }), `ll-${d.id}`)}
+                  <text x={labelX} y={ly} textAnchor={right ? "start" : "end"} fontFamily="var(--font-serif)" fontStyle="italic" fontSize={22 * sc} fill="var(--ink)">
+                    {d.name}
+                  </text>
+                </g>
+              );
+            })}
           </g>
-        );
-      })}
-      {overflow.map((o) => {
-        const p = pos.get(o.home)!;
-        const outA = n === 1 ? -Math.PI / 2 : p.a;
-        const x = p.x + 128 * Math.cos(outA);
-        const y = p.y + 128 * Math.sin(outA);
-        return (
-          <text key={`o-${o.home}`} x={x} y={y} textAnchor="middle" fontFamily="var(--font-mono)" fontSize={10} fill="var(--ink-300)">
-            +{o.n}
-          </text>
         );
       })}
       {/* the startup: a small house with one lit window */}
       <g>
-        {paths(ink.poly([[CX - 13, CY - 2], [CX, CY - 15], [CX + 13, CY - 2]], { seed: 11, fill: "var(--paper)", fillStyle: "solid" }), "h-roof")}
-        {paths(ink.rect(CX - 10, CY - 2, 20, 16, { seed: 12, fill: "var(--paper)", fillStyle: "solid" }), "h-body")}
-        <rect x={CX - 3.5} y={CY + 2} width={7} height={7} fill={LIGHT} />
-        {paths(ink.rect(CX - 3.5, CY + 2, 7, 7, { seed: 13, strokeWidth: 0.9, roughness: 0.6 }), "h-win")}
-        <text x={CX} y={CY + 34} textAnchor="middle" fontFamily="var(--font-serif)" fontSize={18} fill="var(--ink)">
+        {paths(ink.poly([[CX - 21, CY - 5], [CX, CY - 27], [CX + 21, CY - 5]], { seed: 11, fill: "var(--paper)", fillStyle: "solid" }), "h-roof")}
+        {paths(ink.rect(CX - 17, CY - 5, 34, 26, { seed: 12, fill: "var(--paper)", fillStyle: "solid" }), "h-body")}
+        <rect x={CX - 5} y={CY + 2} width={10} height={12} fill={LIGHT} />
+        {paths(ink.rect(CX - 5, CY + 2, 10, 12, { seed: 13, strokeWidth: 0.9, roughness: 0.6 }), "h-win")}
+        <text x={CX} y={CY + 48 * sc} textAnchor="middle" fontFamily="var(--font-serif)" fontSize={27 * sc} fill="var(--ink)">
           {startup}
         </text>
       </g>
-      {byId.size === 0 && inv.length === 0 && (
-        <text x={CX} y={CY + 60} textAnchor="middle" fontFamily="var(--font-serif)" fontStyle="italic" fontSize={15} fill="var(--ink-500)">
+      {n === 0 && (
+        <text x={CX} y={CY + 70} textAnchor="middle" fontFamily="var(--font-serif)" fontStyle="italic" fontSize={16} fill="var(--ink-500)">
           no investors in view
         </text>
       )}
     </svg>
   );
+}
+
+/** Building centres: left/right of the startup first, so labels have room on the outer sides. */
+function layout(n: number): { x: number; y: number }[] {
+  const L = CX - 215;
+  const R = CX + 215;
+  switch (n) {
+    case 0:
+      return [];
+    case 1:
+      return [{ x: R, y: CY }];
+    case 2:
+      return [{ x: L, y: CY }, { x: R, y: CY }];
+    case 3:
+      return [{ x: L, y: CY }, { x: R, y: CY - 150 }, { x: R, y: CY + 150 }];
+    case 4:
+      return [{ x: L, y: CY - 165 }, { x: R, y: CY - 165 }, { x: L, y: CY + 165 }, { x: R, y: CY + 165 }];
+    case 5:
+      return [{ x: L, y: CY - 175 }, { x: R, y: CY - 175 }, { x: L, y: CY + 30 }, { x: R, y: CY + 30 }, { x: CX, y: CY + 215 }];
+    default:
+      return [
+        { x: L, y: CY - 195 }, { x: R, y: CY - 195 }, { x: L, y: CY }, { x: R, y: CY }, { x: L, y: CY + 195 }, { x: R, y: CY + 195 },
+      ].slice(0, n);
+  }
 }

@@ -1,0 +1,5 @@
+[
+  { "name": "Oura", "slug": "oura", "description": "Smart ring wearable that tracks sleep, activity and health." },
+  { "name": "Lovable", "slug": "lovable", "description": "AI app builder for developers and non-developers: describe software in plain words, get a working app." },
+  { "name": "Verda", "slug": "verda", "description": "AI cloud infrastructure on clean energy, built in Finland." }
+]

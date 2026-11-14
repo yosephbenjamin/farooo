@@ -136,6 +136,7 @@ async function main() {
   // ---------- 2. vehicle links ----------
   type Link = { investorId: string; via: LinkVia; sources: Source[] };
   const links = new Map<string, Link[]>(); // cala company id -> links
+  const seenEntity = new Map<string, { name: string; entity_type: string }>();
   const addLink = (cid: string, l: Link) => {
     const arr = links.get(cid) ?? [];
     arr.push(l);
@@ -148,6 +149,7 @@ async function main() {
     const l = await vehicleLinks(v.id);
     for (const x of l.invested) {
       if (x.entity_type === "Person") continue;
+      seenEntity.set(x.id, { name: x.name, entity_type: x.entity_type });
       addLink(x.id, { investorId: inv.id, via: "fund→company", sources: toSrc(x.properties?.sources) });
     }
     for (const x of l.corporateEvents) roundRefs.set(x.id, "PCFR");
@@ -164,6 +166,7 @@ async function main() {
   };
   await fetchRounds([...roundRefs.entries()]);
   const unknownRoles = new Set<string>();
+  const issuerText = new Map<string, string>();
   for (const r of rawRounds.values()) {
     for (const role of r.roles) if (!["INVESTOR", "ISSUER"].includes(role)) unknownRoles.add(role);
     const seedInvs = new Set<string>();
@@ -173,6 +176,8 @@ async function main() {
     }
     for (const iss of r.issuers) {
       if (iss.entity_type === "Person") continue;
+      seenEntity.set(iss.id, { name: iss.name, entity_type: iss.entity_type });
+      if (r.description) issuerText.set(iss.id, r.description);
       for (const s of seedInvs) addLink(iss.id, { investorId: s, via: "round", sources: r.sources });
     }
   }
@@ -184,6 +189,29 @@ async function main() {
   const rawCompanies = new Map<string, RawCompany>();
   (await pool(ids, P, (id) => fetchCompany(id))).forEach((c) => c && rawCompanies.set(c.id, c));
   log(`${rawCompanies.size}/${ids.length} company profiles`);
+  // Profiles we couldn't fetch (e.g. credit ran out): build a minimal record from what the links
+  // and round descriptions already told us ("Stravito AB (Swedish company founded in 2017 ...)").
+  let fallback = 0;
+  for (const id of ids) {
+    if (rawCompanies.has(id)) continue;
+    const seen = seenEntity.get(id);
+    if (!seen) continue;
+    const parsed = parseIssuerText(issuerText.get(id));
+    rawCompanies.set(id, {
+      id,
+      name: seen.name,
+      entity_type: seen.entity_type,
+      aliases: [],
+      description: parsed.description,
+      foundingDate: null,
+      country: parsed.country,
+      industries: [],
+      investors: [],
+      rounds: [...rawRounds.values()].filter((r) => r.issuers.some((i) => i.id === id)).map((r) => ({ id: r.id, kind: r.kind, role: "ISSUER", date: r.date })),
+    });
+    fallback++;
+  }
+  if (fallback) log(`${fallback} companies built from link data only (profile not fetched)`);
 
   // company-side investor links (union both directions)
   let nameMatched = 0;
@@ -237,7 +265,9 @@ async function main() {
   const byKey = new Map<string, RawCompany>();
   const merges: string[][] = [];
   for (const c of keep) {
-    const keys = new Set([normalizeCompany(c.name), ...c.aliases.map(normalizeCompany).filter((k) => k.length >= 4)]);
+    const base = [normalizeCompany(c.name), ...c.aliases.map(normalizeCompany).filter((k) => k.length >= 4)];
+    // "Receipt Hero" / "ReceiptHero": also key on the name with spaces removed
+    const keys = new Set([...base, ...base.map((k) => k.replace(/ /g, "")).filter((k) => k.length >= 5)]);
     for (const k of keys) {
       if (!k) continue;
       const prev = byKey.get(k);
@@ -283,7 +313,7 @@ async function main() {
     companies[canon.id] = {
       id: canon.id,
       ids: members.map((m) => m.id),
-      name: displayName.replace(/\s+\((publ)\)$/i, ""),
+      name: prettyName(displayName),
       aliases: [...new Set(members.flatMap((m) => [m.name, ...m.aliases]))].filter((a) => a !== displayName),
       description: best.description,
       industries: [...new Set(members.flatMap((m) => m.industries))],
@@ -339,6 +369,16 @@ async function main() {
   log("done", JSON.stringify({ ...report, merges: report.merges.length, droppedFundLike: report.droppedFundLike.length }, null, 1));
 }
 
+/** "OURA HEALTH OY" -> "Oura Health", "Creades AB (publ)" -> "Creades". Keeps brand casing otherwise. */
+function prettyName(name: string): string {
+  let n = name.replace(/\s*\((publ)\)$/i, "").trim();
+  n = n.replace(/[,\s]+(oy|oyj|ab|ky|ltd\.?|limited|inc\.?|a\/s|as|asa|aps|gmbh|llc|plc|s\.?a\.?|b\.?v\.?|ou|oü|uab|sia)$/i, "").trim();
+  if (n && n === n.toUpperCase() && /[A-Z]{4,}/.test(n)) {
+    n = n.toLowerCase().replace(/\b([a-z])([a-z]*)/g, (_, a, b) => a.toUpperCase() + b).replace(/\b(Ai|Vr|Ar|Io|Ev|Iot)\b/g, (w) => w.toUpperCase());
+  }
+  return n || name;
+}
+
 function countDirections(companies: Record<string, Company>) {
   let fundOnly = 0, companyOnly = 0, both = 0, roundOnly = 0;
   for (const c of Object.values(companies))
@@ -350,6 +390,23 @@ function countDirections(companies: Record<string, Company>) {
       else roundOnly++;
     }
   return { both, fundOnly, companyOnly, roundOnly };
+}
+
+const COUNTRY_OF: [RegExp, string][] = [
+  [/\b(Finnish|Finland)\b/, "Finland"], [/\b(Swedish|Sweden)\b/, "Sweden"], [/\b(Norwegian|Norway)\b/, "Norway"],
+  [/\b(Danish|Denmark)\b/, "Denmark"], [/\b(Estonian|Estonia)\b/, "Estonia"], [/\b(British|United Kingdom|England)\b/, "United Kingdom"],
+  [/\b(German|Germany)\b/, "Germany"], [/\b(French|France)\b/, "France"], [/\b(American|United States)\b/, "United States"],
+  [/\b(Dutch|Netherlands)\b/, "Netherlands"], [/\b(Icelandic|Iceland)\b/, "Iceland"], [/\b(Lithuanian|Lithuania)\b/, "Lithuania"],
+  [/\b(Latvian|Latvia)\b/, "Latvia"], [/\b(Swiss|Switzerland)\b/, "Switzerland"], [/\b(Spanish|Spain)\b/, "Spain"], [/\b(Irish|Ireland)\b/, "Ireland"],
+];
+
+/** "Name (A Finnish company ... ). Round: Seed. ..." -> description + country. */
+function parseIssuerText(t: string | undefined): { description: string | null; country: string | null } {
+  if (!t) return { description: null, country: null };
+  const m = t.match(/^[\s\S]*?\(([\s\S]+?)\)\.\s*Round:/);
+  const description = m ? m[1].trim().replace(/\.$/, "") + "." : null;
+  const country = COUNTRY_OF.find(([re]) => re.test(description ?? ""))?.[1] ?? null;
+  return { description, country };
 }
 
 function toSrc(xs: { date?: string | null; document?: string | null; name?: string | null }[] | undefined): Source[] {
