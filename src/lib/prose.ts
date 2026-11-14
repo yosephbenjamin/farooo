@@ -74,7 +74,7 @@ export function sourceLine(d: Door): string {
   // a page title ("Welcome to GOV.UK", "News | Acme") reads worse than the host
   const titleLike = /^(welcome|home)\b|\s[|\-–]\s|:\s/i.test(s.name ?? "");
   const name = s.name && s.name.length < 40 && !/^https?:/.test(s.name) && !titleLike ? s.name.replace(/^www\./, "") : hostName(s.url);
-  return `${shortDate(d.whyNow.date)} · ${name}${s.rank ? ` · ${s.rank}` : ""}`;
+  return `${shortDate(d.whyNow.date)}, ${name}${s.rank ? `, ${s.rank.toLowerCase()}` : ""}`;
 }
 
 /** The quiet † footnote when Cala's industry code contradicted the description. */
@@ -97,7 +97,7 @@ export function doorCountLine(r: DoorReport): string | null {
   const counts = new Map<string, number>();
   for (const d of r.doors) for (const w of d.warm) counts.set(w.investor, (counts.get(w.investor) ?? 0) + 1);
   if (!counts.size) return null;
-  return [...counts.entries()].sort((a, b) => b[1] - a[1]).map(([n, c]) => `${n} ${c}`).join("  ·  ");
+  return [...counts.entries()].sort((a, b) => b[1] - a[1]).map(([n, c]) => `${n} ${c}`).join(", ");
 }
 
 export function emailSubject() {

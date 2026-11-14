@@ -41,7 +41,9 @@ body {
 ::selection { background: var(--paper-200); color: var(--ink-deep); }
 
 a { color: inherit; text-decoration-color: var(--ink-300); text-underline-offset: 0.18em; text-decoration-thickness: 1px; }
-a:hover { text-decoration-color: var(--ink); }
+/* everything clickable says so, and darkens while the pointer is on it */
+a, button { cursor: pointer; transition: color .15s ease, text-decoration-color .15s ease, opacity .7s ease; }
+a:hover, a:hover *, button:hover { color: var(--ink-deep); text-decoration-color: var(--ink-deep); }
 
 input::-webkit-calendar-picker-indicator { display: none !important; }
 @keyframes labelin { from { opacity: 0; } to { opacity: 1; } }

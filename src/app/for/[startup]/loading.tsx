@@ -19,7 +19,7 @@ export default function Loading() {
           <p className="text-[clamp(34px,5.5vw,64px)] font-light leading-[1.05] tracking-[-0.015em] text-ink-deep">
             <span className="caret">Looking for {name}</span>
           </p>
-          <p className="mono mt-6 text-[12px] text-ink-500">Reading Cala · a new startup can take up to half a minute</p>
+          <p className="mt-6 text-[17px] italic text-ink-500">Reading Cala. A new startup can take up to half a minute.</p>
         </div>
       </div>
     </main>

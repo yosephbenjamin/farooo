@@ -96,12 +96,12 @@ export function DoorMap({ startup, investors, doors, animateId, holdId, classNam
               );
             })}
             {all.length > shown.length && (
-              <text x={r2(bx + bw / 2)} y={r2(by + bh + 42 * sc)} textAnchor="middle" fontFamily="var(--font-mono)" fontSize={13} fill="var(--ink-300)">
+              <text x={r2(bx + bw / 2)} y={r2(by + bh + 42 * sc)} textAnchor="middle" fontFamily="var(--font-serif)" fontSize={13} fill="var(--ink-300)">
                 +{all.length - shown.length} more
               </text>
             )}
             {/* investor name */}
-            <text x={r2(bx + bw / 2)} y={r2(by + bh + 24 * sc)} textAnchor="middle" fontFamily="var(--font-mono)" fontSize={14 * sc} letterSpacing={0.8} fill="var(--ink-500)">
+            <text x={r2(bx + bw / 2)} y={r2(by + bh + 24 * sc)} textAnchor="middle" fontFamily="var(--font-serif)" fontSize={14 * sc} letterSpacing={0.8} fill="var(--ink-500)">
               {iv.name.toUpperCase()}
             </text>
             {/* labels for lit windows, with leader lines */}

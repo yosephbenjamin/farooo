@@ -98,18 +98,18 @@ export function LogView({ report, slug, taps: initialTaps, booth = false, script
   );
 
   const T = booth
-    ? { h1: "text-[clamp(44px,4.4vw,88px)] leading-[1.03]", lead: "text-[clamp(24px,1.95vw,38px)]", why: "text-[clamp(18px,1.35vw,26px)]", small: "text-[clamp(13px,0.85vw,17px)]", gap: "space-y-8" }
-    : { h1: "text-[clamp(38px,5vw,64px)] leading-[1.05]", lead: "text-[22px] sm:text-[25px]", why: "text-[17px] sm:text-[19px]", small: "text-[12px]", gap: "space-y-9" };
+    ? { h1: "text-[clamp(44px,4.4vw,88px)] leading-[1.03]", lead: "text-[clamp(24px,1.95vw,38px)]", why: "text-[clamp(18px,1.35vw,26px)]", small: "text-[clamp(15px,1vw,19px)]", gap: "space-y-8" }
+    : { h1: "text-[clamp(38px,5vw,64px)] leading-[1.05]", lead: "text-[22px] sm:text-[25px]", why: "text-[17px] sm:text-[19px]", small: "text-[14px]", gap: "space-y-9" };
 
   return (
     <main className={`mx-auto w-full ${booth ? "max-w-[1800px] px-[4vw] py-[4vh] min-h-screen" : "max-w-6xl px-4 sm:px-8 py-10 sm:py-14"}`}>
       <header className={`flex items-center justify-between ${booth ? "mb-[4vh]" : "mb-10 sm:mb-14"}`}>
         <Link href="/" className="flex items-center gap-2 no-underline" aria-label="Faro, home">
           <Lighthouse className={booth ? "h-12 w-12" : "h-8 w-8"} lit={revealed} />
-          <span className={`mono uppercase tracking-[0.18em] text-ink-500 ${booth ? "text-sm" : "text-[11px]"}`}>Faro</span>
+          <span className={`uppercase tracking-[0.18em] text-ink-500 ${booth ? "text-base" : "text-[13px]"}`}>Faro</span>
         </Link>
         {scripted && !revealed && (
-          <button onClick={reveal} className={`mono uppercase tracking-[0.18em] text-ink-300 hover:text-ink ${booth ? "text-sm" : "text-[11px]"}`}>
+          <button onClick={reveal} className={`uppercase tracking-[0.18em] text-ink-500 underline decoration-ink-300 underline-offset-4 ${booth ? "text-base" : "text-[13px]"}`}>
             watch
           </button>
         )}
@@ -140,7 +140,7 @@ export function LogView({ report, slug, taps: initialTaps, booth = false, script
           </ol>
 
           {shownDoors.length > 0 && (
-            <ol className={`mono mt-14 space-y-1 text-ink-500 ${T.small}`}>
+            <ol className={`mt-14 space-y-1 text-ink-500 ${T.small}`}>
               {shownDoors.map((d, i) => (
                 <li key={`fn-${d.id}`} className="flex gap-3">
                   <span className="w-4 text-right text-ink-300">{i + 1}</span>
@@ -159,8 +159,8 @@ export function LogView({ report, slug, taps: initialTaps, booth = false, script
           )}
 
           {count && (
-            <p className={`mono mt-10 text-ink-500 ${T.small}`}>
-              <span className="text-ink-300">Doors per investor  </span>
+            <p className={`mt-10 text-ink-500 ${T.small}`}>
+              <span className="text-ink-300">Doors per investor: </span>
               {count}
             </p>
           )}
@@ -217,7 +217,7 @@ function Entry({
             <span className="font-medium">{lead.name}</span>
             {lead.rest}.
             <a href={d.whyNow.source.url} target="_blank" rel="noreferrer" className="no-underline" aria-label={`Source ${n}`}>
-              <sup className="mono ml-0.5 text-[0.5em] text-ink-500">{n}</sup>
+              <sup className="ml-0.5 text-[0.55em] text-ink-500">{n}</sup>
             </a>
           </>
         )}
@@ -226,12 +226,12 @@ function Entry({
       <p className={`mt-1.5 ${T.why} max-w-[46ch] leading-relaxed text-ink-500 transition-opacity duration-700 ${hide}`}>
         {why}
         {d.industryNote && (
-          <sup className="mono ml-0.5 text-[0.6em] text-ink-300" title={industryNoteLine(d) ?? undefined}>
+          <sup className="ml-0.5 text-[0.6em] text-ink-500" title={industryNoteLine(d) ?? undefined}>
             †
           </sup>
         )}
       </p>
-      {/* 3–5. where to meet · warm path · who */}
+      {/* 3–5. where to meet, warm path, who */}
       <p className={`mt-1 ${T.why} max-w-[46ch] leading-relaxed text-ink-500 italic transition-opacity duration-700 ${hide}`}>
         {[...meta.parts, meta.people].filter(Boolean).join(". ")}
         {meta.parts.length || meta.people ? (meta.people ? ". " : ". ") : ""}
@@ -242,12 +242,11 @@ function Entry({
         )}
       </p>
       {onTap && (
-        <p className={`mono mt-2 text-[11px] text-ink-300 transition-opacity duration-700 ${hide}`}>
-          <button className="hover:text-ink" onClick={() => onTap(d, type, "more")}>
+        <p className={`mt-3 flex gap-5 text-[15px] text-ink-500 transition-opacity duration-700 ${hide}`}>
+          <button className="underline decoration-ink-300 underline-offset-4" onClick={() => onTap(d, type, "more")}>
             more like this
           </button>
-          <span className="px-1.5">·</span>
-          <button className="hover:text-ink" onClick={() => onTap(d, type, "notnow")}>
+          <button className="underline decoration-ink-300 underline-offset-4" onClick={() => onTap(d, type, "notnow")}>
             not now
           </button>
         </p>
