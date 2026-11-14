@@ -32,7 +32,7 @@ export function logJson(r: DoorReport, tapsRaw: string | null) {
   return {
     startup: r.startup.name,
     country: r.startup.country,
-    headline: headline(r, picks.map((x) => x.door)),
+    headline: headline(r, rankDoors(r.doors, taps)), // every door, though only the best are listed
     doors: picks.map((x) => doorJson(x.door, taps, x.type)),
   };
 }

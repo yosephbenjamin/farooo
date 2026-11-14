@@ -146,6 +146,7 @@ const sigPool: Pool = {
     m1: prof("m1", { industries: [{ code: "FINTECH", label: "fintech" }], country: "Finland", investors: [{ id: "i", name: "Creandum" }] }),
     g1: prof("g1", { industries: [{ code: "FINTECH", label: "fintech" }], country: "Finland", investors: [{ id: "i", name: "Creandum" }], description: "A publicly traded bank listed on Nasdaq Helsinki." }),
     h1: prof("h1", { industries: [{ code: "HEALTHCARE_PROVIDERS", label: null }], country: "Finland" }),
+    f1: prof("f1", { industries: [{ code: "HEALTHCARE_PROVIDERS", label: null }], country: "Spain" }),
   },
   entries: [], rounds: [], slush: { ids: [], names: [] },
   events: [
@@ -153,11 +154,12 @@ const sigPool: Pool = {
     { id: "b", companyId: "g1", kind: "money", date: "2026-11-10", text: "raised a round", source: { name: "x", url: "https://x", date: null, rank: "PRESS" } },
     { id: "c", companyId: "h1", kind: "exec", date: "2026-09-15", text: "named Ada L CTO", source: { name: "x", url: "https://x", date: null, rank: "PRESS" } },
     { id: "d", companyId: "h1", kind: "exec", date: "2025-01-15", text: "named Too Old CEO", source: { name: "x", url: "https://x", date: null, rank: "PRESS" } },
+    { id: "e", companyId: "f1", kind: "money", date: "2026-11-01", text: "raised a round", source: { name: "x", url: "https://x", date: null, rank: "PRESS" } },
   ],
 };
 const sr = buildReport(sigPool, { id: "me", name: "Me", country: "Finland", industries: [sw], investors: [{ key: "creandum", name: "Creandum" }], resolvedFrom: "cala" }, { now: "2026-11-14" });
 const sranked = rankDoors(sr.doors, NO_TAPS);
-assert.equal(sranked.length, 3);
+assert.equal(sranked.length, 3, "a foreign company without an introducer isn't a door");
 assert.equal(sranked[0].id, "m1", "no giants as headlines: the listed bank (newer) doesn't lead");
 assert.equal(tierOf(sranked.find((d) => d.id === "m1")!), 1, "a reason + warm path");
 assert.equal(tierOf(sranked.find((d) => d.id === "h1")!), 2, "a reason without a warm path");

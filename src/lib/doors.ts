@@ -323,6 +323,8 @@ export function buildReport(pool: Pool, startup: StartupSummary, opts: { now: st
     if (opts.noWeapons && isWeaponsMaker(p, c.text, c.source.url)) continue;
     if (c.kind === "acquisition" && SPAC.test(c.text)) continue;
     const warm = warmOf(p, [...c.investors, ...roundsOf(c.companyId).flatMap((r) => r.investors)]);
+    // without an introducer, only a company in your own country is close enough to be a door
+    if (!warm.length && (!p.country || p.country !== startup.country)) continue;
     const src = withOwnRank(c.source, p);
     const check = checkIndustries(p.industries, p.description);
     if (check.drop) continue;

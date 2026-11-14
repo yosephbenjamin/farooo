@@ -1,12 +1,26 @@
 import { ink, paths, LIGHT } from "./ink";
 
-/** A small hand-drawn lighthouse. The lamp is the page's only yellow. */
-export function Lighthouse({ className, lit = true }: { className?: string; lit?: boolean }) {
+/**
+ * A small hand-drawn lighthouse. The lamp is the page's only yellow.
+ * `sweeping`: the loading state; one long beam turns slowly around the lamp, passing behind the tower.
+ */
+export function Lighthouse({ className, lit = true, sweeping = false }: { className?: string; lit?: boolean; sweeping?: boolean }) {
   const s = 7;
+  const PAPER = "var(--paper)";
   return (
-    <svg viewBox="0 0 220 240" className={className} role="img" aria-label="A hand-drawn lighthouse">
+    <svg viewBox="0 0 220 240" className={className} role="img" aria-label={sweeping ? "A hand-drawn lighthouse, its beam turning" : "A hand-drawn lighthouse"}>
+      {/* the sweeping beam (loading) */}
+      {sweeping && (
+        <g className="sweep" style={{ transformOrigin: "110px 56px" }}>
+          {paths(ink.poly([[110, 56], [218, 30], [218, 82]], { seed: s + 30, stroke: "none", fill: LIGHT, fillStyle: "solid", roughness: 0.6 }), "sweepbeam", { opacity: 0.6 })}
+          {paths(ink.line(110, 56, 216, 31, { seed: s + 31, stroke: LIGHT, strokeWidth: 0.8 }), "sweepedge1", { opacity: 0.8 })}
+          {paths(ink.line(110, 56, 216, 81, { seed: s + 32, stroke: LIGHT, strokeWidth: 0.8 }), "sweepedge2", { opacity: 0.8 })}
+        </g>
+      )}
+      {/* paper behind the tower, so the turning beam passes behind it */}
+      {sweeping && paths(ink.poly([[94, 44], [110, 26], [126, 44], [126, 68], [130, 68], [130, 75], [124, 75], [134, 196], [86, 196], [96, 75], [90, 75], [90, 68], [94, 68]], { seed: s + 33, stroke: "none", fill: PAPER, fillStyle: "solid", roughness: 0 }), "occlude")}
       {/* beam */}
-      {lit && (
+      {lit && !sweeping && (
         <g className="beam">
           {paths(ink.poly([[110, 58], [8, 34], [8, 74]], { seed: s + 1, stroke: "none", fill: LIGHT, fillStyle: "solid", roughness: 0.6 }), "beamL", { opacity: 0.55 })}
           {paths(ink.poly([[110, 58], [212, 38], [212, 70]], { seed: s + 2, stroke: "none", fill: LIGHT, fillStyle: "solid", roughness: 0.6 }), "beamR", { opacity: 0.55 })}
