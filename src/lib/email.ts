@@ -1,6 +1,6 @@
 /** Alert email: plain, typeset, inline styles only (email clients ignore stylesheets). */
 import type { Door, DoorReport } from "./doors";
-import { doorCountLine, emailSubject, entryLead, entryWhy, headline, shortDate } from "./prose";
+import { doorCountLine, emailSubject, entryLead, entryMeta, entryWhy, headline, shortDate } from "./prose";
 import { hostOf } from "./hosts";
 
 export interface Alert {
@@ -10,14 +10,14 @@ export interface Alert {
   to: string | null;
   subject: string;
   headline: string;
-  entries: { companyId: string; lead: string; name: string; why: string; date: string; sourceName: string; sourceUrl: string }[];
+  entries: { companyId: string; lead: string; name: string; why: string; meta: string; xray: string | null; date: string; sourceName: string; sourceRank: string | null; sourceUrl: string }[];
   doorCount: string | null;
   delivery: "resend" | "log-only";
 }
 
 export function makeAlert(r: DoorReport, fresh: Door[], slug: string, to: string | null, createdAt: string): Alert {
   return {
-    id: `${slug}-${createdAt.slice(0, 10)}-${fresh.map((d) => d.companyId.slice(0, 6)).join("")}`.slice(0, 80),
+    id: `${slug}-${createdAt.slice(0, 10)}-${fresh.map((d) => d.id.slice(0, 6)).join("")}`.slice(0, 80),
     createdAt,
     startup: { name: r.startup.name, slug },
     to,
@@ -26,13 +26,16 @@ export function makeAlert(r: DoorReport, fresh: Door[], slug: string, to: string
     entries: fresh.map((d) => {
       const l = entryLead(d);
       return {
-        companyId: d.companyId,
+        companyId: d.id,
         name: l.name,
         lead: `${l.name}${l.rest}.`,
         why: entryWhy(d),
-        date: d.reason!.date,
-        sourceName: d.reason!.source.name && d.reason!.source.name.length < 40 ? d.reason!.source.name : hostOf(d.reason!.source.url),
-        sourceUrl: d.reason!.source.url,
+        meta: (() => { const m = entryMeta(d); return [...m.parts, m.people].filter(Boolean).join(". "); })(),
+        xray: d.people.length ? null : d.xray,
+        sourceRank: d.whyNow.source.rank,
+        date: d.whyNow.date,
+        sourceName: d.whyNow.source.name && d.whyNow.source.name.length < 40 ? d.whyNow.source.name : hostOf(d.whyNow.source.url),
+        sourceUrl: d.whyNow.source.url,
       };
     }),
     doorCount: doorCountLine(r),
@@ -64,13 +67,14 @@ export function renderAlertFragment(a: Alert, baseUrl = ""): string {
           <strong style="font-weight:500;">${esc(e.name)}</strong>${esc(e.lead.slice(e.name.length))}<sup style="font-family:${MONO};font-size:10px;color:${C.ink500};"><a href="${esc(e.sourceUrl)}" style="color:${C.ink500};text-decoration:none;">${i + 1}</a></sup>
         </p>
         <p style="margin:6px 0 0 0;font-family:${SERIF};font-size:16px;line-height:1.55;color:${C.ink500};">${esc(e.why)}</p>
+        <p style="margin:4px 0 0 0;font-family:${SERIF};font-style:italic;font-size:16px;line-height:1.55;color:${C.ink500};">${esc(e.meta)}${e.meta ? ". " : ""}${e.xray ? `<a href="${esc(e.xray)}" style="color:${C.ink500};font-style:normal;">Find the right person →</a>` : ""}</p>
       </td></tr>`,
     )
     .join("");
   const notes = a.entries
     .map(
       (e, i) =>
-        `<div style="font-family:${MONO};font-size:11px;line-height:1.8;color:${C.ink500};"><span style="color:${C.ink300};">${i + 1}&nbsp;&nbsp;</span><a href="${esc(e.sourceUrl)}" style="color:${C.ink500};text-decoration:none;">${esc(shortDate(e.date))} · ${esc(e.sourceName)}</a></div>`,
+        `<div style="font-family:${MONO};font-size:11px;line-height:1.8;color:${C.ink500};"><span style="color:${C.ink300};">${i + 1}&nbsp;&nbsp;</span><a href="${esc(e.sourceUrl)}" style="color:${C.ink500};text-decoration:none;">${esc(shortDate(e.date))} · ${esc(e.sourceName)}${e.sourceRank ? ` · ${esc(e.sourceRank)}` : ""}</a></div>`,
     )
     .join("");
   return `
@@ -102,7 +106,7 @@ export function renderAlertText(a: Alert): string {
   return [
     a.headline,
     "",
-    ...a.entries.flatMap((e, i) => [`${e.lead} [${i + 1}]`, e.why, ""]),
+    ...a.entries.flatMap((e, i) => [`${e.lead} [${i + 1}]`, e.why, e.meta, e.xray ?? "", ""]),
     ...a.entries.map((e, i) => `[${i + 1}] ${shortDate(e.date)} · ${e.sourceUrl}`),
     "",
     a.doorCount ? `Doors per investor: ${a.doorCount}` : "",

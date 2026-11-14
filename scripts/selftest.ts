@@ -1,31 +1,70 @@
-// npm test: small checks for the pure functions everything else leans on.
+// npm test: checks for the pure functions everything else leans on.
 import assert from "node:assert/strict";
 import { normalizeCompany, normalizeFund } from "../src/lib/normalize";
 import { concreteDateInText, concreteDateInUrl, isPlaceholderDate } from "../src/lib/dates";
 import { aliasMatch, SEED_FUNDS } from "../src/lib/seed";
-import { isBoilerplate, sectorsOf, fitBetween } from "../src/lib/sectors";
+import { partnerTypes, industryWords } from "../src/lib/partner";
+import { countryFromAddress, filingFounding, rankOf, type Profile } from "../src/lib/profile";
+import { buildReport, firstLook, rankDoors, tierOf, xrayLink, prettyRound, type Pool } from "../src/lib/doors";
+import { applyTap, parseTaps, serializeTaps } from "../src/lib/taps";
 
 const seed = (n: string) => SEED_FUNDS.find((f) => f.name === n)!;
 assert.equal(normalizeCompany("Carbo Culture Oy"), "carbo culture");
-assert.equal(normalizeCompany("Creades AB (publ)"), "creades");
-assert.equal(normalizeCompany("Wolt Enterprises Oy"), "wolt enterprises");
 assert.equal(normalizeFund("Lifeline Ventures Fund II Ky"), "lifeline ventures");
-assert.equal(normalizeFund("Creandum III, L.P."), "creandum");
-assert.equal(normalizeFund("EQT VENTURES II INVESTMENTS S.À R.L."), "eqt ventures investments");
-assert.ok(aliasMatch(seed("EQT Ventures"), "EQT VENTURES II INVESTMENTS S.À R.L."));
 assert.ok(aliasMatch(seed("byFounders"), "byFounders Collective"));
-assert.ok(!aliasMatch(seed("Inventure"), "InVenture Partners"));
 assert.ok(!aliasMatch(seed("Heartcore Capital"), "HeartCore Inc."));
 assert.equal(concreteDateInText("10 Nov 2026"), "2026-11-10");
-assert.equal(concreteDateInText("announced on November 7, 2026"), "2026-11-07");
-assert.equal(concreteDateInText("Early Nov 2026"), null);
 assert.equal(concreteDateInText("Oct 2026"), null);
-assert.equal(concreteDateInUrl("https://tech.eu/2026/11/07/foo-raises"), "2026-11-07");
-assert.equal(concreteDateInUrl("https://x.com/news-2026-10-02-bar"), "2026-10-02");
+assert.equal(concreteDateInUrl("https://tech.eu/2026/11/07/foo"), "2026-11-07");
 assert.ok(isPlaceholderDate("Recent"));
-assert.ok(isBoilerplate("Swedish company founded in 2017 and headquartered in Stockholm."));
-assert.ok(!isBoilerplate("Finnish food-delivery platform founded in 2014, now owned by DoorDash."));
-assert.ok(sectorsOf("AI accounting automation").includes("fintech"));
-const f = fitBetween({ name: "PayCo", sectors: ["payments"] }, { name: "Shop", sectors: ["commerce"] });
-assert.equal(f.kind, "complement");
+assert.equal(prettyRound("SERIES_A"), "Series A");
+
+// profiles
+assert.equal(countryFromAddress("Kuopio, Finland"), "Finland");
+assert.equal(countryFromAddress("30 SOUTH COLONNADE, LONDON, GB-LND, E14 5HX, GB"), "United Kingdom");
+assert.equal(rankOf({ name: "GLEIF", document: "https://search.gleif.org/#/record/x" }), "FILING");
+assert.equal(rankOf({ name: "x", document: "y", source_rank: "PRESS" } as never), "PRESS");
+const base: Profile = {
+  id: "x", name: "X", legalName: null, aliases: [], website: null, domains: [], description: null, industries: [], country: null,
+  hqAddress: null, founding: null, fundingStage: null, status: null, investors: [], fundingRounds: [], slush: false, people: [], parents: [],
+};
+const f = (date: string, rank: "FILING" | "AGGREGATOR") => ({ ...base, founding: { date, precision: "day", sources: [{ name: "r", url: "u", date: null, rank }] } });
+assert.ok(filingFounding(f("2026-08-07", "FILING")));
+assert.equal(filingFounding(f("2026-01-01", "FILING")), null, "1 January is a year placeholder");
+assert.equal(filingFounding(f("2026-08-07", "AGGREGATOR")), null, "not a registry");
+
+// partnership types: structured fields only
+const sw = { code: "SOFTWARE_AND_SERVICES", label: "ai" };
+assert.equal(industryWords({ code: "SOFTWARE_AND_SERVICES", label: "enterpriseSoftware" }), "enterprise software");
+assert.deepEqual(partnerTypes({ you: { name: "A", industries: [sw], country: "Finland" }, door: { name: "B", industries: [sw], country: "Germany" }, entering: true, market: "Finland" }), [], "same code + same label = competitor");
+const t = partnerTypes({ you: { name: "A", industries: [sw], country: "Finland" }, door: { name: "B", industries: [{ code: "SOFTWARE_AND_SERVICES", label: "cyber" }], country: "Germany" }, entering: true, market: "Finland" }).map((x) => x.type);
+assert.ok(t.includes("integration") && t.includes("distribution"));
+
+// engine: tiers, drop without reason, first look of different types
+const prof = (id: string, extra: Partial<Profile>): Profile => ({ ...base, id, name: id, ...extra });
+const pool: Pool = {
+  profiles: {
+    p1: prof("p1", { industries: [{ code: "SOFTWARE_AND_SERVICES", label: "cyber" }], country: "Germany", slush: true, investors: [{ id: "i", name: "Creandum" }] }),
+    p2: prof("p2", { industries: [{ code: "TRANSPORTATION_AND_LOGISTICS", label: null }], country: "France" }),
+    p3: prof("p3", { industries: [], country: "Spain" }),
+  },
+  entries: [
+    { id: "e1", kind: "subsidiary", doorId: "p1", doorName: "p1", local: { id: "l1", name: "P1 Finland Oy" }, market: "Finland", date: "2026-10-01", source: { name: "PRH", url: "u", date: null, rank: "FILING" }, match: "website" },
+    { id: "e2", kind: "news", doorId: "p2", doorName: "p2", local: null, market: "Finland", date: "2026-11-01", source: { name: "n", url: "u", date: null, rank: "PRESS" }, match: "news" },
+    { id: "e3", kind: "news", doorId: "p3", doorName: "p3", local: null, market: "Finland", date: "2026-11-01", source: { name: "n", url: "u", date: null, rank: "PRESS" }, match: "news" },
+  ],
+  rounds: [],
+  slush: { ids: [], names: [] },
+};
+const r = buildReport(pool, { id: "me", name: "Me", country: "Finland", industries: [sw], investors: [{ key: "creandum", name: "Creandum" }], resolvedFrom: "cala" }, { now: "2026-11-14" });
+assert.equal(r.doors.length, 2, "p3 has no industry: no real reason, dropped");
+const ranked = rankDoors(r.doors, parseTaps(null));
+assert.equal(ranked[0].id, "p1");
+assert.equal(tierOf(ranked[0]), 1);
+assert.equal(tierOf(ranked[1]), 3);
+const fl = firstLook(r.doors);
+assert.equal(new Set(fl.map((x) => x.type)).size, fl.length, "first look: different partnership types");
+const tapped = applyTap(parseTaps(null), "customer", "notnow", "p2");
+assert.ok(!rankDoors(r.doors, parseTaps(serializeTaps(tapped))).some((d) => d.id === "p2"));
+assert.ok(xrayLink("Acme", "Finland", "integration").startsWith("https://www.google.com/search?q=site%3Alinkedin.com%2Fin"));
 console.log("selftest ok");

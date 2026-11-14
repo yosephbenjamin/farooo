@@ -1,418 +1,311 @@
 /**
- * npm run ingest
+ * npm run ingest  (v2, entity endpoints only + /v1/knowledge/search for news)
  *
- * Seed funds -> resolve fund vehicles -> pull portfolio links (three relationship types)
- * -> hop through rounds to find issuers -> fetch company profiles -> clean and merge
- * -> write data/dataset.json and data/funds.json.
+ * Cala allows ~10 requests per rolling minute on this key, so the ingest is door-centric and
+ * prioritised. Each stage writes data/pool.json, so partial progress is always usable, and
+ * every call is cached, so a rerun only fetches what's missing. Stops cleanly on HTTP 402.
  *
- * Every Cala response is cached on disk, so re-runs are free and work offline (CALA_OFFLINE=1).
+ *   1. users     demo startups -> profiles
+ *   2. rounds    companies in the users' investors' keyrings with recent rounds -> profiles +
+ *                FundingRound participants (is_lead)
+ *   3. news      expansion news per Nordic market -> resolve company -> profile
+ *   4. slush     Slush 2026 attendee profiles (Nordic legal names first) -> new national
+ *                companies with a FILING founding date -> foreign parent by website or registry
+ *                parent link -> market entries
+ *
+ * Flags: --stage=users,rounds,news,slush  --budget=N (max new API calls this run)
  */
-import { writeFile, mkdir } from "node:fs/promises";
+import { createHash } from "node:crypto";
+import { readdirSync, readFileSync } from "node:fs";
 import path from "node:path";
-import { searchEntities, type CalaEntity } from "../src/lib/cala";
-import { fetchCompany, fetchRound, isInvestor, vehicleLinks } from "../src/lib/graph";
-import { normalizeCompany, normalizeFund, slug } from "../src/lib/normalize";
-import { COUNTRY_WORDS, SEED_FUNDS, VEHICLE_DOMICILES, type SeedFund } from "../src/lib/seed";
-import type { Company, Dataset, Investor, InvestorLink, LinkVia, RawCompany, RawRound, Round, Source } from "../src/lib/types";
+import { getEntity, knowledgeSearch, searchEntities, CalaError } from "../src/lib/cala";
+import { relAll, fetchProfileRaw, PROFILE_QUERY } from "../src/lib/graph";
+import { readJson, writeJson, today, DATA_DIR } from "../src/lib/data";
+import { parseProfile, filingFounding, rankedSources, type Profile, type RankedSource } from "../src/lib/profile";
+import { claimsOf, heuristic, NEWS_MARKETS, type Claim } from "../src/lib/news";
+import { extractClaims, llmEnabled } from "../src/lib/llm";
+import { normalizeCompany } from "../src/lib/normalize";
+import { resolveByName, summarize } from "../src/lib/identity";
+import { ENTRY_WINDOW_DAYS, ROUND_WINDOW_DAYS, type FreshRound, type MarketEntry, type Pool } from "../src/lib/doors";
+import type { DemoStartup } from "../src/lib/report";
+import type { Dataset } from "../src/lib/types";
 
-const DATA = path.join(process.cwd(), "data");
-const RECENT_ROUND_CUTOFF = "2024-06-01"; // company-side rounds older than this aren't fetched (not "why now" material)
-
+const SLUSH = "bc844d56-6ab4-452b-96bf-2661e86e592b";
+const MARKETS = new Set(["Finland", "Sweden", "Norway", "Denmark", "Iceland"]);
 const log = (...a: unknown[]) => console.log("[ingest]", ...a);
-const P = Number(process.env.INGEST_POOL ?? 10);
 
-// ---------- 1. resolve funds ----------
-const BRAND_TAIL = new Set(["ventures", "venture", "capital", "partners", "vc", "management", "growth", "seed", "opportunities", "opportunity", "investments", "invest", "fund", "spring", "innovation", "collective"]);
+const arg = (k: string) => process.argv.find((a) => a.startsWith(`--${k}=`))?.split("=")[1];
+const STAGES = new Set((arg("stage") ?? "users,rounds,news,slush").split(","));
+let budget = Number(arg("budget") ?? Infinity);
+let outOfCredit = false;
 
-function aliasMatch(seed: SeedFund, name: string): boolean {
-  const nf = normalizeFund(name);
-  for (const a of seed.aliases) {
-    if (nf === a) return true;
-    if (nf.startsWith(a + " ")) {
-      const rest = nf.slice(a.length + 1).split(" ");
-      if (rest.every((t) => BRAND_TAIL.has(t))) return true;
+const now = today();
+const dayDiff = (a: string, b: string) => Math.round((Date.parse(b) - Date.parse(a)) / 86_400_000);
+
+// ---------- cache-aware calls with a budget ----------
+const cacheDir = path.join(DATA_DIR, "cache", "cala");
+function isOut(e: unknown) {
+  return e instanceof CalaError && e.status === 402;
+}
+async function spend<T>(fn: () => Promise<T>): Promise<T | null> {
+  if (outOfCredit || budget <= 0) return null;
+  try {
+    const r = await fn();
+    return r;
+  } catch (e) {
+    if (isOut(e) || String((e as Error)?.message).includes("402")) {
+      outOfCredit = true;
+      log("HTTP 402: out of credit. Stopping new calls; everything so far is cached.");
+    }
+    return null;
+  } finally {
+    budget--; // cache hits cost a budget unit too; good enough as a brake
+  }
+}
+
+const profiles: Record<string, Profile> = {};
+async function profile(id: string): Promise<Profile | null> {
+  if (profiles[id]) return profiles[id];
+  const r = await spend(() => fetchProfileRaw(id));
+  if (!r || "__error" in r) return null;
+  const p = parseProfile(r);
+  profiles[id] = p;
+  return p;
+}
+
+/** Every profile already in the cache (from any run), so the pool includes them for free. */
+function loadCachedProfiles() {
+  let n = 0;
+  for (const f of readdirSync(cacheDir)) {
+    try {
+      const r = JSON.parse(readFileSync(path.join(cacheDir, f), "utf8"));
+      if (r.method === "POST" && r.body?.relationships?.incoming?.IS_ULTIMATE_PARENT_OF && r.body?.properties?.includes?.("founding_date__precision") && r.response?.id) {
+        profiles[r.response.id] = parseProfile(r.response);
+        n++;
+      }
+    } catch {}
+  }
+  return n;
+}
+
+// ---------- pool state ----------
+const prev = readJson<Pool | null>("pool.json", null);
+const entries = new Map<string, MarketEntry>((prev?.entries ?? []).map((e) => [e.id, e]));
+const rounds = new Map<string, FreshRound>((prev?.rounds ?? []).map((r) => [r.id, r]));
+let slush: Pool["slush"] = prev?.slush ?? { ids: [], names: [] };
+
+function save(stage: string) {
+  const pool: Pool = { profiles, entries: [...entries.values()], rounds: [...rounds.values()], slush };
+  writeJson("pool.json", pool);
+  log(`saved after ${stage}: ${Object.keys(profiles).length} profiles, ${entries.size} entries, ${rounds.size} rounds${Number.isFinite(budget) ? `, budget left ${budget}` : ""}`);
+}
+
+// ---------- stage 2 helper: a FundingRound with its participants ----------
+async function fundingRound(id: string, companyId: string): Promise<FreshRound | null> {
+  const r = await spend(() =>
+    getEntity(id, {
+      properties: ["name", "round_label", "announcement_date", "event_date", "transaction_value", "transaction_value_units"],
+      relationships: { incoming: { PARTICIPATES_IN_FUNDING_ROUND: { limit: 60 } } },
+    }),
+  );
+  if (!r || "__error" in r) return null;
+  const p = (r.properties ?? {}) as Record<string, { value?: unknown; sources?: never[] }>;
+  const date = (p.announcement_date?.value ?? p.event_date?.value) as string | undefined;
+  if (!date || !/^\d{4}-\d{2}-\d{2}$/.test(date)) return null;
+  const parts = r.relationships?.incoming?.PARTICIPATES_IN_FUNDING_ROUND ?? [];
+  const sources: RankedSource[] = rankedSources([
+    ...(p.announcement_date?.sources ?? []),
+    ...(p.event_date?.sources ?? []),
+    ...(p.transaction_value?.sources ?? []),
+    ...(p.name?.sources ?? []),
+  ]);
+  return {
+    id,
+    companyId,
+    date,
+    label: (p.round_label?.value as string) ?? (p.name?.value as string) ?? r.name ?? null,
+    amount: (p.transaction_value?.value as number) ?? null,
+    currency: (p.transaction_value_units?.value as string) ?? null,
+    sources,
+    investors: parts
+      .filter((x) => String(x.properties?.role ?? "") === "INVESTOR" || String(x.properties?.role ?? "") === "LENDER")
+      .map((x) => ({ id: x.id, name: x.name, lead: x.properties?.is_lead === true })),
+  };
+}
+
+// ---------- stage 4 helpers ----------
+const LEGAL = /\b(oy|oyj|ab|ab \(publ\)|a\/s|as|asa|aps|ehf|hf|ltd|limited|gmbh|inc|llc|sa|sas|bv|nv|plc|oü|ou|uab|sia)\.?$/i;
+const COUNTRY_WORDS = /\b(finland|suomi|sweden|sverige|norway|norge|denmark|danmark|nordic|nordics|scandinavia|iceland)\b/gi;
+function brandOf(name: string) {
+  return name.replace(LEGAL, "").replace(COUNTRY_WORDS, "").replace(/[,.\s]+$/g, "").trim();
+}
+
+/** For a new national company, find the foreign company it belongs to. */
+async function foreignParent(local: Profile): Promise<{ parent: Profile; match: MarketEntry["match"] } | null> {
+  // (a) registry parent link (GLEIF): strongest
+  for (const pr of local.parents) {
+    const p = await profile(pr.id);
+    if (p && p.country && p.country !== local.country) {
+      if (local.website && p.website && p.website !== local.website && !p.domains.includes(local.website)) continue;
+      return { parent: p, match: "registry-parent" };
     }
   }
-  return false;
-}
-
-function countriesMentioned(desc: string): string[] {
-  const found: string[] = [];
-  for (const [country, words] of Object.entries(COUNTRY_WORDS)) {
-    if (words.some((w) => new RegExp(`(^|[^A-Za-z])${w.replace(/\./g, "\\.")}([^A-Za-z]|$)`).test(desc))) found.push(country);
+  // (b) same website, different country
+  if (!local.website) return null;
+  const brand = brandOf(local.legalName ?? local.name) || brandOf(local.name);
+  if (brand.length < 3) return null;
+  const cands = (await spend(() => searchEntities(brand, { types: ["Company"], limit: 10 }))) ?? [];
+  const key = normalizeCompany(brand);
+  const likely = cands.filter((c) => c.id !== local.id && normalizeCompany(c.name).includes(key.split(" ")[0])).slice(0, 3);
+  for (const c of likely) {
+    const p = await profile(c.id);
+    if (p && p.country && p.country !== local.country && (p.website === local.website || p.domains.includes(local.website))) return { parent: p, match: "website" };
   }
-  return found;
+  return null;
 }
 
-interface Resolution {
-  seed: string;
-  slug: string;
-  included: { id: string; name: string; entity_type: string; description: string | null }[];
-  rejected: { id: string; name: string; reason: string }[];
-}
-
-async function resolveFunds(): Promise<Resolution[]> {
-  const out: Resolution[] = [];
-  for (const seed of SEED_FUNDS) {
-    const terms = [seed.name, ...(seed.searches ?? [])];
-    const cands = new Map<string, CalaEntity>();
-    for (const t of terms) {
-      for (const e of await searchEntities(t, { limit: 20 })) cands.set(e.id, e);
-    }
-    const res: Resolution = { seed: seed.name, slug: slug(seed.name), included: [], rejected: [] };
-    for (const e of cands.values()) {
-      const desc = e.description ?? "";
-      if (e.entity_type === "Person") continue;
-      if (!aliasMatch(seed, e.name)) continue; // silently skip unrelated names
-      if (seed.exclude?.includes(e.id) || seed.excludeNames?.includes(normalizeFund(e.name))) {
-        res.rejected.push({ id: e.id, name: e.name, reason: "excluded by hand" });
-        continue;
-      }
-      const mentioned = countriesMentioned(desc);
-      const allowed = new Set([...seed.countries, ...VEHICLE_DOMICILES]);
-      const vehicleDomicile = VEHICLE_DOMICILES.some((d) => desc.includes(d));
-      if (mentioned.length && !mentioned.some((c) => allowed.has(c)) && !vehicleDomicile) {
-        res.rejected.push({ id: e.id, name: e.name, reason: `country: ${mentioned.join(", ")}` });
-        continue;
-      }
-      if (!(await isInvestor(e.id))) {
-        res.rejected.push({ id: e.id, name: e.name, reason: "no investment relationships" });
-        continue;
-      }
-      res.included.push({ id: e.id, name: e.name, entity_type: e.entity_type, description: e.description ?? null });
-    }
-    log(`${seed.name}: ${res.included.length} vehicle(s)`, res.included.map((v) => v.name).join(" | "));
-    out.push(res);
-  }
-  return out;
-}
-
-// ---------- helpers ----------
-async function pool<T, R>(items: T[], n: number, fn: (x: T, i: number) => Promise<R>): Promise<R[]> {
-  const out: R[] = new Array(items.length);
-  let i = 0;
-  let done = 0;
-  const workers = Array.from({ length: n }, async () => {
-    while (i < items.length) {
-      const idx = i++;
-      out[idx] = await fn(items[idx], idx);
-      done++;
-      if (done % 100 === 0) log(`  ${done}/${items.length}`);
-    }
-  });
-  await Promise.all(workers);
-  return out;
-}
-
-function mergeSources(a: Source[], b: Source[], max = 5): Source[] {
-  const seen = new Set(a.map((s) => s.url));
-  return [...a, ...b.filter((s) => !seen.has(s.url) && seen.add(s.url))].slice(0, max);
-}
-
-const FUNDISH_NAME = /\b(fund|fonden|ventures?|capital|partners|invest(ments)?|holding|kommanditbolag|ky)\b/i;
-const FUNDISH_DESC = /(venture capital|investment fund|private equity|investment firm|asset management|fund of funds|investment company)/i;
-
-function looksLikeFund(name: string, desc: string | null) {
-  return FUNDISH_NAME.test(name) && FUNDISH_DESC.test(desc ?? "");
-}
-
-// ---------- main ----------
 async function main() {
-  await mkdir(DATA, { recursive: true });
-  const resolutions = await resolveFunds();
+  const cached = loadCachedProfiles();
+  log(`${cached} profiles already cached; now ${now}`);
+  const ds = readJson<Dataset | null>("dataset.json", null);
+  const demos = readJson<DemoStartup[]>("demo/startups.json", []);
 
-  const investors: Investor[] = resolutions
-    .filter((r) => r.included.length)
-    .map((r) => ({ id: r.slug, name: r.seed, vehicles: r.included }));
-  const vehicleToInvestor = new Map<string, string>();
-  for (const inv of investors) for (const v of inv.vehicles) vehicleToInvestor.set(v.id, inv.id);
-  const aliasToInvestor = new Map<string, string>();
-  for (const s of SEED_FUNDS) for (const a of s.aliases) aliasToInvestor.set(a, slug(s.name));
-  const investorByName = (name: string): string | undefined => {
-    const seed = SEED_FUNDS.find((s) => aliasMatch(s, name));
-    return seed && investors.some((i) => i.id === slug(seed.name)) ? slug(seed.name) : undefined;
-  };
+  // Slush attendees (cached after the first run)
+  const att = (await spend(() => relAll(SLUSH, "incoming", "PARTICIPATES_IN_EVENT"))) ?? [];
+  if (att.length) slush = { ids: att.map((a) => a.id), names: [...new Set(att.map((a) => normalizeCompany(a.name)))] };
+  log(`${slush.ids.length} Slush 2026 attendees`);
 
-  // ---------- 2. vehicle links ----------
-  type Link = { investorId: string; via: LinkVia; sources: Source[] };
-  const links = new Map<string, Link[]>(); // cala company id -> links
-  const seenEntity = new Map<string, { name: string; entity_type: string }>();
-  const addLink = (cid: string, l: Link) => {
-    const arr = links.get(cid) ?? [];
-    arr.push(l);
-    links.set(cid, arr);
-  };
-  const roundRefs = new Map<string, "PCFR" | "FR">();
-  const vehicles = investors.flatMap((inv) => inv.vehicles.map((v) => ({ inv, v })));
-  log(`pulling links for ${vehicles.length} vehicles`);
-  await pool(vehicles, P, async ({ inv, v }) => {
-    const l = await vehicleLinks(v.id);
-    for (const x of l.invested) {
-      if (x.entity_type === "Person") continue;
-      seenEntity.set(x.id, { name: x.name, entity_type: x.entity_type });
-      addLink(x.id, { investorId: inv.id, via: "fund→company", sources: toSrc(x.properties?.sources) });
+  // ---------- 1. users ----------
+  const users: Profile[] = [];
+  if (STAGES.has("users")) {
+    for (const d of demos) {
+      const p = await resolveByName(d.name);
+      if (p) {
+        profiles[p.id] = p;
+        users.push(p);
+        log(`user ${d.name} -> ${p.name} (${p.country ?? "?"}, ${p.industries.map((i) => i.code).join("/") || "no industry"}, ${p.investors.length} investors)`);
+      } else log(`user ${d.name}: not resolved`);
     }
-    for (const x of l.corporateEvents) roundRefs.set(x.id, "PCFR");
-    for (const x of l.fundingRounds) roundRefs.set(x.id, "FR");
-  });
-  log(`${links.size} companies from INVESTED_IN, ${roundRefs.size} rounds`);
-
-  // ---------- 3. rounds -> issuers ----------
-  const rawRounds = new Map<string, RawRound>();
-  const fetchRounds = async (refs: [string, "PCFR" | "FR"][]) => {
-    const todo = refs.filter(([id]) => !rawRounds.has(id));
-    const got = await pool(todo, P, ([id, kind]) => fetchRound(id, kind));
-    got.forEach((r) => r && rawRounds.set(r.id, r));
-  };
-  await fetchRounds([...roundRefs.entries()]);
-  const unknownRoles = new Set<string>();
-  const issuerText = new Map<string, string>();
-  for (const r of rawRounds.values()) {
-    for (const role of r.roles) if (!["INVESTOR", "ISSUER"].includes(role)) unknownRoles.add(role);
-    const seedInvs = new Set<string>();
-    for (const i of r.investors) {
-      const s = vehicleToInvestor.get(i.id) ?? investorByName(i.name);
-      if (s) seedInvs.add(s);
-    }
-    for (const iss of r.issuers) {
-      if (iss.entity_type === "Person") continue;
-      seenEntity.set(iss.id, { name: iss.name, entity_type: iss.entity_type });
-      if (r.description) issuerText.set(iss.id, r.description);
-      for (const s of seedInvs) addLink(iss.id, { investorId: s, via: "round", sources: r.sources });
-    }
+    save("users");
   }
-  if (unknownRoles.size) log("round roles seen besides INVESTOR/ISSUER:", [...unknownRoles]);
-  log(`${links.size} companies after round hop`);
 
-  // ---------- 4. company profiles ----------
-  const ids = [...links.keys()];
-  const rawCompanies = new Map<string, RawCompany>();
-  (await pool(ids, P, (id) => fetchCompany(id))).forEach((c) => c && rawCompanies.set(c.id, c));
-  log(`${rawCompanies.size}/${ids.length} company profiles`);
-  // Profiles we couldn't fetch (e.g. credit ran out): build a minimal record from what the links
-  // and round descriptions already told us ("Stravito AB (Swedish company founded in 2017 ...)").
-  let fallback = 0;
-  for (const id of ids) {
-    if (rawCompanies.has(id)) continue;
-    const seen = seenEntity.get(id);
-    if (!seen) continue;
-    const parsed = parseIssuerText(issuerText.get(id));
-    rawCompanies.set(id, {
-      id,
-      name: seen.name,
-      entity_type: seen.entity_type,
-      aliases: [],
-      description: parsed.description,
-      foundingDate: null,
-      country: parsed.country,
-      industries: [],
-      investors: [],
-      rounds: [...rawRounds.values()].filter((r) => r.issuers.some((i) => i.id === id)).map((r) => ({ id: r.id, kind: r.kind, role: "ISSUER", date: r.date })),
-    });
-    fallback++;
-  }
-  if (fallback) log(`${fallback} companies built from link data only (profile not fetched)`);
-
-  // company-side investor links (union both directions)
-  let nameMatched = 0;
-  const others = new Map<string, Map<string, string>>();
-  for (const c of rawCompanies.values()) {
-    for (const i of c.investors) {
-      const viaVehicle = vehicleToInvestor.get(i.id);
-      const s = viaVehicle ?? investorByName(i.name);
-      if (s) {
-        if (!viaVehicle) nameMatched++;
-        addLink(c.id, { investorId: s, via: "company→fund", sources: i.sources });
-      } else {
-        const m = others.get(c.id) ?? new Map();
-        m.set(i.id, i.name);
-        others.set(c.id, m);
+  // ---------- 2. fresh rounds in the users' investors' keyrings ----------
+  if (STAGES.has("rounds") && ds) {
+    const cutoff = new Date(Date.parse(now) - ROUND_WINDOW_DAYS * 86_400_000).toISOString().slice(0, 10);
+    // v1 rounds tell us which keyring companies raised recently; fetch their FundingRounds for leads
+    const recentCompanies = new Set(Object.values(ds.rounds).filter((r) => r.companyId && r.date && r.date >= cutoff && r.date <= now).map((r) => r.companyId!));
+    log(`${recentCompanies.size} keyring companies with a recent round`);
+    for (const cid of recentCompanies) {
+      const c = ds.companies[cid];
+      let p: Profile | null = null;
+      for (const id of c.ids) {
+        p = await profile(id);
+        if (p) break;
       }
-    }
-  }
-  log(`${nameMatched} company→fund links matched by name (vehicle not in resolution)`);
-
-  // recent company rounds (the "why now" material)
-  const recentRefs: [string, "PCFR" | "FR"][] = [];
-  for (const c of rawCompanies.values()) {
-    for (const r of c.rounds) {
-      if (r.kind === "PCFR" && r.date && r.date < RECENT_ROUND_CUTOFF) continue;
-      recentRefs.push([r.id, r.kind]);
-    }
-  }
-  log(`fetching ${recentRefs.length} company-side rounds`);
-  await fetchRounds(recentRefs);
-
-  // ---------- 5. merge duplicates ----------
-  const fundLike: string[] = [];
-  const keep = [...rawCompanies.values()].filter((c) => {
-    if (looksLikeFund(c.name, c.description) || vehicleToInvestor.has(c.id) || investorByName(c.name)) {
-      fundLike.push(c.name);
-      return false;
-    }
-    return true;
-  });
-  log(`dropped ${fundLike.length} fund-like targets (fund-of-funds links)`);
-
-  // union-find over normalized names + aliases
-  const parent = new Map<string, string>();
-  const find = (x: string): string => {
-    while (parent.get(x) !== x) x = parent.get(x)!;
-    return x;
-  };
-  const union = (a: string, b: string) => parent.set(find(a), find(b));
-  keep.forEach((c) => parent.set(c.id, c.id));
-  const byKey = new Map<string, RawCompany>();
-  const merges: string[][] = [];
-  for (const c of keep) {
-    const base = [normalizeCompany(c.name), ...c.aliases.map(normalizeCompany).filter((k) => k.length >= 4)];
-    // "Receipt Hero" / "ReceiptHero": also key on the name with spaces removed
-    const keys = new Set([...base, ...base.map((k) => k.replace(/ /g, "")).filter((k) => k.length >= 5)]);
-    for (const k of keys) {
-      if (!k) continue;
-      const prev = byKey.get(k);
-      if (prev && find(prev.id) !== find(c.id)) {
-        if (prev.country && c.country && prev.country !== c.country) continue; // same name, different country: keep apart
-        union(c.id, prev.id);
-        merges.push([prev.name, c.name]);
-      } else if (!prev) byKey.set(k, c);
-    }
-  }
-  const groups = new Map<string, RawCompany[]>();
-  for (const c of keep) {
-    const r = find(c.id);
-    groups.set(r, [...(groups.get(r) ?? []), c]);
-  }
-  log(`${keep.length} company records -> ${groups.size} companies (${merges.length} merges)`);
-
-  const companies: Record<string, Company> = {};
-  const idIndex: Dataset["idIndex"] = {};
-  for (const inv of investors) for (const v of inv.vehicles) idIndex[v.id] = { kind: "investor", id: inv.id };
-
-  const boiler = (d: string | null) => !d || /^(A |An )?[A-Z][a-z]+ (company|firm|business)\b/.test(d);
-  for (const members of groups.values()) {
-    // canonical: most links, then shortest name (brand over legal name)
-    members.sort((a, b) => (links.get(b.id)?.length ?? 0) - (links.get(a.id)?.length ?? 0) || a.name.length - b.name.length);
-    const canon = members[0];
-    const displayName = [...members].sort((a, b) => a.name.length - b.name.length)[0].name;
-    const best = members.find((m) => !boiler(m.description)) ?? canon;
-    const invMap = new Map<string, InvestorLink>();
-    for (const m of members) {
-      for (const l of links.get(m.id) ?? []) {
-        const cur = invMap.get(l.investorId) ?? { investorId: l.investorId, via: [], sources: [] };
-        if (!cur.via.includes(l.via)) cur.via.push(l.via);
-        cur.sources = mergeSources(cur.sources, l.sources);
-        invMap.set(l.investorId, cur);
+      if (!p) continue;
+      for (const fr of p.fundingRounds.filter((f) => f.role === "ISSUER")) {
+        const r = await fundingRound(fr.id, p.id);
+        if (r && r.date >= cutoff && r.date <= now) rounds.set(r.id, r);
       }
+      // keep the v1 dated round (with its sources) when no FundingRound landed in the window
+      if (![...rounds.values()].some((r) => r.companyId === p!.id)) {
+        for (const rid of c.roundIds) {
+          const v1 = ds.rounds[rid];
+          if (v1?.date && v1.date >= cutoff && v1.date <= now && v1.sources.length) {
+            rounds.set(rid, {
+              id: rid, companyId: p.id, date: v1.date, label: v1.roundType, amount: v1.amount, currency: v1.currency,
+              sources: v1.sources.map((s) => ({ ...s, rank: null })),
+              investors: v1.investorNames.map((n) => ({ id: "", name: n, lead: false })),
+            });
+          }
+        }
+      }
+      if (outOfCredit) break;
     }
-    const otherInv = new Map<string, string>();
-    for (const m of members) for (const [i, n] of others.get(m.id) ?? []) otherInv.set(i, n);
-    const roundIds = [...new Set(members.flatMap((m) => m.rounds.map((r) => r.id)))].filter((id) => rawRounds.has(id));
-    // also rounds where a member is an issuer (from the fund side)
-    for (const r of rawRounds.values()) if (r.issuers.some((i) => members.some((m) => m.id === i.id)) && !roundIds.includes(r.id)) roundIds.push(r.id);
-    companies[canon.id] = {
-      id: canon.id,
-      ids: members.map((m) => m.id),
-      name: prettyName(displayName),
-      aliases: [...new Set(members.flatMap((m) => [m.name, ...m.aliases]))].filter((a) => a !== displayName),
-      description: best.description,
-      industries: [...new Set(members.flatMap((m) => m.industries))],
-      country: members.find((m) => m.country)?.country ?? null,
-      foundingDate: members.find((m) => m.foundingDate)?.foundingDate ?? null,
-      investors: [...invMap.values()].filter((l) => investors.some((i) => i.id === l.investorId)),
-      otherInvestors: [...otherInv.entries()].map(([id, name]) => ({ id, name })).slice(0, 40),
-      roundIds,
-    };
-    for (const m of members) idIndex[m.id] = { kind: "company", id: canon.id };
-  }
-
-  // ---------- 6. rounds + keyrings ----------
-  const rounds: Record<string, Round> = {};
-  for (const r of rawRounds.values()) {
-    const issuer = r.issuers.map((i) => idIndex[i.id]).find((x) => x?.kind === "company");
-    rounds[r.id] = {
-      id: r.id,
-      kind: r.kind,
-      companyId: issuer?.id ?? null,
-      date: r.date,
-      roundType: r.roundType,
-      amount: r.amount,
-      currency: r.currency,
-      investorIds: [...new Set(r.investors.map((i) => vehicleToInvestor.get(i.id) ?? investorByName(i.name)).filter(Boolean) as string[])],
-      investorNames: r.investors.map((i) => i.name),
-      sources: r.sources,
-    };
-  }
-  const keyrings: Record<string, string[]> = {};
-  for (const inv of investors) keyrings[inv.id] = [];
-  for (const c of Object.values(companies)) for (const l of c.investors) keyrings[l.investorId]?.push(c.id);
-
-  const dataset: Dataset = { generatedAt: new Date().toISOString(), investors, companies, rounds, keyrings, idIndex };
-  await writeFile(path.join(DATA, "dataset.json"), JSON.stringify(dataset));
-  await writeFile(path.join(DATA, "funds.json"), JSON.stringify(resolutions, null, 2));
-  const report = {
-    generatedAt: dataset.generatedAt,
-    investors: investors.length,
-    vehicles: vehicles.length,
-    companies: Object.keys(companies).length,
-    rounds: Object.keys(rounds).length,
-    keyringSizes: Object.fromEntries(Object.entries(keyrings).map(([k, v]) => [k, v.length]).sort((a, b) => (b[1] as number) - (a[1] as number))),
-    unresolvedSeeds: resolutions.filter((r) => !r.included.length).map((r) => r.seed),
-    oneDirectional: countDirections(companies),
-    merges: merges.slice(0, 200),
-    droppedFundLike: fundLike.slice(0, 200),
-    nameMatchedLinks: nameMatched,
-    roundsWithoutDate: Object.values(rounds).filter((r) => !r.date).length,
-    roundsWithoutIssuer: Object.values(rounds).filter((r) => !r.companyId).length,
-  };
-  await writeFile(path.join(DATA, "ingest-report.json"), JSON.stringify(report, null, 2));
-  log("done", JSON.stringify({ ...report, merges: report.merges.length, droppedFundLike: report.droppedFundLike.length }, null, 1));
-}
-
-/** "OURA HEALTH OY" -> "Oura Health", "Creades AB (publ)" -> "Creades". Keeps brand casing otherwise. */
-function prettyName(name: string): string {
-  let n = name.replace(/\s*\((publ)\)$/i, "").trim();
-  n = n.replace(/[,\s]+(oy|oyj|ab|ky|ltd\.?|limited|inc\.?|a\/s|as|asa|aps|gmbh|llc|plc|s\.?a\.?|b\.?v\.?|ou|oü|uab|sia)$/i, "").trim();
-  if (n && n === n.toUpperCase() && /[A-Z]{4,}/.test(n)) {
-    n = n.toLowerCase().replace(/\b([a-z])([a-z]*)/g, (_, a, b) => a.toUpperCase() + b).replace(/\b(Ai|Vr|Ar|Io|Ev|Iot)\b/g, (w) => w.toUpperCase());
-  }
-  return n || name;
-}
-
-function countDirections(companies: Record<string, Company>) {
-  let fundOnly = 0, companyOnly = 0, both = 0, roundOnly = 0;
-  for (const c of Object.values(companies))
-    for (const l of c.investors) {
-      const f = l.via.includes("fund→company"), co = l.via.includes("company→fund");
-      if (f && co) both++;
-      else if (f) fundOnly++;
-      else if (co) companyOnly++;
-      else roundOnly++;
+    // de-duplicate the same financing recorded twice (FundingRound + filing): same company, same date
+    const seen = new Set<string>();
+    for (const r of [...rounds.values()].sort((a, b) => b.investors.length - a.investors.length)) {
+      const k = `${r.companyId}|${r.date}`;
+      if (seen.has(k)) rounds.delete(r.id);
+      else seen.add(k);
     }
-  return { both, fundOnly, companyOnly, roundOnly };
+    save("rounds");
+  }
+
+  // ---------- 3. expansion news ----------
+  if (STAGES.has("news")) {
+    const year = now.slice(0, 4);
+    const claims: Claim[] = [];
+    for (const m of NEWS_MARKETS) {
+      const ans = await spend(() => knowledgeSearch(`Which companies announced expanding into ${m} in ${year}?`));
+      if (ans) claims.push(...claimsOf(ans, m, claims.length));
+    }
+    const llm = llmEnabled() ? await extractClaims(claims.map((c) => ({ index: c.index, text: c.text, url: c.url }))) : null;
+    const llmBy = new Map((llm ?? []).map((x) => [x.index, x]));
+    const stats = { claims: claims.length, notEntry: 0, noDate: 0, old: 0, unresolved: 0, local: 0, kept: 0 };
+    for (const c of claims) {
+      const x = llmBy.get(c.index);
+      const h = heuristic(c);
+      const company = x ? x.company : h.company;
+      const date = (x?.date && /^\d{4}-\d{2}-\d{2}$/.test(x.date) ? x.date : null) ?? h.date;
+      if (!(x ? x.isEntry : h.isEntry) || !company) { stats.notEntry++; continue; }
+      if (!date) { stats.noDate++; continue; }
+      if (date > now || dayDiff(date, now) > 180) { stats.old++; continue; }
+      const p = await resolveByName(company, profiles);
+      if (!p) { stats.unresolved++; continue; }
+      profiles[p.id] = p;
+      const market = x?.market ?? c.market;
+      if (p.country && market.toLowerCase().includes(p.country.toLowerCase())) { stats.local++; continue; }
+      const id = createHash("sha256").update(`news|${p.id}|${market}|${date}`).digest("hex").slice(0, 16);
+      entries.set(id, { id, kind: "news", doorId: p.id, doorName: p.name, local: null, market, date, source: { name: c.sourceName, url: c.url, date, rank: null }, match: "news" });
+      stats.kept++;
+    }
+    writeJson("news-report.json", { ranAt: new Date().toISOString(), now, extraction: llm ? "llm" : "heuristic", stats });
+    log("news", stats);
+    save("news");
+  }
+
+  // ---------- 4. Slush attendees -> new national companies of foreign firms ----------
+  if (STAGES.has("slush") && att.length) {
+    const nordicName = (n: string) => /\b(oy|oyj|ab|a\/s|as|aps|asa|ehf)\b\.?$/i.test(n.trim()) || COUNTRY_WORDS.test(n);
+    const order = [...att].sort((a, b) => Number(nordicName(b.name)) - Number(nordicName(a.name)));
+    const stats = { profiled: 0, local: 0, recentFiling: 0, entries: 0 };
+    let i = 0;
+    for (const a of order) {
+      if (outOfCredit || budget <= 0) break;
+      const p = await profile(a.id);
+      i++;
+      if (i % 100 === 0) save(`slush ${i}/${order.length}`);
+      if (!p) continue;
+      stats.profiled++;
+      if (!p.country || !MARKETS.has(p.country)) continue;
+      stats.local++;
+      const f = filingFounding(p);
+      if (!f || f.date > now || dayDiff(f.date, now) > ENTRY_WINDOW_DAYS) continue;
+      stats.recentFiling++;
+      const fp = await foreignParent(p);
+      if (!fp) continue;
+      const id = createHash("sha256").update(`sub|${fp.parent.id}|${p.id}`).digest("hex").slice(0, 16);
+      entries.set(id, {
+        id, kind: "subsidiary", doorId: fp.parent.id, doorName: fp.parent.name,
+        local: { id: p.id, name: p.legalName ?? p.name }, market: p.country, date: f.date, source: f.source, match: fp.match,
+      });
+      stats.entries++;
+      log(`entry: ${fp.parent.name} (${fp.parent.country}) -> ${p.legalName ?? p.name} (${p.country}) on ${f.date} [${fp.match}]`);
+    }
+    log("slush", stats, `${i}/${order.length} attendees visited`);
+    save("slush");
+  }
+
+  // summaries for the demo users, for a quick look
+  for (const d of demos) {
+    const u = Object.values(profiles).find((p) => normalizeCompany(p.name) === normalizeCompany(d.name) || normalizeCompany(p.name).startsWith(normalizeCompany(d.name) + " "));
+    if (u) log(`summary ${d.name}:`, JSON.stringify(summarize(u, ds, d.name)).slice(0, 300));
+  }
+  log(outOfCredit ? "stopped: out of credit" : "done");
 }
 
-const COUNTRY_OF: [RegExp, string][] = [
-  [/\b(Finnish|Finland)\b/, "Finland"], [/\b(Swedish|Sweden)\b/, "Sweden"], [/\b(Norwegian|Norway)\b/, "Norway"],
-  [/\b(Danish|Denmark)\b/, "Denmark"], [/\b(Estonian|Estonia)\b/, "Estonia"], [/\b(British|United Kingdom|England)\b/, "United Kingdom"],
-  [/\b(German|Germany)\b/, "Germany"], [/\b(French|France)\b/, "France"], [/\b(American|United States)\b/, "United States"],
-  [/\b(Dutch|Netherlands)\b/, "Netherlands"], [/\b(Icelandic|Iceland)\b/, "Iceland"], [/\b(Lithuanian|Lithuania)\b/, "Lithuania"],
-  [/\b(Latvian|Latvia)\b/, "Latvia"], [/\b(Swiss|Switzerland)\b/, "Switzerland"], [/\b(Spanish|Spain)\b/, "Spain"], [/\b(Irish|Ireland)\b/, "Ireland"],
-];
-
-/** "Name (A Finnish company ... ). Round: Seed. ..." -> description + country. */
-function parseIssuerText(t: string | undefined): { description: string | null; country: string | null } {
-  if (!t) return { description: null, country: null };
-  const m = t.match(/^[\s\S]*?\(([\s\S]+?)\)\.\s*Round:/);
-  const description = m ? m[1].trim().replace(/\.$/, "") + "." : null;
-  const country = COUNTRY_OF.find(([re]) => re.test(description ?? ""))?.[1] ?? null;
-  return { description, country };
-}
-
-function toSrc(xs: { date?: string | null; document?: string | null; name?: string | null }[] | undefined): Source[] {
-  return (xs ?? []).filter((s) => s.document).slice(0, 4).map((s) => ({ name: s.name ?? "", url: s.document!, date: s.date ?? null }));
-}
-
+void PROFILE_QUERY;
 main().catch((e) => {
   console.error(e);
   process.exit(1);

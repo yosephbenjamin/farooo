@@ -1,9 +1,11 @@
-/** Build (or load a precomputed) door report for a startup name. Server-side only. */
+/** Build (or load a precomputed) door report. Server-side only. */
 import { existsSync, readFileSync } from "node:fs";
 import path from "node:path";
-import { buildReport, resolveStartup, type DoorReport } from "./doors";
-import { DATA_DIR, loadDataset, loadEnrichment, loadEvents, readJson, today } from "./data";
+import { buildReport, type DoorReport, type Pool } from "./doors";
+import { DATA_DIR, readJson, today } from "./data";
 import { normalizeCompany } from "./normalize";
+import { resolveByDomain, resolveByName, summarize } from "./identity";
+import type { Dataset } from "./types";
 
 export function slugify(name: string) {
   return normalizeCompany(name).replace(/\s+/g, "-") || "unknown";
@@ -19,27 +21,52 @@ export function demoStartups(): DemoStartup[] {
   return readJson<DemoStartup[]>("demo/startups.json", []);
 }
 
-/** Keep the payload small: every opened door plus the best-fitting rest, for the map. */
-export function trimReport(r: DoorReport, maxDoors = 140): DoorReport {
-  const openedIds = new Set(r.opened.map((d) => d.companyId));
-  const rest = r.doors.filter((d) => !openedIds.has(d.companyId)).slice(0, maxDoors);
-  return { ...r, doors: [...r.opened, ...rest] };
+const EMPTY_POOL: Pool = { profiles: {}, entries: [], rounds: [], slush: { ids: [], names: [] } };
+export function loadPool(): Pool {
+  return readJson<Pool>("pool.json", EMPTY_POOL);
 }
 
-export async function getReport(name: string, opts: { description?: string; forceLive?: boolean } = {}): Promise<DoorReport> {
-  const slug = slugify(name);
-  const demoPath = path.join(DATA_DIR, "demo", `${slug}.json`);
-  if (!opts.forceLive && existsSync(demoPath)) return JSON.parse(readFileSync(demoPath, "utf8")) as DoorReport;
+const live = () => !!process.env.CALA_API_KEY && process.env.CALA_OFFLINE !== "1";
 
-  const ds = loadDataset();
-  const live = !!process.env.CALA_API_KEY && process.env.CALA_OFFLINE !== "1";
-  const demo = demoStartups().find((d) => d.slug === slug);
-  const startup = await resolveStartup(ds, name, opts.description ?? demo?.description ?? "", { live });
-  const report = buildReport(ds, startup, {
-    now: today(),
-    events: loadEvents(),
-    enrich: loadEnrichment(),
-    fitOverrides: readJson<Record<string, string>>("fit.json", {}),
-  });
-  return trimReport(report);
+/** Precomputed booth/demo startups skip identity entirely. */
+function demoReport(slug: string): DoorReport | null {
+  const p = path.join(DATA_DIR, "demo", `${slug}.json`);
+  return existsSync(p) ? (JSON.parse(readFileSync(p, "utf8")) as DoorReport) : null;
+}
+
+function emptyReport(name: string): DoorReport {
+  return { now: today(), startup: { id: null, name, country: null, industries: [], investors: [], resolvedFrom: "none" }, doors: [] };
+}
+
+export async function getReport(name: string, opts: { forceLive?: boolean } = {}): Promise<DoorReport> {
+  const slug = slugify(name);
+  if (!opts.forceLive) {
+    const demo = demoReport(slug);
+    if (demo) return demo;
+  }
+  const pool = loadPool();
+  const ds = readJson<Dataset | null>("dataset.json", null);
+  const p = (await resolveByName(name, pool.profiles)) ?? (live() ? await resolveByName(name) : null);
+  if (!p) return emptyReport(name.trim());
+  const typed = name.trim();
+  const display = normalizeCompany(typed) !== normalizeCompany(p.name) && typed.length < p.name.length ? typed : prettyName(p.name);
+  return buildReport(pool, summarize(p, ds, display, "cala"), { now: today() });
+}
+
+/** Gmail: the user's company from their email domain. */
+export async function getReportForEmail(email: string): Promise<DoorReport | null> {
+  const pool = loadPool();
+  const ds = readJson<Dataset | null>("dataset.json", null);
+  const p = (await resolveByDomain(email, pool.profiles)) ?? (live() ? await resolveByDomain(email) : null);
+  if (!p) return null;
+  const demo = demoReport(slugify(p.name)) ?? demoStartups().map((d) => demoReport(d.slug)).find((r) => r?.startup.id === p.id) ?? null;
+  return demo ?? buildReport(pool, summarize(p, ds, prettyName(p.name), "domain"), { now: today() });
+}
+
+/** "OURA HEALTH OY" -> "Oura Health"; brand casing kept otherwise. */
+export function prettyName(name: string): string {
+  let n = name.replace(/\s*\((publ)\)$/i, "").trim();
+  n = n.replace(/[,\s]+(oy|oyj|ab|ky|ltd\.?|limited|inc\.?|a\/s|as|asa|aps|gmbh|llc|plc|s\.?a\.?|b\.?v\.?|ou|oü|uab|sia)$/i, "").trim();
+  if (n && n === n.toUpperCase() && /[A-Z]{4,}/.test(n)) n = n.toLowerCase().replace(/\b([a-z])/g, (c) => c.toUpperCase()).replace(/\b(Ai|Io)\b/g, (w) => w.toUpperCase());
+  return n || name;
 }

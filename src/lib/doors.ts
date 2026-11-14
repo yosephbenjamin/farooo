@@ -1,381 +1,318 @@
 /**
- * The door engine (M2).
+ * The door engine, v2 (see BUILD_SPEC.md).
  *
- * startup -> its investors -> their keyrings -> candidate doors, each with
- *   - a fit sentence ("why you"),
- *   - a reason (why now) when there is a dated, sourced event,
- *   - the warm path (shared investor).
- * Plus Door Count per investor.
+ * A door has five parts, in order:
+ *   1. why now    market entry first (new national company of a foreign firm, then expansion
+ *                 news), fresh rounds second; always a concrete date and a source
+ *   2. why you    the partnership they'll need: customer, integration or distribution
+ *   3. where      Slush 2026, if they attend
+ *   4. warm path  a shared investor, and whether they led
+ *   5. who        people with roles from Cala, else a Google X-ray link
+ *
+ * Tiers: 1 entry + Slush + warm path, 2 entry + Slush, 3 entry, 4 fresh round + warm path.
+ * Nothing else is shown.
  */
-import { fetchCompany, fetchRound, hostOf, searchEntities } from "./graph";
-import { normalizeCompany } from "./normalize";
+import { normalizeFund, normalizeCompany } from "./normalize";
 import { seedSlugForName } from "./seed";
-import { fitBetween, isBoilerplate, sectorsOf, type Fit, type Sector } from "./sectors";
-import type { Company, Dataset, Source } from "./types";
-import type { FaroEvent } from "./events";
+import { bestWhyYou, partnerTypes, PARTNER_TYPES, type PartnerType, type WhyYou } from "./partner";
+import type { Industry, Person, Profile, RankedSource } from "./profile";
 
 export const DAY = 86_400_000;
-/** A door "opened" if its reason is at most this old. */
-export const OPEN_WINDOW_DAYS = 120;
+/** A new national company counts as "entering" for this long after its registry founding date. */
+export const ENTRY_WINDOW_DAYS = 365;
+/** Expansion news and fresh rounds count for this long. */
+export const NEWS_WINDOW_DAYS = 180;
+export const ROUND_WINDOW_DAYS = 120;
 
-export interface Reason {
-  kind: "round" | "market-entry";
-  date: string; // YYYY-MM-DD, always concrete
-  text: string; // "raised a €9M Series A"
-  source: { name: string; url: string };
+// ---------- inputs ----------
+export interface MarketEntry {
+  id: string;
+  kind: "subsidiary" | "news";
+  /** The foreign company (the door). */
+  doorId: string;
+  doorName: string;
+  /** The new national company, for subsidiaries. */
+  local: { id: string; name: string } | null;
+  market: string; // country entered, or "the Nordics"
+  date: string; // YYYY-MM-DD
+  source: RankedSource;
+  /** How the local company was tied to the foreign one. */
+  match: "website" | "registry-parent" | "news";
 }
 
-export interface WarmPath {
-  investorId: string;
-  investorName: string;
+export interface FreshRound {
+  id: string;
+  companyId: string;
+  date: string;
+  label: string | null;
+  amount: number | null;
+  currency: string | null;
+  sources: RankedSource[];
+  investors: { id: string; name: string; lead: boolean }[];
+}
+
+export interface Pool {
+  profiles: Record<string, Profile>;
+  entries: MarketEntry[];
+  rounds: FreshRound[];
+  /** Slush 2026 attendees: ids and normalised names. */
+  slush: { ids: string[]; names: string[] };
+}
+
+// ---------- outputs ----------
+export interface Reason {
+  kind: "entry" | "news" | "round";
+  date: string;
+  text: string; // "opened Acme Finland Oy in Finland", "is entering Sweden", "raised a €9M Series A"
+  source: RankedSource;
 }
 
 export interface Door {
-  companyId: string;
+  id: string;
   name: string;
   country: string | null;
-  blurb: string | null;
-  sectors: Sector[];
-  fit: Fit;
-  via: WarmPath[];
-  reason: Reason | null;
-  /** Market-entry door without a shared investor. */
-  timed?: boolean;
+  whyNow: Reason;
+  /** Every partnership the data supports; the one shown depends on the user's taps. */
+  whyYou: WhyYou[];
+  slush: boolean;
+  warm: { investor: string; led: boolean }[];
+  people: Person[];
+  xray: string;
+  entering: boolean;
 }
 
-export interface StartupProfile {
+export interface StartupSummary {
   id: string | null;
   name: string;
-  description: string;
   country: string | null;
-  sectors: Sector[];
-  investors: WarmPath[];
-  resolvedFrom: "dataset" | "cala" | "none";
+  industries: Industry[];
+  investors: { key: string; name: string }[];
+  resolvedFrom: "dataset" | "cala" | "domain" | "none";
 }
 
 export interface DoorReport {
   now: string;
-  startup: StartupProfile;
-  /** Doors with a reason inside the window, newest first. */
-  opened: Door[];
-  /** Market-entry doors without a warm path whose market matches the startup's. */
-  timed: Door[];
-  /** All candidate doors (fit-ranked), for the map and the count. */
-  doors: Door[];
-  doorCount: { investorId: string; investorName: string; count: number; keyring: number }[];
+  startup: StartupSummary;
+  doors: Door[]; // unranked; rank at render time with the user's taps
 }
 
+export interface Taps {
+  /** +1 per "more like this", -1 per "not now", by partnership type. */
+  weights: Partial<Record<PartnerType, number>>;
+  /** Doors dismissed with "not now". */
+  hidden: string[];
+  /** Any tap at all: after the first one, the log stops being the three-door first look. */
+  touched: boolean;
+}
+
+export const NO_TAPS: Taps = { weights: {}, hidden: [], touched: false };
+
 // ---------- helpers ----------
-const AGGREGATOR = /tracxn|crunchbase|pitchbook|openvc|dealroom|cbinsights|owler|zoominfo|craft\.co|golden\.com/;
+export function investorKey(name: string): string {
+  return seedSlugForName(name) ?? normalizeFund(name).replace(/\s+/g, "-");
+}
 
 export function isConcreteDate(d: string | null | undefined): d is string {
   return !!d && /^\d{4}-\d{2}-\d{2}$/.test(d);
 }
 
-function daysBetween(a: string, b: string) {
-  return Math.round((Date.parse(b) - Date.parse(a)) / DAY);
-}
+const daysAgo = (now: string, d: string) => Math.round((Date.parse(now) - Date.parse(d)) / DAY);
 
 export function fmtAmount(amount: number | null, currency: string | null): string | null {
   if (!amount || amount <= 0) return null;
-  const sym = currency === "EUR" ? "€" : currency === "USD" ? "$" : currency === "GBP" ? "£" : currency === "SEK" ? "SEK " : currency ? `${currency} ` : "";
+  const sym = currency === "EUR" ? "€" : currency === "USD" ? "$" : currency === "GBP" ? "£" : currency ? `${currency} ` : "";
   const v = amount >= 1e9 ? `${+(amount / 1e9).toFixed(1)}B` : amount >= 1e6 ? `${+(amount / 1e6).toFixed(1)}M` : amount >= 1e3 ? `${Math.round(amount / 1e3)}K` : String(amount);
   return `${sym}${v}`;
 }
 
-/** Pick the best source for an event on a date: press near the date, then anything. */
-export function pickSource(sources: Source[], date: string): { name: string; url: string } | null {
-  if (!sources.length) return null;
-  const ranked = [...sources].sort((a, b) => rank(b) - rank(a));
-  const s = ranked[0];
-  return { name: s.name && !/^https?:/.test(s.name) && s.name.length < 40 ? s.name : hostOf(s.url), url: s.url };
-  function rank(x: Source) {
-    let r = 0;
-    if (!AGGREGATOR.test(x.url)) r += 4;
-    if (x.date && Math.abs(daysBetween(x.date, date)) <= 10) r += 3;
-    if (x.url.includes(date.slice(0, 4))) r += 1;
-    return r;
-  }
-}
-
 /** "SERIES_A" -> "Series A", "PRE_SEED" -> "pre-seed", "SEED" -> "seed". */
 export function prettyRound(t: string | null): string | null {
-  if (!t || /^(other|unknown|undisclosed|not specified|n\/a)$/i.test(t.replace(/_/g, " "))) return null;
+  if (!t) return null;
   const x = t.replace(/_/g, " ").trim().toLowerCase();
+  if (/^(other|unknown|undisclosed|funding round|equity round|not specified)$/.test(x)) return null;
   const m = x.match(/^series ([a-z])(\+?)$/);
   if (m) return `Series ${m[1].toUpperCase()}${m[2]}`;
   if (x === "pre seed" || x === "pre-seed") return "pre-seed";
-  if (x === "seed" || x === "angel" || x === "grant" || x === "growth" || x === "venture" || x === "bridge") return x;
-  return x.replace(/\b(\w)/, (c) => c.toLowerCase());
+  return x;
 }
 
-function roundText(roundType: string | null, amount: number | null, currency: string | null) {
+export function roundText(label: string | null, amount: number | null, currency: string | null): string {
   const amt = fmtAmount(amount, currency);
-  const t0 = prettyRound(roundType);
-  const t = t0 && /^(seed|pre-seed|angel|bridge|growth|venture)$/.test(t0) ? `${t0} round` : t0;
-  if (amt && t) return `raised ${/^[aeiou]/i.test(amt) ? "an" : "a"} ${amt} ${t}`;
+  const t0 = prettyRound(label);
+  const t = t0 && /^(seed|pre-seed|seed\+|angel|bridge|growth|venture)$/.test(t0) ? `${t0} round` : t0;
+  const a = (w: string) => (/^[aeiou]/i.test(w) ? "an" : "a");
+  if (amt && t) return `raised ${a(amt)} ${amt} ${t}`;
   if (amt) return `raised ${amt}`;
-  if (t) return `closed ${/^[aeiou]/i.test(t) ? "an" : "a"} ${t.endsWith("round") ? t : `${t} round`}`;
+  if (t) return `closed ${a(t)} ${t}`;
   return "raised a round";
 }
 
-/** Latest concrete, sourced reason for a company. */
-export function reasonFor(ds: Dataset, c: Company, events: FaroEvent[], now: string): Reason | null {
-  const cands: Reason[] = [];
-  for (const rid of c.roundIds) {
-    const r = ds.rounds[rid];
-    if (!r || !isConcreteDate(r.date) || r.date > now) continue;
-    const src = pickSource(r.sources, r.date);
-    if (!src) continue;
-    cands.push({ kind: "round", date: r.date, text: roundText(r.roundType, r.amount, r.currency), source: src });
-  }
-  for (const e of events) {
-    if (e.companyId !== c.id || !isConcreteDate(e.date) || e.date > now) continue;
-    cands.push({ kind: e.kind, date: e.date, text: e.text, source: e.source });
-  }
-  cands.sort((a, b) => b.date.localeCompare(a.date));
-  // de-duplicate the same round reported by both the graph and the daily job
-  return cands[0] ?? null;
+/** Press near the date beats a registry or the company itself; aggregators last. */
+export function pickSource(sources: RankedSource[], date: string): RankedSource | null {
+  if (!sources.length) return null;
+  const score = (s: RankedSource) =>
+    ({ FILING: 3, PRESS: 3, PRIMARY: 2, AGGREGATOR: 0 } as Record<string, number>)[s.rank ?? ""] ??
+    (/tracxn|crunchbase|pitchbook|dealroom|cbinsights/.test(s.url) ? 0 : 1) +
+    (s.date && Math.abs(daysAgo(date, s.date)) <= 10 ? 2 : 0);
+  return [...sources].sort((a, b) => score(b) - score(a))[0];
 }
 
-export function blurbOf(c: { description: string | null }): string | null {
-  if (isBoilerplate(c.description)) return null;
-  let d = (c.description ?? "").trim().replace(/\.$/, "");
-  d = d.charAt(0).toLowerCase() + d.slice(1);
-  return d.length > 120 ? d.slice(0, 117).replace(/\s\S*$/, "") + "…" : d;
+/** Google X-ray link to people at the company. Link only; nothing is fetched. */
+export function xrayLink(company: string, country: string | null, type: PartnerType | null): string {
+  const roles =
+    type === "integration"
+      ? `(partnerships OR "head of product" OR CTO)`
+      : type === "distribution"
+        ? `("country manager" OR "business development" OR "head of sales")`
+        : `("country manager" OR "head of operations" OR procurement)`;
+  const q = `site:linkedin.com/in "${company}" ${roles}${country ? ` ${country}` : ""}`;
+  return `https://www.google.com/search?q=${encodeURIComponent(q)}`;
 }
 
-/**
- * Sector evidence for a company: its description, enrichment, the titles and URL slugs of the
- * sources behind its rounds ("vensum-power-raises-eur9m-to-cut-power-loss"), and what the daily
- * job reported alongside its events. Evidence only; none of it is shown verbatim.
- */
-export function companySectors(c: Company, enrich?: Record<string, string>, ds?: Dataset, events: FaroEvent[] = []): Sector[] {
-  const parts = [c.name, c.description ?? "", enrich?.[c.id] ?? ""];
-  if (ds) {
-    const token = normalizeCompany(c.name).split(" ")[0];
-    for (const rid of c.roundIds) {
-      for (const src of ds.rounds[rid]?.sources ?? []) {
-        // only sources that are about this company (skip roundups and aggregator pages)
-        const about = token.length >= 3 && `${src.name} ${src.url}`.toLowerCase().replace(/[^a-z0-9]+/g, "").includes(token.replace(/ /g, ""));
-        if (about && !/tracxn|crunchbase|pitchbook|dealroom|prh\.fi/.test(src.url)) {
-          if (/\s/.test(src.name)) parts.push(src.name.replace(/\|[^|]*$/, "")); // article titles, not "site.com"
-          try {
-            parts.push(decodeURIComponent(new URL(src.url).pathname).replace(/[-_/]+/g, " "));
-          } catch {}
-        }
-      }
-    }
-  }
-  for (const e of events) if (e.companyId === c.id && e.description) parts.push(e.description);
-  return sectorsOf(parts.join(" "), c.industries).filter((x) => x !== "consumer" || !!c.description);
+const NORDICS = ["Finland", "Sweden", "Norway", "Denmark", "Iceland"];
+export function marketMatches(market: string, country: string | null): boolean {
+  if (!country) return false;
+  if (/nordic|scandinavia/i.test(market)) return NORDICS.includes(country);
+  return market.toLowerCase().includes(country.toLowerCase());
 }
 
-// ---------- startup resolution ----------
-/** Words that may trail a brand in a legal name: "Oura" finds "Oura Health". */
-const BRAND_TRAIL = new Set(["health", "technologies", "technology", "tech", "group", "labs", "lab", "ai", "app", "games", "studios", "studio", "energy", "power", "systems", "solutions", "software", "holding", "holdings", "international", "global", "nordic", "finland", "sweden", "norway", "denmark", "io", "hq"]);
-
-export function findInDataset(ds: Dataset, name: string): Company | null {
-  const key = normalizeCompany(name);
-  if (!key) return null;
-  const squash = key.replace(/ /g, "");
-  let best: Company | null = null;
-  let bestRank = -1;
-  for (const c of Object.values(ds.companies)) {
-    for (const k of [c.name, ...c.aliases].map(normalizeCompany)) {
-      let rank = -1;
-      if (k === key) rank = 3;
-      else if (k.replace(/ /g, "") === squash) rank = 2;
-      else if (k.startsWith(key + " ") && k.slice(key.length + 1).split(" ").every((t) => BRAND_TRAIL.has(t))) rank = 1;
-      else if (key.startsWith(k + " ") && key.slice(k.length + 1).split(" ").every((t) => BRAND_TRAIL.has(t))) rank = 1;
-      if (rank > bestRank || (rank === bestRank && rank >= 0 && best && c.investors.length > best.investors.length)) {
-        if (rank >= 0) {
-          best = c;
-          bestRank = rank;
-        }
-      }
-    }
-  }
-  return best;
-}
-
-const NORDIC = /(Finland|Finnish|Sweden|Swedish|Norway|Norwegian|Denmark|Danish|Iceland|Estonia|Helsinki|Stockholm|Oslo|Copenhagen)/;
-
-export async function resolveStartup(
-  ds: Dataset,
-  name: string,
-  description: string,
-  opts: { live: boolean },
-): Promise<StartupProfile> {
-  const invName = (id: string) => ds.investors.find((i) => i.id === id)?.name ?? id;
-  const local = findInDataset(ds, name);
-  if (local) {
-    const typed = name.trim();
-    const brandOnly = normalizeCompany(typed) !== normalizeCompany(local.name) && typed.length < local.name.length;
-    return {
-      id: local.id,
-      name: brandOnly ? typed : local.name,
-      description: description || local.description || "",
-      country: local.country,
-      sectors: sectorsOf([local.name, description, local.description ?? ""].join(" "), local.industries),
-      investors: local.investors.map((l) => ({ investorId: l.investorId, investorName: invName(l.investorId) })),
-      resolvedFrom: "dataset",
-    };
-  }
-  if (opts.live) {
-    const cands = await searchEntities(name, { types: ["Company", "Organization"], limit: 10 }).catch(() => []);
-    const key = normalizeCompany(name);
-    const exact = cands.filter((c) => normalizeCompany(c.name) === key);
-    const pick = exact.find((c) => NORDIC.test(c.description ?? "")) ?? exact[0] ?? null;
-    if (pick) {
-      const raw = await fetchCompany(pick.id);
-      if (raw) {
-        const inv = new Map<string, string>();
-        for (const i of raw.investors) {
-          const s = (ds.idIndex[i.id]?.kind === "investor" ? ds.idIndex[i.id].id : undefined) ?? seedSlugForName(i.name);
-          if (s && ds.keyrings[s]) inv.set(s, invName(s));
-        }
-        for (const r of raw.rounds.slice(0, 12)) {
-          const round = await fetchRound(r.id, r.kind).catch(() => null);
-          for (const i of round?.investors ?? []) {
-            const s = (ds.idIndex[i.id]?.kind === "investor" ? ds.idIndex[i.id].id : undefined) ?? seedSlugForName(i.name);
-            if (s && ds.keyrings[s]) inv.set(s, invName(s));
-          }
-        }
-        return {
-          id: raw.id,
-          name: raw.aliases.find((a) => a.length < raw.name.length) ?? raw.name,
-          description: description || raw.description || "",
-          country: raw.country,
-          sectors: sectorsOf([raw.name, description, raw.description ?? ""].join(" "), raw.industries),
-          investors: [...inv.entries()].map(([investorId, investorName]) => ({ investorId, investorName })),
-          resolvedFrom: "cala",
-        };
-      }
-    }
-  }
-  return { id: null, name, description, country: null, sectors: sectorsOf(`${name} ${description}`), investors: [], resolvedFrom: "none" };
+/** Roles worth showing (Cala's WORKS_AT roles sometimes hold scraps like "per an exhibitor listing"). */
+function goodRole(r: string) {
+  return r.length <= 40 && !/\b(per|listing|according|source)\b/i.test(r);
 }
 
 // ---------- the engine ----------
-export function buildReport(
-  ds: Dataset,
-  startup: StartupProfile,
-  opts: { now: string; events: FaroEvent[]; enrich?: Record<string, string>; fitOverrides?: Record<string, string> },
-): DoorReport {
-  const { now, events } = opts;
-  const own = new Set<string>(startup.id ? [startup.id, ...(ds.companies[startup.id]?.ids ?? [])] : []);
-  const doorsById = new Map<string, Door>();
+export function buildReport(pool: Pool, startup: StartupSummary, opts: { now: string }): DoorReport {
+  const { now } = opts;
+  const youKeys = new Map(startup.investors.map((i) => [i.key, i.name]));
+  const slushIds = new Set(pool.slush.ids);
+  const slushNames = new Set(pool.slush.names);
+  const selfName = normalizeCompany(startup.name);
+  const doors = new Map<string, Door>();
 
-  for (const inv of startup.investors) {
-    for (const cid of ds.keyrings[inv.investorId] ?? []) {
-      if (own.has(cid)) continue;
-      const c = ds.companies[cid];
-      if (!c) continue;
-      if (normalizeCompany(c.name) === normalizeCompany(startup.name)) continue;
-      let d = doorsById.get(cid);
-      if (!d) {
-        const sectors = companySectors(c, opts.enrich, ds, events);
-        const blurb = blurbOf(c) ?? (opts.enrich?.[cid] ? opts.enrich[cid].replace(/\.$/, "") : null);
-        const fit = fitBetween(
-          { name: startup.name, sectors: startup.sectors, country: startup.country },
-          { name: c.name, sectors, country: c.country, blurb },
-        );
-        const override = opts.fitOverrides?.[`${startup.id ?? startup.name}::${cid}`];
-        d = {
-          companyId: cid,
-          name: c.name,
-          country: c.country,
-          blurb,
-          sectors,
-          fit: override ? { ...fit, sentence: override } : fit,
-          via: [],
-          reason: reasonFor(ds, c, events, now),
-        };
-        doorsById.set(cid, d);
-      }
-      if (!d.via.some((v) => v.investorId === inv.investorId)) d.via.push(inv);
+  const isSlush = (p: Profile | undefined, ...ids: (string | null | undefined)[]) =>
+    !!p?.slush || ids.some((id) => id && slushIds.has(id)) || (!!p && slushNames.has(normalizeCompany(p.name)));
+
+  const warmOf = (p: Profile | undefined, roundInvestors: FreshRound["investors"]) => {
+    const out: Door["warm"] = [];
+    const leads = new Set(roundInvestors.filter((i) => i.lead).map((i) => investorKey(i.name)));
+    for (const i of [...(p?.investors ?? []), ...roundInvestors]) {
+      const k = investorKey(i.name);
+      if (youKeys.has(k) && !out.some((w) => w.investor === youKeys.get(k))) out.push({ investor: youKeys.get(k)!, led: leads.has(k) });
     }
-  }
+    return out;
+  };
 
-  // Fresh rounds from the daily job where a shared investor took part, even if the company
-  // isn't in a cached keyring yet (a brand-new portfolio company is a door too).
-  const startupInv = new Map(startup.investors.map((i) => [i.investorId, i]));
-  for (const e of events) {
-    if (e.kind !== "round" || !e.investorIds?.length || !isConcreteDate(e.date) || e.date > now) continue;
-    const shared = e.investorIds.filter((id) => startupInv.has(id)).map((id) => startupInv.get(id)!);
-    if (!shared.length) continue;
-    const key = e.companyId ?? `event:${normalizeCompany(e.companyName)}`;
-    if (normalizeCompany(e.companyName) === normalizeCompany(startup.name) || own.has(key)) continue;
-    const existing = doorsById.get(key);
-    if (existing) {
-      for (const s of shared) if (!existing.via.some((v) => v.investorId === s.investorId)) existing.via.push(s);
-      continue;
-    }
-    const sectors = sectorsOf(`${e.companyName} ${e.description ?? ""}`);
-    const blurb = e.description ? e.description.replace(/\.$/, "").replace(/^./, (ch) => ch.toLowerCase()) : null;
-    doorsById.set(key, {
-      companyId: key,
-      name: e.companyName,
-      country: null,
-      blurb,
-      sectors,
-      fit: fitBetween({ name: startup.name, sectors: startup.sectors, country: startup.country }, { name: e.companyName, sectors, blurb }),
-      via: shared,
-      reason: { kind: "round", date: e.date, text: e.text, source: e.source },
-    });
-  }
+  const roundsOf = (id: string) => pool.rounds.filter((r) => r.companyId === id);
 
-  const doors = [...doorsById.values()].sort(
-    (a, b) => b.fit.score - a.fit.score || b.via.length - a.via.length || (b.reason?.date ?? "").localeCompare(a.reason?.date ?? ""),
-  );
-  const cutoff = new Date(Date.parse(now) - OPEN_WINDOW_DAYS * DAY).toISOString().slice(0, 10);
-  const opened = doors
-    .filter((d) => d.reason && d.reason.date >= cutoff && d.reason.date <= now)
-    .sort((a, b) => b.reason!.date.localeCompare(a.reason!.date) || b.fit.score - a.fit.score);
-
-  // Timed doors: outside companies entering the startup's market, no warm path.
-  const timed: Door[] = [];
-  for (const e of events) {
-    if (e.kind !== "market-entry" || !e.market || !startup.country) continue;
+  // 1. market entry: new national companies and expansion news into the startup's market
+  for (const e of pool.entries) {
+    if (!isConcreteDate(e.date) || e.date > now) continue;
+    const win = e.kind === "subsidiary" ? ENTRY_WINDOW_DAYS : NEWS_WINDOW_DAYS;
+    if (daysAgo(now, e.date) > win) continue;
     if (!marketMatches(e.market, startup.country)) continue;
-    if (!isConcreteDate(e.date) || e.date < cutoff || e.date > now) continue;
-    if (e.companyId && doorsById.has(e.companyId)) continue; // already a warm door
-    timed.push({
-      companyId: e.companyId ?? e.calaId ?? e.companyName,
-      name: e.companyName,
-      country: null,
-      blurb: null,
-      sectors: [],
-      fit: { score: 1, sentence: `${e.companyName} is coming to ${e.market}, where you already are.`, kind: "adjacent" },
-      via: [],
-      reason: { kind: "market-entry", date: e.date, text: e.text, source: e.source },
-      timed: true,
+    const p = pool.profiles[e.doorId];
+    const local = e.local ? pool.profiles[e.local.id] : undefined;
+    if (normalizeCompany(e.doorName) === selfName || startup.id === e.doorId) continue;
+    const industries = p?.industries.length ? p.industries : local?.industries ?? [];
+    const whyYou = partnerTypes({
+      you: startup,
+      door: { name: e.doorName, industries, country: p?.country ?? null },
+      entering: true,
+      market: startup.country,
+    });
+    if (!whyYou.length) continue; // no real reason: drop
+    const rs = roundsOf(e.doorId).flatMap((r) => r.investors);
+    const prev = doors.get(e.doorId);
+    if (prev && prev.whyNow.date >= e.date) continue;
+    const people = [...(local?.people ?? []), ...(p?.people ?? [])].filter((x) => goodRole(x.role)).slice(0, 2);
+    doors.set(e.doorId, {
+      id: e.doorId,
+      name: p?.name ?? e.doorName,
+      country: p?.country ?? null,
+      whyNow: {
+        kind: e.kind === "subsidiary" ? "entry" : "news",
+        date: e.date,
+        text: e.kind === "subsidiary" && e.local ? `registered ${e.local.name} in ${startup.country}` : `is entering ${e.market}`,
+        source: e.source,
+      },
+      whyYou,
+      slush: isSlush(p, e.doorId, e.local?.id) || isSlush(local),
+      warm: warmOf(p, rs),
+      people,
+      xray: xrayLink(p?.name ?? e.doorName, startup.country, whyYou[0].type),
+      entering: true,
     });
   }
-  timed.sort((a, b) => b.reason!.date.localeCompare(a.reason!.date));
 
-  const doorCount = startup.investors
-    .map((inv) => ({
-      investorId: inv.investorId,
-      investorName: inv.investorName,
-      count: doors.filter((d) => d.fit.score >= 2 && d.via.some((v) => v.investorId === inv.investorId)).length,
-      keyring: (ds.keyrings[inv.investorId] ?? []).filter((id) => !own.has(id)).length,
-    }))
-    .sort((a, b) => b.count - a.count || b.keyring - a.keyring);
+  // 2. fresh rounds, only with a warm path
+  for (const r of pool.rounds) {
+    if (!isConcreteDate(r.date) || r.date > now || daysAgo(now, r.date) > ROUND_WINDOW_DAYS) continue;
+    if (doors.has(r.companyId) || r.companyId === startup.id) continue;
+    const p = pool.profiles[r.companyId];
+    if (!p || normalizeCompany(p.name) === selfName) continue;
+    const warm = warmOf(p, r.investors);
+    if (!warm.length) continue;
+    const src = pickSource(r.sources, r.date);
+    if (!src) continue;
+    const whyYou = partnerTypes({ you: startup, door: { name: p.name, industries: p.industries, country: p.country }, entering: false, market: startup.country });
+    if (!whyYou.length) continue;
+    doors.set(r.companyId, {
+      id: r.companyId,
+      name: p.name,
+      country: p.country,
+      whyNow: { kind: "round", date: r.date, text: roundText(r.label, r.amount, r.currency), source: src },
+      whyYou,
+      slush: isSlush(p, r.companyId),
+      warm,
+      people: p.people.filter((x) => goodRole(x.role)).slice(0, 2),
+      xray: xrayLink(p.name, p.country, whyYou[0].type),
+      entering: false,
+    });
+  }
 
-  return { now, startup, opened, timed, doors, doorCount };
+  return { now, startup, doors: [...doors.values()] };
 }
 
-const MARKET_ALIASES: Record<string, string[]> = {
-  Finland: ["finland"],
-  Sweden: ["sweden"],
-  Norway: ["norway"],
-  Denmark: ["denmark"],
-  Iceland: ["iceland"],
-};
-function marketMatches(market: string, country: string) {
-  const m = market.toLowerCase();
-  if (m.includes("nordic") || m.includes("scandinavia")) return ["Finland", "Sweden", "Norway", "Denmark", "Iceland"].includes(country);
-  return (MARKET_ALIASES[country] ?? [country.toLowerCase()]).some((a) => m.includes(a));
+// ---------- ranking (render time) ----------
+export function tierOf(d: Door): number {
+  if (d.entering && d.slush && d.warm.length) return 1;
+  if (d.entering && d.slush) return 2;
+  if (d.entering) return 3;
+  return 4;
 }
+
+/** The partnership to lead with for this user. */
+export function leadWhyYou(d: Door, taps: Taps): WhyYou {
+  const w = taps.weights;
+  return [...d.whyYou].sort((a, b) => (w[b.type] ?? 0) - (w[a.type] ?? 0) || PARTNER_TYPES.indexOf(a.type) - PARTNER_TYPES.indexOf(b.type))[0];
+}
+
+export function rankDoors(doors: Door[], taps: Taps): Door[] {
+  const hidden = new Set(taps.hidden);
+  const w = (d: Door) => taps.weights[leadWhyYou(d, taps).type] ?? 0;
+  return doors
+    .filter((d) => !hidden.has(d.id))
+    .filter((d) => (taps.weights[leadWhyYou(d, taps).type] ?? 0) > -3) // three "not now"s mute a type
+    .sort((a, b) => tierOf(a) - tierOf(b) || w(b) - w(a) || b.whyNow.date.localeCompare(a.whyNow.date));
+}
+
+/**
+ * The first look: three doors of different partnership types, best tier first.
+ * Falls back to the next best doors if the data supports fewer than three types.
+ */
+export function firstLook(doors: Door[]): { door: Door; type: PartnerType }[] {
+  const ranked = rankDoors(doors, NO_TAPS);
+  const out: { door: Door; type: PartnerType }[] = [];
+  for (const t of PARTNER_TYPES) {
+    const d = ranked.find((x) => !out.some((o) => o.door.id === x.id) && x.whyYou.some((y) => y.type === t));
+    if (d) out.push({ door: d, type: t });
+  }
+  for (const d of ranked) {
+    if (out.length >= 3) break;
+    if (!out.some((o) => o.door.id === d.id)) out.push({ door: d, type: leadWhyYou(d, NO_TAPS).type });
+  }
+  return out.sort((a, b) => tierOf(a.door) - tierOf(b.door) || b.door.whyNow.date.localeCompare(a.door.whyNow.date)).slice(0, 3);
+}
+
+export { bestWhyYou };

@@ -1,9 +1,9 @@
 # Faro for Gmail
 
-The same log in the Gmail sidebar, as a card. Optional.
+A contextual sidebar. It knows you from your email domain (matched to your company's website in Cala), asks nothing, and shows a door when a company that's one of your doors emails you.
 
-1. Create an Apps Script project, paste `Code.gs` and `appsscript.json` (show the manifest under Project Settings).
-2. Script properties: `FARO_URL` (where Faro is deployed, e.g. `https://faro.example.com`) and `STARTUP` (a slug, e.g. `oura`).
-3. Deploy > Test deployments > Gmail. Open Gmail; Faro appears in the right sidebar.
+1. Create an Apps Script project; paste `Code.gs` and `appsscript.json` (Project Settings → show the manifest).
+2. Script property `FARO_URL`: where Faro is deployed (e.g. `https://faro.example.com`).
+3. Deploy → Test deployments → Gmail. Open Gmail: Faro is in the right sidebar.
 
-It reads `GET /api/doors/<startup>`. Not tested against a live Gmail account during the hackathon.
+Reads `GET /api/gmail?user=<your email>&sender=<sender>`. "more like this · not now" taps are stored in your user properties, in the same shape as the web's cookie. Not yet tested against a live Gmail account.

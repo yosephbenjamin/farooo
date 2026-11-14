@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
+import { cookies } from "next/headers";
 import { LogView } from "@/components/LogView";
 import { demoStartups, getReport } from "@/lib/report";
 import { readJson } from "@/lib/data";
+import { parseTaps, tapsCookie } from "@/lib/taps";
+import { firstLook, rankDoors } from "@/lib/doors";
 
 export const dynamic = "force-dynamic";
 
@@ -22,8 +25,10 @@ export default async function StartupLog({ params, searchParams }: Params) {
   const { name, booth, auto } = await searchParams;
   const report = await getReport(displayName(startup, name));
   const isBooth = booth === "1";
-  // the scripted moment: hold back the newest opened door in booth mode
+  const taps = isBooth ? parseTaps(null) : parseTaps((await cookies()).get(tapsCookie(startup))?.value);
+  // the scripted moment: hold back the top door in booth mode (or the one named in demo/scripted.json)
   const scripts = readJson<Record<string, string>>("demo/scripted.json", {});
-  const scriptedId = isBooth ? scripts[startup] ?? report.opened[0]?.companyId ?? null : null;
-  return <LogView report={report} booth={isBooth} scriptedId={scriptedId} autoMs={auto ? Number(auto) || 6000 : null} />;
+  const top = isBooth ? rankDoors(report.doors, taps)[0] : firstLook(report.doors)[0]?.door;
+  const scriptedId = isBooth ? scripts[startup] ?? top?.id ?? null : null;
+  return <LogView report={report} slug={startup} taps={taps} booth={isBooth} scriptedId={scriptedId} autoMs={auto ? Number(auto) || 6000 : null} />;
 }

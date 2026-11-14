@@ -8,13 +8,13 @@
 import { readJson, writeJson } from "../src/lib/data";
 import { makeAlert, renderAlertHtml, renderAlertText, type Alert } from "../src/lib/email";
 import { demoStartups, getReport } from "../src/lib/report";
+import { rankDoors, NO_TAPS } from "../src/lib/doors";
 
 const log = (...a: unknown[]) => console.log("[alerts]", ...a);
 
 interface Subscriber {
   startup: string;
   slug: string;
-  description?: string;
   email: string | null;
 }
 
@@ -39,15 +39,15 @@ async function send(a: Alert): Promise<boolean> {
 async function main() {
   const subs = readJson<Subscriber[]>(
     "subscribers.json",
-    demoStartups().map((d) => ({ startup: d.name, slug: d.slug, description: d.description, email: process.env.ALERT_TO || null })),
+    demoStartups().map((d) => ({ startup: d.name, slug: d.slug, email: process.env.ALERT_TO || null })),
   );
   const alerted = new Set(readJson<string[]>("alerted.json", []));
   const alerts = readJson<Alert[]>("alerts.json", []);
   const now = new Date().toISOString();
   let made = 0;
   for (const s of subs) {
-    const r = await getReport(s.startup, { description: s.description, forceLive: true });
-    const fresh = r.opened.filter((d) => !alerted.has(`${s.slug}|${d.companyId}|${d.reason!.date}`)).slice(0, 5);
+    const r = await getReport(s.startup);
+    const fresh = rankDoors(r.doors, NO_TAPS).filter((d) => !alerted.has(`${s.slug}|${d.id}|${d.whyNow.date}`)).slice(0, 5);
     if (!fresh.length) {
       log(`${s.startup}: quiet`);
       continue;
@@ -55,7 +55,7 @@ async function main() {
     const a = makeAlert(r, fresh, s.slug, s.email, now);
     a.delivery = (await send(a)) ? "resend" : "log-only";
     alerts.push(a);
-    for (const d of fresh) alerted.add(`${s.slug}|${d.companyId}|${d.reason!.date}`);
+    for (const d of fresh) alerted.add(`${s.slug}|${d.id}|${d.whyNow.date}`);
     made++;
     log(`${s.startup}: ${fresh.length} door(s) -> ${a.delivery}`);
   }

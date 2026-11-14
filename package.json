@@ -8,12 +8,11 @@
     "start": "next start",
     "lint": "eslint",
     "ingest": "tsx scripts/ingest.ts",
-    "daily": "tsx scripts/daily-rounds.ts",
-    "market": "tsx scripts/market-entry.ts",
-    "enrich": "tsx scripts/enrich.ts",
     "demo": "tsx scripts/demo.ts",
     "alerts": "tsx scripts/alerts.ts",
-    "test": "tsx scripts/selftest.ts"
+    "test": "tsx scripts/selftest.ts",
+    "profiles": "tsx scripts/fetch-profiles.ts",
+    "keyrings": "tsx scripts/keyrings.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^1.8.0",

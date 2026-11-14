@@ -44,7 +44,7 @@ export async function relAll(
   opts: CalaOptions = {},
 ): Promise<RelatedEntity[]> {
   const all: RelatedEntity[] = [];
-  for (let offset = 0; offset < 2000; offset += PAGE) {
+  for (let offset = 0; offset < 20000; offset += PAGE) {
     const res = await getEntity(id, { relationships: { [dir]: { [rel]: { limit: PAGE, offset } } } }, opts).catch(() => null);
     const batch = res?.relationships?.[dir]?.[rel] ?? [];
     all.push(...batch);
@@ -194,3 +194,36 @@ export async function isInvestor(id: string, opts: CalaOptions = {}) {
 }
 
 export { searchEntities };
+
+// ---------------------------------------------------------------------------
+// v2: one retrieval per company with everything a door needs.
+// The body is fixed so the on-disk cache key is stable across runs.
+export const PROFILE_QUERY = {
+  properties: ["name", "legal_name", "aliases", "website", "description", "founding_date", "founding_date__precision", "headquarters_address", "funding_stage", "operational_status"],
+  relationships: {
+    outgoing: {
+      HAS_HEADQUARTERS_IN: { limit: 5 },
+      IS_REGISTERED_IN: { limit: 5 },
+      OPERATES_IN_INDUSTRY: { limit: 5 },
+      HAS_DOMAIN_NAME: { limit: 5 },
+      PARTICIPATES_IN_FUNDING_ROUND: { limit: 30 },
+      PARTICIPATES_IN_EVENT: { limit: 10 },
+    },
+    incoming: {
+      INVESTED_IN: { limit: 50 },
+      IS_CEO_OF: { limit: 3 },
+      IS_CTO_OF: { limit: 3 },
+      IS_VICEPRESIDENT_OF: { limit: 5 },
+      WORKS_AT: { limit: 10 },
+      IS_DIRECT_PARENT_OF: { limit: 3 },
+      IS_ULTIMATE_PARENT_OF: { limit: 3 },
+    },
+  },
+};
+
+export async function fetchProfileRaw(id: string, opts: CalaOptions = {}) {
+  return getEntity(id, PROFILE_QUERY, opts).catch((e) => {
+    if (String(e?.message ?? "").includes("402")) throw e; // out of credit: stop the caller
+    return null;
+  });
+}

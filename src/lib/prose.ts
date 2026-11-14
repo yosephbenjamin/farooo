@@ -1,5 +1,6 @@
 /** Faro's voice: terse, declarative, a little lyrical. All copy is generated here. */
-import type { Door, DoorReport } from "./doors";
+import { leadWhyYou, type Door, type DoorReport, type Taps } from "./doors";
+import { NO_TAPS } from "./doors";
 
 const WORDS = ["No", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Eleven", "Twelve"];
 export const numWord = (n: number) => (n < WORDS.length ? WORDS[n] : String(n));
@@ -15,63 +16,80 @@ export function dayMonth(iso: string) {
   const [, m, d] = iso.split("-").map(Number);
   return `${d} ${MON[m - 1]}`;
 }
-function monthOf(iso: string) {
-  return MONTHS[Number(iso.split("-")[1]) - 1];
-}
-function daysAgo(now: string, iso: string) {
-  return Math.round((Date.parse(now) - Date.parse(iso)) / 86_400_000);
-}
+const monthOf = (iso: string) => MONTHS[Number(iso.split("-")[1]) - 1];
+const daysAgo = (now: string, iso: string) => Math.round((Date.parse(now) - Date.parse(iso)) / 86_400_000);
+const list = (xs: string[]) => (xs.length <= 2 ? xs.join(" and ") : `${xs.slice(0, -1).join(", ")} and ${xs.at(-1)}`);
 
-export function doorsThisWeek(r: DoorReport) {
-  return r.opened.filter((d) => daysAgo(r.now, d.reason!.date) <= 7);
-}
-
-export function headline(r: DoorReport, openedOverride?: Door[]): string {
-  const opened = openedOverride ?? r.opened;
+export function headline(r: DoorReport, shown: Door[]): string {
   const name = r.startup.name;
-  if (!r.startup.investors.length) return `The lighthouse can't see ${name}'s investors yet.`;
-  const week = opened.filter((d) => daysAgo(r.now, d.reason!.date) <= 7).length;
-  const month = opened.filter((d) => daysAgo(r.now, d.reason!.date) <= 31).length;
+  if (!r.startup.country && !r.startup.industries.length) return `The lighthouse can't see ${name} yet.`;
+  if (!shown.length) return `Quiet water for ${name}. No door has opened.`;
   const door = (n: number) => (n === 1 ? "door" : "doors");
-  if (week) return `${numWord(week)} ${door(week)} opened for ${name} this week.`;
-  if (month) return `${numWord(month)} ${door(month)} opened for ${name} this month.`;
-  if (opened.length) {
-    const oldest = opened[opened.length - 1].reason!.date;
-    return `${numWord(opened.length)} ${door(opened.length)} opened for ${name} since ${monthOf(oldest)}.`;
-  }
-  return `Quiet water for ${name}. No door has opened lately.`;
+  const week = shown.filter((d) => daysAgo(r.now, d.whyNow.date) <= 7).length;
+  if (week === shown.length) return `${numWord(week)} ${door(week)} opened for ${name} this week.`;
+  const month = shown.filter((d) => daysAgo(r.now, d.whyNow.date) <= 31).length;
+  if (month === shown.length) return `${numWord(month)} ${door(month)} opened for ${name} this month.`;
+  const oldest = [...shown].sort((a, b) => a.whyNow.date.localeCompare(b.whyNow.date))[0].whyNow.date;
+  const sameYear = oldest.slice(0, 4) === r.now.slice(0, 4);
+  return `${numWord(shown.length)} ${door(shown.length)} opened for ${name} since ${monthOf(oldest)}${sameYear ? "" : ` ${oldest.slice(0, 4)}`}.`;
 }
 
-/** The line under the headline. */
+/** The line under the headline: where we're watching and through whom. */
 export function subline(r: DoorReport): string | null {
-  const n = r.startup.investors.length;
-  if (!n) return "Try another name, or one of the demo startups.";
-  const names = r.startup.investors.map((i) => i.investorName);
-  const list = names.length <= 2 ? names.join(" and ") : `${names.slice(0, -1).join(", ")} and ${names.at(-1)}`;
-  return `Watched through ${list}.`;
+  const s = r.startup;
+  if (!s.country) return "Try another name, or one of the demo startups.";
+  const inv = s.investors.map((i) => i.name).slice(0, 4);
+  return inv.length ? `Watching ${s.country}, through ${list(inv)}.` : `Watching ${s.country}.`;
 }
 
-/** First line of an entry: who, and what happened. */
+/** 1. Why now. */
 export function entryLead(d: Door): { name: string; rest: string } {
-  const text = d.reason?.text ?? "";
-  return { name: d.name, rest: text ? ` ${text}` : "" };
+  return { name: d.name, rest: ` ${d.whyNow.text}` };
 }
 
-/** Second line: why you, and the warm path. */
-export function entryWhy(d: Door): string {
-  const via = d.via.map((v) => v.investorName);
-  const path = d.timed ? "No shared investor; worth a hello." : `Through ${via.length > 1 ? `${via.slice(0, -1).join(", ")} and ${via.at(-1)}` : via[0]}.`;
-  let why = "";
-  if (d.fit.score >= 2) why = d.fit.sentence;
-  else if (d.blurb) why = `It works on ${d.blurb.replace(/^(a|an|the) /i, (m) => m.toLowerCase())}.`;
-  return why ? `${why} ${path}` : path;
+/** 2. Why you. */
+export function entryWhy(d: Door, taps: Taps = NO_TAPS): string {
+  return leadWhyYou(d, taps).sentence;
 }
 
+/** 3–5. Where to meet, warm path, who. Returns parts; the view renders the X-ray link. */
+export function entryMeta(d: Door): { parts: string[]; people: string | null } {
+  const parts: string[] = [];
+  if (d.slush) parts.push("Meet them at Slush 2026");
+  if (d.warm.length) {
+    const led = d.warm.filter((w) => w.led).map((w) => w.investor);
+    const rest = d.warm.filter((w) => !w.led).map((w) => w.investor);
+    if (led.length) parts.push(`Through ${list(led)}, who led their round${rest.length ? `; also ${list(rest)}` : ""}`);
+    else parts.push(`Through ${list(rest)}`);
+  }
+  const people = d.people.length ? d.people.map((p) => `${p.name}, ${p.role}`).join("; ") : null;
+  return { parts, people };
+}
+
+export function sourceLine(d: Door): string {
+  const s = d.whyNow.source;
+  const name = s.name && s.name.length < 40 && !/^https?:/.test(s.name) ? s.name.replace(/^www\./, "") : hostName(s.url);
+  return `${shortDate(d.whyNow.date)} · ${name}${s.rank ? ` · ${s.rank}` : ""}`;
+}
+
+function hostName(url: string) {
+  try {
+    return new URL(url).hostname.replace(/^www\./, "");
+  } catch {
+    return url;
+  }
+}
+
+/** Door Count: doors each investor opens (warm paths), quietly. */
 export function doorCountLine(r: DoorReport): string | null {
-  if (!r.doorCount.length) return null;
-  return r.doorCount.map((c) => `${c.investorName} ${c.count}`).join("  ·  ");
+  const counts = new Map<string, number>();
+  for (const d of r.doors) for (const w of d.warm) counts.set(w.investor, (counts.get(w.investor) ?? 0) + 1);
+  if (!counts.size) return null;
+  return [...counts.entries()].sort((a, b) => b[1] - a[1]).map(([n, c]) => `${n} ${c}`).join("  ·  ");
 }
 
 export function emailSubject() {
   return "The lighthouse saw something";
 }
+
+void dayMonth;

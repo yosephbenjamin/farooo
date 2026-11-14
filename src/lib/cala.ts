@@ -37,7 +37,8 @@ async function acquire() {
   active++;
 }
 // ---------- rate pacing (Cala answers 429 above ~1.5 req/s, without rate-limit headers) ----------
-const MIN_INTERVAL_MS = 1000 / Number(process.env.CALA_RPS ?? 1.6);
+// Nov 2026 key: ~10 requests per rolling minute (burst 10, then ~1 per 6 s). Override with CALA_RPS.
+const MIN_INTERVAL_MS = 1000 / Number(process.env.CALA_RPS ?? 0.165);
 let nextSlot = 0;
 async function pace() {
   const now = Date.now();
