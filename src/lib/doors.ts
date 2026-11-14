@@ -16,7 +16,7 @@ import { normalizeFund, normalizeCompany } from "./normalize";
 import { seedSlugForName } from "./seed";
 import { bestWhyYou, checkIndustries, partnerTypes, PARTNER_TYPES, type IndustryCheck, type PartnerType, type WhyYou } from "./partner";
 import { prettyName, type Industry, type Person, type Profile, type RankedSource } from "./profile";
-import type { TimedEvent } from "./signals";
+import { SPAC, type TimedEvent } from "./signals";
 
 export const DAY = 86_400_000;
 /** A new national company counts as "entering" for this long after its registry founding date. */
@@ -186,6 +186,8 @@ export function xrayLink(company: string, country: string | null, type: PartnerT
 }
 
 const NORDICS = ["Finland", "Sweden", "Norway", "Denmark", "Iceland"];
+/** Public grant agencies: shared funding, but not someone who introduces you. */
+const AGENCY = /^(business finland|innovation norway|vinnova|innovationsfonden|innobooster|eic|european innovation council|horizon europe|eu|european union|almi|tekes)\b/i;
 export function marketMatches(market: string, country: string | null): boolean {
   if (!country) return false;
   if (/nordic|scandinavia/i.test(market)) return NORDICS.includes(country);
@@ -221,7 +223,7 @@ export function isGiant(p: Profile | undefined, headcount?: number | null): bool
 /** Weapons and military makers (defence code + military wording anywhere we have): left out of the demos. */
 export function isWeaponsMaker(p: Profile | undefined, ...texts: (string | null | undefined)[]): boolean {
   if (!p || !p.industries.some((i) => /AEROSPACE_AND_DEFEN|DEFEN[CS]E/.test(i.code) || i.label === "dualUseTech")) return false;
-  return /\b(defen[cs]e|military|weapons?|munitions?|missiles?|armed forces|combat|warfare|commandos?|soldiers?|battlefield)\b/i.test([p.description, ...texts].join(" "));
+  return /\b(defen[cs]e|military|weapons?|munitions?|missiles?|armed forces|combat|warfare|commandos?|soldiers?|battlefield|contested)\b/i.test([p.description, ...texts].join(" "));
 }
 
 // ---------- the engine ----------
@@ -240,6 +242,7 @@ export function buildReport(pool: Pool, startup: StartupSummary, opts: { now: st
     const out: Door["warm"] = [];
     const leads = new Set(roundInvestors.filter((i) => i.lead).map((i) => investorKey(i.name)));
     for (const i of [...(p?.investors ?? []), ...roundInvestors]) {
+      if (AGENCY.test(i.name.trim())) continue; // a grant agency isn't an introducer
       const k = investorKey(i.name);
       if (youKeys.has(k) && !out.some((w) => w.investor === youKeys.get(k))) out.push({ investor: youKeys.get(k)!, led: leads.has(k) });
     }
@@ -311,12 +314,13 @@ export function buildReport(pool: Pool, startup: StartupSummary, opts: { now: st
     const p = pool.profiles[c.companyId];
     if (!p || normalizeCompany(p.name) === selfName) continue;
     if (!c.source) continue;
-    if (opts.noWeapons && isWeaponsMaker(p)) continue;
+    if (opts.noWeapons && isWeaponsMaker(p, c.text, c.source.url)) continue;
+    if (c.kind === "acquisition" && SPAC.test(c.text)) continue;
     const warm = warmOf(p, [...c.investors, ...roundsOf(c.companyId).flatMap((r) => r.investors)]);
     const src = withOwnRank(c.source, p);
     const check = checkIndustries(p.industries, p.description);
     if (check.drop) continue;
-    const whyYou = partnerTypes({ you: startup, door: { name: p.name, industries: check.industries, country: p.country }, entering: false, market: startup.country });
+    const whyYou = partnerTypes({ you: startup, door: { name: p.name, industries: check.industries, country: p.country }, entering: false, market: startup.country, reason: c.kind === "hire" ? "hire" : c.kind === "acquisition" ? "acquisition" : "round" });
     if (!whyYou.length) continue;
     doors.set(c.companyId, {
       id: c.companyId,
@@ -377,8 +381,11 @@ export function rankDoors(doors: Door[], taps: Taps): Door[] {
 export function firstLook(doors: Door[]): { door: Door; type: PartnerType }[] {
   const ranked = rankDoors(doors, NO_TAPS);
   const out: { door: Door; type: PartnerType }[] = [];
+  // different partnership types, and different reasons where the data allows (entry, money, hires, acquisition)
+  const reason = (d: Door) => (d.whyNow.kind === "news" || d.whyNow.kind === "entry" ? "entry" : d.whyNow.kind);
   for (const t of PARTNER_TYPES) {
-    const d = ranked.find((x) => !out.some((o) => o.door.id === x.id) && x.whyYou.some((y) => y.type === t));
+    const free = (x: Door) => !out.some((o) => o.door.id === x.id) && x.whyYou.some((y) => y.type === t);
+    const d = ranked.find((x) => free(x) && !out.some((o) => reason(o.door) === reason(x))) ?? ranked.find(free);
     if (d) out.push({ door: d, type: t });
   }
   for (const d of ranked) {

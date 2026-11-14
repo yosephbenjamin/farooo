@@ -482,6 +482,27 @@ async function main() {
     save("investors");
   }
 
+  // ---------- 3e. rebuild every event from the cached signal responses (no calls) ----------
+  if (STAGES.has("reparse")) {
+    const targets = new Map([...events.values()].filter((e) => e.kind === "acquisition" && e.text !== "completed an acquisition").map((e) => [e.id, e.text]));
+    events.clear();
+    let n = 0;
+    for (const f of readdirSync(cacheDir)) {
+      try {
+        const r = JSON.parse(readFileSync(path.join(cacheDir, f), "utf8"));
+        if (r.method !== "POST" || !r.body?.numerical_observations || !r.body?.relationships?.incoming?.IS_ULTIMATE_PARENT_OF || !r.response?.id) continue;
+        const p = parseProfile(r.response);
+        profiles[p.id] = p;
+        const hc = latestHeadcount(r.response);
+        if (hc != null) headcount[p.id] = hc;
+        for (const ev of parseSignals(r.response)) if (ev.date <= now) events.set(ev.id, { ...ev, text: targets.get(ev.id) ?? ev.text });
+        n++;
+      } catch {}
+    }
+    log(`reparse: ${n} companies, ${events.size} events`);
+    writeJson("pool.json", { profiles, entries: [...entries.values()], rounds: [...rounds.values()], slush, events: [...events.values()], headcount }); // overwrite: stale events go
+  }
+
   // ---------- 3d. new money, new hires, new acquisitions in the demo startups' keyrings ----------
   if (STAGES.has("signals")) {
     const cap = Number(arg("calls") ?? 150);
@@ -526,6 +547,7 @@ async function main() {
       profiles[p.id] = p;
       const hc = latestHeadcount(res);
       if (hc != null) headcount[p.id] = hc;
+      for (const [k, e] of [...events]) if (e.companyId === p.id) events.delete(k); // re-parse replaces
       for (const ev of parseSignals(res)) {
         if (ev.date > now) continue;
         events.set(ev.id, ev);

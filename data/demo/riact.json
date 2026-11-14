@@ -32,53 +32,6 @@
   },
   "doors": [
     {
-      "id": "6a5b971e-bb28-438b-9437-3f694c5c9ff1",
-      "name": "Tekever",
-      "country": "Portugal",
-      "whyNow": {
-        "kind": "news",
-        "date": "2026-11-10",
-        "text": "is entering Denmark",
-        "source": {
-          "name": "Invest in Odense",
-          "url": "https://investinodense.com/tekever-establishes-its-first-nordic-base-in-odense",
-          "date": "2026-11-10",
-          "rank": null
-        }
-      },
-      "whyYou": [
-        {
-          "type": "integration",
-          "sentence": "Integration. They build software, you build robotics: the two plug into the same stack."
-        },
-        {
-          "type": "distribution",
-          "sentence": "Distribution. They're new to Denmark and sell software to the buyers you already reach."
-        },
-        {
-          "type": "customer",
-          "sentence": "Customer. A defence company setting up in Denmark will buy robotics, and you sell it there."
-        }
-      ],
-      "slush": false,
-      "warm": [],
-      "people": [
-        {
-          "name": "Pedro Sinogas",
-          "role": "CEO",
-          "since": null
-        },
-        {
-          "name": "Ricardo Mendes Malta",
-          "role": "CEO",
-          "since": null
-        }
-      ],
-      "xray": "https://www.google.com/search?q=site%3Alinkedin.com%2Fin%20%22Tekever%22%20(partnerships%20OR%20%22head%20of%20product%22%20OR%20CTO)%20Denmark",
-      "entering": true,
-      "industryNote": null
-    },
-    {
       "id": "6d818a5a-e708-4ca3-bb14-069fcbdd853d",
       "name": "Avanza",
       "country": "Sweden",
@@ -108,7 +61,572 @@
       "people": [],
       "xray": "https://www.google.com/search?q=site%3Alinkedin.com%2Fin%20%22Avanza%22%20(%22country%20manager%22%20OR%20%22head%20of%20operations%22%20OR%20procurement)%20Denmark",
       "entering": true,
-      "industryNote": null
+      "industryNote": null,
+      "giant": false
+    },
+    {
+      "id": "9fb29819-a62b-5d13-be35-67eeb5e534a1",
+      "name": "Vensum",
+      "country": "Finland",
+      "whyNow": {
+        "kind": "round",
+        "date": "2026-11-06",
+        "text": "raised a €9M Series A",
+        "source": {
+          "name": "tech.eu",
+          "url": "https://tech.eu/2026/11/06/vensum-power-raises-eur9m-to-cut-power-losses-in-ai-data-centres-ev-charging-and-energy-storage//",
+          "date": "2026-11-06",
+          "rank": "PRESS"
+        }
+      },
+      "whyYou": [
+        {
+          "type": "customer",
+          "sentence": "Customer. An energy company with fresh money is a buyer of robotics."
+        }
+      ],
+      "slush": true,
+      "warm": [],
+      "people": [],
+      "xray": "https://www.google.com/search?q=site%3Alinkedin.com%2Fin%20%22Vensum%22%20(%22country%20manager%22%20OR%20%22head%20of%20operations%22%20OR%20procurement)%20Finland",
+      "entering": false,
+      "industryNote": null,
+      "giant": false
+    },
+    {
+      "id": "9ea03240-306c-5366-8f5c-6191e94b07f6",
+      "name": "Volare",
+      "country": "Finland",
+      "whyNow": {
+        "kind": "round",
+        "date": "2026-10-26",
+        "text": "raised a €7.1M Series A",
+        "source": {
+          "name": "techfundingnews.com",
+          "url": "https://techfundingnews.com/volare-7-1m-second-insect-protein-plant-finland/",
+          "date": "2026-10-26",
+          "rank": "PRESS"
+        }
+      },
+      "whyYou": [
+        {
+          "type": "customer",
+          "sentence": "Customer. A food company with fresh money is a buyer of robotics."
+        }
+      ],
+      "slush": true,
+      "warm": [],
+      "people": [
+        {
+          "name": "Jarna Hyvönen",
+          "role": "CEO",
+          "since": null
+        },
+        {
+          "name": "Matti Tähtinen",
+          "role": "CTO",
+          "since": null
+        }
+      ],
+      "xray": "https://www.google.com/search?q=site%3Alinkedin.com%2Fin%20%22Volare%22%20(%22country%20manager%22%20OR%20%22head%20of%20operations%22%20OR%20procurement)%20Finland",
+      "entering": false,
+      "industryNote": null,
+      "giant": false
+    },
+    {
+      "id": "75c397bb-0819-5178-b96b-630417e6bb9e",
+      "name": "Ambio",
+      "country": "Finland",
+      "whyNow": {
+        "kind": "round",
+        "date": "2026-10-14",
+        "text": "raised a €5.1M seed round",
+        "source": {
+          "name": "eu-startups.com",
+          "url": "https://www.eu-startups.com/2026/10/helsinkis-ambio-raises-e5-1-million-to-scale-its-ai-powered-recycled-plastics-procurement-platform/",
+          "date": "2026-10-14",
+          "rank": "PRESS"
+        }
+      },
+      "whyYou": [
+        {
+          "type": "customer",
+          "sentence": "Customer. A manufacturing materials company with fresh money is a buyer of robotics."
+        }
+      ],
+      "slush": false,
+      "warm": [],
+      "people": [
+        {
+          "name": "Tommi Bergström",
+          "role": "CEO",
+          "since": null
+        },
+        {
+          "name": "Elmo Pakkanen",
+          "role": "CPO",
+          "since": null
+        }
+      ],
+      "xray": "https://www.google.com/search?q=site%3Alinkedin.com%2Fin%20%22Ambio%22%20(%22country%20manager%22%20OR%20%22head%20of%20operations%22%20OR%20procurement)%20Finland",
+      "entering": false,
+      "industryNote": null,
+      "giant": false
+    },
+    {
+      "id": "fc9b463a-a6db-41e7-ba8c-b94e51a163e3",
+      "name": "Causa Prima",
+      "country": "Spain",
+      "whyNow": {
+        "kind": "round",
+        "date": "2026-10-13",
+        "text": "raised a $20M seed round",
+        "source": {
+          "name": "techfundingnews.com",
+          "url": "https://techfundingnews.com/causa-prima-raises-20m-seed-from-base10-to-let-ai-agents-settle-b2b-invoices/",
+          "date": "2026-10-13",
+          "rank": "PRESS"
+        }
+      },
+      "whyYou": [
+        {
+          "type": "customer",
+          "sentence": "Customer. A fintech company with fresh money is a buyer of robotics."
+        },
+        {
+          "type": "integration",
+          "sentence": "Integration. They build fintech, you build robotics: the two plug into the same stack."
+        }
+      ],
+      "slush": true,
+      "warm": [],
+      "people": [
+        {
+          "name": "Maex Ament",
+          "role": "CEO",
+          "since": "2026-02-27"
+        },
+        {
+          "name": "Philip Stanislaus",
+          "role": "CTO",
+          "since": "2026-02-27"
+        }
+      ],
+      "xray": "https://www.google.com/search?q=site%3Alinkedin.com%2Fin%20%22Causa%20Prima%22%20(%22country%20manager%22%20OR%20%22head%20of%20operations%22%20OR%20procurement)%20Spain",
+      "entering": false,
+      "industryNote": null,
+      "giant": false
+    },
+    {
+      "id": "d17e0abf-0a57-4574-820b-822e5cac6308",
+      "name": "Clock&Cloud",
+      "country": "Finland",
+      "whyNow": {
+        "kind": "round",
+        "date": "2026-09-24",
+        "text": "raised a €1.5M seed round",
+        "source": {
+          "name": "avoindata.prh.fi",
+          "url": "https://avoindata.prh.fi/opendata-ytj-api/v3/companies?businessId=3359547-7",
+          "date": "2026-09-24",
+          "rank": "FILING"
+        }
+      },
+      "whyYou": [
+        {
+          "type": "customer",
+          "sentence": "Customer. A consulting company with fresh money is a buyer of robotics."
+        },
+        {
+          "type": "integration",
+          "sentence": "Integration. They build software, you build robotics: the two plug into the same stack."
+        }
+      ],
+      "slush": true,
+      "warm": [],
+      "people": [
+        {
+          "name": "Riku Hellgren",
+          "role": "CEO",
+          "since": null
+        },
+        {
+          "name": "Chris Purcell",
+          "role": "CTO",
+          "since": null
+        }
+      ],
+      "xray": "https://www.google.com/search?q=site%3Alinkedin.com%2Fin%20%22Clock%26Cloud%22%20(%22country%20manager%22%20OR%20%22head%20of%20operations%22%20OR%20procurement)%20Finland",
+      "entering": false,
+      "industryNote": null,
+      "giant": false
+    },
+    {
+      "id": "3d3edba6-f4d7-432b-80d3-d07872e11def",
+      "name": "Verda",
+      "country": "Finland",
+      "whyNow": {
+        "kind": "round",
+        "date": "2026-09-22",
+        "text": "raised a $189M Series B",
+        "source": {
+          "name": "verda.com",
+          "url": "https://verda.com/blog/verda-raises-189m",
+          "date": "2026-09-22",
+          "rank": "PRIMARY"
+        }
+      },
+      "whyYou": [
+        {
+          "type": "integration",
+          "sentence": "Integration. They build software, you build robotics: the two plug into the same stack."
+        }
+      ],
+      "slush": true,
+      "warm": [],
+      "people": [
+        {
+          "name": "Ruben Bryon",
+          "role": "CEO",
+          "since": null
+        },
+        {
+          "name": "Arturs Polis",
+          "role": "CTO",
+          "since": null
+        }
+      ],
+      "xray": "https://www.google.com/search?q=site%3Alinkedin.com%2Fin%20%22Verda%22%20(partnerships%20OR%20%22head%20of%20product%22%20OR%20CTO)%20Finland",
+      "entering": false,
+      "industryNote": null,
+      "giant": false
+    },
+    {
+      "id": "49fb961a-7281-5f17-94be-5e0c1720d2d5",
+      "name": "S-Transistors",
+      "country": "Finland",
+      "whyNow": {
+        "kind": "round",
+        "date": "2026-08-31",
+        "text": "raised a €2.6M pre-seed round",
+        "source": {
+          "name": "eu-startups.com",
+          "url": "https://www.eu-startups.com/2026/08/finlands-s-transistors-raises-e2-6-million-to-build-the-worlds-first-quantum-motherboard/",
+          "date": "2026-08-31",
+          "rank": "PRESS"
+        }
+      },
+      "whyYou": [
+        {
+          "type": "integration",
+          "sentence": "Integration. They build networks, you build robotics: the two plug into the same stack."
+        }
+      ],
+      "slush": true,
+      "warm": [],
+      "people": [],
+      "xray": "https://www.google.com/search?q=site%3Alinkedin.com%2Fin%20%22S-Transistors%22%20(partnerships%20OR%20%22head%20of%20product%22%20OR%20CTO)%20Finland",
+      "entering": false,
+      "industryNote": null,
+      "giant": false
+    },
+    {
+      "id": "7485476c-8d4b-4921-9330-45f893b9b5ca",
+      "name": "Guideless",
+      "country": "Lithuania",
+      "whyNow": {
+        "kind": "round",
+        "date": "2026-08-20",
+        "text": "raised a $1.2M pre-seed round",
+        "source": {
+          "name": "tracxn.com",
+          "url": "https://tracxn.com/d/companies/guideless/__epV-RlmN-lBsarJQBnkiVpO8s_KmWqsJxe7oE4Xzbcs",
+          "date": "2026-08-25",
+          "rank": null
+        }
+      },
+      "whyYou": [
+        {
+          "type": "integration",
+          "sentence": "Integration. They build software, you build robotics: the two plug into the same stack."
+        }
+      ],
+      "slush": false,
+      "warm": [],
+      "people": [],
+      "xray": "https://www.google.com/search?q=site%3Alinkedin.com%2Fin%20%22Guideless%22%20(partnerships%20OR%20%22head%20of%20product%22%20OR%20CTO)%20Lithuania",
+      "entering": false,
+      "industryNote": null,
+      "giant": false
+    },
+    {
+      "id": "89d3a43c-fee4-4491-853e-a216cbef6c50",
+      "name": "Lovable",
+      "country": "United States",
+      "whyNow": {
+        "kind": "round",
+        "date": "2026-08-12",
+        "text": "raised a $400M Series C",
+        "source": {
+          "name": "Lovable confirms new $13.3B valuation, raises another $400M | TechCrunch",
+          "url": "https://techcrunch.com/2026/08/12/lovable-confirms-new-13-3b-valuation-raises-another-400m",
+          "date": "2026-08-12",
+          "rank": null
+        }
+      },
+      "whyYou": [
+        {
+          "type": "integration",
+          "sentence": "Integration. They build software, you build robotics: the two plug into the same stack."
+        }
+      ],
+      "slush": true,
+      "warm": [],
+      "people": [
+        {
+          "name": "Anton Osika",
+          "role": "CEO",
+          "since": null
+        },
+        {
+          "name": "Fabian Hedin",
+          "role": "CTO",
+          "since": null
+        }
+      ],
+      "xray": "https://www.google.com/search?q=site%3Alinkedin.com%2Fin%20%22Lovable%22%20(partnerships%20OR%20%22head%20of%20product%22%20OR%20CTO)%20United%20States",
+      "entering": false,
+      "industryNote": null,
+      "giant": true
+    },
+    {
+      "id": "9423779d-819b-46ac-bf29-a5edb6b2553f",
+      "name": "Olix",
+      "country": "United Kingdom",
+      "whyNow": {
+        "kind": "round",
+        "date": "2026-08-03",
+        "text": "raised a $317M Series B",
+        "source": {
+          "name": "This former notorious red-light district is now one of the world’s top AI hubs | TechCrunch",
+          "url": "https://techcrunch.com/2026/08/09/this-former-notorious-red-light-district-is-now-one-of-the-worlds-top-ai-hubs",
+          "date": "2026-08-09",
+          "rank": null
+        }
+      },
+      "whyYou": [
+        {
+          "type": "integration",
+          "sentence": "Integration. They build software, you build robotics: the two plug into the same stack."
+        }
+      ],
+      "slush": false,
+      "warm": [],
+      "people": [],
+      "xray": "https://www.google.com/search?q=site%3Alinkedin.com%2Fin%20%22Olix%22%20(partnerships%20OR%20%22head%20of%20product%22%20OR%20CTO)%20United%20Kingdom",
+      "entering": false,
+      "industryNote": null,
+      "giant": false
+    },
+    {
+      "id": "73bb37be-44e6-49f2-b71d-00e337799ad3",
+      "name": "Birdsview",
+      "country": "Norway",
+      "whyNow": {
+        "kind": "round",
+        "date": "2026-08-01",
+        "text": "raised a round",
+        "source": {
+          "name": "www.finsmes.com",
+          "url": "https://www.finsmes.com/2026/08/birdsview-raises-e3-7m-in-funding.html",
+          "date": "2026-08-24",
+          "rank": null
+        }
+      },
+      "whyYou": [
+        {
+          "type": "customer",
+          "sentence": "Customer. A construction company with fresh money is a buyer of robotics."
+        },
+        {
+          "type": "integration",
+          "sentence": "Integration. They build software, you build robotics: the two plug into the same stack."
+        }
+      ],
+      "slush": false,
+      "warm": [
+        {
+          "investor": "Butterfly Ventures",
+          "led": false
+        }
+      ],
+      "people": [],
+      "xray": "https://www.google.com/search?q=site%3Alinkedin.com%2Fin%20%22Birdsview%22%20(%22country%20manager%22%20OR%20%22head%20of%20operations%22%20OR%20procurement)%20Norway",
+      "entering": false,
+      "industryNote": null,
+      "giant": false
+    },
+    {
+      "id": "557bf741-7119-4d18-a4b0-fe77cb30f351",
+      "name": "Sigvi",
+      "country": "Lithuania",
+      "whyNow": {
+        "kind": "round",
+        "date": "2026-07-29",
+        "text": "raised a $1.4M seed round",
+        "source": {
+          "name": "tracxn.com",
+          "url": "https://tracxn.com/d/venture-capital/superhero-capital/__0ojhXzhdsNMZ52CC2oC7DgYOy87dBNaBhc3wM7vIRus",
+          "date": "2026-08-25",
+          "rank": null
+        }
+      },
+      "whyYou": [
+        {
+          "type": "customer",
+          "sentence": "Customer. A transport and logistics company with fresh money is a buyer of robotics."
+        },
+        {
+          "type": "integration",
+          "sentence": "Integration. They build software, you build robotics: the two plug into the same stack."
+        }
+      ],
+      "slush": false,
+      "warm": [],
+      "people": [],
+      "xray": "https://www.google.com/search?q=site%3Alinkedin.com%2Fin%20%22Sigvi%22%20(%22country%20manager%22%20OR%20%22head%20of%20operations%22%20OR%20procurement)%20Lithuania",
+      "entering": false,
+      "industryNote": null,
+      "giant": false
+    },
+    {
+      "id": "ef043f20-e5cc-4d42-8930-42003ac086a1",
+      "name": "QMill",
+      "country": "Finland",
+      "whyNow": {
+        "kind": "hire",
+        "date": "2025-12-31",
+        "text": "grew from 4 to 15 people",
+        "source": {
+          "name": "finder.fi",
+          "url": "https://www.finder.fi/IT-konsultointi+IT-palvelut/QMill+Oy/Espoo/yhteystiedot/4097436",
+          "date": "2025-12-31",
+          "rank": null
+        }
+      },
+      "whyYou": [
+        {
+          "type": "integration",
+          "sentence": "Integration. They build software, you build robotics: the two plug into the same stack."
+        }
+      ],
+      "slush": true,
+      "warm": [],
+      "people": [
+        {
+          "name": "Hannu Kauppinen",
+          "role": "CEO",
+          "since": null
+        },
+        {
+          "name": "Ville Kotovirta",
+          "role": "CTO",
+          "since": null
+        }
+      ],
+      "xray": "https://www.google.com/search?q=site%3Alinkedin.com%2Fin%20%22QMill%22%20(partnerships%20OR%20%22head%20of%20product%22%20OR%20CTO)%20Finland",
+      "entering": false,
+      "industryNote": null,
+      "giant": false
+    },
+    {
+      "id": "a2977baa-bb2e-5d97-9134-0a47a2ef8ce7",
+      "name": "VetaPet Group",
+      "country": "Finland",
+      "whyNow": {
+        "kind": "hire",
+        "date": "2025-12-31",
+        "text": "grew from 9 to 39 people",
+        "source": {
+          "name": "finder.fi",
+          "url": "https://www.finder.fi/El%C3%A4intarvike-+ja+el%C3%A4inkauppa/VetaPet+Group+Oy/Helsinki/yhteystiedot/3331749",
+          "date": "2025-12-31",
+          "rank": null
+        }
+      },
+      "whyYou": [
+        {
+          "type": "integration",
+          "sentence": "Integration. They build online marketplaces, you build robotics: the two plug into the same stack."
+        }
+      ],
+      "slush": true,
+      "warm": [],
+      "people": [
+        {
+          "name": "Ilari Haataja",
+          "role": "CEO",
+          "since": null
+        },
+        {
+          "name": "Annika Lundström",
+          "role": "CEO",
+          "since": null
+        }
+      ],
+      "xray": "https://www.google.com/search?q=site%3Alinkedin.com%2Fin%20%22VetaPet%20Group%22%20(partnerships%20OR%20%22head%20of%20product%22%20OR%20CTO)%20Finland",
+      "entering": false,
+      "industryNote": null,
+      "giant": false
+    },
+    {
+      "id": "7817e264-54ba-4db0-837c-6d738ce7ddc6",
+      "name": "Zenniz",
+      "country": "Finland",
+      "whyNow": {
+        "kind": "hire",
+        "date": "2025-12-01",
+        "text": "grew from 12 to 19 people",
+        "source": {
+          "name": "finder.fi",
+          "url": "https://www.finder.fi/IT-konsultointi+IT-palvelut/Zenniz+Oy/Helsinki/yhteystiedot/3204445",
+          "date": "2025-12-01",
+          "rank": null
+        }
+      },
+      "whyYou": [
+        {
+          "type": "customer",
+          "sentence": "Customer. A sports company that's growing its team is a buyer of robotics."
+        },
+        {
+          "type": "integration",
+          "sentence": "Integration. They build software, you build robotics: the two plug into the same stack."
+        }
+      ],
+      "slush": true,
+      "warm": [
+        {
+          "investor": "Butterfly Ventures",
+          "led": false
+        }
+      ],
+      "people": [
+        {
+          "name": "Eero Kuusi",
+          "role": "CEO",
+          "since": null
+        },
+        {
+          "name": "Jarno Tiusanen",
+          "role": "Head of Communications",
+          "since": null
+        }
+      ],
+      "xray": "https://www.google.com/search?q=site%3Alinkedin.com%2Fin%20%22Zenniz%22%20(%22country%20manager%22%20OR%20%22head%20of%20operations%22%20OR%20procurement)%20Finland",
+      "entering": false,
+      "industryNote": null,
+      "giant": false
     }
   ]
 }

@@ -1,5 +1,7 @@
 # Faro in Gmail: install and test
 
+> Faro tells you which companies just got a reason to partner (new money, new hires, new acquisitions), why they need you, and who can introduce you.
+
 Faro's Gmail add-on is a sidebar. It knows you from your email domain (matched to your company's website in Cala) and asks nothing. On a personal address (gmail.com, outlook.com…) the domain can't say which startup is yours, so the sidebar asks for the startup's name **once**, like the web. When a company that is one of your doors emails you, the open message shows that door in five parts.
 
 Two pieces:
@@ -25,7 +27,7 @@ The add-on runs on Google's servers, so `localhost` won't do.
 6. Check it in a browser. Each of these should return JSON:
    - `https://<your-url>/api/gmail?user=you@gmail.com` → `{"needsName":true,…}`
    - `https://<your-url>/api/gmail?user=you@gmail.com&startup=Distance%20Technologies` → that startup's log
-   - `https://<your-url>/api/gmail?user=you@gmail.com&startup=Distance%20Technologies&sender=news@cerebras.ai` → `{"match":true,…}` (Cerebras is entering Finland)
+   - `https://<your-url>/api/gmail?user=you@gmail.com&startup=Distance%20Technologies&sender=hello@volare.fi` → `{"match":true,…}` (Volare raised a Series A; Maki.vc led)
 
 Alternative without Vercel: `npm install && npm run build && npm start`, then `npx cloudflared tunnel --url http://localhost:3000` and use the `https://….trycloudflare.com` address it prints. It only works while your laptop runs it.
 
@@ -65,7 +67,7 @@ What it asks for, and why:
    - Personal address (`@gmail.com`): "A personal address doesn't say which startup is yours" with one field. Type a startup, e.g. **Distance Technologies**, **Dalip** or **RiACT** (the demo startups in `DEMO.md`), and press **Show my doors**. It's remembered from then on.
 2. **Taps**: press **more like this** or **not now** on a door. A toast confirms it and the log re-ranks; "not now" hides that door. Taps are stored per startup in your user properties, in the same shape as the web's cookie.
 3. **Contextual door**: open an email from a company that is one of your doors. The card header becomes **A door, in your inbox** and shows that door in five parts. To try it without such an email:
-   - Project Settings → Script properties → add `FARO_TEST_SENDER` = `news@cerebras.ai` (Cerebras is a door for Distance Technologies: it's entering Finland; for RiACT use `info@tekever.com`), then open **any** email. Use a sender from one of your startup's doors: the door's website is in its footnote link.
+   - Project Settings → Script properties → add `FARO_TEST_SENDER` = `hello@volare.fi` (Volare is Distance Technologies' top door; for RiACT use `hello@zenniz.com`), then open **any** email. Use a sender from one of your startup's doors: the door's website is in its footnote link.
    - Delete `FARO_TEST_SENDER` afterwards: while it's set, every message is treated as coming from that address.
 4. **Change startup**: the "Not your startup? Change it" link at the bottom of a card, or the ⋮ menu in the sidebar → **Change startup**.
 5. **Open the full log →** opens the web log for the same startup.

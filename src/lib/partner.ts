@@ -111,6 +111,8 @@ export interface MatchInput {
   door: { name: string; industries: Industry[]; country: string | null };
   /** The door is entering your market (a new national company, or expansion news). */
   entering: boolean;
+  /** For doors that aren't entering: why now, so the customer line reads right. */
+  reason?: "round" | "hire" | "acquisition";
   market: string | null;
   /** Higher weight first; ties keep PARTNER_TYPES order. */
   weights?: Partial<Record<PartnerType, number>>;
@@ -135,7 +137,7 @@ export function partnerTypes(m: MatchInput): WhyYou[] {
           type: "customer",
           sentence: m.entering
             ? `Customer. ${an(dw)} company setting up in ${where} will buy ${uw}, and you sell it there.`
-            : `Customer. ${an(dw)} company with fresh money is a buyer of ${uw}.`,
+            : `Customer. ${an(dw)} company ${m.reason === "hire" ? "that's growing its team" : m.reason === "acquisition" ? "that just made an acquisition" : "with fresh money"} is a buyer of ${uw}.`,
         });
       }
       if (!has("integration") && INTEGRATES.some(([x, y]) => x === us && y === dsec)) {

@@ -16,14 +16,14 @@ async function main() {
   const scripted: Record<string, string> = {};
   for (const d of demos) {
     const slug = d.slug || slugify(d.name);
-    const r = await getReport(d.name, { forceLive: true });
+    const r = await getReport(d.name, { forceLive: true, noWeapons: true }); // demos: no weapons makers
     writeJson(`demo/${slug}.json`, r);
     const ranked = rankDoors(r.doors, NO_TAPS);
     if (ranked[0]) scripted[slug] = ranked[0].id;
     const s = r.startup;
     log(`${s.name}: ${s.country}, ${s.industries.map((i) => `${i.code}${i.label ? `/${i.label}` : ""}`).join(", ")} | ${s.investors.length} investors | ${r.doors.length} doors`);
     for (const x of firstLook(r.doors)) log(`   first look [${x.type}] T${tierOf(x.door)} ${x.door.whyNow.date} ${x.door.name} ${x.door.whyNow.text}`);
-    for (const dd of ranked.slice(0, 8)) log(`   T${tierOf(dd)} ${dd.whyNow.date} ${dd.name} | ${dd.whyNow.text} | ${dd.whyYou.map((w) => w.type).join("/")} | slush=${dd.slush} warm=${dd.warm.map((w) => w.investor + (w.led ? "*" : "")).join(",")} | people=${dd.people.length} | ${dd.whyNow.source.rank ?? "-"} ${dd.whyNow.source.url.slice(0, 70)}`);
+    for (const dd of ranked.slice(0, 8)) log(`   T${tierOf(dd)} ${dd.whyNow.date} ${dd.name}${dd.giant ? " (giant)" : ""} | ${dd.whyNow.kind}: ${dd.whyNow.text} | ${dd.whyYou.map((w) => w.type).join("/")} | slush=${dd.slush} warm=${dd.warm.map((w) => w.investor + (w.led ? "*" : "")).join(",")} | people=${dd.people.length} | ${dd.whyNow.source.rank ?? "-"} ${dd.whyNow.source.url.slice(0, 70)}`);
   }
   writeJson("demo/scripted.json", scripted);
   void NO_TAPS;

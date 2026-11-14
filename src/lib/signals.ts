@@ -35,7 +35,16 @@ export interface TimedEvent {
 }
 
 const day = (x: unknown) => (typeof x === "string" && /^\d{4}-\d{2}-\d{2}/.test(x) ? x.slice(0, 10) : null);
-const firstSource = (xs: unknown): RankedSource | null => rankedSources((xs as never[]) ?? []).find((s) => /^https?:\/\//.test(s.url)) ?? null;
+const AGGREGATOR = /tracxn|crunchbase|pitchbook|dealroom|cbinsights|owler|zoominfo|rocketreach|signalhire|leadiq/i;
+const isAggregator = (s: RankedSource) => s.rank === "AGGREGATOR" || AGGREGATOR.test(s.url);
+/** The best source: a filing, press or the company itself before an aggregator listing. */
+function bestSource(xs: unknown): RankedSource | null {
+  const all = rankedSources((xs as never[]) ?? []).filter((s) => /^https?:\/\//.test(s.url));
+  const score = (s: RankedSource) => (isAggregator(s) ? 0 : s.rank === "FILING" || s.rank === "PRESS" ? 3 : s.rank === "PRIMARY" ? 2 : 1);
+  return all.sort((a, b) => score(b) - score(a))[0] ?? null;
+}
+/** A SPAC merger is going public, not buying a business. */
+export const SPAC = /\b(acquisition corp(oration)?|spac|blank check)\b/i;
 
 /** Headcount jump: the latest observation is at least +5 people and +30% on the one before. */
 export const JUMP_MIN_PEOPLE = 5;
@@ -53,7 +62,7 @@ export function parseSignals(res: GetEntityResponse): TimedEvent[] {
     for (const x of (inc[rel] ?? []) as RelatedEntity[]) {
       if (x.entity_type !== "Person" || x.properties?.valid_until) continue;
       const since = day(x.properties?.valid_since);
-      const src = firstSource(x.properties?.sources);
+      const src = bestSource(x.properties?.sources);
       if (!since || since.endsWith("-01-01") || !src) continue; // day precision, sourced
       out.push({ id: `exec|${id}|${x.id}|${since}`, companyId: id, kind: "exec", date: since, text: `named ${x.name} ${role}`, source: src });
     }
@@ -63,11 +72,12 @@ export function parseSignals(res: GetEntityResponse): TimedEvent[] {
   for (const e of (outg.PARTICIPATES_IN_CORPORATE_EVENT ?? []) as RelatedEntity[]) {
     const role = String(e.properties?.role ?? "");
     const date = day(e.properties?.event_date);
-    const src = firstSource(e.properties?.sources);
+    const src = bestSource(e.properties?.sources);
     if (!date || !src) continue;
     if (e.name === "MNA_COMPLETED" && role === "ACQUIRER") {
       out.push({ id: `acq|${id}|${e.id}`, companyId: id, kind: "acquisition", date, text: "completed an acquisition", source: src, eventId: e.id });
-    } else if (/^FINANCING_RAISED/.test(e.name) && role === "ISSUER") {
+    } else if (/^FINANCING_RAISED/.test(e.name) && role === "ISSUER" && !isAggregator(src)) {
+      // new money needs more than an aggregator listing (its date is a crawl date)
       out.push({ id: `money|${id}|${e.id}`, companyId: id, kind: "money", date, text: "raised a round", source: src });
     }
   }
