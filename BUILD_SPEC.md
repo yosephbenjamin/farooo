@@ -1,4 +1,27 @@
-# Faro: build spec (v2, Junction 2026, Cala challenge)
+# Faro: build spec
+
+> **North star.** Faro tells you which companies just got a reason to partner (new money, new hires, new acquisitions), why they need you, and who can introduce you.
+
+Every decision is checked against that line (DECISIONS.md says how each one serves it).
+
+**Reasons to partner (why now)**, all dated and sourced from Cala:
+
+1. **New money:** a fresh funding round (FundingRound / financing corporate event, ISSUER role, event date; lead investor via `is_lead` where Cala has it).
+2. **New hires:** a headcount jump in the employee-count time series (ObservableProperty "Number of employees"), and new executives (`IS_CEO_OF` / `IS_CTO_OF` / `IS_VICEPRESIDENT_OF` with a recent `valid_since`).
+3. **New acquisitions:** a CorporateEvent `MNA_COMPLETED` with role `ACQUIRER` and its event date.
+4. **Market entry:** kept and shown when it exists; no more calls spent searching for it.
+
+**Why you:** one partnership type (customer, integration or distribution) from industry and headquarters, with the description check for bad industry codes.
+
+**Who can introduce you:** a shared investor (noting when they led), plus "Find the right person →".
+
+**Ranking:** any reason + warm path > any reason alone. Slush 2026 (a shared event) is a boost inside a tier, not a tier. A giant never leads the log.
+
+**Delivery, unchanged:** zero-input onboarding, "more like this · not now", the Gmail add-on, the quiet web log, same design.
+
+---
+
+# Faro: build spec history (v2, Junction 2026, Cala challenge)
 
 *Faro* = lighthouse. Cala is the hidden cove; Faro is the lighthouse that guides you to it. It stays quiet until a door opens, then sends one signal.
 
@@ -28,10 +51,12 @@
 
 ## Ranking
 
-1. market entry + Slush + warm path
-2. market entry + Slush
+1. market entry + warm path + shared event (Slush 2026 is the event Cala has)
+2. market entry + warm path
 3. market entry
 4. fresh round + warm path
+
+Faro works all year; Slush is one "where to meet" signal, not the point.
 
 Within each tier, favour the partnership types the user tapped "more like this" on. Anything outside these tiers isn't shown.
 

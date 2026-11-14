@@ -1,0 +1,1 @@
+{"method":"GET","path":"/v1/entities?name=MAJ&entity_types=Company&limit=10","body":null,"fetchedAt":"2026-11-14T10:28:25.236Z","response":{"entities":[{"id":"25b061bd-3bb5-4711-af66-75908bcf673f","name":"MAJ","entity_type":"Company","description":"French company incorporated in 1956 and headquartered in Pantin, France."}]}}

@@ -1,0 +1,1 @@
+{"method":"GET","path":"/v1/entities?name=factorymaker&entity_types=Company&limit=10","body":null,"fetchedAt":"2026-11-14T11:45:49.430Z","response":{"entities":[{"id":"2be985ca-ad6a-40e1-be0a-cfc9fb076c1f","name":"factorymaker","entity_type":"Company","description":"Planning intelligence for factories: site, building and production in one model."}]}}

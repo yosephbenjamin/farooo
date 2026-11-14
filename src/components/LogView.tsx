@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { firstLook, leadWhyYou, rankDoors, tierOf, type Door, type DoorReport, type Taps } from "@/lib/doors";
-import { doorCountLine, entryLead, entryMeta, entryWhy, headline, sourceLine, subline } from "@/lib/prose";
+import { doorCountLine, entryLead, entryMeta, entryWhy, headline, industryNoteLine, sourceLine, subline } from "@/lib/prose";
 import { applyTap, serializeTaps, tapsCookie } from "@/lib/taps";
 import type { PartnerType } from "@/lib/partner";
 import { DoorMap } from "./DoorMap";
@@ -149,6 +149,12 @@ export function LogView({ report, slug, taps: initialTaps, booth = false, script
                   </a>
                 </li>
               ))}
+              {shownDoors.filter((d) => d.industryNote).map((d) => (
+                <li key={`ind-${d.id}`} className="flex gap-3 text-ink-300">
+                  <span className="w-4 text-right">†</span>
+                  <span>{industryNoteLine(d)}</span>
+                </li>
+              ))}
             </ol>
           )}
 
@@ -217,7 +223,14 @@ function Entry({
         )}
       </p>
       {/* 2. why you */}
-      <p className={`mt-1.5 ${T.why} max-w-[46ch] leading-relaxed text-ink-500 transition-opacity duration-700 ${hide}`}>{why}</p>
+      <p className={`mt-1.5 ${T.why} max-w-[46ch] leading-relaxed text-ink-500 transition-opacity duration-700 ${hide}`}>
+        {why}
+        {d.industryNote && (
+          <sup className="mono ml-0.5 text-[0.6em] text-ink-300" title={industryNoteLine(d) ?? undefined}>
+            †
+          </sup>
+        )}
+      </p>
       {/* 3–5. where to meet · warm path · who */}
       <p className={`mt-1 ${T.why} max-w-[46ch] leading-relaxed text-ink-500 italic transition-opacity duration-700 ${hide}`}>
         {[...meta.parts, meta.people].filter(Boolean).join(". ")}

@@ -1,0 +1,1 @@
+{"method":"GET","path":"/v1/entities?name=cleverclover&entity_types=Company&limit=10","body":null,"fetchedAt":"2026-11-14T10:28:07.084Z","response":{"entities":[{"id":"0c21f1c5-492d-5061-be46-ee33b2646bc0","name":"cleverclover","entity_type":"Company","description":"A software and services company founded in 2019 and headquartered in Vienna, Austria."}]}}

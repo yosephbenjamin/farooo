@@ -69,10 +69,16 @@ async function readCache(key: string): Promise<unknown | undefined> {
 }
 
 async function writeCache(key: string, method: string, p: string, body: unknown, response: unknown) {
-  await mkdir(CACHE_DIR, { recursive: true });
-  const record = { method, path: p, body: body ?? null, fetchedAt: new Date().toISOString(), response };
-  await writeFile(path.join(CACHE_DIR, `${key}.json`), JSON.stringify(record));
+  // best effort: a read-only filesystem (serverless) must not turn a good answer into an error
+  try {
+    await mkdir(CACHE_DIR, { recursive: true });
+    const record = { method, path: p, body: body ?? null, fetchedAt: new Date().toISOString(), response };
+    await writeFile(path.join(CACHE_DIR, `${key}.json`), JSON.stringify(record));
+  } catch {}
 }
+
+/** What this process actually sent to Cala (cache hits excluded): for credit reports. */
+export const calaStats = { sent: 0, ok: 0, cacheHits: 0, status: {} as Record<number, number>, searches: 0, entity: 0 };
 
 export class CalaError extends Error {
   constructor(
@@ -98,7 +104,10 @@ export async function calaRequest<T = unknown>(
 
   if (mode !== "refresh") {
     const hit = await readCache(key);
-    if (hit !== undefined) return hit as T;
+    if (hit !== undefined) {
+      calaStats.cacheHits++;
+      return hit as T;
+    }
     if (mode === "only") throw new CalaError(`cache miss (offline): ${method} ${p}`);
   }
 
@@ -123,6 +132,11 @@ export async function calaRequest<T = unknown>(
         signal: ctrl.signal,
       });
       const text = await res.text();
+      calaStats.sent++;
+      if (p.startsWith("/v1/knowledge")) calaStats.searches++;
+      else calaStats.entity++;
+      calaStats.status[res.status] = (calaStats.status[res.status] ?? 0) + 1;
+      if (res.ok) calaStats.ok++;
       if (res.status === 429 || res.status >= 500) {
         const retryAfter = Number(res.headers.get("retry-after")) || 0;
         lastErr = new CalaError(`HTTP ${res.status} on ${method} ${p}`, res.status);

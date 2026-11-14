@@ -70,7 +70,7 @@ where      Slush 2026 attendee (event bc844d56…, incoming PARTICIPATES_IN_EVEN
 warm path  shared investor (INVESTED_IN + round participants), is_lead on the round
 who        CEO / CTO / VP / WORKS_AT roles, else a Google X-ray link (link only)
 
-ranking    1 entry + Slush + warm · 2 entry + Slush · 3 entry · 4 fresh round + warm
+ranking    1 entry + warm + shared event · 2 entry + warm · 3 entry · 4 fresh round + warm
            within a tier: partnership types you tapped "more like this" on
 ```
 

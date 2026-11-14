@@ -1,15 +1,16 @@
-# Faro: status (v2, see BUILD_SPEC.md)
+# Faro: status (v3, see the north star at the top of BUILD_SPEC.md)
 
 | Milestone | Status | Notes |
 |---|---|---|
+| N9 North-star reasons | done | new money (financing events, FundingRounds), new hires (headcount jump, new executives), new acquisitions (MNA_COMPLETED as acquirer); `--stage=signals` walked 100 keyring companies of the demo startups' investors in 117 calls; `--stage=reparse` rebuilds events from cache for free |
 | N0 Spec | done | `BUILD_SPEC.md` written; v1 items reversed by the north star listed there |
 | N1 Entity-only ingest v2 | done | prioritised, resumable, merge-safe; `/v1/knowledge/query` removed; 10 req/min pacing |
-| N2 Market entry | partial | **news**: 4 entries (atNorth → Finland, Cerebras → Finland, Arondite → Norway, Tekever → Denmark). **Subsidiaries**: 0 so far. Checked all 200 Nordic-named Slush attendees (≈40 registered in the last year, all local startups) and sampled 69 of 2,777 foreign attendees (no recently founded Nordic entity found). Full foreign pass: `npm run ingest -- --stage=entrants` (~4.6 h at 10 req/min) |
-| N3 Door engine v2 | done | five parts, tiers, taps, first look; self-tested |
+| N2 Market entry | partial | **news**: 10 entries after a widened pass (150 searches: 5 phrasings × FI SE NO DK DE UK NL FR, demo industries first) and strict rechecks: atNorth → Finland, Norway; Cerebras → Finland; Arondite → Norway; Tekever → Denmark; OpenAI, Google, Polar Capital → Sweden; Avanza → Denmark. **Subsidiaries**: 0 so far; the entrants pass is resuming (see N7). **Investors** fetched for every entrant |
+| N3 Door engine v2 | done | five parts, tiers, taps, first look; codes that contradict the description → read from the description, marked † uncertain (atNorth); self-tested |
 | N4 Web log v2 | done | design unchanged; taps re-rank instantly (cookie) |
-| N5 Gmail contextual sidebar | done, untested in Gmail | `gmail-addon/`, `/api/gmail` |
-| N6 Booth | done | Oura, Lovable, Verda pinned by Cala id and precomputed |
-| N7 Rerun ingest with the new key | done (partial by design) | users, rounds (with `is_lead`), news, 200 Nordic attendees, 69 foreign attendees. 281 profiles cached. Remaining attendees are opt-in (hours) |
+| N5 Gmail contextual sidebar | done, ready to test | `gmail-addon/`, `/api/gmail`; name asked once on personal addresses; install steps in `GMAIL.md` (Vercel + script.google.com test deployment) |
+| N6 Booth | done | Distance Technologies, Measur, RiACT (seed stage): each has warm-path doors (Maki.vc, Lifeline Ventures, Butterfly Ventures) and three different reasons in the first look; no weapons makers, no giant headlines |
+| N7 Rerun ingest | partial | new key (14 Nov): 150 widened news searches + 819 entity calls succeeded, no 402. Entrants pass at 1,350 of 2,777 foreign attendees (stopped externally), 2 candidates, no subsidiary yet. Resume: `npm run ingest -- --stage=entrants,investors` (~1,400 calls), then `--stage=recheck` and `npm run demo` |
 | N8 Docs | done | BUILD_SPEC, README, DECISIONS, DATA_NOTES, DEMO |
 
 ## v1 (shipped, superseded where BUILD_SPEC says so)

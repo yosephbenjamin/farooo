@@ -1,0 +1,1 @@
+{"method":"GET","path":"/v1/entities?name=PurelyBiome&entity_types=Company&limit=10","body":null,"fetchedAt":"2026-11-14T12:19:51.972Z","response":{"entities":[{"id":"3cf365e4-9a4a-5540-bf6f-a34e74bcd4f5","name":"PurelyBiome","entity_type":"Company","description":"PurelyBiome provides personalized, science-based skincare recommendations through facial microbiome testing."}]}}

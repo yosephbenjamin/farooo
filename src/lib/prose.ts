@@ -71,8 +71,17 @@ export function entryMeta(d: Door): { parts: string[]; people: string | null } {
 
 export function sourceLine(d: Door): string {
   const s = d.whyNow.source;
-  const name = s.name && s.name.length < 40 && !/^https?:/.test(s.name) ? s.name.replace(/^www\./, "") : hostName(s.url);
+  // a page title ("Welcome to GOV.UK", "News | Acme") reads worse than the host
+  const titleLike = /^(welcome|home)\b|\s[|\-–]\s|:\s/i.test(s.name ?? "");
+  const name = s.name && s.name.length < 40 && !/^https?:/.test(s.name) && !titleLike ? s.name.replace(/^www\./, "") : hostName(s.url);
   return `${shortDate(d.whyNow.date)} · ${name}${s.rank ? ` · ${s.rank}` : ""}`;
+}
+
+/** The quiet † footnote when Cala's industry code contradicted the description. */
+export function industryNoteLine(d: Door): string | null {
+  const n = d.industryNote;
+  if (!n) return null;
+  return `${d.name}: Cala codes it ${n.coded}; why-you read from its description (${n.read}). Uncertain.`;
 }
 
 function hostName(url: string) {

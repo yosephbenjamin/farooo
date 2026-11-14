@@ -224,6 +224,7 @@ export const PROFILE_QUERY = {
 export async function fetchProfileRaw(id: string, opts: CalaOptions = {}) {
   return getEntity(id, PROFILE_QUERY, opts).catch((e) => {
     if (String(e?.message ?? "").includes("402")) throw e; // out of credit: stop the caller
+    console.error(`[faro] Cala profile failed: ${e?.status ?? "no status"} ${String(e?.message ?? e).slice(0, 200)}`);
     return null;
   });
 }

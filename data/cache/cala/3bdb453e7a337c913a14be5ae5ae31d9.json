@@ -1,0 +1,1 @@
+{"method":"GET","path":"/v1/entities?name=GraphEnergyTech&entity_types=Company&limit=10","body":null,"fetchedAt":"2026-11-14T12:27:27.673Z","response":{"entities":[{"id":"62d2590c-7d23-4a3f-933b-303b3e8a9eb9","name":"GRAPHENERGYTECH LTD","entity_type":"Company","description":"A consulting company founded in 2022 and based in DUXFORD, ENGLAND"}]}}

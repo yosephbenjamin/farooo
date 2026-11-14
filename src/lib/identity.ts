@@ -12,6 +12,13 @@ import type { Dataset } from "./types";
 const NORDIC = new Set(["Finland", "Sweden", "Norway", "Denmark", "Iceland", "Estonia"]);
 const PUBLIC_MAIL = /^(gmail|googlemail|outlook|hotmail|live|yahoo|icloud|me|proton|protonmail|aol|gmx)\./i;
 
+/** A failed Cala lookup is shown as "can't see X yet"; log why (status and message, never the key). */
+function logged(e: unknown): [] {
+  const err = e as { status?: number; message?: string };
+  console.error(`[faro] Cala search failed: ${err?.status ?? "no status"} ${String(err?.message ?? e).slice(0, 200)}`);
+  return [];
+}
+
 async function profilesFor(ids: string[]): Promise<Profile[]> {
   const out: Profile[] = [];
   for (const id of ids) {
@@ -39,7 +46,7 @@ export async function resolveByName(name: string, pool?: Record<string, Profile>
     const hit = pick(Object.values(pool));
     if (hit) return hit;
   }
-  const cands = await searchEntities(name, { types: ["Company"], limit: 10 }).catch(() => []);
+  const cands = await searchEntities(name, { types: ["Company"], limit: 10 }).catch(logged);
   const exact = cands.filter((c) => normalizeCompany(c.name) === key);
   const prefix = cands.filter((c) => normalizeCompany(c.name).startsWith(key + " "));
   const profiles = await profilesFor([...exact, ...prefix].slice(0, 3).map((c) => c.id));
@@ -55,7 +62,7 @@ export async function resolveByDomain(email: string, pool?: Record<string, Profi
     if (hit.length) return richest(hit);
   }
   const label = domain.split(".").slice(-2, -1)[0] ?? domain;
-  const cands = await searchEntities(label, { types: ["Company"], limit: 10 }).catch(() => []);
+  const cands = await searchEntities(label, { types: ["Company"], limit: 10 }).catch(logged);
   const profiles = await profilesFor(cands.slice(0, 4).map((c) => c.id));
   const hit = profiles.filter((p) => p.domains.includes(domain));
   return hit.length ? richest(hit) : null;

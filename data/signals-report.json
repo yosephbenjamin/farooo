@@ -1,0 +1,32 @@
+{
+  "ranAt": "2026-11-14T13:52:12.353Z",
+  "now": "2026-11-14",
+  "cap": 1000,
+  "callsSent": 0,
+  "ok": 0,
+  "statuses": {},
+  "portfolios": 14,
+  "companies": 98,
+  "events": 49,
+  "byKind": {
+    "money": 44,
+    "headcount": 3,
+    "acquisition": 1,
+    "exec": 1
+  },
+  "targets": 1,
+  "keyrings": [
+    {
+      "demo": "Distance Technologies",
+      "companies": 29
+    },
+    {
+      "demo": "Dalip",
+      "companies": 0
+    },
+    {
+      "demo": "RiACT",
+      "companies": 70
+    }
+  ]
+}

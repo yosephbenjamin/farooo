@@ -41,7 +41,7 @@ function emptyReport(name: string): DoorReport {
   return { now: today(), startup: { id: null, name, country: null, industries: [], investors: [], resolvedFrom: "none" }, doors: [] };
 }
 
-export async function getReport(name: string, opts: { forceLive?: boolean } = {}): Promise<DoorReport> {
+export async function getReport(name: string, opts: { forceLive?: boolean; noWeapons?: boolean } = {}): Promise<DoorReport> {
   const slug = slugify(name);
   if (!opts.forceLive) {
     const demo = demoReport(slug);
@@ -54,7 +54,7 @@ export async function getReport(name: string, opts: { forceLive?: boolean } = {}
   if (!p) return emptyReport(name.trim());
   const typed = name.trim();
   const display = normalizeCompany(typed) !== normalizeCompany(p.name) && typed.length < p.name.length ? typed : prettyName(p.name);
-  return buildReport(pool, summarize(p, ds, display, "cala"), { now: today() });
+  return buildReport(pool, summarize(p, ds, display, "cala"), { now: today(), noWeapons: opts.noWeapons });
 }
 
 /** Gmail: the user's company from their email domain. */

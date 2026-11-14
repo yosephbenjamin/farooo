@@ -1,0 +1,23 @@
+{
+  "ranAt": "2026-11-14T11:18:23.798Z",
+  "now": "2026-11-14",
+  "foreign": 2777,
+  "visited": 671,
+  "searched": 671,
+  "candidates": 1,
+  "entries": 0,
+  "entryNames": [],
+  "outOfCredit": true,
+  "calls": {
+    "sent": 1,
+    "ok": 0,
+    "status": {
+      "402": 1
+    },
+    "cacheHits": 700
+  },
+  "remaining": {
+    "attendees": 2106,
+    "estimatedCalls": 2106
+  }
+}
