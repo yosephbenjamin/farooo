@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { useParams, useSearchParams } from "next/navigation";
 import { Lighthouse } from "@/components/Lighthouse";
 
@@ -17,18 +16,15 @@ const STEPS: { at: number; lines: ((name: string) => string)[] }[] = [
   { at: 20000, lines: [() => "Still reading Cala…", () => "Cala is still answering…", () => "Nearly there, still reading…"] },
 ];
 
+/**
+ * The steps are sequenced with CSS, not timers: this screen is streamed before the page's
+ * JavaScript runs, so it must move on its own. All lines sit in one spot; each fades in at its
+ * step and out at the next, and the last one stays. The phrasing is picked when the page is made.
+ */
 export default function Loading() {
   const params = useParams<{ startup: string }>();
   const search = useSearchParams();
   const name = search.get("name")?.trim() || decodeURIComponent(params?.startup ?? "").replace(/-/g, " ");
-  const [step, setStep] = useState(0);
-  // first render (server and browser alike) uses each step's first line; pick at random after mount
-  const [pick, setPick] = useState<number[]>(() => STEPS.map(() => 0));
-  useEffect(() => {
-    setPick(STEPS.map((s) => Math.floor(Math.random() * s.lines.length)));
-    const timers = STEPS.slice(1).map((s, i) => window.setTimeout(() => setStep(i + 1), s.at));
-    return () => timers.forEach((t) => window.clearTimeout(t));
-  }, []);
   return (
     <main className="mx-auto flex min-h-screen max-w-5xl items-center px-4 sm:px-8" aria-busy="true">
       <div className="flex w-full flex-col items-start gap-8 sm:flex-row sm:items-end sm:gap-12">
@@ -37,8 +33,25 @@ export default function Loading() {
           <p className="text-[clamp(34px,5.5vw,64px)] font-light leading-[1.05] tracking-[-0.015em] text-ink-deep">
             <span className="caret">Looking for {name}</span>
           </p>
-          <p key={step} className="status-in mt-6 text-[19px] italic text-ink-500" aria-live="polite">
-            {STEPS[step].lines[pick[step]](name)}
+          <p className="mt-6 grid text-[19px] italic text-ink-500">
+            {STEPS.map((s, i) => {
+              const next = STEPS[i + 1];
+              const line = s.lines[Math.floor(Math.random() * s.lines.length)](name);
+              return (
+                <span
+                  key={i}
+                  suppressHydrationWarning
+                  className="loader-step [grid-area:1/1]"
+                  style={{
+                    animationName: next ? "stepshow" : "stepstay",
+                    animationDelay: `${s.at}ms`,
+                    animationDuration: next ? `${next.at - s.at}ms` : "600ms",
+                  }}
+                >
+                  {line}
+                </span>
+              );
+            })}
           </p>
         </div>
       </div>
