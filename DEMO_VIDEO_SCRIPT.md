@@ -30,7 +30,7 @@ CALA_OFFLINE=1 npm start
 | **1:08–1:20** | Switch to Gmail. Open the email from Vensum. The sidebar header reads **A door, in your inbox** and shows the same door. | "And in Gmail, when Vensum emails you, the same door appears in the sidebar." |
 | **1:20–1:30** | Back to the lighthouse. Text: *Faro. Know who's coming. Find the way in.* Cala credit and "Built for Junction 2026" in small type. | "Every door has a date and a source, or it isn't shown. Faro. Built on Cala." |
 
-**Word count by scene:** 20 + 21 + 22 + 19 + 45 + 17 + 15 + 16 = **175 words.**
+**Word count by scene:** 20 + 21 + 22 + 18 + 47 + 17 + 14 + 16 = **175 words.**
 
 ## Why it is built this way
 
