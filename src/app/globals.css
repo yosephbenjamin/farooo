@@ -60,10 +60,16 @@ input::-webkit-calendar-picker-indicator { display: none !important; }
 @keyframes sweep { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 .sweep { animation: sweep 5s linear infinite; }
 @keyframes statusin { from { opacity: 0; } to { opacity: 1; } }
+/* loader lines: each fades in at its step and out at the next; the last stays (CSS only) */
+@keyframes stepshow { 0% { opacity: 0; } 8% { opacity: 1; } 92% { opacity: 1; } 100% { opacity: 0; } }
+@keyframes stepstay { from { opacity: 0; } to { opacity: 1; } }
+.loader-step { opacity: 0; animation-fill-mode: both; animation-timing-function: ease; }
 .status-in { animation: statusin .6s ease-out both; }
 .caret::after { content: ""; display: inline-block; width: 0.06em; height: 0.9em; margin-left: 0.04em; background: currentColor; vertical-align: -0.08em; animation: caret 1s step-end infinite; }
 
 @media (prefers-reduced-motion: reduce) {
   .beam, .caret::after, .sweep, .status-in { animation: none; }
+  .loader-step { animation: none !important; opacity: 0; }
+  .loader-step:first-child { opacity: 1; }
   .window-lit-anim { animation-duration: 1ms; }
 }
