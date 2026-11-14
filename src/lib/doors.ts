@@ -16,7 +16,7 @@ import { normalizeFund, normalizeCompany } from "./normalize";
 import { seedSlugForName } from "./seed";
 import { bestWhyYou, checkIndustries, partnerTypes, PARTNER_TYPES, type IndustryCheck, type PartnerType, type WhyYou } from "./partner";
 import { prettyName, type Industry, type Person, type Profile, type RankedSource } from "./profile";
-import { SPAC, type TimedEvent } from "./signals";
+import type { TimedEvent } from "./signals";
 
 export const DAY = 86_400_000;
 /** A new national company counts as "entering" for this long after its registry founding date. */
@@ -186,6 +186,9 @@ export function xrayLink(company: string, country: string | null, type: PartnerT
 }
 
 const NORDICS = ["Finland", "Sweden", "Norway", "Denmark", "Iceland"];
+/** A SPAC merger is going public, not buying a business. */
+export const SPAC = /\b(acquisition corp(oration)?|spac|blank check)\b/i;
+
 /** Public grant agencies: shared funding, but not someone who introduces you. */
 const AGENCY = /^(business finland|innovation norway|vinnova|innovationsfonden|innobooster|eic|european innovation council|horizon europe|eu|european union|almi|tekes)\b/i;
 export function marketMatches(market: string, country: string | null): boolean {

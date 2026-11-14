@@ -43,8 +43,7 @@ function bestSource(xs: unknown): RankedSource | null {
   const score = (s: RankedSource) => (isAggregator(s) ? 0 : s.rank === "FILING" || s.rank === "PRESS" ? 3 : s.rank === "PRIMARY" ? 2 : 1);
   return all.sort((a, b) => score(b) - score(a))[0] ?? null;
 }
-/** A SPAC merger is going public, not buying a business. */
-export const SPAC = /\b(acquisition corp(oration)?|spac|blank check)\b/i;
+export { SPAC } from "./doors";
 
 /** Headcount jump: the latest observation is at least +5 people and +30% on the one before. */
 export const JUMP_MIN_PEOPLE = 5;
