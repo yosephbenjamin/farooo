@@ -107,6 +107,96 @@
       ],
       "parents": []
     },
+    "38f805b1-be15-4e8d-8b6b-0536276ec111": {
+      "id": "38f805b1-be15-4e8d-8b6b-0536276ec111",
+      "name": "OpenAI Group PBC",
+      "legalName": null,
+      "aliases": [
+        "OpenAI",
+        "openai.com"
+      ],
+      "website": "openai.com",
+      "domains": [
+        "openai.com"
+      ],
+      "description": "A San Francisco‑based software and internet services company founded in 2015.",
+      "industries": [
+        {
+          "code": "SOFTWARE_AND_SERVICES",
+          "label": null
+        },
+        {
+          "code": "INTERNET_AND_WEB_SERVICES",
+          "label": null
+        }
+      ],
+      "country": "United States",
+      "hqAddress": "3180 18th Street, San Francisco, CA 94110, United States",
+      "founding": {
+        "date": "2015-01-01",
+        "precision": null,
+        "sources": [
+          {
+            "name": "openai.com",
+            "url": "https://openai.com/index/statement-on-openai-nonprofit-and-pbc",
+            "date": "2026-06-29",
+            "rank": null
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": null,
+      "investors": [
+        {
+          "id": "7fc0ea1c-c348-48ce-b60d-a070ab75a695",
+          "name": "ソフトバンクグループ株式会社"
+        },
+        {
+          "id": "931dabbd-b3e0-4dcd-b244-84352dc64290",
+          "name": "OpenAI"
+        },
+        {
+          "id": "a67f93f6-4257-43f1-9d78-20d48914161f",
+          "name": "Founders Fund"
+        },
+        {
+          "id": "a8e05510-f8fd-43c5-81f0-94f00ca9e2ae",
+          "name": "D. E. Shaw & Co. II, Inc."
+        },
+        {
+          "id": "daebf7ee-cf07-459c-a3c6-65523efcefa7",
+          "name": "Andreessen Horowitz"
+        },
+        {
+          "id": "e3a20bc3-2cd7-47e1-8d25-ef095dc33bbd",
+          "name": "Founders Fund"
+        },
+        {
+          "id": "eb3b1e84-1f45-486c-8d10-d2b498992830",
+          "name": "MICROSOFT CORP"
+        }
+      ],
+      "fundingRounds": [],
+      "slush": false,
+      "people": [
+        {
+          "name": "Sam Altman",
+          "role": "CEO",
+          "since": null
+        },
+        {
+          "name": "Fidji Simo",
+          "role": "CEO",
+          "since": null
+        },
+        {
+          "name": "Jared Kaplan",
+          "role": "researcher",
+          "since": "2019-01-01"
+        }
+      ],
+      "parents": []
+    },
     "6ef1e4f8-d579-50a1-8294-e3af452dbf8e": {
       "id": "6ef1e4f8-d579-50a1-8294-e3af452dbf8e",
       "name": "NFP Sweden AB",
@@ -142,6 +232,29 @@
       "investors": [],
       "fundingRounds": [],
       "slush": true,
+      "people": [],
+      "parents": []
+    },
+    "c1ae1b4f-efd4-47a9-a02a-14f9f16fd390": {
+      "id": "c1ae1b4f-efd4-47a9-a02a-14f9f16fd390",
+      "name": "EURO TECH HOLDINGS CO LTD",
+      "legalName": null,
+      "aliases": [
+        "CLWT",
+        "Euro Tech Holdings"
+      ],
+      "website": null,
+      "domains": [],
+      "description": "a publicly traded company listed on the NASDAQ with institutional shareholders such as Citigroup, Morgan Stanley and UBS Group",
+      "industries": [],
+      "country": null,
+      "hqAddress": null,
+      "founding": null,
+      "fundingStage": null,
+      "status": null,
+      "investors": [],
+      "fundingRounds": [],
+      "slush": false,
       "people": [],
       "parents": []
     },
@@ -267,6 +380,279 @@
       "people": [
         {
           "name": "Arttu Kalli",
+          "role": "CEO",
+          "since": null
+        }
+      ],
+      "parents": []
+    },
+    "e20160d1-236c-417b-abe2-956215aec88d": {
+      "id": "e20160d1-236c-417b-abe2-956215aec88d",
+      "name": "Uber",
+      "legalName": "UBER TECHNOLOGIES, INC.",
+      "aliases": [
+        "UBER",
+        "Uber Technologies",
+        "Uber Technologies, Inc.",
+        "Uber Technologies Inc.",
+        "Uber Technologies Inc",
+        "Uber Technologies (UBER)",
+        "Uber Technologies, Inc"
+      ],
+      "website": "uber.com",
+      "domains": [
+        "uber.com"
+      ],
+      "description": "American multinational technology company headquartered in San Francisco, founded in 2010, best known as a ride-hailing and food delivery platform.",
+      "industries": [
+        {
+          "code": "RETAIL",
+          "label": null
+        },
+        {
+          "code": "TRANSPORTATION_AND_LOGISTICS",
+          "label": null
+        },
+        {
+          "code": "HOSPITALITY_AND_TOURISM",
+          "label": null
+        },
+        {
+          "code": "FINANCIAL_INSURANCE",
+          "label": null
+        },
+        {
+          "code": "ASSET_MANAGEMENT",
+          "label": null
+        }
+      ],
+      "country": "United States",
+      "hqAddress": "1515 3RD STREET, SAN FRANCISCO, US-CA, 94158, US",
+      "founding": {
+        "date": "2010-07-16",
+        "precision": null,
+        "sources": [
+          {
+            "name": "GLEIF",
+            "url": "https://search.gleif.org/#/record/549300B2FTG34FILDR98",
+            "date": "2026-04-08",
+            "rank": "FILING"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": "ACTIVE",
+      "investors": [
+        {
+          "id": "005d93e5-9d7d-4433-b851-94cb2e4f4941",
+          "name": "Google’s venture arm"
+        },
+        {
+          "id": "018ab3b8-cf75-471a-94dc-9a2e8c54a273",
+          "name": "AMERICAN EXPRESS CO"
+        },
+        {
+          "id": "036c3c20-0200-43ed-855e-52969b32a57c",
+          "name": "Detroit pension fund"
+        },
+        {
+          "id": "060f9286-3ff6-4f4f-a01e-7b7423920b54",
+          "name": "DiDi Global Inc."
+        },
+        {
+          "id": "0871f7e6-ee27-5bdd-ae1a-1c8cc5b8984a",
+          "name": "Government Of Saudi Arabia"
+        },
+        {
+          "id": "0af9dd71-49c3-4b83-b2cb-f33d08d57697",
+          "name": "PUBLIC EMPLOYEES RETIREMENT ASSOCIATION OF COLORADO"
+        },
+        {
+          "id": "0db148c3-2382-422d-a017-9bde6d8a839e",
+          "name": "Fidelity Management & Research Company"
+        },
+        {
+          "id": "0ebca738-3be7-4577-8556-cf6844ddc3ea",
+          "name": "Avrides"
+        },
+        {
+          "id": "11267552-e210-40ec-aafd-526c205f6225",
+          "name": "Pigment"
+        },
+        {
+          "id": "15be283f-5b95-4446-b057-de7ec6097c9d",
+          "name": "First Round Capital X, L.P."
+        },
+        {
+          "id": "19a37c2d-5170-4cf4-90e2-5de5f410164e",
+          "name": "Pony AI"
+        },
+        {
+          "id": "20e69783-a1d0-4576-865b-98f289d9dd1d",
+          "name": "Momenta"
+        },
+        {
+          "id": "2125aec3-8a01-48dd-8d98-1b4a0909f0a2",
+          "name": "FOUNDERS COLLECTIVE FUND"
+        },
+        {
+          "id": "2271618d-ef5e-42a3-8f2f-0dd7b9a41cbe",
+          "name": "Pershing Square"
+        },
+        {
+          "id": "2345a226-521c-48dd-aa0d-a576d40d7a89",
+          "name": "K2"
+        },
+        {
+          "id": "2628bc2c-b9d6-4cd4-80aa-d87524643f8c",
+          "name": "VOLKSWAGEN AKTIENGESELLSCHAFT"
+        },
+        {
+          "id": "333715b9-2446-4f1a-a984-ecdaddc8ea3e",
+          "name": "408 Ventures"
+        },
+        {
+          "id": "3a1def7a-b794-4c6b-8eb4-d1d197858075",
+          "name": "MEWS LTD"
+        },
+        {
+          "id": "3a36e134-4ffb-40df-b667-0651f58d9f3d",
+          "name": "Yandex NV"
+        },
+        {
+          "id": "431608b1-040a-40f8-88ba-7512af2c1637",
+          "name": "Portier, LLC"
+        },
+        {
+          "id": "4531e3dd-e6bb-4673-bba1-e709a5a50cb7",
+          "name": "Fidelity Investments"
+        },
+        {
+          "id": "45923eaa-2139-4b95-936e-850b2d621269",
+          "name": "Goldman"
+        },
+        {
+          "id": "48ce2c5a-2eb8-4394-bb03-6a3ce67102ea",
+          "name": "Lime OÜ"
+        },
+        {
+          "id": "4fafa8e5-7db7-469e-a8b9-89898c4743e7",
+          "name": "M3B Capital"
+        },
+        {
+          "id": "516fe9c3-7569-4670-a6d3-79943652309b",
+          "name": "NEA CORPORATION"
+        },
+        {
+          "id": "51cb4792-2531-4e47-8609-f798d7ad87e7",
+          "name": "NVIDIA CORPORATION"
+        },
+        {
+          "id": "51ebe519-7d8d-4e1c-9a86-60b300bac0ac",
+          "name": "The Public Investment Fund of the Kingdom of Saudi Arabia"
+        },
+        {
+          "id": "5312485e-f300-4496-93f1-b6a7964f5a00",
+          "name": "Nea"
+        },
+        {
+          "id": "64526019-13c7-4528-8b30-3ce4ad68a011",
+          "name": "ALEKA INSURANCE, INC."
+        },
+        {
+          "id": "665044ab-ac52-428b-b90a-2777ae915b7b",
+          "name": "Pony AI Inc."
+        },
+        {
+          "id": "67a3985f-5586-4feb-903d-215508fea792",
+          "name": "GETİR PERAKENDE LOJİSTİK ANONİM ŞİRKETİ"
+        },
+        {
+          "id": "6b20a36a-300c-4b8d-842f-4f6ae6d2eb06",
+          "name": "NEA"
+        },
+        {
+          "id": "6bd4c6d5-9ca3-40ed-9376-fb553d8f40d9",
+          "name": "SPOTHERO, INC."
+        },
+        {
+          "id": "6c3a8cde-3a0d-4a37-97e6-315e96cba0a5",
+          "name": "DRAGONEER INVESTMENT GROUP, LLC"
+        },
+        {
+          "id": "6cbdab2c-1f8c-49c1-88d0-fb2cffe1bbb5",
+          "name": "ALPHA WAVE GLOBAL, LP"
+        },
+        {
+          "id": "6cdd9c1f-cdeb-4b88-b636-50132fbdf900",
+          "name": "Autobrains"
+        },
+        {
+          "id": "6d955dc7-68da-4b8f-a7c6-14c35676699e",
+          "name": "Public Investment Fund"
+        },
+        {
+          "id": "6f774e7c-b75b-4782-b0a7-727f4533158d",
+          "name": "Delivery Hero SE"
+        },
+        {
+          "id": "74beb9f2-e756-448c-9faa-5157d1675a85",
+          "name": "Waabi Innovation Inc."
+        },
+        {
+          "id": "7727e24d-70f4-4240-8b84-1680b8552be1",
+          "name": "GV"
+        },
+        {
+          "id": "7cc74744-bd2f-4995-a59f-2fe645a16e6b",
+          "name": "Volvo Car AB"
+        },
+        {
+          "id": "7de163ae-336e-4ffd-b550-82ee00292d6e",
+          "name": "Toast, Inc."
+        },
+        {
+          "id": "80d1a19d-827d-4d39-acae-71a8aac6f18d",
+          "name": "Baidu"
+        }
+      ],
+      "fundingRounds": [
+        {
+          "id": "1abd31fb-5f6c-531b-a11f-ff83654a6f2f",
+          "role": "INVESTOR"
+        },
+        {
+          "id": "8cff0a71-2e65-5991-abe9-d77780dcbb12",
+          "role": "INVESTOR"
+        },
+        {
+          "id": "9e534495-0d96-53aa-8cb2-ddd1cf0dc4a0",
+          "role": "INVESTOR"
+        },
+        {
+          "id": "acd4d332-d7dd-50cd-b49c-a0f8bc0b27a3",
+          "role": "INVESTOR"
+        }
+      ],
+      "slush": false,
+      "people": [
+        {
+          "name": "Dara Khosrowshahi",
+          "role": "CEO",
+          "since": "2019-05-24"
+        },
+        {
+          "name": "Balaji Krishnamurthy",
+          "role": "VP",
+          "since": "2019-11-01"
+        },
+        {
+          "name": "Sasha Kaletsky",
+          "role": "Launcher",
+          "since": null
+        },
+        {
+          "name": "Travis Kalanick",
           "role": "CEO",
           "since": null
         }
@@ -803,6 +1189,26 @@
       "investors": [],
       "fundingRounds": [],
       "slush": true,
+      "people": [],
+      "parents": []
+    },
+    "3aaa1fa2-93b6-474f-be54-baae01a06ac4": {
+      "id": "3aaa1fa2-93b6-474f-be54-baae01a06ac4",
+      "name": "Polar Capital",
+      "legalName": null,
+      "aliases": [],
+      "website": null,
+      "domains": [],
+      "description": "A company that is the beneficiary owner of RENALYTIX PLC, AVADEL PHARMACEUTICALS PLC and Hagerty, Inc.",
+      "industries": [],
+      "country": null,
+      "hqAddress": null,
+      "founding": null,
+      "fundingStage": null,
+      "status": null,
+      "investors": [],
+      "fundingRounds": [],
+      "slush": false,
       "people": [],
       "parents": []
     },
@@ -3912,6 +4318,42 @@
       "people": [],
       "parents": []
     },
+    "f4fc9747-1aa3-4cce-a25e-7d65361adae6": {
+      "id": "f4fc9747-1aa3-4cce-a25e-7d65361adae6",
+      "name": "UBER CORPORATION LIMITED",
+      "legalName": "UBER CORPORATION LIMITED",
+      "aliases": [],
+      "website": null,
+      "domains": [],
+      "description": "British restaurant industry company headquartered in Chelmsford, founded in 2010.",
+      "industries": [
+        {
+          "code": "RESTAURANTS",
+          "label": null
+        }
+      ],
+      "country": "United Kingdom",
+      "hqAddress": null,
+      "founding": {
+        "date": "2010-09-06",
+        "precision": null,
+        "sources": [
+          {
+            "name": "Companies House UK",
+            "url": "https://find-and-update.company-information.service.gov.uk/company/07366950",
+            "date": "2026-10-01",
+            "rank": "FILING"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": "ACTIVE",
+      "investors": [],
+      "fundingRounds": [],
+      "slush": false,
+      "people": [],
+      "parents": []
+    },
     "b81c6923-afcb-599a-aac9-a8e5331a6d2f": {
       "id": "b81c6923-afcb-599a-aac9-a8e5331a6d2f",
       "name": "DTS Plant Oy",
@@ -5084,6 +5526,26 @@
       "people": [],
       "parents": []
     },
+    "5cbcc081-bca9-43ed-ad62-b57389e31e99": {
+      "id": "5cbcc081-bca9-43ed-ad62-b57389e31e99",
+      "name": "EURO TECH HOLDINGS COMPANY LIMITED",
+      "legalName": null,
+      "aliases": [],
+      "website": null,
+      "domains": [],
+      "description": "A company whose beneficiary owner is Chimera Securities LLC.",
+      "industries": [],
+      "country": null,
+      "hqAddress": null,
+      "founding": null,
+      "fundingStage": null,
+      "status": null,
+      "investors": [],
+      "fundingRounds": [],
+      "slush": false,
+      "people": [],
+      "parents": []
+    },
     "90e84dd3-ad08-4d6f-9972-e0827a3e0c57": {
       "id": "90e84dd3-ad08-4d6f-9972-e0827a3e0c57",
       "name": "SwanIT Oy",
@@ -5454,6 +5916,51 @@
       "slush": false,
       "people": [],
       "parents": []
+    },
+    "7d80e01d-4f24-428b-b7d1-97d1877f3b87": {
+      "id": "7d80e01d-4f24-428b-b7d1-97d1877f3b87",
+      "name": "POLAR CAPITAL LLP",
+      "legalName": "POLAR CAPITAL LLP",
+      "aliases": [
+        "Polar Capital"
+      ],
+      "website": null,
+      "domains": [],
+      "description": "British company headquartered in London, founded in 2005.",
+      "industries": [],
+      "country": "United Kingdom",
+      "hqAddress": "16 Palace Street, London, GB-LND, SW1E 5JD, GB",
+      "founding": {
+        "date": "2005-08-15",
+        "precision": null,
+        "sources": [
+          {
+            "name": "GLEIF",
+            "url": "https://search.gleif.org/#/record/4YW3JKTZ3K1II2GVCK15",
+            "date": "2026-08-21",
+            "rank": "FILING"
+          },
+          {
+            "name": "Companies House UK",
+            "url": "https://find-and-update.company-information.service.gov.uk/company/OC314700",
+            "date": "2026-10-01",
+            "rank": "FILING"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": "ACTIVE",
+      "investors": [],
+      "fundingRounds": [],
+      "slush": false,
+      "people": [],
+      "parents": [
+        {
+          "id": "a9faebe3-4dc8-4e5c-8395-6f432d5f7a7b",
+          "name": "POLAR CAPITAL HOLDINGS PLC.",
+          "since": "2023-09-07"
+        }
+      ]
     },
     "025f6b61-7efa-4427-80ae-10d9d2884aa7": {
       "id": "025f6b61-7efa-4427-80ae-10d9d2884aa7",
@@ -6679,6 +7186,42 @@
       ],
       "parents": []
     },
+    "3318da28-6f9b-4ec1-a796-7718cccd576e": {
+      "id": "3318da28-6f9b-4ec1-a796-7718cccd576e",
+      "name": "ADVANTECH ENGINEERING LTD",
+      "legalName": "ADVANTECH ENGINEERING LTD",
+      "aliases": [],
+      "website": null,
+      "domains": [],
+      "description": "A construction and engineering company founded in 2011 and based in London, England",
+      "industries": [
+        {
+          "code": "CONSTRUCTION_AND_ENGINEERING",
+          "label": null
+        }
+      ],
+      "country": "United Kingdom",
+      "hqAddress": null,
+      "founding": {
+        "date": "2011-02-11",
+        "precision": null,
+        "sources": [
+          {
+            "name": "Companies House UK",
+            "url": "https://find-and-update.company-information.service.gov.uk/company/07526110",
+            "date": "2026-11-01",
+            "rank": "FILING"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": "ACTIVE",
+      "investors": [],
+      "fundingRounds": [],
+      "slush": false,
+      "people": [],
+      "parents": []
+    },
     "c321256e-096f-5d37-ad45-91625db1c796": {
       "id": "c321256e-096f-5d37-ad45-91625db1c796",
       "name": "FrostDry Oy",
@@ -6857,6 +7400,90 @@
         }
       ],
       "parents": []
+    },
+    "f9c07405-1cdd-437a-b2ca-f5c784698ff4": {
+      "id": "f9c07405-1cdd-437a-b2ca-f5c784698ff4",
+      "name": "Google",
+      "legalName": "GOOGLE LLC",
+      "aliases": [],
+      "website": "google.com",
+      "domains": [
+        "google.com"
+      ],
+      "description": "It is a U.S. technology company operating in software and internet services, headquartered in Wilmington, Delaware, founded in 2002, and a subsidiary of Alphabet Inc.",
+      "industries": [
+        {
+          "code": "SOFTWARE_AND_SERVICES",
+          "label": null
+        },
+        {
+          "code": "INTERNET_AND_WEB_SERVICES",
+          "label": null
+        }
+      ],
+      "country": "United States",
+      "hqAddress": "251 LITTLE FALLS DRIVE, WILMINGTON, US-DE, 19808, US",
+      "founding": {
+        "date": "2002-10-22",
+        "precision": null,
+        "sources": [
+          {
+            "name": "GLEIF",
+            "url": "https://search.gleif.org/#/record/7ZW8QJWVPR4P1J1KQY45",
+            "date": "2026-05-06",
+            "rank": "FILING"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": null,
+      "investors": [
+        {
+          "id": "8ce12d7b-6dbf-4c94-b23a-57904ac25630",
+          "name": "Kleiner Perkins Caufield & Byers VIII, L.P."
+        }
+      ],
+      "fundingRounds": [],
+      "slush": false,
+      "people": [
+        {
+          "name": "Sundar Pichai",
+          "role": "CEO",
+          "since": null
+        },
+        {
+          "name": "Shaun Modi",
+          "role": "Lead Designer on Google+",
+          "since": null
+        },
+        {
+          "name": "Sachin Gupta",
+          "role": "Software Developer",
+          "since": null
+        },
+        {
+          "name": "Henrique de Castro",
+          "role": "President of worldwide devices, media and platforms",
+          "since": null
+        },
+        {
+          "name": "Baris Gultekin",
+          "role": "Co‑founder & Product Manager Director (product leadership roles)",
+          "since": null
+        },
+        {
+          "name": "Chandra Rangan",
+          "role": "Sr. Director, Product & Solutions Marketing (Google Cloud Platform)",
+          "since": null
+        }
+      ],
+      "parents": [
+        {
+          "id": "5c907457-69aa-4515-bc23-0c88d50e8dc1",
+          "name": "ALPHABET INC.",
+          "since": "2002-10-22"
+        }
+      ]
     },
     "7028e46d-9ffe-4972-84ee-2cfae31983e5": {
       "id": "7028e46d-9ffe-4972-84ee-2cfae31983e5",
@@ -7072,6 +7699,42 @@
           "since": null
         }
       ],
+      "parents": []
+    },
+    "999d08af-d24a-40fb-b34f-5cbc1ed2cec9": {
+      "id": "999d08af-d24a-40fb-b34f-5cbc1ed2cec9",
+      "name": "ADVANTECH SURGICAL LTD",
+      "legalName": "ADVANTECH SURGICAL LTD",
+      "aliases": [],
+      "website": null,
+      "domains": [],
+      "description": "A retail company based in Bedfordshire, England, founded in 2007.",
+      "industries": [
+        {
+          "code": "RETAIL",
+          "label": null
+        }
+      ],
+      "country": "United Kingdom",
+      "hqAddress": null,
+      "founding": {
+        "date": "2007-05-16",
+        "precision": null,
+        "sources": [
+          {
+            "name": "Companies House UK",
+            "url": "https://find-and-update.company-information.service.gov.uk/company/06250146",
+            "date": "2026-11-01",
+            "rank": "FILING"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": "ACTIVE",
+      "investors": [],
+      "fundingRounds": [],
+      "slush": false,
+      "people": [],
       "parents": []
     },
     "92cf1d0f-0f24-575b-bc06-b5ef919fe69c": {
@@ -7372,6 +8035,26 @@
       ],
       "parents": []
     },
+    "c254d3b1-00a1-465e-a29b-f04a17f71a80": {
+      "id": "c254d3b1-00a1-465e-a29b-f04a17f71a80",
+      "name": "Polar Capital, LLP",
+      "legalName": null,
+      "aliases": [],
+      "website": null,
+      "domains": [],
+      "description": "A company that is the beneficiary owner of Aveo Pharmaceuticals, Inc.",
+      "industries": [],
+      "country": null,
+      "hqAddress": null,
+      "founding": null,
+      "fundingStage": null,
+      "status": null,
+      "investors": [],
+      "fundingRounds": [],
+      "slush": false,
+      "people": [],
+      "parents": []
+    },
     "3fc2c3ab-28ef-5a29-bf95-adb3e1e290f0": {
       "id": "3fc2c3ab-28ef-5a29-bf95-adb3e1e290f0",
       "name": "Slush Oy",
@@ -7454,6 +8137,42 @@
           "since": null
         }
       ],
+      "parents": []
+    },
+    "240fd0aa-80ed-5c1a-a617-c3fee0223b0b": {
+      "id": "240fd0aa-80ed-5c1a-a617-c3fee0223b0b",
+      "name": "CATL GROUPE",
+      "legalName": "CATL GROUPE",
+      "aliases": [],
+      "website": null,
+      "domains": [],
+      "description": "French banking company headquartered in Bordeaux, founded in 2014.",
+      "industries": [
+        {
+          "code": "BANKING",
+          "label": "6420Z"
+        }
+      ],
+      "country": "France",
+      "hqAddress": "60 RUE SURSON, 33300 BORDEAUX, FRANCE",
+      "founding": {
+        "date": "2014-09-12",
+        "precision": null,
+        "sources": [
+          {
+            "name": "INPI",
+            "url": "https://data.inpi.fr/entreprises/804546844",
+            "date": "2025-07-16",
+            "rank": "FILING"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": "ACTIVE",
+      "investors": [],
+      "fundingRounds": [],
+      "slush": false,
+      "people": [],
       "parents": []
     },
     "879ae213-286d-41f1-b563-19ef5c598086": {
@@ -8047,6 +8766,48 @@
             "name": "Companies House UK",
             "url": "https://find-and-update.company-information.service.gov.uk/company/08568559",
             "date": "2026-10-01",
+            "rank": "FILING"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": "ACTIVE",
+      "investors": [],
+      "fundingRounds": [],
+      "slush": false,
+      "people": [],
+      "parents": []
+    },
+    "6eb4260d-68a6-45a2-9262-3448adbaaece": {
+      "id": "6eb4260d-68a6-45a2-9262-3448adbaaece",
+      "name": "AVANZA LTD",
+      "legalName": "AVANZA LTD",
+      "aliases": [],
+      "website": null,
+      "domains": [],
+      "description": "A company registered in Hatfield, GB since 2016 operating in software and services.",
+      "industries": [
+        {
+          "code": "SOFTWARE_AND_SERVICES",
+          "label": null
+        }
+      ],
+      "country": "United Kingdom",
+      "hqAddress": "Unit 2 Ground Floor, The Beacons, Beaconsfield Road, Hatfield, GB-HRT, AL10 8RS, GB",
+      "founding": {
+        "date": "2016-06-01",
+        "precision": null,
+        "sources": [
+          {
+            "name": "GLEIF",
+            "url": "https://search.gleif.org/#/record/9845008M6SOEE67AF388",
+            "date": "2026-04-08",
+            "rank": "FILING"
+          },
+          {
+            "name": "Companies House UK",
+            "url": "https://find-and-update.company-information.service.gov.uk/company/10209814",
+            "date": "2026-11-01",
             "rank": "FILING"
           }
         ]
@@ -9977,6 +10738,37 @@
       "people": [],
       "parents": []
     },
+    "dc3b7dad-9b1f-41e2-998d-e50cdcd6d5a2": {
+      "id": "dc3b7dad-9b1f-41e2-998d-e50cdcd6d5a2",
+      "name": "CRANE WORLDWIDE LOGISTICS INDIA PRIVATE LIMITED",
+      "legalName": "CRANE WORLDWIDE LOGISTICS INDIA PRIVATE LIMITED",
+      "aliases": [],
+      "website": null,
+      "domains": [],
+      "description": "Indian logistics company headquartered in Mumbai, founded in 2008.",
+      "industries": [],
+      "country": "India",
+      "hqAddress": "A601-604, A Wing, Everest Chambers, Marol Naka, Andheri Kurla Road, Andheri East, Mumbai, IN-MH, 400059, IN",
+      "founding": {
+        "date": "2008-12-18",
+        "precision": null,
+        "sources": [
+          {
+            "name": "GLEIF",
+            "url": "https://search.gleif.org/#/record/254900XEQDOWSB7PZN50",
+            "date": "2026-07-26",
+            "rank": "FILING"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": null,
+      "investors": [],
+      "fundingRounds": [],
+      "slush": false,
+      "people": [],
+      "parents": []
+    },
     "4d66ee8f-b937-5828-8c37-51f52f533462": {
       "id": "4d66ee8f-b937-5828-8c37-51f52f533462",
       "name": "Rescue Drones Finland Oy",
@@ -10136,6 +10928,26 @@
           "since": "2024-06-11"
         }
       ],
+      "parents": []
+    },
+    "1efc600b-c253-4f69-9538-4472a4ee56b0": {
+      "id": "1efc600b-c253-4f69-9538-4472a4ee56b0",
+      "name": "CATL PTY LTD",
+      "legalName": "CATL PTY LTD",
+      "aliases": [],
+      "website": null,
+      "domains": [],
+      "description": "Australian company headquartered in Merricks, South Australia.",
+      "industries": [],
+      "country": "Australia",
+      "hqAddress": "3485 FRANKSTON-FLINDERS RD, MERRICKS, AU-SA, 3916, AU",
+      "founding": null,
+      "fundingStage": null,
+      "status": null,
+      "investors": [],
+      "fundingRounds": [],
+      "slush": false,
+      "people": [],
       "parents": []
     },
     "bd3b84cb-2425-5708-b840-e33e1ef94452": {
@@ -10548,6 +11360,31 @@
       ],
       "parents": []
     },
+    "888b3144-d4e8-4132-ace8-06db77d4f011": {
+      "id": "888b3144-d4e8-4132-ace8-06db77d4f011",
+      "name": "GOOGLE LLC",
+      "legalName": "GOOGLE LLC",
+      "aliases": [],
+      "website": null,
+      "domains": [],
+      "description": "A Mountain View, California-based subsidiary of Alphabet Inc. operating in the financial and insurance industry.",
+      "industries": [
+        {
+          "code": "FINANCIAL_INSURANCE",
+          "label": null
+        }
+      ],
+      "country": "United States",
+      "hqAddress": null,
+      "founding": null,
+      "fundingStage": null,
+      "status": "ACTIVE",
+      "investors": [],
+      "fundingRounds": [],
+      "slush": false,
+      "people": [],
+      "parents": []
+    },
     "8bbbf14e-5b84-5042-8d8b-acb65048defb": {
       "id": "8bbbf14e-5b84-5042-8d8b-acb65048defb",
       "name": "Tuteliq AB",
@@ -10675,6 +11512,46 @@
           "since": null
         }
       ],
+      "parents": []
+    },
+    "6d818a5a-e708-4ca3-bb14-069fcbdd853d": {
+      "id": "6d818a5a-e708-4ca3-bb14-069fcbdd853d",
+      "name": "Avanza",
+      "legalName": null,
+      "aliases": [],
+      "website": "avanza.se",
+      "domains": [
+        "avanza.se"
+      ],
+      "description": "Swedish online investment platform and bank offering trading in stocks, funds, and savings products.",
+      "industries": [
+        {
+          "code": "ASSET_MANAGEMENT",
+          "label": null
+        },
+        {
+          "code": "FINTECH",
+          "label": null
+        },
+        {
+          "code": "BANKING",
+          "label": null
+        }
+      ],
+      "country": "Sweden",
+      "hqAddress": null,
+      "founding": null,
+      "fundingStage": null,
+      "status": null,
+      "investors": [
+        {
+          "id": "633d77ba-c8c2-498e-b349-ea499178ee0b",
+          "name": "Creades AB (publ)"
+        }
+      ],
+      "fundingRounds": [],
+      "slush": false,
+      "people": [],
       "parents": []
     },
     "bc791723-909a-4054-8e3d-c22716bfff7a": {
@@ -10962,6 +11839,44 @@
       "people": [],
       "parents": []
     },
+    "8de672fe-6ee6-42ea-a033-b3586c03266a": {
+      "id": "8de672fe-6ee6-42ea-a033-b3586c03266a",
+      "name": "UBER LIMITED",
+      "legalName": "UBER LIMITED",
+      "aliases": [],
+      "website": "uber.com",
+      "domains": [
+        "uber.com"
+      ],
+      "description": "British real estate company headquartered in North Shields, founded in 2004.",
+      "industries": [
+        {
+          "code": "REAL_ESTATE",
+          "label": null
+        }
+      ],
+      "country": "United Kingdom",
+      "hqAddress": "Colonel Linskill Offices 1st Floor, 25 Charlotte Street, North Shields, Tyne & Wear, England, NE30 1BP",
+      "founding": {
+        "date": "2004-06-03",
+        "precision": null,
+        "sources": [
+          {
+            "name": "Companies House UK",
+            "url": "https://find-and-update.company-information.service.gov.uk/company/05143964",
+            "date": "2026-10-01",
+            "rank": "FILING"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": "ACTIVE",
+      "investors": [],
+      "fundingRounds": [],
+      "slush": false,
+      "people": [],
+      "parents": []
+    },
     "9559aaf1-7718-5d15-bdbc-61d03ce64cf9": {
       "id": "9559aaf1-7718-5d15-bdbc-61d03ce64cf9",
       "name": "ReFaMo Oy",
@@ -11009,6 +11924,63 @@
       "investors": [],
       "fundingRounds": [],
       "slush": true,
+      "people": [],
+      "parents": []
+    },
+    "179db05f-e942-43b4-9ba3-6eec5353ea73": {
+      "id": "179db05f-e942-43b4-9ba3-6eec5353ea73",
+      "name": "OpenAI OpCo, LLC",
+      "legalName": null,
+      "aliases": [
+        "OpenAI",
+        "OpenAI OpCo LLC"
+      ],
+      "website": "openai.com",
+      "domains": [
+        "openai.com"
+      ],
+      "description": "An American software and internet services company headquartered in San Francisco, founded in 2022.",
+      "industries": [
+        {
+          "code": "RETAIL",
+          "label": null
+        },
+        {
+          "code": "FINANCIAL_INSURANCE",
+          "label": null
+        },
+        {
+          "code": "FINTECH",
+          "label": null
+        },
+        {
+          "code": "SOFTWARE_AND_SERVICES",
+          "label": null
+        },
+        {
+          "code": "ADVERTISING_AND_MARKETING",
+          "label": null
+        }
+      ],
+      "country": "United States",
+      "hqAddress": "1455 3rd Street, San Francisco, California, 94158, United States",
+      "founding": {
+        "date": "2022-06-01",
+        "precision": null,
+        "sources": [
+          {
+            "name": "I Challenge Thee",
+            "url": "https://www.lobbyfacts.eu/datacard/openai-opco-llc?rid=672219746759-76",
+            "date": "2026-06-23",
+            "rank": null
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": null,
+      "investors": [],
+      "fundingRounds": [],
+      "slush": false,
       "people": [],
       "parents": []
     },
@@ -11354,6 +12326,41 @@
       ],
       "parents": []
     },
+    "d83026f0-a25f-4b13-a38c-f5d1ba3938ca": {
+      "id": "d83026f0-a25f-4b13-a38c-f5d1ba3938ca",
+      "name": "ADVANTECH A.E.",
+      "legalName": "ADVANTECH A.E.",
+      "aliases": [
+        "ADVANTECH AE",
+        "ΑΝΩΝΥΜΗ ΒΙΟΤΕΧΝΙΚΗ ΚΑΙ ΕΜΠΟΡΙΚΗ ΕΤΑΙΡΙΑ ΚΑΤΑΣΚΕΥΗΣ ΚΑΙ ΕΜΠΟΡΙΑΣ ΠΡΟΪΟΝΤΩΝ ΠΛΗΡΟΦΟΡΙΚΗΣ",
+        "ΑΝΩΝΥΜΗ ΒΙΟΤΕΧΝΙΚΗ ΚΑΙ ΕΜΠΟΡΙΚΗ ΕΤΑΙΡΙΑ ΚΑΤΑΣΚΕΥΗΣ ΚΑΙ ΕΜΠΟΡΙΑΣ ΠΡΟΙΟΝΤΩΝ ΠΛΗΡΟΦΟΡΙΚΗΣ"
+      ],
+      "website": null,
+      "domains": [],
+      "description": "A Greek biotechnology and computer‑products manufacturing and trading company headquartered in Glyfada, founded in 1987.",
+      "industries": [],
+      "country": "Greece",
+      "hqAddress": "TZAVELLA 14, GLYFADA, 16675, GR",
+      "founding": {
+        "date": "1987-04-23",
+        "precision": null,
+        "sources": [
+          {
+            "name": "GLEIF",
+            "url": "https://search.gleif.org/#/record/213800ZJ3ZJMJJG52C38",
+            "date": "2026-10-29",
+            "rank": "FILING"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": null,
+      "investors": [],
+      "fundingRounds": [],
+      "slush": false,
+      "people": [],
+      "parents": []
+    },
     "d02ebe44-db87-5b44-bd10-65ce93c59477": {
       "id": "d02ebe44-db87-5b44-bd10-65ce93c59477",
       "name": "SA LUNIKER",
@@ -11576,6 +12583,39 @@
           "since": null
         }
       ],
+      "parents": []
+    },
+    "22f4c877-e0d7-4217-9404-5183efc5f45e": {
+      "id": "22f4c877-e0d7-4217-9404-5183efc5f45e",
+      "name": "CATL - DIAGNÓSTICO, LDA",
+      "legalName": "CATL - DIAGNÓSTICO, LDA",
+      "aliases": [
+        "CATL - DIAGNOSTICO, LDA"
+      ],
+      "website": null,
+      "domains": [],
+      "description": "Portuguese company headquartered in Vila Nova de Famalicão, founded in 2011.",
+      "industries": [],
+      "country": "Portugal",
+      "hqAddress": "Rua de Freião, nº 156, Vila Nova de Famalicão, PT-03, 4760-872, PT",
+      "founding": {
+        "date": "2011-09-29",
+        "precision": null,
+        "sources": [
+          {
+            "name": "GLEIF",
+            "url": "https://search.gleif.org/#/record/98450030F54BD7QGC039",
+            "date": "2026-07-12",
+            "rank": "FILING"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": null,
+      "investors": [],
+      "fundingRounds": [],
+      "slush": false,
+      "people": [],
       "parents": []
     },
     "a2617168-a113-4849-8fdd-ca88fd98cb5e": {
@@ -12715,6 +13755,97 @@
       "people": [],
       "parents": []
     },
+    "f242716d-fca1-4f05-8d3d-3b562371d77f": {
+      "id": "f242716d-fca1-4f05-8d3d-3b562371d77f",
+      "name": "GOOGLE INC.",
+      "legalName": null,
+      "aliases": [
+        "Google, Inc.",
+        "Google Inc",
+        "Google",
+        "Google Vienna",
+        "Google Shenzhen",
+        "Google NYC – 9th Avenue",
+        "Google Madrid",
+        "Google Portland",
+        "Google Pittsburgh",
+        "Google Playa Vista",
+        "Google London – Pancras Square",
+        "Google Mexico City",
+        "Alphabet",
+        "Google (Alphabet)"
+      ],
+      "website": null,
+      "domains": [],
+      "description": "A subsidiary of Alphabet Inc. that operates in software and services, internet and web services, telecommunications, entertainment, and advertising and marketing.",
+      "industries": [
+        {
+          "code": "ENTERTAINMENT",
+          "label": null
+        },
+        {
+          "code": "SOFTWARE_AND_SERVICES",
+          "label": null
+        },
+        {
+          "code": "ADVERTISING_AND_MARKETING",
+          "label": null
+        },
+        {
+          "code": "INTERNET_AND_WEB_SERVICES",
+          "label": null
+        },
+        {
+          "code": "TELECOMMUNICATIONS",
+          "label": null
+        }
+      ],
+      "country": "United States",
+      "hqAddress": null,
+      "founding": null,
+      "fundingStage": null,
+      "status": "ACTIVE",
+      "investors": [
+        {
+          "id": "10485eb9-2af9-4092-ac24-86ba3290139b",
+          "name": "Apple Inc."
+        }
+      ],
+      "fundingRounds": [
+        {
+          "id": "dcf76e5e-141a-56d3-b79e-fe3e9cd84c89",
+          "role": "INVESTOR"
+        },
+        {
+          "id": "f50d271b-e1ce-5a81-b464-5c45058a6c67",
+          "role": "INVESTOR"
+        }
+      ],
+      "slush": false,
+      "people": [
+        {
+          "name": "Noam Shazeer",
+          "role": "VP",
+          "since": null
+        },
+        {
+          "name": "Vint Cerf",
+          "role": "VP",
+          "since": "2005-10-01"
+        },
+        {
+          "name": "Steve Newman",
+          "role": "Tech Lead on Google’s first cross‑regional transactional database; led effort to unify file management across Google Apps",
+          "since": null
+        },
+        {
+          "name": "Ben Mann",
+          "role": "Senior software engineer",
+          "since": null
+        }
+      ],
+      "parents": []
+    },
     "bc6ef958-0a00-4166-9e0e-0247964461f2": {
       "id": "bc6ef958-0a00-4166-9e0e-0247964461f2",
       "name": "Riot Innovations Oy",
@@ -13846,6 +14977,256 @@
       "people": [],
       "parents": []
     },
+    "0ac03ffd-ebde-413d-b9e2-c2cb2299b633": {
+      "id": "0ac03ffd-ebde-413d-b9e2-c2cb2299b633",
+      "name": "OpenAI",
+      "legalName": "OPENAI OPCO, LLC",
+      "aliases": [
+        "OpenAI (ChatGPT)",
+        "openai.com",
+        "OPEMAIO"
+      ],
+      "website": "openai.com",
+      "domains": [
+        "openai.com"
+      ],
+      "description": "American artificial intelligence research and development company headquartered in San Francisco, founded in 2015.",
+      "industries": [
+        {
+          "code": "RETAIL",
+          "label": null
+        },
+        {
+          "code": "FINANCIAL_INSURANCE",
+          "label": null
+        },
+        {
+          "code": "FINTECH",
+          "label": null
+        },
+        {
+          "code": "SOFTWARE_AND_SERVICES",
+          "label": null
+        },
+        {
+          "code": "ADVERTISING_AND_MARKETING",
+          "label": null
+        }
+      ],
+      "country": "United States",
+      "hqAddress": "1455 3RD STREET, SAN FRANCISCO, US-CA, 94158, US",
+      "founding": {
+        "date": "2018-09-19",
+        "precision": null,
+        "sources": [
+          {
+            "name": "GLEIF",
+            "url": "https://search.gleif.org/#/record/984500C7AD3A48B9FP18",
+            "date": "2026-04-08",
+            "rank": "FILING"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": "ACTIVE",
+      "investors": [
+        {
+          "id": "046d92f6-d3af-4bff-8d42-4a1490bd3539",
+          "name": "BOOKING HOLDINGS INC."
+        },
+        {
+          "id": "0ac03ffd-ebde-413d-b9e2-c2cb2299b633",
+          "name": "OpenAI"
+        },
+        {
+          "id": "0be8cef9-c9eb-45a4-8b24-8bc23d7bb981",
+          "name": "TARGET CORP"
+        },
+        {
+          "id": "1b26c36e-39e6-43ad-ba82-3e6e0a93152e",
+          "name": "U.S. government"
+        },
+        {
+          "id": "286335c8-9286-4b4a-a3f2-5229799c1e14",
+          "name": "Formation Bio"
+        },
+        {
+          "id": "3f3e5f91-1fe7-4094-88ea-4a25b512a75f",
+          "name": "CISCO SYSTEMS, INC."
+        },
+        {
+          "id": "4531e3dd-e6bb-4673-bba1-e709a5a50cb7",
+          "name": "Fidelity Investments"
+        },
+        {
+          "id": "4955b9f3-18a3-4525-ab09-ec68d12cd9d4",
+          "name": "SANDS CAPITAL ALTERNATIVES, LLC"
+        },
+        {
+          "id": "519265da-eb90-4c12-8020-545914112764",
+          "name": "OpenAI Limited Partnership"
+        },
+        {
+          "id": "51cb4792-2531-4e47-8609-f798d7ad87e7",
+          "name": "NVIDIA CORPORATION"
+        },
+        {
+          "id": "5f7ca504-01d8-4aa9-b1ac-889202fd17c9",
+          "name": "Nvidia"
+        },
+        {
+          "id": "65a2655c-ab71-4e98-9b12-90d596b0d978",
+          "name": "SANDS CAPITAL MANAGEMENT, LLC"
+        },
+        {
+          "id": "6972de2f-f4c4-4ff5-9d2a-7dae9b6de8d2",
+          "name": "TIGER GLOBAL MANAGEMENT LLC"
+        },
+        {
+          "id": "6cbdab2c-1f8c-49c1-88d0-fb2cffe1bbb5",
+          "name": "ALPHA WAVE GLOBAL, LP"
+        },
+        {
+          "id": "7ab2c70b-2b07-4e67-828b-70fc91c1fe21",
+          "name": "D. E. Shaw & Co., L.L.C."
+        },
+        {
+          "id": "7afe2cf7-ae00-462f-ab38-6a814cc6257f",
+          "name": "Chai Discovery"
+        },
+        {
+          "id": "7fc0ea1c-c348-48ce-b60d-a070ab75a695",
+          "name": "ソフトバンクグループ株式会社"
+        },
+        {
+          "id": "848182b3-a251-4f16-afce-bafe6641a537",
+          "name": "Founders Fund"
+        },
+        {
+          "id": "883a8cf8-25fb-4cdd-a02a-ba9d40ce433a",
+          "name": "THRIVE CAPITAL PARTNERS LIMITED"
+        },
+        {
+          "id": "925e2c39-33fc-4ca5-8439-5d83089fc6b8",
+          "name": "Insight Partners"
+        },
+        {
+          "id": "9761df94-f569-47ad-9ee4-e7d8974ac624",
+          "name": "KHOSLA VENTURES, LLC"
+        },
+        {
+          "id": "9e38f090-0a4c-42ce-84e0-37372d8f8ee7",
+          "name": "University of Michigan"
+        },
+        {
+          "id": "a55c2ae5-7d17-4c90-acef-0c6f2ed3870e",
+          "name": "لونيت كابيتال ليمتد"
+        },
+        {
+          "id": "acb76581-d0d9-4cd1-a809-1fc66317b726",
+          "name": "AMAZON.COM, INC."
+        },
+        {
+          "id": "b18315f9-a2f8-4889-aa7c-07bbc219f5b9",
+          "name": "Sequoia Capital"
+        },
+        {
+          "id": "b66d36a3-1471-4ea5-99c3-162de96818ed",
+          "name": "Fidelity Investments"
+        },
+        {
+          "id": "bcbcddf7-4f34-4739-b305-321f4f4c851f",
+          "name": "United States Department of Defense"
+        },
+        {
+          "id": "c934f7e3-6ee3-4983-b0e1-f7827df567f9",
+          "name": "Point Nine Capital"
+        },
+        {
+          "id": "d594a861-aa10-43e8-af5e-6247820b3e9f",
+          "name": "Galdana Ventures S.C.A. SICAV-RAIF"
+        },
+        {
+          "id": "daa303b0-1e31-4d48-a97e-c761563f8d5d",
+          "name": "Alpha Wave Global"
+        },
+        {
+          "id": "dc7ff25e-150c-4b1c-a538-77e57af99f71",
+          "name": "Khosla Ventures"
+        },
+        {
+          "id": "e54f3f3b-1c7b-47b0-9915-a5730f7be7c5",
+          "name": "BlackRock, Inc."
+        },
+        {
+          "id": "eb3b1e84-1f45-486c-8d10-d2b498992830",
+          "name": "MICROSOFT CORP"
+        },
+        {
+          "id": "eb599c87-58d8-4385-80f2-933e23b2e3d6",
+          "name": "The Walt Disney Company"
+        },
+        {
+          "id": "fa54f617-b52b-5a20-877c-6abbd29c3d09",
+          "name": "Microsoft Corporation"
+        }
+      ],
+      "fundingRounds": [],
+      "slush": false,
+      "people": [
+        {
+          "name": "Anthony Prudent--Zykova",
+          "role": "CEO",
+          "since": null
+        },
+        {
+          "name": "Greg Brockman",
+          "role": "CEO",
+          "since": null
+        },
+        {
+          "name": "Mira Murati",
+          "role": "CEO",
+          "since": "2023-11-17"
+        },
+        {
+          "name": "Vijaye Raji",
+          "role": "CTO",
+          "since": null
+        },
+        {
+          "name": "Andrej Karpathy",
+          "role": "CTO",
+          "since": null
+        },
+        {
+          "name": "Matt Knight",
+          "role": "CTO",
+          "since": null
+        },
+        {
+          "name": "Daniela Amodei",
+          "role": "VP",
+          "since": null
+        },
+        {
+          "name": "David Luan",
+          "role": "VP",
+          "since": null
+        },
+        {
+          "name": "Shivon Zilis",
+          "role": "Board Member (former)",
+          "since": null
+        },
+        {
+          "name": "Bret Taylor",
+          "role": "Chairman of the Board",
+          "since": null
+        }
+      ],
+      "parents": []
+    },
     "cd050453-7ce0-52ac-bf3d-d69ad953d5c1": {
       "id": "cd050453-7ce0-52ac-bf3d-d69ad953d5c1",
       "name": "PACK AWAY AB",
@@ -14110,6 +15491,37 @@
           "since": null
         }
       ],
+      "parents": []
+    },
+    "b4b262de-ab9e-4c82-bec5-a6b4d5a273e3": {
+      "id": "b4b262de-ab9e-4c82-bec5-a6b4d5a273e3",
+      "name": "AVANZA AB",
+      "legalName": "AVANZA AB",
+      "aliases": [],
+      "website": null,
+      "domains": [],
+      "description": "Swedish company founded in 2000.",
+      "industries": [],
+      "country": "Sweden",
+      "hqAddress": null,
+      "founding": {
+        "date": "2000-07-01",
+        "precision": null,
+        "sources": [
+          {
+            "name": "Companies House UK",
+            "url": "https://find-and-update.company-information.service.gov.uk/company/FC022625",
+            "date": "2026-11-01",
+            "rank": "FILING"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": "ACTIVE",
+      "investors": [],
+      "fundingRounds": [],
+      "slush": false,
+      "people": [],
       "parents": []
     },
     "01ddf1aa-bd55-5802-8893-f333209d25c7": {
@@ -15937,6 +17349,37 @@
       ],
       "parents": []
     },
+    "870133c9-7212-4653-94d1-19aa22be3271": {
+      "id": "870133c9-7212-4653-94d1-19aa22be3271",
+      "name": "CRANE WORLDWIDE LOGISTICS LLC",
+      "legalName": "CRANE WORLDWIDE LOGISTICS LLC",
+      "aliases": [],
+      "website": null,
+      "domains": [],
+      "description": "An American logistics company based in Houston, Texas, founded in 2008.",
+      "industries": [],
+      "country": "United States",
+      "hqAddress": "1500 RANKIN RD., HOUSTON, US-TX, 77073, US",
+      "founding": {
+        "date": "2008-06-17",
+        "precision": null,
+        "sources": [
+          {
+            "name": "GLEIF",
+            "url": "https://search.gleif.org/#/record/549300QULCGP3SJWNE56",
+            "date": "2026-10-15",
+            "rank": "FILING"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": null,
+      "investors": [],
+      "fundingRounds": [],
+      "slush": false,
+      "people": [],
+      "parents": []
+    },
     "da8eca17-f9ab-54db-a2d5-7322d352202f": {
       "id": "da8eca17-f9ab-54db-a2d5-7322d352202f",
       "name": "Grants Funding Oy",
@@ -16596,6 +18039,74 @@
       },
       "match": "news",
       "claim": "Portuguese drone maker Tekever announced on 6 November 2026 its first operational presence in Denmark, establishing a base in Odense with backing from EIFO."
+    },
+    {
+      "id": "eb0f057187a91a3b",
+      "kind": "news",
+      "doorId": "7d80e01d-4f24-428b-b7d1-97d1877f3b87",
+      "doorName": "POLAR CAPITAL LLP",
+      "local": null,
+      "market": "Sweden",
+      "date": "2026-09-13",
+      "source": {
+        "name": "Investment International: Finance, Investments, Industry Insights",
+        "url": "https://investment-international.com/News/polar-capitalopens-a-new-office-in-sweden",
+        "date": "2026-09-13",
+        "rank": null
+      },
+      "match": "news",
+      "claim": "Polar Capital announced opening a new office in Stockholm on 13 September 2026, confirming its 2026 Swedish office launch."
+    },
+    {
+      "id": "cdd2dfbe159c3317",
+      "kind": "news",
+      "doorId": "6d818a5a-e708-4ca3-bb14-069fcbdd853d",
+      "doorName": "Avanza",
+      "local": null,
+      "market": "Denmark",
+      "date": "2026-10-12",
+      "source": {
+        "name": "investors.avanza.se",
+        "url": "https://investors.avanza.se/en/media/press/2026/christian-sillesen-appointed-country-manager-for-avanza-in-denmark",
+        "date": "2026-10-12",
+        "rank": null
+      },
+      "match": "news",
+      "claim": "Avanza announced Christian Sillesen as Country Manager for Avanza in Denmark, with his start date on 12 October 2026, showing Avanza hired a country manager in 2026."
+    },
+    {
+      "id": "fe1eedaee660cd30",
+      "kind": "news",
+      "doorId": "0ac03ffd-ebde-413d-b9e2-c2cb2299b633",
+      "doorName": "OpenAI",
+      "local": null,
+      "market": "Sweden",
+      "date": "2026-06-18",
+      "source": {
+        "name": "The Local Sweden - News and practical guides in English",
+        "url": "https://www.thelocal.se/20260618/chatgpt-creator-openai-to-launch-its-first-nordic-office-in-stockholm?gaa_at=eafs&gaa_n=AVngi4h11yhbuCP946dAROYKhHuGx54Le7GY4950o4lcWixHqewHPwRyc6pO&gaa_ts=6a5850c3&gaa_sig=jDEPDwVJtSnwQy3fU3JqTkccgRevWiAIkM-lktuYsxtsltbfDQ06k4xEqoC0_0iyivQWXEtwdfQaszex0yW-4g%3D%3D",
+        "date": "2026-06-18",
+        "rank": null
+      },
+      "match": "news",
+      "claim": "OpenAI announced it will open its first Nordic office in Stockholm during the second half of 2026, confirming the company’s office opening in Sweden in 2026."
+    },
+    {
+      "id": "af4dc6e86d6ae3c3",
+      "kind": "news",
+      "doorId": "f9c07405-1cdd-437a-b2ca-f5c784698ff4",
+      "doorName": "Google",
+      "local": null,
+      "market": "Sweden",
+      "date": "2026-06-03",
+      "source": {
+        "name": "DCPulse - Global Data Center news, insights, reports and opinion",
+        "url": "https://dcpulse.com/news/google-sweden-data-center-ai-growth",
+        "date": "2026-06-03",
+        "rank": null
+      },
+      "match": "news",
+      "claim": "Google announced in June 2026 plans to build its first data center in Sweden (Avesta), marking its expansion into the Swedish market."
     }
   ],
   "rounds": [

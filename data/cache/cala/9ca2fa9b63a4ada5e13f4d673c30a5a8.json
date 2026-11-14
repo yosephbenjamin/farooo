@@ -1,0 +1,1 @@
+{"method":"GET","path":"/v1/entities?name=Lu71&entity_types=Company&limit=10","body":null,"fetchedAt":"2026-11-14T11:52:08.083Z","response":{"entities":[{"id":"2ee3f9e9-9673-5506-ba4c-64b55eddb9fe","name":"Lu71","entity_type":"Company","description":"Agent payment protection. Card disputes + crypto address verification. Visa, Mastercard, Stripe, Lithic + 10 blockchains."}]}}

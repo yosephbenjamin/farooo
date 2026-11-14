@@ -223,7 +223,7 @@ async function keepClaim(c: Claim, x: { company: string | null; date: string | n
   if (!date) { stats.noDate++; return; }
   if (date > now || dayDiff(date, now) > 180) { stats.old++; return; }
   const p = await resolveByName(company, profiles);
-  if (!p) { stats.unresolved++; return; }
+  if (!p || !plausibleEntrant(company, p)) { stats.unresolved++; return; }
   profiles[p.id] = p;
   const market = x?.market ?? c.market;
   if (p.country && market.toLowerCase().includes(p.country.toLowerCase())) { stats.local++; return; }
@@ -239,6 +239,37 @@ async function keepClaim(c: Claim, x: { company: string | null; date: string | n
   }
   entries.set(id, { id, kind: "news", doorId: p.id, doorName: p.name, local: null, market, date, source: { name: c.sourceName, url: c.url, date, rank: null }, match: "news", claim: c.text });
   stats.kept++;
+}
+
+/**
+ * The resolved company must be the one the claim names: an exact name, legal name or alias, or a
+ * longer legal name whose own website carries the brand (never "CATL" -> "CATL GROUPE", a French
+ * bank, or "Advantech" -> "ADVANTECH SURGICAL LTD"). And it must have a home country, or it can't
+ * be "entering" anywhere.
+ */
+function plausibleEntrant(company: string, p: Profile): boolean {
+  if (!p.country) return false;
+  const key = normalizeCompany(company);
+  if ([p.name, p.legalName ?? "", ...p.aliases].map(normalizeCompany).includes(key)) return true;
+  const squash = key.replace(/[^a-z0-9]/g, "");
+  return squash.length >= 3 && p.domains.some((d) => d.split(".")[0].replace(/[^a-z0-9]/g, "").includes(squash));
+}
+
+/** Re-check every stored news entry against the current rules (claim text, source, entity). */
+function recheckNews() {
+  let dropped = 0;
+  for (const [id, e] of [...entries]) {
+    if (e.kind !== "news" || !e.claim) continue;
+    const h = heuristic({ index: 0, market: e.market, text: e.claim, url: e.source.url, sourceName: e.source.name, knowbit: "" });
+    const p = profiles[e.doorId];
+    // the old entries' dates may come from the KnowBit, which isn't stored: judge entry-ness and the entity only
+    if (!h.isEntry || !h.company || !p || !plausibleEntrant(h.company, p)) {
+      entries.delete(id);
+      dropped++;
+      log(`recheck: dropped ${e.doorName} -> ${e.market} (${e.date})`);
+    }
+  }
+  return dropped;
 }
 
 /** The widened searches, in priority order: Nordic markets, the demo startups' industries, then DE/UK/NL/FR. */
@@ -351,6 +382,12 @@ async function main() {
     writeJson("news-report.json", { ranAt: new Date().toISOString(), now, extraction: llm ? "llm" : "heuristic", stats });
     log("news", stats);
     save("news");
+  }
+
+  // ---------- 3a. recheck stored news entries against the current rules ----------
+  if (STAGES.has("recheck")) {
+    log(`recheck: ${recheckNews()} news entries dropped`);
+    writeJson("pool.json", { profiles, entries: [...entries.values()], rounds: [...rounds.values()], slush }); // overwrite, no merge: drops must stick
   }
 
   // ---------- 3b. widened news: more phrasings and markets, capped, yield every 50 ----------

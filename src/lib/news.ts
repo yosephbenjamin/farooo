@@ -14,7 +14,7 @@ export const WIDE_MARKETS: { market: string; adj: string }[] = [
   { market: "Germany", adj: "German" }, { market: "United Kingdom", adj: "UK" }, { market: "Netherlands", adj: "Dutch" }, { market: "France", adj: "French" },
 ];
 
-const NOT_ENTRY = /\b(forecast|market (size|is expected|will grow)|cagr|merg(e|er|ed)|acquir|acquisition|takeover|stake in|partner(ed|s|ship) with|joint venture|alliance|raised|funding round|ipo|layoffs?|exit(s|ed)? the|withdraw|leav(e|es|ing) the|job (posting|for)|posted a job|contracts? with)\b/i;
+const NOT_ENTRY = /\b(forecast|market (size|is expected|will grow)|cagr|merg(e|er|ed)|acquir|acquisition|takeover|stake in|partner(ed|s|ship) with|joint[- ]venture|alliance|raised|funding round|ipo|layoffs?|exit(s|ed)? the|withdraw|leav(e|es|ing) the|job (posting|for)|posted a job|contracts? with)\b/i;
 /** Countries Faro reads market entry for: the Nordics first, then the big European markets. */
 const C = String.raw`(?:finland|sweden|norway|denmark|iceland|the nordics|scandinavia|germany|the uk|the united kingdom|britain|the netherlands|france|europe)`;
 const ADJ = String.raw`(?:finnish|swedish|norwegian|danish|nordic|icelandic|german|british|uk|dutch|french)`;
@@ -32,6 +32,7 @@ const ENTRY = new RegExp(
     String.raw`first (operational )?(presence|office|store|market|customers?) in`,
     String.raw`(set(s|ting)? up|establish(es|ed|ing)?) (a |an |its )?(local |nordic |new )?(office|branch|subsidiary|presence|entity|base)`,
     String.raw`(hire[sd]?|hiring|appoint(s|ed)?|nam(es|ed)) (a |its |their )?(first )?(country manager|country director|general manager|managing director|head of)`,
+    String.raw`\bcountry (manager|director)\b`,
     String.raw`arriv(es|ed|ing) in`,
     String.raw`debut(s|ed)? in`,
     String.raw`roll(s|ed|ing)? out .{0,40}\bto ${C}`,
@@ -63,7 +64,7 @@ export function claimsOf(ans: SearchAnswer, market: string, start: number): Clai
 }
 
 /** Heuristic extraction: leading proper-noun phrase + entry verb, date from text or URL. */
-const VERB = String.raw`(?:has|have|is|was|will|plans|announced|launched|opened|signed|said|reported|expanded|entered|set|established|unveiled|revealed|confirmed|began|started|debuted|rolled|chose|picked|selected|continued)`;
+const VERB = String.raw`(?:has|have|is|was|will|plans|announced|launched|opened|signed|said|reported|expanded|entered|set|established|unveiled|revealed|confirmed|began|started|debuted|rolled|chose|picked|selected|continued|appointed|appoints|named|names|hired|hires|opens|launches|enters|expands|establishes)`;
 const NAME = String.raw`((?:[A-Z0-9]|[a-z]+[A-Z])[\w&.'’-]*(?:\s+(?:[A-Z0-9][\w&.'’-]*|of|de|&))*?)`;
 // "Arondite announced…"  /  "Portuguese drone maker Tekever announced…"
 const LEADS = [
@@ -71,7 +72,15 @@ const LEADS = [
   new RegExp(String.raw`^(?:[A-Z][a-z]+\s+)?(?:[a-z][\w-]*\s+){1,3}` + NAME + String.raw`(?:\s*\([^)]*\))?\s+` + VERB + String.raw`\b`),
 ];
 
-export function heuristic(c: Claim) {
+/** Job boards and career pages: a vacancy is not a dated market-entry announcement. */
+export const JOB_SOURCE = /(^|\/\/|\.)(jobs|careers|career)\.|\/(jobs?|careers?|vacanc(y|ies))\/|linkedin\.com\/jobs|greenhouse\.io|lever\.co|workday|teamtailor|smartrecruiters|indeed\./i;
+
+/** Non-breaking and figure hyphens ("joint‑venture") read as plain ones. */
+export const plainText = (t: string) => t.replace(/[\u2010-\u2015\u2212]/g, "-").replace(/\u00a0/g, " ");
+
+export function heuristic(c0: Claim) {
+  const c = { ...c0, text: plainText(c0.text), knowbit: plainText(c0.knowbit) };
+  if (JOB_SOURCE.test(c.url)) return { company: null, date: null, isEntry: false };
   if (NOT_ENTRY.test(c.text) || !ENTRY.test(c.text)) return { company: null, date: null, isEntry: false };
   let company: string | null = null;
   for (const re of LEADS) {

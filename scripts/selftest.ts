@@ -2,6 +2,7 @@
 import assert from "node:assert/strict";
 import { normalizeCompany, normalizeFund } from "../src/lib/normalize";
 import { concreteDateInText, concreteDateInUrl, isPlaceholderDate } from "../src/lib/dates";
+import { heuristic, JOB_SOURCE } from "../src/lib/news";
 import { aliasMatch, SEED_FUNDS } from "../src/lib/seed";
 import { partnerTypes, industryWords, checkIndustries, isBoilerplate } from "../src/lib/partner";
 import { countryFromAddress, filingFounding, rankOf, type Profile } from "../src/lib/profile";
@@ -96,4 +97,12 @@ const ar = buildReport(atPool, verda, { now: "2026-11-14" });
 assert.deepEqual(ar.doors.map((d) => d.id), ["an"], "the unclear door is dropped");
 assert.ok(ar.doors[0].industryNote, "marked uncertain");
 assert.ok(ar.doors[0].whyYou.some((w) => /data centres/.test(w.sentence)), "why-you from the description");
+
+// news claims: phrasings, job boards, odd hyphens
+const claim = (text: string, url = "https://press.example.com/2026/11/10/x") => heuristic({ index: 0, market: "Denmark", text, url, sourceName: "x", knowbit: "" });
+assert.equal(claim("Avanza appointed Christian Sillesen as country manager for Denmark on 12 October 2026.").company, "Avanza");
+assert.ok(claim("Acme launched in Germany on 3 November 2026.").isEntry, "launches in DE");
+assert.ok(!claim("Euro Tech Holdings entered Norway through a 50/50 joint\u2011venture with Sea Clean AS.").isEntry, "non-breaking hyphen joint venture");
+assert.ok(JOB_SOURCE.test("https://jobs.uber.com/en/jobs/156150") && !JOB_SOURCE.test("https://tech.eu/2026/11/06/vensum"));
+assert.ok(!claim("Uber is launching Uber Direct in Denmark.", "https://jobs.uber.com/en/jobs/1").isEntry, "a vacancy is not an announcement");
 console.log("selftest ok");
