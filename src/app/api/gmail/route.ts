@@ -10,7 +10,11 @@ export const maxDuration = 30;
 const PUBLIC_MAIL = /^(gmail|googlemail|outlook|hotmail|live|yahoo|icloud|me|proton|protonmail|aol|gmx)\./i;
 
 /**
- * GET /api/gmail?user=<the user's email>[&startup=<name typed once>][&sender=<open message's sender>][&taps=<json>]
+ * GET /api/gmail?user=<the user's email>[&startup=<name typed once>][&sender=<open message's sender>][&taps=<json>][&quick=1]
+ *
+ * quick=1 answers from stored data only (instant). A company Faro would have to look up live in
+ * Cala answers { pending: true, name }, so the add-on can show a "Looking…" card first: Google's
+ * cards can't show anything while a request runs.
  *
  * Identity: the user's email domain matched to a company's website in Cala. A personal address
  * (gmail.com…) or an unknown domain answers { needsName: true }, and the add-on asks for the
@@ -24,10 +28,15 @@ export async function GET(req: Request) {
   const sender = u.searchParams.get("sender");
   const tapsRaw = u.searchParams.get("taps");
   try {
-    const r = startup ? await getReport(startup) : await getReportForEmail(user);
+    const quick = u.searchParams.get("quick") === "1";
+    const r = startup ? await getReport(startup, quick ? { live: false } : {}) : await getReportForEmail(user, quick ? { live: false } : {});
     const known = !!r && (!!r.startup.country || r.startup.industries.length > 0);
     if (!r || !known) {
       const dom = bareDomain(user.includes("@") ? user.split("@")[1] : user);
+      const canLive = !!process.env.CALA_API_KEY && process.env.CALA_OFFLINE !== "1";
+      if (quick && canLive && (startup || (dom && !PUBLIC_MAIL.test(dom)))) {
+        return NextResponse.json({ pending: true, name: startup || dom });
+      }
       return NextResponse.json({
         needsName: true,
         reason: startup

@@ -8,6 +8,7 @@ import { partnerTypes, industryWords, checkIndustries, isBoilerplate } from "../
 import { countryFromAddress, filingFounding, rankOf, type Profile } from "../src/lib/profile";
 import { buildReport, firstLook, rankDoors, tierOf, xrayLink, prettyRound, NO_TAPS, type Pool } from "../src/lib/doors";
 import { applyTap, parseTaps, serializeTaps } from "../src/lib/taps";
+import { headline } from "../src/lib/prose";
 import { parseSignals, EMPLOYEES_METRIC } from "../src/lib/signals";
 
 const seed = (n: string) => SEED_FUNDS.find((f) => f.name === n)!;
@@ -164,4 +165,5 @@ assert.equal(sranked[0].id, "m1", "no giants as headlines: the listed bank (newe
 assert.equal(tierOf(sranked.find((d) => d.id === "m1")!), 1, "a reason + warm path");
 assert.equal(tierOf(sranked.find((d) => d.id === "h1")!), 2, "a reason without a warm path");
 assert.equal(sranked.find((d) => d.id === "h1")!.whyNow.text, "named Ada L CTO", "old executives are outside the window");
+assert.equal(headline(sr, sranked), "Three doors opened for Me since September. Two through people you know.", "warm paths get the second sentence");
 console.log("selftest ok");

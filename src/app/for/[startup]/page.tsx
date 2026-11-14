@@ -17,7 +17,7 @@ function displayName(slug: string, name?: string) {
 export async function generateMetadata({ params, searchParams }: Params): Promise<Metadata> {
   const { startup } = await params;
   const { name } = await searchParams;
-  return { title: `${displayName(startup, name)} · Faro` };
+  return { title: `Faro for ${displayName(startup, name)}` };
 }
 
 export default async function StartupLog({ params, searchParams }: Params) {

@@ -32,7 +32,7 @@ async function profilesFor(ids: string[]): Promise<Profile[]> {
  * Profile from a name. Exact names (brand, legal, alias) first; brand-prefixed legal names
  * ("Oura" -> "OURA HEALTH OY") only when no exact record carries any data.
  */
-export async function resolveByName(name: string, pool?: Record<string, Profile>): Promise<Profile | null> {
+export async function resolveByName(name: string, pool?: Record<string, Profile>, opts: { live?: boolean } = {}): Promise<Profile | null> {
   const key = normalizeCompany(name);
   const keysOf = (p: Profile) => [p.name, p.legalName ?? "", ...p.aliases].map(normalizeCompany);
   const pick = (ps: Profile[]) => {
@@ -46,6 +46,7 @@ export async function resolveByName(name: string, pool?: Record<string, Profile>
     const hit = pick(Object.values(pool));
     if (hit) return hit;
   }
+  if (opts.live === false) return null; // stored data only
   const cands = await searchEntities(name, { types: ["Company"], limit: 10 }).catch(logged);
   const exact = cands.filter((c) => normalizeCompany(c.name) === key);
   const prefix = cands.filter((c) => normalizeCompany(c.name).startsWith(key + " "));
@@ -54,13 +55,14 @@ export async function resolveByName(name: string, pool?: Record<string, Profile>
 }
 
 /** Profile from an email domain: the company whose website or domains include it. */
-export async function resolveByDomain(email: string, pool?: Record<string, Profile>): Promise<Profile | null> {
+export async function resolveByDomain(email: string, pool?: Record<string, Profile>, opts: { live?: boolean } = {}): Promise<Profile | null> {
   const domain = bareDomain(email.includes("@") ? email.split("@")[1] : email);
   if (!domain || PUBLIC_MAIL.test(domain)) return null;
   if (pool) {
     const hit = Object.values(pool).filter((p) => p.domains.includes(domain));
     if (hit.length) return richest(hit);
   }
+  if (opts.live === false) return null; // stored data only
   const label = domain.split(".").slice(-2, -1)[0] ?? domain;
   const cands = await searchEntities(label, { types: ["Company"], limit: 10 }).catch(logged);
   const profiles = await profilesFor(cands.slice(0, 4).map((c) => c.id));

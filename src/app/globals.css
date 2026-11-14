@@ -41,7 +41,9 @@ body {
 ::selection { background: var(--paper-200); color: var(--ink-deep); }
 
 a { color: inherit; text-decoration-color: var(--ink-300); text-underline-offset: 0.18em; text-decoration-thickness: 1px; }
-a:hover { text-decoration-color: var(--ink); }
+/* everything clickable says so, and darkens while the pointer is on it */
+a, button { cursor: pointer; transition: color .15s ease, text-decoration-color .15s ease, opacity .7s ease; }
+a:hover, a:hover *, button:hover { color: var(--ink-deep); text-decoration-color: var(--ink-deep); }
 
 input::-webkit-calendar-picker-indicator { display: none !important; }
 @keyframes labelin { from { opacity: 0; } to { opacity: 1; } }
@@ -57,9 +59,11 @@ input::-webkit-calendar-picker-indicator { display: none !important; }
 @keyframes caret { 50% { opacity: 0; } }
 @keyframes sweep { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 .sweep { animation: sweep 5s linear infinite; }
+@keyframes statusin { from { opacity: 0; } to { opacity: 1; } }
+.status-in { animation: statusin .6s ease-out both; }
 .caret::after { content: ""; display: inline-block; width: 0.06em; height: 0.9em; margin-left: 0.04em; background: currentColor; vertical-align: -0.08em; animation: caret 1s step-end infinite; }
 
 @media (prefers-reduced-motion: reduce) {
-  .beam, .caret::after, .sweep { animation: none; }
+  .beam, .caret::after, .sweep, .status-in { animation: none; }
   .window-lit-anim { animation-duration: 1ms; }
 }

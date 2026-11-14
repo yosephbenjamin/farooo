@@ -125,28 +125,62 @@ function logCard_(body) {
 }
 
 // ---------- triggers ----------
+/**
+ * Every trigger asks quickly first (stored data only, instant). A startup Faro must look up live
+ * in Cala comes back { pending }, and we show a static "Looking for X…" card: Google's cards can't
+ * show anything while a request runs. Its button runs the full lookup under Gmail's progress bar.
+ */
 function onHomepage() {
   if (!base_()) return note_('Set FARO_URL in Project Settings → Script properties.');
-  var first = call_(ask_({}));
-  if (first.body.needsName) return nameCard_(first.body.reason);
-  if (first.code !== 200 || first.body.error) return note_(first.body.error || 'The lighthouse is out of reach.');
-  var taps = taps_(first.body.slug);
-  if (!taps) return logCard_(first.body);
-  var r = call_(ask_({ taps: taps }));
-  return r.code === 200 && !r.body.error ? logCard_(r.body) : logCard_(first.body);
+  return answer_(call_(ask_({ quick: '1' })), {}, true);
 }
 
 function onGmailMessage(e) {
   if (!base_()) return note_('Set FARO_URL in Project Settings → Script properties.');
   var sender = PropertiesService.getScriptProperties().getProperty('FARO_TEST_SENDER') || senderOf_(e);
   if (!sender) return onHomepage();
-  var r = call_(ask_({ sender: sender }));
+  return answer_(call_(ask_({ sender: sender, quick: '1' })), { sender: sender }, true);
+}
+
+/** The "Show my doors" button on the Looking card: the full (live) lookup. */
+function onLook(e) {
+  var p = e.parameters || {};
+  var card = answer_(call_(ask_({ sender: p.sender || '' })), {}, false);
+  return CardService.newActionResponseBuilder().setNavigation(CardService.newNavigation().updateCard(card)).build();
+}
+
+/** Turn an API answer into a card. */
+function answer_(r, extra, quick) {
   if (r.body.needsName) return nameCard_(r.body.reason);
+  if (r.body.pending) return lookingCard_(r.body.name, extra);
   if (r.code !== 200 || r.body.error) return note_(r.body.error || 'The lighthouse is out of reach.');
-  if (!r.body.match) return onHomepage();
-  var card = CardService.newCardBuilder().setHeader(header_('A door, in your inbox'));
-  card.addSection(doorSection_(r.body.door, r.body.slug));
-  footer_(card, r.body.slug);
+  if (r.body.match) {
+    var card = CardService.newCardBuilder().setHeader(header_('A door, in your inbox'));
+    card.addSection(doorSection_(r.body.door, r.body.slug));
+    footer_(card, r.body.slug);
+    return card.build();
+  }
+  // the log, re-ranked by this startup's taps when there are any
+  var taps = taps_(r.body.slug);
+  if (taps) {
+    var params = { taps: taps };
+    if (quick) params.quick = '1';
+    var t = call_(ask_(params));
+    if (t.code === 200 && !t.body.error && !t.body.pending && !t.body.needsName) return logCard_(t.body);
+  }
+  return logCard_(r.body);
+}
+
+/** A static lighthouse while Faro reads Cala (Gmail's cards can't animate). */
+function lookingCard_(name, extra) {
+  var s = CardService.newCardSection();
+  s.addWidget(CardService.newImage().setImageUrl(LOGO).setAltText('A hand-drawn lighthouse'));
+  s.addWidget(CardService.newTextParagraph().setText('<b>Looking for ' + esc_(name || 'your startup') + '…</b>'));
+  s.addWidget(CardService.newTextParagraph().setText('<i>Faro is reading Cala: who they are, who backed them, which doors opened. A new startup can take up to half a minute.</i>'));
+  s.addWidget(CardService.newTextButton().setText('Show my doors')
+    .setOnClickAction(CardService.newAction().setFunctionName('onLook').setParameters({ sender: (extra && extra.sender) || '' })));
+  var card = CardService.newCardBuilder().setHeader(header_()).addSection(s);
+  if (startup_()) footer_(card, '');
   return card.build();
 }
 

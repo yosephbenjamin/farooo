@@ -41,7 +41,7 @@ function emptyReport(name: string): DoorReport {
   return { now: today(), startup: { id: null, name, country: null, industries: [], investors: [], resolvedFrom: "none" }, doors: [] };
 }
 
-export async function getReport(name: string, opts: { forceLive?: boolean; noWeapons?: boolean } = {}): Promise<DoorReport> {
+export async function getReport(name: string, opts: { forceLive?: boolean; noWeapons?: boolean; live?: boolean } = {}): Promise<DoorReport> {
   const slug = slugify(name);
   if (!opts.forceLive) {
     const demo = demoReport(slug);
@@ -50,7 +50,8 @@ export async function getReport(name: string, opts: { forceLive?: boolean; noWea
   const pool = loadPool();
   const ds = readJson<Dataset | null>("dataset.json", null);
   const pinned = demoStartups().find((d) => d.slug === slug)?.calaId;
-  const p = (pinned ? pool.profiles[pinned] : null) ?? (await resolveByName(name, pool.profiles)) ?? (live() ? await resolveByName(name) : null);
+  const canLive = opts.live ?? live();
+  const p = (pinned ? pool.profiles[pinned] : null) ?? (await resolveByName(name, pool.profiles, { live: false })) ?? (canLive ? await resolveByName(name) : null);
   if (!p) return emptyReport(name.trim());
   const typed = name.trim();
   const display = normalizeCompany(typed) !== normalizeCompany(p.name) && typed.length < p.name.length ? typed : prettyName(p.name);
@@ -58,10 +59,10 @@ export async function getReport(name: string, opts: { forceLive?: boolean; noWea
 }
 
 /** Gmail: the user's company from their email domain. */
-export async function getReportForEmail(email: string): Promise<DoorReport | null> {
+export async function getReportForEmail(email: string, opts: { live?: boolean } = {}): Promise<DoorReport | null> {
   const pool = loadPool();
   const ds = readJson<Dataset | null>("dataset.json", null);
-  const p = (await resolveByDomain(email, pool.profiles)) ?? (live() ? await resolveByDomain(email) : null);
+  const p = (await resolveByDomain(email, pool.profiles, { live: false })) ?? ((opts.live ?? live()) ? await resolveByDomain(email) : null);
   if (!p) return null;
   const demo = demoReport(slugify(p.name)) ?? demoStartups().map((d) => demoReport(d.slug)).find((r) => r?.startup.id === p.id) ?? null;
   return demo ?? buildReport(pool, summarize(p, ds, prettyName(p.name), "domain"), { now: today() });
