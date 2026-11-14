@@ -12,6 +12,9 @@
  *   4. slush     Slush 2026 attendee profiles (Nordic legal names first) -> new national
  *                companies with a FILING founding date -> foreign parent by website or registry
  *                parent link -> market entries
+ *   5. entrants  the other direction: for each foreign Slush attendee, search its brand for a
+ *                recently founded Nordic company (from the search description), then confirm with
+ *                a FILING founding date and a website / registry-parent match
  *
  * Flags: --stage=users,rounds,news,slush  --budget=N (max new API calls this run)
  */
@@ -39,7 +42,7 @@ const MARKET_WORDS: Record<string, string[]> = {
 };
 
 const arg = (k: string) => process.argv.find((a) => a.startsWith(`--${k}=`))?.split("=")[1];
-const STAGES = new Set((arg("stage") ?? "users,rounds,news,slush").split(","));
+const STAGES = new Set((arg("stage") ?? "users,rounds,news,slush,entrants").split(","));
 let budget = Number(arg("budget") ?? Infinity);
 let outOfCredit = false;
 
@@ -309,6 +312,46 @@ async function main() {
     }
     log("slush", stats, `${i}/${order.length} attendees visited`);
     save("slush");
+  }
+
+  // ---------- 5. foreign Slush attendees -> their new Nordic companies ----------
+  if (STAGES.has("entrants") && att.length) {
+    const NORDIC_WORD = /\b(Finnish|Finland|Swedish|Sweden|Norwegian|Norway|Danish|Denmark|Icelandic|Iceland)\b/;
+    const RECENT = new RegExp(`\\b(${Number(now.slice(0, 4)) - 1}|${now.slice(0, 4)})\\b`);
+    const isNordicName = (n: string) => /\b(oy|oyj|ab|a\/s|as|aps|asa|ehf)\b\.?$/i.test(n.trim());
+    const foreign = att.filter((a) => {
+      const p = profiles[a.id];
+      return p ? !!p.country && !MARKETS.has(p.country) : !isNordicName(a.name);
+    });
+    const stats = { searched: 0, candidates: 0, entries: 0 };
+    for (const a of foreign) {
+      if (outOfCredit || budget <= 0) break;
+      const brand = brandOf(a.name);
+      if (brand.length < 3) continue;
+      const res = (await spend(() => searchEntities(brand, { types: ["Company"], limit: 10 }))) ?? [];
+      stats.searched++;
+      const key = normalizeCompany(brand).split(" ")[0];
+      const cands = res.filter((c) => c.id !== a.id && normalizeCompany(c.name).startsWith(key) && NORDIC_WORD.test(c.description ?? "") && RECENT.test(c.description ?? "")).slice(0, 2);
+      for (const c of cands) {
+        stats.candidates++;
+        const local = await profile(c.id);
+        if (!local?.country || !MARKETS.has(local.country)) continue;
+        const f = filingFounding(local);
+        if (!f || f.date > now || dayDiff(f.date, now) > ENTRY_WINDOW_DAYS) continue;
+        const parent = await profile(a.id);
+        if (!parent || parent.country === local.country) continue;
+        const byWebsite = !!local.website && (parent.website === local.website || parent.domains.includes(local.website));
+        const byRegistry = local.parents.some((q) => q.id === parent.id);
+        if (!byWebsite && !byRegistry) continue;
+        const id = createHash("sha256").update(`sub|${parent.id}|${local.id}`).digest("hex").slice(0, 16);
+        entries.set(id, { id, kind: "subsidiary", doorId: parent.id, doorName: parent.name, local: { id: local.id, name: local.legalName ?? local.name }, market: local.country, date: f.date, source: f.source, match: byRegistry ? "registry-parent" : "website" });
+        stats.entries++;
+        log(`entry: ${parent.name} (${parent.country}) -> ${local.legalName ?? local.name} (${local.country}) on ${f.date}`);
+      }
+      if (stats.searched % 100 === 0) save(`entrants ${stats.searched}/${foreign.length}`);
+    }
+    log("entrants", stats, `of ${foreign.length} foreign attendees`);
+    save("entrants");
   }
 
   // summaries for the demo users, for a quick look

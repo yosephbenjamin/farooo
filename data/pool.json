@@ -183,6 +183,134 @@
       "people": [],
       "parents": []
     },
+    "7b20301c-17b9-5f2d-b2d5-502c26650e38": {
+      "id": "7b20301c-17b9-5f2d-b2d5-502c26650e38",
+      "name": "Breakout Labs Oy",
+      "legalName": "Breakout Labs Oy",
+      "aliases": [],
+      "website": "breakout-labs.com",
+      "domains": [
+        "breakout-labs.com"
+      ],
+      "description": "Hands-on, instructor-led training for modern data teams. Build practical skills in analytics engineering, dbt and modern data platforms.",
+      "industries": [
+        {
+          "code": "SOFTWARE_AND_SERVICES",
+          "label": "analytics"
+        }
+      ],
+      "country": "Finland",
+      "hqAddress": "Lappeenranta, Finland",
+      "founding": {
+        "date": "2025-01-01",
+        "precision": "day",
+        "sources": [
+          {
+            "name": "linkedin.com",
+            "url": "https://www.linkedin.com/company/breakoutlabs",
+            "date": "2026-11-02",
+            "rank": "AGGREGATOR"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": "ACTIVE",
+      "investors": [],
+      "fundingRounds": [],
+      "slush": true,
+      "people": [],
+      "parents": []
+    },
+    "aefb04f4-5eae-4753-b6e0-2b1217b6ec37": {
+      "id": "aefb04f4-5eae-4753-b6e0-2b1217b6ec37",
+      "name": "eeedo oy",
+      "legalName": "eeedo oy",
+      "aliases": [
+        "eeedo inc"
+      ],
+      "website": "eee.do",
+      "domains": [
+        "eee.do"
+      ],
+      "description": "Deliver faster, smarter support with eeedo Desk. AI-powered ticket handling, chatbots, and automation to streamline customer service 24/7.",
+      "industries": [
+        {
+          "code": "SOFTWARE_AND_SERVICES",
+          "label": "enterpriseSoftware"
+        }
+      ],
+      "country": "Finland",
+      "hqAddress": "Hämeenkatu 13 A, 33100 TAMPERE, TAMPERE, FI-33100, FI",
+      "founding": {
+        "date": "2010-09-24",
+        "precision": "day",
+        "sources": [
+          {
+            "name": "avoindata.prh.fi",
+            "url": "https://avoindata.prh.fi/opendata-ytj-api/v3/companies?businessId=2356636-5",
+            "date": "2026-11-13",
+            "rank": "FILING"
+          },
+          {
+            "name": "eee.do",
+            "url": "https://eee.do/about",
+            "date": "2026-11-13",
+            "rank": "PRIMARY"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": "ACTIVE",
+      "investors": [],
+      "fundingRounds": [],
+      "slush": true,
+      "people": [
+        {
+          "name": "Arttu Kalli",
+          "role": "CEO",
+          "since": null
+        }
+      ],
+      "parents": []
+    },
+    "ef56136a-8464-5201-85f8-0b83d4e3202e": {
+      "id": "ef56136a-8464-5201-85f8-0b83d4e3202e",
+      "name": "Uniker Oy",
+      "legalName": "Uniker Oy",
+      "aliases": [],
+      "website": "uniker.dev",
+      "domains": [
+        "uniker.dev"
+      ],
+      "description": "AI is being fitted into how humans build software. We",
+      "industries": [
+        {
+          "code": "SOFTWARE_AND_SERVICES",
+          "label": "ai"
+        }
+      ],
+      "country": "Finland",
+      "hqAddress": "Helsinki, Finland",
+      "founding": {
+        "date": "2026-09-04",
+        "precision": "day",
+        "sources": [
+          {
+            "name": "avoindata.prh.fi",
+            "url": "https://avoindata.prh.fi/opendata-ytj-api/v3/companies?businessId=3650484-1",
+            "date": "2026-11-13",
+            "rank": "FILING"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": "ACTIVE",
+      "investors": [],
+      "fundingRounds": [],
+      "slush": true,
+      "people": [],
+      "parents": []
+    },
     "01fb935e-7993-48e1-9e55-137b3668c01a": {
       "id": "01fb935e-7993-48e1-9e55-137b3668c01a",
       "name": "defguard",
@@ -248,6 +376,152 @@
         {
           "name": "Robert Olejnik",
           "role": "CEO",
+          "since": null
+        }
+      ],
+      "parents": []
+    },
+    "b91bddf8-afa2-5ce2-84e8-bf5df78977fb": {
+      "id": "b91bddf8-afa2-5ce2-84e8-bf5df78977fb",
+      "name": "Cephalo AS",
+      "legalName": "CEPHALO AS",
+      "aliases": [
+        "Curiosity AS"
+      ],
+      "website": "cephalo.no",
+      "domains": [
+        "cephalo.no"
+      ],
+      "description": "Cephalo er en delingsplattform der lærere finner og deler undervisningsressurser og undervisningsmateriell på tvers av hele Norge.",
+      "industries": [
+        {
+          "code": "EDUCATION",
+          "label": "edu"
+        }
+      ],
+      "country": "Norway",
+      "hqAddress": "Bergittavegen 17, 7021 Trondheim, Norway",
+      "founding": {
+        "date": "2025-04-08",
+        "precision": "day",
+        "sources": [
+          {
+            "name": "data.brreg.no",
+            "url": "https://data.brreg.no/enhetsregisteret/api/enheter/935434181",
+            "date": "2025-05-02",
+            "rank": "FILING"
+          },
+          {
+            "name": "w2.brreg.no",
+            "url": "https://w2.brreg.no/kunngjoring/hent_en.jsp?kid=20250000220042&sokeverdi=935434181&spraak=nb",
+            "date": "2025-05-02",
+            "rank": "FILING"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": "ACTIVE",
+      "investors": [],
+      "fundingRounds": [],
+      "slush": true,
+      "people": [
+        {
+          "name": "Ailin Østerås",
+          "role": "CEO",
+          "since": null
+        }
+      ],
+      "parents": []
+    },
+    "86918e08-e1e0-4caa-8b76-d4e22fd61699": {
+      "id": "86918e08-e1e0-4caa-8b76-d4e22fd61699",
+      "name": "Corsmed AB",
+      "legalName": "Corsmed AB",
+      "aliases": [
+        "Corsmed"
+      ],
+      "website": "corsmed.com",
+      "domains": [
+        "corsmed.com"
+      ],
+      "description": "The only MRI simulator where practice transfers to real scanners. Change parameters, see accurate images; contrast, SNR, artifacts. Trusted by 50+ institutions.",
+      "industries": [
+        {
+          "code": "SOFTWARE_AND_SERVICES",
+          "label": null
+        },
+        {
+          "code": "PHARMACEUTICALS",
+          "label": "medtechPharma"
+        },
+        {
+          "code": "MEDICAL_DEVICES",
+          "label": null
+        }
+      ],
+      "country": "Sweden",
+      "hqAddress": "Birger Jarlsgatan 57 C, 113 56 Stockholm, Sweden",
+      "founding": {
+        "date": "2016-12-09",
+        "precision": null,
+        "sources": [
+          {
+            "name": "GLEIF",
+            "url": "https://search.gleif.org/#/record/9845002F0I6A564B3B68",
+            "date": "2026-05-18",
+            "rank": "FILING"
+          }
+        ]
+      },
+      "fundingStage": "SEED",
+      "status": "ACTIVE",
+      "investors": [
+        {
+          "id": "08bb4554-61c8-4250-b2a7-82c2198d5882",
+          "name": "Fore C Asset Management AB"
+        },
+        {
+          "id": "95ed8a72-e710-4bc4-b3ea-808999bfea80",
+          "name": "BIG PI ΑΝΩΝΥΜΗ ΕΤΑΙΡΙΑ ΔΙΑΧΕΙΡΙΣΗΣ ΑΜΟΙΒΑΙΩΝ ΚΕΦΑΛΑΙΩΝ ΕΠΙΧΕΙΡΗΜΑΤΙΚΩΝ ΣΥΜΜΕΤΟΧΩΝ"
+        },
+        {
+          "id": "be67283b-4529-4a2d-834a-96edc4b36971",
+          "name": "Luminar Ventures"
+        },
+        {
+          "id": "e74a8938-46c9-5767-886d-09a3bdee1d79",
+          "name": "Lund University Holding"
+        }
+      ],
+      "fundingRounds": [
+        {
+          "id": "269f52e9-aab3-5240-93df-692286e33d23",
+          "role": "ISSUER"
+        },
+        {
+          "id": "465f4adf-4317-5a10-8459-17c072aab7d5",
+          "role": "ISSUER"
+        },
+        {
+          "id": "9e1f50ff-2393-5cf1-a498-e86d9245c43d",
+          "role": "ISSUER"
+        }
+      ],
+      "slush": true,
+      "people": [
+        {
+          "name": "Erik Jacobsson",
+          "role": "CEO",
+          "since": null
+        },
+        {
+          "name": "Christos Xanthis",
+          "role": "CTO",
+          "since": null
+        },
+        {
+          "name": "Anthony Aletras",
+          "role": "Advisor",
           "since": null
         }
       ],
@@ -351,6 +625,131 @@
             "name": "Companies House UK",
             "url": "https://find-and-update.company-information.service.gov.uk/company/17444919",
             "date": "2026-10-01",
+            "rank": "FILING"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": "ACTIVE",
+      "investors": [],
+      "fundingRounds": [],
+      "slush": false,
+      "people": [],
+      "parents": []
+    },
+    "c50873cf-a1e6-5c47-a1b8-aba71d38edbd": {
+      "id": "c50873cf-a1e6-5c47-a1b8-aba71d38edbd",
+      "name": "Dalip AS",
+      "legalName": "DALIP AS",
+      "aliases": [],
+      "website": "dalip.ai",
+      "domains": [
+        "dalip.ai"
+      ],
+      "description": "A Norwegian software and services company headquartered in Oslo, founded in 2025.",
+      "industries": [
+        {
+          "code": "SOFTWARE_AND_SERVICES",
+          "label": "ai"
+        }
+      ],
+      "country": "Norway",
+      "hqAddress": "Oslo, Norway",
+      "founding": {
+        "date": "2025-01-01",
+        "precision": "day",
+        "sources": [
+          {
+            "name": "linkedin.com",
+            "url": "https://www.linkedin.com/company/dalip-ai/",
+            "date": "2026-11-02",
+            "rank": "AGGREGATOR"
+          }
+        ]
+      },
+      "fundingStage": "PRE_SEED",
+      "status": "ACTIVE",
+      "investors": [
+        {
+          "id": "32e49cfe-fb8e-57db-ae5c-816c12c3121e",
+          "name": "Kjetil J. Olsen"
+        },
+        {
+          "id": "43f36a2e-1d01-5b45-8870-790d14824df4",
+          "name": "Christoffer O. Hernæs"
+        },
+        {
+          "id": "4cca228e-cf0d-4ca0-abce-7bff47cbeb73",
+          "name": "ISRAR KHAN LTD"
+        },
+        {
+          "id": "6dc220e5-46ed-540f-967e-5a6569561c47",
+          "name": "Eivind Skibenes"
+        },
+        {
+          "id": "86ff14f5-1f95-522f-b400-2799d7aa5538",
+          "name": "Trond Riiber Knudsen"
+        },
+        {
+          "id": "a28acdb1-1959-5b59-9e17-d64a64316b6f",
+          "name": "Fredrik Campbell Strømme"
+        },
+        {
+          "id": "b33fc399-77da-5565-bc3a-3d6b7f9a58b3",
+          "name": "Tore Sagstuen"
+        },
+        {
+          "id": "bbf605f1-9676-5a1a-ba80-ff3c182a0192",
+          "name": "Sophus Slaatta"
+        }
+      ],
+      "fundingRounds": [
+        {
+          "id": "c6df1c3a-10e4-5d35-9e48-93a487a29d85",
+          "role": "ISSUER"
+        }
+      ],
+      "slush": true,
+      "people": [
+        {
+          "name": "Adil Osmani",
+          "role": "CEO",
+          "since": "2025-03-13"
+        },
+        {
+          "name": "Jussi Seppälä",
+          "role": "CTO",
+          "since": null
+        }
+      ],
+      "parents": []
+    },
+    "9937e40c-cea6-4d5c-ad4d-563f0ff09ac9": {
+      "id": "9937e40c-cea6-4d5c-ad4d-563f0ff09ac9",
+      "name": "AMOS GROUP LIMITED",
+      "legalName": "AMOS GROUP LIMITED",
+      "aliases": [
+        "Colin Amos"
+      ],
+      "website": null,
+      "domains": [],
+      "description": "A UK construction and engineering company headquartered in Ashbourne, Derbyshire, founded in 2005.",
+      "industries": [
+        {
+          "code": "CONSTRUCTION_AND_ENGINEERING",
+          "label": null
+        }
+      ],
+      "country": "United Kingdom",
+      "hqAddress": null,
+      "founding": {
+        "date": "2005-11-09",
+        "precision": null,
+        "sources": [
+          {
+            "name": "Companies House UK",
+            "url": "https://find-and-update.company-information.service.gov.uk/company/05617062",
+            "date": "2026-11-01",
             "rank": "FILING"
           }
         ]
@@ -729,6 +1128,69 @@
       ],
       "parents": []
     },
+    "ddc2ac26-8790-4c1d-a731-cd14753eb40e": {
+      "id": "ddc2ac26-8790-4c1d-a731-cd14753eb40e",
+      "name": "Servido Oy",
+      "legalName": "Servido Oy",
+      "aliases": [
+        "Servido"
+      ],
+      "website": "servido.co",
+      "domains": [
+        "servido.co"
+      ],
+      "description": "Servido is a Finnish app and web service for ordering home services such as cleaning, chimney sweeping and moving help from vetted local professionals at fixed prices, operating in the Helsinki reg...",
+      "industries": [
+        {
+          "code": "HOUSEHOLD_PRODUCTS",
+          "label": "home"
+        }
+      ],
+      "country": "Finland",
+      "hqAddress": "Jokivarrentie 23 B, Jokela, 05400, FI",
+      "founding": {
+        "date": "2025-04-16",
+        "precision": "day",
+        "sources": [
+          {
+            "name": "GLEIF",
+            "url": "https://search.gleif.org/#/record/648804CXAUKGU4719710",
+            "date": "2026-04-08",
+            "rank": "FILING"
+          },
+          {
+            "name": "avoindata.prh.fi",
+            "url": "https://avoindata.prh.fi/opendata-ytj-api/v3/companies?businessId=3526221-1",
+            "date": "2026-11-13",
+            "rank": "FILING"
+          },
+          {
+            "name": "search.vainu.com",
+            "url": "https://search.vainu.com/company/servido-oy-taloustiedot-ja-liikevaihto/FI35262211/yritystiedot",
+            "date": "2026-11-13",
+            "rank": "AGGREGATOR"
+          }
+        ]
+      },
+      "fundingStage": "SEED",
+      "status": "ACTIVE",
+      "investors": [],
+      "fundingRounds": [
+        {
+          "id": "37f6af45-745e-522a-bef1-92aa58589690",
+          "role": "ISSUER"
+        }
+      ],
+      "slush": true,
+      "people": [
+        {
+          "name": "Otto Laurila",
+          "role": "CEO",
+          "since": null
+        }
+      ],
+      "parents": []
+    },
     "3bc76333-5645-5c97-a850-c1688ea28617": {
       "id": "3bc76333-5645-5c97-a850-c1688ea28617",
       "name": "Timill Ab Oy",
@@ -769,6 +1231,53 @@
       "people": [],
       "parents": []
     },
+    "f20b39e0-e7b3-5a97-86dd-875eee33f9e9": {
+      "id": "f20b39e0-e7b3-5a97-86dd-875eee33f9e9",
+      "name": "Regweaver AB",
+      "legalName": "Regweaver AB",
+      "aliases": [],
+      "website": "regweaver.com",
+      "domains": [
+        "regweaver.com"
+      ],
+      "description": "From complexity to clarity. Regweaver is pioneering Automated Compliance Operations (ACO) — transforming regulatory complexity into structured, scalable operations across entire value chains.",
+      "industries": [
+        {
+          "code": "FINTECH",
+          "label": "regtech"
+        }
+      ],
+      "country": "Sweden",
+      "hqAddress": "Gothenburg, Sweden",
+      "founding": {
+        "date": "2025-01-01",
+        "precision": "day",
+        "sources": [
+          {
+            "name": "linkedin.com",
+            "url": "https://www.linkedin.com/company/regweaver",
+            "date": "2026-11-02",
+            "rank": "AGGREGATOR"
+          }
+        ]
+      },
+      "fundingStage": "SERIES_A",
+      "status": "ACTIVE",
+      "investors": [],
+      "fundingRounds": [
+        {
+          "id": "3b14770f-aafd-5bc9-8063-45577af2d70e",
+          "role": "ISSUER"
+        },
+        {
+          "id": "dfcff745-6651-58fa-b851-47ca390cab83",
+          "role": "ISSUER"
+        }
+      ],
+      "slush": true,
+      "people": [],
+      "parents": []
+    },
     "001eb587-ff78-5d7a-85bb-7c454cd0c176": {
       "id": "001eb587-ff78-5d7a-85bb-7c454cd0c176",
       "name": "Humanpath",
@@ -805,6 +1314,146 @@
       "fundingRounds": [],
       "slush": true,
       "people": [],
+      "parents": []
+    },
+    "bcc4ac75-ea9b-5f37-813e-a3af10d089f1": {
+      "id": "bcc4ac75-ea9b-5f37-813e-a3af10d089f1",
+      "name": "Nucu Oy",
+      "legalName": "Nucu Oy",
+      "aliases": [
+        "nucubaby.com",
+        "Nucu Ltd",
+        "Nucu"
+      ],
+      "website": "nucuhealth.com",
+      "domains": [
+        "nucuhealth.com"
+      ],
+      "description": "Nucu tracks sleep, and bedroom environment. No cameras, No wearables, Nothing to charge. Backed by the founding team of Oura.",
+      "industries": [
+        {
+          "code": "HEALTHCARE_PROVIDERS",
+          "label": "health"
+        }
+      ],
+      "country": "Finland",
+      "hqAddress": "Oulu, Finland",
+      "founding": {
+        "date": "2016-01-01",
+        "precision": "day",
+        "sources": [
+          {
+            "name": "linkedin.com",
+            "url": "https://www.linkedin.com/company/nucu/",
+            "date": "2026-11-02",
+            "rank": "AGGREGATOR"
+          }
+        ]
+      },
+      "fundingStage": "SEED",
+      "status": "ACTIVE",
+      "investors": [
+        {
+          "id": "8673db97-466e-4e7e-8417-a0ce1207bf9e",
+          "name": "Voima Ventures"
+        }
+      ],
+      "fundingRounds": [
+        {
+          "id": "abb2ffb7-56f6-5535-90cf-f7bf5d42bbff",
+          "role": "ISSUER"
+        }
+      ],
+      "slush": true,
+      "people": [],
+      "parents": []
+    },
+    "acecc5a0-5fd2-47d6-9cba-6acd9cd5f56d": {
+      "id": "acecc5a0-5fd2-47d6-9cba-6acd9cd5f56d",
+      "name": "Integrify Oy",
+      "legalName": "Integrify Oy",
+      "aliases": [
+        "Integrify Ltd",
+        "Integrify"
+      ],
+      "website": "integrify.io",
+      "domains": [
+        "integrify.io"
+      ],
+      "description": "We connect the best talent in Finland with forward-thinking companies.",
+      "industries": [
+        {
+          "code": "CONSULTING",
+          "label": "recruitment"
+        }
+      ],
+      "country": "Finland",
+      "hqAddress": "Helsinki, Finland",
+      "founding": {
+        "date": "2016-03-16",
+        "precision": "day",
+        "sources": [
+          {
+            "name": "GLEIF",
+            "url": "https://search.gleif.org/#/record/9845006A4D9DD1D1UC83",
+            "date": "2026-04-08",
+            "rank": "FILING"
+          },
+          {
+            "name": "avoindata.prh.fi",
+            "url": "https://avoindata.prh.fi/opendata-ytj-api/v3/companies?businessId=2746964-2",
+            "date": "2026-11-11",
+            "rank": "FILING"
+          },
+          {
+            "name": "api.gleif.org",
+            "url": "https://api.gleif.org/api/v1/lei-records?filter%5Bentity.registeredAs%5D=2746964-2",
+            "date": "2026-11-11",
+            "rank": "FILING"
+          },
+          {
+            "name": "linkedin.com",
+            "url": "https://www.linkedin.com/company/integrify-fi",
+            "date": "2026-11-02",
+            "rank": "AGGREGATOR"
+          }
+        ]
+      },
+      "fundingStage": "SEED",
+      "status": null,
+      "investors": [
+        {
+          "id": "cd63d5a6-ff71-4c0f-a149-f6bae0487b36",
+          "name": "TESI S.P.A."
+        }
+      ],
+      "fundingRounds": [
+        {
+          "id": "72c3ba5c-4f2c-5e12-a2aa-34a8a07e6181",
+          "role": "ISSUER"
+        },
+        {
+          "id": "adcc1a0a-3316-549d-9d39-de50ac46e593",
+          "role": "ISSUER"
+        },
+        {
+          "id": "c8ca3a6b-d9a3-5a14-af90-5e0290eb2e39",
+          "role": "ISSUER"
+        }
+      ],
+      "slush": true,
+      "people": [
+        {
+          "name": "Daniel Rahman",
+          "role": "CEO",
+          "since": null
+        },
+        {
+          "name": "Janne Muurinen",
+          "role": "CEO",
+          "since": null
+        }
+      ],
       "parents": []
     },
     "7683854e-a629-4b38-9840-2260eac9cf34": {
@@ -931,6 +1580,73 @@
         {
           "name": "Sakari Raussi",
           "role": "CEO",
+          "since": null
+        }
+      ],
+      "parents": []
+    },
+    "cf3d6a47-052e-473c-a742-0030a764d51c": {
+      "id": "cf3d6a47-052e-473c-a742-0030a764d51c",
+      "name": "Intergrid Oy",
+      "legalName": "Intergrid Oy",
+      "aliases": [
+        "Intergrid"
+      ],
+      "website": "intergridsystems.com",
+      "domains": [
+        "intergridsystems.com"
+      ],
+      "description": "Trusted by 100+ sites in Europe - the easiest way to operate industrial energy systems.",
+      "industries": [
+        {
+          "code": "RENEWABLE_ENERGY",
+          "label": "energy"
+        }
+      ],
+      "country": "Finland",
+      "hqAddress": "Kalevankatu 30, 00100 HELSINKI, HELSINKI, FI-00100, FI",
+      "founding": {
+        "date": "2023-05-10",
+        "precision": "day",
+        "sources": [
+          {
+            "name": "GLEIF",
+            "url": "https://search.gleif.org/#/record/743700SILEXUN25LIB40",
+            "date": "2026-07-10",
+            "rank": "FILING"
+          },
+          {
+            "name": "linkedin.com",
+            "url": "https://www.linkedin.com/company/intergrid-systems/",
+            "date": "2026-11-02",
+            "rank": "AGGREGATOR"
+          }
+        ]
+      },
+      "fundingStage": "SEED",
+      "status": "ACTIVE",
+      "investors": [
+        {
+          "id": "4d668c75-c7a0-4f5b-baea-ce0fa6a34e31",
+          "name": "Lifeline Ventures AB"
+        }
+      ],
+      "fundingRounds": [
+        {
+          "id": "a0f6d5cb-9dde-508a-9259-e3b6ac8e35ee",
+          "role": "ISSUER"
+        }
+      ],
+      "slush": true,
+      "people": [
+        {
+          "name": "Olli Kangas",
+          "role": "CEO",
+          "since": null
+        },
+        {
+          "name": "Pasi Hakulinen",
+          "role": "Deputy CEO",
           "since": null
         }
       ],
@@ -1379,6 +2095,66 @@
       "people": [],
       "parents": []
     },
+    "cca160f9-b7bd-5005-bc78-fc0519c8589d": {
+      "id": "cca160f9-b7bd-5005-bc78-fc0519c8589d",
+      "name": "CultureFlow AS",
+      "legalName": "CULTUREFLOW AS",
+      "aliases": [],
+      "website": "cultureflow.no",
+      "domains": [
+        "cultureflow.no"
+      ],
+      "description": "A software and services company headquartered in Oslo, Norway, founded in 2025.",
+      "industries": [
+        {
+          "code": "SOFTWARE_AND_SERVICES",
+          "label": "enterpriseSoftware"
+        }
+      ],
+      "country": "Norway",
+      "hqAddress": "Oslo, Norway",
+      "founding": {
+        "date": "2025-09-10",
+        "precision": "day",
+        "sources": [
+          {
+            "name": "linkedin.com",
+            "url": "https://www.linkedin.com/company/cultureflowhq/",
+            "date": "2026-11-02",
+            "rank": "AGGREGATOR"
+          },
+          {
+            "name": "data.brreg.no",
+            "url": "https://data.brreg.no/enhetsregisteret/api/enheter/936199305",
+            "date": "2026-11-12",
+            "rank": "FILING"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": "ACTIVE",
+      "investors": [],
+      "fundingRounds": [],
+      "slush": true,
+      "people": [
+        {
+          "name": "Julian Johns",
+          "role": "CEO",
+          "since": "2025-09-10"
+        },
+        {
+          "name": "Allyson Barr",
+          "role": "Chief Commercial Officer",
+          "since": null
+        },
+        {
+          "name": "Stein Myrseth",
+          "role": "Advisor",
+          "since": null
+        }
+      ],
+      "parents": []
+    },
     "15bf634c-0aff-4fe3-8c10-9cccd27f41b6": {
       "id": "15bf634c-0aff-4fe3-8c10-9cccd27f41b6",
       "name": "Carter Oy",
@@ -1537,6 +2313,99 @@
           "name": "Simon Schøler",
           "role": "Business Director, Nordics",
           "since": null
+        }
+      ],
+      "parents": []
+    },
+    "946d8554-8cfe-5ecf-b4a6-ac04df913d71": {
+      "id": "946d8554-8cfe-5ecf-b4a6-ac04df913d71",
+      "name": "ExecutGroup Oy",
+      "legalName": "ExecutGroup Oy",
+      "aliases": [],
+      "website": "executgroup.com",
+      "domains": [
+        "executgroup.com"
+      ],
+      "description": "We help organisations involve the right people, identify what matters most and turn collective priorities into better decisions and action.",
+      "industries": [
+        {
+          "code": "SOFTWARE_AND_SERVICES",
+          "label": "ai"
+        }
+      ],
+      "country": "Finland",
+      "hqAddress": "Helsinki, Finland",
+      "founding": {
+        "date": "2026-01-01",
+        "precision": "day",
+        "sources": [
+          {
+            "name": "linkedin.com",
+            "url": "https://www.linkedin.com/company/executgroup/home/",
+            "date": "2026-11-02",
+            "rank": "AGGREGATOR"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": "ACTIVE",
+      "investors": [],
+      "fundingRounds": [],
+      "slush": true,
+      "people": [
+        {
+          "name": "Jussi Simolin",
+          "role": "CEO",
+          "since": null
+        },
+        {
+          "name": "Mahdi Farimani",
+          "role": "CTO",
+          "since": null
+        }
+      ],
+      "parents": []
+    },
+    "fb867876-a6ff-5525-8fb3-67b0b49aedd1": {
+      "id": "fb867876-a6ff-5525-8fb3-67b0b49aedd1",
+      "name": "Kotiranta Sport Oy",
+      "legalName": "Kotiranta Sport Oy",
+      "aliases": [],
+      "website": "kotirantasport.fi",
+      "domains": [
+        "kotirantasport.fi"
+      ],
+      "description": "Kotiranta Sport Oy is a Finnish sports technology company developing cloud-based video refereeing, mobile live streaming and remote sports production solutions.",
+      "industries": [
+        {
+          "code": "ENTERTAINMENT",
+          "label": "sports"
+        }
+      ],
+      "country": "Finland",
+      "hqAddress": "Ylivieska, Finland",
+      "founding": {
+        "date": "2025-07-30",
+        "precision": "day",
+        "sources": [
+          {
+            "name": "avoindata.prh.fi",
+            "url": "https://avoindata.prh.fi/opendata-ytj-api/v3/companies?businessId=3553660-6",
+            "date": "2025-07-30",
+            "rank": "FILING"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": "ACTIVE",
+      "investors": [],
+      "fundingRounds": [],
+      "slush": true,
+      "people": [
+        {
+          "name": "Johanna Koskela",
+          "role": "CEO",
+          "since": "2025-08-01"
         }
       ],
       "parents": []
@@ -1702,6 +2571,56 @@
         {
           "name": "Zachary Chandler",
           "role": "Industrialization & Sales",
+          "since": null
+        }
+      ],
+      "parents": []
+    },
+    "f99a820e-8a05-51e2-b56d-85fd3b7bc05f": {
+      "id": "f99a820e-8a05-51e2-b56d-85fd3b7bc05f",
+      "name": "Enlapser Oy",
+      "legalName": "Enlapser Oy",
+      "aliases": [
+        "Nemesol Oy",
+        "Nemesol",
+        "Raksacam",
+        "Gripwork",
+        "New Media Solutions Finland"
+      ],
+      "website": "enlapser.com",
+      "domains": [
+        "enlapser.com"
+      ],
+      "description": "Remote monitoring, live streaming, and long-term timelapse solutions for construction and industry.",
+      "industries": [
+        {
+          "code": "CONSTRUCTION_AND_ENGINEERING",
+          "label": "propConstruction"
+        }
+      ],
+      "country": "Finland",
+      "hqAddress": "Helsinki, Finland",
+      "founding": {
+        "date": "1997-10-06",
+        "precision": "day",
+        "sources": [
+          {
+            "name": "avoindata.prh.fi",
+            "url": "https://avoindata.prh.fi/opendata-ytj-api/v3/companies?businessId=1442424-2",
+            "date": "2026-11-12",
+            "rank": "FILING"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": "ACTIVE",
+      "investors": [],
+      "fundingRounds": [],
+      "slush": true,
+      "people": [
+        {
+          "name": "Markus Seppälä",
+          "role": "CEO",
           "since": null
         }
       ],
@@ -1933,6 +2852,112 @@
       ],
       "parents": []
     },
+    "ce589384-67b2-45f1-9908-d69d1202a292": {
+      "id": "ce589384-67b2-45f1-9908-d69d1202a292",
+      "name": "AMOS CAPITAL TECHNOLOGIES, LLC",
+      "legalName": "AMOS CAPITAL TECHNOLOGIES, LLC",
+      "aliases": [],
+      "website": null,
+      "domains": [],
+      "description": "A US company incorporated in 2022 and headquartered in Westlake Village, California.",
+      "industries": [],
+      "country": "United States",
+      "hqAddress": "32720 BARRETT DRIVE, WESTLAKE VILLAGE, US-CA, 91361, US",
+      "founding": {
+        "date": "2022-07-25",
+        "precision": null,
+        "sources": [
+          {
+            "name": "GLEIF",
+            "url": "https://search.gleif.org/#/record/254900K4TQOFG3GNMD83",
+            "date": "2026-04-08",
+            "rank": "FILING"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": null,
+      "investors": [],
+      "fundingRounds": [],
+      "slush": false,
+      "people": [],
+      "parents": []
+    },
+    "cfc9ac0f-b314-4a7f-b021-dab237391da4": {
+      "id": "cfc9ac0f-b314-4a7f-b021-dab237391da4",
+      "name": "Veil.ai Oy",
+      "legalName": "Veil.ai Oy",
+      "aliases": [
+        "Veil.Ai"
+      ],
+      "website": "veil.ai",
+      "domains": [
+        "veil.ai"
+      ],
+      "description": "Finnish privacy-enhancing technology company, a University of Helsinki (FIMM) spin-out, whose BONSAI applications anonymize or synthesize structured health data and redact personal data from free t...",
+      "industries": [
+        {
+          "code": "SOFTWARE_AND_SERVICES",
+          "label": "analytics"
+        }
+      ],
+      "country": "Finland",
+      "hqAddress": "Haartmaninkatu 4, 00290 Helsinki, Finland",
+      "founding": {
+        "date": "2020-02-05",
+        "precision": "day",
+        "sources": [
+          {
+            "name": "tietopalvelu.ytj.fi",
+            "url": "https://tietopalvelu.ytj.fi/yritys/3107134-6",
+            "date": "2026-09-15",
+            "rank": "FILING"
+          },
+          {
+            "name": "helsinki.fi",
+            "url": "https://www.helsinki.fi/en/news/technology/veilai-produces-increasingly-safe-data-medical-science-licence-agreement-concluded-university-helsinki",
+            "date": "2021-03-03",
+            "rank": "PRIMARY"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": "INACTIVE",
+      "investors": [
+        {
+          "id": "9959f461-f24f-45c1-b90c-f8bbec2fa53a",
+          "name": "BioInnovation Institute"
+        }
+      ],
+      "fundingRounds": [
+        {
+          "id": "50632c3d-cf6f-5380-be22-d18b7af66769",
+          "role": "ISSUER"
+        },
+        {
+          "id": "6a14e08c-14f5-51af-b797-bef09e8da3a4",
+          "role": "ISSUER"
+        },
+        {
+          "id": "d95c235b-8d3a-5858-88b2-fe4f49b22408",
+          "role": "ISSUER"
+        }
+      ],
+      "slush": true,
+      "people": [
+        {
+          "name": "Tuomo Pentikäinen",
+          "role": "CEO",
+          "since": null
+        },
+        {
+          "name": "Timo Miettinen",
+          "role": "CTO",
+          "since": null
+        }
+      ],
+      "parents": []
+    },
     "1f3f7908-2c7b-566f-a7fd-7000263c57c5": {
       "id": "1f3f7908-2c7b-566f-a7fd-7000263c57c5",
       "name": "Detectivio AB",
@@ -1980,6 +3005,33 @@
           "since": null
         }
       ],
+      "parents": []
+    },
+    "0119ac7c-ec00-57fb-8108-3619f10ceaca": {
+      "id": "0119ac7c-ec00-57fb-8108-3619f10ceaca",
+      "name": "Applied AI Studio",
+      "legalName": null,
+      "aliases": [],
+      "website": "studio.appliedai.club",
+      "domains": [
+        "studio.appliedai.club"
+      ],
+      "description": "Skip the pilots. Get the results. We build AI that delivers business value for mid-market and enterprise companies, and set up your organisation to use AI safely and reliably.",
+      "industries": [
+        {
+          "code": "SOFTWARE_AND_SERVICES",
+          "label": "ai"
+        }
+      ],
+      "country": "India",
+      "hqAddress": "Bengaluru, India",
+      "founding": null,
+      "fundingStage": null,
+      "status": "ACTIVE",
+      "investors": [],
+      "fundingRounds": [],
+      "slush": true,
+      "people": [],
       "parents": []
     },
     "16203a31-960e-44db-b42f-fcbb773b39bb": {
@@ -2135,6 +3187,96 @@
       ],
       "parents": []
     },
+    "8cf5a37e-42e8-5161-ae46-fa41615d3f31": {
+      "id": "8cf5a37e-42e8-5161-ae46-fa41615d3f31",
+      "name": "Talaris Oy",
+      "legalName": "Talaris Oy",
+      "aliases": [],
+      "website": "talarisai.com",
+      "domains": [
+        "talarisai.com"
+      ],
+      "description": "Talaris builds Fuzor for complex manufacturing. Connect customer requirements to product configuration, engineering rules and traceable decisions.",
+      "industries": [
+        {
+          "code": "RAW_MATERIALS",
+          "label": "manufacturingMaterials"
+        }
+      ],
+      "country": "Finland",
+      "hqAddress": "Helsinki, Finland",
+      "founding": {
+        "date": "2026-01-01",
+        "precision": "day",
+        "sources": [
+          {
+            "name": "linkedin.com",
+            "url": "https://www.linkedin.com/company/talaris-oy",
+            "date": "2026-11-02",
+            "rank": "AGGREGATOR"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": "ACTIVE",
+      "investors": [],
+      "fundingRounds": [],
+      "slush": true,
+      "people": [
+        {
+          "name": "Niko Salonen",
+          "role": "CEO",
+          "since": null
+        }
+      ],
+      "parents": []
+    },
+    "db921aab-5b3c-43d2-85f6-25bec8885681": {
+      "id": "db921aab-5b3c-43d2-85f6-25bec8885681",
+      "name": "Tiusanen Consulting Oy",
+      "legalName": "Tiusanen Consulting Oy",
+      "aliases": [
+        "Tiusanen Consulting Ltd"
+      ],
+      "website": "tiusanen.tech",
+      "domains": [
+        "tiusanen.tech"
+      ],
+      "description": "20-year veteran systems and graphics architect. Company founder and independent consultant since 2007 (IGIOS Oy, Tiusanen Consulting). Hardware-aware graphics engineering, low-level GPU test engine...",
+      "industries": [
+        {
+          "code": "ENTERTAINMENT",
+          "label": "gaming"
+        }
+      ],
+      "country": "Finland",
+      "hqAddress": "Helsinki, Finland",
+      "founding": {
+        "date": "2020-11-16",
+        "precision": "day",
+        "sources": [
+          {
+            "name": "avoindata.prh.fi",
+            "url": "https://avoindata.prh.fi/opendata-ytj-api/v3/companies?businessId=3169183-6",
+            "date": "2020-11-16",
+            "rank": "FILING"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": "ACTIVE",
+      "investors": [],
+      "fundingRounds": [],
+      "slush": true,
+      "people": [
+        {
+          "name": "Mikko Tiusanen",
+          "role": "CEO",
+          "since": null
+        }
+      ],
+      "parents": []
+    },
     "1bcd0318-80e2-46e2-b233-d8b0f6bcca07": {
       "id": "1bcd0318-80e2-46e2-b233-d8b0f6bcca07",
       "name": "VERDA LIMITED",
@@ -2232,6 +3374,50 @@
       ],
       "parents": []
     },
+    "a6c71876-3770-5fd2-84ae-87d69cec0886": {
+      "id": "a6c71876-3770-5fd2-84ae-87d69cec0886",
+      "name": "Fearless Nordic",
+      "legalName": null,
+      "aliases": [],
+      "website": "fearlessnordic.io",
+      "domains": [
+        "fearlessnordic.io"
+      ],
+      "description": "We build your website, run it and keep improving it every month, so more of the people who find you call, book and become customers. From €259/month.",
+      "industries": [
+        {
+          "code": "SOFTWARE_AND_SERVICES",
+          "label": "enterpriseSoftware"
+        }
+      ],
+      "country": "Finland",
+      "hqAddress": "Helsinki, Finland",
+      "founding": {
+        "date": "2026-01-01",
+        "precision": "day",
+        "sources": [
+          {
+            "name": "linkedin.com",
+            "url": "https://www.linkedin.com/company/fearless-nordic/",
+            "date": "2026-11-02",
+            "rank": "AGGREGATOR"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": "ACTIVE",
+      "investors": [],
+      "fundingRounds": [],
+      "slush": true,
+      "people": [
+        {
+          "name": "Thomas Kalmari",
+          "role": "CEO",
+          "since": null
+        }
+      ],
+      "parents": []
+    },
     "0fd566bf-c1df-52d9-8058-4bf44c11d252": {
       "id": "0fd566bf-c1df-52d9-8058-4bf44c11d252",
       "name": "ISRM Labs AB",
@@ -2314,6 +3500,257 @@
       "people": [
         {
           "name": "Thomas Höglund",
+          "role": "CEO",
+          "since": null
+        }
+      ],
+      "parents": []
+    },
+    "b2501123-e040-4c42-8599-41630a549c90": {
+      "id": "b2501123-e040-4c42-8599-41630a549c90",
+      "name": "FinanceKey Oy",
+      "legalName": "FinanceKey Ltd",
+      "aliases": [
+        "FinanceKey"
+      ],
+      "website": "financekey.com",
+      "domains": [
+        "financekey.com"
+      ],
+      "description": "FinanceKey helps you future-proof connectivity, gain real-time cash visibility across the organisation and manage money movements with ease.",
+      "industries": [
+        {
+          "code": "SOFTWARE_AND_SERVICES",
+          "label": "enterpriseSoftware"
+        }
+      ],
+      "country": "Finland",
+      "hqAddress": "Lapinlahdenkatu 16, Helsinki, FI-18, 00180, FI",
+      "founding": {
+        "date": "2020-12-10",
+        "precision": null,
+        "sources": [
+          {
+            "name": "GLEIF",
+            "url": "https://search.gleif.org/#/record/984500BI9A08B47F0F82",
+            "date": "2026-10-25",
+            "rank": "FILING"
+          }
+        ]
+      },
+      "fundingStage": "SEED",
+      "status": "ACTIVE",
+      "investors": [
+        {
+          "id": "415bc278-6ed1-4973-a684-07a8b8c5d855",
+          "name": "Maki.vc"
+        },
+        {
+          "id": "8a7be56b-e583-5f57-b080-ce4d8bddb34d",
+          "name": "First Fellow Partners"
+        }
+      ],
+      "fundingRounds": [
+        {
+          "id": "41afa582-ea81-51db-b270-8054e1bff83e",
+          "role": "ISSUER"
+        }
+      ],
+      "slush": true,
+      "people": [],
+      "parents": []
+    },
+    "f9a29a95-b997-410f-95df-98b4106a4eb7": {
+      "id": "f9a29a95-b997-410f-95df-98b4106a4eb7",
+      "name": "Lifesum AB",
+      "legalName": "Lifesum AB",
+      "aliases": [
+        "Lifesum",
+        "ShapeUp Club",
+        "ShapeUp Club AB"
+      ],
+      "website": "lifesum.com",
+      "domains": [
+        "lifesum.com"
+      ],
+      "description": "Lifesum helps you improve your well-being with insights regarding food and nutrition while creating sustainable habits – start your health journey today.",
+      "industries": [
+        {
+          "code": "HEALTHCARE_PROVIDERS",
+          "label": "health"
+        }
+      ],
+      "country": "Sweden",
+      "hqAddress": "Stockholm, Sweden",
+      "founding": {
+        "date": "2007-05-04",
+        "precision": "day",
+        "sources": [
+          {
+            "name": "upplysningar.syna.se",
+            "url": "https://upplysningar.syna.se/foretag/5567292841",
+            "date": "2026-11-13",
+            "rank": "AGGREGATOR"
+          }
+        ]
+      },
+      "fundingStage": "SERIES_C",
+      "status": "ACTIVE",
+      "investors": [
+        {
+          "id": "17504f7d-718d-4148-8443-a2b51fa2c845",
+          "name": "Bauer Media Group"
+        },
+        {
+          "id": "6ba00a20-2cb4-4559-8fe2-f39484a9e5f6",
+          "name": "Creandum"
+        },
+        {
+          "id": "6c1ec88a-f670-4090-af6a-8dc81e4fe9e0",
+          "name": "Nokia Growth Partners"
+        },
+        {
+          "id": "b135e5d0-dcc3-5558-bc34-7dd5dce6d5de",
+          "name": "Draper Esprit Plc"
+        },
+        {
+          "id": "c96fa533-91c0-5674-bcbe-0d0dc934b7fa",
+          "name": "Balderton Capital"
+        },
+        {
+          "id": "e8f91df8-4bba-487b-a161-4befd8032c3b",
+          "name": "SPARKLABS GLOBAL VENTURES MANAGEMENT LLC"
+        }
+      ],
+      "fundingRounds": [
+        {
+          "id": "2a34a534-30a7-572d-af2b-08391297cd64",
+          "role": "ISSUER"
+        },
+        {
+          "id": "4f0788ef-2306-52f1-a265-1ab985ff2634",
+          "role": "ISSUER"
+        }
+      ],
+      "slush": true,
+      "people": [
+        {
+          "name": "Henrik Torstensson",
+          "role": "CEO",
+          "since": "2013-05-01"
+        },
+        {
+          "name": "Markus Falk",
+          "role": "CEO",
+          "since": null
+        },
+        {
+          "name": "Philip Söderholm",
+          "role": "VP",
+          "since": "2026-09-01"
+        },
+        {
+          "name": "Marcus Gners",
+          "role": "Deputy CEO",
+          "since": "2013-05-01"
+        }
+      ],
+      "parents": []
+    },
+    "a10f6dda-9b81-48ef-880f-38fe28aa59d1": {
+      "id": "a10f6dda-9b81-48ef-880f-38fe28aa59d1",
+      "name": "BLIXT TECH AB",
+      "legalName": "BLIXT TECH AB",
+      "aliases": [
+        "BL!XT",
+        "Blixt",
+        "Blixt Tech"
+      ],
+      "website": "blixt.tech",
+      "domains": [
+        "blixt.tech"
+      ],
+      "description": "Blixt is developing programmable electrical infrastructure with solid-state circuit control, power conversion and intelligent software for industry, data centers and the grid.",
+      "industries": [
+        {
+          "code": "HARDWARE_AND_EQUIPMENT",
+          "label": "Power electronics"
+        }
+      ],
+      "country": "Sweden",
+      "hqAddress": "TORSHAMNSGATAN 30A, 164 40, Kista, SE",
+      "founding": {
+        "date": "2018-02-14",
+        "precision": "day",
+        "sources": [
+          {
+            "name": "allabolag.se",
+            "url": "https://www.allabolag.se/5591493233",
+            "date": "2026-11-07",
+            "rank": "AGGREGATOR"
+          },
+          {
+            "name": "news.cision.com",
+            "url": "https://news.cision.com/blixt-tech-ab/r/blixt-secures--5-million-funding-to-revolutionize-electrical-infrastructure,c3948484",
+            "date": "2024-03-20",
+            "rank": "PRIMARY"
+          }
+        ]
+      },
+      "fundingStage": "SEED",
+      "status": "ACTIVE",
+      "investors": [
+        {
+          "id": "63f6b3f1-0dd3-5f0a-b910-5f754a9707a7",
+          "name": "BayWa r.e. Energy Ventures"
+        },
+        {
+          "id": "836159a1-25f3-4674-8930-8b991abc5371",
+          "name": "Union Square Ventures"
+        },
+        {
+          "id": "b3602aa2-1dce-454c-97d7-7532e792f94b",
+          "name": "Third Derivative Capital LP"
+        },
+        {
+          "id": "b947e419-3361-5922-b98e-ee08780236f0",
+          "name": "Energy Revolution Ventures Limited"
+        }
+      ],
+      "fundingRounds": [
+        {
+          "id": "06633f71-715e-5988-b408-f3720cf6017d",
+          "role": "ISSUER"
+        },
+        {
+          "id": "1acf5f31-9d1b-5e68-bc81-cb895670e53d",
+          "role": "ISSUER"
+        },
+        {
+          "id": "8996ba23-d880-5761-b22b-8e267596917e",
+          "role": "ISSUER"
+        },
+        {
+          "id": "a184f654-0722-5470-bf28-9fecd75581a4",
+          "role": "ISSUER"
+        },
+        {
+          "id": "b35c048f-ccf0-5557-81df-9c8847c636f2",
+          "role": "ISSUER"
+        },
+        {
+          "id": "ba723820-ee24-5533-a327-9d702fc78982",
+          "role": "ISSUER"
+        },
+        {
+          "id": "ee7b9cdd-bafd-5ec9-bf3a-319e702b0ff6",
+          "role": "ISSUER"
+        }
+      ],
+      "slush": true,
+      "people": [
+        {
+          "name": "Charlotta Holmquist",
           "role": "CEO",
           "since": null
         }
@@ -2442,6 +3879,44 @@
           "since": null
         }
       ],
+      "parents": []
+    },
+    "b81c6923-afcb-599a-aac9-a8e5331a6d2f": {
+      "id": "b81c6923-afcb-599a-aac9-a8e5331a6d2f",
+      "name": "DTS Plant Oy",
+      "legalName": "DTS Plant Oy",
+      "aliases": [],
+      "website": "dtsplant.com",
+      "domains": [
+        "dtsplant.com"
+      ],
+      "description": "DTS Plant provides engineering software that combines project specification, process simulation, engineering tools, cost estimation and document generation in one modular platform for industrial pr...",
+      "industries": [
+        {
+          "code": "SOFTWARE_AND_SERVICES",
+          "label": "somethingElse"
+        }
+      ],
+      "country": "Finland",
+      "hqAddress": "Helsinki, Finland",
+      "founding": {
+        "date": "2025-08-21",
+        "precision": "day",
+        "sources": [
+          {
+            "name": "avoindata.prh.fi",
+            "url": "https://avoindata.prh.fi/opendata-ytj-api/v3/companies?businessId=3556621-5",
+            "date": "2026-11-13",
+            "rank": "FILING"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": "ACTIVE",
+      "investors": [],
+      "fundingRounds": [],
+      "slush": true,
+      "people": [],
       "parents": []
     },
     "008a8778-1201-4c4b-b762-1ed861cbc3e9": {
@@ -2720,6 +4195,259 @@
       ],
       "parents": []
     },
+    "ac60b931-9b83-5cb4-969a-c370515ebcda": {
+      "id": "ac60b931-9b83-5cb4-969a-c370515ebcda",
+      "name": "Cogny AB",
+      "legalName": "Cogny AB",
+      "aliases": [],
+      "website": "cogny.com",
+      "domains": [
+        "cogny.com"
+      ],
+      "description": "An always-on marketing team: AI watches your numbers and drafts the next move, your people decide, Cogny ships it across ads, search, email, CRM and your site and measures every change. Free, no card.",
+      "industries": [
+        {
+          "code": "ADVERTISING_AND_MARKETING",
+          "label": "marketingAds"
+        }
+      ],
+      "country": "Sweden",
+      "hqAddress": "Peter Myndes Backe 16, 118 46 Stockholm, Sweden",
+      "founding": {
+        "date": "2018-07-01",
+        "precision": "day",
+        "sources": [
+          {
+            "name": "allabolag.se",
+            "url": "https://www.allabolag.se/5591649628",
+            "date": "2026-11-13",
+            "rank": "AGGREGATOR"
+          },
+          {
+            "name": "upplysningar.syna.se",
+            "url": "https://upplysningar.syna.se/foretag/5591649628",
+            "date": "2026-11-13",
+            "rank": "AGGREGATOR"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": "ACTIVE",
+      "investors": [],
+      "fundingRounds": [],
+      "slush": true,
+      "people": [
+        {
+          "name": "Tom Ström",
+          "role": "CEO",
+          "since": null
+        },
+        {
+          "name": "Berner Setterwall",
+          "role": "CTO",
+          "since": null
+        }
+      ],
+      "parents": []
+    },
+    "c5c81e8a-5388-5ae5-8d09-f7a06ddc32d4": {
+      "id": "c5c81e8a-5388-5ae5-8d09-f7a06ddc32d4",
+      "name": "Voxifyer AB",
+      "legalName": "Voxifyer AB",
+      "aliases": [],
+      "website": "voxifyer.com",
+      "domains": [
+        "voxifyer.com"
+      ],
+      "description": "Voxifyer lets voice talent license their voice, with consent on every use, and 80% of the rights fee and 20% of the generation fee paid to them. Clients get licensed, traceable human voices.",
+      "industries": [
+        {
+          "code": "SOFTWARE_AND_SERVICES",
+          "label": "ai"
+        }
+      ],
+      "country": "Sweden",
+      "hqAddress": "Stockholm, Sweden",
+      "founding": {
+        "date": "2025-01-01",
+        "precision": "day",
+        "sources": [
+          {
+            "name": "linkedin.com",
+            "url": "https://www.linkedin.com/company/voxifyer/posts/?feedView=all",
+            "date": "2026-11-02",
+            "rank": "AGGREGATOR"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": "ACTIVE",
+      "investors": [],
+      "fundingRounds": [
+        {
+          "id": "e7f1ffd3-4424-5adf-ad69-d3e4c9b1f2a9",
+          "role": "ISSUER"
+        }
+      ],
+      "slush": true,
+      "people": [
+        {
+          "name": "Louise Edwards",
+          "role": "CEO",
+          "since": null
+        },
+        {
+          "name": "Gustaf von Kantzow",
+          "role": "Head of Motion Graphics",
+          "since": null
+        },
+        {
+          "name": "Kosmos Fredriksson",
+          "role": "Head of Sound",
+          "since": null
+        },
+        {
+          "name": "Helena Ehinger",
+          "role": "Head of Legal",
+          "since": null
+        }
+      ],
+      "parents": []
+    },
+    "fcad3a9c-2c6e-5ea7-bc2f-f29e13543043": {
+      "id": "fcad3a9c-2c6e-5ea7-bc2f-f29e13543043",
+      "name": "Cetrium Oy",
+      "legalName": "Cetrium Oy",
+      "aliases": [
+        "Cetrium Ltd",
+        "Cetrium Ab",
+        "Nordic Energy Innovation",
+        "Lastuu Technologies",
+        "Sumuisa"
+      ],
+      "website": "cetrium.eu",
+      "domains": [
+        "cetrium.eu"
+      ],
+      "description": "Cetrium rakentaa merkityksellistä liiketoimintaa yhdistämällä näkemyksen, kokemuksen ja verkoston. Fokuksemme: vihreä siirtymä, digitaalinen turvallisuus ja teknologiset läpimurrot.",
+      "industries": [
+        {
+          "code": "AEROSPACE_AND_DEFENSE",
+          "label": "dualUseTech"
+        }
+      ],
+      "country": "Finland",
+      "hqAddress": "Varkaus, Finland",
+      "founding": {
+        "date": "2024-04-08",
+        "precision": "day",
+        "sources": [
+          {
+            "name": "avoindata.prh.fi",
+            "url": "https://avoindata.prh.fi/opendata-ytj-api/v3/companies?businessId=3437227-5",
+            "date": "2026-11-13",
+            "rank": "FILING"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": "ACTIVE",
+      "investors": [],
+      "fundingRounds": [],
+      "slush": true,
+      "people": [
+        {
+          "name": "Pekka Niskasaari",
+          "role": "CEO",
+          "since": null
+        }
+      ],
+      "parents": []
+    },
+    "7e3bbb7d-ef73-582c-b42e-d34a6a627c49": {
+      "id": "7e3bbb7d-ef73-582c-b42e-d34a6a627c49",
+      "name": "Reduciner Oy",
+      "legalName": "Reduciner Oy",
+      "aliases": [
+        "Reduciner"
+      ],
+      "website": "reduciner.com",
+      "domains": [
+        "reduciner.com"
+      ],
+      "description": "A climate-tech startup developing breakthrough technology that turns industrial CO₂ emissions into valuable products.",
+      "industries": [
+        {
+          "code": "RENEWABLE_ENERGY",
+          "label": "cleantech"
+        }
+      ],
+      "country": "Finland",
+      "hqAddress": "Espoo, Finland",
+      "founding": {
+        "date": "2025-01-01",
+        "precision": "day",
+        "sources": [
+          {
+            "name": "linkedin.com",
+            "url": "https://www.linkedin.com/company/reduciner",
+            "date": "2026-11-02",
+            "rank": "AGGREGATOR"
+          }
+        ]
+      },
+      "fundingStage": "SEED",
+      "status": "ACTIVE",
+      "investors": [
+        {
+          "id": "1f973216-f1e5-4466-8409-da6608460c02",
+          "name": "Voima Ventures Oy"
+        },
+        {
+          "id": "476a73ac-afa2-4713-9f73-188bc7ec0b95",
+          "name": "Lifeline Ventures"
+        },
+        {
+          "id": "c5da7c3d-80f1-4d63-bc84-0d86bff56166",
+          "name": "Mikko Kodisoja säätiö sr"
+        }
+      ],
+      "fundingRounds": [
+        {
+          "id": "eb741d95-d6d3-587f-bef0-a8cbcf5f7be8",
+          "role": "ISSUER"
+        }
+      ],
+      "slush": true,
+      "people": [
+        {
+          "name": "Johanna Grönroos",
+          "role": "CEO",
+          "since": "2026-03-01"
+        },
+        {
+          "name": "Eemeli Tsupari",
+          "role": "CTO",
+          "since": null
+        },
+        {
+          "name": "Topias Anttila",
+          "role": "Project Manager, Plant Investments",
+          "since": null
+        },
+        {
+          "name": "Roni Veikkolainen",
+          "role": "Project Engineer, Plant Investments",
+          "since": null
+        },
+        {
+          "name": "Mikko Lappalainen",
+          "role": "Research and Development Manager",
+          "since": null
+        }
+      ],
+      "parents": []
+    },
     "11443ee6-7fe3-4d40-8a9b-70071bd3d026": {
       "id": "11443ee6-7fe3-4d40-8a9b-70071bd3d026",
       "name": "LOVABLE LTD",
@@ -2981,6 +4709,143 @@
       ],
       "parents": []
     },
+    "9a138617-86b6-564f-b183-490e264459e1": {
+      "id": "9a138617-86b6-564f-b183-490e264459e1",
+      "name": "Sellforte Solutions Oy",
+      "legalName": "Sellforte Solutions Oy",
+      "aliases": [
+        "Sellforte"
+      ],
+      "website": "sellforte.com",
+      "domains": [
+        "sellforte.com"
+      ],
+      "description": "True incremental ROAS at campaign and ad-set level, every day. Sellforte unifies MMM, incrementality testing and attribution for retail & ecommerce brands.",
+      "industries": [
+        {
+          "code": "SOFTWARE_AND_SERVICES",
+          "label": "analytics"
+        }
+      ],
+      "country": "Finland",
+      "hqAddress": "Espoo, Finland",
+      "founding": {
+        "date": "2017-05-24",
+        "precision": "day",
+        "sources": [
+          {
+            "name": "avoindata.prh.fi",
+            "url": "https://avoindata.prh.fi/opendata-ytj-api/v3/companies?businessId=2832424-2",
+            "date": "2026-11-13",
+            "rank": "FILING"
+          }
+        ]
+      },
+      "fundingStage": "SERIES_A",
+      "status": "ACTIVE",
+      "investors": [
+        {
+          "id": "70fb3317-cd8c-4c52-aa86-66502789bce3",
+          "name": "Icebreaker.vc"
+        },
+        {
+          "id": "b5868ce3-6886-4bac-a5a6-00d9caff8f0f",
+          "name": "Bonnier Capital AB"
+        },
+        {
+          "id": "b9f9dd4c-5a94-5f67-8662-b49631592aed",
+          "name": "Sonae IM"
+        }
+      ],
+      "fundingRounds": [
+        {
+          "id": "7f3b8147-72ff-5d30-9a54-bd84adf3adad",
+          "role": "ISSUER"
+        }
+      ],
+      "slush": true,
+      "people": [
+        {
+          "name": "Juha Risto Samuli Nuutinen",
+          "role": "CEO",
+          "since": null
+        },
+        {
+          "name": "Teppo Luukkonen",
+          "role": "CTO",
+          "since": null
+        },
+        {
+          "name": "Edward Ford",
+          "role": "VP",
+          "since": null
+        },
+        {
+          "name": "Mikko Ervasti",
+          "role": "Chief Science Officer",
+          "since": null
+        },
+        {
+          "name": "Mari Leväjärvi",
+          "role": "Head of Customer Success",
+          "since": null
+        },
+        {
+          "name": "Katarzyna Wierzchowiecka",
+          "role": "Customer Success Director",
+          "since": null
+        },
+        {
+          "name": "Paul Arpikari",
+          "role": "Chief Commercial Officer",
+          "since": null
+        },
+        {
+          "name": "Eeva Karhu",
+          "role": "Head of Customer Success",
+          "since": null
+        }
+      ],
+      "parents": []
+    },
+    "a1d50b47-d906-5be6-9d23-ef2ec9cc0159": {
+      "id": "a1d50b47-d906-5be6-9d23-ef2ec9cc0159",
+      "name": "Green2eat Innovations Oy",
+      "legalName": "Green2eat Innovations Oy",
+      "aliases": [],
+      "website": "green2eat.com",
+      "domains": [
+        "green2eat.com"
+      ],
+      "description": "Finnish raw materials company founded in 2026 and headquartered in Valkeakoski.",
+      "industries": [
+        {
+          "code": "RAW_MATERIALS",
+          "label": "manufacturingMaterials"
+        }
+      ],
+      "country": "Finland",
+      "hqAddress": "Valkeakoski, Finland",
+      "founding": {
+        "date": "2026-01-01",
+        "precision": "day",
+        "sources": [
+          {
+            "name": "linkedin.com",
+            "url": "https://www.linkedin.com/feed/",
+            "date": "2026-11-02",
+            "rank": "AGGREGATOR"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": "ACTIVE",
+      "investors": [],
+      "fundingRounds": [],
+      "slush": true,
+      "people": [],
+      "parents": []
+    },
     "369e2dfb-44da-4676-b792-49a2cbd4688e": {
       "id": "369e2dfb-44da-4676-b792-49a2cbd4688e",
       "name": "atNorth Holding AB",
@@ -3063,6 +4928,55 @@
       ],
       "parents": []
     },
+    "f72e9889-61b1-5a5b-9f25-61eb1e429f21": {
+      "id": "f72e9889-61b1-5a5b-9f25-61eb1e429f21",
+      "name": "Tangible Growth Oy",
+      "legalName": "Tangible Growth Ltd",
+      "aliases": [],
+      "website": "tangible-growth.com",
+      "domains": [
+        "tangible-growth.com"
+      ],
+      "description": "Strategy execution platform for enterprises. Strategic choices connected to objectives, teams, and dependencies. The picture stays current because that’s how the work is structured.",
+      "industries": [
+        {
+          "code": "SOFTWARE_AND_SERVICES",
+          "label": "enterpriseSoftware"
+        }
+      ],
+      "country": "Finland",
+      "hqAddress": "Helsinki, Finland",
+      "founding": {
+        "date": "2018-01-01",
+        "precision": "day",
+        "sources": [
+          {
+            "name": "linkedin.com",
+            "url": "https://www.linkedin.com/company/tangible-growth",
+            "date": "2026-11-02",
+            "rank": "AGGREGATOR"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": "ACTIVE",
+      "investors": [],
+      "fundingRounds": [],
+      "slush": true,
+      "people": [
+        {
+          "name": "Juuso Hämäläinen",
+          "role": "CEO",
+          "since": null
+        },
+        {
+          "name": "Joona Joensuu",
+          "role": "CTO",
+          "since": null
+        }
+      ],
+      "parents": []
+    },
     "164a5cfe-694d-50f5-ba39-0f5327eb31f0": {
       "id": "164a5cfe-694d-50f5-ba39-0f5327eb31f0",
       "name": "Seacommander Oy",
@@ -3099,6 +5013,107 @@
       "fundingRounds": [],
       "slush": true,
       "people": [],
+      "parents": []
+    },
+    "8f7e9b14-265e-5e87-8056-bfe3d1fa9e69": {
+      "id": "8f7e9b14-265e-5e87-8056-bfe3d1fa9e69",
+      "name": "Visperion Oy Ab",
+      "legalName": "Visperion Oy Ab",
+      "aliases": [],
+      "website": "visperion.ai",
+      "domains": [
+        "visperion.ai"
+      ],
+      "description": "Visperion detects, interprets and orchestrates drone activity in real time â making low-altitude airspace visible, controllable and EU U-space compliant.",
+      "industries": [
+        {
+          "code": "AEROSPACE_AND_DEFENSE",
+          "label": "dualUseTech"
+        }
+      ],
+      "country": "Finland",
+      "hqAddress": "Espoo, Finland",
+      "founding": {
+        "date": "2025-01-01",
+        "precision": "day",
+        "sources": [
+          {
+            "name": "linkedin.com",
+            "url": "https://www.linkedin.com/company/visperion",
+            "date": "2026-11-02",
+            "rank": "AGGREGATOR"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": "ACTIVE",
+      "investors": [],
+      "fundingRounds": [],
+      "slush": true,
+      "people": [],
+      "parents": []
+    },
+    "90e84dd3-ad08-4d6f-9972-e0827a3e0c57": {
+      "id": "90e84dd3-ad08-4d6f-9972-e0827a3e0c57",
+      "name": "SwanIT Oy",
+      "legalName": "SwanIT Oy",
+      "aliases": [
+        "SwanIT Oy / SavannaX",
+        "SavannaX"
+      ],
+      "website": "savannax.com",
+      "domains": [
+        "savannax.com"
+      ],
+      "description": "Device fleet management. Health checks, keep or replace advice and replacement forecasts for company devices, plus license tracking.",
+      "industries": [
+        {
+          "code": "SOFTWARE_AND_SERVICES",
+          "label": "somethingElse"
+        }
+      ],
+      "country": "Finland",
+      "hqAddress": "Kampinkuja 2, 00100 HELSINKI, HELSINKI, FI-00100, FI",
+      "founding": {
+        "date": "2017-03-06",
+        "precision": "day",
+        "sources": [
+          {
+            "name": "GLEIF",
+            "url": "https://search.gleif.org/#/record/743700FGNK5Q2HFLOA56",
+            "date": "2026-04-08",
+            "rank": "FILING"
+          },
+          {
+            "name": "linkedin.com",
+            "url": "https://www.linkedin.com/company/savannax",
+            "date": "2026-11-02",
+            "rank": "AGGREGATOR"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": "ACTIVE",
+      "investors": [],
+      "fundingRounds": [],
+      "slush": true,
+      "people": [
+        {
+          "name": "Tuulia Virhiä",
+          "role": "CEO",
+          "since": null
+        },
+        {
+          "name": "Juhani Heinonen",
+          "role": "Sales Director",
+          "since": null
+        },
+        {
+          "name": "Toni Tiitto",
+          "role": "Data Lead",
+          "since": null
+        }
+      ],
       "parents": []
     },
     "42d975bf-2afb-4f97-a6e6-af2542230061": {
@@ -3224,6 +5239,97 @@
         {
           "name": "Toni Perämäki",
           "role": "Head of Business Development",
+          "since": null
+        }
+      ],
+      "parents": []
+    },
+    "cc00c248-4ea8-4867-af43-77ba5adcdb0d": {
+      "id": "cc00c248-4ea8-4867-af43-77ba5adcdb0d",
+      "name": "Solid Immuno-Oncology Oy",
+      "legalName": "Solid Immuno-Oncology Oy",
+      "aliases": [
+        "Solid Immuno-Oncology Oy (Solid IO)",
+        "Solid IO (Solid Immuno-Oncology Oy)",
+        "Solid Immuno‑Oncology Oy",
+        "Solid IO"
+      ],
+      "website": "solid-io.com",
+      "domains": [
+        "solid-io.com"
+      ],
+      "description": "Solid IO is transforming precision oncology with organ-on-chip technology, delivering real-time, patient-specific insights to improve cancer treatment decisions.",
+      "industries": [
+        {
+          "code": "BIOTECHNOLOGY",
+          "label": "lifeSciences"
+        },
+        {
+          "code": "PHARMACEUTICALS",
+          "label": null
+        },
+        {
+          "code": "MEDICAL_DEVICES",
+          "label": null
+        }
+      ],
+      "country": "Finland",
+      "hqAddress": "Helsinki, Finland",
+      "founding": {
+        "date": "2025-01-01",
+        "precision": "day",
+        "sources": [
+          {
+            "name": "en.ain.ua",
+            "url": "https://en.ain.ua/2025/02/24/solid-io-secures-eur800k",
+            "date": "2026-09-09",
+            "rank": null
+          },
+          {
+            "name": "linkedin.com",
+            "url": "https://www.linkedin.com/company/solid-io",
+            "date": "2026-11-02",
+            "rank": "AGGREGATOR"
+          }
+        ]
+      },
+      "fundingStage": "SEED",
+      "status": "ACTIVE",
+      "investors": [
+        {
+          "id": "6a72a8be-6a7c-4e61-a7fc-93a6d61df81f",
+          "name": "Helsinki University Funds"
+        },
+        {
+          "id": "bed03492-8d26-4d36-8a22-f6f7758dd564",
+          "name": "Nordic Science Investments"
+        },
+        {
+          "id": "fc47b882-78ed-46a4-a330-81fb2abecbec",
+          "name": "BSV Ventures"
+        }
+      ],
+      "fundingRounds": [
+        {
+          "id": "f1f8caba-3fd2-5f17-88d7-8caf63b811d1",
+          "role": "ISSUER"
+        }
+      ],
+      "slush": true,
+      "people": [
+        {
+          "name": "Noora Hujala",
+          "role": "CEO",
+          "since": null
+        },
+        {
+          "name": "Bassel Alsaed",
+          "role": "Lead Scientist",
+          "since": null
+        },
+        {
+          "name": "Dr. Heidi Haikala",
+          "role": "Chief Scientific Officer (CSO) and Co-founder",
           "since": null
         }
       ],
@@ -3379,6 +5485,63 @@
       ],
       "parents": []
     },
+    "b50bfa40-c58c-482d-a9bd-3ddff9054213": {
+      "id": "b50bfa40-c58c-482d-a9bd-3ddff9054213",
+      "name": "Ruuvi Innovations Oy",
+      "legalName": "Ruuvi Innovations Oy",
+      "aliases": [
+        "Ruuvi"
+      ],
+      "website": "ruuvi.com",
+      "domains": [
+        "ruuvi.com"
+      ],
+      "description": "Wireless Bluetooth sensors (RuuviTag) for temperature, humidity, air pressure and motion, plus Ruuvi Gateway and Ruuvi Cloud.",
+      "industries": [
+        {
+          "code": "HARDWARE_AND_EQUIPMENT",
+          "label": "consumerElectronics"
+        }
+      ],
+      "country": "Finland",
+      "hqAddress": "Riihimäki",
+      "founding": {
+        "date": "2016-01-01",
+        "precision": "day",
+        "sources": [
+          {
+            "name": "ruuvi.com",
+            "url": "https://ruuvi.com",
+            "date": "2026-11-04",
+            "rank": "PRIMARY"
+          },
+          {
+            "name": "ruuvi.com",
+            "url": "https://ruuvi.com/about-us/",
+            "date": "2026-11-04",
+            "rank": "PRIMARY"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": "ACTIVE",
+      "investors": [],
+      "fundingRounds": [],
+      "slush": true,
+      "people": [
+        {
+          "name": "Lauri Jämsä",
+          "role": "CEO",
+          "since": null
+        },
+        {
+          "name": "Juha Iivari",
+          "role": "Director, Business Development",
+          "since": null
+        }
+      ],
+      "parents": []
+    },
     "450c58f1-5f7a-5d58-b711-34a09a3844d8": {
       "id": "450c58f1-5f7a-5d58-b711-34a09a3844d8",
       "name": "Bruukki Oy",
@@ -3459,6 +5622,93 @@
       "fundingRounds": [],
       "slush": true,
       "people": [],
+      "parents": []
+    },
+    "a4450be0-f224-5299-a69d-5fb6f91f1a02": {
+      "id": "a4450be0-f224-5299-a69d-5fb6f91f1a02",
+      "name": "Selma Finance Oy",
+      "legalName": "Selma Finance AG",
+      "aliases": [
+        "Selma Finance",
+        "Selma"
+      ],
+      "website": "selma.com",
+      "domains": [
+        "selma.com"
+      ],
+      "description": "A personal investment plan, automated wealth management and expert support, all in one app. FINMA-regulated, trusted by over 16,000 clients.",
+      "industries": [
+        {
+          "code": "FINTECH",
+          "label": "fintech"
+        }
+      ],
+      "country": "Finland",
+      "hqAddress": "Helsinki, Finland",
+      "founding": {
+        "date": "2017-01-01",
+        "precision": "day",
+        "sources": [
+          {
+            "name": "linkedin.com",
+            "url": "https://www.linkedin.com/company/selma-finance/",
+            "date": "2026-11-02",
+            "rank": "AGGREGATOR"
+          }
+        ]
+      },
+      "fundingStage": "SERIES_C",
+      "status": "ACTIVE",
+      "investors": [
+        {
+          "id": "25456ed7-148d-4bbc-aa61-ea32f8a99f5b",
+          "name": "TX Group AG"
+        },
+        {
+          "id": "ddb70f9f-4382-431e-9a17-11a03d68b2d2",
+          "name": "TX Ventures"
+        },
+        {
+          "id": "e9f90fcc-dee3-51f0-bc19-0f9f251ddf39",
+          "name": "Sparrow Ventures"
+        }
+      ],
+      "fundingRounds": [
+        {
+          "id": "00430957-868a-5ba2-a8b1-969ed6e34dc6",
+          "role": "ISSUER"
+        },
+        {
+          "id": "0e90db46-b81f-51e1-a273-0c39bfd98950",
+          "role": "ISSUER"
+        },
+        {
+          "id": "490f7180-df85-53e4-b78c-88ab6c3d6bf0",
+          "role": "ISSUER"
+        },
+        {
+          "id": "5cd00a7e-9e9b-5a80-8dcb-6a0c8bc69f65",
+          "role": "ISSUER"
+        }
+      ],
+      "slush": true,
+      "people": [
+        {
+          "name": "Patrik Schär",
+          "role": "CEO",
+          "since": null
+        },
+        {
+          "name": "Mikael Roos",
+          "role": "CTO",
+          "since": null
+        },
+        {
+          "name": "Dominik Seiler",
+          "role": "Head of Operations, Compliance & Risk",
+          "since": null
+        }
+      ],
       "parents": []
     },
     "51e38854-b209-512d-b54b-4e90f448e1e4": {
@@ -3575,6 +5825,81 @@
         {
           "name": "Omer Shafiq",
           "role": "CEO",
+          "since": null
+        }
+      ],
+      "parents": []
+    },
+    "9edbc10b-8c07-589c-9768-9fe11548c706": {
+      "id": "9edbc10b-8c07-589c-9768-9fe11548c706",
+      "name": "Extendo Medical AB",
+      "legalName": "Extendo Medical AB",
+      "aliases": [],
+      "website": "extendomedical.se",
+      "domains": [
+        "extendomedical.se"
+      ],
+      "description": "Extendo Medical provides safe, selective access to living endothelial cells from any organ. The essential hardware for the mRNA diagnostics revolution.",
+      "industries": [
+        {
+          "code": "PHARMACEUTICALS",
+          "label": "medtechPharma"
+        }
+      ],
+      "country": "Sweden",
+      "hqAddress": "Stockholm, Sweden",
+      "founding": {
+        "date": "2024-01-04",
+        "precision": "day",
+        "sources": [
+          {
+            "name": "allabolag.se",
+            "url": "https://www.allabolag.se/5594665910",
+            "date": "2026-11-12",
+            "rank": "FILING"
+          },
+          {
+            "name": "kth.se",
+            "url": "https://www.kth.se/mst/spin-offs-1.447465",
+            "date": "2026-11-12",
+            "rank": "PRIMARY"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": "ACTIVE",
+      "investors": [],
+      "fundingRounds": [],
+      "slush": true,
+      "people": [
+        {
+          "name": "Hans-Peter Kurz",
+          "role": "CEO",
+          "since": null
+        },
+        {
+          "name": "Staffan Holmin",
+          "role": "Clinical Lead",
+          "since": null
+        },
+        {
+          "name": "Ethan Winkler",
+          "role": "Scientific Advisor",
+          "since": null
+        },
+        {
+          "name": "Mayank Goyal",
+          "role": "Clinical Advisor",
+          "since": null
+        },
+        {
+          "name": "Daniel Cooke",
+          "role": "Scientific Advisor",
+          "since": null
+        },
+        {
+          "name": "Niclas Roxhed",
+          "role": "Engineering Lead",
           "since": null
         }
       ],
@@ -3795,6 +6120,181 @@
       "fundingRounds": [],
       "slush": false,
       "people": [],
+      "parents": []
+    },
+    "ac572026-1728-546c-afb1-7ef2f01d57de": {
+      "id": "ac572026-1728-546c-afb1-7ef2f01d57de",
+      "name": "BatteryProof AS",
+      "legalName": "BatteryProof AS",
+      "aliases": [],
+      "website": "batteryproof.com",
+      "domains": [
+        "batteryproof.com"
+      ],
+      "description": "BatteryProof develops an adapter and mobile app that test an electric vehicle battery’s state of health and expected range, aimed at car dealers and the used-EV market.",
+      "industries": [
+        {
+          "code": "TRANSPORTATION_AND_LOGISTICS",
+          "label": "mobility"
+        }
+      ],
+      "country": "Norway",
+      "hqAddress": "Borgundvegen 340, 6009 Ålesund, Norway",
+      "founding": {
+        "date": "2025-10-02",
+        "precision": "day",
+        "sources": [
+          {
+            "name": "data.brreg.no",
+            "url": "https://data.brreg.no/enhetsregisteret/api/enheter/936477178",
+            "date": "2025-10-30",
+            "rank": "FILING"
+          },
+          {
+            "name": "w2.brreg.no",
+            "url": "https://w2.brreg.no/kunngjoring/hent_en.jsp?kid=20250000810313&sokeverdi=936477178&spraak=nb",
+            "date": "2025-10-30",
+            "rank": "FILING"
+          }
+        ]
+      },
+      "fundingStage": "SEED",
+      "status": "ACTIVE",
+      "investors": [],
+      "fundingRounds": [
+        {
+          "id": "3e8ad5e1-5354-59a0-9b62-148c14e43a51",
+          "role": "ISSUER"
+        }
+      ],
+      "slush": true,
+      "people": [
+        {
+          "name": "Amund Raniseth",
+          "role": "CEO",
+          "since": null
+        }
+      ],
+      "parents": []
+    },
+    "fbcdb1a6-81d0-5a7b-9188-6ab025e75744": {
+      "id": "fbcdb1a6-81d0-5a7b-9188-6ab025e75744",
+      "name": "Upperformance Oy",
+      "legalName": "Upperformance Oy",
+      "aliases": [
+        "Coragrid"
+      ],
+      "website": "coragrid.com",
+      "domains": [
+        "coragrid.com"
+      ],
+      "description": "Centralized platform and API for private company data. Access unified, on-demand intelligence to give your investment team a decisive competitive edge.",
+      "industries": [
+        {
+          "code": "SOFTWARE_AND_SERVICES",
+          "label": "6201Z"
+        }
+      ],
+      "country": "Finland",
+      "hqAddress": "Helsinki, Finland",
+      "founding": {
+        "date": "2022-05-02",
+        "precision": "day",
+        "sources": [
+          {
+            "name": "avoindata.prh.fi",
+            "url": "https://avoindata.prh.fi/opendata-ytj-api/v3/companies?name=Upperformance",
+            "date": "2026-11-13",
+            "rank": "FILING"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": "ACTIVE",
+      "investors": [],
+      "fundingRounds": [],
+      "slush": true,
+      "people": [
+        {
+          "name": "Peetu Kupiainen",
+          "role": "CEO",
+          "since": null
+        }
+      ],
+      "parents": []
+    },
+    "da87c715-6d32-52c7-b107-aeee58229f79": {
+      "id": "da87c715-6d32-52c7-b107-aeee58229f79",
+      "name": "Flowhaven Oy",
+      "legalName": "Flowhaven Oy",
+      "aliases": [],
+      "website": "flowhaven.com",
+      "domains": [
+        "flowhaven.com"
+      ],
+      "description": "Flowhaven is the Licensing Relationship Management platform that brings agreements, approvals, royalties, and analytics into one purpose-built system.",
+      "industries": [
+        {
+          "code": "SOFTWARE_AND_SERVICES",
+          "label": "enterpriseSoftware"
+        }
+      ],
+      "country": "Finland",
+      "hqAddress": "Helsinki, Finland",
+      "founding": {
+        "date": "2016-01-01",
+        "precision": "day",
+        "sources": [
+          {
+            "name": "linkedin.com",
+            "url": "https://www.linkedin.com/company/flowhaven/mycompany/",
+            "date": "2026-11-02",
+            "rank": "AGGREGATOR"
+          }
+        ]
+      },
+      "fundingStage": "SERIES_A",
+      "status": "ACTIVE",
+      "investors": [
+        {
+          "id": "03b94baf-8a04-4bb6-a187-86a29c036a08",
+          "name": "Sapphire Sport (MGP), LLC"
+        },
+        {
+          "id": "3b0499bc-3c7e-4d50-aee5-42de34a5f8d0",
+          "name": "Business Finland Oy"
+        },
+        {
+          "id": "70fb3317-cd8c-4c52-aa86-66502789bce3",
+          "name": "Icebreaker.vc"
+        },
+        {
+          "id": "cc0cd701-240f-47c0-9bc4-73902c281340",
+          "name": "Global Founders Capital"
+        }
+      ],
+      "fundingRounds": [
+        {
+          "id": "26a15d40-d163-5a21-a56a-874853ce0749",
+          "role": "ISSUER"
+        },
+        {
+          "id": "bc0e15a9-6587-562b-b780-61732e526c35",
+          "role": "ISSUER"
+        },
+        {
+          "id": "e5f6bc72-6056-56d0-9bc9-0c9c196b5338",
+          "role": "ISSUER"
+        }
+      ],
+      "slush": true,
+      "people": [
+        {
+          "name": "Kalle Törmä",
+          "role": "CEO",
+          "since": null
+        }
+      ],
       "parents": []
     },
     "7485476c-8d4b-4921-9330-45f893b9b5ca": {
@@ -4148,6 +6648,44 @@
       ],
       "parents": []
     },
+    "c321256e-096f-5d37-ad45-91625db1c796": {
+      "id": "c321256e-096f-5d37-ad45-91625db1c796",
+      "name": "FrostDry Oy",
+      "legalName": "FrostDry Oy",
+      "aliases": [],
+      "website": "frostdry.fi",
+      "domains": [
+        "frostdry.fi"
+      ],
+      "description": "FrostDry provides industrial freeze-drying (lyophilisation) services for food and food-supplement companies, using its own patented AI-controlled, shelf-by-shelf freeze-drying technology developed...",
+      "industries": [
+        {
+          "code": "FOOD_AND_BEVERAGE",
+          "label": "food"
+        }
+      ],
+      "country": "Finland",
+      "hqAddress": "Hirvensalmi, Finland",
+      "founding": {
+        "date": "2021-01-01",
+        "precision": "day",
+        "sources": [
+          {
+            "name": "linkedin.com",
+            "url": "https://www.linkedin.com/company/146756923/admin/dashboard/",
+            "date": "2026-11-02",
+            "rank": "AGGREGATOR"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": "ACTIVE",
+      "investors": [],
+      "fundingRounds": [],
+      "slush": true,
+      "people": [],
+      "parents": []
+    },
     "89d3a43c-fee4-4491-853e-a216cbef6c50": {
       "id": "89d3a43c-fee4-4491-853e-a216cbef6c50",
       "name": "Lovable",
@@ -4446,6 +6984,123 @@
       ],
       "parents": []
     },
+    "7af62aa3-77a4-543a-a379-dc80fca0baf0": {
+      "id": "7af62aa3-77a4-543a-a379-dc80fca0baf0",
+      "name": "Novus Rescue Oy",
+      "legalName": "Novus Rescue Oy",
+      "aliases": [
+        "SmokEye",
+        "SiloamPro",
+        "Novus Rescue Ltd",
+        "Novus Rescue Ab"
+      ],
+      "website": "novusrescue.com",
+      "domains": [
+        "novusrescue.com"
+      ],
+      "description": "Novus Rescue develops helmet-mounted thermal imaging and passive sensor systems for firefighters and tactical rescue teams, streaming real-time thermal data and crew telemetry to incident command.",
+      "industries": [
+        {
+          "code": "AEROSPACE_AND_DEFENSE",
+          "label": "dualUseTech"
+        }
+      ],
+      "country": "Finland",
+      "hqAddress": "Seinäjoki, Finland",
+      "founding": {
+        "date": "2024-04-14",
+        "precision": "day",
+        "sources": [
+          {
+            "name": "avoindata.prh.fi",
+            "url": "https://avoindata.prh.fi/opendata-registerednotices-api/v3/3439175-9",
+            "date": "2026-11-12",
+            "rank": "FILING"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": "ACTIVE",
+      "investors": [],
+      "fundingRounds": [],
+      "slush": true,
+      "people": [
+        {
+          "name": "Harri Mikkonen",
+          "role": "CEO",
+          "since": null
+        },
+        {
+          "name": "Pekka Jaatinen",
+          "role": "CTO",
+          "since": null
+        },
+        {
+          "name": "Severi Uusitalo",
+          "role": "CPO",
+          "since": null
+        }
+      ],
+      "parents": []
+    },
+    "92cf1d0f-0f24-575b-bc06-b5ef919fe69c": {
+      "id": "92cf1d0f-0f24-575b-bc06-b5ef919fe69c",
+      "name": "Marinhub AS",
+      "legalName": "MARINHUB AS",
+      "aliases": [],
+      "website": "marinhub.com",
+      "domains": [
+        "marinhub.com"
+      ],
+      "description": "Norwegian software and services company headquartered in Elnesvågen, founded in 2020.",
+      "industries": [
+        {
+          "code": "SOFTWARE_AND_SERVICES",
+          "label": "somethingElse"
+        }
+      ],
+      "country": "Norway",
+      "hqAddress": "Elnesvågen, Norway",
+      "founding": {
+        "date": "2020-01-01",
+        "precision": "day",
+        "sources": [
+          {
+            "name": "linkedin.com",
+            "url": "https://www.linkedin.com/company/marinhub-as",
+            "date": "2026-11-02",
+            "rank": "AGGREGATOR"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": "ACTIVE",
+      "investors": [],
+      "fundingRounds": [
+        {
+          "id": "77efec88-a728-56c5-b56d-0109642e82d9",
+          "role": "ISSUER"
+        },
+        {
+          "id": "e9323442-1775-51aa-8922-ab3e3f2a1537",
+          "role": "ISSUER"
+        }
+      ],
+      "slush": true,
+      "people": [
+        {
+          "name": "Victoria Smenes",
+          "role": "CEO",
+          "since": "2020-07-21"
+        },
+        {
+          "name": "Rune-André Smenes",
+          "role": "Operations Manager",
+          "since": null
+        }
+      ],
+      "parents": []
+    },
     "75ff0017-4026-59c7-bc79-cdd1e73413cf": {
       "id": "75ff0017-4026-59c7-bc79-cdd1e73413cf",
       "name": "MoiKit Oy",
@@ -4711,6 +7366,112 @@
       "people": [],
       "parents": []
     },
+    "cc44de2f-96f1-5f8a-be17-7a298a433c5e": {
+      "id": "cc44de2f-96f1-5f8a-be17-7a298a433c5e",
+      "name": "SiteTalk Oy",
+      "legalName": "SiteTalk Oy",
+      "aliases": [],
+      "website": "sitetalk.fi",
+      "domains": [
+        "sitetalk.fi"
+      ],
+      "description": "SiteTalk kokoaa työmaan viestit, kuvat, tehtävät ja dokumentoinnin yhteen paikkaan. Vähemmän etsimistä ja selvittelyä – tieto löytyy myös myöhemmin.",
+      "industries": [
+        {
+          "code": "CONSTRUCTION_AND_ENGINEERING",
+          "label": "propConstruction"
+        }
+      ],
+      "country": "Finland",
+      "hqAddress": "Jyväskylä, Finland",
+      "founding": {
+        "date": "2025-01-01",
+        "precision": "day",
+        "sources": [
+          {
+            "name": "linkedin.com",
+            "url": "https://www.linkedin.com/company/sitetalk/",
+            "date": "2026-11-02",
+            "rank": "AGGREGATOR"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": "ACTIVE",
+      "investors": [],
+      "fundingRounds": [
+        {
+          "id": "d7908d9f-4791-5412-9163-f81cdbdee15e",
+          "role": "ISSUER"
+        }
+      ],
+      "slush": true,
+      "people": [
+        {
+          "name": "Ari Aarniovuori",
+          "role": "CEO",
+          "since": null
+        },
+        {
+          "name": "Ranjeet Kumar",
+          "role": "Lead Developer",
+          "since": null
+        },
+        {
+          "name": "Sanni Bomberg",
+          "role": "Product Manager",
+          "since": null
+        }
+      ],
+      "parents": []
+    },
+    "879ae213-286d-41f1-b563-19ef5c598086": {
+      "id": "879ae213-286d-41f1-b563-19ef5c598086",
+      "name": "Esgrape Oy",
+      "legalName": "Esgrape Oy",
+      "aliases": [
+        "Esgrape Holding Oy",
+        "Relevantbase"
+      ],
+      "website": "relevantbase.com",
+      "domains": [
+        "relevantbase.com"
+      ],
+      "description": "Connect goals, metrics and action in Relevantbase. Background AI analysts, a Daily Brief and personal or team homes help you focus on what matters.",
+      "industries": [
+        {
+          "code": "SOFTWARE_AND_SERVICES",
+          "label": "ai"
+        }
+      ],
+      "country": "Finland",
+      "hqAddress": "Eteläesplanadi 2, 00130 HELSINKI, HELSINKI, FI-00130, FI",
+      "founding": {
+        "date": "2007-01-05",
+        "precision": "day",
+        "sources": [
+          {
+            "name": "avoindata.prh.fi",
+            "url": "https://avoindata.prh.fi/opendata-ytj-api/v3/companies?businessId=2083680-9",
+            "date": "2026-11-13",
+            "rank": "FILING"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": "ACTIVE",
+      "investors": [],
+      "fundingRounds": [],
+      "slush": true,
+      "people": [
+        {
+          "name": "Jouni Leskinen",
+          "role": "CEO",
+          "since": null
+        }
+      ],
+      "parents": []
+    },
     "afcd3d1e-6821-4d51-a844-78a48676cfac": {
       "id": "afcd3d1e-6821-4d51-a844-78a48676cfac",
       "name": "Consora OÜ",
@@ -4742,6 +7503,100 @@
       "fundingRounds": [],
       "slush": false,
       "people": [],
+      "parents": []
+    },
+    "eeb21db3-5e11-55c8-8a58-a9480867664b": {
+      "id": "eeb21db3-5e11-55c8-8a58-a9480867664b",
+      "name": "Swapbat oy",
+      "legalName": "Swapbat Oy",
+      "aliases": [],
+      "website": "swapbat.io",
+      "domains": [
+        "swapbat.io"
+      ],
+      "description": "Tested, warranty-backed remanufactured high-voltage EV and hybrid battery packs, delivered install-ready through our workshop network across Finland.",
+      "industries": [
+        {
+          "code": "RAW_MATERIALS",
+          "label": "manufacturingMaterials"
+        }
+      ],
+      "country": "Finland",
+      "hqAddress": "Vantaa, Finland",
+      "founding": {
+        "date": "2024-06-24",
+        "precision": "day",
+        "sources": [
+          {
+            "name": "avoindata.prh.fi",
+            "url": "https://avoindata.prh.fi/opendata-ytj-api/v3/companies?businessId=3457111-9",
+            "date": "2024-06-24",
+            "rank": "FILING"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": "ACTIVE",
+      "investors": [
+        {
+          "id": "bc0ef23d-4a35-41ff-9e99-8acda48d86f6",
+          "name": "Redstone"
+        }
+      ],
+      "fundingRounds": [
+        {
+          "id": "39034d7d-2d41-5881-9a49-e507dfcc833a",
+          "role": "ISSUER"
+        }
+      ],
+      "slush": true,
+      "people": [],
+      "parents": []
+    },
+    "96c3a019-6f33-40d1-b2b7-f3990613aa4d": {
+      "id": "96c3a019-6f33-40d1-b2b7-f3990613aa4d",
+      "name": "Story Board Oy",
+      "legalName": "Story Board Oy",
+      "aliases": [
+        "Elev"
+      ],
+      "website": "elev.fi",
+      "domains": [
+        "elev.fi"
+      ],
+      "description": "Elev tekoälyn hyödyntämisen apuna. Sisäinen ChatGPT, koulutus, valmennukset johtoryhmälle, markkinointi ja viestintätiimeille, reskilling. Elevate your people.",
+      "industries": [
+        {
+          "code": "ADVERTISING_AND_MARKETING",
+          "label": "marketingAds"
+        }
+      ],
+      "country": "Finland",
+      "hqAddress": "Punavuorenkatu 18 A, 00150 HELSINKI, HELSINKI, FI-00150, FI",
+      "founding": {
+        "date": "2003-09-17",
+        "precision": "day",
+        "sources": [
+          {
+            "name": "avoindata.prh.fi",
+            "url": "https://avoindata.prh.fi/opendata-ytj-api/v3/companies?businessId=1846678-1",
+            "date": "2026-11-12",
+            "rank": "FILING"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": "ACTIVE",
+      "investors": [],
+      "fundingRounds": [],
+      "slush": true,
+      "people": [
+        {
+          "name": "Antti Merilehto",
+          "role": "CEO",
+          "since": "2003-09-01"
+        }
+      ],
       "parents": []
     },
     "3e0524ad-7104-44a6-8f0f-788bc2772922": {
@@ -5043,6 +7898,53 @@
           "since": null
         }
       ],
+      "parents": []
+    },
+    "9be01b21-5baa-5c74-ac5b-658a1bd35ed3": {
+      "id": "9be01b21-5baa-5c74-ac5b-658a1bd35ed3",
+      "name": "Ecogen Ab Oy",
+      "legalName": "Ecogen Ab Oy",
+      "aliases": [],
+      "website": "ecogen.fi",
+      "domains": [
+        "ecogen.fi"
+      ],
+      "description": "Ecogen pioneers friction-free hydrogen engines, delivering clean and scalable power for industry, EVs, and off-grid needs. Join the energy revolution.",
+      "industries": [
+        {
+          "code": "RENEWABLE_ENERGY",
+          "label": "cleantech"
+        }
+      ],
+      "country": "Finland",
+      "hqAddress": "Pietarsaari, Finland",
+      "founding": {
+        "date": "2021-09-14",
+        "precision": "day",
+        "sources": [
+          {
+            "name": "avoindata.prh.fi",
+            "url": "https://avoindata.prh.fi/opendata-ytj-api/v3/companies?businessId=3234763-1",
+            "date": "2026-11-12",
+            "rank": "FILING"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": "ACTIVE",
+      "investors": [],
+      "fundingRounds": [
+        {
+          "id": "2be96b1b-c9ce-5c6f-80be-d42a8aa9ae44",
+          "role": "ISSUER"
+        },
+        {
+          "id": "89c776d5-ccaf-5562-aeab-b9ee5e5b77e2",
+          "role": "ISSUER"
+        }
+      ],
+      "slush": true,
+      "people": [],
       "parents": []
     },
     "458defa3-e888-56c9-a118-091edeeb8e71": {
@@ -5475,6 +8377,145 @@
       "people": [],
       "parents": []
     },
+    "90abdb3d-963f-4060-8e3f-3e59d670a7fd": {
+      "id": "90abdb3d-963f-4060-8e3f-3e59d670a7fd",
+      "name": "STRISE AS",
+      "legalName": "Strise AS",
+      "aliases": [
+        "Strise",
+        "Strise Tech"
+      ],
+      "website": "strise.ai",
+      "domains": [
+        "strise.ai"
+      ],
+      "description": "Stop repeating the same compliance checks on a schedule. Strise automates KYB, KYC, screening, and monitoring. Your analysts handle the judgement work.",
+      "industries": [
+        {
+          "code": "SOFTWARE_AND_SERVICES",
+          "label": "enterpriseSoftware"
+        }
+      ],
+      "country": "Norway",
+      "hqAddress": "Hammergata 18A, OSLO, NO-03, 0465, NO",
+      "founding": {
+        "date": "2016-12-12",
+        "precision": "day",
+        "sources": [
+          {
+            "name": "GLEIF",
+            "url": "https://search.gleif.org/#/record/984500742A874Y440226",
+            "date": "2026-05-22",
+            "rank": "FILING"
+          },
+          {
+            "name": "data.brreg.no",
+            "url": "https://data.brreg.no/enhetsregisteret/api/enheter/918330100",
+            "date": "2026-11-12",
+            "rank": "FILING"
+          },
+          {
+            "name": "en.ain.ua",
+            "url": "https://en.ain.ua/2023/09/06/norwegian-fintech-startup-strise-raises-10m",
+            "date": "2023-09-06",
+            "rank": "PRESS"
+          }
+        ]
+      },
+      "fundingStage": "SERIES_A",
+      "status": "ACTIVE",
+      "investors": [
+        {
+          "id": "6d3ffc45-cb9e-4de0-9bc6-e348a4df130c",
+          "name": "CURIOSITY CAP LLP"
+        },
+        {
+          "id": "b6a25d24-12b2-475d-ac15-04c3d161f220",
+          "name": "LIKEMINDED GROUP LTD"
+        },
+        {
+          "id": "b6eb5977-ab06-52f7-8ecf-9cae30365938",
+          "name": "Tim Bolte"
+        },
+        {
+          "id": "d4640009-5578-485e-9f77-3ab64881cddd",
+          "name": "ATOMICO (UK) LIMITED"
+        },
+        {
+          "id": "ddc79d15-fc6b-5d6b-a2b7-9f6c6ec190d1",
+          "name": "Maki VC"
+        },
+        {
+          "id": "fa3933fa-1eeb-4a15-ab1f-4e16f6cb3d84",
+          "name": "Sondo"
+        }
+      ],
+      "fundingRounds": [
+        {
+          "id": "0ee68509-41e3-5e1b-bf2d-8f3a9f4b4f42",
+          "role": "ISSUER"
+        },
+        {
+          "id": "56cd56fb-1623-5169-854c-f3845e9205bb",
+          "role": "ISSUER"
+        },
+        {
+          "id": "83864c3c-1620-5f16-baf3-f0fd7dd00b24",
+          "role": "ISSUER"
+        },
+        {
+          "id": "8812c472-13c0-5146-942d-ae130da8f41c",
+          "role": "ISSUER"
+        },
+        {
+          "id": "9a3d50d9-c5e9-5753-875c-d710dbe0c325",
+          "role": "ISSUER"
+        },
+        {
+          "id": "ca90ad0e-8059-5f35-b669-feb5e08c13cb",
+          "role": "ISSUER"
+        }
+      ],
+      "slush": true,
+      "people": [
+        {
+          "name": "Marit Rødevand",
+          "role": "CEO",
+          "since": null
+        },
+        {
+          "name": "Magnus Hagem",
+          "role": "Head of Legal",
+          "since": null
+        },
+        {
+          "name": "Rich Perry",
+          "role": "Chief Revenue Officer",
+          "since": null
+        },
+        {
+          "name": "Thilo Schmidt",
+          "role": "Head of Product",
+          "since": null
+        },
+        {
+          "name": "Adrian Trzeciak",
+          "role": "Head of Engineering",
+          "since": null
+        },
+        {
+          "name": "Fredrik Riiser",
+          "role": "Head of Strategy and Business Development",
+          "since": null
+        },
+        {
+          "name": "Kim Kvaase",
+          "role": "Chief of Staff and Head of People",
+          "since": null
+        }
+      ],
+      "parents": []
+    },
     "dc4953ae-31a3-57df-8a57-4c99d2e092ff": {
       "id": "dc4953ae-31a3-57df-8a57-4c99d2e092ff",
       "name": "CEREBRAS SYSTEMS SAS",
@@ -5504,6 +8545,49 @@
           "since": null
         }
       ],
+      "parents": []
+    },
+    "8040a23f-c499-5593-8a88-c8602a2a000f": {
+      "id": "8040a23f-c499-5593-8a88-c8602a2a000f",
+      "name": "Content Corner Oy",
+      "legalName": "Content Corner Oy",
+      "aliases": [],
+      "website": "contentcorner.fi",
+      "domains": [
+        "contentcorner.fi"
+      ],
+      "description": "Content Corner on Suomen ensimmäinen vaikuttajien  perustama vaikuttajamarkkinointiin erikoistunut luova toimisto. Riveihimme kuuluu alan pioneereja, jotka ovat olleet luomassa vaikuttajamarkkinoin...",
+      "industries": [
+        {
+          "code": "ADVERTISING_AND_MARKETING",
+          "label": "marketingAds"
+        }
+      ],
+      "country": "Finland",
+      "hqAddress": "Helsinki, Finland",
+      "founding": {
+        "date": "2021-04-06",
+        "precision": "day",
+        "sources": [
+          {
+            "name": "avoindata.prh.fi",
+            "url": "https://avoindata.prh.fi/opendata-ytj-api/v3/companies?businessId=3200557-8",
+            "date": "2021-04-06",
+            "rank": "FILING"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": "ACTIVE",
+      "investors": [],
+      "fundingRounds": [
+        {
+          "id": "d3f607ef-6a46-5153-bdd2-7399acb96a35",
+          "role": "ISSUER"
+        }
+      ],
+      "slush": true,
+      "people": [],
       "parents": []
     },
     "05521b5a-8812-4f21-bde8-6134fc218657": {
@@ -5610,6 +8694,39 @@
       "investors": [],
       "fundingRounds": [],
       "slush": true,
+      "people": [],
+      "parents": []
+    },
+    "9e6f771d-36b4-4a83-858b-f804ffbb6648": {
+      "id": "9e6f771d-36b4-4a83-858b-f804ffbb6648",
+      "name": "UNIKER Kereskedelmi és Ingatlanhasznosító zártkörűen működő Részvénytársaság",
+      "legalName": "UNIKER Kereskedelmi és Ingatlanhasznosító zártkörűen működő Részvénytársaság",
+      "aliases": [
+        "UNIKER Kereskedelmi es Ingatlanhasznosito zartkoruen mukodo Reszvenytarsasag"
+      ],
+      "website": null,
+      "domains": [],
+      "description": "A Hungarian private joint-stock company based in Budapest, founded in 1990.",
+      "industries": [],
+      "country": "Hungary",
+      "hqAddress": "Radvány utca 10., Budapest, HU-BU, 1118, HU",
+      "founding": {
+        "date": "1990-10-15",
+        "precision": null,
+        "sources": [
+          {
+            "name": "GLEIF",
+            "url": "https://search.gleif.org/#/record/529900D359V7208HIU32",
+            "date": "2026-04-08",
+            "rank": "FILING"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": null,
+      "investors": [],
+      "fundingRounds": [],
+      "slush": false,
       "people": [],
       "parents": []
     },
@@ -6186,6 +9303,178 @@
       "people": [],
       "parents": []
     },
+    "78731e3a-86a3-5cc8-b516-6cb5329a7043": {
+      "id": "78731e3a-86a3-5cc8-b516-6cb5329a7043",
+      "name": "Immunordic ApS",
+      "legalName": "Immunordic ApS",
+      "aliases": [
+        "Synobody ApS"
+      ],
+      "website": "immunordic.com",
+      "domains": [
+        "immunordic.com"
+      ],
+      "description": "Immunordic combines molecular simulation and AI to predict which protein candidates bind, and how strongly, before extensive lab testing.",
+      "industries": [
+        {
+          "code": "PHARMACEUTICALS",
+          "label": "medtechPharma"
+        }
+      ],
+      "country": "Denmark",
+      "hqAddress": "Copenhagen , Denmark",
+      "founding": {
+        "date": "2023-01-12",
+        "precision": "day",
+        "sources": [
+          {
+            "name": "firmaapi.dk",
+            "url": "https://firmaapi.dk/virksomhed/immunordic-aps-43773070",
+            "date": "2026-11-13",
+            "rank": "AGGREGATOR"
+          },
+          {
+            "name": "danskcvrapi.dk",
+            "url": "https://danskcvrapi.dk/en/news/43773070-brancheskift-2025-01-01",
+            "date": "2026-11-13",
+            "rank": "AGGREGATOR"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": "ACTIVE",
+      "investors": [
+        {
+          "id": "2f547999-564a-570d-b69f-5f8efdf34aee",
+          "name": "Beyond Beta"
+        }
+      ],
+      "fundingRounds": [
+        {
+          "id": "ec8bb585-2b7d-5514-abd3-7e043c1d7952",
+          "role": "ISSUER"
+        }
+      ],
+      "slush": true,
+      "people": [],
+      "parents": []
+    },
+    "9ce0289c-a897-4e88-b160-eb9c5f1684a6": {
+      "id": "9ce0289c-a897-4e88-b160-eb9c5f1684a6",
+      "name": "Open Payments Europe AB",
+      "legalName": "Open Payments Europe AB",
+      "aliases": [
+        "Open Payments",
+        "FinTech Open Payments",
+        "Open Payments Europe"
+      ],
+      "website": "openpayments.io",
+      "domains": [
+        "openpayments.io"
+      ],
+      "description": "Open Payments is a Stockholm-based open banking platform for B2B payments: one API to bank APIs for ERP, treasury and accounting systems, with payment initiation, account information and payment ex...",
+      "industries": [
+        {
+          "code": "FINTECH",
+          "label": "fintech"
+        }
+      ],
+      "country": "Sweden",
+      "hqAddress": "Sveavägen 17, 111 57 Stockholm, Sweden",
+      "founding": {
+        "date": "2017-01-01",
+        "precision": "day",
+        "sources": [
+          {
+            "name": "linkedin.com",
+            "url": "https://www.linkedin.com/company/openpayments",
+            "date": "2026-11-02",
+            "rank": "AGGREGATOR"
+          },
+          {
+            "name": "eu-startups.com",
+            "url": "https://www.eu-startups.com/2019/05/stockholm-based-fintech-startup-open-payments-raises-e1-2-million-seed-funding-for-its-psd2-compliant-platform/",
+            "date": "2019-05-28",
+            "rank": "PRESS"
+          },
+          {
+            "name": "alfvendidrikson.com",
+            "url": "https://www.alfvendidrikson.com/post/open-payments-to-join-the-a-d-family",
+            "date": "2025-01-23",
+            "rank": "PRIMARY"
+          }
+        ]
+      },
+      "fundingStage": "SEED",
+      "status": "ACTIVE",
+      "investors": [
+        {
+          "id": "7684b497-6faa-4239-8344-597c42d95999",
+          "name": "STIFTELSEN INDUSTRIFONDEN"
+        },
+        {
+          "id": "bc817c14-4df6-5f3e-8881-777757570634",
+          "name": "Global Brain Corporation"
+        },
+        {
+          "id": "bcbdbe17-e63a-449f-805c-95242c1e2fd5",
+          "name": "Brightly Ventures, Inc."
+        },
+        {
+          "id": "be67283b-4529-4a2d-834a-96edc4b36971",
+          "name": "Luminar Ventures"
+        },
+        {
+          "id": "d39ae471-6225-4f17-8207-bfb7466536a4",
+          "name": "Sony Financial Ventures"
+        },
+        {
+          "id": "db089029-ceca-4e5e-b60a-b4e39a98c3b5",
+          "name": "Alfvén & Didrikson"
+        },
+        {
+          "id": "f9477b73-6b4d-40e5-9446-3d12f563a3f5",
+          "name": "Sony"
+        }
+      ],
+      "fundingRounds": [
+        {
+          "id": "82700d27-8726-570d-b211-16ccfb828329",
+          "role": "ISSUER"
+        },
+        {
+          "id": "9683a5f9-768f-5672-8ad1-2e2dd36783a1",
+          "role": "ISSUER"
+        },
+        {
+          "id": "ca52a7ba-88de-5004-9116-6d3f54f3b594",
+          "role": "ISSUER"
+        },
+        {
+          "id": "d801e0e6-e97f-57be-80a7-6dfeba16f408",
+          "role": "ISSUER"
+        }
+      ],
+      "slush": true,
+      "people": [
+        {
+          "name": "Louise Brandt",
+          "role": "CEO",
+          "since": null
+        },
+        {
+          "name": "Jonas Kjellin",
+          "role": "CEO",
+          "since": null
+        },
+        {
+          "name": "Per Westin",
+          "role": "CPO",
+          "since": null
+        }
+      ],
+      "parents": []
+    },
     "9ea03240-306c-5366-8f5c-6191e94b07f6": {
       "id": "9ea03240-306c-5366-8f5c-6191e94b07f6",
       "name": "Volare",
@@ -6269,6 +9558,152 @@
       ],
       "parents": []
     },
+    "f4f6c0a6-37c6-44ee-85d7-631c66121b3d": {
+      "id": "f4f6c0a6-37c6-44ee-85d7-631c66121b3d",
+      "name": "Carbonaide Oy",
+      "legalName": "Carbonaide Oy",
+      "aliases": [
+        "Carbonaide Ltd",
+        "Carbonaide Ab",
+        "Carbonaide"
+      ],
+      "website": "carbonaide.com",
+      "domains": [
+        "carbonaide.com"
+      ],
+      "description": "Finnish climate-tech company, a spin-out of VTT Technical Research Centre of Finland, that supplies a CO2-curing (CO2 mineralization) technology letting concrete manufacturers replace cement with c...",
+      "industries": [
+        {
+          "code": "RENEWABLE_ENERGY",
+          "label": null
+        },
+        {
+          "code": "CONSTRUCTION_AND_ENGINEERING",
+          "label": null
+        },
+        {
+          "code": "CHEMICALS",
+          "label": null
+        },
+        {
+          "code": "SOFTWARE_AND_SERVICES",
+          "label": "deeptech"
+        }
+      ],
+      "country": "Finland",
+      "hqAddress": "Kauppakatu 25, 80100 Joensuu, Finland",
+      "founding": {
+        "date": "2022-11-24",
+        "precision": "day",
+        "sources": [
+          {
+            "name": "tietopalvelu.ytj.fi",
+            "url": "https://tietopalvelu.ytj.fi/yritys/3326768-4",
+            "date": "2025-12-31",
+            "rank": "FILING"
+          },
+          {
+            "name": "avoindata.prh.fi",
+            "url": "https://avoindata.prh.fi/opendata-ytj-api/v3/companies?businessId=3326768-4",
+            "date": "2026-11-07",
+            "rank": "FILING"
+          }
+        ]
+      },
+      "fundingStage": "SEED",
+      "status": "ACTIVE",
+      "investors": [
+        {
+          "id": "12a0d01e-7433-4033-8f2d-c964795ec178",
+          "name": "Product Ecology Holding B.V."
+        },
+        {
+          "id": "23e6acb0-9226-4091-a275-398c3c1f857a",
+          "name": "Ikorni Invest Oy Ab"
+        },
+        {
+          "id": "2a5b36c2-8ed2-4b16-b116-5d6a6a885dce",
+          "name": "Zero Carbon Future Group Oy"
+        },
+        {
+          "id": "33f66b37-09ff-4b7b-b05b-15aa592e690e",
+          "name": "Ihantola Invest Oy"
+        },
+        {
+          "id": "55cb5c32-dada-40fb-8de1-06e7db1c2994",
+          "name": "Helkama-Kiinteistöt Oy"
+        },
+        {
+          "id": "8beb92a1-264c-5cde-b7cb-4fdfb0d24497",
+          "name": "He"
+        },
+        {
+          "id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+          "name": "REDSTONE"
+        },
+        {
+          "id": "94f20a35-5cf1-54fb-899a-198fa69ed135",
+          "name": "Lakan Betoni"
+        },
+        {
+          "id": "bc0ef23d-4a35-41ff-9e99-8acda48d86f6",
+          "name": "Redstone"
+        },
+        {
+          "id": "d016642b-a3ad-4f56-b03c-7ff04779a081",
+          "name": "Vantaan Energia Oy"
+        },
+        {
+          "id": "d515c633-5db6-45a3-9614-ffecd28251eb",
+          "name": "Vantaan Energia Oy"
+        },
+        {
+          "id": "d5b41639-eb27-43df-a6ee-a4f03807fbca",
+          "name": "Business Finland"
+        }
+      ],
+      "fundingRounds": [
+        {
+          "id": "07d67ac8-881f-54b7-b10a-5f2fbc63d141",
+          "role": "ISSUER"
+        },
+        {
+          "id": "6930db64-1885-5e18-8f19-aefa52a5df1e",
+          "role": "ISSUER"
+        },
+        {
+          "id": "6930db64-1885-5e18-8f19-aefa52a5df1e",
+          "role": "INVESTOR"
+        },
+        {
+          "id": "b1261f7f-ebec-520e-8848-8f2e2f1d7d9a",
+          "role": "ISSUER"
+        },
+        {
+          "id": "e3828089-6edb-50bc-866d-f102b0ab07bc",
+          "role": "ISSUER"
+        }
+      ],
+      "slush": true,
+      "people": [
+        {
+          "name": "Tapio Vehmas",
+          "role": "CEO",
+          "since": null
+        },
+        {
+          "name": "Niina Haapasalo",
+          "role": "CTO",
+          "since": "2024-01-01"
+        },
+        {
+          "name": "Matias Impivaara",
+          "role": "Chief Commercial Officer",
+          "since": null
+        }
+      ],
+      "parents": []
+    },
     "f78bc5f5-dbe5-4b57-b01b-a20976947df3": {
       "id": "f78bc5f5-dbe5-4b57-b01b-a20976947df3",
       "name": "TAPLIN ESTATES LIMITED",
@@ -6340,6 +9775,177 @@
       ],
       "parents": []
     },
+    "ac911f72-9207-51bc-bda4-2f19b8de34c5": {
+      "id": "ac911f72-9207-51bc-bda4-2f19b8de34c5",
+      "name": "Supercell Oy",
+      "legalName": "Supercell Oy",
+      "aliases": [
+        "Supercell"
+      ],
+      "website": null,
+      "domains": [],
+      "description": "Finnish mobile video game developer",
+      "industries": [
+        {
+          "code": "ENTERTAINMENT",
+          "label": null
+        },
+        {
+          "code": "SOFTWARE_AND_SERVICES",
+          "label": null
+        }
+      ],
+      "country": "Finland",
+      "hqAddress": null,
+      "founding": null,
+      "fundingStage": null,
+      "status": null,
+      "investors": [
+        {
+          "id": "35d690ea-505a-4d72-8621-fa6ba2f2005e",
+          "name": "Tencent Holdings"
+        },
+        {
+          "id": "476a73ac-afa2-4713-9f73-188bc7ec0b95",
+          "name": "Lifeline Ventures"
+        },
+        {
+          "id": "5c1f642b-a668-4bd0-ab15-2db23d23dbf6",
+          "name": "Index Ventures Limited"
+        },
+        {
+          "id": "71458374-77cc-414e-ad66-6395395a2c02",
+          "name": "INDEX VENTURES (UK) LLP"
+        },
+        {
+          "id": "71db3b0c-013a-491f-953a-50e18100a7b2",
+          "name": "SoftBank Corp."
+        },
+        {
+          "id": "aee065b7-5ae9-45c7-8c30-457f6d339958",
+          "name": "Accel"
+        },
+        {
+          "id": "b820d97f-5538-4f53-86a3-771916afc875",
+          "name": "ガンホー・オンライン・エンターテイメント株式会社"
+        },
+        {
+          "id": "d4640009-5578-485e-9f77-3ab64881cddd",
+          "name": "ATOMICO (UK) LIMITED"
+        },
+        {
+          "id": "d7232725-3524-473e-bd38-679d3f1365b4",
+          "name": "Tencent"
+        },
+        {
+          "id": "e4e82b7a-98bb-43d7-8033-3b92051d2ffe",
+          "name": "Initial Capital"
+        },
+        {
+          "id": "f9727c8b-515b-4245-8a8e-33b9331bb8c2",
+          "name": "Accel Partners"
+        }
+      ],
+      "fundingRounds": [
+        {
+          "id": "257fe4d4-13f6-5594-b071-553dd6167aeb",
+          "role": "INVESTOR"
+        }
+      ],
+      "slush": true,
+      "people": [],
+      "parents": []
+    },
+    "b2306a07-77f4-5e34-bbb0-f0a74a81f138": {
+      "id": "b2306a07-77f4-5e34-bbb0-f0a74a81f138",
+      "name": "Crown Defence Oy",
+      "legalName": "Crown Defence Oy",
+      "aliases": [
+        "Crown Cyber Defence",
+        "Crown Cyber Defence Oy",
+        "Crown Defence Ltd",
+        "Crown Defence Ab"
+      ],
+      "website": "crowndefence.fi",
+      "domains": [
+        "crowndefence.fi"
+      ],
+      "description": "Crown Defence delivers modular non-kinetic, AI-powered cognitive electronic defence systems with real-time detection, signal control, and autonomous threat response. Built in Finland. Ready for dep...",
+      "industries": [
+        {
+          "code": "AEROSPACE_AND_DEFENSE",
+          "label": "dualUseTech"
+        }
+      ],
+      "country": "Finland",
+      "hqAddress": "Tekniikantie 12, 02150 Espoo, Finland",
+      "founding": {
+        "date": "2023-04-25",
+        "precision": "day",
+        "sources": [
+          {
+            "name": "avoindata.prh.fi",
+            "url": "https://avoindata.prh.fi/opendata-ytj-api/v3/companies?businessId=3355133-5",
+            "date": "2026-11-13",
+            "rank": "FILING"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": "ACTIVE",
+      "investors": [],
+      "fundingRounds": [],
+      "slush": true,
+      "people": [],
+      "parents": []
+    },
+    "f55ff94a-f7cb-5cbd-8eb3-7bcdee436f52": {
+      "id": "f55ff94a-f7cb-5cbd-8eb3-7bcdee436f52",
+      "name": "DentView Oy",
+      "legalName": "DentView Oy",
+      "aliases": [],
+      "website": "dentview.ai",
+      "domains": [
+        "dentview.ai"
+      ],
+      "description": "Your treatments, offers and prices on screen for every waiting patient. Callback requests, QR booking and Google reviews. Start on your own tablet, 7 days free.",
+      "industries": [
+        {
+          "code": "HEALTHCARE_PROVIDERS",
+          "label": "health"
+        }
+      ],
+      "country": "Finland",
+      "hqAddress": "Kempele, Finland",
+      "founding": {
+        "date": "2019-01-01",
+        "precision": "day",
+        "sources": [
+          {
+            "name": "linkedin.com",
+            "url": "https://www.linkedin.com/company/42429361",
+            "date": "2026-11-02",
+            "rank": "AGGREGATOR"
+          }
+        ]
+      },
+      "fundingStage": "PRE_SEED",
+      "status": "ACTIVE",
+      "investors": [],
+      "fundingRounds": [
+        {
+          "id": "6cd98f3e-9b44-52f2-beb7-06eec8f0c683",
+          "role": "ISSUER"
+        },
+        {
+          "id": "78689fbe-200b-557f-9c29-22d548b8686d",
+          "role": "ISSUER"
+        }
+      ],
+      "slush": true,
+      "people": [],
+      "parents": []
+    },
     "4d66ee8f-b937-5828-8c37-51f52f533462": {
       "id": "4d66ee8f-b937-5828-8c37-51f52f533462",
       "name": "Rescue Drones Finland Oy",
@@ -6382,6 +9988,167 @@
           "since": null
         }
       ],
+      "parents": []
+    },
+    "a862eba6-26a3-400a-ae63-ed9ee29123c8": {
+      "id": "a862eba6-26a3-400a-ae63-ed9ee29123c8",
+      "name": "Maculaser Oy",
+      "legalName": "Maculaser Oy",
+      "aliases": [
+        "Maculaser"
+      ],
+      "website": "maculaser.com",
+      "domains": [
+        "maculaser.com"
+      ],
+      "description": "Maculaser develops a temperature-controlled, non-damaging retinal laser therapy that heats retinal tissue under real-time personalised temperature control to treat retinal diseases such as age-rela...",
+      "industries": [
+        {
+          "code": "BIOTECHNOLOGY",
+          "label": null
+        },
+        {
+          "code": "PHARMACEUTICALS",
+          "label": "medtechPharma"
+        },
+        {
+          "code": "MEDICAL_DEVICES",
+          "label": null
+        }
+      ],
+      "country": "Finland",
+      "hqAddress": "Keilaranta 1, 02150 Espoo, Finland",
+      "founding": {
+        "date": "2020-09-24",
+        "precision": "day",
+        "sources": [
+          {
+            "name": "tietopalvelu.ytj.fi",
+            "url": "https://tietopalvelu.ytj.fi/yritys/3160009-2",
+            "date": "2026-07-15",
+            "rank": "FILING"
+          }
+        ]
+      },
+      "fundingStage": "SERIES_A",
+      "status": "ACTIVE",
+      "investors": [
+        {
+          "id": "56bb1c59-054b-4d2c-a13d-2b568b3e1bde",
+          "name": "M2CARE LIMITED"
+        },
+        {
+          "id": "5cd7482e-d781-44f0-81a0-6717f00e61a2",
+          "name": "Carl Zeiss AG"
+        },
+        {
+          "id": "6a966907-4006-4a4b-8d11-2330f76cb3cd",
+          "name": "Innovestor Oy"
+        },
+        {
+          "id": "ea80b60a-f16e-4466-8f96-5a7afa934c51",
+          "name": "ZEISS Ventures"
+        }
+      ],
+      "fundingRounds": [
+        {
+          "id": "1c9c5313-469b-5904-9320-047b42644f42",
+          "role": "ISSUER"
+        },
+        {
+          "id": "465ede97-640b-5afa-a742-2d5a09dd22d0",
+          "role": "ISSUER"
+        },
+        {
+          "id": "8c5702eb-c4ab-5390-8815-c2d1931cd57e",
+          "role": "ISSUER"
+        },
+        {
+          "id": "922c864d-d461-53c5-ae21-92dbe9811518",
+          "role": "ISSUER"
+        },
+        {
+          "id": "b2d11867-5eb3-5c6a-a220-12628728fc36",
+          "role": "ISSUER"
+        }
+      ],
+      "slush": true,
+      "people": [
+        {
+          "name": "Jani Tirronen",
+          "role": "CEO",
+          "since": null
+        },
+        {
+          "name": "Jaakko Nieminen",
+          "role": "CTO",
+          "since": null
+        },
+        {
+          "name": "Kirsty Happonen",
+          "role": "Head of Regulatory Affairs and Quality Assurance",
+          "since": "2024-02-23"
+        },
+        {
+          "name": "Ossi Kaikkonen",
+          "role": "Head of Product",
+          "since": null
+        },
+        {
+          "name": "Teemu Turunen",
+          "role": "Chief Scientific Officer",
+          "since": null
+        },
+        {
+          "name": "Aki Vartiainen",
+          "role": "Clinical Trial Manager",
+          "since": "2024-06-11"
+        }
+      ],
+      "parents": []
+    },
+    "bd3b84cb-2425-5708-b840-e33e1ef94452": {
+      "id": "bd3b84cb-2425-5708-b840-e33e1ef94452",
+      "name": "Carneiro Oy",
+      "legalName": "Carneiro Oy",
+      "aliases": [],
+      "website": "carneirogroup.com",
+      "domains": [
+        "carneirogroup.com"
+      ],
+      "description": "Carneiro Oy aligns tech needs with business goals, offering solutions in CRM, Sales, SaaS, and Software Development for sustainable growth.",
+      "industries": [
+        {
+          "code": "SOFTWARE_AND_SERVICES",
+          "label": "enterpriseSoftware"
+        }
+      ],
+      "country": "Finland",
+      "hqAddress": "Kangasala, Finland",
+      "founding": {
+        "date": "2023-01-01",
+        "precision": "day",
+        "sources": [
+          {
+            "name": "linkedin.com",
+            "url": "https://www.linkedin.com/company/carneiro-oy",
+            "date": "2026-11-02",
+            "rank": "AGGREGATOR"
+          },
+          {
+            "name": "avoindata.prh.fi",
+            "url": "https://avoindata.prh.fi/opendata-ytj-api/v3/companies?businessId=3408606-8",
+            "date": "2026-11-13",
+            "rank": "FILING"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": "ACTIVE",
+      "investors": [],
+      "fundingRounds": [],
+      "slush": true,
+      "people": [],
       "parents": []
     },
     "6a5b971e-bb28-438b-9437-3f694c5c9ff1": {
@@ -6750,6 +10517,70 @@
       ],
       "parents": []
     },
+    "8bbbf14e-5b84-5042-8d8b-acb65048defb": {
+      "id": "8bbbf14e-5b84-5042-8d8b-acb65048defb",
+      "name": "Tuteliq AB",
+      "legalName": "Tuteliq AB",
+      "aliases": [],
+      "website": "tuteliq.ai",
+      "domains": [
+        "tuteliq.ai"
+      ],
+      "description": "AI safety API detecting grooming, bullying, scams, self-harm and CSAM across text, voice, image and video. 1.1-1.5s typical response, zero content retention.",
+      "industries": [
+        {
+          "code": "SOFTWARE_AND_SERVICES",
+          "label": "ai"
+        }
+      ],
+      "country": "Sweden",
+      "hqAddress": "Gävle, Sweden",
+      "founding": {
+        "date": "2024-01-01",
+        "precision": "day",
+        "sources": [
+          {
+            "name": "linkedin.com",
+            "url": "https://www.linkedin.com/company/tuteliq",
+            "date": "2026-11-02",
+            "rank": "AGGREGATOR"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": "ACTIVE",
+      "investors": [
+        {
+          "id": "b887a257-450d-5f77-9a98-0c626131f9b7",
+          "name": "Baltic Ventures Angel Syndicate"
+        }
+      ],
+      "fundingRounds": [
+        {
+          "id": "15d2ead4-e364-5db6-a93c-d06f4f48fd56",
+          "role": "ISSUER"
+        }
+      ],
+      "slush": true,
+      "people": [
+        {
+          "name": "Gabriel Sabadin",
+          "role": "CEO",
+          "since": null
+        },
+        {
+          "name": "Sarah Kingston",
+          "role": "Senior Advisor",
+          "since": null
+        },
+        {
+          "name": "Nicola Harding",
+          "role": "Chief Scientific Officer",
+          "since": null
+        }
+      ],
+      "parents": []
+    },
     "58b09109-c6ab-5b1b-96a8-c6fabf1a54a2": {
       "id": "58b09109-c6ab-5b1b-96a8-c6fabf1a54a2",
       "name": "Cloud Family AB",
@@ -6811,6 +10642,131 @@
           "name": "Markus Viikki",
           "role": "Chief Content Officer",
           "since": null
+        }
+      ],
+      "parents": []
+    },
+    "bc791723-909a-4054-8e3d-c22716bfff7a": {
+      "id": "bc791723-909a-4054-8e3d-c22716bfff7a",
+      "name": "Done.ai Group AB",
+      "legalName": "Done.ai Group AB",
+      "aliases": [
+        "24SevenOffice Group AB",
+        "24SevenOffice Scandinavia AB",
+        "Done.ai Group",
+        "Done.ai",
+        "24SevenOffice"
+      ],
+      "website": "done.ai",
+      "domains": [
+        "done.ai"
+      ],
+      "description": "Everything your business needs, in one place.",
+      "industries": [
+        {
+          "code": "SOFTWARE_AND_SERVICES",
+          "label": "Software"
+        }
+      ],
+      "country": "Sweden",
+      "hqAddress": "Birger Jarlsgatan 2, 114 34 Stockholm, Sweden",
+      "founding": {
+        "date": "2017-08-02",
+        "precision": "day",
+        "sources": [
+          {
+            "name": "GLEIF",
+            "url": "https://search.gleif.org/#/record/549300HN4ITSR6ZSAO17",
+            "date": "2026-08-29",
+            "rank": "FILING"
+          },
+          {
+            "name": "cdn.prod.website-files.com",
+            "url": "https://cdn.prod.website-files.com/63cf97b6a9ebdc5f745cff2f/699f0e119f673a97c57ca3cb_24SevenOffice_Group_AB_Bolagsbeskrivning.pdf",
+            "date": "2024-06-28",
+            "rank": "PRIMARY"
+          },
+          {
+            "name": "upplysningar.syna.se",
+            "url": "https://upplysningar.syna.se/foretag/5591208870",
+            "date": "2026-11-13",
+            "rank": "AGGREGATOR"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": null,
+      "investors": [
+        {
+          "id": "2b2795ae-7b8e-491b-ae09-5f1025b03e56",
+          "name": "Joh. Berenberg, Gossler & Co. KG"
+        },
+        {
+          "id": "418b31f8-352b-451a-a865-8e1568457ca1",
+          "name": "Seven Canyons Advisors, LLC"
+        },
+        {
+          "id": "5e0b245d-f7b4-43e4-aa3e-21861fee42e2",
+          "name": "Swedbank Robur Ny Teknik"
+        },
+        {
+          "id": "75969f54-d7c3-4fdf-a369-f2ca28ee9dc5",
+          "name": "Swedbank Robur Fonder"
+        },
+        {
+          "id": "914017ab-f455-4855-8b90-b9e64f5f711f",
+          "name": "TIN Ny Teknik"
+        },
+        {
+          "id": "afc67bed-f3c2-4614-878f-ec35c4a68ec0",
+          "name": "Humle Småbolagsfond"
+        },
+        {
+          "id": "d6e364ab-a15c-5770-89c8-5730ce9aca53",
+          "name": "TIN Fonder"
+        },
+        {
+          "id": "da8fa772-a92f-4283-93ba-32de257a23d9",
+          "name": "R-VENTURE AS"
+        },
+        {
+          "id": "eba25d66-02a6-4b51-8290-7ddcabfe9664",
+          "name": "Lugard Road Capital"
+        },
+        {
+          "id": "f5f5b6e6-0879-4a8c-8cfb-bd3a494c3164",
+          "name": "Adrigo Small & Midcap L/S."
+        }
+      ],
+      "fundingRounds": [
+        {
+          "id": "7c039944-6c82-5142-8c45-92a47c2fffc9",
+          "role": "ISSUER"
+        },
+        {
+          "id": "b823c079-cb2e-505e-b916-7de30d99b026",
+          "role": "ISSUER"
+        },
+        {
+          "id": "bc530bab-2e4d-5926-8086-1604a0b00d28",
+          "role": "ISSUER"
+        },
+        {
+          "id": "e2f81435-6970-5ff8-8dd8-fda33a96d6da",
+          "role": "ISSUER"
+        }
+      ],
+      "slush": true,
+      "people": [
+        {
+          "name": "Staffan Herbst",
+          "role": "CEO",
+          "since": "2025-01-10"
+        },
+        {
+          "name": "Lars Rydtzander",
+          "role": "Chief Product Officer",
+          "since": "2026-01-01"
         }
       ],
       "parents": []
@@ -6975,6 +10931,56 @@
       "people": [],
       "parents": []
     },
+    "9559aaf1-7718-5d15-bdbc-61d03ce64cf9": {
+      "id": "9559aaf1-7718-5d15-bdbc-61d03ce64cf9",
+      "name": "ReFaMo Oy",
+      "legalName": "ReFaMo Oy",
+      "aliases": [],
+      "website": "refamo.fi",
+      "domains": [
+        "refamo.fi"
+      ],
+      "description": "Refamo - advanced fatigue assessments of welded steel structures under dynamic loads.",
+      "industries": [
+        {
+          "code": "SOFTWARE_AND_SERVICES",
+          "label": "ai"
+        }
+      ],
+      "country": "Finland",
+      "hqAddress": "Espoo, Finland",
+      "founding": {
+        "date": "2020-02-25",
+        "precision": "day",
+        "sources": [
+          {
+            "name": "linkedin.com",
+            "url": "https://www.linkedin.com/company/refamo",
+            "date": "2026-11-02",
+            "rank": "AGGREGATOR"
+          },
+          {
+            "name": "avoindata.prh.fi",
+            "url": "https://avoindata.prh.fi/opendata-ytj-api/v3/companies?businessId=3121708-5",
+            "date": "2026-11-13",
+            "rank": "FILING"
+          },
+          {
+            "name": "finder.fi",
+            "url": "https://www.finder.fi/IT-konsultointi+IT-palvelut/ReFaMo+Oy/Helsinki/yhteystiedot/3367956",
+            "date": "2026-11-13",
+            "rank": "AGGREGATOR"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": "ACTIVE",
+      "investors": [],
+      "fundingRounds": [],
+      "slush": true,
+      "people": [],
+      "parents": []
+    },
     "3b4c8c65-4379-5ea5-ac52-43dad70576ee": {
       "id": "3b4c8c65-4379-5ea5-ac52-43dad70576ee",
       "name": "Zentexia ApS",
@@ -7002,6 +11008,70 @@
             "url": "https://www.linkedin.com/company/zentexia-aps/",
             "date": "2026-11-02",
             "rank": "AGGREGATOR"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": "ACTIVE",
+      "investors": [],
+      "fundingRounds": [],
+      "slush": true,
+      "people": [],
+      "parents": []
+    },
+    "8bd6a90e-5b8d-41cd-863e-a3a23a79ae68": {
+      "id": "8bd6a90e-5b8d-41cd-863e-a3a23a79ae68",
+      "name": "Datadeck, LP",
+      "legalName": null,
+      "aliases": [],
+      "website": null,
+      "domains": [],
+      "description": "A limited partnership company.",
+      "industries": [],
+      "country": null,
+      "hqAddress": null,
+      "founding": null,
+      "fundingStage": null,
+      "status": null,
+      "investors": [],
+      "fundingRounds": [],
+      "slush": false,
+      "people": [],
+      "parents": []
+    },
+    "f02df367-bc0c-5fea-b67b-5e9df0b61a01": {
+      "id": "f02df367-bc0c-5fea-b67b-5e9df0b61a01",
+      "name": "Datadeck Oy",
+      "legalName": "Datadeck Oy",
+      "aliases": [],
+      "website": "datadeck.fi",
+      "domains": [
+        "datadeck.fi"
+      ],
+      "description": "Huippukalastajien käyttämä analyysi: mikä päivä lähteä kalaan, minne omalla järvelläsi, mihin syvyyteen ja millä vieheellä. Kartat, reissukirjanpito ja yhteisö. 14 pv ilmainen kokeilu.",
+      "industries": [
+        {
+          "code": "SOFTWARE_AND_SERVICES",
+          "label": "analytics"
+        }
+      ],
+      "country": "Finland",
+      "hqAddress": "Keuruu, Finland",
+      "founding": {
+        "date": "2026-08-27",
+        "precision": "day",
+        "sources": [
+          {
+            "name": "avoindata.prh.fi",
+            "url": "https://avoindata.prh.fi/opendata-ytj-api/v3/companies?businessId=3649902-6",
+            "date": "2026-08-27",
+            "rank": "FILING"
+          },
+          {
+            "name": "avoindata.prh.fi",
+            "url": "https://avoindata.prh.fi/opendata-registerednotices-api/v3/3649902-6",
+            "date": "2026-08-27",
+            "rank": "FILING"
           }
         ]
       },
@@ -7125,6 +11195,50 @@
       "people": [],
       "parents": []
     },
+    "c80d6424-4aeb-59cb-9dc7-df4168fed7dd": {
+      "id": "c80d6424-4aeb-59cb-9dc7-df4168fed7dd",
+      "name": "Nordic Experience Design",
+      "legalName": "Nordic Experience Design ApS",
+      "aliases": [],
+      "website": "nordicexperiencedesign.com",
+      "domains": [
+        "nordicexperiencedesign.com"
+      ],
+      "description": "HR technology products and services around ServiceNow HR Service Delivery, including NXD for HR and a Manager Assistant product.",
+      "industries": [
+        {
+          "code": "SOFTWARE_AND_SERVICES",
+          "label": "enterpriseSoftware"
+        }
+      ],
+      "country": "Denmark",
+      "hqAddress": "Copenhagen, Denmark",
+      "founding": {
+        "date": "2025-09-17",
+        "precision": "day",
+        "sources": [
+          {
+            "name": "estatistik.dk",
+            "url": "https://estatistik.dk/virksomhed/nordic-experience-design-aps/45892859",
+            "date": "2026-11-13",
+            "rank": "AGGREGATOR"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": "ACTIVE",
+      "investors": [],
+      "fundingRounds": [],
+      "slush": true,
+      "people": [
+        {
+          "name": "Ulrik Christensen",
+          "role": "Director",
+          "since": "2025-09-17"
+        }
+      ],
+      "parents": []
+    },
     "331fec23-9c63-4885-a8f5-c2902c9e1b9d": {
       "id": "331fec23-9c63-4885-a8f5-c2902c9e1b9d",
       "name": "Redpine Technology AB",
@@ -7209,6 +11323,37 @@
       ],
       "parents": []
     },
+    "d02ebe44-db87-5b44-bd10-65ce93c59477": {
+      "id": "d02ebe44-db87-5b44-bd10-65ce93c59477",
+      "name": "SA LUNIKER",
+      "legalName": "SA LUNIKER",
+      "aliases": [],
+      "website": null,
+      "domains": [],
+      "description": "French retail company headquartered in Pleyben, France.",
+      "industries": [
+        {
+          "code": "RETAIL",
+          "label": "4711D"
+        }
+      ],
+      "country": "France",
+      "hqAddress": "ZA du Drevers - 61 rue Pierre Dinasquet, 29190 Pleyben, FRANCE",
+      "founding": null,
+      "fundingStage": null,
+      "status": "ACTIVE",
+      "investors": [],
+      "fundingRounds": [],
+      "slush": false,
+      "people": [
+        {
+          "name": "Maëlle Marine Sella-Agnese",
+          "role": "CEO",
+          "since": null
+        }
+      ],
+      "parents": []
+    },
     "441196e3-96cc-5ffd-bb1c-b96754a5cb03": {
       "id": "441196e3-96cc-5ffd-bb1c-b96754a5cb03",
       "name": "Apila Manage Oy",
@@ -7267,6 +11412,50 @@
       ],
       "parents": []
     },
+    "cec3e672-4d44-5c1f-a868-e649fb1a4dbb": {
+      "id": "cec3e672-4d44-5c1f-a868-e649fb1a4dbb",
+      "name": "Viska AI AB",
+      "legalName": "Viska Medical AB",
+      "aliases": [],
+      "website": "viska.ai",
+      "domains": [
+        "viska.ai"
+      ],
+      "description": "Viska AI is a specialized, AI-driven decision support system designed to assist clinicians throughout the entire transplant journey, from pre-transplant evaluation to long-term post-transplant care.",
+      "industries": [
+        {
+          "code": "SOFTWARE_AND_SERVICES",
+          "label": "ai"
+        }
+      ],
+      "country": "Sweden",
+      "hqAddress": "Stockholm, Sweden",
+      "founding": {
+        "date": "2024-01-01",
+        "precision": "day",
+        "sources": [
+          {
+            "name": "linkedin.com",
+            "url": "https://www.linkedin.com/company/viskaai",
+            "date": "2026-11-02",
+            "rank": "AGGREGATOR"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": "ACTIVE",
+      "investors": [],
+      "fundingRounds": [],
+      "slush": true,
+      "people": [
+        {
+          "name": "Sven Staiger",
+          "role": "CEO",
+          "since": null
+        }
+      ],
+      "parents": []
+    },
     "67c46ca2-7a49-59c8-88dd-6607dff93a72": {
       "id": "67c46ca2-7a49-59c8-88dd-6607dff93a72",
       "name": "GameProofer Oy",
@@ -7303,6 +11492,232 @@
       "fundingRounds": [],
       "slush": true,
       "people": [],
+      "parents": []
+    },
+    "8384da8d-7a55-5870-84c0-e6a4d23a3a40": {
+      "id": "8384da8d-7a55-5870-84c0-e6a4d23a3a40",
+      "name": "SeeYouDoc Oy",
+      "legalName": "SeeYouDoc Oy",
+      "aliases": [],
+      "website": "seeyoudoc.com",
+      "domains": [
+        "seeyoudoc.com"
+      ],
+      "description": "SeeYouDoc offers online consultations and onsite services like face-to-face consults, lab tests, diagnostics, and therapy at hospitals.",
+      "industries": [
+        {
+          "code": "HEALTHCARE_PROVIDERS",
+          "label": "health"
+        }
+      ],
+      "country": "Finland",
+      "hqAddress": "Espoo, Finland",
+      "founding": {
+        "date": "2026-01-01",
+        "precision": "day",
+        "sources": [
+          {
+            "name": "linkedin.com",
+            "url": "https://www.linkedin.com/company/seeyoudoc",
+            "date": "2026-11-02",
+            "rank": "AGGREGATOR"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": "ACTIVE",
+      "investors": [],
+      "fundingRounds": [
+        {
+          "id": "7b69ed88-6afb-56ab-bfea-a5fb0d0744db",
+          "role": "ISSUER"
+        },
+        {
+          "id": "b0f5b968-94d5-57a1-87aa-85df99d137f9",
+          "role": "ISSUER"
+        }
+      ],
+      "slush": true,
+      "people": [
+        {
+          "name": "Noel Del Castillo",
+          "role": "CEO",
+          "since": null
+        }
+      ],
+      "parents": []
+    },
+    "a2617168-a113-4849-8fdd-ca88fd98cb5e": {
+      "id": "a2617168-a113-4849-8fdd-ca88fd98cb5e",
+      "name": "Measur Oy",
+      "legalName": "Measur Oy",
+      "aliases": [
+        "Measurlabs",
+        "Measur Oy (Measurlabs)",
+        "Measur (Measurlabs)",
+        "Measur",
+        "Measurlabs (Measur)"
+      ],
+      "website": "measurlabs.com",
+      "domains": [
+        "measurlabs.com"
+      ],
+      "description": "We provide testing services for any material, product, or chemical, helping product developers and quality managers get the information they need about their products.",
+      "industries": [
+        {
+          "code": "SOFTWARE_AND_SERVICES",
+          "label": "somethingElse"
+        }
+      ],
+      "country": "Finland",
+      "hqAddress": "Helsinki, Finland",
+      "founding": {
+        "date": "2017-04-21",
+        "precision": "day",
+        "sources": [
+          {
+            "name": "avoindata.prh.fi",
+            "url": "https://avoindata.prh.fi/opendata-ytj-api/v3/companies?businessId=2820461-1",
+            "date": "2026-11-13",
+            "rank": "FILING"
+          }
+        ]
+      },
+      "fundingStage": "SEED",
+      "status": "ACTIVE",
+      "investors": [
+        {
+          "id": "476a73ac-afa2-4713-9f73-188bc7ec0b95",
+          "name": "Lifeline Ventures"
+        },
+        {
+          "id": "5bcdc544-7120-4b04-8951-18201e578a65",
+          "name": "Curus AB"
+        },
+        {
+          "id": "b0b82629-c0f0-448a-aa92-5bf202e102f0",
+          "name": "VentureFriends"
+        },
+        {
+          "id": "df5be140-d50e-4e21-bb4f-d8f1e4ad3959",
+          "name": "Tesi"
+        }
+      ],
+      "fundingRounds": [
+        {
+          "id": "d0fb14e8-558d-5d80-94a1-9d49dab3e824",
+          "role": "ISSUER"
+        }
+      ],
+      "slush": true,
+      "people": [
+        {
+          "name": "Teemu Myllymäki",
+          "role": "CEO",
+          "since": null
+        }
+      ],
+      "parents": []
+    },
+    "884fa81a-66df-53f1-8578-f3779e280281": {
+      "id": "884fa81a-66df-53f1-8578-f3779e280281",
+      "name": "Password Crypt ApS",
+      "legalName": "Password Crypt ApS",
+      "aliases": [],
+      "website": "pcrypt.com",
+      "domains": [
+        "pcrypt.com"
+      ],
+      "description": "Opbevar, administrÃ©r og del adgangskoder sikkert med Pcrypt. Brug password manageren i browseren, mobilappen eller via browserudvidelser.",
+      "industries": [
+        {
+          "code": "SOFTWARE_AND_SERVICES",
+          "label": "cyber"
+        }
+      ],
+      "country": "Denmark",
+      "hqAddress": "Næstved, Denmark",
+      "founding": {
+        "date": "2016-10-11",
+        "precision": "day",
+        "sources": [
+          {
+            "name": "companydata.dk",
+            "url": "https://companydata.dk/en/virksomhed/38109375-password-crypt-aps",
+            "date": "2026-11-13",
+            "rank": "AGGREGATOR"
+          },
+          {
+            "name": "northdata.de",
+            "url": "https://www.northdata.de/Password%20Crypt%20ApS",
+            "date": "2026-11-13",
+            "rank": "AGGREGATOR"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": "ACTIVE",
+      "investors": [],
+      "fundingRounds": [],
+      "slush": true,
+      "people": [],
+      "parents": []
+    },
+    "94373c89-d5be-4ae8-aad1-7d349bde9b32": {
+      "id": "94373c89-d5be-4ae8-aad1-7d349bde9b32",
+      "name": "CyVi AB",
+      "legalName": "CyVi AB",
+      "aliases": [
+        "CYVI"
+      ],
+      "website": "cyvi.io",
+      "domains": [
+        "cyvi.io"
+      ],
+      "description": "We protect & financially insure businesses against cyber threats.",
+      "industries": [
+        {
+          "code": "FINTECH",
+          "label": "fintech"
+        }
+      ],
+      "country": "Sweden",
+      "hqAddress": "Karlavägen 18 BV, Stockholm, SE-AB, 114 31, SE",
+      "founding": {
+        "date": "2023-05-30",
+        "precision": "day",
+        "sources": [
+          {
+            "name": "GLEIF",
+            "url": "https://search.gleif.org/#/record/636700QNPEBPH5ENBE95",
+            "date": "2026-09-03",
+            "rank": "FILING"
+          },
+          {
+            "name": "allabolag.se",
+            "url": "https://www.allabolag.se/foretag/cyvi-ab/stockholm/it-%C3%B6vrigt/2KIQKPXI63IHH",
+            "date": "2026-11-12",
+            "rank": "AGGREGATOR"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": "ACTIVE",
+      "investors": [],
+      "fundingRounds": [],
+      "slush": true,
+      "people": [
+        {
+          "name": "Alireza Goudarzi",
+          "role": "CEO",
+          "since": null
+        },
+        {
+          "name": "Anton Grip",
+          "role": "Head of Insurance",
+          "since": null
+        }
+      ],
       "parents": []
     },
     "575a81cc-2486-5c0c-85f4-462b820802df": {
@@ -7431,6 +11846,61 @@
       ],
       "parents": []
     },
+    "c612fb9f-8109-5345-935f-a8c4e931dd75": {
+      "id": "c612fb9f-8109-5345-935f-a8c4e931dd75",
+      "name": "Cense Analytics Oy",
+      "legalName": "Cense Analytics Oy",
+      "aliases": [],
+      "website": "cense-analytics.com",
+      "domains": [
+        "cense-analytics.com"
+      ],
+      "description": "Our Mission is to provide farmers, food corporations, and public sector operators an easy, reliable, and affordable soil carbon measurement.",
+      "industries": [
+        {
+          "code": "SOFTWARE_AND_SERVICES",
+          "label": "agriTech"
+        }
+      ],
+      "country": "Finland",
+      "hqAddress": "Huppionmäenkatu 7 A 2, 33720 Tampere, Finland",
+      "founding": {
+        "date": "2024-04-16",
+        "precision": "day",
+        "sources": [
+          {
+            "name": "linkedin.com",
+            "url": "https://www.linkedin.com/company/cense-analytics/posts/?feedView=all",
+            "date": "2026-11-02",
+            "rank": "AGGREGATOR"
+          },
+          {
+            "name": "avoindata.prh.fi",
+            "url": "https://avoindata.prh.fi/opendata-ytj-api/v3/companies?businessId=3439164-4",
+            "date": "2024-04-16",
+            "rank": "FILING"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": "ACTIVE",
+      "investors": [],
+      "fundingRounds": [
+        {
+          "id": "129d8b15-dad9-562e-a4a5-8aabd5f7ec18",
+          "role": "ISSUER"
+        }
+      ],
+      "slush": true,
+      "people": [
+        {
+          "name": "Paavo Kajovirta",
+          "role": "CTO",
+          "since": null
+        }
+      ],
+      "parents": []
+    },
     "b7226c97-3a44-5176-8544-cb91246b2249": {
       "id": "b7226c97-3a44-5176-8544-cb91246b2249",
       "name": "Kova Labs",
@@ -7489,6 +11959,70 @@
         {
           "name": "Luukas Lohilahti",
           "role": "Chief Product Officer",
+          "since": null
+        }
+      ],
+      "parents": []
+    },
+    "d2d47e38-cf46-598f-b053-77a7c5384687": {
+      "id": "d2d47e38-cf46-598f-b053-77a7c5384687",
+      "name": "Klever Sustainability Oy",
+      "legalName": "Klever Sustainability Oy",
+      "aliases": [],
+      "website": "klever.earth",
+      "domains": [
+        "klever.earth"
+      ],
+      "description": "Banking book sustainability solutions for European financial institutions. Data for financed emissions, Pillar 3 ESG reporting and risk analyses — full coverage for your company list.",
+      "industries": [
+        {
+          "code": "FINTECH",
+          "label": "fintech"
+        }
+      ],
+      "country": "Finland",
+      "hqAddress": "Helsinki, Finland",
+      "founding": {
+        "date": "2024-08-20",
+        "precision": "day",
+        "sources": [
+          {
+            "name": "avoindata.prh.fi",
+            "url": "https://avoindata.prh.fi/opendata-ytj-api/v3/companies?businessId=3468656-5",
+            "date": "2026-11-13",
+            "rank": "FILING"
+          }
+        ]
+      },
+      "fundingStage": "PRE_SEED",
+      "status": "ACTIVE",
+      "investors": [],
+      "fundingRounds": [
+        {
+          "id": "7d75d021-be53-5e58-bc56-bf1bee8f2e56",
+          "role": "ISSUER"
+        }
+      ],
+      "slush": true,
+      "people": [
+        {
+          "name": "Mikko Eloranta",
+          "role": "CEO",
+          "since": null
+        },
+        {
+          "name": "Nuutti Torkki",
+          "role": "Sustainable Finance Analyst",
+          "since": null
+        },
+        {
+          "name": "Niklas Iivari",
+          "role": "Founding Engineer",
+          "since": null
+        },
+        {
+          "name": "Leevi Kangas",
+          "role": "Sustainable Finance Analyst",
           "since": null
         }
       ],
@@ -7584,6 +12118,33 @@
           "since": null
         }
       ],
+      "parents": []
+    },
+    "bd71378a-0e25-5e60-9551-06869c2d03ec": {
+      "id": "bd71378a-0e25-5e60-9551-06869c2d03ec",
+      "name": "Generate More Oy",
+      "legalName": "Generate More Oy",
+      "aliases": [],
+      "website": "generatemore.ai",
+      "domains": [
+        "generatemore.ai"
+      ],
+      "description": "Generate More is a Helsinki-based, CMO-led AI SEO and AEO agency helping B2B software companies get found and described correctly in AI answers.",
+      "industries": [
+        {
+          "code": "SOFTWARE_AND_SERVICES",
+          "label": "enterpriseSoftware"
+        }
+      ],
+      "country": "Finland",
+      "hqAddress": "Helsinki, Finland",
+      "founding": null,
+      "fundingStage": null,
+      "status": "ACTIVE",
+      "investors": [],
+      "fundingRounds": [],
+      "slush": true,
+      "people": [],
       "parents": []
     },
     "24794ed0-e2b4-4981-b9c3-760c770907db": {
@@ -7900,6 +12461,67 @@
       ],
       "parents": []
     },
+    "773093c8-6840-5c56-a429-ca70e95c5d83": {
+      "id": "773093c8-6840-5c56-a429-ca70e95c5d83",
+      "name": "Sparkpark AS",
+      "legalName": "Sparkpark AS",
+      "aliases": [],
+      "website": "sparkpark.no",
+      "domains": [
+        "sparkpark.no"
+      ],
+      "description": "Sparkpark delivers precision parking verification for shared micromobility. The missing data layer that makes urban mobility actually work for cities, operators, and investors.",
+      "industries": [
+        {
+          "code": "TRANSPORTATION_AND_LOGISTICS",
+          "label": "mobility"
+        }
+      ],
+      "country": "Norway",
+      "hqAddress": "Oslo, Norway",
+      "founding": {
+        "date": "2020-01-01",
+        "precision": "day",
+        "sources": [
+          {
+            "name": "linkedin.com",
+            "url": "https://www.linkedin.com/company/sparkpark-as/",
+            "date": "2026-11-02",
+            "rank": "AGGREGATOR"
+          }
+        ]
+      },
+      "fundingStage": "SERIES_A",
+      "status": "ACTIVE",
+      "investors": [],
+      "fundingRounds": [
+        {
+          "id": "34be2985-78b5-5ad8-8c0e-b16bbb483016",
+          "role": "ISSUER"
+        },
+        {
+          "id": "855c3187-5238-586f-8ff5-2cabe16b150a",
+          "role": "ISSUER"
+        },
+        {
+          "id": "ac931516-1889-5142-8966-77c708e00d75",
+          "role": "ISSUER"
+        },
+        {
+          "id": "fd91b3a9-541e-5202-923c-3fe8fd681aa1",
+          "role": "ISSUER"
+        }
+      ],
+      "slush": true,
+      "people": [
+        {
+          "name": "Igor Pancevski",
+          "role": "CEO",
+          "since": "2020-08-31"
+        }
+      ],
+      "parents": []
+    },
     "3ed8be28-6726-4cd0-8472-d076c92047f7": {
       "id": "3ed8be28-6726-4cd0-8472-d076c92047f7",
       "name": "Munchi Oy",
@@ -7971,6 +12593,50 @@
       ],
       "parents": []
     },
+    "b35add53-5de0-58f1-bf45-10afc3290199": {
+      "id": "b35add53-5de0-58f1-bf45-10afc3290199",
+      "name": "Biotech Start-Up Management Oy",
+      "legalName": "Biotech Start-Up Management Oy",
+      "aliases": [],
+      "website": "haihtuva.com",
+      "domains": [
+        "haihtuva.com"
+      ],
+      "description": "Confidential virtual data room with built-in AI due diligence for investments, licensing and M&A. Documents stay in the seller's own storage; each buyer's AI review cites every page. EU confidentia...",
+      "industries": [
+        {
+          "code": "SOFTWARE_AND_SERVICES",
+          "label": "ai"
+        }
+      ],
+      "country": "Finland",
+      "hqAddress": "Pyhäjoki, Finland",
+      "founding": {
+        "date": "2013-01-01",
+        "precision": "day",
+        "sources": [
+          {
+            "name": "linkedin.com",
+            "url": "https://www.linkedin.com/showcase/haihtuva",
+            "date": "2026-11-02",
+            "rank": "AGGREGATOR"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": "ACTIVE",
+      "investors": [],
+      "fundingRounds": [],
+      "slush": true,
+      "people": [
+        {
+          "name": "Juhani Lahdenperä",
+          "role": "CEO",
+          "since": null
+        }
+      ],
+      "parents": []
+    },
     "a4b66bbc-c6be-452c-9591-0274138e50f0": {
       "id": "a4b66bbc-c6be-452c-9591-0274138e50f0",
       "name": "LUO YOUTH ACADEMY LTD",
@@ -8016,6 +12682,52 @@
       "fundingRounds": [],
       "slush": false,
       "people": [],
+      "parents": []
+    },
+    "bc6ef958-0a00-4166-9e0e-0247964461f2": {
+      "id": "bc6ef958-0a00-4166-9e0e-0247964461f2",
+      "name": "Riot Innovations Oy",
+      "legalName": "Riot Innovations Oy",
+      "aliases": [
+        "Elevolt"
+      ],
+      "website": "elevolt.io",
+      "domains": [
+        "elevolt.io"
+      ],
+      "description": "Start saving up to 45% on your electricity costs today! No renovations required, quick ROI and results you can trust",
+      "industries": [
+        {
+          "code": "RENEWABLE_ENERGY",
+          "label": "energy"
+        }
+      ],
+      "country": "Finland",
+      "hqAddress": "Espoo, Finland",
+      "founding": {
+        "date": "2018-11-05",
+        "precision": null,
+        "sources": [
+          {
+            "name": "GLEIF",
+            "url": "https://search.gleif.org/#/record/7437008T8DUVMJ1M0W27",
+            "date": "2026-04-08",
+            "rank": "FILING"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": "ACTIVE",
+      "investors": [],
+      "fundingRounds": [],
+      "slush": true,
+      "people": [
+        {
+          "name": "Miska Karvinen",
+          "role": "CEO",
+          "since": null
+        }
+      ],
       "parents": []
     },
     "49fb961a-7281-5f17-94be-5e0c1720d2d5": {
@@ -8131,6 +12843,52 @@
           "since": null
         }
       ],
+      "parents": []
+    },
+    "bc109af5-cbfb-4f04-b843-e5bff6c2cf33": {
+      "id": "bc109af5-cbfb-4f04-b843-e5bff6c2cf33",
+      "name": "Invest AiQ Oy",
+      "legalName": "Invest AiQ Oy",
+      "aliases": [
+        "Invest AIQ"
+      ],
+      "website": "investaiq.com",
+      "domains": [
+        "investaiq.com"
+      ],
+      "description": "Invest AIQ is a groundbreaking AI-software startup revolutionizing stock market investing through AI-guided stock trading.",
+      "industries": [
+        {
+          "code": "FINTECH",
+          "label": "fintech"
+        }
+      ],
+      "country": "Finland",
+      "hqAddress": "Koiravedenkatu 16 A 2, Kuopio, FI-15, 70800, FI",
+      "founding": {
+        "date": "2024-07-18",
+        "precision": "day",
+        "sources": [
+          {
+            "name": "GLEIF",
+            "url": "https://search.gleif.org/#/record/98450051F4E6BCTC8B62",
+            "date": "2026-05-20",
+            "rank": "FILING"
+          },
+          {
+            "name": "linkedin.com",
+            "url": "https://www.linkedin.com/company/invest-aiq/",
+            "date": "2026-11-02",
+            "rank": "AGGREGATOR"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": "ACTIVE",
+      "investors": [],
+      "fundingRounds": [],
+      "slush": true,
+      "people": [],
       "parents": []
     },
     "007017a9-ebe9-5efa-b3ad-ccb40d46ed74": {
@@ -8319,6 +13077,174 @@
       "people": [],
       "parents": []
     },
+    "88917971-7acd-5977-b108-0ef6fa5ce36e": {
+      "id": "88917971-7acd-5977-b108-0ef6fa5ce36e",
+      "name": "Distance Technologies Oy",
+      "legalName": "Distance Technologies Oy",
+      "aliases": [
+        "Lasia Oy",
+        "Distance Technologies"
+      ],
+      "website": "distance.tech",
+      "domains": [
+        "distance.tech"
+      ],
+      "description": "A Finnish software and services company headquartered in Helsinki, founded in 2023.",
+      "industries": [
+        {
+          "code": "SOFTWARE_AND_SERVICES",
+          "label": "deeptech"
+        }
+      ],
+      "country": "Finland",
+      "hqAddress": "Helsinki, Finland",
+      "founding": {
+        "date": "2023-12-05",
+        "precision": "day",
+        "sources": [
+          {
+            "name": "avoindata.prh.fi",
+            "url": "https://avoindata.prh.fi/opendata-ytj-api/v3/companies?businessId=3410188-9",
+            "date": "2023-12-05",
+            "rank": "FILING"
+          },
+          {
+            "name": "distance.tech",
+            "url": "https://distance.tech/news/morpho-and-distance-technologies-sign-mou-to-develop-next-generation-spatial-computing-solutions",
+            "date": "2026-09-21",
+            "rank": "PRIMARY"
+          }
+        ]
+      },
+      "fundingStage": "SEED",
+      "status": "ACTIVE",
+      "investors": [
+        {
+          "id": "44c222cf-67be-560e-90c6-139b54b1677d",
+          "name": "Foobar.vc"
+        },
+        {
+          "id": "49102958-1ca4-528c-8a03-c3df3d1b8621",
+          "name": "HELLA Ventures"
+        },
+        {
+          "id": "4e9350ec-f5cf-46f3-8fb9-4e1ed2eb15f6",
+          "name": "FOV Ventures"
+        },
+        {
+          "id": "7727e24d-70f4-4240-8b84-1680b8552be1",
+          "name": "GV"
+        },
+        {
+          "id": "8f0ff46d-d609-4ce0-b719-85f739b92ca3",
+          "name": "Maki.vc"
+        },
+        {
+          "id": "d5b41639-eb27-43df-a6ee-a4f03807fbca",
+          "name": "Business Finland"
+        }
+      ],
+      "fundingRounds": [
+        {
+          "id": "4cea283a-89ab-5296-b48c-8512a24bacb1",
+          "role": "ISSUER"
+        },
+        {
+          "id": "d461ec83-6682-5220-97ae-f48f7f97522d",
+          "role": "ISSUER"
+        }
+      ],
+      "slush": true,
+      "people": [],
+      "parents": []
+    },
+    "8e0f6739-2f78-597a-afb3-b3025848f27f": {
+      "id": "8e0f6739-2f78-597a-afb3-b3025848f27f",
+      "name": "Brutally Honest OY",
+      "legalName": "Brutally Honest Oy",
+      "aliases": [],
+      "website": "brutallyhonestmentor.com",
+      "domains": [
+        "brutallyhonestmentor.com"
+      ],
+      "description": "Startup mentoring, the Brutally Honest Startup Assessment and TBHM Growth for founders. 15+ years and 5,000+ startups mentored in 25+ countries.",
+      "industries": [
+        {
+          "code": "SOFTWARE_AND_SERVICES",
+          "label": "analytics"
+        }
+      ],
+      "country": "Finland",
+      "hqAddress": "Helsinki, Finland",
+      "founding": {
+        "date": "2025-01-01",
+        "precision": "day",
+        "sources": [
+          {
+            "name": "linkedin.com",
+            "url": "https://www.linkedin.com/company/thebrutallyhonestmentor?trk=public_post_feed-actor-image",
+            "date": "2026-11-02",
+            "rank": "AGGREGATOR"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": "ACTIVE",
+      "investors": [],
+      "fundingRounds": [],
+      "slush": true,
+      "people": [],
+      "parents": []
+    },
+    "a358a4dd-a7bb-5c62-864d-78da7329a118": {
+      "id": "a358a4dd-a7bb-5c62-864d-78da7329a118",
+      "name": "PreDit Oy",
+      "legalName": "PreDit Oy",
+      "aliases": [
+        "Preditio Oy"
+      ],
+      "website": "predit.io",
+      "domains": [
+        "predit.io"
+      ],
+      "description": "PREDIT provides advanced process diagnostics through intelligent tomography. Our Level IQ and Pipe IQ solutions offer real-time volumetric imaging for complex multi-phase flows, ensuring operationa...",
+      "industries": [
+        {
+          "code": "SOFTWARE_AND_SERVICES",
+          "label": "ai"
+        }
+      ],
+      "country": "Finland",
+      "hqAddress": "Kuopio, Finland",
+      "founding": {
+        "date": "2024-01-01",
+        "precision": "day",
+        "sources": [
+          {
+            "name": "linkedin.com",
+            "url": "https://www.linkedin.com/company/101597327/admin/dashboard/",
+            "date": "2026-11-02",
+            "rank": "AGGREGATOR"
+          }
+        ]
+      },
+      "fundingStage": "SEED",
+      "status": "ACTIVE",
+      "investors": [],
+      "fundingRounds": [
+        {
+          "id": "49b052d8-35df-536f-9b39-3ebd939df8ad",
+          "role": "ISSUER"
+        },
+        {
+          "id": "e8ad8a2e-6c2b-5deb-a299-4f806037fefc",
+          "role": "ISSUER"
+        }
+      ],
+      "slush": true,
+      "people": [],
+      "parents": []
+    },
     "00ab3c60-c724-58e8-b0ea-d15c9fe27044": {
       "id": "00ab3c60-c724-58e8-b0ea-d15c9fe27044",
       "name": "Scoped",
@@ -8383,6 +13309,44 @@
       ],
       "parents": []
     },
+    "fb2d3555-87c9-5275-b951-2ae5738ca949": {
+      "id": "fb2d3555-87c9-5275-b951-2ae5738ca949",
+      "name": "Datlantis AB",
+      "legalName": "Datlantis AB",
+      "aliases": [],
+      "website": "datlantis.eu",
+      "domains": [
+        "datlantis.eu"
+      ],
+      "description": "Datlantis develops next-generation underwater data center infrastructure.",
+      "industries": [
+        {
+          "code": "SOFTWARE_AND_SERVICES",
+          "label": "deeptech"
+        }
+      ],
+      "country": "Sweden",
+      "hqAddress": "Stockholm, Sweden",
+      "founding": {
+        "date": "2026-01-01",
+        "precision": "day",
+        "sources": [
+          {
+            "name": "linkedin.com",
+            "url": "https://www.linkedin.com/company/datlantis",
+            "date": "2026-11-02",
+            "rank": "AGGREGATOR"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": "ACTIVE",
+      "investors": [],
+      "fundingRounds": [],
+      "slush": true,
+      "people": [],
+      "parents": []
+    },
     "12361bd3-ec27-56ce-bb7e-f668be6f24fd": {
       "id": "12361bd3-ec27-56ce-bb7e-f668be6f24fd",
       "name": "ValueShare Oy",
@@ -8444,6 +13408,145 @@
           "name": "Jussi Arvio",
           "role": "Sales Lead",
           "since": null
+        }
+      ],
+      "parents": []
+    },
+    "88911464-f17e-5a88-9097-830d3b3bd83b": {
+      "id": "88911464-f17e-5a88-9097-830d3b3bd83b",
+      "name": "Human Navigation Oy",
+      "legalName": "Human Navigation Oy",
+      "aliases": [
+        "Humanavi",
+        "Suomen Elämys- ja Luontopalvelut",
+        "Roihu Hyvinvointi",
+        "Nordic Outdoors",
+        "VR Nature Box",
+        "Suomen Elamys- ja Luontopalvelut"
+      ],
+      "website": "humanavi.fi",
+      "domains": [
+        "humanavi.fi"
+      ],
+      "description": "Human Navigation Oy (Humanavi) is a Helsinki-based coaching and consulting company offering workplace development, leadership coaching, occupational wellbeing services, career coaching and solution...",
+      "industries": [
+        {
+          "code": "HEALTHCARE_PROVIDERS",
+          "label": "health"
+        }
+      ],
+      "country": "Finland",
+      "hqAddress": "Helsinki, Finland",
+      "founding": {
+        "date": "2022-04-08",
+        "precision": "day",
+        "sources": [
+          {
+            "name": "avoindata.prh.fi",
+            "url": "https://avoindata.prh.fi/opendata-ytj-api/v3/companies?businessId=3279941-9",
+            "date": "2022-04-08",
+            "rank": "FILING"
+          },
+          {
+            "name": "finder.fi",
+            "url": "https://www.finder.fi/Liikkeenjohdon+konsultointi/Human+Navigation+Oy/Tuntematon/yhteystiedot/3807611",
+            "date": "2026-11-12",
+            "rank": "AGGREGATOR"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": "ACTIVE",
+      "investors": [],
+      "fundingRounds": [],
+      "slush": true,
+      "people": [],
+      "parents": []
+    },
+    "95044c0c-87a0-5e0b-99db-0c75d2355fce": {
+      "id": "95044c0c-87a0-5e0b-99db-0c75d2355fce",
+      "name": "Exaum Oy",
+      "legalName": "Exaum Oy",
+      "aliases": [],
+      "website": "exaum.com",
+      "domains": [
+        "exaum.com"
+      ],
+      "description": "Exaum provides electric grid balancing services using proprietary hardware and intelligent software to support grid stability and renewable energy integration.",
+      "industries": [
+        {
+          "code": "RENEWABLE_ENERGY",
+          "label": "energy"
+        }
+      ],
+      "country": "Finland",
+      "hqAddress": "Hämeenlinna, Finland",
+      "founding": {
+        "date": "2021-01-01",
+        "precision": "day",
+        "sources": [
+          {
+            "name": "linkedin.com",
+            "url": "https://www.linkedin.com/company/exaum",
+            "date": "2026-11-02",
+            "rank": "AGGREGATOR"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": "ACTIVE",
+      "investors": [],
+      "fundingRounds": [],
+      "slush": true,
+      "people": [],
+      "parents": []
+    },
+    "901384db-7fd3-58c0-b03b-a4132e21eb8c": {
+      "id": "901384db-7fd3-58c0-b03b-a4132e21eb8c",
+      "name": "Limosa ApS",
+      "legalName": "Limosa ApS",
+      "aliases": [],
+      "website": "limosabatteries.com",
+      "domains": [
+        "limosabatteries.com"
+      ],
+      "description": "Battery cells designed for defence. Resilient supply chains built for NDAA compliance.",
+      "industries": [
+        {
+          "code": "SOFTWARE_AND_SERVICES",
+          "label": "deeptech"
+        }
+      ],
+      "country": "Denmark",
+      "hqAddress": "Copenhagen, Denmark",
+      "founding": {
+        "date": "2026-07-22",
+        "precision": "day",
+        "sources": [
+          {
+            "name": "companydata.dk",
+            "url": "https://companydata.dk/en/virksomhed/46656962-limosa-aps",
+            "date": "2026-07-22",
+            "rank": "AGGREGATOR"
+          },
+          {
+            "name": "northdata.de",
+            "url": "https://www.northdata.de/Limosa%20ApS",
+            "date": "2026-07-27",
+            "rank": "AGGREGATOR"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": "ACTIVE",
+      "investors": [],
+      "fundingRounds": [],
+      "slush": true,
+      "people": [
+        {
+          "name": "Sven Peterson",
+          "role": "Director",
+          "since": "2026-07-22"
         }
       ],
       "parents": []
@@ -8598,6 +13701,82 @@
       "people": [],
       "parents": []
     },
+    "f93133fb-1723-5cf7-80cf-e2b41aa00185": {
+      "id": "f93133fb-1723-5cf7-80cf-e2b41aa00185",
+      "name": "Bing Chilling! Oy",
+      "legalName": "Bing Chilling! Oy",
+      "aliases": [],
+      "website": "bingchilling.fi",
+      "domains": [
+        "bingchilling.fi"
+      ],
+      "description": "Small-batch tropical ice cream from Helsinki. Real fruit, big flavor, never too sweet. Three flavors, zero compromises.",
+      "industries": [
+        {
+          "code": "FOOD_AND_BEVERAGE",
+          "label": "food"
+        }
+      ],
+      "country": "Finland",
+      "hqAddress": "Helsinki, Finland",
+      "founding": {
+        "date": "2026-01-01",
+        "precision": "day",
+        "sources": [
+          {
+            "name": "linkedin.com",
+            "url": "https://www.linkedin.com/company/144756162",
+            "date": "2026-11-02",
+            "rank": "AGGREGATOR"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": "ACTIVE",
+      "investors": [],
+      "fundingRounds": [],
+      "slush": true,
+      "people": [],
+      "parents": []
+    },
+    "cf007938-201f-5bef-81b8-7a07e3a06c57": {
+      "id": "cf007938-201f-5bef-81b8-7a07e3a06c57",
+      "name": "Sverion AB",
+      "legalName": "Sverion AB",
+      "aliases": [],
+      "website": "sverion.com",
+      "domains": [
+        "sverion.com"
+      ],
+      "description": "Swedish deep-tech company and KTH Innovation spin-off developing PFAS-free ionic-liquid vacuum lubricants (Sverion IL-G high-vacuum greases).",
+      "industries": [
+        {
+          "code": "SOFTWARE_AND_SERVICES",
+          "label": "deeptech"
+        }
+      ],
+      "country": "Sweden",
+      "hqAddress": "Stockholm, Sweden",
+      "founding": {
+        "date": "2024-01-01",
+        "precision": "day",
+        "sources": [
+          {
+            "name": "linkedin.com",
+            "url": "https://www.linkedin.com/company/sverion/",
+            "date": "2026-11-02",
+            "rank": "AGGREGATOR"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": "ACTIVE",
+      "investors": [],
+      "fundingRounds": [],
+      "slush": true,
+      "people": [],
+      "parents": []
+    },
     "1a4b86ba-0822-5fcf-b039-ec80fa583f44": {
       "id": "1a4b86ba-0822-5fcf-b039-ec80fa583f44",
       "name": "Laituri.ai Oy",
@@ -8636,6 +13815,174 @@
       "people": [],
       "parents": []
     },
+    "cd050453-7ce0-52ac-bf3d-d69ad953d5c1": {
+      "id": "cd050453-7ce0-52ac-bf3d-d69ad953d5c1",
+      "name": "PACK AWAY AB",
+      "legalName": "PACK AWAY AB",
+      "aliases": [],
+      "website": "packaway.se",
+      "domains": [
+        "packaway.se"
+      ],
+      "description": "Discover sustainable seaweed packaging - eco-friendly, compostable solutions to replace single-use plastics. Join our mission for a greener future!",
+      "industries": [
+        {
+          "code": "BIOTECHNOLOGY",
+          "label": "biotech"
+        }
+      ],
+      "country": "Sweden",
+      "hqAddress": "Luleå, Sweden",
+      "founding": {
+        "date": "2024-01-23",
+        "precision": "day",
+        "sources": [
+          {
+            "name": "allabolag.se",
+            "url": "https://www.allabolag.se/5594690744",
+            "date": "2026-11-12",
+            "rank": "FILING"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": "ACTIVE",
+      "investors": [],
+      "fundingRounds": [],
+      "slush": true,
+      "people": [
+        {
+          "name": "Orpita Majumdar Svensson",
+          "role": "CEO",
+          "since": null
+        },
+        {
+          "name": "Katarina Hökfors",
+          "role": "CEO",
+          "since": null
+        }
+      ],
+      "parents": []
+    },
+    "e3b993ad-a78c-5ada-84b4-c0cf45d01c71": {
+      "id": "e3b993ad-a78c-5ada-84b4-c0cf45d01c71",
+      "name": "CloudBackend AB",
+      "legalName": "CloudBackend AB",
+      "aliases": [],
+      "website": "cloudbackend.com",
+      "domains": [
+        "cloudbackend.com"
+      ],
+      "description": "The Singularity Database is everything behind a SaaS: identity, permissions, real-time sync, hosting, subscriptions and business metrics, as one European service.",
+      "industries": [
+        {
+          "code": "SOFTWARE_AND_SERVICES",
+          "label": "deeptech"
+        }
+      ],
+      "country": "Sweden",
+      "hqAddress": "Linköping, Sweden",
+      "founding": {
+        "date": "2018-03-19",
+        "precision": "day",
+        "sources": [
+          {
+            "name": "allabolag.se",
+            "url": "https://www.allabolag.se/5591530489",
+            "date": "2026-11-10",
+            "rank": "AGGREGATOR"
+          },
+          {
+            "name": "cloudbackend.com",
+            "url": "https://cloudbackend.com/company.html",
+            "date": "2026-11-10",
+            "rank": "PRIMARY"
+          },
+          {
+            "name": "linkedin.com",
+            "url": "https://www.linkedin.com/company/cloudbackend/",
+            "date": "2026-11-02",
+            "rank": "AGGREGATOR"
+          }
+        ]
+      },
+      "fundingStage": "SERIES_A",
+      "status": "ACTIVE",
+      "investors": [
+        {
+          "id": "765c581e-4adf-4227-98c8-3f9d1eb48455",
+          "name": "Almi Invest AB"
+        },
+        {
+          "id": "86eaa1d2-025d-4e70-81de-48d4bb646183",
+          "name": "M2 Asset Management AB"
+        }
+      ],
+      "fundingRounds": [
+        {
+          "id": "7b776cc0-9e4f-5a6a-aac8-8c1b348f26f0",
+          "role": "ISSUER"
+        },
+        {
+          "id": "a9db91ab-dc10-59f9-9f59-c061396a1f17",
+          "role": "ISSUER"
+        }
+      ],
+      "slush": true,
+      "people": [
+        {
+          "name": "Daniel Arthursson",
+          "role": "CEO",
+          "since": null
+        },
+        {
+          "name": "Victor Negrete",
+          "role": "Director Marketing",
+          "since": null
+        },
+        {
+          "name": "Bo Hedfors",
+          "role": "Advisor",
+          "since": null
+        },
+        {
+          "name": "Jean Paoli",
+          "role": "Advisor",
+          "since": null
+        },
+        {
+          "name": "Rami Avidan",
+          "role": "Advisor",
+          "since": null
+        },
+        {
+          "name": "Simon Telian",
+          "role": "Advisor",
+          "since": null
+        },
+        {
+          "name": "Herb Cunitz",
+          "role": "Advisor",
+          "since": null
+        },
+        {
+          "name": "Rikard Kjellberg",
+          "role": "Advisor",
+          "since": null
+        },
+        {
+          "name": "Jay Zimmermann",
+          "role": "Director R&D",
+          "since": null
+        },
+        {
+          "name": "Linda Trofast",
+          "role": "Finance & Admin",
+          "since": null
+        }
+      ],
+      "parents": []
+    },
     "cfa7e12b-3a44-4b20-bc7d-48162d401510": {
       "id": "cfa7e12b-3a44-4b20-bc7d-48162d401510",
       "name": "VQ Biomedical, Inc.",
@@ -8661,6 +14008,77 @@
       "fundingRounds": [],
       "slush": false,
       "people": [],
+      "parents": []
+    },
+    "9e351dce-9f86-5e64-9585-f556fab3cad6": {
+      "id": "9e351dce-9f86-5e64-9585-f556fab3cad6",
+      "name": "Snowfox Oy",
+      "legalName": "Snowfox Oy",
+      "aliases": [
+        "Aidoin Oy"
+      ],
+      "website": "snowfox.ai",
+      "domains": [
+        "snowfox.ai"
+      ],
+      "description": "Snowfox is an AI-powered invoice automation platform that achieves a 90% automation level without changing your current workflow.",
+      "industries": [
+        {
+          "code": "FINTECH",
+          "label": "fintech"
+        }
+      ],
+      "country": "Finland",
+      "hqAddress": "Helsinki, Finland",
+      "founding": {
+        "date": "2018-09-25",
+        "precision": "day",
+        "sources": [
+          {
+            "name": "avoindata.prh.fi",
+            "url": "https://avoindata.prh.fi/opendata-ytj-api/v3/companies?businessId=2937591-4",
+            "date": "2018-09-25",
+            "rank": "FILING"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": "ACTIVE",
+      "investors": [],
+      "fundingRounds": [],
+      "slush": true,
+      "people": [
+        {
+          "name": "Ilkka Lassila",
+          "role": "CEO",
+          "since": null
+        },
+        {
+          "name": "Markus Paaso",
+          "role": "CTO",
+          "since": null
+        },
+        {
+          "name": "Erika Lamberg",
+          "role": "Head of Finance",
+          "since": null
+        },
+        {
+          "name": "Tony Hendrell",
+          "role": "Chief Business Development Officer",
+          "since": null
+        },
+        {
+          "name": "Tuomas Haapsaari",
+          "role": "Chief Growth Officer",
+          "since": null
+        },
+        {
+          "name": "Toni Kaski",
+          "role": "Chief Sales Officer",
+          "since": null
+        }
+      ],
       "parents": []
     },
     "01ddf1aa-bd55-5802-8893-f333209d25c7": {
@@ -9064,6 +14482,110 @@
       ],
       "parents": []
     },
+    "c3ecdc06-514e-484d-9dfe-b9dc326800fa": {
+      "id": "c3ecdc06-514e-484d-9dfe-b9dc326800fa",
+      "name": "Babando Oy",
+      "legalName": "Babando Oy",
+      "aliases": [
+        "Babando"
+      ],
+      "website": "babando.fi",
+      "domains": [
+        "babando.fi"
+      ],
+      "description": "Sosiaalipalveluiden rohkea uudistaja",
+      "industries": [
+        {
+          "code": "HEALTHCARE_PROVIDERS",
+          "label": "health"
+        }
+      ],
+      "country": "Finland",
+      "hqAddress": "Hietaniemenkatu 7 A, 00100 HELSINKI, HELSINKI, FI-00100, FI",
+      "founding": {
+        "date": "2017-02-21",
+        "precision": "day",
+        "sources": [
+          {
+            "name": "avoindata.prh.fi",
+            "url": "https://avoindata.prh.fi/opendata-ytj-api/v3/companies?businessId=2812231-7",
+            "date": "2026-11-11",
+            "rank": "FILING"
+          },
+          {
+            "name": "babando.fi",
+            "url": "https://babando.fi/yhtio",
+            "date": "2026-11-13",
+            "rank": "PRIMARY"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": "ACTIVE",
+      "investors": [],
+      "fundingRounds": [],
+      "slush": true,
+      "people": [
+        {
+          "name": "Daniel Rahman",
+          "role": "CEO",
+          "since": null
+        }
+      ],
+      "parents": [
+        {
+          "id": "a5aed825-eefd-4f33-92c3-a397c2e55da4",
+          "name": "Cornerstone Capital Oy",
+          "since": "2017-02-21"
+        }
+      ]
+    },
+    "f8aef776-ab7f-4799-b400-e11d037233a9": {
+      "id": "f8aef776-ab7f-4799-b400-e11d037233a9",
+      "name": "Subsoccer Oy",
+      "legalName": "Subsoccer Oy",
+      "aliases": [
+        "4 Feet Under Oy",
+        "Subsoccer"
+      ],
+      "website": "subsoccer.com",
+      "domains": [
+        "subsoccer.com"
+      ],
+      "description": "Subsoccer is a simple but addictive bench soccer game played one vs. one. Buy your Subsoccer - bench soccer game from our website and get hooked!",
+      "industries": [
+        {
+          "code": "ENTERTAINMENT",
+          "label": "sports"
+        }
+      ],
+      "country": "Finland",
+      "hqAddress": "Melkonkatu 24, 00210 HELSINKI, HELSINKI, FI-00210, FI",
+      "founding": {
+        "date": "2016-12-28",
+        "precision": "day",
+        "sources": [
+          {
+            "name": "avoindata.prh.fi",
+            "url": "https://avoindata.prh.fi/opendata-ytj-api/v3/companies?businessId=2801419-9",
+            "date": "2016-12-28",
+            "rank": "FILING"
+          }
+        ]
+      },
+      "fundingStage": "SEED",
+      "status": "ACTIVE",
+      "investors": [],
+      "fundingRounds": [
+        {
+          "id": "a9573f80-76b0-59a0-8fec-b9a2090e4f1f",
+          "role": "ISSUER"
+        }
+      ],
+      "slush": true,
+      "people": [],
+      "parents": []
+    },
     "2d3bc589-7292-402c-bd45-77bf326526eb": {
       "id": "2d3bc589-7292-402c-bd45-77bf326526eb",
       "name": "Koite Health Oy",
@@ -9169,6 +14691,84 @@
           "name": "Mikko Kylmänen",
           "role": "Clinical Project Manager",
           "since": null
+        }
+      ],
+      "parents": []
+    },
+    "78d7490a-dd04-5119-a7f1-e940b861219b": {
+      "id": "78d7490a-dd04-5119-a7f1-e940b861219b",
+      "name": "Kelluu Oy",
+      "legalName": "Kelluu Oy",
+      "aliases": [
+        "L-Airships Oy",
+        "Kelluu"
+      ],
+      "website": "kelluu.com",
+      "domains": [
+        "kelluu.com"
+      ],
+      "description": "Kelluu builds and operates hydrogen-powered autonomous airships that collect aerial data for defence, critical infrastructure and environmental monitoring, and turns the data into digital twins and...",
+      "industries": [
+        {
+          "code": "AEROSPACE_AND_DEFENSE",
+          "label": "dualUseTech"
+        }
+      ],
+      "country": "Finland",
+      "hqAddress": "Joensuu, Finland",
+      "founding": {
+        "date": "2018-01-01",
+        "precision": "day",
+        "sources": [
+          {
+            "name": "linkedin.com",
+            "url": "https://www.linkedin.com/company/kelluuairships/",
+            "date": "2026-11-02",
+            "rank": "AGGREGATOR"
+          }
+        ]
+      },
+      "fundingStage": "SERIES_A",
+      "status": "ACTIVE",
+      "investors": [
+        {
+          "id": "26cc4923-734a-4185-9ad2-4bdaa0efa20b",
+          "name": "Keen Venture Partners"
+        },
+        {
+          "id": "2ca07622-990d-40bf-a4fe-36434d43d6db",
+          "name": "NATO Innovation Fund"
+        },
+        {
+          "id": "72d0da73-e0a2-4915-842e-0302e2cc0535",
+          "name": "Gungnir Capital"
+        },
+        {
+          "id": "df5be140-d50e-4e21-bb4f-d8f1e4ad3959",
+          "name": "Tesi"
+        }
+      ],
+      "fundingRounds": [
+        {
+          "id": "7cf7864b-8de0-5b39-99c3-3754e678454a",
+          "role": "ISSUER"
+        },
+        {
+          "id": "97d82be9-51db-59e4-bb04-f69213aff7e9",
+          "role": "ISSUER"
+        }
+      ],
+      "slush": true,
+      "people": [
+        {
+          "name": "Janne Hietala",
+          "role": "CEO",
+          "since": "2022-10-01"
+        },
+        {
+          "name": "Iida Mustonen",
+          "role": "Head of People & Culture",
+          "since": "2026-03-01"
         }
       ],
       "parents": []
@@ -9482,6 +15082,134 @@
         {
           "name": "Anssi Harjunpää",
           "role": "Chief Business Officer",
+          "since": null
+        }
+      ],
+      "parents": []
+    },
+    "a1b886b1-3987-5a9b-ad9f-b34a81ae6f68": {
+      "id": "a1b886b1-3987-5a9b-ad9f-b34a81ae6f68",
+      "name": "Liftacab Oy",
+      "legalName": "Liftacab Oy",
+      "aliases": [],
+      "website": "liftacab.com",
+      "domains": [
+        "liftacab.com"
+      ],
+      "description": "Liftacab gives taxi fleets a branded booking page, NFC and QR cards and a dashboard that turns one-time passengers into repeat customers. Book a demo.",
+      "industries": [
+        {
+          "code": "TRANSPORTATION_AND_LOGISTICS",
+          "label": "mobility"
+        }
+      ],
+      "country": "Finland",
+      "hqAddress": "Helsinki, Finland",
+      "founding": {
+        "date": "2026-02-04",
+        "precision": "day",
+        "sources": [
+          {
+            "name": "avoindata.prh.fi",
+            "url": "https://avoindata.prh.fi/opendata-ytj-api/v3/companies?businessId=3596288-3",
+            "date": "2026-11-12",
+            "rank": "FILING"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": "ACTIVE",
+      "investors": [],
+      "fundingRounds": [],
+      "slush": true,
+      "people": [],
+      "parents": []
+    },
+    "48358993-f79b-4193-a3c4-151901d8fee3": {
+      "id": "48358993-f79b-4193-a3c4-151901d8fee3",
+      "name": "AMOS TECHNOLOGIES LIMITED",
+      "legalName": "AMOS TECHNOLOGIES LIMITED",
+      "aliases": [],
+      "website": null,
+      "domains": [],
+      "description": "British software and services company founded in 2025 and based in London.",
+      "industries": [
+        {
+          "code": "SOFTWARE_AND_SERVICES",
+          "label": null
+        }
+      ],
+      "country": "United Kingdom",
+      "hqAddress": null,
+      "founding": {
+        "date": "2025-02-05",
+        "precision": null,
+        "sources": [
+          {
+            "name": "Companies House UK",
+            "url": "https://find-and-update.company-information.service.gov.uk/company/16230881",
+            "date": "2026-06-01",
+            "rank": "FILING"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": "ACTIVE",
+      "investors": [],
+      "fundingRounds": [],
+      "slush": false,
+      "people": [],
+      "parents": []
+    },
+    "b13b892e-1d51-5c22-b158-377ff7cdb15d": {
+      "id": "b13b892e-1d51-5c22-b158-377ff7cdb15d",
+      "name": "Emphasoft Nordic",
+      "legalName": null,
+      "aliases": [],
+      "website": "emphasoft.fi",
+      "domains": [
+        "emphasoft.fi"
+      ],
+      "description": "Ohjelmistokehitys tyhjästä. Parempi kuin mihin olet tottunut. Nopeampi kuin odotat. Emphasoftin tiimi on toimittanut yli 400 projektia eri toimialoille.",
+      "industries": [
+        {
+          "code": "SOFTWARE_AND_SERVICES",
+          "label": "ai"
+        }
+      ],
+      "country": "Finland",
+      "hqAddress": "Espoo, Finland",
+      "founding": {
+        "date": "2022-01-01",
+        "precision": "day",
+        "sources": [
+          {
+            "name": "linkedin.com",
+            "url": "https://www.linkedin.com/company/emphasoft",
+            "date": "2026-11-02",
+            "rank": "AGGREGATOR"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": "ACTIVE",
+      "investors": [],
+      "fundingRounds": [],
+      "slush": true,
+      "people": [
+        {
+          "name": "Lemniscate Labs",
+          "role": "CEO",
+          "since": null
+        },
+        {
+          "name": "Wind Rose Excel",
+          "role": "CTO",
+          "since": null
+        },
+        {
+          "name": "Motion Metrics",
+          "role": "CTO",
           "since": null
         }
       ],
@@ -9840,6 +15568,100 @@
       ],
       "parents": []
     },
+    "be0c8420-0943-5521-b90e-6461f1bd6dd2": {
+      "id": "be0c8420-0943-5521-b90e-6461f1bd6dd2",
+      "name": "GoodMakely Oy",
+      "legalName": "GoodMakely Oy",
+      "aliases": [
+        "Sponssaamo"
+      ],
+      "website": "sponssaamo.fi",
+      "domains": [
+        "sponssaamo.fi"
+      ],
+      "description": "Tilaa tuote paikalliselta yritykseltä Seinäjoella ja Etelä-Pohjanmaalla, nouda se itse ja tue samalla valitsemaasi seuraa, joukkuetta tai koululuokkaa.",
+      "industries": [
+        {
+          "code": "INTERNET_AND_WEB_SERVICES",
+          "label": "onlineMarkets"
+        }
+      ],
+      "country": "Finland",
+      "hqAddress": "Seinäjoki, Finland",
+      "founding": {
+        "date": "2026-01-23",
+        "precision": "day",
+        "sources": [
+          {
+            "name": "avoindata.prh.fi",
+            "url": "https://avoindata.prh.fi/opendata-ytj-api/v3/companies?businessId=3595473-6",
+            "date": "2026-10-05",
+            "rank": "FILING"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": "ACTIVE",
+      "investors": [],
+      "fundingRounds": [],
+      "slush": true,
+      "people": [],
+      "parents": []
+    },
+    "e551dd90-564e-5463-ab71-27e50947845e": {
+      "id": "e551dd90-564e-5463-ab71-27e50947845e",
+      "name": "Boulevard Tech Oy",
+      "legalName": "Boulevard Tech Oy",
+      "aliases": [],
+      "website": "boulevardtech.fi",
+      "domains": [
+        "boulevardtech.fi"
+      ],
+      "description": "Guided by trusted experts, scaled by AI. Boulevard Tech, Helsinki.",
+      "industries": [
+        {
+          "code": "FINTECH",
+          "label": "regtech"
+        }
+      ],
+      "country": "Finland",
+      "hqAddress": "Helsinki, Finland",
+      "founding": {
+        "date": "2025-05-27",
+        "precision": "day",
+        "sources": [
+          {
+            "name": "avoindata.prh.fi",
+            "url": "https://avoindata.prh.fi/opendata-ytj-api/v3/companies?businessId=3533468-4",
+            "date": "2026-11-13",
+            "rank": "FILING"
+          }
+        ]
+      },
+      "fundingStage": "SERIES_C",
+      "status": "ACTIVE",
+      "investors": [],
+      "fundingRounds": [
+        {
+          "id": "973143a3-6e61-55fd-b369-ee84b1c989d3",
+          "role": "ISSUER"
+        }
+      ],
+      "slush": true,
+      "people": [
+        {
+          "name": "Lasse Männistö",
+          "role": "Expert",
+          "since": null
+        },
+        {
+          "name": "Mikko Alkio",
+          "role": "Expert",
+          "since": null
+        }
+      ],
+      "parents": []
+    },
     "249a4303-20e7-53b1-8954-438f967d540e": {
       "id": "249a4303-20e7-53b1-8954-438f967d540e",
       "name": "Lentola Logistics Oy",
@@ -9880,6 +15702,75 @@
           "name": "Markus Hohenthal",
           "role": "CEO",
           "since": "2017-08-01"
+        }
+      ],
+      "parents": []
+    },
+    "79586ce4-1c47-584a-a713-b6bd317b8934": {
+      "id": "79586ce4-1c47-584a-a713-b6bd317b8934",
+      "name": "Stormgrid AB",
+      "legalName": "Stormgrid AB",
+      "aliases": [],
+      "website": "stormgrid.ai",
+      "domains": [
+        "stormgrid.ai"
+      ],
+      "description": "Stormgrid offers cutting edge hybrid AI soutions. Stormgrid is based in Sweden offering world wide services in anything AI.",
+      "industries": [
+        {
+          "code": "TELECOMMUNICATIONS",
+          "label": "informationNetworks"
+        }
+      ],
+      "country": "Sweden",
+      "hqAddress": "Göteborg, Sweden",
+      "founding": {
+        "date": "2019-01-01",
+        "precision": "day",
+        "sources": [
+          {
+            "name": "linkedin.com",
+            "url": "https://www.linkedin.com/company/28824553",
+            "date": "2026-11-02",
+            "rank": "AGGREGATOR"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": "ACTIVE",
+      "investors": [],
+      "fundingRounds": [],
+      "slush": true,
+      "people": [
+        {
+          "name": "Mikael Jensen",
+          "role": "CEO",
+          "since": null
+        },
+        {
+          "name": "Pontus Mörner",
+          "role": "CTO",
+          "since": null
+        },
+        {
+          "name": "Tom Toiviainen",
+          "role": "Chief Security Officer",
+          "since": null
+        },
+        {
+          "name": "Fredrik Arveteg",
+          "role": "Network Specialist",
+          "since": null
+        },
+        {
+          "name": "Joel Bergman",
+          "role": "Chief Digital Officer",
+          "since": null
+        },
+        {
+          "name": "Christian Ek",
+          "role": "Chief Lead Developer",
+          "since": null
         }
       ],
       "parents": []
@@ -10010,6 +15901,65 @@
         {
           "name": "Wael Elrifai",
           "role": "CEO",
+          "since": null
+        }
+      ],
+      "parents": []
+    },
+    "da8eca17-f9ab-54db-a2d5-7322d352202f": {
+      "id": "da8eca17-f9ab-54db-a2d5-7322d352202f",
+      "name": "Grants Funding Oy",
+      "legalName": "Grants Funding Oy",
+      "aliases": [],
+      "website": "grants.fi",
+      "domains": [
+        "grants.fi"
+      ],
+      "description": "Asiantuntemusta, teknologiaa ja dataa julkiseen rahoitukseen – kansallisella sekä EU-tasolla. Autamme yhtiöitä menestymään.",
+      "industries": [
+        {
+          "code": "FINTECH",
+          "label": "fintech"
+        }
+      ],
+      "country": "Finland",
+      "hqAddress": "Helsinki, Finland",
+      "founding": {
+        "date": "2019-01-16",
+        "precision": "day",
+        "sources": [
+          {
+            "name": "avoindata.prh.fi",
+            "url": "https://avoindata.prh.fi/opendata-ytj-api/v3/companies?businessId=2967478-9",
+            "date": "2026-11-12",
+            "rank": "FILING"
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": "ACTIVE",
+      "investors": [],
+      "fundingRounds": [],
+      "slush": true,
+      "people": [
+        {
+          "name": "Aki Pohjola",
+          "role": "CEO",
+          "since": null
+        },
+        {
+          "name": "Esa-Pekka Lahnalampi",
+          "role": "CTO",
+          "since": null
+        },
+        {
+          "name": "Kimmo Louhelainen",
+          "role": "Head of Product Development",
+          "since": null
+        },
+        {
+          "name": "Jukka Jokinen",
+          "role": "Director, Investor & Partner Advisory",
           "since": null
         }
       ],

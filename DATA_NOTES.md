@@ -17,7 +17,7 @@ Problems and surprises hit while building Faro on the Cala API (14 Nov 2026). Wr
 - **Expansion news (search), v2 run:** 51 sourced claims across Finland, Sweden, Norway, Denmark and the Nordics. 41 weren't market entries (acquisitions, partnerships, incumbents investing at home, job posts), 5 had no concrete date, 1 was local (Netcompany: the claim resolves to NETCOMPANY UK LIMITED, but the company is Danish), 4 kept.
 - **Same-name companies are common.** "Oura" resolves to a US entity with no data before "OURA HEALTH OY"; "Verda" to a UK consultancy; "Lovable" has a Swedish and a US entity. Faro pins its demo startups by Cala id and prefers the richest record.
 - **Industry codes can be wrong.** atNorth (a data-centre operator) is coded `FINTECH`, so its partnership line reads as a fintech's. Faro reports Cala's industry as given.
-- **New registrations at Slush are mostly local.** Of the first 100 Nordic-named attendees, ~20 have a registry founding date in the last year (PRH/YTJ, allabolag), but none tied to a foreign company by website or GLEIF parent.
+- **New registrations at Slush are local.** Of the 200 Nordic-named attendees, about 40 have a registry founding date in the last year (PRH/YTJ, allabolag), and none is tied to a foreign company by website or GLEIF parent. Searching the brands of 69 foreign attendees found no recently founded Nordic entity either. National-subsidiary detection works, but this event's data holds few or none.
 
 ## Access and limits
 

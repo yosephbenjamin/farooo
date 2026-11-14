@@ -43,7 +43,7 @@ export NODE_USE_ENV_PROXY=1    # only behind an HTTPS proxy (Node >= 22.21)
 
 | Command | What it does | Speed |
 |---|---|---|
-| `npm run ingest` | v2: users → fresh rounds (with `is_lead`) → expansion news → Slush attendees → new national companies of foreign firms. Writes `data/pool.json` after each stage; resumable; `--stage=` and `--budget=` flags | ~10 calls/min on the current key: minutes for the first three stages, hours for all 2,989 Slush attendees |
+| `npm run ingest` | v2: users → fresh rounds (with `is_lead`) → expansion news → Slush attendees → new national companies of foreign firms (`slush`: Nordic attendees → foreign parent; `entrants`: foreign attendees → new Nordic company). Writes `data/pool.json` after each stage; resumable; `--stage=` and `--budget=` flags | ~10 calls/min on the current key: minutes for the first three stages, hours for all 2,989 Slush attendees |
 | `npm run keyrings` | v1: seed funds → vehicles → portfolios (`data/dataset.json`), used for warm paths and fresh rounds | from cache |
 | `npm run profiles` | Prefetch one profile per Slush attendee and portfolio company into the cache | hours |
 | `npm run alerts` | New doors per subscriber → email via Resend, or kept for `/log` | seconds |
@@ -87,6 +87,10 @@ ranking    1 entry + Slush + warm · 2 entry + Slush · 3 entry · 4 fresh round
 | `src/components/` | Lighthouse, door map, log view |
 | `scripts/ingest.ts` | The v2 ingest |
 | `gmail-addon/` | Contextual Gmail sidebar |
+
+## Data status
+
+Real Cala data, fetched 14 Nov 2026 with the new key (about 10 requests per minute): the three demo startups, 14 fresh rounds with lead flags, 4 sourced market entries from expansion news, and 281 company profiles, including the 200 Nordic-named Slush attendees. No national subsidiary of a foreign company turned up among the attendees checked, so today's market-entry doors come from news. Every door shown has a concrete date and a source. See `TODO.md` for the remaining (hours-long) passes.
 
 ## Notes
 
