@@ -1,0 +1,1 @@
+{"method":"GET","path":"/v1/entities/ca743ea6-cd3b-414b-904d-e249c3626d3b/introspection","body":null,"fetchedAt":"2026-11-14T00:31:49.125Z","response":{"properties":["cik","name","description","id"],"relationships":{"outgoing":[],"incoming":[]},"numerical_observations":{}}}

@@ -1,0 +1,1 @@
+{"method":"GET","path":"/v1/entities/aa87dde8-7dc3-4fc0-957f-143da6ddc0b7/introspection","body":null,"fetchedAt":"2026-11-14T00:32:26.743Z","response":{"properties":["id","description","name"],"relationships":{"outgoing":["PARTICIPATES_IN_CORPORATE_EVENT","INVESTED_IN"],"incoming":["INVESTED_IN"]},"numerical_observations":{}}}

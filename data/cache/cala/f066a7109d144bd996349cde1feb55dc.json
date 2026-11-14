@@ -1,0 +1,1 @@
+{"method":"GET","path":"/v1/entities/dd476f5e-44ff-4d7c-8a15-ae22c945e7f0/introspection","body":null,"fetchedAt":"2026-11-14T00:32:01.634Z","response":{"properties":["description","aliases","legal_name","id","name"],"relationships":{"outgoing":["IS_BENEFICIARY_OWNER_OF","IS_CONTROL_PERSON_OF"],"incoming":[]},"numerical_observations":{}}}

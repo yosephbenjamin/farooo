@@ -1,0 +1,1 @@
+{"method":"GET","path":"/v1/entities/32f466ef-9d91-5738-8320-b20730082d92/introspection","body":null,"fetchedAt":"2026-11-14T00:32:21.421Z","response":{"properties":["description","name","id","population","wikidata_qid","aliases"],"relationships":{"outgoing":["WITHIN"],"incoming":[]},"numerical_observations":{}}}

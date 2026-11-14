@@ -12,7 +12,7 @@ import path from "node:path";
 
 const BASE = "https://api.cala.ai";
 const TIMEOUT_MS = 90_000;
-const MAX_RETRIES = 3;
+const MAX_RETRIES = 6;
 const CACHE_DIR = path.join(process.cwd(), "data", "cache", "cala");
 
 export type CacheMode = "use" | "refresh" | "only";
@@ -36,6 +36,16 @@ async function acquire() {
   await new Promise<void>((resolve) => queue.push(resolve));
   active++;
 }
+// ---------- rate pacing (Cala answers 429 above ~1.5 req/s, without rate-limit headers) ----------
+const MIN_INTERVAL_MS = 1000 / Number(process.env.CALA_RPS ?? 1.6);
+let nextSlot = 0;
+async function pace() {
+  const now = Date.now();
+  const wait = Math.max(0, nextSlot - now);
+  nextSlot = Math.max(now, nextSlot) + MIN_INTERVAL_MS;
+  if (wait) await sleep(wait);
+}
+
 function release() {
   active--;
   const next = queue.shift();
@@ -98,6 +108,7 @@ export async function calaRequest<T = unknown>(
   for (let attempt = 0; attempt <= MAX_RETRIES; attempt++) {
     let waitMs = 0;
     await acquire();
+    await pace();
     const ctrl = new AbortController();
     const timer = setTimeout(() => ctrl.abort(), opts.timeoutMs ?? TIMEOUT_MS);
     try {
@@ -114,7 +125,8 @@ export async function calaRequest<T = unknown>(
       if (res.status === 429 || res.status >= 500) {
         const retryAfter = Number(res.headers.get("retry-after")) || 0;
         lastErr = new CalaError(`HTTP ${res.status} on ${method} ${p}`, res.status);
-        waitMs = Math.max(retryAfter * 1000, 2000 * 2 ** attempt);
+        waitMs = Math.max(retryAfter * 1000, 3000 * 2 ** Math.min(attempt, 4));
+        if (res.status === 429) nextSlot = Date.now() + 2000; // back the whole client off
       } else if (!res.ok) {
         // Deterministic 4xx: don't retry. Cache 404/422 so we don't ask again.
         if (res.status === 404 || res.status === 422) {

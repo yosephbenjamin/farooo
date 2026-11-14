@@ -1,0 +1,1 @@
+{"method":"GET","path":"/v1/entities/717bf9a8-96c9-4885-ae27-6401a76ab1dd/introspection","body":null,"fetchedAt":"2026-11-14T00:32:42.618Z","response":{"properties":["id","cik","description","name"],"relationships":{"outgoing":["OPERATES_IN_INDUSTRY","PARTICIPATES_IN_CORPORATE_EVENT"],"incoming":["IS_BOARD_MEMBER_OF","IS_GENERAL_PARTNER_OF"]},"numerical_observations":{}}}

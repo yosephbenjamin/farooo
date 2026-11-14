@@ -1,0 +1,1 @@
+{"method":"GET","path":"/v1/entities/067980c1-2fc5-4eec-8e99-a06774928a0c/introspection","body":null,"fetchedAt":"2026-11-14T00:32:40.843Z","response":{"properties":["lei","name","registered_address","id","legal_name","description","headquarters_address"],"relationships":{"outgoing":["IS_REGISTERED_IN","HAS_HEADQUARTERS_IN"],"incoming":[]},"numerical_observations":{}}}

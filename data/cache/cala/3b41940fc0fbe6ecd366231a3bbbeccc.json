@@ -1,0 +1,1 @@
+{"method":"GET","path":"/v1/entities/208d7baa-10cd-4a73-825b-5bd3e827f79f/introspection","body":null,"fetchedAt":"2026-11-14T00:31:25.491Z","response":{"properties":["id","founding_date","name","registered_address","description","employee_count"],"relationships":{"outgoing":["OPERATES_IN_INDUSTRY"],"incoming":["INVESTED_IN","IS_MEMBER_OF"]},"numerical_observations":{}}}

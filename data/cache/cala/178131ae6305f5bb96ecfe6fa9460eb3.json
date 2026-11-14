@@ -1,0 +1,1 @@
+{"method":"GET","path":"/v1/entities/ca5cb2d6-9802-4605-b009-aaaac432b24f/introspection","body":null,"fetchedAt":"2026-11-14T00:31:44.187Z","response":{"properties":["website","id","description","name"],"relationships":{"outgoing":["OPERATES_IN_INDUSTRY","IS_REGISTERED_IN","IS_SUBSIDIARY_OF","INVESTED_IN"],"incoming":[]},"numerical_observations":{}}}
