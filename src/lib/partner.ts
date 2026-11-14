@@ -8,64 +8,57 @@ import type { Industry } from "./profile";
 export type PartnerType = "customer" | "integration" | "distribution";
 export const PARTNER_TYPES: PartnerType[] = ["customer", "distribution", "integration"];
 
-/** Industry codes that make software, hardware or connectivity (products other products plug into). */
-const TECH = new Set([
-  "SOFTWARE_AND_SERVICES",
-  "TECHNOLOGY_HARDWARE_AND_EQUIPMENT",
-  "SEMICONDUCTORS_AND_SEMICONDUCTOR_EQUIPMENT",
-  "TELECOMMUNICATION_SERVICES",
-]);
-
 /**
- * Who buys from whom, by industry code. Read: a company in KEY sells to companies in VALUES.
- * Tech sells to everyone; the rest is a short, explicit supply map.
+ * Cala's industry codes (e.g. SOFTWARE_AND_SERVICES, FINTECH, INTERNET_AND_WEB_SERVICES,
+ * MEDICAL_DEVICES, RENEWABLE_ENERGY, TRANSPORTATION_AND_LOGISTICS) grouped into sectors by the
+ * code itself. Structured taxonomy, not description keywords.
  */
-const SELLS_TO: Record<string, string[] | "ALL_NON_TECH" | "ALL"> = {
-  SOFTWARE_AND_SERVICES: "ALL",
-  TECHNOLOGY_HARDWARE_AND_EQUIPMENT: "ALL",
-  SEMICONDUCTORS_AND_SEMICONDUCTOR_EQUIPMENT: ["TECHNOLOGY_HARDWARE_AND_EQUIPMENT", "AUTOMOBILES_AND_COMPONENTS", "CAPITAL_GOODS", "TELECOMMUNICATION_SERVICES"],
-  TELECOMMUNICATION_SERVICES: "ALL",
-  COMMERCIAL_AND_PROFESSIONAL_SERVICES: "ALL",
-  FINANCIAL_SERVICES: "ALL",
-  BANKS: "ALL",
-  INSURANCE: "ALL",
-  MEDIA_AND_ENTERTAINMENT: ["CONSUMER_DISCRETIONARY_DISTRIBUTION_AND_RETAIL", "CONSUMER_SERVICES", "CONSUMER_DURABLES_AND_APPAREL", "FOOD_BEVERAGE_AND_TOBACCO", "HOUSEHOLD_AND_PERSONAL_PRODUCTS"],
-  ENERGY: ["CAPITAL_GOODS", "MATERIALS", "TRANSPORTATION", "UTILITIES", "REAL_ESTATE_MANAGEMENT_AND_DEVELOPMENT", "SOFTWARE_AND_SERVICES"],
-  UTILITIES: ["CAPITAL_GOODS", "MATERIALS", "REAL_ESTATE_MANAGEMENT_AND_DEVELOPMENT", "SOFTWARE_AND_SERVICES"],
-  MATERIALS: ["CAPITAL_GOODS", "AUTOMOBILES_AND_COMPONENTS", "CONSUMER_DURABLES_AND_APPAREL", "FOOD_BEVERAGE_AND_TOBACCO", "HOUSEHOLD_AND_PERSONAL_PRODUCTS"],
-  CAPITAL_GOODS: ["ENERGY", "UTILITIES", "TRANSPORTATION", "MATERIALS", "AUTOMOBILES_AND_COMPONENTS", "REAL_ESTATE_MANAGEMENT_AND_DEVELOPMENT"],
-  TRANSPORTATION: ["CONSUMER_DISCRETIONARY_DISTRIBUTION_AND_RETAIL", "CONSUMER_STAPLES_DISTRIBUTION_AND_RETAIL", "FOOD_BEVERAGE_AND_TOBACCO", "CAPITAL_GOODS", "MATERIALS"],
-  FOOD_BEVERAGE_AND_TOBACCO: ["CONSUMER_STAPLES_DISTRIBUTION_AND_RETAIL", "CONSUMER_SERVICES"],
-  HEALTH_CARE_EQUIPMENT_AND_SERVICES: ["HEALTH_CARE_EQUIPMENT_AND_SERVICES", "PHARMACEUTICALS_BIOTECHNOLOGY_AND_LIFE_SCIENCES", "INSURANCE"],
-  PHARMACEUTICALS_BIOTECHNOLOGY_AND_LIFE_SCIENCES: ["HEALTH_CARE_EQUIPMENT_AND_SERVICES"],
+export type Sector = "tech" | "finance" | "health" | "energy" | "industrial" | "mobility" | "consumer" | "services" | "agri";
+
+const SECTOR_OF: [RegExp, Sector][] = [
+  [/FINTECH|BANK|FINANCIAL|INSURANCE|PAYMENT|CAPITAL_MARKETS|INVESTMENT|CRYPTO|BLOCKCHAIN/, "finance"],
+  [/SOFTWARE|INTERNET|WEB|HARDWARE|SEMICONDUCTOR|TELECOM|ELECTRONIC|COMPUTER|^IT_|CYBER|DATA|CLOUD|ARTIFICIAL|QUANTUM/, "tech"],
+  [/HEALTH|MEDICAL|PHARMA|BIOTECH|LIFE_SCIENCE|DIAGNOSTIC|WELLNESS/, "health"],
+  [/ENERGY|UTILIT|RENEWABLE|OIL|GAS|POWER|CLEANTECH|CLIMATE/, "energy"],
+  [/TRANSPORT|LOGISTIC|AUTOMOTIVE|AUTOMOBILE|AIRLINE|SHIPPING|MOBILITY|AVIATION/, "mobility"],
+  [/CONSTRUCTION|ENGINEERING|MANUFACTUR|MACHINERY|INDUSTRIAL|AEROSPACE|DEFEN|CHEMICAL|MATERIAL|METAL|MINING|CAPITAL_GOODS|ROBOT/, "industrial"],
+  [/AGRICULT|FARM|FOOD_PRODUCTION|FORESTRY|AQUACULTURE/, "agri"],
+  [/RETAIL|CONSUMER|FOOD|BEVERAGE|APPAREL|FASHION|E_?COMMERCE|HOSPITALITY|TRAVEL|RESTAURANT|GAMING|GAMES|ENTERTAINMENT|MEDIA|SPORT|HOUSEHOLD|PERSONAL/, "consumer"],
+  [/ADVERTIS|MARKETING|CONSULT|PROFESSIONAL|LEGAL|EDUCATION|STAFFING|HUMAN_RESOURCES|REAL_ESTATE|COMMERCIAL_SERVICES|BUSINESS_SERVICES/, "services"],
+];
+
+export function sectorOf(code: string): Sector | null {
+  for (const [re, s] of SECTOR_OF) if (re.test(code)) return s;
+  return null;
+}
+
+/** Who buys from whom, by sector. Read: KEY sells to companies in VALUES. */
+const SELLS_TO: Record<Sector, Sector[]> = {
+  tech: ["finance", "health", "energy", "industrial", "mobility", "consumer", "services", "agri"],
+  finance: ["tech", "consumer", "services", "mobility", "industrial", "health", "energy", "agri"],
+  services: ["tech", "finance", "health", "energy", "industrial", "mobility", "consumer", "agri"],
+  energy: ["industrial", "mobility", "tech", "agri"],
+  industrial: ["energy", "mobility", "industrial", "agri"],
+  mobility: ["consumer", "industrial", "agri"],
+  health: ["health"],
+  agri: ["consumer"],
+  consumer: [],
 };
+
+/** Pairs whose products connect: software with software, payments with software. */
+const INTEGRATES: [Sector, Sector][] = [["tech", "tech"], ["tech", "finance"], ["finance", "tech"], ["tech", "health"], ["health", "tech"]];
 
 const WORDS: Record<string, string> = {
   SOFTWARE_AND_SERVICES: "software",
-  TECHNOLOGY_HARDWARE_AND_EQUIPMENT: "hardware",
-  SEMICONDUCTORS_AND_SEMICONDUCTOR_EQUIPMENT: "semiconductors",
-  TELECOMMUNICATION_SERVICES: "connectivity",
-  COMMERCIAL_AND_PROFESSIONAL_SERVICES: "professional services",
-  FINANCIAL_SERVICES: "financial services",
-  BANKS: "banking",
-  INSURANCE: "insurance",
-  MEDIA_AND_ENTERTAINMENT: "media",
-  ENERGY: "energy",
-  UTILITIES: "utilities",
-  MATERIALS: "materials",
-  CAPITAL_GOODS: "industrial equipment",
-  TRANSPORTATION: "transport and logistics",
-  AUTOMOBILES_AND_COMPONENTS: "automotive",
-  CONSUMER_DURABLES_AND_APPAREL: "consumer goods",
-  CONSUMER_SERVICES: "consumer services",
-  CONSUMER_DISCRETIONARY_DISTRIBUTION_AND_RETAIL: "retail",
-  CONSUMER_STAPLES_DISTRIBUTION_AND_RETAIL: "grocery and retail",
-  FOOD_BEVERAGE_AND_TOBACCO: "food and drink",
-  HOUSEHOLD_AND_PERSONAL_PRODUCTS: "household products",
-  HEALTH_CARE_EQUIPMENT_AND_SERVICES: "health care",
-  PHARMACEUTICALS_BIOTECHNOLOGY_AND_LIFE_SCIENCES: "life sciences",
-  REAL_ESTATE_MANAGEMENT_AND_DEVELOPMENT: "real estate",
-  EQUITY_REAL_ESTATE_INVESTMENT_TRUSTS: "real estate",
+  INTERNET_AND_WEB_SERVICES: "web services",
+  HARDWARE_AND_EQUIPMENT: "hardware",
+  FINTECH: "fintech",
+  HEALTHCARE_PROVIDERS: "health care",
+  MEDICAL_DEVICES: "medical devices",
+  RENEWABLE_ENERGY: "renewable energy",
+  TRANSPORTATION_AND_LOGISTICS: "transport and logistics",
+  ADVERTISING_AND_MARKETING: "marketing",
+  CONSTRUCTION_AND_ENGINEERING: "construction",
 };
 
 /** "enterpriseSoftware" -> "enterprise software", "ai" -> "AI", "SOFTWARE_AND_SERVICES" -> "software". */
@@ -77,18 +70,13 @@ export function industryWords(ind: Industry): string {
       .replace(/[_-]+/g, " ")
       .toLowerCase()
       .replace(/\b(ai|ml|saas|b2b|iot|hr|it|ar|vr|api|ev)\b/g, (m) => m.toUpperCase().replace("SAAS", "SaaS"));
+    if (w.length <= 5 && /SOFTWARE|INTERNET|WEB/.test(ind.code)) return `${w} software`;
     return w;
   }
   return WORDS[ind.code] ?? ind.code.toLowerCase().replace(/_/g, " ");
 }
 
-function sellsTo(seller: string, buyer: string): boolean {
-  const s = SELLS_TO[seller];
-  if (!s) return false;
-  if (s === "ALL") return seller !== buyer || !TECH.has(seller); // tech-to-tech is integration, not customer
-  if (s === "ALL_NON_TECH") return !TECH.has(buyer);
-  return s.includes(buyer);
-}
+const an = (w: string) => `${/^[aeiou]/i.test(w) && !/^(uni|use|eu)/i.test(w) ? "An" : "A"} ${w}`;
 
 const sameLabel = (a: Industry, b: Industry) => !!a.label && !!b.label && a.label.toLowerCase() === b.label.toLowerCase();
 
@@ -111,37 +99,29 @@ export interface MatchInput {
 export function partnerTypes(m: MatchInput): WhyYou[] {
   const out: WhyYou[] = [];
   const where = m.market ?? m.you.country ?? "your market";
+  const has = (t: PartnerType) => out.some((o) => o.type === t);
   for (const u of m.you.industries) {
     for (const d of m.door.industries) {
-      // the same product in the same market is a competitor, not a partner
-      if (u.code === d.code && sameLabel(u, d)) continue;
+      // the same product is a competitor, not a partner
+      if (u.code === d.code && (sameLabel(u, d) || (!u.label && !d.label))) continue;
+      const us = sectorOf(u.code);
+      const dsec = sectorOf(d.code);
+      if (!us || !dsec) continue;
       const uw = industryWords(u);
       const dw = industryWords(d);
-      if (!out.some((o) => o.type === "customer") && sellsTo(u.code, d.code)) {
+      if (!has("customer") && SELLS_TO[us].includes(dsec) && !(us === dsec && INTEGRATES.some(([x, y]) => x === us && y === dsec))) {
         out.push({
           type: "customer",
           sentence: m.entering
-            ? `Customer. A ${dw} company setting up in ${where} needs ${uw}; you sell it there.`
-            : `Customer. A ${dw} company with fresh money is a buyer of ${uw}.`,
+            ? `Customer. ${an(dw)} company setting up in ${where} will buy ${uw}, and you sell it there.`
+            : `Customer. ${an(dw)} company with fresh money is a buyer of ${uw}.`,
         });
       }
-      if (!out.some((o) => o.type === "integration") && TECH.has(u.code) && TECH.has(d.code) && !sameLabel(u, d)) {
-        out.push({
-          type: "integration",
-          sentence: `Integration. They build ${dw}, you build ${uw}: the two sit in the same stack.`,
-        });
+      if (!has("integration") && INTEGRATES.some(([x, y]) => x === us && y === dsec)) {
+        out.push({ type: "integration", sentence: `Integration. They build ${dw}, you build ${uw}: the two plug into the same stack.` });
       }
-      if (
-        !out.some((o) => o.type === "distribution") &&
-        m.entering &&
-        u.code === d.code &&
-        m.you.country &&
-        m.door.country !== m.you.country
-      ) {
-        out.push({
-          type: "distribution",
-          sentence: `Distribution. They're new to ${where} and sell ${dw} to buyers you already reach.`,
-        });
+      if (!has("distribution") && m.entering && us === dsec && m.you.country && m.door.country && m.door.country !== m.you.country) {
+        out.push({ type: "distribution", sentence: `Distribution. They're new to ${where} and sell ${dw} to the buyers you already reach.` });
       }
     }
   }

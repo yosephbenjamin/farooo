@@ -181,6 +181,16 @@ function goodRole(r: string) {
   return r.length <= 40 && !/\b(per|listing|according|source)\b/i.test(r);
 }
 
+/** A source on the company's own domain is PRIMARY even when Cala didn't label it. */
+function withOwnRank(s: RankedSource, p: Profile | undefined): RankedSource {
+  if (s.rank || !p) return s;
+  try {
+    const h = new URL(s.url).hostname.replace(/^www\./, "");
+    if (p.domains.some((d) => h === d || h.endsWith(`.${d}`))) return { ...s, rank: "PRIMARY" };
+  } catch {}
+  return s;
+}
+
 // ---------- the engine ----------
 export function buildReport(pool: Pool, startup: StartupSummary, opts: { now: string }): DoorReport {
   const { now } = opts;
@@ -245,16 +255,17 @@ export function buildReport(pool: Pool, startup: StartupSummary, opts: { now: st
     });
   }
 
-  // 2. fresh rounds, only with a warm path
-  for (const r of pool.rounds) {
+  // 2. fresh rounds, only with a warm path; newest round per company wins
+  for (const r of [...pool.rounds].sort((a, b) => b.date.localeCompare(a.date))) {
     if (!isConcreteDate(r.date) || r.date > now || daysAgo(now, r.date) > ROUND_WINDOW_DAYS) continue;
     if (doors.has(r.companyId) || r.companyId === startup.id) continue;
     const p = pool.profiles[r.companyId];
     if (!p || normalizeCompany(p.name) === selfName) continue;
     const warm = warmOf(p, r.investors);
     if (!warm.length) continue;
-    const src = pickSource(r.sources, r.date);
-    if (!src) continue;
+    const src0 = pickSource(r.sources, r.date);
+    if (!src0) continue;
+    const src = withOwnRank(src0, p);
     const whyYou = partnerTypes({ you: startup, door: { name: p.name, industries: p.industries, country: p.country }, entering: false, market: startup.country });
     if (!whyYou.length) continue;
     doors.set(r.companyId, {

@@ -24,3 +24,19 @@ Choices made without stopping to ask. Newest last.
 20. **The map: investors as buildings, doors as windows.** Easier to read than a force graph at booth distance, and it fits the lighthouse metaphor. Up to 25 windows per building, lit first.
 21. **Typed name wins for display.** "Oura" resolves to Cala's "OURA HEALTH OY" but reads as "Oura".
 22. **Gmail add-on is a thin card** over `/api/doors/<startup>`; not tested in a live Gmail account.
+
+## v2 (new north star, see BUILD_SPEC.md)
+
+23. **v1 items reversed by the north star are listed in BUILD_SPEC.md** (people, subsidiaries, keyword fit, query endpoint, keyrings-as-doors, Slush). Nothing you changed during the session conflicted; the working tree was clean.
+24. **The new Cala key lives in the environment's network secrets**, injected by the proxy into requests to api.cala.ai. Scripts run with `CALA_API_KEY=proxy-injected` (a placeholder the proxy overwrites). No key in any file.
+25. **Door-centric, prioritised ingest.** The new key allows ~10 requests per rolling minute. Profiling all 2,989 Slush attendees plus 1,143 portfolio companies would take ~7 hours, so the ingest runs in priority order (users → fresh rounds → news → Slush attendees, Nordic legal names first), saves `data/pool.json` after each stage, and resumes from cache.
+26. **"Matched by website", made workable.** Registry subsidiaries rarely carry a website, so a new national company is tied to its foreign parent by (a) a GLEIF parent link (`IS_DIRECT_PARENT_OF` / `IS_ULTIMATE_PARENT_OF`), rejected if both have websites and they differ; or (b) the same website or domain on a same-brand company headquartered abroad. Name similarity alone never counts.
+27. **FILING founding date** = a founding-date source with `source_rank: FILING`, or from a known registry (GLEIF, PRH/YTJ, Bolagsverket, Brønnøysund, CVR, Companies House, INPI, Zefix…), since Cala's registry sources often arrive without a `source_rank`. Day precision only, and 1 January dates are treated as year placeholders.
+28. **Windows:** a new national company counts as market entry for 365 days after its registry founding date; expansion news 180 days; fresh rounds 120 days.
+29. **Why you is structured.** Industry codes are grouped into sectors by the code itself (`FINTECH` → finance, `MEDICAL_DEVICES` → health…). Customer = your sector sells to theirs; integration = products that connect (software–software, software–payments, software–health); distribution = same sector, and they're entering your market from abroad. Same code and same label = competitor, dropped. No overlap = no door.
+30. **Slush match** by attendee id, or by the attendee's exact normalised name (attendees are listed under brand names while doors are often legal entities).
+31. **Taps** live in a per-startup cookie on the web (`faro_taps_<slug>`) and in user properties in Gmail, with the same shape. Ranking runs client-side too, so a tap re-ranks instantly. "not now" hides that door and lowers its type; three "not now"s on a type mute it.
+32. **First look = three doors, one per partnership type** where the data allows; after the first tap the log becomes the ranked list (up to six).
+33. **Who:** CEO, CTO, VP and `WORKS_AT` roles (scraps like "per an exhibitor listing" filtered out), up to two people; otherwise a Google X-ray link whose role terms follow the partnership type. Link only.
+34. **The map keeps its design**: investors behind warm paths are buildings, plus one building "New in <country>" for entrants without a warm path. Lit windows are the doors in the log.
+35. **Door Count kept** (doors per investor via warm paths), as a quiet line. It doesn't conflict with v2.

@@ -76,17 +76,21 @@ export function LogView({ report, slug, taps: initialTaps, booth = false, script
 
   // map: buildings are the investors behind warm paths, plus one for newcomers without one
   const country = report.startup.country ?? "your market";
-  const warmNames = [...new Set(report.doors.flatMap((d) => d.warm.map((w) => w.investor)))];
+  // a building per investor that is the first warm path of at least one door (no empty buildings)
+  const warmNames = [...new Set(rankDoors(report.doors, taps).flatMap((d) => (d.warm[0] ? [d.warm[0].investor] : [])))];
   const mapInvestors = [
     ...warmNames.slice(0, 5).map((n) => ({ id: n, name: n })),
-    ...(report.doors.some((d) => !d.warm.length) ? [{ id: NEW, name: `New in ${country}` }] : []),
+    ...(report.doors.some((d) => !d.warm.some((w) => warmNames.slice(0, 5).includes(w.investor))) ? [{ id: NEW, name: `New in ${country}` }] : []),
   ];
   const mapDoors = useMemo(
     () =>
       rankDoors(report.doors, taps).map((d) => ({
         id: d.id,
         name: d.name,
-        investorIds: d.warm.length ? d.warm.map((w) => w.investor) : [NEW],
+        investorIds: (() => {
+          const ids = d.warm.map((w) => w.investor).filter((n) => warmNames.slice(0, 5).includes(n));
+          return ids.length ? ids : [NEW];
+        })(),
         lit: shownDoors.some((s) => s.id === d.id) || d.id === scriptedId,
       })),
     // eslint-disable-next-line react-hooks/exhaustive-deps

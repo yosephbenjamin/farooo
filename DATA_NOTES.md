@@ -2,6 +2,18 @@
 
 Problems and surprises hit while building Faro on the Cala API (14 Nov 2026). Written as feedback, not complaints: Faro works because the graph is good enough to work around these. Numbers come from `data/ingest-report.json`, `data/funds.json`, `data/daily-report.json` and `data/market-report.json`.
 
+## v2 findings (new key, entity endpoints)
+
+- **Rate limit: ~10 requests per rolling minute** on the new key (a burst of 10, then roughly one every 6 s), still without rate-limit headers. That makes "profile every Slush attendee" a 5-hour job; Faro prioritises instead.
+- **Slush 2026 has 2,989 attendees** (2,980 companies), paginated 100 at a time. My client capped pagination at 2,000 at first: watch for silent truncation.
+- **Registry sources often lack `source_rank`.** GLEIF, INPI and Companies House founding dates came back with no `source_rank` field, although the guide classes them as FILING. Faro recognises registries by name.
+- **Year precision disguised as day precision.** Lovable's `founding_date` is `2023-01-01` with sources marked `day`. Faro treats 1 January dates as year placeholders.
+- **Subsidiaries rarely have a website or domain.** Revolut's French and Lithuanian entities have none, so "match by website" alone finds little. GLEIF parent links exist but are sparse (Revolut Ltd lists one child).
+- **`HAS_HEADQUARTERS_IN` is often missing on startups** (e.g. Finadeck Oy); the country has to be read from `headquarters_address` text.
+- **Industry codes differ from the guide's examples**: `FINTECH`, `HARDWARE_AND_EQUIPMENT`, `INTERNET_AND_WEB_SERVICES`, `HEALTHCARE_PROVIDERS`, `MEDICAL_DEVICES`, `RENEWABLE_ENERGY`, `TRANSPORTATION_AND_LOGISTICS`, `ADVERTISING_AND_MARKETING`, with `original_label`s like `ai`, `cyber`, `enterpriseSoftware`, `robo`.
+- **People data is better than expected**: in a sample of 29 Slush attendees, 21 had a CEO or CTO. `WORKS_AT.role` sometimes holds scraps ("per an exhibitor listing").
+- **Name-pattern search doesn't find new subsidiaries.** Searching "Finland Oy" / "Sweden AB" (100 results each) surfaced one 2025 company per query, both domestic restructurings.
+
 ## Access and limits
 
 - **Rate limit without headers.** Above roughly 1.5 requests/second the API answers `429` with no `Retry-After` and no rate-limit headers, so clients can only guess. Faro paces itself at 1.6 req/s and backs off globally on any 429. A cold ingest of 30 funds needs ~4,000 entity calls, which is about 45 minutes at that rate.

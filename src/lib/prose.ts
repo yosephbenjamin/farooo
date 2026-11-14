@@ -38,7 +38,10 @@ export function headline(r: DoorReport, shown: Door[]): string {
 export function subline(r: DoorReport): string | null {
   const s = r.startup;
   if (!s.country) return "Try another name, or one of the demo startups.";
-  const inv = s.investors.map((i) => i.name).slice(0, 4);
+  // warm-path investors first, then the rest; all-caps legal names in normal case
+  const warm = new Set(r.doors.flatMap((d) => d.warm.map((w) => w.investor)));
+  const tidy = (n: string) => (n === n.toUpperCase() && /[A-Z]{4,}/.test(n) ? n.toLowerCase().replace(/\b([a-z])/g, (c) => c.toUpperCase()) : n).replace(/,? (LP|LLC|LLP|Ltd|AB|Oy|Inc)\.?$/i, "");
+  const inv = [...s.investors].sort((a, b) => Number(warm.has(b.name)) - Number(warm.has(a.name))).map((i) => tidy(i.name)).slice(0, 3);
   return inv.length ? `Watching ${s.country}, through ${list(inv)}.` : `Watching ${s.country}.`;
 }
 

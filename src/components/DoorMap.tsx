@@ -59,7 +59,7 @@ export function DoorMap({ startup, investors, doors, animateId, holdId, classNam
           (a, b) => Number(b.lit || b.id === holdId) - Number(a.lit || a.id === holdId),
         );
         const shown = all.slice(0, maxPerInvestor);
-        const rows = Math.max(1, Math.ceil(shown.length / COLS));
+        const rows = Math.max(3, Math.ceil(shown.length / COLS));
         const bw = COLS * WW + (COLS - 1) * GX + 20;
         const bh = rows * WH + (rows - 1) * GY + 20;
         const bx = r2(x - bw / 2);

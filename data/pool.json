@@ -2209,10 +2209,1617 @@
         }
       ],
       "parents": []
+    },
+    "b7226c97-3a44-5176-8544-cb91246b2249": {
+      "id": "b7226c97-3a44-5176-8544-cb91246b2249",
+      "name": "Kova Labs",
+      "legalName": "Kova Labs Oy",
+      "aliases": [],
+      "website": "kovahq.com",
+      "domains": [
+        "kovahq.com"
+      ],
+      "description": "Kova Labs builds the foundational autonomy layer for unmanned systems in GPS-denied, contested, and complex environments. Based in Helsinki, Finland.",
+      "industries": [
+        {
+          "code": "AEROSPACE_AND_DEFENSE",
+          "label": "dualUseTech"
+        }
+      ],
+      "country": "Finland",
+      "hqAddress": "Helsinki, Finland",
+      "founding": {
+        "date": "2025-01-01",
+        "precision": "day",
+        "sources": [
+          {
+            "name": "linkedin.com",
+            "url": "https://www.linkedin.com/company/kova-labs/",
+            "date": "2026-11-02",
+            "rank": "AGGREGATOR"
+          }
+        ]
+      },
+      "fundingStage": "PRE_SEED",
+      "status": "ACTIVE",
+      "investors": [
+        {
+          "id": "4d668c75-c7a0-4f5b-baea-ce0fa6a34e31",
+          "name": "Lifeline Ventures AB"
+        }
+      ],
+      "fundingRounds": [
+        {
+          "id": "a42c8b14-c1cd-5113-bd6d-3ec0bbcb1caa",
+          "role": "ISSUER"
+        },
+        {
+          "id": "a73d838b-7aeb-5be8-b6f1-37f3374cb3ec",
+          "role": "ISSUER"
+        }
+      ],
+      "slush": true,
+      "people": [
+        {
+          "name": "Touko Rautiainen",
+          "role": "CEO",
+          "since": null
+        },
+        {
+          "name": "Luukas Lohilahti",
+          "role": "Chief Product Officer",
+          "since": null
+        }
+      ],
+      "parents": []
+    },
+    "75c397bb-0819-5178-b96b-630417e6bb9e": {
+      "id": "75c397bb-0819-5178-b96b-630417e6bb9e",
+      "name": "Ambio",
+      "legalName": "Ambio Oy",
+      "aliases": [],
+      "website": "ambiomaterials.com",
+      "domains": [
+        "ambiomaterials.com"
+      ],
+      "description": "Recycled plastics for converters across Europe: verified materials, structured quality data and one accountable partner, from first sample to recurring supply.",
+      "industries": [
+        {
+          "code": "MACHINERY",
+          "label": "manufacturingMaterials"
+        }
+      ],
+      "country": "Finland",
+      "hqAddress": "Urho Kekkosen katu 4-6 F, 00100 Helsinki, Finland",
+      "founding": {
+        "date": "2023-01-24",
+        "precision": "day",
+        "sources": [
+          {
+            "name": "avoindata.prh.fi",
+            "url": "https://avoindata.prh.fi/opendata-ytj-api/v3/companies?businessId=3338492-8",
+            "date": "2026-11-13",
+            "rank": "FILING"
+          }
+        ]
+      },
+      "fundingStage": "SEED",
+      "status": "ACTIVE",
+      "investors": [
+        {
+          "id": "00a88b28-0361-4194-b41d-5dc816d1e3c9",
+          "name": "Montis S.à.R.L."
+        },
+        {
+          "id": "0beb7ba3-49d5-4dad-bc53-61f121b66a33",
+          "name": "b2venture"
+        },
+        {
+          "id": "476a73ac-afa2-4713-9f73-188bc7ec0b95",
+          "name": "Lifeline Ventures"
+        }
+      ],
+      "fundingRounds": [
+        {
+          "id": "0f4bbc43-3506-5197-8981-d2202a464266",
+          "role": "ISSUER"
+        },
+        {
+          "id": "355c7d8c-8050-5da8-b528-cd41bf63a2cc",
+          "role": "ISSUER"
+        }
+      ],
+      "slush": false,
+      "people": [
+        {
+          "name": "Tommi Bergström",
+          "role": "CEO",
+          "since": null
+        },
+        {
+          "name": "Elmo Pakkanen",
+          "role": "CPO",
+          "since": null
+        }
+      ],
+      "parents": []
+    },
+    "9fb29819-a62b-5d13-be35-67eeb5e534a1": {
+      "id": "9fb29819-a62b-5d13-be35-67eeb5e534a1",
+      "name": "Vensum",
+      "legalName": "Vensum Power Oy",
+      "aliases": [],
+      "website": "vensum.com",
+      "domains": [
+        "vensum.com"
+      ],
+      "description": "Revolutionizing power conversion. More power in same package, less energy waste and low maintenance.",
+      "industries": [
+        {
+          "code": "RENEWABLE_ENERGY",
+          "label": "energy"
+        }
+      ],
+      "country": "Finland",
+      "hqAddress": "Rakentajanaukio 4, 02150 Espoo, FI",
+      "founding": {
+        "date": "2018-05-21",
+        "precision": "day",
+        "sources": [
+          {
+            "name": "avoindata.prh.fi",
+            "url": "https://avoindata.prh.fi/opendata-ytj-api/v3/companies?name=Vensum",
+            "date": "2026-11-06",
+            "rank": "FILING"
+          },
+          {
+            "name": "vensum.com",
+            "url": "https://www.vensum.com/about-us",
+            "date": "2026-11-06",
+            "rank": "PRIMARY"
+          }
+        ]
+      },
+      "fundingStage": "SERIES_A",
+      "status": "ACTIVE",
+      "investors": [
+        {
+          "id": "2420ea16-cc1a-56f7-934d-2acd7cdc394e",
+          "name": "Larsen And Toubro Limited"
+        },
+        {
+          "id": "3b0499bc-3c7e-4d50-aee5-42de34a5f8d0",
+          "name": "Business Finland Oy"
+        },
+        {
+          "id": "3f796380-fc58-41ec-8f50-a5e85eef636f",
+          "name": "Grid.vc I Ky"
+        },
+        {
+          "id": "476a73ac-afa2-4713-9f73-188bc7ec0b95",
+          "name": "Lifeline Ventures"
+        },
+        {
+          "id": "60a7d257-dceb-5032-b298-9b20e262db1c",
+          "name": "Harjavalta Ventures"
+        },
+        {
+          "id": "8540e55a-1f3b-4969-bf08-6802f5344d24",
+          "name": "Eviny Ventures"
+        },
+        {
+          "id": "ca61375d-18b8-4edc-8000-5b5c13141a29",
+          "name": "Harjavalta Oy"
+        }
+      ],
+      "fundingRounds": [
+        {
+          "id": "22bb2f59-9263-58d4-9a0e-14bb15270a5d",
+          "role": "ISSUER"
+        },
+        {
+          "id": "9e87f242-af2a-5066-93d6-78142d9adf6f",
+          "role": "ISSUER"
+        },
+        {
+          "id": "b84ad314-c8aa-5758-b850-c0db2d981feb",
+          "role": "ISSUER"
+        },
+        {
+          "id": "c74ce782-9faf-5baf-9c52-6a36db97ab15",
+          "role": "ISSUER"
+        }
+      ],
+      "slush": true,
+      "people": [],
+      "parents": []
+    },
+    "49fb961a-7281-5f17-94be-5e0c1720d2d5": {
+      "id": "49fb961a-7281-5f17-94be-5e0c1720d2d5",
+      "name": "S-Transistors",
+      "legalName": "S-Transistors Oy",
+      "aliases": [
+        "S‑Transistors"
+      ],
+      "website": "vttresearch.com",
+      "domains": [
+        "vttresearch.com"
+      ],
+      "description": "Finnish telecommunications company founded in 2026 and headquartered in Espoo.",
+      "industries": [
+        {
+          "code": "TELECOMMUNICATIONS",
+          "label": "informationNetworks"
+        }
+      ],
+      "country": "Finland",
+      "hqAddress": "Tekniikantie 12, 02150 Espoo, Finland",
+      "founding": {
+        "date": "2026-06-01",
+        "precision": "day",
+        "sources": [
+          {
+            "name": "tietopalvelu.ytj.fi",
+            "url": "https://tietopalvelu.ytj.fi/yritys/3628156-1",
+            "date": "2026-08-14",
+            "rank": "FILING"
+          }
+        ]
+      },
+      "fundingStage": "PRE_SEED",
+      "status": "ACTIVE",
+      "investors": [
+        {
+          "id": "476a73ac-afa2-4713-9f73-188bc7ec0b95",
+          "name": "Lifeline Ventures"
+        }
+      ],
+      "fundingRounds": [
+        {
+          "id": "fe20bc32-86da-50b3-a96c-7465beada1a3",
+          "role": "ISSUER"
+        }
+      ],
+      "slush": true,
+      "people": [],
+      "parents": []
+    },
+    "9ea03240-306c-5366-8f5c-6191e94b07f6": {
+      "id": "9ea03240-306c-5366-8f5c-6191e94b07f6",
+      "name": "Volare",
+      "legalName": "Volare Ltd",
+      "aliases": [],
+      "website": "volare.fi",
+      "domains": [
+        "volare.fi"
+      ],
+      "description": "Refining food, beverage and agricultural sidestreams into protein, oil and fertilizers.\nSustainable Black Soldier Fly Protein & Oil for Pet Food and Aquafeed from Finland.",
+      "industries": [
+        {
+          "code": "FOOD_AND_BEVERAGE",
+          "label": "food"
+        }
+      ],
+      "country": "Finland",
+      "hqAddress": "Helsinki, Finland",
+      "founding": {
+        "date": "2021-01-01",
+        "precision": "day",
+        "sources": [
+          {
+            "name": "linkedin.com",
+            "url": "https://www.linkedin.com/company/volaresolutions/",
+            "date": "2026-11-02",
+            "rank": "AGGREGATOR"
+          }
+        ]
+      },
+      "fundingStage": "SERIES_A",
+      "status": "ACTIVE",
+      "investors": [
+        {
+          "id": "6cca8302-1a04-4175-925f-ce50636fc28c",
+          "name": "FIRSTMINUTE CAPITAL LLP"
+        },
+        {
+          "id": "9ba21cd6-b862-40ca-9186-d0bfedbbe390",
+          "name": "Finnish Climate Fund"
+        },
+        {
+          "id": "c9ea15a1-05fd-42ed-9f5a-89c05e0a8eb2",
+          "name": "Springvest Oyj"
+        },
+        {
+          "id": "d6bba931-c5f5-56f1-8c78-a01daad6a6d5",
+          "name": "Maki"
+        },
+        {
+          "id": "ddc79d15-fc6b-5d6b-a2b7-9f6c6ec190d1",
+          "name": "Maki VC"
+        }
+      ],
+      "fundingRounds": [
+        {
+          "id": "38e1452a-45e8-5f51-86a0-31143881978d",
+          "role": "ISSUER"
+        },
+        {
+          "id": "71fb258f-6a64-5cdb-a485-ff7fb3e10b0b",
+          "role": "ISSUER"
+        },
+        {
+          "id": "8b990db2-1895-5fae-b483-ee818fd8817d",
+          "role": "ISSUER"
+        }
+      ],
+      "slush": true,
+      "people": [
+        {
+          "name": "Jarna Hyvönen",
+          "role": "CEO",
+          "since": null
+        },
+        {
+          "name": "Matti Tähtinen",
+          "role": "CTO",
+          "since": null
+        }
+      ],
+      "parents": []
+    },
+    "d17e0abf-0a57-4574-820b-822e5cac6308": {
+      "id": "d17e0abf-0a57-4574-820b-822e5cac6308",
+      "name": "Clock&Cloud",
+      "legalName": "Clock & Cloud Intelligence Oy",
+      "aliases": [
+        "Clock & Cloud Intelligence Ab",
+        "Clock & Cloud Intelligence Ltd",
+        "ccintel.fi",
+        "Clock & Cloud"
+      ],
+      "website": "clockcloud.ai",
+      "domains": [
+        "clockcloud.ai"
+      ],
+      "description": "We transform geopolitical intelligence into actionable business understanding that enhance your business resilience.",
+      "industries": [
+        {
+          "code": "CONSULTING",
+          "label": null
+        },
+        {
+          "code": "SOFTWARE_AND_SERVICES",
+          "label": null
+        },
+        {
+          "code": "SOFTWARE_AND_SERVICES",
+          "label": "enterpriseSoftware"
+        }
+      ],
+      "country": "Finland",
+      "hqAddress": "Vanha Talvitie 11 C, 00580 Helsinki, Finland",
+      "founding": {
+        "date": "2023-06-12",
+        "precision": "day",
+        "sources": [
+          {
+            "name": "avoindata.prh.fi",
+            "url": "https://avoindata.prh.fi/opendata-ytj-api/v3/companies?businessId=3359547-7",
+            "date": "2023-06-12",
+            "rank": "FILING"
+          },
+          {
+            "name": "linkedin.com",
+            "url": "https://www.linkedin.com/company/clockcloud",
+            "date": "2026-11-02",
+            "rank": "AGGREGATOR"
+          }
+        ]
+      },
+      "fundingStage": "PRE_SEED",
+      "status": "ACTIVE",
+      "investors": [
+        {
+          "id": "34829e66-7e7e-412e-a0ea-c61014ced495",
+          "name": "Ugly Duckling Ventures Management ApS"
+        },
+        {
+          "id": "70fb3317-cd8c-4c52-aa86-66502789bce3",
+          "name": "Icebreaker.vc"
+        }
+      ],
+      "fundingRounds": [
+        {
+          "id": "190b86d5-0201-5297-bc0e-cf6d9b7204ff",
+          "role": "ISSUER"
+        }
+      ],
+      "slush": true,
+      "people": [
+        {
+          "name": "Riku Hellgren",
+          "role": "CEO",
+          "since": null
+        },
+        {
+          "name": "Chris Purcell",
+          "role": "CTO",
+          "since": null
+        },
+        {
+          "name": "Colin Reed",
+          "role": "Chief Intelligence Officer",
+          "since": null
+        },
+        {
+          "name": "Toni Tenlenius",
+          "role": "CPO",
+          "since": null
+        }
+      ],
+      "parents": []
+    },
+    "7485476c-8d4b-4921-9330-45f893b9b5ca": {
+      "id": "7485476c-8d4b-4921-9330-45f893b9b5ca",
+      "name": "Guideless",
+      "legalName": null,
+      "aliases": [],
+      "website": "guideless.ai",
+      "domains": [
+        "guideless.ai"
+      ],
+      "description": "Lithuanian AI software‑training platform startup headquartered in Vilnius.",
+      "industries": [
+        {
+          "code": "SOFTWARE_AND_SERVICES",
+          "label": null
+        }
+      ],
+      "country": "Lithuania",
+      "hqAddress": null,
+      "founding": {
+        "date": "2026-01-01",
+        "precision": null,
+        "sources": [
+          {
+            "name": "The Recursive: Stories shape stories",
+            "url": "https://www.therecursive.com/cee-startup-tech-weekly-5",
+            "date": "2026-08-25",
+            "rank": null
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": null,
+      "investors": [
+        {
+          "id": "88b67750-caa3-40ca-bfde-8eb88aa48ae4",
+          "name": "FIRSTPICK"
+        },
+        {
+          "id": "8f18dee5-e41b-4eaa-86e2-f03f1a846edc",
+          "name": "Superhero Capital"
+        }
+      ],
+      "fundingRounds": [],
+      "slush": false,
+      "people": [],
+      "parents": []
+    },
+    "557bf741-7119-4d18-a4b0-fe77cb30f351": {
+      "id": "557bf741-7119-4d18-a4b0-fe77cb30f351",
+      "name": "Sigvi",
+      "legalName": null,
+      "aliases": [],
+      "website": "sigvi.com",
+      "domains": [
+        "sigvi.com"
+      ],
+      "description": "AI revenue agent for the car rental industry. Aggregates vehicles from independent fleet operators and private owners, manages all operations end-to-end.",
+      "industries": [
+        {
+          "code": "TRANSPORTATION_AND_LOGISTICS",
+          "label": null
+        },
+        {
+          "code": "SOFTWARE_AND_SERVICES",
+          "label": null
+        }
+      ],
+      "country": "Lithuania",
+      "hqAddress": null,
+      "founding": null,
+      "fundingStage": null,
+      "status": null,
+      "investors": [
+        {
+          "id": "8f18dee5-e41b-4eaa-86e2-f03f1a846edc",
+          "name": "Superhero Capital"
+        }
+      ],
+      "fundingRounds": [],
+      "slush": false,
+      "people": [],
+      "parents": []
+    },
+    "9423779d-819b-46ac-bf29-a5edb6b2553f": {
+      "id": "9423779d-819b-46ac-bf29-a5edb6b2553f",
+      "name": "OLIX",
+      "legalName": null,
+      "aliases": [],
+      "website": "olix.com",
+      "domains": [
+        "olix.com"
+      ],
+      "description": "A European AI semiconductor startup headquartered in London, founded in 2024.",
+      "industries": [
+        {
+          "code": "SOFTWARE_AND_SERVICES",
+          "label": null
+        },
+        {
+          "code": "HARDWARE_AND_EQUIPMENT",
+          "label": null
+        }
+      ],
+      "country": "United Kingdom",
+      "hqAddress": null,
+      "founding": {
+        "date": "2024-01-01",
+        "precision": null,
+        "sources": [
+          {
+            "name": "eu-startups.com",
+            "url": "https://www.eu-startups.com/2026/08/uk-ai-chip-startup-olix-raises-e270-5-million-at-e2-8-billion-valuation-just-two-years-after-its-founding",
+            "date": "2026-08-10",
+            "rank": null
+          }
+        ]
+      },
+      "fundingStage": null,
+      "status": null,
+      "investors": [
+        {
+          "id": "0b5b4d18-4cb8-45b0-8d0e-a8d3d78bd059",
+          "name": "Transition"
+        },
+        {
+          "id": "14b78eee-db22-48cb-ab4e-c6b36347f1f1",
+          "name": "CRANE VENTURE PARTNERS LLP"
+        },
+        {
+          "id": "515e6065-8090-469a-99aa-d71a4d6cb087",
+          "name": "HUMMINGBIRD VENTURES"
+        },
+        {
+          "id": "6ba00a20-2cb4-4559-8fe2-f39484a9e5f6",
+          "name": "Creandum"
+        },
+        {
+          "id": "7121847f-3969-405f-ab86-99566675b3df",
+          "name": "Phoenix Court"
+        },
+        {
+          "id": "79992082-af3a-4c45-b286-71ad79a7af46",
+          "name": "Backed VC"
+        },
+        {
+          "id": "97f97e83-5faf-402b-b874-0e7e56df724f",
+          "name": "ARM LIMITED"
+        },
+        {
+          "id": "a9a2aa7e-ba54-43ff-b338-6ba46fdba830",
+          "name": "Hummingbird Ventures"
+        },
+        {
+          "id": "e979bf43-c1c0-410e-bbd3-c194e1da23ab",
+          "name": "Hudson River Trading"
+        },
+        {
+          "id": "eedad1ff-85ae-4b16-8b66-d74ca15a17df",
+          "name": "Sovereign AI"
+        }
+      ],
+      "fundingRounds": [],
+      "slush": false,
+      "people": [],
+      "parents": []
+    },
+    "fc9b463a-a6db-41e7-ba8c-b94e51a163e3": {
+      "id": "fc9b463a-a6db-41e7-ba8c-b94e51a163e3",
+      "name": "Causa Prima",
+      "legalName": "Causa Prima, Inc.",
+      "aliases": [
+        "causaprima.ai"
+      ],
+      "website": "causaprima.com",
+      "domains": [
+        "causaprima.com",
+        "causaprima.ai"
+      ],
+      "description": "Causa Prima is the agent-to-agent network for finance teams — AI agents handle invoicing, disputes and discounts on both sides of every B2B transaction, so you end the chase and money moves on the...",
+      "industries": [
+        {
+          "code": "FINTECH",
+          "label": "Fintech"
+        }
+      ],
+      "country": "Spain",
+      "hqAddress": "Madrid, Spain",
+      "founding": {
+        "date": "2026-02-27",
+        "precision": "day",
+        "sources": [
+          {
+            "name": "causaprima.com",
+            "url": "https://causaprima.com/",
+            "date": "2026-11-09",
+            "rank": "PRIMARY"
+          },
+          {
+            "name": "linkedin.com",
+            "url": "https://www.linkedin.com/company/causa-prima/?viewAsMember=true",
+            "date": "2026-11-02",
+            "rank": "AGGREGATOR"
+          }
+        ]
+      },
+      "fundingStage": "SEED",
+      "status": "ACTIVE",
+      "investors": [
+        {
+          "id": "08275d37-1935-4195-80a5-79dcf46a0dc8",
+          "name": "Base10 Partners"
+        },
+        {
+          "id": "2c557cbb-4e37-44db-9f47-5bc327a86320",
+          "name": "Kfund"
+        },
+        {
+          "id": "6ba00a20-2cb4-4559-8fe2-f39484a9e5f6",
+          "name": "Creandum"
+        },
+        {
+          "id": "74a53c78-d1de-4aa1-b9c2-1554cb64dce0",
+          "name": "Borusan Ventures"
+        },
+        {
+          "id": "7a2f4e4f-d180-4252-9fce-23ded22343d1",
+          "name": "QED Investors"
+        },
+        {
+          "id": "aef36a05-6145-4357-8011-ee9d07f5f201",
+          "name": "Google DeepMind"
+        },
+        {
+          "id": "af455c14-7d52-4318-9418-fd1ee7d573ef",
+          "name": "FJ Labs, LLC"
+        },
+        {
+          "id": "c313bdce-2c97-4924-b145-49f886a2dd61",
+          "name": "Angel Invest"
+        },
+        {
+          "id": "ce623970-3ea3-415e-95ae-58fa4cd7cada",
+          "name": "HelloWorld Venture Capital Fund I SCSp"
+        },
+        {
+          "id": "f12af13b-ef4f-46ab-ae4e-ea2cce55d391",
+          "name": "SAP SE"
+        }
+      ],
+      "fundingRounds": [
+        {
+          "id": "ffee4e4b-e11f-5e5c-9b89-973eca45bc17",
+          "role": "ISSUER"
+        }
+      ],
+      "slush": true,
+      "people": [
+        {
+          "name": "Maex Ament",
+          "role": "CEO",
+          "since": "2026-02-27"
+        },
+        {
+          "name": "Philip Stanislaus",
+          "role": "CTO",
+          "since": "2026-02-27"
+        },
+        {
+          "name": "Henrik Gebbing",
+          "role": "Co-Founder & COO",
+          "since": null
+        }
+      ],
+      "parents": []
+    },
+    "89d3a43c-fee4-4491-853e-a216cbef6c50": {
+      "id": "89d3a43c-fee4-4491-853e-a216cbef6c50",
+      "name": "Lovable",
+      "legalName": null,
+      "aliases": [],
+      "website": null,
+      "domains": [],
+      "description": "A technology organization offering a no‑code platform that lets users create and maintain production‑ready applications and websites through natural‑language descriptions.",
+      "industries": [
+        {
+          "code": "SOFTWARE_AND_SERVICES",
+          "label": null
+        }
+      ],
+      "country": "United States",
+      "hqAddress": null,
+      "founding": null,
+      "fundingStage": null,
+      "status": null,
+      "investors": [
+        {
+          "id": "00780aec-5fb8-4965-8b26-dd6966931af5",
+          "name": "Kaszek Ventures"
+        },
+        {
+          "id": "0e1be198-d29b-41d4-8bbb-035691605668",
+          "name": "EQT AB"
+        },
+        {
+          "id": "17ffd618-a879-4bb3-99dd-af07d6b45f75",
+          "name": "DST Global Partners"
+        },
+        {
+          "id": "1db130d5-06ee-405f-adea-a8325648ea02",
+          "name": "Menlo Ventures"
+        },
+        {
+          "id": "1dc243c5-c12b-4639-b560-3d13988cf767",
+          "name": "Scaleup Europe Fund"
+        },
+        {
+          "id": "20003112-87a9-4ac0-be1a-bc97efecf19e",
+          "name": "byFounders"
+        },
+        {
+          "id": "21fbaa28-e211-4ae8-a311-d05df6a64d54",
+          "name": "CARMIGNAC GESTION"
+        },
+        {
+          "id": "2993cacb-b2ad-41e5-945a-bb2a522e89c1",
+          "name": "Kinship Ventures"
+        },
+        {
+          "id": "35d690ea-505a-4d72-8621-fa6ba2f2005e",
+          "name": "Tencent Holdings"
+        },
+        {
+          "id": "36a2b368-31fd-40d1-84d4-5894d44636b0",
+          "name": "Atlassian Corp"
+        },
+        {
+          "id": "43e37758-3cd9-4559-b3e4-ad94ece9f6f9",
+          "name": "Visionaries Club GmbH"
+        },
+        {
+          "id": "5a0de068-52f3-41b8-bf9e-338b2aa2df57",
+          "name": "CAPITALG LP"
+        },
+        {
+          "id": "6ba00a20-2cb4-4559-8fe2-f39484a9e5f6",
+          "name": "Creandum"
+        },
+        {
+          "id": "713ad57c-9383-4c9b-a6bc-94176574dd9e",
+          "name": "World Innovation Lab (WiL)"
+        },
+        {
+          "id": "8087843e-4e00-4001-9d2a-ed65940c1774",
+          "name": "Founders Pledge"
+        },
+        {
+          "id": "9761df94-f569-47ad-9ee4-e7d8974ac624",
+          "name": "KHOSLA VENTURES, LLC"
+        },
+        {
+          "id": "99f71d5e-967e-47de-b4d8-fd1c95e44e59",
+          "name": "Databricks Ventures"
+        },
+        {
+          "id": "9cdae40e-e11a-4584-bc9d-650a78be3008",
+          "name": "Osaühing T-Capital"
+        },
+        {
+          "id": "a45f011c-8d55-4a95-b34b-9f7752cc3f23",
+          "name": "NVentures"
+        },
+        {
+          "id": "a9a2aa7e-ba54-43ff-b338-6ba46fdba830",
+          "name": "Hummingbird Ventures"
+        },
+        {
+          "id": "aee065b7-5ae9-45c7-8c30-457f6d339958",
+          "name": "Accel"
+        },
+        {
+          "id": "b98489c9-af83-5431-b36b-e67b328d450f",
+          "name": "Hubspot, Inc."
+        },
+        {
+          "id": "c10d642f-7e4d-4244-85e9-10f66619fcc7",
+          "name": "20VC"
+        },
+        {
+          "id": "c96fa533-91c0-5674-bcbe-0d0dc934b7fa",
+          "name": "Balderton Capital"
+        },
+        {
+          "id": "dc7ff25e-150c-4b1c-a538-77e57af99f71",
+          "name": "Khosla Ventures"
+        },
+        {
+          "id": "e3389e57-0aa1-494b-84fc-ddd4ceafbd80",
+          "name": "SALESFORCE VENTURES LLC"
+        }
+      ],
+      "fundingRounds": [],
+      "slush": false,
+      "people": [
+        {
+          "name": "Anton Osika",
+          "role": "CEO",
+          "since": null
+        },
+        {
+          "name": "Fabian Hedin",
+          "role": "CTO",
+          "since": null
+        }
+      ],
+      "parents": []
     }
   },
   "entries": [],
-  "rounds": [],
+  "rounds": [
+    {
+      "id": "2e579a9e-cc8c-593b-8763-5203bc27bc2f",
+      "companyId": "3d3edba6-f4d7-432b-80d3-d07872e11def",
+      "date": "2026-09-22",
+      "label": "SERIES_B",
+      "amount": 189000000,
+      "currency": "USD",
+      "sources": [
+        {
+          "name": "verda.com",
+          "url": "https://verda.com/blog/verda-raises-189m",
+          "date": "2026-09-22",
+          "rank": null
+        },
+        {
+          "name": "eu-startups.com",
+          "url": "https://www.eu-startups.com/2026/09/helsinkis-verda-becomes-europes-latest-unicorn-after-raising-e164-8-million-to-scale-its-full-stack-ai-cloud/",
+          "date": "2026-09-22",
+          "rank": null
+        },
+        {
+          "name": "valueaddvc.com",
+          "url": "https://valueaddvc.com/pulse/verda-189m-series-b-ai-cloud-unicorn-2026",
+          "date": "2026-09-22",
+          "rank": null
+        },
+        {
+          "name": "verda.com",
+          "url": "https://verda.com/",
+          "date": "2026-09-30",
+          "rank": null
+        }
+      ],
+      "investors": [
+        {
+          "id": "20003112-87a9-4ac0-be1a-bc97efecf19e",
+          "name": "byFounders",
+          "lead": false
+        },
+        {
+          "id": "302606c8-55fb-41e9-a556-b692b024d553",
+          "name": "6 DEGREES CAPITAL LLP",
+          "lead": false
+        },
+        {
+          "id": "4d668c75-c7a0-4f5b-baea-ce0fa6a34e31",
+          "name": "Lifeline Ventures AB",
+          "lead": false
+        },
+        {
+          "id": "519b4993-6256-48de-a01f-c4e9102aa7cf",
+          "name": "Varma Mutual Pension Insurance Company",
+          "lead": false
+        },
+        {
+          "id": "74c2aa46-ad4b-4a6a-aa3d-3923e6f96adf",
+          "name": "Mark Saroufim",
+          "lead": false
+        },
+        {
+          "id": "82e6c53a-dbfd-444d-a427-a878c2a9535e",
+          "name": "MUFG Innovation Partners",
+          "lead": false
+        },
+        {
+          "id": "8629d4fd-8df0-4fea-a3bd-7cd404836834",
+          "name": "Emergence Capital",
+          "lead": true
+        },
+        {
+          "id": "c56e5ea7-c50a-452f-ae9d-d8dfd5631f92",
+          "name": "Endur GP LLC",
+          "lead": false
+        },
+        {
+          "id": "c9ec4749-f874-4596-b069-42c0729d5c9e",
+          "name": "SUPER MICRO COMPUTER, INC.",
+          "lead": false
+        },
+        {
+          "id": "cd63d5a6-ff71-4c0f-a149-f6bae0487b36",
+          "name": "TESI S.P.A.",
+          "lead": false
+        },
+        {
+          "id": "f63a61f2-a40d-49cc-a622-83504ca4ec97",
+          "name": "Ola Tørudbakken",
+          "lead": false
+        }
+      ]
+    },
+    {
+      "id": "a42c8b14-c1cd-5113-bd6d-3ec0bbcb1caa",
+      "companyId": "b7226c97-3a44-5176-8544-cb91246b2249",
+      "date": "2026-10-15",
+      "label": "GRANT",
+      "amount": 300000,
+      "currency": "EUR",
+      "sources": [
+        {
+          "name": "kovahq.com",
+          "url": "https://kovahq.com/news/kova-labs-bravetech-phase-2",
+          "date": "2026-10-15",
+          "rank": "PRIMARY"
+        },
+        {
+          "name": "resiliencemedia.co",
+          "url": "https://resiliencemedia.co/kova-labs-bets-on-low-cost-autonomy-for-europes-forested-battlefields/",
+          "date": "2026-11-04",
+          "rank": "PRESS"
+        },
+        {
+          "name": "kovahq.com",
+          "url": "https://kovahq.com/news/kova-bravetech",
+          "date": "2026-07-15",
+          "rank": "PRIMARY"
+        }
+      ],
+      "investors": []
+    },
+    {
+      "id": "a73d838b-7aeb-5be8-b6f1-37f3374cb3ec",
+      "companyId": "b7226c97-3a44-5176-8544-cb91246b2249",
+      "date": "2026-11-04",
+      "label": "PRE_SEED",
+      "amount": null,
+      "currency": null,
+      "sources": [
+        {
+          "name": "resiliencemedia.co",
+          "url": "https://resiliencemedia.co/kova-labs-bets-on-low-cost-autonomy-for-europes-forested-battlefields/",
+          "date": "2026-11-04",
+          "rank": "PRESS"
+        },
+        {
+          "name": "lifelineventures.com",
+          "url": "https://lifelineventures.com/",
+          "date": "2026-11-12",
+          "rank": "PRIMARY"
+        }
+      ],
+      "investors": [
+        {
+          "id": "4d668c75-c7a0-4f5b-baea-ce0fa6a34e31",
+          "name": "Lifeline Ventures AB",
+          "lead": false
+        },
+        {
+          "id": "c75cbef9-0ab0-5552-84f8-fc59bc63ea93",
+          "name": "Tuomas Rasila",
+          "lead": false
+        }
+      ]
+    },
+    {
+      "id": "0f4bbc43-3506-5197-8981-d2202a464266",
+      "companyId": "75c397bb-0819-5178-b96b-630417e6bb9e",
+      "date": "2026-10-14",
+      "label": "SEED",
+      "amount": 5100000,
+      "currency": "EUR",
+      "sources": [
+        {
+          "name": "eu-startups.com",
+          "url": "https://www.eu-startups.com/2026/10/helsinkis-ambio-raises-e5-1-million-to-scale-its-ai-powered-recycled-plastics-procurement-platform/",
+          "date": "2026-10-14",
+          "rank": "PRESS"
+        },
+        {
+          "name": "ambiomaterials.com",
+          "url": "https://www.ambiomaterials.com/en/ambio-raises-5-1-million-for-recycled-plastics-procurement",
+          "date": "2026-10-14",
+          "rank": "PRIMARY"
+        },
+        {
+          "name": "techfundingnews.com",
+          "url": "https://techfundingnews.com/exclusive-helsinki-ambio-raises-5m-recycled-plastics-b2venture/",
+          "date": "2026-10-14",
+          "rank": "PRESS"
+        },
+        {
+          "name": "thesaasnews.com",
+          "url": "https://www.thesaasnews.com/news/ambio-raises-5-1m-seed/",
+          "date": "2026-10-15",
+          "rank": "PRESS"
+        },
+        {
+          "name": "tech.eu",
+          "url": "https://tech.eu/2026/10/15/from-slush-to-sustainable-materials-ambio-raises-eur51m-for-ai-powered-plastics-procurement/",
+          "date": "2026-10-15",
+          "rank": "PRESS"
+        }
+      ],
+      "investors": [
+        {
+          "id": "00a88b28-0361-4194-b41d-5dc816d1e3c9",
+          "name": "Montis S.à.R.L.",
+          "lead": false
+        },
+        {
+          "id": "0beb7ba3-49d5-4dad-bc53-61f121b66a33",
+          "name": "b2venture",
+          "lead": true
+        },
+        {
+          "id": "476a73ac-afa2-4713-9f73-188bc7ec0b95",
+          "name": "Lifeline Ventures",
+          "lead": false
+        }
+      ]
+    },
+    {
+      "id": "22bb2f59-9263-58d4-9a0e-14bb15270a5d",
+      "companyId": "9fb29819-a62b-5d13-be35-67eeb5e534a1",
+      "date": "2026-09-18",
+      "label": "GRANT",
+      "amount": 417200.63,
+      "currency": "EUR",
+      "sources": [
+        {
+          "name": "cordis.europa.eu",
+          "url": "https://cordis.europa.eu/project/id/101252572",
+          "date": "2026-09-18",
+          "rank": "FILING"
+        },
+        {
+          "name": "cordis.europa.eu",
+          "url": "https://cordis.europa.eu/search?q=contenttype%3D%27project%27%20AND%20%27Vensum%27&format=xml&p=1&num=10",
+          "date": "2026-11-13",
+          "rank": "FILING"
+        }
+      ],
+      "investors": []
+    },
+    {
+      "id": "c74ce782-9faf-5baf-9c52-6a36db97ab15",
+      "companyId": "9fb29819-a62b-5d13-be35-67eeb5e534a1",
+      "date": "2026-11-06",
+      "label": "SERIES_A",
+      "amount": 9000000,
+      "currency": "EUR",
+      "sources": [
+        {
+          "name": "tech.eu",
+          "url": "https://tech.eu/2026/11/06/vensum-power-raises-eur9m-to-cut-power-losses-in-ai-data-centres-ev-charging-and-energy-storage//",
+          "date": "2026-11-06",
+          "rank": "PRESS"
+        },
+        {
+          "name": "vestbee.com",
+          "url": "https://vestbee.com/insights/articles/vensum-power-lands-9-m",
+          "date": "2026-11-06",
+          "rank": "PRESS"
+        },
+        {
+          "name": "startuprise.co.uk",
+          "url": "https://startuprise.co.uk/helsinkis-vensum-power-secures-e9-million/",
+          "date": "2026-11-06",
+          "rank": "PRESS"
+        },
+        {
+          "name": "cxodigitalpulse.com",
+          "url": "https://www.cxodigitalpulse.com/?p=64835",
+          "date": "2026-11-06",
+          "rank": "PRESS"
+        }
+      ],
+      "investors": [
+        {
+          "id": "2420ea16-cc1a-56f7-934d-2acd7cdc394e",
+          "name": "Larsen And Toubro Limited",
+          "lead": true
+        },
+        {
+          "id": "3f796380-fc58-41ec-8f50-a5e85eef636f",
+          "name": "Grid.vc I Ky",
+          "lead": false
+        },
+        {
+          "id": "476a73ac-afa2-4713-9f73-188bc7ec0b95",
+          "name": "Lifeline Ventures",
+          "lead": true
+        },
+        {
+          "id": "60a7d257-dceb-5032-b298-9b20e262db1c",
+          "name": "Harjavalta Ventures",
+          "lead": false
+        },
+        {
+          "id": "8540e55a-1f3b-4969-bf08-6802f5344d24",
+          "name": "Eviny Ventures",
+          "lead": true
+        }
+      ]
+    },
+    {
+      "id": "fe20bc32-86da-50b3-a96c-7465beada1a3",
+      "companyId": "49fb961a-7281-5f17-94be-5e0c1720d2d5",
+      "date": "2026-08-31",
+      "label": "PRE_SEED",
+      "amount": 2600000,
+      "currency": "EUR",
+      "sources": [
+        {
+          "name": "eu-startups.com",
+          "url": "https://www.eu-startups.com/2026/08/finlands-s-transistors-raises-e2-6-million-to-build-the-worlds-first-quantum-motherboard/",
+          "date": "2026-08-31",
+          "rank": "PRESS"
+        }
+      ],
+      "investors": [
+        {
+          "id": "476a73ac-afa2-4713-9f73-188bc7ec0b95",
+          "name": "Lifeline Ventures",
+          "lead": true
+        }
+      ]
+    },
+    {
+      "id": "71fb258f-6a64-5cdb-a485-ff7fb3e10b0b",
+      "companyId": "9ea03240-306c-5366-8f5c-6191e94b07f6",
+      "date": "2026-10-26",
+      "label": "SERIES_A",
+      "amount": 7100000,
+      "currency": "EUR",
+      "sources": [
+        {
+          "name": "techfundingnews.com",
+          "url": "https://techfundingnews.com/volare-7-1m-second-insect-protein-plant-finland/",
+          "date": "2026-10-26",
+          "rank": "PRESS"
+        },
+        {
+          "name": "eu-startups.com",
+          "url": "https://www.eu-startups.com/2026/10/finlands-volare-raises-e7-1-million-and-opens-5000-tonne-insect-protein-factory/",
+          "date": "2026-10-26",
+          "rank": "PRESS"
+        }
+      ],
+      "investors": [
+        {
+          "id": "d6bba931-c5f5-56f1-8c78-a01daad6a6d5",
+          "name": "Maki",
+          "lead": true
+        }
+      ]
+    },
+    {
+      "id": "190b86d5-0201-5297-bc0e-cf6d9b7204ff",
+      "companyId": "d17e0abf-0a57-4574-820b-822e5cac6308",
+      "date": "2026-09-24",
+      "label": "SEED",
+      "amount": 1500000,
+      "currency": "EUR",
+      "sources": [
+        {
+          "name": "avoindata.prh.fi",
+          "url": "https://avoindata.prh.fi/opendata-ytj-api/v3/companies?businessId=3359547-7",
+          "date": "2026-09-24",
+          "rank": "FILING"
+        },
+        {
+          "name": "clockcloud.ai",
+          "url": "https://www.clockcloud.ai/news/clock-cloud-secures-eu1-5-million-pre-seed-to-advance-ai-powered-geopolitical-intelligence-platform",
+          "date": "2026-11-10",
+          "rank": "PRIMARY"
+        },
+        {
+          "name": "castren.fi",
+          "url": "https://www.castren.fi/cases/ugly-duckling-ventures-investment-in-clock-cloud/",
+          "date": "2025-03-28",
+          "rank": "PRIMARY"
+        },
+        {
+          "name": "arctictoday.com",
+          "url": "https://www.arctictoday.com/%F0%9F%87%AB%F0%9F%87%AE-clockcloud-secures-e1-5-million-pre-seed-to-advance-ai-powered-geopolitical-intelligence-platform/",
+          "date": "2025-04-03",
+          "rank": "PRESS"
+        },
+        {
+          "name": "en.ain.ua",
+          "url": "https://en.ain.ua/2025/03/31/company-clockcloud-raises-eur15-m",
+          "date": "2025-03-31",
+          "rank": "PRESS"
+        }
+      ],
+      "investors": [
+        {
+          "id": "34829e66-7e7e-412e-a0ea-c61014ced495",
+          "name": "Ugly Duckling Ventures Management ApS",
+          "lead": true
+        },
+        {
+          "id": "70fb3317-cd8c-4c52-aa86-66502789bce3",
+          "name": "Icebreaker.vc",
+          "lead": true
+        }
+      ]
+    },
+    {
+      "id": "6b9e47a3-fca0-4f08-bf80-8ae36a472e08",
+      "companyId": "7485476c-8d4b-4921-9330-45f893b9b5ca",
+      "date": "2026-08-20",
+      "label": "Pre-Seed",
+      "amount": 1160000,
+      "currency": "USD",
+      "sources": [
+        {
+          "name": "tracxn.com",
+          "url": "https://tracxn.com/d/companies/guideless/__epV-RlmN-lBsarJQBnkiVpO8s_KmWqsJxe7oE4Xzbcs",
+          "date": "2026-08-25",
+          "rank": null
+        },
+        {
+          "name": "tracxn.com",
+          "url": "https://tracxn.com/d/companies/guideless/__epV-RlmN-lBsarJQBnkiVpO8s_KmWqsJxe7oE4Xzbcs/funding-and-investors",
+          "date": "2026-08-25",
+          "rank": null
+        },
+        {
+          "name": "www.crunchbase.com",
+          "url": "https://www.crunchbase.com/person/vytautas-atko%C4%8Daitis",
+          "date": "2026-08-25",
+          "rank": null
+        },
+        {
+          "name": "www.crunchbase.com",
+          "url": "https://www.crunchbase.com/person/thomas-plantenga",
+          "date": "2026-08-25",
+          "rank": null
+        },
+        {
+          "name": "www.crunchbase.com",
+          "url": "https://www.crunchbase.com/organization/firstpick",
+          "date": "2026-08-25",
+          "rank": null
+        }
+      ],
+      "investors": [
+        {
+          "id": "",
+          "name": "FIRSTPICK",
+          "lead": false
+        },
+        {
+          "id": "",
+          "name": "Superhero Capital",
+          "lead": false
+        }
+      ]
+    },
+    {
+      "id": "b034c5bf-4031-4f95-9adc-9a38203d4127",
+      "companyId": "557bf741-7119-4d18-a4b0-fe77cb30f351",
+      "date": "2026-07-29",
+      "label": "Seed",
+      "amount": 1370000,
+      "currency": "USD",
+      "sources": [
+        {
+          "name": "tracxn.com",
+          "url": "https://tracxn.com/d/venture-capital/superhero-capital/__0ojhXzhdsNMZ52CC2oC7DgYOy87dBNaBhc3wM7vIRus",
+          "date": "2026-08-25",
+          "rank": null
+        },
+        {
+          "name": "tracxn.com",
+          "url": "https://tracxn.com/d/explore/transportation-and-logistics-startups-in-europe/__IHrInI4-X-FEoEeNvt07d0s4C5-8SgohPpgQ3k8auro",
+          "date": "2026-08-25",
+          "rank": null
+        },
+        {
+          "name": "tracxn.com",
+          "url": "https://tracxn.com/d/sectors/car-rentals/__2-06Ae_FN-uDGpUVWLvYuNuplp8Z-mehNQjvEynacY0",
+          "date": "2026-08-25",
+          "rank": null
+        },
+        {
+          "name": "tracxn.com",
+          "url": "https://tracxn.com/d/geographies/eastern-europe/__1MIVcMWZcGMjeLe9QbPsQluFUpXGr-U5R6Qw9kiOtVg",
+          "date": "2026-08-25",
+          "rank": null
+        },
+        {
+          "name": "pitchbook.com",
+          "url": "https://pitchbook.com/profiles/company/1462064-41",
+          "date": "2026-08-25",
+          "rank": null
+        }
+      ],
+      "investors": [
+        {
+          "id": "",
+          "name": "Superhero Capital",
+          "lead": false
+        }
+      ]
+    },
+    {
+      "id": "743906c2-30c4-4835-82b0-fa115c44f4e9",
+      "companyId": "9423779d-819b-46ac-bf29-a5edb6b2553f",
+      "date": "2026-08-03",
+      "label": "Series B",
+      "amount": 317000000,
+      "currency": "USD",
+      "sources": [
+        {
+          "name": "This former notorious red-light district is now one of the world’s top AI hubs | TechCrunch",
+          "url": "https://techcrunch.com/2026/08/09/this-former-notorious-red-light-district-is-now-one-of-the-worlds-top-ai-hubs",
+          "date": "2026-08-09",
+          "rank": null
+        },
+        {
+          "name": "pitchbook.com",
+          "url": "https://pitchbook.com/profiles/company/757157-77",
+          "date": "2026-08-24",
+          "rank": null
+        },
+        {
+          "name": "tracxn.com",
+          "url": "https://tracxn.com/d/companies/olix/__4TeHKbFTTtuPK_EwLW38sxw1Pvy4MigXlhFmbz6VUxU",
+          "date": "2026-08-24",
+          "rank": null
+        },
+        {
+          "name": "tracxn.com",
+          "url": "https://tracxn.com/d/companies/olix/__4TeHKbFTTtuPK_EwLW38sxw1Pvy4MigXlhFmbz6VUxU/funding-and-investors",
+          "date": "2026-08-24",
+          "rank": null
+        }
+      ],
+      "investors": [
+        {
+          "id": "",
+          "name": "CRANE VENTURE PARTNERS LLP",
+          "lead": false
+        },
+        {
+          "id": "",
+          "name": "Creandum",
+          "lead": false
+        },
+        {
+          "id": "",
+          "name": "Phoenix Court",
+          "lead": false
+        },
+        {
+          "id": "",
+          "name": "ARM LIMITED",
+          "lead": false
+        },
+        {
+          "id": "",
+          "name": "Hummingbird Ventures",
+          "lead": false
+        },
+        {
+          "id": "",
+          "name": "Hudson River Trading",
+          "lead": false
+        },
+        {
+          "id": "",
+          "name": "Sovereign AI",
+          "lead": false
+        }
+      ]
+    },
+    {
+      "id": "ffee4e4b-e11f-5e5c-9b89-973eca45bc17",
+      "companyId": "fc9b463a-a6db-41e7-ba8c-b94e51a163e3",
+      "date": "2026-10-13",
+      "label": "SEED",
+      "amount": 20000000,
+      "currency": "USD",
+      "sources": [
+        {
+          "name": "techfundingnews.com",
+          "url": "https://techfundingnews.com/causa-prima-raises-20m-seed-from-base10-to-let-ai-agents-settle-b2b-invoices/",
+          "date": "2026-10-13",
+          "rank": "PRESS"
+        },
+        {
+          "name": "thesaasnews.com",
+          "url": "https://www.thesaasnews.com/news/causa-prima-raises-20m-seed/",
+          "date": "2026-10-14",
+          "rank": "PRESS"
+        },
+        {
+          "name": "fortune.com",
+          "url": "https://fortune.com/2026/10/13/startup-causa-prima-20-million-billing-disputes-ai-agents/",
+          "date": "2026-10-13",
+          "rank": "PRESS"
+        },
+        {
+          "name": "forbes.es",
+          "url": "https://forbes.es/ultima-hora/1043071/la-tecnologica-causa-prima-capta-18-millones-de-euros-en-una-nueva-ronda-y-sube-su-financiacion-a-27-millones/",
+          "date": "2026-10-13",
+          "rank": "PRESS"
+        }
+      ],
+      "investors": [
+        {
+          "id": "08275d37-1935-4195-80a5-79dcf46a0dc8",
+          "name": "Base10 Partners",
+          "lead": true
+        },
+        {
+          "id": "2c557cbb-4e37-44db-9f47-5bc327a86320",
+          "name": "Kfund",
+          "lead": false
+        },
+        {
+          "id": "6ba00a20-2cb4-4559-8fe2-f39484a9e5f6",
+          "name": "Creandum",
+          "lead": true
+        },
+        {
+          "id": "74a53c78-d1de-4aa1-b9c2-1554cb64dce0",
+          "name": "Borusan Ventures",
+          "lead": false
+        },
+        {
+          "id": "7a2f4e4f-d180-4252-9fce-23ded22343d1",
+          "name": "QED Investors",
+          "lead": false
+        },
+        {
+          "id": "af455c14-7d52-4318-9418-fd1ee7d573ef",
+          "name": "FJ Labs, LLC",
+          "lead": false
+        },
+        {
+          "id": "c313bdce-2c97-4924-b145-49f886a2dd61",
+          "name": "Angel Invest",
+          "lead": false
+        },
+        {
+          "id": "ce623970-3ea3-415e-95ae-58fa4cd7cada",
+          "name": "HelloWorld Venture Capital Fund I SCSp",
+          "lead": false
+        }
+      ]
+    },
+    {
+      "id": "23de104b-0c81-452f-bde8-bdd14551fcef",
+      "companyId": "89d3a43c-fee4-4491-853e-a216cbef6c50",
+      "date": "2026-08-12",
+      "label": "Series C",
+      "amount": 400000000,
+      "currency": "USD",
+      "sources": [
+        {
+          "name": "Lovable confirms new $13.3B valuation, raises another $400M | TechCrunch",
+          "url": "https://techcrunch.com/2026/08/12/lovable-confirms-new-13-3b-valuation-raises-another-400m",
+          "date": "2026-08-12",
+          "rank": null
+        },
+        {
+          "name": "news.crunchbase.com",
+          "url": "https://news.crunchbase.com/ai/biggest-funding-rounds-databricks-river-ai-data-energy",
+          "date": "2026-08-24",
+          "rank": null
+        },
+        {
+          "name": "tracxn.com",
+          "url": "https://tracxn.com/d/companies/lovable/__fO6WUvzcx5q3814ietMd3kzGlRirsatzsTnpxmzLuMI",
+          "date": "2026-08-24",
+          "rank": null
+        },
+        {
+          "name": "pitchbook.com",
+          "url": "https://pitchbook.com/profiles/company/600908-32",
+          "date": "2026-08-24",
+          "rank": null
+        }
+      ],
+      "investors": [
+        {
+          "id": "",
+          "name": "Kaszek Ventures",
+          "lead": false
+        },
+        {
+          "id": "",
+          "name": "DST Global Partners",
+          "lead": false
+        },
+        {
+          "id": "",
+          "name": "Menlo Ventures",
+          "lead": false
+        },
+        {
+          "id": "",
+          "name": "Scaleup Europe Fund",
+          "lead": false
+        },
+        {
+          "id": "",
+          "name": "CARMIGNAC GESTION",
+          "lead": false
+        },
+        {
+          "id": "",
+          "name": "Tencent Holdings",
+          "lead": false
+        },
+        {
+          "id": "",
+          "name": "CAPITALG LP",
+          "lead": false
+        },
+        {
+          "id": "",
+          "name": "World Innovation Lab (WiL)",
+          "lead": false
+        },
+        {
+          "id": "",
+          "name": "Accel",
+          "lead": false
+        },
+        {
+          "id": "",
+          "name": "Hubspot, Inc.",
+          "lead": false
+        },
+        {
+          "id": "",
+          "name": "Balderton Capital",
+          "lead": false
+        },
+        {
+          "id": "",
+          "name": "SALESFORCE VENTURES LLC",
+          "lead": false
+        }
+      ]
+    }
+  ],
   "slush": {
     "ids": [
       "001eb587-ff78-5d7a-85bb-7c454cd0c176",
