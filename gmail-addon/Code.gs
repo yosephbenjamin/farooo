@@ -169,9 +169,8 @@ function answer_(r, extra, quick) {
   // the log, re-ranked by this startup's taps when there are any
   var taps = taps_(r.body.slug);
   if (taps) {
-    var params = { taps: taps };
-    if (quick) params.quick = '1';
-    var t = call_(ask_(params));
+    // stored data only: never a second live lookup (Gmail allows about 30 s in all)
+    var t = call_(ask_({ taps: taps, quick: '1' }));
     if (t.code === 200 && !t.body.error && !t.body.pending && !t.body.needsName) return logCard_(t.body);
   }
   return logCard_(r.body);
