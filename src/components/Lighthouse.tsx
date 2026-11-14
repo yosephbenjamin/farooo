@@ -76,7 +76,9 @@ export function Lighthouse({ className, lit = true, sweeping = false, boil = fal
       {!scene && !mark && <g className={draw ? "wash-in" : undefined}>{wash([[20, 206], [198, 204], [204, 236], [14, 238]], SEA, s + 40, "sea", [0, 0])}</g>}
       {/* the turning beam (loading) */}
       {sweeping && (
-        <g className="sweep" style={{ transformOrigin: "110px 56px" }}>
+        // pivot on the beam's own box (its tip, the lamp, is the left edge, halfway down): browsers
+        // disagree on where "110px 56px" falls once the scene crops the viewBox, Safari most of all
+        <g className="sweep" style={{ transformBox: "fill-box", transformOrigin: "0% 50%" }}>
           {wash([[110, 56], [226, 28], [226, 84]], LIGHT, s + 30, "sweepbeam", [0, 0], { opacity: 0.7 })}
         </g>
       )}
