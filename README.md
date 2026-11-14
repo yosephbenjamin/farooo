@@ -21,7 +21,7 @@ Built for Junction 2026, Cala challenge. The full spec is in `BUILD_SPEC.md`.
 ## Two screens
 
 1. **The question.** `/`: "Which startup are you?" One input, one hand-drawn lighthouse in a mint cove at dusk. The loader is the same scene with the beam turning.
-2. **The log.** `/for/<startup>`: an editorial headline, the doors as short prose with footnoted sources (date · source · source rank), a hand-drawn map (a small town: investors as buildings, doors as windows, plus a "New in <country>" building), and a quiet Door Count line.
+2. **The log.** `/for/<startup>`: an editorial headline, the doors as short prose with footnoted sources (date · source · source rank), a hand-drawn map (a small town: investors as buildings, doors as windows, plus a "Close by" building for doors without an introducer), and a quiet Door Count line.
 
 Plus `/log` (alerts as emails), booth mode `/for/<startup>?booth=1` (press space to watch a door open), `GET /api/doors?name=…|email=…`, and the contextual Gmail sidebar in `gmail-addon/` (`GET /api/gmail?user=…&sender=…`).
 

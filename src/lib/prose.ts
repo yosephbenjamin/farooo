@@ -53,6 +53,19 @@ export function throughPeople(doors: Door[]): string {
   return `${numWord(warm)} through people you know.`;
 }
 
+/**
+ * When no door has opened: what Faro is watching, so the screen is never empty.
+ * "Faro is watching Finland and its neighbours, through Lifeline Ventures and Tesi. When a company
+ * there gets new money, new hires or an acquisition, the door opens here."
+ */
+export function quietLine(r: DoorReport): string | null {
+  const s = r.startup;
+  if (!s.country) return null;
+  const tidy = (n: string) => n.replace(/,? (LP|LLC|LLP|Ltd|AB|Oy|Inc)\.?$/i, "");
+  const inv = s.investors.map((i) => tidy(i.name)).filter((n) => !/^(business finland|innovation norway|vinnova|eic)\b/i.test(n)).slice(0, 3);
+  return `Faro is watching ${s.country} and its neighbours${inv.length ? `, through ${list(inv)}` : ""}. When a company there gets new money, new hires or an acquisition, the door opens here.`;
+}
+
 /** The line under the headline: where we're watching and through whom. */
 export function subline(r: DoorReport): string | null {
   const s = r.startup;
@@ -89,6 +102,7 @@ export function entryMeta(d: Door): { parts: string[]; people: string | null } {
     if (led.length) parts.push(`${list(led)} led their round and ${led.length > 1 ? "back" : "backs"} you too`);
     if (rest.length) parts.push(led.length ? `So ${rest.length > 1 ? "do" : "does"} ${list(rest)}` : `${list(rest)} ${rest.length > 1 ? "back" : "backs"} you both`);
   }
+  if (d.nearby && d.country) parts.push(`Based in ${d.country}`);
   if (d.slush) parts.push("They'll be at Slush 2026");
   const names = d.people.map((p) => `${p.name}, ${p.role}`);
   const people = names.length ? `Ask for ${names.length > 1 ? `${names.slice(0, -1).join("; ")}, or ${names.at(-1)}` : names[0]}` : null;

@@ -30,5 +30,6 @@ export default async function StartupLog({ params, searchParams }: Params) {
   const scripts = readJson<Record<string, string>>("demo/scripted.json", {});
   const top = isBooth ? rankDoors(report.doors, taps)[0] : firstLook(report.doors)[0]?.door;
   const scriptedId = isBooth ? scripts[startup] ?? top?.id ?? null : null;
-  return <LogView report={report} slug={startup} taps={taps} booth={isBooth} scriptedId={scriptedId} autoMs={auto ? Number(auto) || 6000 : null} />;
+  const demos = demoStartups().map((d) => ({ name: d.name, slug: d.slug }));
+  return <LogView report={report} slug={startup} taps={taps} booth={isBooth} scriptedId={scriptedId} autoMs={auto ? Number(auto) || 6000 : null} demos={demos} />;
 }
