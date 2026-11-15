@@ -1,6 +1,6 @@
 # Faro: 2-minute demo video script
 
-**Hard cap: 2:00. Target runtime: about 1:30, so there is 30 seconds of margin.** The voice-over is 175 words, about 1:12 at a calm 145 words per minute; the rest is pauses, the loading screen and the end card. Export, then check the file length before uploading: it must read 1:59 or less, and under 1:45 is safer.
+**Hard cap: 2:00. Target runtime: about 1:38, so there are about 20 seconds of margin.** The voice-over is 204 words, about 1:24 at a calm 145 words per minute; the rest is pauses, the loading screen and the end card. Export, then check the file length before uploading: it must read 1:59 or less, and under 1:50 is safer.
 
 Upload to YouTube or Vimeo as **Public** ("available for everyone"). Test the link in a private window.
 
@@ -27,10 +27,10 @@ CALA_OFFLINE=1 npm start
 | **0:26–0:36** | Type *Measur* into the one input, press Enter. The loading screen shows the lighthouse beam and Cala's steps. | "Take Measur, a Finnish startup. Type its name once. Faro reads its industry, headquarters and investors from Cala." |
 | **0:36–0:58** | The log, `/for/measur`. Slow zoom on the headline, then the first door (Vensum). Highlight each part as it is spoken: the date and source footnote, the *Customer* line, *Lifeline Ventures*, *Slush*. | "Every reason is dated and sourced. Vensum raised a nine-million-euro Series A on 6 November, per tech.eu. Why you: an energy company with fresh money is a customer. Who introduces you: Lifeline Ventures, who led the round and backs Measur too. And Vensum will be at Slush." |
 | **0:58–1:08** | Scroll to the next two doors (QMill, Cerebras), then the hand-drawn map. | "Other doors: QMill grew from four to fifteen people. Cerebras is entering Finland. Different reasons, different partnerships." |
-| **1:08–1:20** | Switch to Gmail. Open the email from Vensum. The sidebar header reads **A door, in your inbox** and shows the same door. | "And in Gmail, when Vensum emails you, the same door appears in the sidebar." |
-| **1:20–1:30** | Back to the lighthouse. Text: *Faro. Know who's coming. Find the way in.* Cala credit and "Built for Junction 2026" in small type. | "Every door has a date and a source, or it isn't shown. Faro. Built on Cala." |
+| **1:08–1:28** | Switch to Gmail. Open the email from Vensum. Zoom to the sidebar: header **A door, in your inbox**, then the lead line, why-you, the warm path and "Find the right person". End wide on the whole Gmail window. | "And in Gmail, when Vensum emails you, the same door appears right next to the message. Faro knows you from your work email, so there's nothing to set up. Why they matter, why you, and who can introduce you, without leaving your inbox." |
+| **1:28–1:38** | Back to the lighthouse. Text: *Faro. Know who's coming. Find the way in.* Cala credit and "Built for Junction 2026" in small type. | "Every door has a date and a source, or it isn't shown. Faro. Built on Cala." |
 
-**Word count by scene:** 20 + 21 + 22 + 18 + 47 + 17 + 14 + 16 = **175 words.**
+**Word count by scene:** 20 + 21 + 22 + 18 + 47 + 17 + 43 + 16 = **204 words.**
 
 ## Why it is built this way
 
@@ -50,5 +50,5 @@ CALA_OFFLINE=1 npm start
 
 ## If you want to add back, or are still long
 
-- Over 1:45 after editing: cut the QMill and Cerebras sentence (scene 6, about 8 s), then shorten the intro.
-- Under 1:30 and want more: add *"Tap more like this, or not now, and Faro learns which kind of partner you want."* after scene 6 (about 6 s) while you tap a door.
+- Over 1:50 after editing: cut the QMill and Cerebras sentence (scene 6, about 8 s), then shorten the intro.
+- Under 1:35 and want more: add *"Tap more like this, or not now, and Faro learns which kind of partner you want."* after scene 6 (about 6 s) while you tap a door.
